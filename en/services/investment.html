@@ -1,118 +1,89 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Avisail Global Trading</title>
-<link rel="canonical" href="https://avisail.com/ja/services-investment.html">
+<title>Investment | Avisail</title>
+<link rel="canonical" href="https://avisail.com/en/services/investment.html">
 <link rel="alternate" hreflang="ja" href="https://avisail.com/ja/index.html">
-<link rel="alternate" hreflang="en" href="https://avisail.com/en/index.html">
+<link rel="alternate" hreflang="en" href="https://avisail.com/">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
 <style>
-
 :root{
   --line: rgba(255,255,255,.08);
-  /* Hero background image (replace URL below after you upload): */
-  --home-hero: url('https://avisail.com/wp-content/uploads/2025/11/hero-index.jpg'); /* EDIT HERE */
+  --hero-bg: url('/images/investment-hero.jpg');
 }
 *{ box-sizing: border-box; }
-html,body{
-  margin:0;
-  background:#0a0f1a;
-  color:#e9f0ff;
-  font-family: ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans;
-  line-height:1.7;
-}
+html,body{ margin:0; background:#0a0f1a; color:#e9f0ff; font-family:'Inter', sans-serif; line-height:1.7; }
 a{ color:#cfe2ff; text-decoration:none; }
 .wrap{ max-width:1200px; margin:0 auto; padding:0 20px; }
-header{
-  position:sticky; top:0; z-index:50;
-  background:linear-gradient(to bottom, rgba(10,15,26,.9), rgba(10,15,26,.6));
-  border-bottom:1px solid var(--line);
-}
+header{ position:sticky; top:0; z-index:50; background:rgba(10,15,26,.9); border-bottom:1px solid var(--line); backdrop-filter:blur(10px); }
 .nav{ display:flex; align-items:center; justify-content:space-between; height:70px; }
-.brand{ display:flex; align-items:center; gap:12px; }
-.logo{ width:36px; height:36px; border-radius:10px; background:conic-gradient(from 210deg,#6aa6ff,#7ef0d4); }
-nav ul{ display:flex; gap:22px; list-style:none; margin:0; padding:0; align-items:center; }
-.menu-item{ position:relative; }
-.dropdown{
-  position:absolute; top:100%; left:0; min-width:240px;
-  background:#0d1424; border:1px solid var(--line); border-radius:12px; padding:8px; display:none;
-}
-.menu-item:hover .dropdown{ display:block; }
-.btn{
-  padding:10px 16px; border-radius:12px;
-  border:1px solid var(--line); background:transparent; color:#e9f0ff;
-}
-.cta{
-  padding:10px 16px; border-radius:12px;
-  background:linear-gradient(135deg,#6aa6ff,#7ef0d4);
-  color:#06101a; font-weight:700;
-  box-shadow:0 10px 20px rgba(106,166,255,.25);
-}
-.hero{
-  position:relative; overflow:hidden;
-  padding:140px 0 100px;
-}
-.hero::before{
-  content:""; position:absolute; inset:0; z-index:1;
-  background:linear-gradient(180deg,rgba(0,0,0,.45),rgba(0,0,0,.65)), var(--home-hero) center/cover no-repeat;
-}
-.hero .wrap{ position:relative; z-index:2; }
-.muted{ color:#9fb0cc; }
-section{ padding:80px 0; border-bottom:1px solid var(--line); }
-.card{
-  background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.02));
-  border:1px solid var(--line); border-radius:18px; padding:24px;
-}
-.grid-3{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
-.grid-2{ display:grid; grid-template-columns:repeat(2,1fr); gap:20px; }
-@media(max-width:980px){ .grid-3,.grid-2{ grid-template-columns:1fr; } }
-.thumb{
-  width:100%; height:160px; border-radius:12px; margin-bottom:12px;
-  background:#0e1424 center/cover no-repeat; border:1px solid var(--line);
-}
-footer .wrap{ padding:20px 0; }
+.brand{ display:flex; align-items:center; gap:12px; font-weight:600; color:#fff; }
+.logo{ width:32px; height:32px; border-radius:8px; background:conic-gradient(from 210deg,#6aa6ff,#7ef0d4); }
+nav ul{ display:flex; gap:24px; list-style:none; margin:0; padding:0; align-items:center; font-size:0.95rem; }
+.menu-item{ position:relative; padding:10px 0; }
+.dropdown{ position:absolute; top:100%; left:-10px; min-width:200px; background:#0d1424; border:1px solid var(--line); border-radius:12px; padding:12px; display:none; flex-direction:column; gap:8px; }
+.menu-item:hover .dropdown{ display:flex; }
+.dropdown a{ padding:6px 12px; border-radius:6px; color:#9fb0cc; }
+.dropdown a:hover{ background:rgba(255,255,255,0.05); color:#fff; }
+.lang-switch{ border:1px solid var(--line); padding:6px 12px; border-radius:6px; color:#9fb0cc; font-size:0.85rem; }
 
+.page-hero{
+  padding:140px 0 100px; text-align:center;
+  background: linear-gradient(rgba(10,15,26,0.7), rgba(10,15,26,0.9)), var(--hero-bg) center/cover;
+}
+.page-hero h1{ font-size:3rem; margin-bottom:24px; color:#fff; }
+.muted{ color:#9fb0cc; max-width:700px; margin:0 auto; }
+
+section{ padding:80px 0; border-bottom:1px solid var(--line); }
+.grid-2{ display:grid; grid-template-columns:repeat(2,1fr); gap:32px; }
+.card{ background:rgba(255,255,255,0.02); border:1px solid var(--line); border-radius:24px; padding:32px; backdrop-filter:blur(5px); }
+.card h3{ color:#fff; }
+@media(max-width:980px){ .grid-2{ grid-template-columns:1fr; } nav ul{ display:none; } }
+footer .wrap{ padding:20px 0; }
 </style>
 </head>
 <body>
-
   <header>
     <div class="wrap nav">
       <div class="brand"><div class="logo"></div><span>Avisail Global Trading</span></div>
       <nav>
         <ul>
-          <li><a class="active" href="/ja/index.html">Home</a></li>
-          <li><a href="/ja/about.html">About</a></li>
+          <li><a href="/">Home</a></li>
+          <li><a href="/en/about.html">About</a></li>
           <li class="menu-item">
-            <a href="/ja/services-vessel.html">Services</a>
+            <span>Services ▾</span>
             <div class="dropdown">
-              <a href="/ja/services-vessel.html">Vessel Trading</a>
-              <a href="/ja/services-investment.html">Investment</a>
-              <a href="/ja/services-tech.html">Technology</a>
+              <a href="/en/services/vessel-trading.html">Vessel Trading</a>
+              <a href="/en/services/investment.html">Investment</a>
+              <a href="/en/services/technology.html">Technology</a>
             </div>
           </li>
-          <li><a href="/ja/contact.html">Contact</a></li>
-          <li><a class="lang" href="/en/index.html">English</a></li>
+          <li><a href="/en/contact.html">Contact</a></li>
+          <li><a class="lang-switch" href="/ja/index.html">日本語</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
-<main class="hero"><div class="wrap">
-  <h1>投資</h1>
-  <p class="muted">Aviscore等のシステムを用い、AI洞察と裁量判断を統合。自社資金・受託資金の双方で持続的な成長を目指します。</p>
-</div></main>
+<main class="page-hero">
+  <div class="wrap">
+    <h1>Investment</h1>
+    <p class="muted">Using systems like Aviscore, we combine AI insights with discretionary judgment to pursue sustainable growth across proprietary and entrusted assets.</p>
+  </div>
+</main>
 
-<section class="wrap"><h2>運用コンセプト</h2>
-<div class="grid-2">
-  <div class="card"><h3>マルチファクター</h3><p>テクニカル・リスク・センチメント等を多面的に評価。</p></div>
-  <div class="card"><h3>リスク管理</h3><p>ボラティリティ目標やドローダウン抑制を明確化。</p></div>
-  <div class="card"><h3>データ主導</h3><p>継続的な検証とモニタリングでモデルを改善。</p></div>
-  <div class="card"><h3>透明性</h3><p>四半期レポート等で方針・成績・変更点を開示。</p></div>
-</div></section>
+<section class="wrap">
+  <h2 style="font-size:2rem; margin-bottom:40px; color:#fff; display:flex; align-items:center; gap:16px;">Investment Principles</h2>
+  <div class="grid-2">
+    <div class="card"><h3>Multi‑Factor</h3><p style="color:#9fb0cc">Evaluate technicals, risk, and sentiment from multiple angles.</p></div>
+    <div class="card"><h3>Risk Controls</h3><p style="color:#9fb0cc">Target volatility and drawdown limits with clear governance.</p></div>
+    <div class="card"><h3>Data‑Driven</h3><p style="color:#9fb0cc">Ongoing backtesting and monitoring to improve models.</p></div>
+    <div class="card"><h3>Transparency</h3><p style="color:#9fb0cc">Quarterly reporting on approach, performance, and updates.</p></div>
+  </div>
+</section>
 
-  <footer><div class="wrap"><p>© 2025 Avisail Global Trading — All rights reserved.</p></div></footer>
-
+<footer><div class="wrap"><p>© 2025 Avisail Global Trading — All rights reserved.</p></div></footer>
 </body>
 </html>
