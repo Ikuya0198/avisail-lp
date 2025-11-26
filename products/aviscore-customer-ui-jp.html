@@ -1,218 +1,843 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Aviscore - Customer UI</title>
+  <meta charset="UTF-8" />
+  <title>Aviscore | AI合議制マーケットスコアリング</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap');
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-<style>
-:root {
-    --bg-deep: #020617;
-    --bg-main: #0B1120;
-    --bg-card: #111827;
-    --accent: #38BDF8;
-    --text: #E2E8F0;
-    --text-soft: #94A3B8;
-}
-
-body {
-    margin: 0;
-    background: var(--bg-deep);
-    font-family: 'Inter', sans-serif;
-    color: var(--text);
-}
-
-/* HEADER */
-.header {
-    padding: 25px 6%;
-    background: #000;
-    font-size: 1.3rem;
-    font-weight: 700;
-}
-
-/* WRAPPER */
-.wrapper {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-    padding: 60px 6%;
-}
-@media (max-width: 900px) {
-    .wrapper {
-        grid-template-columns: 1fr;
+    :root {
+      --bg-deep: #020617;
+      --bg-main: #020617;
+      --bg-elevated: #020819;
+      --accent-cyan: #22d3ee;
+      --accent-lime: #a3e635;
+      --accent-pink: #fb7185;
+      --text-main: #e5e7eb;
+      --text-muted: #94a3b8;
+      --border-soft: #1e293b;
+      --border-strong: #38bdf8;
+      --card-bg: #020817;
+      --badge-bg: #0f172a;
     }
-}
 
-/* LEFT COLUMN */
-.left-box {
-    background: var(--bg-card);
-    padding: 30px;
-    border-radius: 12px;
-    border: 1px solid #1E293B;
-}
-.left-box h2 {
-    font-size: 2rem;
-    margin-bottom: 5px;
-}
-.left-box .ticker {
-    color: var(--accent);
-    font-size: 1.1rem;
-    margin-bottom: 25px;
-}
-.chart-box {
-    width: 100%;
-    height: 260px;
-    background: #0A0F1C;
-    border-radius: 10px;
-    border: 1px solid #1E293B;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--text-soft);
-    margin-bottom: 25px;
-}
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-/* RIGHT COLUMN */
-.score-box {
-    background: var(--bg-card);
-    padding: 30px;
-    border-radius: 12px;
-    border: 1px solid #1E293B;
-}
-.score-title {
-    font-size: 1.4rem;
-    margin-bottom: 20px;
-}
+    body {
+      margin: 0;
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background:
+        radial-gradient(circle at 0% 0%, rgba(56, 189, 248, 0.26), transparent 50%),
+        radial-gradient(circle at 100% 100%, rgba(190, 242, 100, 0.12), transparent 50%),
+        linear-gradient(135deg, #000000, #020617 55%, #020617);
+      color: var(--text-main);
+    }
 
-/* GAUGE (シンプルな円形スコアUI) */
-.gauge {
-    width: 130px;
-    height: 130px;
-    border-radius: 50%;
-    background: conic-gradient(
-        var(--accent) calc(var(--value) * 1%),
-        #1E293B 0
-    );
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 700;
-    margin: 0 auto 10px;
-}
-.gauge span {
-    font-size: 1.6rem;
-}
+    a {
+      color: var(--accent-cyan);
+      text-decoration: none;
+    }
 
-/* SCORE ITEM */
-.score-item {
-    text-align: center;
-    margin-bottom: 35px;
-}
-.score-label {
-    color: var(--text-soft);
-    margin-bottom: 10px;
-    font-size: 1rem;
-}
+    a:hover {
+      text-decoration: underline;
+    }
 
-/* DETAILS */
-.detail-box {
-    margin-top: 40px;
-    background: var(--bg-main);
-    padding: 25px;
-    border-radius: 12px;
-    border: 1px solid #1E293B;
-}
-.detail-box h3 {
-    margin-bottom: 15px;
-    font-size: 1.3rem;
-}
-.detail-box ul {
-    padding-left: 20px;
-}
-.detail-box li {
-    color: var(--text-soft);
-    margin-bottom: 8px;
-    font-size: 0.95rem;
-}
+    .page {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 18px 18px 60px;
+    }
 
-/* PDF BUTTON */
-.pdf-button {
-    display: inline-block;
-    margin-top: 30px;
-    padding: 12px 32px;
-    background: var(--accent);
-    color: #000;
-    font-weight: 700;
-    border-radius: 8px;
-    text-decoration: none;
-}
-.pdf-button:hover {
-    opacity: 0.85;
-}
-</style>
+    /* Header */
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 4px 20px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-mark {
+      width: 30px;
+      height: 30px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 20%, rgba(56, 189, 248, 0.9), #020617);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      font-size: 16px;
+      color: #020617;
+      box-shadow:
+        0 0 16px rgba(56, 189, 248, 0.9),
+        0 0 32px rgba(59, 130, 246, 0.6);
+    }
+
+    .logo-text-main {
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      font-size: 18px;
+      text-transform: uppercase;
+    }
+
+    .logo-text-sub {
+      font-size: 10px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      font-size: 13px;
+    }
+
+    .nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      position: relative;
+    }
+
+    .nav a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -2px;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(to right, var(--accent-cyan), var(--accent-lime));
+      transition: width 0.18s ease;
+    }
+
+    .nav a:hover {
+      color: var(--text-main);
+    }
+
+    .nav a:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      background: linear-gradient(135deg, var(--accent-cyan), var(--accent-lime));
+      border-radius: 999px;
+      padding: 7px 14px;
+      border: none;
+      color: #020617;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow:
+        0 0 16px rgba(34, 211, 238, 0.7),
+        0 10px 24px rgba(15, 23, 42, 0.8);
+    }
+
+    .nav-cta:hover {
+      filter: brightness(1.08);
+    }
+
+    /* Hero */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 32px;
+      padding: 28px 4px 40px;
+      align-items: center;
+    }
+
+    .hero-kicker {
+      font-size: 11px;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .hero-title {
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      font-size: clamp(28px, 4vw, 40px);
+      line-height: 1.2;
+      margin-bottom: 10px;
+    }
+
+    .hero-title span {
+      color: var(--accent-cyan);
+    }
+
+    .hero-subtitle {
+      color: var(--text-muted);
+      font-size: 14px;
+      line-height: 1.7;
+      max-width: 34rem;
+      margin-bottom: 16px;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+
+    .badge {
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      color: var(--text-muted);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent-cyan), var(--accent-lime));
+      border-radius: 999px;
+      border: none;
+      padding: 10px 20px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #020617;
+      cursor: pointer;
+      box-shadow:
+        0 0 18px rgba(56, 189, 248, 0.7),
+        0 14px 32px rgba(15, 23, 42, 0.9);
+    }
+
+    .btn-primary:hover {
+      filter: brightness(1.06);
+      transform: translateY(-1px);
+    }
+
+    .hero-note {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .hero-panel {
+      border-radius: 18px;
+      padding: 18px 18px 16px;
+      background:
+        radial-gradient(circle at 0 0, rgba(56, 189, 248, 0.3), transparent 60%),
+        radial-gradient(circle at 100% 100%, rgba(34, 197, 94, 0.22), transparent 60%),
+        #020617;
+      border: 1px solid rgba(56, 189, 248, 0.7);
+      box-shadow:
+        0 0 24px rgba(15, 23, 42, 0.95),
+        0 0 36px rgba(56, 189, 248, 0.4);
+    }
+
+    .hero-panel-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+      font-size: 11px;
+      color: rgba(226, 232, 240, 0.95);
+    }
+
+    .hero-panel-badge {
+      font-size: 10px;
+      padding: 3px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.9);
+      background: rgba(15, 23, 42, 0.9);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .hero-panel-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: radial-gradient(circle, var(--accent-lime) 0, transparent 70%);
+      box-shadow: 0 0 8px rgba(190, 242, 100, 0.9);
+    }
+
+    .hero-score {
+      display: flex;
+      gap: 18px;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .hero-score-main {
+      background: rgba(15, 23, 42, 0.92);
+      border-radius: 14px;
+      padding: 10px 14px;
+      border: 1px solid rgba(148, 163, 184, 0.9);
+      text-align: center;
+      flex: 0 0 120px;
+    }
+
+    .hero-score-main-label {
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(148, 163, 184, 0.9);
+    }
+
+    .hero-score-main-value {
+      font-size: 40px;
+      color: var(--accent-lime);
+      text-shadow: 0 0 18px rgba(190, 242, 100, 0.85);
+      line-height: 1.1;
+    }
+
+    .hero-score-main-sub {
+      font-size: 11px;
+      color: rgba(203, 213, 225, 0.9);
+    }
+
+    .hero-score-meta {
+      flex: 1;
+      font-size: 11px;
+      display: grid;
+      gap: 6px;
+    }
+
+    .hero-score-meta-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(15, 23, 42, 0.9);
+      border-radius: 999px;
+      padding: 5px 9px;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+    }
+
+    .hero-score-meta-label {
+      color: rgba(148, 163, 184, 0.95);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-size: 10px;
+    }
+
+    .hero-score-meta-value {
+      font-size: 11px;
+      color: rgba(226, 232, 240, 0.95);
+    }
+
+    .hero-panel-footer {
+      margin-top: 6px;
+      border-top: 1px dashed rgba(148, 163, 184, 0.6);
+      padding-top: 6px;
+      font-size: 10px;
+      color: rgba(148, 163, 184, 0.9);
+      display: flex;
+      justify-content: space-between;
+    }
+
+    /* Sections */
+    .section {
+      margin-top: 40px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(15, 23, 42, 0.9);
+    }
+
+    .section-header {
+      margin-bottom: 16px;
+    }
+
+    .section-kicker {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .section-title {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .section-subtitle {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .section-body {
+      margin-top: 14px;
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .pill {
+      font-size: 11px;
+      padding: 4px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.8);
+      background: rgba(15, 23, 42, 0.9);
+      color: rgba(226, 232, 240, 0.9);
+    }
+
+    /* Features columns */
+    .columns-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    .feature-card {
+      background: var(--card-bg);
+      border-radius: 14px;
+      padding: 14px 14px 16px;
+      border: 1px solid var(--border-soft);
+      box-shadow: 0 10px 28px rgba(15, 23, 42, 0.9);
+    }
+
+    .feature-title {
+      font-size: 14px;
+      margin-bottom: 6px;
+    }
+
+    .feature-body {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* Pricing */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 20px;
+    }
+
+    .plan {
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 16px 16px 18px;
+      border: 1px solid var(--border-soft);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 14px 30px rgba(15, 23, 42, 0.95);
+    }
+
+    .plan.highlight {
+      border-color: var(--border-strong);
+      box-shadow:
+        0 0 22px rgba(56, 189, 248, 0.6),
+        0 18px 40px rgba(15, 23, 42, 0.95);
+    }
+
+    .plan-name {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .plan-tagline {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .plan-price {
+      font-size: 22px;
+      margin-bottom: 4px;
+    }
+
+    .plan-price span {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-left: 4px;
+    }
+
+    .plan-badge {
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent-cyan);
+      margin-bottom: 10px;
+    }
+
+    .plan-features {
+      list-style: none;
+      font-size: 12px;
+      color: var(--text-muted);
+      margin: 8px 0 12px;
+    }
+
+    .plan-features li {
+      margin-bottom: 6px;
+    }
+
+    .plan-cta {
+      margin-top: auto;
+    }
+
+    .btn-secondary {
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.9);
+      background: transparent;
+      color: var(--text-main);
+      font-size: 12px;
+      padding: 8px 14px;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    .single-report {
+      margin-top: 18px;
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 14px 16px 16px;
+      border: 1px dashed rgba(148, 163, 184, 0.8);
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .single-report strong {
+      color: var(--text-main);
+    }
+
+    /* FAQ */
+    .faq-list {
+      margin-top: 16px;
+      font-size: 12px;
+      color: var(--text-muted);
+      display: grid;
+      gap: 12px;
+    }
+
+    .faq-q {
+      color: var(--text-main);
+      font-weight: 500;
+      margin-bottom: 2px;
+    }
+
+    /* Footer */
+    .footer {
+      margin-top: 40px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(15, 23, 42, 0.9);
+      font-size: 11px;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .hero-panel {
+        order: -1;
+      }
+      .pricing-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .columns-3 {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+      .nav {
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+    }
+  </style>
 </head>
-
 <body>
+  <div class="page">
+    <header class="header">
+      <div class="logo">
+        <div class="logo-mark">A</div>
+        <div>
+          <div class="logo-text-main">Aviscore</div>
+          <div class="logo-text-sub">AI CONSENSUS MARKET SCORE</div>
+        </div>
+      </div>
+      <nav class="nav">
+        <a href="#about">概要</a>
+        <a href="#how">スコアの仕組み</a>
+        <a href="#pricing">料金</a>
+        <a href="#faq">よくある質問</a>
+        <button class="nav-cta">ベータ登録</button>
+      </nav>
+    </header>
 
-<div class="header">Aviscore – Stock Analysis</div>
+    <section class="hero" id="top">
+      <div>
+        <div class="hero-kicker">AI × MARKET INTELLIGENCE</div>
+        <h1 class="hero-title">
+          複数AI人格の<br />
+          <span>「合議制スコア」</span>で市場を読む。
+        </h1>
+        <p class="hero-subtitle">
+          Aviscore は、クリプト・ETF・米国株のコンディションを、複数のAI人格が議論して導き出す
+          “合議制マーケットスコアリング・プラットフォーム” です。<br />
+          忙しい個人投資家のために、「今週どう動くべきか」だけをシンプルにラベリングして届けます。
+        </p>
+        <div class="hero-badges">
+          <span class="badge">対応市場：クリプト / ETF / 米国株</span>
+          <span class="badge">未来7日リスクにフォーカス</span>
+          <span class="badge">投資助言ではなく教育目的の情報提供</span>
+        </div>
+        <div class="hero-actions">
+          <button class="btn-primary">690円で始める（BASIC）</button>
+          <span class="hero-note">単品PDFレポート 2,500円 → 会員は無料</span>
+        </div>
+      </div>
 
-<div class="wrapper">
+      <aside class="hero-panel">
+        <div class="hero-panel-header">
+          <div>今週のマーケット・コンディション</div>
+          <div class="hero-panel-badge">
+            <span class="hero-panel-dot"></span>
+            LIVE · 7D&nbsp;RISK
+          </div>
+        </div>
+        <div class="hero-score">
+          <div class="hero-score-main">
+            <div class="hero-score-main-label">総合スコア</div>
+            <div class="hero-score-main-value">82</div>
+            <div class="hero-score-main-sub">今週の判断：様子見 &amp; 軽め警戒</div>
+          </div>
+          <div class="hero-score-meta">
+            <div class="hero-score-meta-row">
+              <div class="hero-score-meta-label">Momentum</div>
+              <div class="hero-score-meta-value">強め（上昇トレンド継続）</div>
+            </div>
+            <div class="hero-score-meta-row">
+              <div class="hero-score-meta-label">Risk Level</div>
+              <div class="hero-score-meta-value" style="color: var(--accent-pink);">
+                High：ポジション縮小を検討
+              </div>
+            </div>
+            <div class="hero-score-meta-row">
+              <div class="hero-score-meta-label">Next 7 Days</div>
+              <div class="hero-score-meta-value">CPI / FOMC / 主要決算あり</div>
+            </div>
+          </div>
+        </div>
+        <div class="hero-panel-footer">
+          <span>AI人格：アルファ / ベータ / シータ による合議結果</span>
+          <span>Educational use only</span>
+        </div>
+      </aside>
+    </section>
 
-  <!-- LEFT COLUMN -->
-  <div class="left-box">
-    <h2>Apple Inc.</h2>
-    <div class="ticker">AAPL / NASDAQ</div>
+    <!-- 概要 -->
+    <section class="section" id="about">
+      <div class="section-header">
+        <div class="section-kicker">WHAT IS AVISCORE</div>
+        <h2 class="section-title">Aviscore が提供する価値</h2>
+        <p class="section-subtitle">
+          「点数サイト」が溢れる時代に、あえて “合議制” と “行動ラベリング” に振り切る。
+        </p>
+      </div>
+      <div class="columns-3">
+        <div class="feature-card">
+          <h3 class="feature-title">複数AI人格の「合議制」</h3>
+          <p class="feature-body">
+            アルファ（マクロ）・ベータ（テクニカル）・シータ（リスク）など、異なる視点を持つAI人格がそれぞれ相場を評価。
+            Good / Neutral / Bad のシンプルな判定と、最終的な総合スコアを算出します。
+          </p>
+        </div>
+        <div class="feature-card">
+          <h3 class="feature-title">未来7日間のリスクだけを見る</h3>
+          <p class="feature-body">
+            過去の振り返りより、「これから一週間で何が起こりうるか」。<br />
+            CPI・FOMC・雇用統計・大型決算などのイベントとボラティリティから「Next 7 Days Risk」を算出します。
+          </p>
+        </div>
+        <div class="feature-card">
+          <h3 class="feature-title">“点数 → 行動” まで翻訳</h3>
+          <p class="feature-body">
+            点数だけではなく、<br />
+            「ポジション縮小を検討」「小型銘柄は要注意」「押し目狙い優勢」など、行動レベルのラベルに落とし込んで表示します。
+          </p>
+        </div>
+      </div>
+      <div class="section-body">
+        <p>
+          対応市場は、まずは <strong>クリプト / ETF / 米国株</strong>。<br />
+          将来的にはセクター特化（半導体・AI関連）や、日本株・FX への拡張も予定しています。
+        </p>
+      </div>
+    </section>
 
-    <div class="chart-box">
-      チャート（後でAPIで差し替え）
-    </div>
+    <!-- スコアの仕組み -->
+    <section class="section" id="how">
+      <div class="section-header">
+        <div class="section-kicker">HOW WE SCORE</div>
+        <h2 class="section-title">6つの軸でスコアリング</h2>
+        <p class="section-subtitle">
+          APIで取得可能な“使える指標”だけに絞り、個人開発でも回せる現実的な設計に。
+        </p>
+      </div>
+      <div class="section-body">
+        <p>Aviscore のスコアは、以下のような6つの軸をベースに設計します。</p>
+        <div class="pill-row">
+          <span class="pill">マクロイベント（経済指標・金融政策）</span>
+          <span class="pill">テクニカルモメンタム（トレンド / RSI 等）</span>
+          <span class="pill">センチメント（ニュース・ボラ指標）</span>
+          <span class="pill">ボラティリティ（30日・7日）</span>
+          <span class="pill">流動性（出来高・板の厚さ）</span>
+          <span class="pill">セクター強弱（簡易）</span>
+        </div>
+        <p style="margin-top:12px;">
+          これらを AI人格ごとに評価し、最終的に合議制で「総合スコア」「今週の判断」「Next 7
+          Days Risk」へと落とし込みます。
+        </p>
+      </div>
+    </section>
 
-    <p>
-      Appleは世界最大級のテクノロジー企業であり、iPhone、Mac、サービス分野が長期成長を牽引しています。
-      AviscoreのAI分析により、財務健全性、利益成長性、株価モメンタムを総合的に評価します。
-    </p>
+    <!-- 料金プラン -->
+    <section class="section" id="pricing">
+      <div class="section-header">
+        <div class="section-kicker">PRICING</div>
+        <h2 class="section-title">料金プラン</h2>
+        <p class="section-subtitle">
+          人は一番安いプランの価格で判断する。だからこそ「690円」が武器になる。
+        </p>
+      </div>
+      <div class="pricing-grid">
+        <!-- BASIC -->
+        <div class="plan">
+          <div>
+            <div class="plan-badge">ENTRY</div>
+            <div class="plan-name">BASIC</div>
+            <div class="plan-tagline">まずは“プロっぽい画面”から始めたい人へ。</div>
+            <div class="plan-price">¥690<span>/ 月（税込）</span></div>
+            <ul class="plan-features">
+              <li>・総合スコア &amp; 今週の判断ラベル</li>
+              <li>・クリプト / ETF / 米国株の7日リスク</li>
+              <li>・AI人格（アルファ / ベータ / シータ）の Good / Neutral / Bad</li>
+              <li>・月次PDFレポート（2,500円相当）無料</li>
+              <li>・簡易ポートフォリオ診断</li>
+            </ul>
+          </div>
+          <div class="plan-cta">
+            <button class="btn-secondary">BASICで始める</button>
+          </div>
+        </div>
+
+        <!-- STANDARD -->
+        <div class="plan highlight">
+          <div>
+            <div class="plan-badge">MOST POPULAR</div>
+            <div class="plan-name">STANDARD</div>
+            <div class="plan-tagline">情報量と価格のバランスを重視する人向け。</div>
+            <div class="plan-price">¥1,900<span>/ 月（税込）</span></div>
+            <ul class="plan-features">
+              <li>・BASICのすべて</li>
+              <li>・週次PDFレポート（初回900円）も毎週無料</li>
+              <li>・ポートフォリオ診断（詳細版）</li>
+              <li>・AI人格ごとのコメントサマリー</li>
+              <li>・イベントごとのリスク解説</li>
+            </ul>
+          </div>
+          <div class="plan-cta">
+            <button class="btn-primary">STANDARDに登録する</button>
+          </div>
+        </div>
+
+        <!-- PRO -->
+        <div class="plan">
+          <div>
+            <div class="plan-badge">FOR HEAVY USERS</div>
+            <div class="plan-name">PRO</div>
+            <div class="plan-tagline">本気の人は「つながり」と「深さ」を買う。</div>
+            <div class="plan-price">¥3,400<span>/ 月（税込）</span></div>
+            <ul class="plan-features">
+              <li>・STANDARDのすべて</li>
+              <li>・PRO限定コミュニティ参加</li>
+              <li>・AI合議ログの要点共有</li>
+              <li>・月1回のポートフォリオ最適化提案</li>
+              <li>・新機能・新レポートの先行アクセス</li>
+            </ul>
+          </div>
+          <div class="plan-cta">
+            <button class="btn-secondary">PROコミュニティに参加</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="single-report">
+        <strong>単品PDFレポート：</strong> 通常 <strong>2,500円 / 号</strong>（初回お試し 900円）。<br />
+        各月の「AI合議スコア」「Next 7 Days Risk」「主要イベント解説」を1本のレポートにまとめて販売。
+        サブスク会員は対象レポートを追加料金なしで閲覧できます。
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section" id="faq">
+      <div class="section-header">
+        <div class="section-kicker">FAQ</div>
+        <h2 class="section-title">よくある質問</h2>
+      </div>
+      <div class="faq-list">
+        <div>
+          <div class="faq-q">Q. これは投資助言サービスですか？</div>
+          <div>A. いいえ。Aviscore は「教育・リスク理解」を目的とした情報提供サービスです。</div>
+        </div>
+        <div>
+          <div class="faq-q">Q. どの市場に対応していますか？</div>
+          <div>A. フェーズ1では、クリプト・ETF・米国株を対象とします。</div>
+        </div>
+        <div>
+          <div class="faq-q">Q. データの更新頻度は？</div>
+          <div>A. 日次〜週次の範囲で、自動的に更新される設計を想定しています。</div>
+        </div>
+        <div>
+          <div class="faq-q">Q. 途中でプランを変更できますか？</div>
+          <div>A. 月単位で BASIC / STANDARD / PRO の切り替えが可能な設計にします。</div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <span>© Aviscore / Avisail Group – Educational Market Intelligence.</span>
+      <span>プライバシーポリシー / 利用規約（準備中）</span>
+    </footer>
   </div>
-
-  <!-- RIGHT COLUMN -->
-  <div class="score-box">
-    <div class="score-title">AI スコア分析</div>
-
-    <!-- Market Score -->
-    <div class="score-item">
-      <div class="score-label">Market Score</div>
-      <div class="gauge" style="--value:82;"><span>82</span></div>
-    </div>
-
-    <!-- Risk Score -->
-    <div class="score-item">
-      <div class="score-label">Risk Score</div>
-      <div class="gauge" style="--value:28;"><span>28</span></div>
-    </div>
-
-    <!-- Momentum Score -->
-    <div class="score-item">
-      <div class="score-label">Momentum Score</div>
-      <div class="gauge" style="--value:64;"><span>64</span></div>
-    </div>
-
-    <div class="detail-box">
-      <h3>スコアの根拠</h3>
-      <ul>
-        <li>直近四半期のEPS成長率が安定して高水準。</li>
-        <li>キャッシュフローが強力で財務リスクが低い。</li>
-        <li>テック市場全体のモメンタムが継続中。</li>
-        <li>株価ボラティリティは抑制されており比較的安全。</li>
-      </ul>
-    </div>
-
-    <a href="#" class="pdf-button">PDFレポートを生成</a>
-
-  </div>
-</div>
-
 </body>
 </html>
