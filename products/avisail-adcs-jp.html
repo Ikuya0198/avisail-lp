@@ -1,221 +1,759 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Avisecure | Active Defense Cybersecurity</title>
+    <meta charset="UTF-8" />
+    <title>Avisail｜Avisecure Active Defense ＊ SOC Framework</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Avisail が提供する Avisecure Active Defense ＊ SOC Framework。Active Defense と SOCの基礎フレームワークを組み合わせ、日本の中小企業・自治体のために設計された次世代アクティブセキュリティ基盤です。">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #050816;
+            --bg-section: #0b1020;
+            --primary: #1f6feb;
+            --accent: #35b3ff;
+            --text-main: #f5f7ff;
+            --text-sub: #a7b3d3;
+            --border-soft: #222840;
+            --radius-lg: 18px;
+            --radius-xl: 26px;
+            --shadow-soft: 0 18px 40px rgba(0,0,0,0.55);
+            --max-width: 1080px;
+        }
 
-<style>
-:root {
-    --bg-dark: #030712;
-    --bg-light: #0F172A;
-    --accent: #38BDF8;
-    --text: #E2E8F0;
-    --text-soft: #94A3B8;
-}
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-body {
-    margin: 0;
-    font-family: 'Inter', sans-serif;
-    background: var(--bg-dark);
-    color: var(--text);
-    line-height: 1.7;
-}
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+            background: radial-gradient(circle at top, #101936 0, #050816 55%, #020309 100%);
+            color: var(--text-main);
+            line-height: 1.7;
+        }
 
-/* HERO */
-.hero {
-    position: relative;
-    height: 92vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    background: url('https://avisail.com/wp-content/uploads/2024/11/av-secure-hero.jpg') center/cover no-repeat;
-}
-.hero::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(0,0,0,0.55);
-}
-.hero-content {
-    position: relative;
-    z-index: 2;
-    max-width: 900px;
-    padding: 0 20px;
-}
-.hero h1 {
-    font-size: 3rem;
-    font-weight: 700;
-}
-.hero p {
-    font-size: 1.3rem;
-    margin-top: 10px;
-    color: var(--text-soft);
-}
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
 
-/* SECTIONS */
-.section {
-    padding: 90px 8%;
-    background: var(--bg-dark);
-}
-.section:nth-child(even) {
-    background: var(--bg-light);
-}
+        .page {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 24px 18px 64px;
+        }
 
-.section h2 {
-    font-size: 2.3rem;
-    font-weight: 700;
-    margin-bottom: 20px;
-}
-.section p {
-    font-size: 1.1rem;
-    color: var(--text-soft);
-}
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 32px;
+        }
 
-/* FEATURES */
-.features {
-    display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
-    gap: 40px;
-    margin-top: 40px;
-}
-.feature-box {
-    padding: 30px;
-    border: 1px solid #1E293B;
-    border-radius: 14px;
-    background: #0B1120;
-}
-.feature-box h3 {
-    font-size: 1.4rem;
-    margin-bottom: 15px;
-}
-.feature-box p {
-    color: var(--text-soft);
-    font-size: 1rem;
-}
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            font-size: 13px;
+        }
 
-/* CTA */
-.cta {
-    text-align: center;
-    padding: 110px 8%;
-    background: #020617;
-}
-.cta h2 {
-    font-size: 2.4rem;
-}
-.cta-button {
-    margin-top: 30px;
-    padding: 16px 40px;
-    background: var(--accent);
-    color: #000;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 1.1rem;
-    transition: 0.25s;
-}
-.cta-button:hover {
-    opacity: 0.8;
-}
+        .logo-mark {
+            width: 28px;
+            height: 28px;
+            border-radius: 10px;
+            border: 1px solid rgba(255,255,255,0.16);
+            background: radial-gradient(circle at 25% 0, #35b3ff 0, #1f6feb 30%, #050816 80%);
+            box-shadow: 0 0 12px rgba(53,179,255,0.65);
+        }
 
-/* Footer */
-.footer {
-    padding: 40px 8%;
-    text-align: center;
-    color: var(--text-soft);
-    font-size: 0.9rem;
-    background: #020617;
-}
-</style>
+        .logo-sub {
+            font-size: 10px;
+            font-weight: 500;
+            color: var(--text-sub);
+            letter-spacing: .16em;
+        }
+
+        nav {
+            display: flex;
+            gap: 16px;
+            font-size: 13px;
+            color: var(--text-sub);
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        /* HERO */
+        .hero {
+            display: grid;
+            grid-template-columns: minmax(0,1.6fr) minmax(0,1.2fr);
+            gap: 28px;
+            padding: 32px 24px 28px;
+            border-radius: var(--radius-xl);
+            background: radial-gradient(circle at 0 0, #17213f 0, #050816 45%, #020309 100%);
+            box-shadow: var(--shadow-soft);
+            border: 1px solid rgba(111,140,255,0.2);
+            margin-bottom: 40px;
+        }
+
+        .hero-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 4px 10px;
+            border-radius: 999px;
+            background: rgba(20,33,70,0.9);
+            color: var(--accent);
+            font-size: 11px;
+            letter-spacing: .16em;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .hero-label-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--accent);
+            box-shadow: 0 0 10px rgba(53,179,255,0.9);
+        }
+
+        .hero-title {
+            font-size: 26px;
+            line-height: 1.4;
+            margin-bottom: 10px;
+        }
+
+        .hero-title span {
+            color: var(--accent);
+        }
+
+        .hero-sub {
+            font-size: 14px;
+            color: var(--text-sub);
+            margin-bottom: 22px;
+        }
+
+        .hero-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 22px;
+        }
+
+        .badge {
+            font-size: 11px;
+            padding: 4px 10px;
+            border-radius: 999px;
+            border: 1px solid rgba(136,153,255,0.38);
+            background: rgba(8,14,32,0.9);
+            color: var(--text-sub);
+        }
+
+        .hero-cta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 6px;
+        }
+
+        .btn-primary {
+            padding: 10px 20px;
+            border-radius: 999px;
+            background: linear-gradient(135deg,#1f6feb,#35b3ff);
+            border: none;
+            color: #fff;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(36,104,242,0.55);
+        }
+
+        .btn-outline {
+            padding: 9px 18px;
+            border-radius: 999px;
+            border: 1px solid rgba(150,160,255,0.7);
+            background: transparent;
+            color: var(--text-main);
+            font-size: 12px;
+            cursor: pointer;
+        }
+
+        .hero-note {
+            font-size: 11px;
+            color: var(--text-sub);
+        }
+
+        .hero-metric-card {
+            align-self: center;
+            justify-self: center;
+            width: 100%;
+            max-width: 320px;
+            padding: 16px 16px 14px;
+            border-radius: 22px;
+            background: radial-gradient(circle at 0 0, #1a2650 0, #050816 55%, #020309 100%);
+            border: 1px solid rgba(99,123,255,0.5);
+            box-shadow: var(--shadow-soft);
+            font-size: 12px;
+        }
+
+        .metric-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            color: var(--text-sub);
+        }
+
+        .metric-main {
+            font-size: 13px;
+            margin-bottom: 10px;
+        }
+
+        .metric-tag {
+            font-size: 10px;
+            padding: 2px 7px;
+            border-radius: 999px;
+            border: 1px solid rgba(94,255,208,0.7);
+            color: #b9ffe4;
+        }
+
+        .metric-list {
+            list-style: none;
+            margin-top: 6px;
+        }
+
+        .metric-list li {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 4px;
+            color: var(--text-sub);
+            font-size: 11px;
+        }
+
+        .metric-dot {
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: var(--accent);
+        }
+
+        /* SECTION BASE */
+        section {
+            margin-bottom: 40px;
+            padding: 24px 22px;
+            border-radius: 18px;
+            background: var(--bg-section);
+            border: 1px solid var(--border-soft);
+        }
+
+        .section-title {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .section-sub {
+            font-size: 13px;
+            color: var(--text-sub);
+            margin-bottom: 18px;
+        }
+
+        .list {
+            font-size: 13px;
+            color: var(--text-main);
+            padding-left: 18px;
+        }
+
+        .list li {
+            margin-bottom: 6px;
+        }
+
+        .columns-2 {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0,1fr));
+            gap: 18px;
+        }
+
+        .columns-3 {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0,1fr));
+            gap: 16px;
+        }
+
+        .card {
+            padding: 14px 14px 13px;
+            border-radius: 16px;
+            border: 1px solid rgba(82,96,159,0.7);
+            background: linear-gradient(145deg,#0b1020,#060816);
+            font-size: 13px;
+        }
+
+        .card h3 {
+            font-size: 14px;
+            margin-bottom: 6px;
+        }
+
+        .card p {
+            font-size: 12px;
+            color: var(--text-sub);
+            margin-bottom: 8px;
+        }
+
+        .card ul {
+            padding-left: 16px;
+            font-size: 12px;
+            color: var(--text-main);
+        }
+
+        /* PLANS */
+        .plans {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0,1fr));
+            gap: 16px;
+        }
+
+        .plan {
+            padding: 16px 14px;
+            border-radius: 18px;
+            border: 1px solid rgba(94,108,189,0.9);
+            background: linear-gradient(150deg,#0e1330,#050816);
+            font-size: 13px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .plan.highlight {
+            border-color: var(--accent);
+            box-shadow: 0 14px 34px rgba(36,104,242,0.6);
+        }
+
+        .plan-name {
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .plan-price {
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .plan-note {
+            font-size: 11px;
+            color: var(--text-sub);
+        }
+
+        .plan ul {
+            padding-left: 16px;
+            font-size: 12px;
+        }
+
+        /* FAQ */
+        .faq-item + .faq-item {
+            margin-top: 12px;
+            padding-top: 10px;
+            border-top: 1px dashed rgba(103,120,189,0.7);
+        }
+
+        .faq-q {
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 3px;
+        }
+
+        .faq-a {
+            font-size: 12px;
+            color: var(--text-sub);
+        }
+
+        /* CTA */
+        .cta-final {
+            text-align: center;
+        }
+
+        .cta-final p {
+            font-size: 13px;
+            color: var(--text-sub);
+            margin-bottom: 14px;
+        }
+
+        footer {
+            margin-top: 24px;
+            font-size: 11px;
+            color: var(--text-sub);
+            text-align: center;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 840px) {
+            .hero {
+                grid-template-columns: minmax(0,1fr);
+            }
+
+            .hero-metric-card {
+                margin-top: 12px;
+            }
+
+            .columns-2,
+            .columns-3,
+            .plans {
+                grid-template-columns: minmax(0,1fr);
+            }
+
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            nav {
+                font-size: 12px;
+            }
+        }
+    </style>
 </head>
 
 <body>
+    <div class="page">
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-content">
-    <h1>Avisecure Active Defense</h1>
-    <p>AI × サイバー防御。中小企業のための実戦型セキュリティ。</p>
-  </div>
-</section>
+        <!-- HEADER -->
+        <header>
+            <div>
+                <div class="logo">
+                    <div class="logo-mark"></div>
+                    <div>AVISAIL</div>
+                </div>
+                <div class="logo-sub">Avisecure Active Defense ＊ SOC Framework</div>
+            </div>
 
-<!-- SECTION 1 -->
-<section class="section">
-  <h2>なぜ“Active Defense”なのか</h2>
-  <p>
-    現代の攻撃は、従来のアンチウイルスやFWでは防げません。  
-    Avisecureは「攻撃を受けてから気づく」のではなく、  
-    <strong>攻撃者の振る舞いそのものをAIが検知し、事前に防御</strong>します。
-  </p>
-</section>
+            <nav>
+                <a href="#positioning">特徴</a>
+                <a href="#solution">フレームワーク</a>
+                <a href="#usecases">事例</a>
+                <a href="#plans">料金</a>
+                <a href="#contact">相談</a>
+            </nav>
+        </header>
 
-<!-- SECTION 2 -->
-<section class="section">
-  <h2>提供する４つのコア機能</h2>
+        <!-- HERO -->
+        <section class="hero">
+            <div>
+                <div class="hero-label">
+                    <span class="hero-label-dot"></span>
+                    <span>Active Defense ＊ SOC Framework</span>
+                </div>
 
-  <div class="features">
-    <div class="feature-box">
-      <h3>① AI脅威検知</h3>
-      <p>ゼロデイ攻撃・ランサムウェア・EDR回避型攻撃まで深層学習モデルが検知。</p>
+                <h1 class="hero-title">
+                    次世代アクティブセキュリティ基盤<br>
+                    <span>Active Defense × SOCの基礎構築</span>
+                </h1>
+
+                <p class="hero-sub">
+                    Avisecure は、Active Defense（アクティブディフェンス）の考え方と、<br>
+                    SOCの基礎フレームワークを組み合わせた「次世代アクティブセキュリティ基盤」です。<br>
+                    本格SOCの前段階として、中小企業や自治体にとって現実的な第一歩を設計します。
+                </p>
+
+                <div class="hero-badges">
+                    <span class="badge">Active Defense ベースの攻撃者視点アプローチ</span>
+                    <span class="badge">SOC導入前の“土台づくり”に特化</span>
+                    <span class="badge">OSINT / Attack Surface 可視化</span>
+                    <span class="badge">本格SOCへのアップグレード仲介も可能</span>
+                </div>
+
+                <div class="hero-cta">
+                    <a href="#contact"><button class="btn-primary">30分の無料ヒアリングを予約</button></a>
+                    <a href="#sample"><button class="btn-outline">レポート構成のサンプルを見る</button></a>
+                </div>
+
+                <p class="hero-note">
+                    ※「24/7フルSOC」をそのまま置き換えるサービスではなく、その前段階の“基盤整備”にフォーカスしています。
+                </p>
+            </div>
+
+            <aside class="hero-metric-card">
+                <div class="metric-header">
+                    <span>なぜ Framework なのか</span>
+                    <span class="metric-tag">“ゼロ”と“フルSOC”のあいだを埋める</span>
+                </div>
+
+                <div class="metric-main">
+                    ・中小企業・自治体の多くは、いきなりフルSOCを導入できません。<br>
+                    ・しかし、何も対策しない状態を続けるのも危険です。<br>
+                    Avisecure は、Active Defense を軸に「どこから何を整えるべきか」をフレームワークとして提供します。
+                </div>
+
+                <ul class="metric-list">
+                    <li><span class="metric-dot"></span> 攻撃面の可視化と初動ガイドを一体で設計</li>
+                    <li><span class="metric-dot"></span> 将来のSOC/MDR導入を見据えた“つなぎ”として機能</li>
+                    <li><span class="metric-dot"></span> 海外の知見とAIを生かしたコスト効率の高い運用</li>
+                </ul>
+            </aside>
+        </section>
+
+        <!-- POSITIONING -->
+        <section id="positioning">
+            <h2 class="section-title">Avisecure Active Defense ＊ SOC Framework とは</h2>
+            <p class="section-sub">
+                Avisecure は、Active Defense の考え方をベースに「SOC導入前の基盤」を整えるためのフレームワークです。<br>
+                高額な24/7 SOCの前に、次の3点を整理することにフォーカスしています。
+            </p>
+
+            <ul class="list">
+                <li>
+                    <strong>1. 攻撃者から見える“攻撃面”の可視化</strong><br>
+                    OSINT や Attack Surface Management により、攻撃者視点で企業の露出を棚卸しします。
+                </li>
+
+                <li>
+                    <strong>2. インシデント初動とログ基盤の整備</strong><br>
+                    何か起きたときの「最初の24時間」で、誰が何をするかを定義し、必要なログや証跡の取り方を整理します。
+                </li>
+
+                <li>
+                    <strong>3. フルSOC / MDR へのステップアップ設計</strong><br>
+                    必要になった場合に、IIJやRay-SOC等の本格SOCとスムーズに連携できるように、要件と役割分担を整理します。
+                </li>
+            </ul>
+
+            <p class="section-sub" style="margin-top:16px;">
+                これにより、「何もしていない状態」と「月数十万〜数百万のフルSOC」の間に、現実的で技術的な選択肢を1つ用意します。
+            </p>
+        </section>
+
+        <!-- SOLUTION -->
+        <section id="solution">
+            <h2 class="section-title">フレームワークの構成要素</h2>
+            <p class="section-sub">
+                Active Defense ＊ SOC Framework は、次の4コンポーネントで構成されます。<br>
+                フルSOCのような常時監視ではなく、「まず整えるべきもの」を技術視点でまとめた設計図です。
+            </p>
+
+            <div class="columns-2">
+                <div class="card">
+                    <h3>① Attack Surface & OSINT 可視化</h3>
+                    <p>Shodan / Censys などのOSINTを活用し、攻撃者からどのように見えているかを整理します。</p>
+                    <ul>
+                        <li>公開サーバ・ポート・サービスの棚卸し</li>
+                        <li>古い証明書・プロトコル・ソフトウェアの確認</li>
+                        <li>メールドメイン設定（SPF/DKIM/DMARC）のチェック</li>
+                        <li>攻撃シナリオの土台となる情報を抽出</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>② Active Defense 観点のリスク整理</h3>
+                    <p>攻撃者の視点に立ち、「どこから・どう攻められやすいか」をシナリオベースで整理します。</p>
+                    <ul>
+                        <li>想定攻撃シナリオの作成（パスワード、VPN、SaaS等）</li>
+                        <li>設定ミスや弱点の優先度づけ</li>
+                        <li>レッドチーム的な観点からの改善提案</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>③ インシデント初動ガイド & ログ設計</h3>
+                    <p>インシデント発生時の「最初の1〜24時間」で迷わないためのプレイブックと、ログ基盤の最低ラインを定義します。</p>
+                    <ul>
+                        <li>初動ステップのチェックリスト</li>
+                        <li>社内・経営層・顧客・関係機関への報告テンプレート</li>
+                        <li>確保すべきログの種類と保管ポリシー</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>④ フルSOC / MDRへの連携設計</h3>
+                    <p>本格的な24/7 SOC/MDRが必要になった際に、どのようなパートナーとどう組むかの方針を定めます。</p>
+                    <ul>
+                        <li>既存ベンダーやIIJ/Ray-SOC等との役割分担設計</li>
+                        <li>監視範囲・責任範囲・SLAのイメージ整理</li>
+                        <li>導入前提となる“社内側の準備事項”の明文化</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- USE CASES -->
+        <section id="usecases">
+            <h2 class="section-title">想定ユースケース / 事例イメージ</h2>
+            <p class="section-sub">
+                中小企業・スタートアップ・自治体・士業など、「フルSOCの前にまず整えたい組織」を主な対象としています。
+            </p>
+
+            <div class="columns-3">
+                <div class="card">
+                    <h3>Case 01：中堅製造業（従業員50名）</h3>
+                    <p class="tagline">古いVPNやサーバが残る中で、攻撃面整理と初動体制づくりを優先。</p>
+                    <ul>
+                        <li>公開インフラと古いサービスの棚卸し</li>
+                        <li>「まず止める／守るべき」ポイントを優先度づけ</li>
+                        <li>取引先向け説明に使えるレポートを作成</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>Case 02：SaaSスタートアップ</h3>
+                    <p class="tagline">クラウド中心の環境で、Attack Surface とログ設計を整理。</p>
+                    <ul>
+                        <li>ドメイン／API／管理画面の露出状況の可視化</li>
+                        <li>インシデント時のSlack/メール連絡フローの設計</li>
+                        <li>将来のMDR/SOC導入を見据えたログ基盤の設計</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>Case 03：自治体・士業</h3>
+                    <p class="tagline">説明責任の重さに見合う“初動プレイブック”と外部連携設計。</p>
+                    <ul>
+                        <li>庁内・事務所内の通報フローと役割分担を図解</li>
+                        <li>漏えい発生時の対外公表テンプレート作成</li>
+                        <li>外部IRベンダーとの連携方法を事前に定義</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- SAMPLE STRUCTURE -->
+        <section id="sample">
+            <h2 class="section-title">レポート構成のサンプル</h2>
+            <p class="section-sub">
+                経営層と技術担当の双方が読めるよう、Active Defense の視点を保ちながら、専門用語を極力かみ砕いてレポート化します。
+            </p>
+
+            <ul class="list">
+                <li>1. Overview（概要）</li>
+                <li>2. Executive Summary（経営層向け1ページサマリー）</li>
+                <li>3. Attack Surface Findings（攻撃面の発見事項）</li>
+                <li>4. OSINT & Exposure（外部から見える情報）</li>
+                <li>5. Active Defense Scenarios（攻撃シナリオと防御の方向性）</li>
+                <li>6. Recommendations（優先度付き改善アクション）</li>
+                <li>7. Incident First 24 Hours Guide（最初の24時間ガイド）</li>
+                <li>8. Appendix（各種スキャン結果・ログ例）</li>
+            </ul>
+        </section>
+
+        <!-- PLANS -->
+        <section id="plans">
+            <h2 class="section-title">料金プラン</h2>
+            <p class="section-sub">
+                料金は規模や対象範囲によって変動しますが、目安は以下の通りです。<br>
+                多くの場合、「ライトサブスク 5〜8万円/月」ゾーンが中心となる想定です。
+            </p>
+
+            <div class="plans">
+                <div class="plan">
+                    <div class="plan-name">単発フレームワーク診断</div>
+                    <div class="plan-price">¥120,000〜¥180,000</div>
+                    <div class="plan-note">まず一度、現在の攻撃面と初動体制を棚卸ししたい方向け。</div>
+                    <ul>
+                        <li>Attack Surface & OSINT レポート（1回）</li>
+                        <li>Active Defense 観点でのリスク整理</li>
+                        <li>インシデント初動ガイドライン（ドラフト）</li>
+                        <li>経営層向け1ページサマリー</li>
+                    </ul>
+                </div>
+
+                <div class="plan highlight">
+                    <div class="plan-name">ライトサブスク（基盤運用）</div>
+                    <div class="plan-price">¥50,000〜¥150,000 / 月</div>
+                    <div class="plan-note">「最低限のActive Defense＆SOC基盤」を継続的に維持したい組織向け。</div>
+                    <ul>
+                        <li>月次 Attack Surface & OSINT チェック</li>
+                        <li>月次レポート（AI＋人手のレビュー）</li>
+                        <li>メール／チャットでの相談窓口</li>
+                        <li>年1回の初動ガイド／ログ設計のアップデート</li>
+                    </ul>
+                </div>
+
+                <div class="plan">
+                    <div class="plan-name">フルサポート（連携型）</div>
+                    <div class="plan-price">¥300,000〜 / 月</div>
+                    <div class="plan-note">
+                        フルSOC/MDRベンダーとの連携を前提に、インシデント時のPMやベンダーコーディネートまで含めたプランです。<br>
+                        ※常時監視そのものはパートナーSOCが担い、Avisailは“ハブ”として機能します。
+                    </div>
+                    <ul>
+                        <li>ライトサブスクの全内容</li>
+                        <li>外部SOC/MDRとの連携設計・コミュニケーション支援</li>
+                        <li>インシデント発生時のプロジェクトマネジメント</li>
+                        <li>将来のセキュリティ投資ロードマップの策定支援</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- EDUCATION LINKS -->
+        <section>
+            <h2 class="section-title">ナレッジ / ブログとの連携</h2>
+            <p class="section-sub">
+                Avisecure のLPから、順次以下のような記事へリンクする形で「開発日誌」「技術ブログ」を展開していきます。
+            </p>
+            <ul class="list">
+                <li>・Active Defenseとは何か？従来の守りとの違い</li>
+                <li>・中小企業にとって「フルSOCの前にやるべきこと」</li>
+                <li>・OSINTでここまで分かる：企業の“攻撃面”入門</li>
+                <li>・インシデント初動の最初の24時間でやるべきこと</li>
+                <li>・SOCベンダーと賢く付き合うための準備チェックリスト</li>
+            </ul>
+        </section>
+
+        <!-- FAQ -->
+        <section>
+            <h2 class="section-title">よくあるご質問</h2>
+
+            <div class="faq-item">
+                <div class="faq-q">Q. フルSOCの代わりになりますか？</div>
+                <div class="faq-a">
+                    A. いいえ。Avisecure は「フルSOCの代替」ではなく、「フルSOCの前段階としての基盤づくり」に特化しています。<br>
+                    十分な予算と体制が整った段階では、IIJやRay-SOC等の本格SOCベンダーとの連携も前提としています。
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-q">Q. SOCもインシデント対応もすべてお任せできますか？</div>
+                <div class="faq-a">
+                    A. ログ設計・初動整理・外部ベンダーとの橋渡しといった「フレームワーク部分」に集中して支援します。<br>
+                    24/7監視や高度なフォレンジックなどは、提携SOC/MDRベンダーと連携して対応します。
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-q">Q. オンプレミスやデータセンター環境にも対応できますか？</div>
+                <div class="faq-a">
+                    A. はい。ネットワーク構成やDC運用ベンダーと連携しながら、「どのようなログをどこで取り、どう使うか」という観点でフレームワークを設計します。
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section id="contact" class="cta-final">
+            <h2 class="section-title">まずは「いま整えるべき土台」から一緒に整理しませんか？</h2>
+
+            <p>
+                いきなりフルSOCに踏み切る前に、<br>
+                Active Defense の視点で、攻撃面・初動・ログ基盤を一度整理しておくことが重要です。<br><br>
+                Avisecure Active Defense ＊ SOC Framework は、そのための現実的な第一歩として設計されています。
+            </p>
+
+            <a href="mailto:info@example.com">
+                <button class="btn-primary">30分の無料ヒアリングを依頼する</button>
+            </a>
+
+            <p style="margin-top:10px;font-size:11px;color:var(--text-sub);">
+                メール本文に「会社名／ご担当者名／従業員規模／主なシステム構成」をご記載ください。
+            </p>
+        </section>
+
+        <footer>
+            © Avisail – Avisecure Active Defense ＊ SOC Framework
+        </footer>
+
     </div>
-
-    <div class="feature-box">
-      <h3>② ネットワーク監視</h3>
-      <p>異常な通信パターン・権限昇格・横展開行動をリアルタイム可視化。</p>
-    </div>
-
-    <div class="feature-box">
-      <h3>③ Active Defense封じ込め</h3>
-      <p>攻撃が検知された瞬間、端末隔離・強制ログアウトなど自動処理。</p>
-    </div>
-
-    <div class="feature-box">
-      <h3>④ 24/365 セキュリティ監視</h3>
-      <p>小規模企業でも導入しやすい“サブスク型SOC”。人件費はゼロ。</p>
-    </div>
-  </div>
-</section>
-
-<!-- SECTION 3 -->
-<section class="section">
-  <h2>導入が多い業種</h2>
-  <p>
-    ● 法律事務所（機密情報保護）<br>
-    ● 医療機関（個人情報保護）<br>
-    ● 不動産登記事務所（顧客データ保護）<br>
-    ● 製造業（工場停止リスクの回避）<br><br>
-    特に **“少人数 × 機密データ”** を扱う企業に最適です。
-  </p>
-</section>
-
-<!-- SECTION 4 -->
-<section class="section">
-  <h2>価格と導入モデル</h2>
-  <p>
-    固定費を抑えるためすべてを「サブスク型」で提供。  
-    台数単位ではなく、事業規模に応じた柔軟なプランを採用しています。<br><br>
-
-    🔹 **ライト（個人事務所・～5名）**：月額 9,800円〜  
-    🔹 **スタンダード（10〜30名）**：月額 29,800円〜  
-    🔹 **エンタープライズ**：個別見積もり（医療・法律機関向け）
-  </p>
-</section>
-
-<!-- CTA -->
-<section class="cta">
-  <h2>導入相談・デモのご依頼はこちら</h2>
-  <a href="https://avisail.com/contact" class="cta-button">無料で相談する</a>
-</section>
-
-<!-- FOOTER -->
-<div class="footer">
-  © 2025 Avisail Global Trading — All Rights Reserved.
-</div>
-
 </body>
 </html>
