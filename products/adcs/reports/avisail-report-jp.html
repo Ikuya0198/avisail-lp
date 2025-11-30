@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <title>Local Government｜Attack Surface & OSINT Security Report</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg: #050816;
+      --bg-card: #0b1020;
+      --border: #232848;
+      --accent: #3fb5ff;
+      --accent-soft: rgba(63,181,255,0.18);
+      --text-main: #f5f7ff;
+      --text-sub: #a7b3d3;
+      --danger: #ff6b81;
+      --warn: #ffd166;
+      --ok: #4ade80;
+      --radius-lg: 18px;
+      --shadow: 0 20px 50px rgba(0,0,0,0.6);
+      --max-width: 980px;
+    }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    body {
+      font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
+      background: radial-gradient(circle at top,#151a3a 0,#050816 55%,#020309 100%);
+      color: var(--text-main);
+      line-height: 1.7;
+      padding: 32px 12px 64px;
+      font-size: 13px;
+    }
+    .page { max-width: var(--max-width); margin: 0 auto; }
+
+    h1,h2,h3,h4 { font-weight: 600; }
+
+    .cover {
+      padding: 28px 26px 24px;
+      border-radius: 22px;
+      background: radial-gradient(circle at 0 0,#222b55 0,#050816 55%,#020309 100%);
+      border: 1px solid rgba(112,141,255,0.7);
+      box-shadow: var(--shadow);
+      margin-bottom: 32px;
+    }
+    .cover-title {
+      font-size: 24px;
+      margin-bottom: 4px;
+    }
+    .cover-sub {
+      font-size: 16px;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+    .cover-meta {
+      font-size: 13px;
+      color: var(--text-sub);
+    }
+    .badge {
+      display: inline-flex;
+      align-items:center;
+      gap: 8px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(112,141,255,0.7);
+      background: rgba(9,16,38,0.9);
+      font-size: 11px;
+      color: var(--text-sub);
+      text-transform: uppercase;
+      letter-spacing: .16em;
+      margin-bottom: 14px;
+    }
+    .badge-dot {
+      width: 7px; height:7px; border-radius:50%; background: var(--accent);
+      box-shadow:0 0 10px rgba(63,181,255,0.8);
+    }
+
+    .section {
+      margin-bottom: 26px;
+      padding: 20px 20px 18px;
+      border-radius: var(--radius-lg);
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+    }
+    .section h2 {
+      font-size: 18px;
+      margin-bottom: 6px;
+    }
+    .section h3 {
+      font-size: 15px;
+      margin: 10px 0 4px;
+    }
+    .section h4 {
+      font-size: 13px;
+      margin: 8px 0 4px;
+    }
+    .muted { color: var(--text-sub); font-size: 13px; }
+
+    /* リスク評価ラベル（良好/要改善など） */
+    .pill {
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding: 2px 10px;
+      border-radius: 999px;
+      font-size: 11px;
+      border: 1px solid rgba(118,153,255,0.7);
+      color: var(--text-sub);
+      white-space: nowrap;
+    }
+    .pill-high { border-color: var(--danger); color: var(--danger); }
+    .pill-med  { border-color: var(--warn);  color: var(--warn); }
+    .pill-low  { border-color: var(--ok);    color: var(--ok); }
+
+    /* 短期/中期/長期ラベル */
+    .term-label {
+      display:inline-block;
+      min-width:3.5em;
+      padding: 2px 8px;
+      margin-right:6px;
+      border-radius:6px;
+      font-size:11px;
+      font-weight:600;
+      text-align:center;
+      background:rgba(255,255,255,0.04);
+      border:1px solid rgba(148,163,255,0.9);
+      color:#e5e7ff;
+      white-space: nowrap;
+      vertical-align: top;
+    }
+
+    ul { padding-left: 18px; font-size: 13px; }
+    li { margin-bottom: 4px; }
+
+    /* 1.2 短期/中期/長期のリスト用：ラベルとテキストを横並びで揃える */
+    .term-list {
+      list-style: none;
+      padding-left: 0;
+      margin-left: 0;
+    }
+    .term-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
+      margin-bottom: 4px;
+    }
+
+    .grid-2 {
+      display:grid;
+      grid-template-columns: repeat(2,minmax(0,1fr));
+      gap: 16px;
+      margin-top: 8px;
+    }
+    .card {
+      padding: 10px 12px 10px;
+      border-radius: 14px;
+      background: linear-gradient(145deg,#10152f,#050816);
+      border: 1px solid rgba(79,100,180,0.9);
+      font-size: 13px;
+      margin-bottom: 6px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 6px;
+      font-size: 12px;
+    }
+    th,td {
+      border: 1px solid rgba(53,68,128,0.9);
+      padding: 6px 8px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      background: rgba(11,19,52,0.9);
+      font-weight: 500;
+    }
+    .risk-table td:first-child { width: 26%; }
+    .risk-table th:nth-child(2),
+    .risk-table td:nth-child(2){
+      width:18%;
+      white-space:nowrap;
+    }
+
+    .label {
+      font-size: 11px;
+      padding: 1px 6px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .label-osint   { border-color: var(--accent); color: var(--accent); }
+    .label-mail    { border-color: #f97316; color:#fdba74; }
+
+    .callout {
+      margin-top: 8px;
+      padding: 8px 10px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.02);
+      border: 1px dashed rgba(130,160,255,0.7);
+      font-size: 12px;
+      color: var(--text-sub);
+    }
+    .small { font-size: 11px; color: var(--text-sub); }
+
+    /* SPF / DMARC ボックスと見出しの間に余白 */
+    .card + h4 { margin-top: 10px; }
+
+    /* 短いホスト名が表内で改行されないようにする */
+    td code { white-space: nowrap; }
+
+    @media (max-width: 780px) {
+      .cover { padding: 22px 18px; }
+      .grid-2 { grid-template-columns:minmax(0,1fr); }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- COVER -->
+  <section class="cover">
+    <div class="badge">
+      <span class="badge-dot"></span>
+      <span>For Local Government Clients</span>
+    </div>
+    <h1 class="cover-title">Local Government – Attack Surface &amp; OSINT Security Report</h1>
+    <div class="cover-sub">自治体様向け Attack Surface &amp; OSINT 技術評価レポート</div>
+    <p class="cover-meta">
+      作成者：Avisail / Avisecure<br>
+      対象：自治体様向け（情報政策・情報システム部門）<br>
+      対象ドメイン：非開示（自治体公式ドメイン）<br>
+      本資料は、公開情報と技術的知見に基づき Avisail が独自に実施した評価レポートのひな型です。<br>
+      実案件では、個別契約に基づき正式な診断レポートとして提供いたします。
+    </p>
+  </section>
+
+  <!-- 1. EXECUTIVE SUMMARY -->
+  <section class="section">
+    <h2>1. Executive Summary（概要）</h2>
+    <p class="muted">
+      本レポートは、<strong>ある自治体の公式ドメイン</strong> を対象に、公開情報
+      （OSINT：Open Source Intelligence）と攻撃者視点の観点から攻撃面（Attack Surface）を整理した
+      サンプル構成です。Active Defense の考え方に基づき、
+      「どこから何が見えているのか」「メール・Web を中心にどのようなリスクが想定されるか」を
+      技術的かつ説明責任が果たせる形でまとめています。
+    </p>
+
+    <h3>1.1 ハイレベル評価</h3>
+    <table class="risk-table">
+      <tr>
+        <th>評価項目</th><th>評価</th><th>概要</th>
+      </tr>
+      <tr>
+        <td>Attack Surface（攻撃面の露出）</td>
+        <td><span class="pill pill-med">中程度</span></td>
+        <td>
+          サブドメインは限定的である一方、メール関連設定や過去の運用痕跡により、
+          攻撃者が足掛かりを得る余地が残されていると評価できます。
+        </td>
+      </tr>
+      <tr>
+        <td>Email Security（SPF / DMARC 等）</td>
+        <td><span class="pill pill-high">要改善</span></td>
+        <td>
+          SPF レコードは構成されていますが、DMARC ポリシーが <code>p=none</code> のため、
+          なりすましメール防止の観点では十分な保護が行われていない状態です。
+        </td>
+      </tr>
+      <tr>
+        <td>Web / Application</td>
+        <td><span class="pill pill-low">概ね良好</span></td>
+        <td>
+          Web サーバヘッダには X-Frame-Options, X-XSS-Protection, X-Content-Type-Options が設定されており、
+          基本的なセキュリティヘッダは整備されていると判断できます。
+        </td>
+      </tr>
+      <tr>
+        <td>Threat Reputation / OSINT</td>
+        <td><span class="pill pill-low">良好</span></td>
+        <td>
+          複数のレピュテーション情報源において、対象ドメインは現時点で
+          悪性としてフラグされておらず、良好な評価になっています。
+        </td>
+      </tr>
+    </table>
+
+    <h3>1.2 主なリスクと提言（要約）</h3>
+    <ul class="term-list">
+      <li>
+        <span class="term-label">短期</span>
+        <span>DMARC ポリシーを <code>p=none</code> から
+        <code>quarantine</code> もしくは <code>reject</code> へ段階的に引き上げることを推奨します。</span>
+      </li>
+      <li>
+        <span class="term-label">短期</span>
+        <span>メールドメインに関するサブドメインを整理し、利用実態のないホスト名の廃止・
+        リダイレクト方針を決定することを推奨します。</span>
+      </li>
+      <li>
+        <span class="term-label">中期</span>
+        <span>OSINT を活用した Attack Surface 管理を年 1〜2 回程度定期的に実施し、
+        公開情報の棚卸しとダーティデータ（古い証明書・DNS）の削減を行うことを推奨します。</span>
+      </li>
+      <li>
+        <span class="term-label">中期</span>
+        <span>疑似フィッシング訓練を導入し、職員のメール開封・クリック率を可視化した上で、
+        セキュリティ教育とルール整備を行うことを推奨します。</span>
+      </li>
+      <li>
+        <span class="term-label">長期</span>
+        <span>将来的な 24/7 SOC / MDR 導入を見据え、
+        ログ基盤およびインシデント初動ガイドの整備を進めることを推奨します。</span>
+      </li>
+    </ul>
+    <p class="muted" style="font-size:12px; margin-top:4px;">
+      ※ 平たく言えば、「まずはメールの“なりすまし”対策」「次に公開情報の棚卸し」
+      「最後に本格的な監視体制への橋渡し」という三段階で整理した提言です。
+    </p>
+  </section>
+
+  <!-- 2. Scope & Method -->
+  <section class="section">
+    <h2>2. Scope &amp; Methodology（対象と方法）</h2>
+    <h3>2.1 評価範囲（Scope）</h3>
+    <ul>
+      <li>対象ドメイン：非開示（自治体公式ドメイン）</li>
+      <li>関連サブドメイン：OSINT により複数ドメインを確認済みです。</li>
+      <li>評価対象：Attack Surface（DNS / Web / Mail）、OSINT によるレピュテーション、
+        メールセキュリティ設定（SPF / DMARC）です。</li>
+      <li>除外事項：内部ネットワークスキャン、ログレビュー、脆弱性スキャナによる本格侵入テスト等は
+        本レポート範囲外としています（公開情報に限定した技術評価構成です）。</li>
+    </ul>
+
+    <h3>2.2 使用プラットフォーム / 手法</h3>
+    <div class="grid-2">
+      <div class="card">
+        <h4>Attack Surface / OSINT 系 <span class="label label-osint">OSINT</span></h4>
+        <ul>
+          <li>インターネット上の公開情報を横断検索する OSINT プラットフォームを利用しています。</li>
+          <li>DNS / 証明書ログ / Passive DNS データベースを参照しています。</li>
+          <li>自社開発スクリプトによるサブドメイン列挙・集約を実施しています。</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>Mail / DNS / Web 評価 <span class="label label-mail">Mail &amp; Web</span></h4>
+        <ul>
+          <li>標準的な DNS クライアントツールによるレコード確認を行っています。</li>
+          <li>メールセキュリティ診断プラットフォームにより SPF / DMARC / Blacklist チェックを行っています。</li>
+          <li>HTTP レスポンスヘッダ解析ツールにより Web サーバ設定を確認しています。</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout">
+      公開情報の収集・整理はすべて法令・ガイドラインに従い、
+      対象組織に負荷を与えないパッシブな手法のみを用いて実施しています。
+    </div>
+  </section>
+
+  <!-- 3. Attack Surface Findings -->
+  <section class="section">
+    <h2>3. Attack Surface Findings（攻撃面の整理）</h2>
+
+    <h3>3.1 サブドメイン構成（例）</h3>
+    <table>
+      <tr><th>ホスト名</th><th>役割（想定）</th><th>所見</th></tr>
+      <tr>
+        <td><code>[ホストA]</code></td>
+        <td>公式 Web サイト</td>
+        <td>
+          代表的なポータルサイト用ホストです。基本的なセキュリティヘッダは付与されており、
+          一般公開用としては標準的な構成になっていると評価できます。
+        </td>
+      </tr>
+      <tr>
+        <td><code>[ホストB]</code></td>
+        <td>メール関連ホスト名（現在は実体不明）</td>
+        <td>
+          DNS 上は「名前だけが残っている」状態のホストが存在するケースが見られます。
+          攻撃者から見ると、過去に利用されていた可能性のあるメールホスト名として
+          フィッシング等に悪用されるリスクがあります。
+        </td>
+      </tr>
+      <tr>
+        <td><code>[ホストC]</code></td>
+        <td>外部メール基盤</td>
+        <td>
+          SPF 設定で参照されているメール送信基盤です。
+          委託先・運用責任の明確化が重要です。
+        </td>
+      </tr>
+    </table>
+
+    <h3>3.2 公開サービス状況の確認</h3>
+    <ul>
+      <li>複数のインターネットスキャン系データベースを確認した結果、
+        危険性の高い公開サービス（例：インターネットに直接晒された RDP や古い VPN 装置等）は
+        確認されていません。</li>
+      <li>一方で、証明書ログや DNS 履歴からは、
+        過去に利用されていた可能性のあるホスト名が複数確認される場合があり、
+        今後の運用変更時にも残存しやすい点に留意が必要です。</li>
+    </ul>
+  </section>
+
+  <!-- 4. DNS / Mail Security -->
+  <section class="section">
+    <h2>4. DNS / Email Security（SPF / DMARC 評価）</h2>
+
+    <h3>4.1 SPF レコード</h3>
+    <div class="card">
+      <code>
+        SPF: "v=spf1 ip4:***.***.***.0/26 ip4:***.***.***.236 ip4:***.***.***.217 ip4:***.***.***.19
+        a:[メール基盤ホスト名] include:[外部メールサービス] -all"
+      </code>
+    </div>
+    <h4>所見</h4>
+    <ul>
+      <li><strong>SPF 自体は構成されており、基本的な誤設定は見られません。</strong></li>
+      <li>ただし複数の IP アドレスと外部サービスに依存しており、
+        過去設定が残存している可能性があります。</li>
+      <li>長期的には、現在実際に利用している送信元 IP / サービスに絞り込み、
+        不要なエントリを削除することで設定を簡素化することが望ましいです。</li>
+    </ul>
+
+    <h3>4.2 DMARC レコード</h3>
+    <div class="card">
+      <code>
+        DMARC: "v=DMARC1; p=none; rua=mailto:dmarc-report@example.jp"
+      </code>
+    </div>
+    <h4>所見</h4>
+    <ul>
+      <li>DMARC レコード自体は公開されていますが、ポリシー <code>p=none</code> のため、
+        DMARC を<strong>監視用途にのみ利用</strong>している状態です。</li>
+      <li>この状態では、外部の受信側に対し「検査結果に基づいてメールを隔離／拒否してほしい」
+        という指示が出されないため、なりすましメールの防止効果は限定的です。</li>
+      <li>段階的に <code>quarantine</code> → <code>reject</code> へ移行するためのログ分析と
+        試験導入計画を策定することを推奨します。</li>
+    </ul>
+
+    <h3>4.3 MX / Blacklist チェック</h3>
+    <ul>
+      <li>主要なスパムブラックリストにおいて、対象ドメインおよび関連 IP は
+        現時点で悪性として登録されていないことが確認できました。</li>
+      <li>メール関連は県・共同センター等との連携が前提となるケースが多いため、
+        障害・ブラックリスト登録が発生した際の責任分解点
+        （自治体・共同センター・委託先）の明確化が重要です。</li>
+    </ul>
+  </section>
+
+  <!-- 5. Threat Reputation -->
+  <section class="section">
+    <h2>5. Threat Reputation（脅威レピュテーション）</h2>
+    <p class="muted">
+      複数の脅威インテリジェンス／レピュテーション情報源にて、
+      対象ドメインの評価および Passive DNS 情報を確認した結果、以下のような所見になりました。
+    </p>
+
+    <div class="grid-2">
+      <div class="card">
+        <h4>5.1 Detection Summary</h4>
+        <ul>
+          <li>複数のセキュリティベンダ評価において、対象ドメインは
+            悪性としてフラグされていません。</li>
+          <li>コミュニティスコア：良好（特段の悪性レポートなし）です。</li>
+          <li>カテゴリ：Government / Legal（自動分類）です。</li>
+        </ul>
+        <div class="callout">
+          現時点では、マルウェア配布やフィッシングサイトとしての悪用履歴は
+          確認されておらず、レピュテーションは良好と評価できます。
+        </div>
+      </div>
+      <div class="card">
+        <h4>5.2 Passive DNS / 履歴</h4>
+        <ul>
+          <li>過去数年間で複数の IP に割り当てが行われていますが、
+            いずれも政府系ネットワークおよび国内ホスティング事業者の範囲内です。</li>
+          <li>同一 IP 上に悪性ドメインが多数同居しているといった兆候は確認されず、
+            共有環境としては比較的クリーンな状態と推測されます。</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. Mock Phishing Simulation -->
+  <section class="section">
+    <h2>6. Mock Phishing Simulation（疑似フィッシング訓練：サンプル）</h2>
+    <p class="muted">
+      Active Defense の一環として、疑似フィッシングメールを用いた職員向け訓練を実施した場合の
+      レポートイメージを以下に示します（数値はサンプルです）。
+    </p>
+
+    <table>
+      <tr><th>項目</th><th>結果（サンプル）</th><th>コメント</th></tr>
+      <tr>
+        <td>対象職員数</td>
+        <td>120 名</td>
+        <td>庁内の情報系アカウント保有者を対象としたケースです。</td>
+      </tr>
+      <tr>
+        <td>メール開封率</td>
+        <td>42%</td>
+        <td>件名・送信元が行政機関を装った場合、一定の開封率が見込まれます。</td>
+      </tr>
+      <tr>
+        <td>リンククリック率</td>
+        <td>17%</td>
+        <td>本文中の URL をクリックした職員の割合です。教育・ルールの強化余地が大きいといえます。</td>
+      </tr>
+      <tr>
+        <td>認証情報入力試行</td>
+        <td>2 名</td>
+        <td>実際に ID / パスワード入力を試みた職員数です（匿名で統計化）。</td>
+      </tr>
+      <tr>
+        <td>平均反応時間</td>
+        <td>約 3 時間 24 分</td>
+        <td>訓練開始から初回開封・クリックが発生するまでの平均時間です。</td>
+      </tr>
+    </table>
+
+    <h3>6.1 改善提案（訓練結果にもとづく）</h3>
+    <ul>
+      <li>年 1～2 回の疑似フィッシング訓練を継続実施し、傾向を時系列で把握することを推奨します。</li>
+      <li>管理職向けには「模範的な対応（報告フロー）」を重点的に周知することを推奨します。</li>
+      <li>メールクライアントにおける「差出人表示」「完全な送信元ドメイン表示」を強制する設定を検討することを推奨します。</li>
+    </ul>
+  </section>
+
+  <!-- 7. Risk Assessment -->
+  <section class="section">
+    <h2>7. Risk Assessment（リスク評価）</h2>
+    <table class="risk-table">
+      <tr><th>リスク</th><th>レベル</th><th>概要</th></tr>
+      <tr>
+        <td>なりすましメールによる住民・職員の誤認</td>
+        <td><span class="pill pill-high">高</span></td>
+        <td>DMARC ポリシーが <code>none</code> のため、外部からのなりすましメールが
+          正規メールとして受信されるリスクが残っています。</td>
+      </tr>
+      <tr>
+        <td>過去設定の残存による攻撃面の肥大化</td>
+        <td><span class="pill pill-med">中</span></td>
+        <td>利用されていないサブドメインや SPF エントリが残存している場合、
+          攻撃者にとっての有用な情報となり得ます。</td>
+      </tr>
+      <tr>
+        <td>OSINT による情報の先行把握の欠如</td>
+        <td><span class="pill pill-med">中</span></td>
+        <td>攻撃者側は OSINT を利用して標的を選定する一方で、
+          守る側が同等レベルの情報把握をしていない場合、対応が後手に回る可能性があります。</td>
+      </tr>
+      <tr>
+        <td>インシデント初動の混乱</td>
+        <td><span class="pill pill-med">中</span></td>
+        <td>役割分担・外部ベンダーとの連絡窓口が明文化されていない場合、
+          初動 24 時間での判断・報告が遅延する可能性があります。</td>
+      </tr>
+    </table>
+  </section>
+
+  <!-- 8. Recommendations -->
+  <section class="section">
+    <h2>8. Recommendations（推奨事項）</h2>
+
+    <h3>8.1 短期（0〜6ヶ月）</h3>
+    <ul>
+      <li>DMARC ポリシーを段階的に <code>quarantine</code> → <code>reject</code> へ移行するための
+        評価・テストを開始することを推奨します。</li>
+      <li>実際に利用されていないサブドメイン（旧メールホスト名など）の棚卸しを行い、
+        廃止・リダイレクト方針を決定することを推奨します。</li>
+      <li>疑似フィッシング訓練の PoC を実施し、セキュリティ教育の企画を進めることを推奨します。</li>
+      <li>初心者向けに言うと、「まずはメールの“なりすまし”を減らすため、
+        送信元設定と職員向け注意喚起を最優先で整える段階」です。</li>
+    </ul>
+
+    <h3>8.2 中期（6〜18ヶ月）</h3>
+    <ul>
+      <li>Attack Surface / OSINT チェックを年次のセキュリティ計画に組み込み、
+        毎年の「公開情報棚卸し」として定着させることを推奨します。</li>
+      <li>インシデント初動ガイドラインを整備し、庁内の意思決定フロー・報告先・
+        外部ベンダー連携方法を明文化することを推奨します。</li>
+      <li>ログ保全方針（どのログを、どこに、どれくらい保持するか）を策定することを推奨します。</li>
+      <li>初心者向けに言うと、「何か起きたときに“誰が何をするか”を紙に書いておき、
+        ログも後から追えるように整えておくフェーズ」です。</li>
+    </ul>
+
+    <h3>8.3 長期（18ヶ月〜）</h3>
+    <ul>
+      <li>24/7 SOC / MDR ベンダーとの連携を前提としたロードマップを作成することを推奨します。
+        （県・国・外部委託先との役割分担を整理した上での検討です。）</li>
+      <li>クラウド利用拡大（SaaS / IaaS）を踏まえた
+        Zero Trust / Identity-Centric Security への移行を検討することを推奨します。</li>
+      <li>初心者向けに言うと、「将来、本格的な監視チームと組むときに困らないよう、
+        いまから“どの方向に進むかの地図”を作っておく段階」です。</li>
+    </ul>
+  </section>
+
+  <!-- 9. Incident First 24h -->
+  <section class="section">
+    <h2>9. Incident First 24 Hours Guide（初動 24 時間ガイド：サマリ）</h2>
+    <p class="muted">
+      重大なセキュリティインシデント（情報漏えい・外部攻撃等）が疑われた際の
+      「最初の 24 時間」で最低限実施すべき事項のサマリです。
+      詳細版プレイブックは別紙として作成可能です。
+    </p>
+    <ol>
+      <li><strong>検知と一次報告（0〜1時間）</strong><br>
+        庁内窓口への即時連絡、インシデント種別の仮判定、
+        関係部局・首長への一次報告を行います。</li>
+      <li><strong>影響範囲の仮把握（1〜4時間）</strong><br>
+        対象システム・アカウント・データ種別の整理、ログの退避、
+        外部委託先・共同センター等への速報連絡を行います。</li>
+      <li><strong>技術的封じ込め（4〜12時間）</strong><br>
+        アカウントロック、ネットワーク遮断、該当サービスの一時停止等、
+        被害拡大防止措置を実施します。</li>
+      <li><strong>対外説明方針の検討（12〜24時間）</strong><br>
+        住民・報道機関向けの説明草案作成、FAQ 作成、問い合わせ窓口の整理を行います。</li>
+    </ol>
+  </section>
+
+  <!-- 10. Appendix -->
+  <section class="section">
+    <h2>10. Appendix（参考情報）</h2>
+    <p class="muted">
+      以下はレポート作成時に利用するコマンドの例です。
+      実案件では、日付・時刻・コマンドログ等を含めて証跡として保管します。
+    </p>
+    <h3>10.1 DNS 取得例</h3>
+    <pre class="small">
+$ dig example.local-domain.jp TXT
+&gt; "v=spf1 ip4:***.***.***.0/26 ip4:***.***.***.236 include:[外部サービス] -all"
+
+$ dig _dmarc.example.local-domain.jp TXT
+&gt; "v=DMARC1; p=none; rua=mailto:dmarc-report@example.jp"
+    </pre>
+
+    <h3>10.2 HTTP ヘッダ取得例</h3>
+    <pre class="small">
+$ curl -I https://www.example.local-domain.jp
+HTTP/1.1 200 OK
+Server: openresty
+X-Frame-Options: SAMEORIGIN
+X-XSS-Protection: 1; mode=block
+X-Content-Type-Options: nosniff
+...
+    </pre>
+  </section>
+
+</div>
+</body>
+</html>

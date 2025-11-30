@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8" />
+    <title>Avisecure｜Active Defense Security Scanning Platform</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Avisecure Active Defense Security Scanning Platform - 攻撃者視点でドメインのセキュリティを診断し、AIによる包括的なレポートを生成">
+
+    <style>
+        :root {
+            --bg-dark: #050816;
+            --bg-section: #0b1020;
+            --primary: #1f6feb;
+            --accent: #35b3ff;
+            --text-main: #f5f7ff;
+            --text-sub: #a7b3d3;
+            --border-soft: #222840;
+            --radius-lg: 18px;
+            --radius-xl: 26px;
+            --shadow-soft: 0 18px 40px rgba(0,0,0,0.55);
+            --max-width: 1080px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+            background: radial-gradient(circle at top, #101936 0, #050816 55%, #020309 100%);
+            color: var(--text-main);
+            line-height: 1.7;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .page {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 24px 18px 64px;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 32px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            font-size: 13px;
+        }
+
+        .logo-mark {
+            width: 28px;
+            height: 28px;
+            border-radius: 10px;
+            border: 1px solid rgba(255,255,255,0.16);
+            background: radial-gradient(circle at 25% 0, #35b3ff 0, #1f6feb 30%, #050816 80%);
+            box-shadow: 0 0 12px rgba(53,179,255,0.65);
+        }
+
+        .logo-sub {
+            font-size: 10px;
+            font-weight: 500;
+            color: var(--text-sub);
+            letter-spacing: .16em;
+        }
+
+        nav {
+            display: flex;
+            gap: 16px;
+            font-size: 13px;
+            color: var(--text-sub);
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        /* HERO */
+        .hero {
+            display: grid;
+            grid-template-columns: minmax(0,1.6fr) minmax(0,1.2fr);
+            gap: 28px;
+            padding: 32px 24px 28px;
+            border-radius: var(--radius-xl);
+            background: radial-gradient(circle at 0 0, #17213f 0, #050816 45%, #020309 100%);
+            box-shadow: var(--shadow-soft);
+            border: 1px solid rgba(111,140,255,0.2);
+            margin-bottom: 40px;
+        }
+
+        .hero-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 4px 10px;
+            border-radius: 999px;
+            background: rgba(20,33,70,0.9);
+            color: var(--accent);
+            font-size: 11px;
+            letter-spacing: .16em;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .hero-label-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--accent);
+            box-shadow: 0 0 10px rgba(53,179,255,0.9);
+        }
+
+        .hero-title {
+            font-size: 26px;
+            line-height: 1.4;
+            margin-bottom: 10px;
+        }
+
+        .hero-title span {
+            color: var(--accent);
+        }
+
+        .hero-sub {
+            font-size: 14px;
+            color: var(--text-sub);
+            margin-bottom: 22px;
+        }
+
+        .hero-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 22px;
+        }
+
+        .badge {
+            font-size: 11px;
+            padding: 4px 10px;
+            border-radius: 999px;
+            border: 1px solid rgba(136,153,255,0.38);
+            background: rgba(8,14,32,0.9);
+            color: var(--text-sub);
+        }
+
+        .hero-cta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 6px;
+        }
+
+        .btn-primary {
+            padding: 10px 20px;
+            border-radius: 999px;
+            background: linear-gradient(135deg,#1f6feb,#35b3ff);
+            border: none;
+            color: #fff;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(36,104,242,0.55);
+        }
+
+        .btn-primary:hover {
+            filter: brightness(1.1);
+        }
+
+        .btn-outline {
+            padding: 9px 18px;
+            border-radius: 999px;
+            border: 1px solid rgba(150,160,255,0.7);
+            background: transparent;
+            color: var(--text-main);
+            font-size: 12px;
+            cursor: pointer;
+        }
+
+        .btn-outline:hover {
+            background: rgba(20,33,70,0.5);
+        }
+
+        .btn-login {
+            padding: 9px 18px;
+            border-radius: 999px;
+            background: linear-gradient(135deg,#22c55e,#16a34a);
+            border: none;
+            color: #fff;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 8px 24px rgba(34,197,94,0.45);
+        }
+
+        .btn-login:hover {
+            filter: brightness(1.1);
+        }
+
+        .hero-note {
+            font-size: 11px;
+            color: var(--text-sub);
+        }
+
+        .hero-metric-card {
+            align-self: center;
+            justify-self: center;
+            width: 100%;
+            max-width: 320px;
+            padding: 16px 16px 14px;
+            border-radius: 22px;
+            background: radial-gradient(circle at 0 0, #1a2650 0, #050816 55%, #020309 100%);
+            border: 1px solid rgba(99,123,255,0.5);
+            box-shadow: var(--shadow-soft);
+            font-size: 12px;
+        }
+
+        .metric-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            color: var(--text-sub);
+        }
+
+        .metric-main {
+            font-size: 13px;
+            margin-bottom: 10px;
+        }
+
+        .metric-tag {
+            font-size: 10px;
+            padding: 2px 7px;
+            border-radius: 999px;
+            border: 1px solid rgba(94,255,208,0.7);
+            color: #b9ffe4;
+        }
+
+        .metric-list {
+            list-style: none;
+            margin-top: 6px;
+        }
+
+        .metric-list li {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 4px;
+            color: var(--text-sub);
+            font-size: 11px;
+        }
+
+        .metric-dot {
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: var(--accent);
+        }
+
+        /* SECTION BASE */
+        section {
+            margin-bottom: 40px;
+            padding: 24px 22px;
+            border-radius: 18px;
+            background: var(--bg-section);
+            border: 1px solid var(--border-soft);
+        }
+
+        .section-title {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .section-sub {
+            font-size: 13px;
+            color: var(--text-sub);
+            margin-bottom: 18px;
+        }
+
+        .list {
+            font-size: 13px;
+            color: var(--text-main);
+            padding-left: 18px;
+        }
+
+        .list li {
+            margin-bottom: 6px;
+        }
+
+        .columns-2 {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0,1fr));
+            gap: 18px;
+        }
+
+        .columns-3 {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0,1fr));
+            gap: 16px;
+        }
+
+        .card {
+            padding: 14px 14px 13px;
+            border-radius: 16px;
+            border: 1px solid rgba(82,96,159,0.7);
+            background: linear-gradient(145deg,#0b1020,#060816);
+            font-size: 13px;
+        }
+
+        .card h3 {
+            font-size: 14px;
+            margin-bottom: 6px;
+        }
+
+        .card p {
+            font-size: 12px;
+            color: var(--text-sub);
+            margin-bottom: 8px;
+        }
+
+        .card ul {
+            padding-left: 16px;
+            font-size: 12px;
+            color: var(--text-main);
+        }
+
+        .cta-final {
+            text-align: center;
+        }
+
+        .cta-final p {
+            font-size: 13px;
+            color: var(--text-sub);
+            margin-bottom: 14px;
+        }
+
+        footer {
+            margin-top: 24px;
+            font-size: 11px;
+            color: var(--text-sub);
+            text-align: center;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 840px) {
+            .hero {
+                grid-template-columns: minmax(0,1fr);
+            }
+
+            .hero-metric-card {
+                margin-top: 12px;
+            }
+
+            .columns-2,
+            .columns-3 {
+                grid-template-columns: minmax(0,1fr);
+            }
+
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            nav {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+
+        <!-- HEADER -->
+        <header>
+            <div>
+                <div class="logo">
+                    <div class="logo-mark"></div>
+                    <div>AVISECURE</div>
+                </div>
+                <div class="logo-sub">Active Defense Security Scanning</div>
+            </div>
+
+            <nav>
+                <a href="#features">特徴</a>
+                <a href="#how">仕組み</a>
+                <a href="#sample">サンプル</a>
+                <a href="dashboard.html"><button class="btn-login">デモを見る</button></a>
+            </nav>
+        </header>
+
+        <!-- HERO -->
+        <section class="hero">
+            <div>
+                <div class="hero-label">
+                    <span class="hero-label-dot"></span>
+                    <span>Active Defense Security Scanning</span>
+                </div>
+
+                <h1 class="hero-title">
+                    攻撃者視点でドメインを診断<br>
+                    <span>AI駆動のセキュリティレポート生成</span>
+                </h1>
+
+                <p class="hero-sub">
+                    Avisecure は、OSINT・Attack Surface Management・AI分析を組み合わせた<br>
+                    次世代セキュリティスキャンプラットフォームです。<br>
+                    ドメインを入力するだけで、攻撃者から見える脆弱性を自動検出し、包括的なHTMLレポートを生成します。
+                </p>
+
+                <div class="hero-badges">
+                    <span class="badge">10以上のセキュリティスキャン</span>
+                    <span class="badge">9つのOSINTソース統合</span>
+                    <span class="badge">GPT-4によるAI分析</span>
+                    <span class="badge">HTMLレポート自動生成</span>
+                </div>
+
+                <div class="hero-cta">
+                    <a href="dashboard.html"><button class="btn-primary">デモレポートを見る</button></a>
+                    <a href="#sample"><button class="btn-outline">サンプルレポートを見る</button></a>
+                </div>
+
+                <p class="hero-note">
+                    ※ お問い合わせ: <a href="mailto:info@avisail.com" style="color: var(--accent); text-decoration: underline;">info@avisail.com</a>
+                </p>
+            </div>
+
+            <aside class="hero-metric-card">
+                <div class="metric-header">
+                    <span>スキャン対象</span>
+                    <span class="metric-tag">Multi-Vector Analysis</span>
+                </div>
+
+                <div class="metric-main">
+                    Avisecure は、攻撃者が実際に使用する手法と視点でドメインを分析します。
+                </div>
+
+                <ul class="metric-list">
+                    <li><span class="metric-dot"></span> DNS / SSL / ポートスキャン</li>
+                    <li><span class="metric-dot"></span> Shodan / Censys / VirusTotal連携</li>
+                    <li><span class="metric-dot"></span> Webヘッダー / セキュリティ設定分析</li>
+                    <li><span class="metric-dot"></span> GPT-4による脅威評価とレポート生成</li>
+                </ul>
+            </aside>
+        </section>
+
+        <!-- FEATURES -->
+        <section id="features">
+            <h2 class="section-title">Avisecure の特徴</h2>
+            <p class="section-sub">
+                エンタープライズグレードのセキュリティスキャンを、シンプルなUIで提供します。
+            </p>
+
+            <div class="columns-2">
+                <div class="card">
+                    <h3>① 包括的なスキャン</h3>
+                    <p>10以上のセキュリティスキャンを自動実行</p>
+                    <ul>
+                        <li>DNS解決・MX/SPF/DKIM/DMARC検証</li>
+                        <li>SSL証明書検査</li>
+                        <li>ポート列挙とサービス検出</li>
+                        <li>Webヘッダー・CSP・セキュリティヘッダー分析</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>② OSINT統合</h3>
+                    <p>9つの外部ソースから情報を集約</p>
+                    <ul>
+                        <li>Shodan - ポート/サービス情報</li>
+                        <li>Censys - 証明書・ホスト情報</li>
+                        <li>SecurityTrails - サブドメイン履歴</li>
+                        <li>VirusTotal - 脅威レピュテーション</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>③ AI駆動のレポート</h3>
+                    <p>GPT-4による10セクション構成のレポート</p>
+                    <ul>
+                        <li>エグゼクティブサマリー</li>
+                        <li>Attack Surface分析</li>
+                        <li>脅威レピュテーション</li>
+                        <li>優先度付き推奨事項</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>④ ワンクリック生成</h3>
+                    <p>ドメイン入力からレポート生成まで自動化</p>
+                    <ul>
+                        <li>ブラウザベースのシンプルUI</li>
+                        <li>HTMLレポートの即座ダウンロード</li>
+                        <li>スキャン履歴の保存</li>
+                        <li>APIキー管理不要</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- HOW IT WORKS -->
+        <section id="how">
+            <h2 class="section-title">仕組み</h2>
+            <p class="section-sub">
+                4層のパイプラインアーキテクチャで、包括的なセキュリティ分析を実現します。
+            </p>
+
+            <ul class="list">
+                <li>
+                    <strong>Layer 1: Scanner</strong><br>
+                    10以上の並列・順次スキャン（DNS、SSL、Port、Web、WHOIS、ASN/Geo等）
+                </li>
+
+                <li>
+                    <strong>Layer 2: OSINT Aggregator</strong><br>
+                    9つのOSINTソースからデータを統合し、JSON構造を最適化
+                </li>
+
+                <li>
+                    <strong>Layer 3: GPT Processor</strong><br>
+                    10のレポートセクションをOpenAI APIで生成（p01〜p10）
+                </li>
+
+                <li>
+                    <strong>Layer 4: Report Assembler</strong><br>
+                    HTMLテンプレートに埋め込み、最終レポートを出力
+                </li>
+            </ul>
+        </section>
+
+        <!-- SAMPLE -->
+        <section id="sample">
+            <h2 class="section-title">レポート構成のサンプル</h2>
+            <p class="section-sub">
+                経営層と技術担当の双方が読めるよう、専門用語をかみ砕いてレポート化します。
+            </p>
+
+            <ul class="list">
+                <li>1. Overview（概要）</li>
+                <li>2. Executive Summary（経営層向け1ページサマリー）</li>
+                <li>3. Attack Surface Findings（攻撃面の発見事項）</li>
+                <li>4. DNS & Mail Security（DNS・メールセキュリティ評価）</li>
+                <li>5. Threat Reputation（脅威レピュテーション・OSINT所見）</li>
+                <li>6. Mock Phishing Assessment（フィッシングリスク評価）</li>
+                <li>7. Risk Assessment（リスクマトリックス・脆弱性分析）</li>
+                <li>8. Recommendations（優先度付き改善推奨）</li>
+                <li>9. Incident First 24 Hours（インシデント初動ガイド）</li>
+                <li>10. Appendix（技術詳細・付録）</li>
+            </ul>
+        </section>
+
+        <!-- CTA -->
+        <section id="contact" class="cta-final">
+            <h2 class="section-title">今すぐセキュリティスキャンを開始</h2>
+
+            <p>
+                Avisecure で、あなたのドメインが攻撃者からどう見えているか確認しましょう。<br>
+                ドメインを入力するだけで、包括的なセキュリティレポートが生成されます。
+            </p>
+
+            <a href="dashboard.html">
+                <button class="btn-primary">デモレポートを見る</button>
+            </a>
+
+            <p style="margin-top:10px;font-size:11px;color:var(--text-sub);">
+                お問い合わせ: <a href="mailto:info@avisail.com" style="color: var(--accent); text-decoration: underline;">info@avisail.com</a>
+            </p>
+        </section>
+
+        <footer>
+            © Avisail – Avisecure Active Defense Security Scanning Platform
+        </footer>
+
+    </div>
+</body>
+</html>
