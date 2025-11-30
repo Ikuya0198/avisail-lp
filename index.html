@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Avisail Global Trading</title>
+<title>Avisail Technologies</title>
 <link rel="canonical" href="https://avisail.com/">
 <link rel="alternate" hreflang="en" href="https://avisail.com/">
 <link rel="alternate" hreflang="ja" href="https://avisail.com/ja/index.html">
@@ -13,8 +13,7 @@
 <style>
 :root{
   --line: rgba(255,255,255,.08);
-  /* Hero Image */
-  --home-hero: url('/images/hero.jpg'); 
+  --home-hero: url('/images/hero.jpg');
   --contact-bg: url('/images/contact-hero.jpg');
 }
 *{ box-sizing: border-box; }
@@ -25,6 +24,7 @@ html,body{
   font-family: 'Inter', sans-serif;
   line-height:1.7;
 }
+html{ scroll-behavior: smooth; }
 a{ color:#cfe2ff; text-decoration:none; transition: color 0.3s; }
 a:hover{ color:#7ef0d4; }
 .wrap{ max-width:1200px; margin:0 auto; padding:0 20px; }
@@ -48,16 +48,21 @@ nav ul{ display:flex; gap:24px; list-style:none; margin:0; padding:0; align-item
 .dropdown a{ padding:6px 12px; border-radius:6px; color:#9fb0cc; }
 .dropdown a:hover{ background:rgba(255,255,255,0.05); color:#fff; }
 
+.globe-icon{ font-size:1.2rem; cursor:pointer; color:#9fb0cc; transition:color 0.3s; }
+.globe-icon:hover{ color:#7ef0d4; }
+
 .btn{
   display:inline-block; padding:10px 20px; border-radius:50px;
   border:1px solid var(--line); background:rgba(255,255,255,0.05); color:#e9f0ff; font-size:0.9rem;
+  transition:all 0.3s;
 }
+.btn:hover{ border-color:rgba(106,166,255,0.5); }
 .cta{
   display:inline-block; padding:10px 24px; border-radius:50px;
   background:linear-gradient(135deg,#6aa6ff,#7ef0d4);
   color:#06101a; font-weight:700; font-size:0.9rem;
   box-shadow:0 10px 20px rgba(106,166,255,.2);
-  border:none;
+  border:none; transition:all 0.3s;
 }
 .cta:hover{ transform:translateY(-2px); box-shadow:0 15px 30px rgba(106,166,255,.3); }
 
@@ -88,7 +93,7 @@ h2::before{ content:''; width:4px; height:32px; background:linear-gradient(to bo
   background:rgba(255,255,255,0.02); backdrop-filter:blur(10px);
   border:1px solid var(--line); border-radius:24px; padding:32px;
   height:100%; display:flex; flex-direction:column;
-  transition:transform 0.3s;
+  transition:transform 0.3s, border-color 0.3s;
 }
 .card:hover{ transform:translateY(-5px); border-color:rgba(106,166,255,0.3); }
 .card h3{ margin-top:0; font-size:1.4rem; color:#fff; }
@@ -96,23 +101,52 @@ h2::before{ content:''; width:4px; height:32px; background:linear-gradient(to bo
 
 .grid-3{ display:grid; grid-template-columns:repeat(3,1fr); gap:32px; }
 .grid-2{ display:grid; grid-template-columns:repeat(2,1fr); gap:32px; }
-@media(max-width:980px){ .grid-3,.grid-2{ grid-template-columns:1fr; } nav ul{ display:none; } }
 
 .thumb{
   width:100%; height:200px; border-radius:16px; margin-bottom:24px;
   background:#0e1424 center/cover no-repeat; border:1px solid var(--line);
 }
-.lang-switch{ border:1px solid var(--line); padding:6px 12px; border-radius:6px; color:#9fb0cc; font-size:0.85rem; }
 
-/* Contact Section Background */
+/* FAQ */
+.faq-item{ border-bottom:1px solid var(--line); padding:24px 0; }
+.faq-item:last-child{ border-bottom:none; }
+.faq-q{ font-size:1.1rem; font-weight:600; color:#fff; margin-bottom:12px; display:flex; align-items:start; gap:12px; }
+.faq-q::before{ content:'Q.'; color:#7ef0d4; font-weight:700; }
+.faq-a{ color:#9fb0cc; padding-left:32px; }
+
+/* Footer */
+footer{
+  background:rgba(5,8,15,0.8);
+  padding:60px 0 30px;
+  border-top:1px solid var(--line);
+}
+.footer-content{ display:grid; grid-template-columns:repeat(3,1fr); gap:40px; margin-bottom:40px; }
+.footer-col h4{ color:#fff; font-size:1.1rem; margin-bottom:20px; }
+.footer-col ul{ list-style:none; padding:0; margin:0; }
+.footer-col ul li{ margin-bottom:12px; }
+.footer-col a{ color:#9fb0cc; font-size:0.9rem; }
+.footer-col a:hover{ color:#7ef0d4; }
+.footer-bottom{
+  border-top:1px solid var(--line);
+  padding-top:30px;
+  text-align:center;
+  color:#9fb0cc;
+  font-size:0.85rem;
+}
+
 .bg-contact {
   background: linear-gradient(rgba(5,8,15,0.9), rgba(5,8,15,0.95)), var(--contact-bg) center/cover;
 }
 
-/* Vimeo */
 #intro{ position:fixed; inset:0; z-index:9999; background:#000; display:flex; align-items:center; justify-content:center; }
 #vimeo-wrap{ position:absolute; inset:0; overflow:hidden; }
 #vimeo-wrap iframe{ position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:177.78vh; height:100vh; min-width:100vw; min-height:56.25vw; }
+
+@media(max-width:980px){
+  .grid-3,.grid-2{ grid-template-columns:1fr; }
+  .footer-content{ grid-template-columns:1fr; }
+  nav ul{ display:none; }
+}
 </style>
 </head>
 <body>
@@ -130,7 +164,7 @@ h2::before{ content:''; width:4px; height:32px; background:linear-gradient(to bo
 
   <header>
     <div class="wrap nav">
-      <div class="brand"><div class="logo"></div><span>Avisail Global Trading</span></div>
+      <div class="brand"><div class="logo"></div><span>Avisail Technologies</span></div>
       <nav>
         <ul>
           <li><a class="active" href="/">Home</a></li>
@@ -144,7 +178,14 @@ h2::before{ content:''; width:4px; height:32px; background:linear-gradient(to bo
             </div>
           </li>
           <li><a href="/en/contact.html">Contact</a></li>
-          <li><a class="lang-switch" href="/ja/index.html">日本語</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li class="menu-item">
+            <span class="globe-icon">🌐 ▾</span>
+            <div class="dropdown">
+              <a href="/">English</a>
+              <a href="/ja/index.html">日本語</a>
+            </div>
+          </li>
         </ul>
       </nav>
     </div>
@@ -152,16 +193,16 @@ h2::before{ content:''; width:4px; height:32px; background:linear-gradient(to bo
 
   <main class="hero">
     <div class="wrap">
-      <span class="slogan">Driven by Discovery.</span>
+      <span class="slogan">DRIVEN BY DISCOVERY.</span>
       <h1>Navigating the Future.</h1>
-      <p class="lead">Avisail Global Trading is a next-generation technology firm redefining trade, investment, and engineering through AI and a spirit of discovery.</p>
-      
+      <p class="lead">Avisail Technologies is a next-generation technology firm redefining trade, investment, and engineering through AI and a spirit of discovery.</p>
+
       <p class="muted" style="border-left:2px solid #7ef0d4; padding-left:16px; margin-top:24px;">
         A ship is a symbol of progress. We carry frontier technologies and sail toward horizons yet unseen.
       </p>
-      
-      <div style="margin-top:40px; display:flex; gap:16px;">
-        <a href="/en/services/vessel-trading.html" class="cta">Explore Services</a>
+
+      <div style="margin-top:40px; display:flex; gap:16px; flex-wrap:wrap;">
+        <a href="#business" class="cta">Explore Services</a>
         <a href="/en/contact.html" class="btn">Contact Us</a>
       </div>
     </div>
@@ -171,55 +212,114 @@ h2::before{ content:''; width:4px; height:32px; background:linear-gradient(to bo
     <div class="grid-2">
       <div class="card">
         <h3>Passion</h3>
-        <p>The world grows closer every day and cultures sit side by side. When a great ship appears, we choose courage—stepping forward to put technology to truly valuable use, as our ancestors once rowed into the open sea. There may be no unknown oceans today, yet the great ship of technology appears before us daily. Courage is the spark of innovation. We dedicate ourselves to delivering that value to people.</p>
+        <p>We believe that the notion of "distance" no longer exists in our world. Cultures and markets stand side by side, and new technologies appear before us every day.</p>
+        <p>When a vast vessel — a metaphor for emerging technology — arrives before us, we do not retreat. We move forward and guide that technology toward a truly meaningful and valuable purpose.</p>
+        <p style="margin-bottom:0;">Courage is the spark of innovation. Delivering that value to people is where our passion lives.</p>
       </div>
       <div class="card" style="border-color:#7ef0d4;">
         <h3>Purpose</h3>
-        <p>We place human connection and trust first to deliver value. Through technology-driven transformation, we broaden access to prosperity—and we never stop striving to elevate that value.</p>
+        <p>We devote ourselves to refining technologies that directly enhance human well-being, expanding the new forms of access that transformation makes possible.</p>
+        <p style="margin-bottom:0;">To never halt progress, and to continually elevate the value we create— that is the purpose that drives our work.</p>
       </div>
     </div>
   </section>
 
-  <section class="wrap">
+  <section class="wrap" id="business">
     <h2>Our Business</h2>
     <div class="grid-3">
       <div class="card">
         <div class="thumb" style="background-image:url('/images/vessel-trading-hero.jpg');"></div>
         <h3>Vessel Trading</h3>
-        <p>Global matching service connecting Asia to the world. We combine AI-driven inventory updates with secure payment structures.</p>
+        <p>Global matching service connecting Asia to the world. We combine AI-driven inventory updates with secure payment structures including ETF-based options and escrow services.</p>
         <div style="margin-top:auto;"><a class="btn" href="/en/services/vessel-trading.html">Learn More</a></div>
       </div>
       <div class="card">
         <div class="thumb" style="background-image:url('/images/investment-hero.jpg');"></div>
         <h3>Investment</h3>
-        <p>AI-driven asset management engine (Aviscore) focusing on stability and growth through disciplined execution.</p>
+        <p>AI-driven asset management engine (Aviscore) focusing on stability and growth through disciplined execution. Combining FX automation with ETF-based portfolio strategies.</p>
         <div style="margin-top:auto;"><a class="btn" href="/en/services/investment.html">Learn More</a></div>
       </div>
       <div class="card">
         <div class="thumb" style="background-image:url('/images/technology-hero.jpg');"></div>
         <h3>Technology</h3>
-        <p>Implementation-first AI development. We integrate data infrastructure, evaluation, and safety for real-world operations.</p>
+        <p>Implementation-first AI development including ADCS (Active Defense Cyber Security) for SMEs and municipalities worldwide. We integrate data infrastructure, evaluation, and safety.</p>
         <div style="margin-top:auto;"><a class="btn" href="/en/services/technology.html">Learn More</a></div>
       </div>
     </div>
   </section>
 
+  <section class="wrap" id="faq">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <div class="faq-q">How can I contact each business division?</div>
+      <div class="faq-a">Please use our <a href="/en/contact.html">contact form</a> and specify which division you're interested in (Trading, Investment, or Technology). We'll connect you with the appropriate team within 24 hours.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Do you accept equity investments?</div>
+      <div class="faq-a">We generally do not accept equity investments. Instead, we offer project-based participation schemes that align with specific business initiatives. Please contact us for details about current opportunities.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Can I see case studies or examples of ADCS deployments?</div>
+      <div class="faq-a">Yes! Visit our <a href="/en/services/technology.html">Technology page</a> to access sample security reports and learn more about our ADCS (Active Defense Cyber Security) solution.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What is the typical process for vessel trading transactions?</div>
+      <div class="faq-a">Our process includes: (1) Requirement consultation, (2) AI-matched inventory presentation, (3) Inspection arrangement, (4) Escrow/payment structure setup, (5) Registration support. The entire process typically takes 4-8 weeks depending on vessel type and location.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Which countries and regions do you operate in?</div>
+      <div class="faq-a">We operate globally with primary focus on Asia-Pacific, Middle East, and Europe. Our legal structure includes entities in Japan and Panama, with banking infrastructure in Estonia and Dubai.</div>
+    </div>
+  </section>
+
   <section class="wrap bg-contact">
-    <h2>Partnership & Contact</h2>
+    <h2>Get Started</h2>
     <div class="grid-2">
       <div class="card">
-        <h3>Partnerships & Proposals</h3>
-        <p>If you are interested in any division, please contact us and we will connect you with the right team.</p>
+        <h3>Partnerships & Business Inquiries</h3>
+        <p>Interested in our services or exploring partnership opportunities? Our team is ready to discuss how we can support your goals.</p>
         <a class="cta" href="/en/contact.html">Contact Us</a>
       </div>
       <div class="card">
-        <h3>For Investors</h3>
-        <p>We generally do not accept equity investments. Instead, we offer project-based participation schemes. Please contact us for details.</p>
+        <h3>Request Documentation</h3>
+        <p>Get detailed information about our products and services including technical specifications, case studies, and pricing.</p>
+        <a class="btn" href="/en/contact.html">Request Materials</a>
       </div>
     </div>
   </section>
 
-  <footer><div class="wrap"><p>© 2025 Avisail Global Trading — All rights reserved.</p></div></footer>
+  <footer>
+    <div class="wrap">
+      <div class="footer-content">
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="/en/about.html">About Us</a></li>
+            <li><a href="/en/contact.html">Contact</a></li>
+            <li><a href="#business">Our Business</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="/en/services/vessel-trading.html">Vessel Trading</a></li>
+            <li><a href="/en/services/investment.html">Investment</a></li>
+            <li><a href="/en/services/technology.html">Technology (ADCS)</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="/en/privacy-policy.html">Privacy Policy</a></li>
+            <li><a href="/en/terms-of-service.html">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 Avisail Technologies — All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
 
 </div>
 

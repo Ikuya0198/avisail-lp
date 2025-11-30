@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Avisail Global Trading</title>
+<title>Avisail Technologies</title>
 <link rel="canonical" href="https://avisail.com/ja/index.html">
 <link rel="alternate" hreflang="ja" href="https://avisail.com/ja/index.html">
 <link rel="alternate" hreflang="en" href="/">
@@ -13,8 +13,7 @@
 <style>
 :root{
   --line: rgba(255,255,255,.08);
-  /* 指定された画像URL */
-  --home-hero: url('/images/hero.jpg'); 
+  --home-hero: url('/images/hero.jpg');
   --contact-bg: url('/images/contact-hero.jpg');
 }
 *{ box-sizing: border-box; }
@@ -25,6 +24,7 @@ html,body{
   font-family: 'Inter', 'Noto Sans JP', sans-serif;
   line-height:1.7;
 }
+html{ scroll-behavior: smooth; }
 a{ color:#cfe2ff; text-decoration:none; transition: color 0.3s; }
 a:hover{ color:#7ef0d4; }
 .wrap{ max-width:1200px; margin:0 auto; padding:0 20px; }
@@ -35,7 +35,7 @@ header{
   backdrop-filter: blur(10px);
 }
 .nav{ display:flex; align-items:center; justify-content:space-between; height:70px; }
-.brand{ display:flex; align-items:center; gap:12px; font-weight:600; letter-spacing:0.05em; }
+.brand{ display:flex; align-items:center; gap:12px; font-weight:600; letter-spacing:0.05em; color:#fff; }
 .logo{ width:32px; height:32px; border-radius:8px; background:conic-gradient(from 210deg,#6aa6ff,#7ef0d4); }
 nav ul{ display:flex; gap:24px; list-style:none; margin:0; padding:0; align-items:center; font-size:0.95rem; }
 .menu-item{ position:relative; padding:10px 0; }
@@ -48,16 +48,21 @@ nav ul{ display:flex; gap:24px; list-style:none; margin:0; padding:0; align-item
 .dropdown a{ padding:6px 12px; border-radius:6px; color:#9fb0cc; }
 .dropdown a:hover{ background:rgba(255,255,255,0.05); color:#fff; }
 
+.globe-icon{ font-size:1.2rem; cursor:pointer; color:#9fb0cc; transition:color 0.3s; }
+.globe-icon:hover{ color:#7ef0d4; }
+
 .btn{
   display:inline-block; padding:10px 20px; border-radius:50px;
   border:1px solid var(--line); background:rgba(255,255,255,0.05); color:#e9f0ff; font-size:0.9rem;
+  transition:all 0.3s;
 }
+.btn:hover{ border-color:rgba(106,166,255,0.5); }
 .cta{
   display:inline-block; padding:10px 24px; border-radius:50px;
   background:linear-gradient(135deg,#6aa6ff,#7ef0d4);
   color:#06101a; font-weight:700; font-size:0.9rem;
   box-shadow:0 10px 20px rgba(106,166,255,.2);
-  border:none;
+  border:none; transition:all 0.3s;
 }
 .cta:hover{ transform:translateY(-2px); box-shadow:0 15px 30px rgba(106,166,255,.3); }
 
@@ -81,14 +86,14 @@ nav ul{ display:flex; gap:24px; list-style:none; margin:0; padding:0; align-item
 .muted{ color:#9fb0cc; font-size:0.95rem; }
 
 section{ padding:100px 0; border-bottom:1px solid var(--line); position:relative; }
-h2{ font-size:2rem; margin-bottom:40px; display:flex; align-items:center; gap:16px; }
+h2{ font-size:2rem; margin-bottom:40px; display:flex; align-items:center; gap:16px; color:#fff; }
 h2::before{ content:''; width:4px; height:32px; background:linear-gradient(to bottom, #6aa6ff, #7ef0d4); display:block; }
 
 .card{
   background:rgba(255,255,255,0.02); backdrop-filter:blur(10px);
   border:1px solid var(--line); border-radius:24px; padding:32px;
   height:100%; display:flex; flex-direction:column;
-  transition:transform 0.3s;
+  transition:transform 0.3s, border-color 0.3s;
 }
 .card:hover{ transform:translateY(-5px); border-color:rgba(106,166,255,0.3); }
 .card h3{ margin-top:0; font-size:1.4rem; color:#fff; }
@@ -96,30 +101,59 @@ h2::before{ content:''; width:4px; height:32px; background:linear-gradient(to bo
 
 .grid-3{ display:grid; grid-template-columns:repeat(3,1fr); gap:32px; }
 .grid-2{ display:grid; grid-template-columns:repeat(2,1fr); gap:32px; }
-@media(max-width:980px){ .grid-3,.grid-2{ grid-template-columns:1fr; } nav ul{ display:none; } }
 
 .thumb{
   width:100%; height:200px; border-radius:16px; margin-bottom:24px;
   background:#0e1424 center/cover no-repeat; border:1px solid var(--line);
 }
-.lang-switch{ border:1px solid var(--line); padding:6px 12px; border-radius:6px; color:#9fb0cc; font-size:0.85rem; }
 
-/* Contact Section Background */
+/* FAQ */
+.faq-item{ border-bottom:1px solid var(--line); padding:24px 0; }
+.faq-item:last-child{ border-bottom:none; }
+.faq-q{ font-size:1.1rem; font-weight:600; color:#fff; margin-bottom:12px; display:flex; align-items:start; gap:12px; }
+.faq-q::before{ content:'Q.'; color:#7ef0d4; font-weight:700; }
+.faq-a{ color:#9fb0cc; padding-left:32px; }
+
+/* Footer */
+footer{
+  background:rgba(5,8,15,0.8);
+  padding:60px 0 30px;
+  border-top:1px solid var(--line);
+}
+.footer-content{ display:grid; grid-template-columns:repeat(3,1fr); gap:40px; margin-bottom:40px; }
+.footer-col h4{ color:#fff; font-size:1.1rem; margin-bottom:20px; }
+.footer-col ul{ list-style:none; padding:0; margin:0; }
+.footer-col ul li{ margin-bottom:12px; }
+.footer-col a{ color:#9fb0cc; font-size:0.9rem; }
+.footer-col a:hover{ color:#7ef0d4; }
+.footer-bottom{
+  border-top:1px solid var(--line);
+  padding-top:30px;
+  text-align:center;
+  color:#9fb0cc;
+  font-size:0.85rem;
+}
+
 .bg-contact {
   background: linear-gradient(rgba(5,8,15,0.9), rgba(5,8,15,0.95)), var(--contact-bg) center/cover;
 }
 
-/* Vimeo */
 #intro{ position:fixed; inset:0; z-index:9999; background:#000; display:flex; align-items:center; justify-content:center; }
 #vimeo-wrap{ position:absolute; inset:0; overflow:hidden; }
 #vimeo-wrap iframe{ position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:177.78vh; height:100vh; min-width:100vw; min-height:56.25vw; }
+
+@media(max-width:980px){
+  .grid-3,.grid-2{ grid-template-columns:1fr; }
+  .footer-content{ grid-template-columns:1fr; }
+  nav ul{ display:none; }
+}
 </style>
 </head>
 <body>
 
 <!-- INTRO -->
 <section id="intro" style="transition:opacity .6s ease,visibility .6s ease">
-  <button class="btn" style="position:absolute; top:20px; right:20px; z-index:3; border-color:rgba(255,255,255,0.3);">Skip Intro</button>
+  <button class="btn" style="position:absolute; top:20px; right:20px; z-index:3; border-color:rgba(255,255,255,0.3);">スキップ</button>
   <div style="position:absolute; inset:0; pointer-events:none; z-index:2; display:grid; place-items:center;">
     <h1 style="font-size:4rem; letter-spacing:0.2em; color:#fff; text-shadow:0 0 30px rgba(0,0,0,0.5);">AVISAIL</h1>
   </div>
@@ -130,21 +164,28 @@ h2::before{ content:''; width:4px; height:32px; background:linear-gradient(to bo
 
   <header>
     <div class="wrap nav">
-      <div class="brand"><div class="logo"></div><span>Avisail Global Trading</span></div>
+      <div class="brand"><div class="logo"></div><span>Avisail Technologies</span></div>
       <nav>
         <ul>
-          <li><a class="active" href="/ja/index.html">Home</a></li>
-          <li><a href="/ja/about.html">About</a></li>
+          <li><a class="active" href="/ja/index.html">ホーム</a></li>
+          <li><a href="/ja/about.html">会社概要</a></li>
           <li class="menu-item">
-            <span>Services ▾</span>
+            <span>事業内容 ▾</span>
             <div class="dropdown">
-              <a href="/ja/services/vessel-trading.html">Vessel Trading</a>
-              <a href="/ja/services/investment.html">Investment</a>
-              <a href="/ja/services/technology.html">Technology</a>
+              <a href="/ja/services/vessel-trading.html">船舶貿易</a>
+              <a href="/ja/services/investment.html">投資</a>
+              <a href="/ja/services/technology.html">技術開発</a>
             </div>
           </li>
-          <li><a href="/ja/contact.html">Contact</a></li>
-          <li><a class="lang-switch" href="/">English</a></li>
+          <li><a href="/ja/contact.html">お問い合わせ</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li class="menu-item">
+            <span class="globe-icon">🌐 ▾</span>
+            <div class="dropdown">
+              <a href="/">English</a>
+              <a href="/ja/index.html">日本語</a>
+            </div>
+          </li>
         </ul>
       </nav>
     </div>
@@ -152,16 +193,16 @@ h2::before{ content:''; width:4px; height:32px; background:linear-gradient(to bo
 
   <main class="hero">
     <div class="wrap">
-      <span class="slogan">Driven by Discovery.</span>
+      <span class="slogan">DRIVEN BY DISCOVERY.</span>
       <h1>Navigating the Future.</h1>
-      <p class="lead">Avisail Global Trading は、AIと探究の力で貿易・投資・技術を再定義する次世代のテクノロジー商社です。</p>
-      
+      <p class="lead">Avisail Technologies は、AIと技術探究の力で貿易・投資・技術開発を再定義する次世代のテクノロジー商社です。</p>
+
       <p class="muted" style="border-left:2px solid #7ef0d4; padding-left:16px; margin-top:24px;">
         船は「進歩の象徴」。私たちは最先端技術を積み、まだ見ぬ地平へと航海します。
       </p>
-      
-      <div style="margin-top:40px; display:flex; gap:16px;">
-        <a href="/ja/services/vessel-trading.html" class="cta">サービスを見る</a>
+
+      <div style="margin-top:40px; display:flex; gap:16px; flex-wrap:wrap;">
+        <a href="#business" class="cta">事業内容を見る</a>
         <a href="/ja/contact.html" class="btn">お問い合わせ</a>
       </div>
     </div>
@@ -170,56 +211,116 @@ h2::before{ content:''; width:4px; height:32px; background:linear-gradient(to bo
   <section class="wrap">
     <div class="grid-2">
       <div class="card">
-        <h3>Passion</h3>
-        <p>世界は日々近づき、文化は隣り合っています。目の前に巨大な船が現れたとき、私たちは恐れず前に進み、テクノロジーを「実際に価値ある使い方」へと導きます。勇気はイノベーションの火種です。その価値を人々に届けることに、私たちは情熱を注ぎます。</p>
+        <h3>Passion（情熱）</h3>
+        <p>世界に距離の概念は、もはや存在しないと考えます。文化も市場も隣り合い、新たな技術は常に目の前に現れます。</p>
+        <p>目前に（新たな技術という）巨大な船が現れたとき、私たちは恐れず前に進み、テクノロジーを「実際に価値ある使い方」へと導きます。</p>
+        <p style="margin-bottom:0;">勇気はイノベーションの火種です。その価値を人々に届けることに、私たちは情熱を注ぎます。</p>
       </div>
       <div class="card" style="border-color:#7ef0d4;">
-        <h3>Purpose</h3>
-        <p>人と人のつながりと信頼を第一に価値を届けます。技術による変革で豊かさへのアクセスを広げ、進歩を止めないために常に価値向上へ努めます。</p>
+        <h3>Purpose（存在意義）</h3>
+        <p>人の豊かさにつながる技術を誠実に磨き、変革が生む新しいアクセスを広げる。</p>
+        <p>進歩を止めず、価値を高め続けること。</p>
+        <p style="margin-bottom:0;">それが私たちの取り組んでいる意義です。</p>
       </div>
     </div>
   </section>
 
-  <section class="wrap">
+  <section class="wrap" id="business">
     <h2>事業内容</h2>
     <div class="grid-3">
       <div class="card">
         <div class="thumb" style="background-image:url('/images/vessel-trading-hero.jpg');"></div>
         <h3>船舶貿易</h3>
-        <p>アジアと欧州・中東の商圏をつなぎ、ご要望に応じた最適在庫をご紹介。AIによる在庫更新と安全な支払い枠組みを提供します。</p>
+        <p>アジアと世界を繋ぐグローバルマッチングサービス。AIによる在庫自動更新とETF組み込み型支払い、エスクロー対応など安全な決済構造を提供します。</p>
         <div style="margin-top:auto;"><a class="btn" href="/ja/services/vessel-trading.html">詳しく見る</a></div>
       </div>
       <div class="card">
         <div class="thumb" style="background-image:url('/images/investment-hero.jpg');"></div>
         <h3>投資</h3>
-        <p>Aviscore などの社内システムを核に、AI洞察と規律ある判断を統合。持続的な成長を志向します。</p>
+        <p>AI駆動型資産管理エンジン（Aviscore）による安定性と成長を重視した運用。FX自動売買とETFポートフォリオ戦略を組み合わせた堅実な資産形成。</p>
         <div style="margin-top:auto;"><a class="btn" href="/ja/services/investment.html">詳しく見る</a></div>
       </div>
       <div class="card">
         <div class="thumb" style="background-image:url('/images/technology-hero.jpg');"></div>
         <h3>技術開発</h3>
-        <p>現場運用まで落とし込む実装志向のAI開発。データ基盤・評価・安全性まで統合的に設計します。</p>
+        <p>実装重視のAI開発。世界中の中小企業・自治体向けADCS（Active Defense Cyber Security）を含む、データ基盤・評価・安全性を統合したソリューション。</p>
         <div style="margin-top:auto;"><a class="btn" href="/ja/services/technology.html">詳しく見る</a></div>
       </div>
     </div>
   </section>
 
+  <section class="wrap" id="faq">
+    <h2>よくあるご質問</h2>
+    <div class="faq-item">
+      <div class="faq-q">各事業部門への問い合わせ方法を教えてください。</div>
+      <div class="faq-a"><a href="/ja/contact.html">お問い合わせフォーム</a>より、ご関心のある事業（船舶貿易、投資、技術開発）をご指定ください。24時間以内に担当チームよりご連絡いたします。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">株式による投資は受け付けていますか？</div>
+      <div class="faq-a">原則として株式による受け入れは行っておりません。代わりに、特定のビジネスイニシアチブに連携するプロジェクトベースの参加スキームをご用意しています。詳細はお問い合わせください。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">ADCSの導入事例やサンプルレポートは閲覧できますか？</div>
+      <div class="faq-a">はい、<a href="/ja/services/technology.html">技術開発ページ</a>にてサンプルセキュリティレポートをご覧いただけます。ADCS（Active Defense Cyber Security）ソリューションの詳細もご確認いただけます。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">船舶取引の一般的なプロセスを教えてください。</div>
+      <div class="faq-a">プロセスは以下の通りです：(1) 要件のご相談、(2) AI マッチングによる在庫提案、(3) 検査手配、(4) エスクロー/支払い構造の設定、(5) 登録サポート。船種や所在地により異なりますが、通常4〜8週間で完了します。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">どの国や地域で事業を展開していますか？</div>
+      <div class="faq-a">グローバルに展開しており、特にアジア太平洋、中東、欧州に注力しています。法人構造として日本とパナマに拠点を持ち、エストニアとドバイに銀行インフラを構築しています。</div>
+    </div>
+  </section>
+
   <section class="wrap bg-contact">
-    <h2>パートナーシップ & お問い合わせ</h2>
+    <h2>お問い合わせ</h2>
     <div class="grid-2">
       <div class="card">
-        <h3>営業・パートナー提案</h3>
-        <p>各事業にご興味がございましたら、お気軽にご連絡ください。最適な担当が具体的な進め方をご提案します。</p>
+        <h3>パートナーシップ・営業のご相談</h3>
+        <p>サービスや協業機会にご関心がございましたら、お気軽にご連絡ください。目標達成をサポートいたします。</p>
         <a class="cta" href="/ja/contact.html">お問い合わせ</a>
       </div>
       <div class="card">
-        <h3>投資家の皆さまへ</h3>
-        <p>原則として株式による受け入れは行っておりません。代わりに特定プロジェクトへの参加スキームをご用意しています。</p>
+        <h3>資料請求</h3>
+        <p>製品・サービスの詳細情報（技術仕様、事例、価格）をご提供いたします。</p>
+        <a class="btn" href="/ja/contact.html">資料を請求する</a>
       </div>
     </div>
   </section>
 
-  <footer><div class="wrap"><p>© 2025 Avisail Global Trading — All rights reserved.</p></div></footer>
+  <footer>
+    <div class="wrap">
+      <div class="footer-content">
+        <div class="footer-col">
+          <h4>会社情報</h4>
+          <ul>
+            <li><a href="/ja/about.html">会社概要</a></li>
+            <li><a href="/ja/contact.html">お問い合わせ</a></li>
+            <li><a href="#business">事業内容</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>事業</h4>
+          <ul>
+            <li><a href="/ja/services/vessel-trading.html">船舶貿易</a></li>
+            <li><a href="/ja/services/investment.html">投資</a></li>
+            <li><a href="/ja/services/technology.html">技術開発（ADCS）</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>法的情報</h4>
+          <ul>
+            <li><a href="/ja/privacy-policy.html">プライバシーポリシー</a></li>
+            <li><a href="/ja/terms-of-service.html">利用規約</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 Avisail Technologies — All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
 
 </div>
 
