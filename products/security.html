@@ -156,9 +156,10 @@
         }
 
         .hero-title {
-            font-size: 32px;
-            line-height: 1.4;
-            margin-bottom: 12px;
+            font-size: 42px;
+            line-height: 1.3;
+            margin-bottom: 16px;
+            font-weight: 700;
         }
 
         .hero-title span {
@@ -224,6 +225,11 @@
             border: 1px solid var(--border-soft);
         }
 
+        #adcs {
+            background: radial-gradient(circle at 0 0, #1a2650 0, #0b1020 55%, #060816 100%);
+            border: 1px solid rgba(99,123,255,0.4);
+        }
+
         .section-title {
             font-size: 20px;
             margin-bottom: 10px;
@@ -238,9 +244,9 @@
         /* ADCS OVERVIEW */
         .adcs-overview {
             display: grid;
-            grid-template-columns: minmax(0,1.5fr) minmax(0,1fr);
-            gap: 24px;
-            align-items: center;
+            grid-template-columns: minmax(0,1.2fr) minmax(0,1fr) minmax(0,1fr);
+            gap: 20px;
+            align-items: start;
         }
 
         .adcs-content h3 {
@@ -440,11 +446,16 @@
             }
 
             .hero-title {
-                font-size: 24px;
+                font-size: 28px;
             }
 
             .adcs-overview {
                 grid-template-columns: minmax(0,1fr);
+            }
+
+            .hero-cta {
+                flex-direction: column;
+                align-items: stretch;
             }
 
             .service-grid {
@@ -490,6 +501,7 @@
                 <a href="#services">全サービス</a>
                 <a href="#comparison">価格比較</a>
                 <a href="#contact">申し込み</a>
+                <a href="security-en.html" class="lang-switcher">🌐 English</a>
             </nav>
         </header>
 
@@ -512,7 +524,11 @@
 
             <div class="hero-cta">
                 <a href="#contact"><button class="btn-primary">無料相談を予約する</button></a>
-                <a href="adcs/reports/avisail-report-jp.html"><button class="btn-outline">サンプルレポートを見る</button></a>
+                <div style="display:flex; gap:8px; align-items:center;">
+                    <span style="font-size:13px; color:var(--text-sub);">サンプルレポート:</span>
+                    <a href="adcs/reports/avisail-report-jp.html"><button class="btn-outline">日本語</button></a>
+                    <a href="adcs/reports/avisail-report-en.html"><button class="btn-outline">English</button></a>
+                </div>
             </div>
         </div>
 
@@ -555,19 +571,31 @@
                         </div>
                     </div>
 
-                    <a href="avisail-adcs-detail-jp.html"><button class="btn-primary">ADCS詳細・サブスクプランを見る</button></a>
+                    <a href="avisail-adcs-detail-jp.html"><button class="btn-primary" style="font-size:15px; padding:14px 28px; margin-top:8px;">📋 ADCS詳細・プラン比較を見る</button></a>
                 </div>
 
                 <div class="adcs-card">
-                    <h4>単発診断プラン</h4>
+                    <h4>💼 単発診断プラン</h4>
                     <div class="price-badge">¥150,000</div>
                     <p class="price-note">最短2週間で現状のセキュリティ状況を可視化</p>
-                    <p>
+                    <p style="font-size:11px;">
                         まずは一度、現在の攻撃面と初動体制を棚卸ししたい方向け。
                         Attack Surface & OSINTレポート、Active Defense観点でのリスク整理、
                         インシデント初動ガイドライン（ドラフト）を提供します。
                     </p>
-                    <a href="#contact"><button class="btn-outline" style="width:100%;">今すぐ申し込む</button></a>
+                    <a href="#contact"><button class="btn-outline" style="width:100%; padding:12px;">今すぐ申し込む</button></a>
+                </div>
+
+                <div class="adcs-card" style="border-color: var(--accent); box-shadow: 0 8px 24px rgba(53,179,255,0.3);">
+                    <div style="display:inline-block; font-size:10px; padding:3px 8px; border-radius:999px; background:rgba(53,179,255,0.2); color:var(--accent); margin-bottom:8px;">⭐ おすすめ</div>
+                    <h4>🔄 サブスクプラン</h4>
+                    <div class="price-badge">月額 ¥48,000〜</div>
+                    <p class="price-note">毎月違う価値を提供する継続改善プログラム</p>
+                    <p style="font-size:11px;">
+                        単発診断だけでなく、フィッシングテスト、ポリシー策定、従業員教育など、
+                        毎月異なるセキュリティサービスを提供。年間で最大50%お得になります。
+                    </p>
+                    <a href="avisail-adcs-detail-jp.html"><button class="btn-primary" style="width:100%; padding:12px;">サブスク詳細を見る</button></a>
                 </div>
             </div>
         </section>
