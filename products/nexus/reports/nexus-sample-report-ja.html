@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus Report - Neodymium</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+        :root {
+            --primary: #d97706;
+            --primary-light: #fbbf24;
+            --primary-dark: #b45309;
+            --secondary: #0ea5e9;
+            --accent: #8b5cf6;
+            --risk-color: #ef4444;
+            --risk-bg: rgba(239, 68, 68, 0.15);
+            --bg-dark: #030712;
+            --bg-card: #0f172a;
+            --bg-card-alt: #1e293b;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --border: #1e293b;
+            --border-light: #334155;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.7;
+            font-size: 15px;
+        }
+
+        .container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Cover Section */
+        .cover {
+            background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-dark) 50%, rgba(217, 119, 6, 0.1) 100%);
+            border-bottom: 1px solid var(--border);
+            padding: 3rem 0 2.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cover::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background: radial-gradient(ellipse at top right, rgba(217, 119, 6, 0.15), transparent 60%);
+            pointer-events: none;
+        }
+
+        .cover-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            position: relative;
+            z-index: 1;
+        }
+
+        .brand {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo {
+            font-size: 2.25rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.03em;
+        }
+
+        .logo-subtitle {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-top: 4px;
+        }
+
+        .report-meta {
+            text-align: right;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .report-meta div {
+            margin-bottom: 4px;
+        }
+
+        .report-meta strong {
+            color: var(--text-primary);
+        }
+
+        .classification {
+            display: inline-block;
+            padding: 4px 12px;
+            background: rgba(239, 68, 68, 0.15);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: #ef4444;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-top: 8px;
+        }
+
+        .material-section {
+            margin-top: 2.5rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+            position: relative;
+            z-index: 1;
+        }
+
+        .material-category {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        .material-name {
+            font-size: 2.75rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            margin-bottom: 4px;
+        }
+
+        .material-symbol {
+            display: inline-block;
+            padding: 4px 12px;
+            background: var(--bg-card-alt);
+            border: 1px solid var(--border-light);
+            border-radius: 6px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-left: 12px;
+            vertical-align: middle;
+        }
+
+        .material-use {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            margin-top: 8px;
+        }
+
+        /* Risk Overview Grid */
+        .risk-overview {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .risk-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            overflow: hidden;
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 3rem 0;
+        }
+
+        /* Section Styles */
+        .section {
+            margin-bottom: 3rem;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-icon {
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            box-shadow: 0 4px 12px rgba(217, 119, 6, 0.3);
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .section-title-sub {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 400;
+            margin-left: 12px;
+        }
+
+        .section-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+        }
+
+        /* Visualization containers */
+        .viz-container {
+            display: flex;
+            justify-content: center;
+            margin: 1.5rem 0;
+        }
+
+        .viz-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        /* Layer Detail Cards */
+        .layer-card {
+            background: var(--bg-card-alt);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .layer-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .layer-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .layer-name-sub {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+
+        .layer-badge {
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .layer-content {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+
+        .layer-content strong {
+            color: var(--text-primary);
+        }
+
+        .layer-factors {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.75rem;
+            margin-top: 1rem;
+        }
+
+        .factor-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 12px;
+            background: var(--bg-dark);
+            border-radius: 8px;
+            font-size: 0.85rem;
+        }
+
+        .factor-label {
+            color: var(--text-muted);
+        }
+
+        .factor-value {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 500;
+        }
+
+        /* Alerts */
+        .alert-list {
+            list-style: none;
+        }
+
+        .alert-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 1rem 1.25rem;
+            margin-bottom: 0.75rem;
+            background: var(--bg-card-alt);
+            border-radius: 10px;
+            border-left: 4px solid;
+        }
+
+        .alert-critical {
+            border-color: #dc2626;
+            background: rgba(220, 38, 38, 0.1);
+        }
+
+        .alert-high {
+            border-color: #ef4444;
+            background: rgba(239, 68, 68, 0.08);
+        }
+
+        .alert-elevated {
+            border-color: #f97316;
+            background: rgba(249, 115, 22, 0.08);
+        }
+
+        .alert-info {
+            border-color: #3b82f6;
+            background: rgba(59, 130, 246, 0.08);
+        }
+
+        .alert-icon {
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        .alert-text {
+            font-size: 0.95rem;
+            color: var(--text-primary);
+        }
+
+        /* Recommendations */
+        .rec-list {
+            list-style: none;
+        }
+
+        .rec-item {
+            padding: 1.25rem 1.5rem;
+            margin-bottom: 1rem;
+            background: var(--bg-card-alt);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+        }
+
+        .rec-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 0.75rem;
+        }
+
+        .rec-priority {
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .rec-priority-high {
+            background: var(--danger);
+            color: white;
+        }
+
+        .rec-priority-medium {
+            background: var(--warning);
+            color: #1e293b;
+        }
+
+        .rec-priority-low {
+            background: var(--secondary);
+            color: white;
+        }
+
+        .rec-title {
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .rec-body {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* Disclaimer */
+        .disclaimer {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .disclaimer-title {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .disclaimer-text {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+
+        /* Footer */
+        .footer {
+            border-top: 1px solid var(--border);
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .footer-brand {
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .footer-text {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-top: 8px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .cover-header {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            .report-meta {
+                text-align: left;
+            }
+            .risk-overview {
+                grid-template-columns: 1fr;
+            }
+            .viz-row {
+                grid-template-columns: 1fr;
+            }
+            .layer-factors {
+                grid-template-columns: 1fr;
+            }
+            .material-name {
+                font-size: 2rem;
+            }
+        }
+
+        /* Print */
+        @media print {
+            body {
+                background: white;
+                color: black;
+            }
+            .section-card, .layer-card {
+                border: 1px solid #e5e7eb;
+                background: #f9fafb;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Cover Section -->
+    <header class="cover">
+        <div class="container">
+            <div class="cover-header">
+                <div class="brand">
+                    <div class="logo">NEXUS</div>
+                    <div class="logo-subtitle">Critical Materials Supply Chain Intelligence</div>
+                </div>
+                <div class="report-meta">
+                    <div><strong>Report ID:</strong> NXS-202512241539</div>
+                    <div><strong>Generated:</strong> 2025-12-24 15:39 UTC</div>
+                    <div class="classification">Confidential</div>
+                </div>
+            </div>
+
+            <div class="material-section">
+                <div class="material-category">rare earth</div>
+                <h1 class="material-name">
+                    Neodymium
+                    <span class="material-symbol">Nd</span>
+                </h1>
+                <div class="material-use">Permanent magnets (EV motors, wind turbines)</div>
+            </div>
+
+            <div class="risk-overview">
+                <div class="risk-card">
+                    <svg width="280" height="160" viewBox="0 0 280 160" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <linearGradient id="risk-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#ef4444;stop-opacity:0.3" />
+            <stop offset="100%" style="stop-color:#ef4444;stop-opacity:0.1" />
+        </linearGradient>
+    </defs>
+    <rect width="280" height="160" fill="#111827" rx="16" stroke="#ef4444" stroke-width="2"/>
+    <rect x="2" y="2" width="276" height="156" fill="url(#risk-grad)" rx="14"/>
+
+    <text x="20" y="32" fill="#9ca3af" font-family="Inter, sans-serif" font-size="11" font-weight="500">HIGHEST RISK LEVEL</text>
+    <text x="20" y="70" fill="#ef4444" font-family="Inter, sans-serif" font-size="32" font-weight="700">重大</text>
+    <text x="20" y="92" fill="#6b7280" font-family="Inter, sans-serif" font-size="12">HIGH</text>
+
+    <line x1="20" y1="110" x2="260" y2="110" stroke="#374151" stroke-width="1"/>
+
+    <text x="20" y="132" fill="#9ca3af" font-family="Inter, sans-serif" font-size="10">TREND</text>
+    <text x="70" y="132" fill="#ef4444" font-family="Inter, sans-serif" font-size="14" font-weight="600">↓ deteriorating</text>
+
+    <text x="260" y="132" text-anchor="end" fill="#6b7280" font-family="Inter, sans-serif" font-size="10">信頼度 77%</text>
+</svg>
+                </div>
+                <div class="risk-card">
+                    <svg width="300" height="120" viewBox="0 0 300 120" xmlns="http://www.w3.org/2000/svg">
+<rect width="300" height="120" fill="#111827" rx="12"/>
+<text x="12" y="27" fill="#9ca3af" font-family="Inter, sans-serif" font-size="10">CRITICAL</text>
+<rect x="80" y="15" width="180" height="18" rx="4" fill="#1f2937"/>
+<rect x="80" y="15" width="36.0" height="18" rx="4" fill="#dc2626"/>
+<text x="270" y="28" fill="#f9fafb" font-family="Inter, sans-serif" font-size="12" font-weight="600">1</text>
+<text x="12" y="53" fill="#9ca3af" font-family="Inter, sans-serif" font-size="10">HIGH</text>
+<rect x="80" y="41" width="180" height="18" rx="4" fill="#1f2937"/>
+<rect x="80" y="41" width="180.0" height="18" rx="4" fill="#ef4444"/>
+<text x="270" y="54" fill="#f9fafb" font-family="Inter, sans-serif" font-size="12" font-weight="600">5</text>
+<text x="12" y="79" fill="#9ca3af" font-family="Inter, sans-serif" font-size="10">ELEVATED</text>
+<rect x="80" y="67" width="180" height="18" rx="4" fill="#1f2937"/>
+<rect x="80" y="67" width="108.0" height="18" rx="4" fill="#f97316"/>
+<text x="270" y="80" fill="#f9fafb" font-family="Inter, sans-serif" font-size="12" font-weight="600">3</text>
+<text x="12" y="105" fill="#9ca3af" font-family="Inter, sans-serif" font-size="10">INFO</text>
+<rect x="80" y="93" width="180" height="18" rx="4" fill="#1f2937"/>
+<rect x="80" y="93" width="0.0" height="18" rx="4" fill="#3b82f6"/>
+<text x="270" y="106" fill="#f9fafb" font-family="Inter, sans-serif" font-size="12" font-weight="600">0</text>
+</svg>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+
+            <!-- 5-Layer Assessment -->
+            <section class="section">
+                <div class="section-header">
+                    <div class="section-icon">📊</div>
+                    <h2 class="section-title">5層リスク評価<span class="section-title-sub">5-Layer Risk Assessment</span></h2>
+                </div>
+                <div class="section-card">
+                    <div class="viz-container">
+                        <svg width="500" height="320" viewBox="0 0 500 320" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<linearGradient id="grad-minimal" x1="0%" y1="0%" x2="100%" y2="0%">
+<stop offset="0%" style="stop-color:#10b981;stop-opacity:1" />
+<stop offset="100%" style="stop-color:#34d399;stop-opacity:0.8" />
+</linearGradient>
+<linearGradient id="grad-low" x1="0%" y1="0%" x2="100%" y2="0%">
+<stop offset="0%" style="stop-color:#22c55e;stop-opacity:1" />
+<stop offset="100%" style="stop-color:#4ade80;stop-opacity:0.8" />
+</linearGradient>
+<linearGradient id="grad-moderate" x1="0%" y1="0%" x2="100%" y2="0%">
+<stop offset="0%" style="stop-color:#eab308;stop-opacity:1" />
+<stop offset="100%" style="stop-color:#facc15;stop-opacity:0.8" />
+</linearGradient>
+<linearGradient id="grad-elevated" x1="0%" y1="0%" x2="100%" y2="0%">
+<stop offset="0%" style="stop-color:#f97316;stop-opacity:1" />
+<stop offset="100%" style="stop-color:#fb923c;stop-opacity:0.8" />
+</linearGradient>
+<linearGradient id="grad-high" x1="0%" y1="0%" x2="100%" y2="0%">
+<stop offset="0%" style="stop-color:#ef4444;stop-opacity:1" />
+<stop offset="100%" style="stop-color:#f87171;stop-opacity:0.8" />
+</linearGradient>
+<linearGradient id="grad-critical" x1="0%" y1="0%" x2="100%" y2="0%">
+<stop offset="0%" style="stop-color:#dc2626;stop-opacity:1" />
+<stop offset="100%" style="stop-color:#ef4444;stop-opacity:0.8" />
+</linearGradient>
+<filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+<feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.3"/>
+</filter>
+</defs>
+<rect width="500" height="320" fill="#0a0f1a" rx="12"/>
+<text x="250.0" y="24" text-anchor="middle" fill="#f9fafb" font-family="Inter, sans-serif" font-size="14" font-weight="600">5-Layer Risk Assessment</text>
+<text x="12" y="63.0" fill="#9ca3af" font-family="Inter, sans-serif" font-size="11" font-weight="500">Layer 1</text>
+<text x="60" y="63.0" fill="#f9fafb" font-family="Inter, sans-serif" font-size="12" font-weight="500">供給集中</text>
+<rect x="180" y="40" width="220" height="36" fill="#1f2937" rx="6"/>
+<rect x="180" y="40" width="183.33333333333334" height="36" fill="url(#grad-high)" rx="6" filter="url(#shadow)"/>
+<text x="355.33333333333337" y="62.0" text-anchor="end" fill="#ffffff" font-family="Inter, sans-serif" font-size="11" font-weight="600">HIGH</text>
+<text x="416" y="63.0" fill="#6b7280" font-family="Inter, sans-serif" font-size="16" font-weight="600">→</text>
+<text x="446" y="62.0" fill="#6b7280" font-family="Inter, sans-serif" font-size="10">60%</text>
+<text x="12" y="115.0" fill="#9ca3af" font-family="Inter, sans-serif" font-size="11" font-weight="500">Layer 2</text>
+<text x="60" y="115.0" fill="#f9fafb" font-family="Inter, sans-serif" font-size="12" font-weight="500">中流ボトルネック</text>
+<rect x="180" y="92" width="220" height="36" fill="#1f2937" rx="6"/>
+<rect x="180" y="92" width="146.66666666666666" height="36" fill="url(#grad-elevated)" rx="6" filter="url(#shadow)"/>
+<text x="318.66666666666663" y="114.0" text-anchor="end" fill="#ffffff" font-family="Inter, sans-serif" font-size="11" font-weight="600">ELEVATED</text>
+<text x="416" y="115.0" fill="#6b7280" font-family="Inter, sans-serif" font-size="16" font-weight="600">→</text>
+<text x="446" y="114.0" fill="#6b7280" font-family="Inter, sans-serif" font-size="10">100%</text>
+<text x="12" y="167.0" fill="#9ca3af" font-family="Inter, sans-serif" font-size="11" font-weight="500">Layer 3</text>
+<text x="60" y="167.0" fill="#f9fafb" font-family="Inter, sans-serif" font-size="12" font-weight="500">地政学・規制</text>
+<rect x="180" y="144" width="220" height="36" fill="#1f2937" rx="6"/>
+<rect x="180" y="144" width="146.66666666666666" height="36" fill="url(#grad-elevated)" rx="6" filter="url(#shadow)"/>
+<text x="318.66666666666663" y="166.0" text-anchor="end" fill="#ffffff" font-family="Inter, sans-serif" font-size="11" font-weight="600">ELEVATED</text>
+<text x="416" y="167.0" fill="#ef4444" font-family="Inter, sans-serif" font-size="16" font-weight="600">↓</text>
+<text x="446" y="166.0" fill="#6b7280" font-family="Inter, sans-serif" font-size="10">83%</text>
+<text x="12" y="219.0" fill="#9ca3af" font-family="Inter, sans-serif" font-size="11" font-weight="500">Layer 4</text>
+<text x="60" y="219.0" fill="#f9fafb" font-family="Inter, sans-serif" font-size="12" font-weight="500">制約リスク</text>
+<rect x="180" y="196" width="220" height="36" fill="#1f2937" rx="6"/>
+<rect x="180" y="196" width="146.66666666666666" height="36" fill="url(#grad-elevated)" rx="6" filter="url(#shadow)"/>
+<text x="318.66666666666663" y="218.0" text-anchor="end" fill="#ffffff" font-family="Inter, sans-serif" font-size="11" font-weight="600">ELEVATED</text>
+<text x="416" y="219.0" fill="#6b7280" font-family="Inter, sans-serif" font-size="16" font-weight="600">→</text>
+<text x="446" y="218.0" fill="#6b7280" font-family="Inter, sans-serif" font-size="10">66%</text>
+<text x="12" y="271.0" fill="#9ca3af" font-family="Inter, sans-serif" font-size="11" font-weight="500">Layer 5</text>
+<text x="60" y="271.0" fill="#f9fafb" font-family="Inter, sans-serif" font-size="12" font-weight="500">代替可能性</text>
+<rect x="180" y="248" width="220" height="36" fill="#1f2937" rx="6"/>
+<rect x="180" y="248" width="110.0" height="36" fill="url(#grad-moderate)" rx="6" filter="url(#shadow)"/>
+<text x="282.0" y="270.0" text-anchor="end" fill="#ffffff" font-family="Inter, sans-serif" font-size="11" font-weight="600">MODERATE</text>
+<text x="416" y="271.0" fill="#6b7280" font-family="Inter, sans-serif" font-size="16" font-weight="600">→</text>
+<text x="446" y="270.0" fill="#6b7280" font-family="Inter, sans-serif" font-size="10">50%</text>
+<text x="180" y="300" fill="#6b7280" font-family="Inter, sans-serif" font-size="10" font-style="italic">* Layer 5 is reference only and does not influence risk assessment</text>
+</svg>
+                    </div>
+                    <p style="color: var(--text-secondary); margin-top: 1rem; font-size: 0.9rem;">
+                        本評価は供給集中度、中流工程ボトルネック、地政学・規制リスク、制約リスク、代替可能性の5つの観点から、戦略資源の「事業前提としての健全性」を評価しています。Layer 5（代替可能性）は参考情報であり、意思決定の根拠としては使用しません。
+                    </p>
+                </div>
+            </section>
+
+            <!-- Supply Chain Map -->
+            <section class="section">
+                <div class="section-header">
+                    <div class="section-icon">🔗</div>
+                    <h2 class="section-title">サプライチェーン構造<span class="section-title-sub">Supply Chain Flow</span></h2>
+                </div>
+                <div class="section-card">
+                    <div class="viz-container">
+                        <svg width="600" height="280" viewBox="0 0 600 280" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+<polygon points="0 0, 10 3.5, 0 7" fill="#4b5563"/>
+</marker>
+<filter id="glow-mining" x="-50%" y="-50%" width="200%" height="200%">
+<feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+<feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+</filter>
+</defs>
+<rect width="600" height="280" fill="#0a0f1a" rx="12"/>
+<text x="300.0" y="28" text-anchor="middle" fill="#f9fafb" font-family="Inter, sans-serif" font-size="14" font-weight="600">Supply Chain Flow: Neodymium</text>
+<text x="300.0" y="46" text-anchor="middle" fill="#6b7280" font-family="Inter, sans-serif" font-size="11">サプライチェーン構造と依存度</text>
+<path d="M 145 120 Q 200.0 90 255 120" fill="none" stroke="#4b5563" stroke-width="2" marker-end="url(#arrowhead)"/>
+<path d="M 345 120 Q 400.0 90 455 120" fill="none" stroke="#4b5563" stroke-width="2" marker-end="url(#arrowhead)"/>
+<circle cx="100" cy="120" r="40" fill="#1f2937" stroke="#ef4444" stroke-width="3"/>
+<text x="100" y="115" text-anchor="middle" fill="#f9fafb" font-family="Inter, sans-serif" font-size="20">⛏️</text>
+<text x="100" y="135" text-anchor="middle" fill="#9ca3af" font-family="Inter, sans-serif" font-size="9">MINING</text>
+<text x="100" y="180" text-anchor="middle" fill="#f9fafb" font-family="Inter, sans-serif" font-size="11" font-weight="500">採掘</text>
+<text x="100" y="198" text-anchor="middle" fill="#ef4444" font-family="Inter, sans-serif" font-size="12" font-weight="600">CN 60%</text>
+<circle cx="300" cy="120" r="40" fill="#1f2937" stroke="#f97316" stroke-width="3"/>
+<text x="300" y="115" text-anchor="middle" fill="#f9fafb" font-family="Inter, sans-serif" font-size="20">🏭</text>
+<text x="300" y="135" text-anchor="middle" fill="#9ca3af" font-family="Inter, sans-serif" font-size="9">REFINING</text>
+<text x="300" y="180" text-anchor="middle" fill="#f9fafb" font-family="Inter, sans-serif" font-size="11" font-weight="500">精製・加工</text>
+<text x="300" y="198" text-anchor="middle" fill="#f97316" font-family="Inter, sans-serif" font-size="12" font-weight="600">CN 90%</text>
+<circle cx="500" cy="120" r="40" fill="#1f2937" stroke="#3b82f6" stroke-width="3"/>
+<text x="500" y="115" text-anchor="middle" fill="#f9fafb" font-family="Inter, sans-serif" font-size="20">🔋</text>
+<text x="500" y="135" text-anchor="middle" fill="#9ca3af" font-family="Inter, sans-serif" font-size="9">END USE</text>
+<text x="500" y="180" text-anchor="middle" fill="#f9fafb" font-family="Inter, sans-serif" font-size="11" font-weight="500">最終用途</text>
+<rect x="20" y="237" width="12" height="12" rx="2" fill="#ef4444"/>
+<text x="38" y="247" fill="#9ca3af" font-family="Inter, sans-serif" font-size="10">Layer 1 Risk</text>
+<rect x="130" y="237" width="12" height="12" rx="2" fill="#f97316"/>
+<text x="148" y="247" fill="#9ca3af" font-family="Inter, sans-serif" font-size="10">Layer 2 Risk</text>
+</svg>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Layer Details -->
+            <section class="section">
+                <div class="section-header">
+                    <div class="section-icon">🔍</div>
+                    <h2 class="section-title">各層詳細分析<span class="section-title-sub">Layer-by-Layer Analysis</span></h2>
+                </div>
+                <div class="section-card">
+                    
+            <div class="layer-card">
+                <div class="layer-header">
+                    <div>
+                        <div class="layer-name">Layer 1: 供給集中リスク<span class="layer-name-sub"> / Supply Concentration</span></div>
+                    </div>
+                    <span class="layer-badge" style="background: rgba(239, 68, 68, 0.15); color: #ef4444; border: 1px solid #ef4444;">HIGH</span>
+                </div>
+                <div class="layer-content">
+                    <p><strong>Key Finding:</strong> High concentration risk in primary supply</p>
+                    <p><strong>Trend:</strong> Stable | <strong>Confidence:</strong> 60%</p>
+                    <div class="layer-factors">
+                    <div class="factor-item">
+                        <span class="factor-label">Top Country Share</span>
+                        <span class="factor-value">0.60</span>
+                    </div>
+                    <div class="factor-item">
+                        <span class="factor-label">Country Hhi</span>
+                        <span class="factor-value">0.65</span>
+                    </div>
+                    <div class="factor-item">
+                        <span class="factor-label">Firm Concentration</span>
+                        <span class="factor-value">0.55</span>
+                    </div>
+                    <div class="factor-item">
+                        <span class="factor-label">Mining Refining Gap</span>
+                        <span class="factor-value">0.30</span>
+                    </div>
+                    <div class="factor-item">
+                        <span class="factor-label">Single Source Ratio</span>
+                        <span class="factor-value">0.60</span>
+                    </div></div>
+                    
+                </div>
+            </div>
+            
+
+            <div class="layer-card">
+                <div class="layer-header">
+                    <div>
+                        <div class="layer-name">Layer 2: 中流工程ボトルネック<span class="layer-name-sub"> / Midstream Chokepoint</span></div>
+                    </div>
+                    <span class="layer-badge" style="background: rgba(249, 115, 22, 0.15); color: #f97316; border: 1px solid #f97316;">ELEVATED</span>
+                </div>
+                <div class="layer-content">
+                    <p><strong>Key Finding:</strong> Separation/refining capacity limited to 2 countries</p>
+                    <p><strong>Trend:</strong> Stable | <strong>Confidence:</strong> 100%</p>
+                    <div class="layer-factors">
+                    <div class="factor-item">
+                        <span class="factor-label">Refining Countries</span>
+                        <span class="factor-value">2</span>
+                    </div>
+                    <div class="factor-item">
+                        <span class="factor-label">Top Refining Share</span>
+                        <span class="factor-value">0.90</span>
+                    </div>
+                    <div class="factor-item">
+                        <span class="factor-label">Tech Barrier Years</span>
+                        <span class="factor-value">10</span>
+                    </div>
+                    <div class="factor-item">
+                        <span class="factor-label">Alternative Capacity</span>
+                        <span class="factor-value">0.08</span>
+                    </div>
+                    <div class="factor-item">
+                        <span class="factor-label">Permit Years</span>
+                        <span class="factor-value">5</span>
+                    </div>
+                    <div class="factor-item">
+                        <span class="factor-label">Env Opposition</span>
+                        <span class="factor-value">moderate</span>
+                    </div></div>
+                    
+                </div>
+            </div>
+            
+
+            <div class="layer-card">
+                <div class="layer-header">
+                    <div>
+                        <div class="layer-name">Layer 3: 地政学・規制リスク<span class="layer-name-sub"> / Geopolitical & Regulatory</span></div>
+                    </div>
+                    <span class="layer-badge" style="background: rgba(249, 115, 22, 0.15); color: #f97316; border: 1px solid #f97316;">ELEVATED</span>
+                </div>
+                <div class="layer-content">
+                    <p><strong>Key Finding:</strong> Export control policy under review</p>
+                    <p><strong>Trend:</strong> Deteriorating | <strong>Confidence:</strong> 83%</p>
+                    <div class="layer-factors">
+                    <div class="factor-item">
+                        <span class="factor-label">Export Control</span>
+                        <span class="factor-value">high</span>
+                    </div>
+                    <div class="factor-item">
+                        <span class="factor-label">Policy Changes 3Yr</span>
+                        <span class="factor-value">2</span>
+                    </div>
+                    <div class="factor-item">
+                        <span class="factor-label">Export Restriction History</span>
+                        <span class="factor-value">Yes</span>
+                    </div>
+                    <div class="factor-item">
+                        <span class="factor-label">Alliance Structure</span>
+                        <span class="factor-value">non_allied</span>
+                    </div>
+                    <div class="factor-item">
+                        <span class="factor-label">Primary Source Country</span>
+                        <span class="factor-value">CN</span>
+                    </div>
+                    <div class="factor-item">
+                        <span class="factor-label">National Security Designation</span>
+                        <span class="factor-value">Yes</span>
+                    </div></div>
+                    
+                </div>
+            </div>
+            
+
+            <div class="layer-card">
+                <div class="layer-header">
+                    <div>
+                        <div class="layer-name">Layer 4: 制約リスク（ESG）<span class="layer-name-sub"> / Constraint Risk</span></div>
+                    </div>
+                    <span class="layer-badge" style="background: rgba(249, 115, 22, 0.15); color: #f97316; border: 1px solid #f97316;">ELEVATED</span>
+                </div>
+                <div class="layer-content">
+                    <p><strong>Key Finding:</strong> Social opposition incidents in primary mining regions</p>
+                    <p><strong>Trend:</strong> Stable | <strong>Confidence:</strong> 66%</p>
+                    <div class="layer-factors">
+                    <div class="factor-item">
+                        <span class="factor-label">Env Regulation</span>
+                        <span class="factor-value">high</span>
+                    </div>
+                    <div class="factor-item">
+                        <span class="factor-label">Permit Months</span>
+                        <span class="factor-value">48</span>
+                    </div>
+                    <div class="factor-item">
+                        <span class="factor-label">Opposition Incidents</span>
+                        <span class="factor-value">1</span>
+                    </div>
+                    <div class="factor-item">
+                        <span class="factor-label">Esg Exclusion Risk</span>
+                        <span class="factor-value">moderate</span>
+                    </div></div>
+                    
+                </div>
+            </div>
+            
+
+            <div class="layer-card">
+                <div class="layer-header">
+                    <div>
+                        <div class="layer-name">Layer 5: 代替可能性（参考）<span class="layer-name-sub"> / Substitutability</span></div>
+                    </div>
+                    <span class="layer-badge" style="background: rgba(234, 179, 8, 0.15); color: #eab308; border: 1px solid #eab308;">MODERATE</span>
+                </div>
+                <div class="layer-content">
+                    <p><strong>Key Finding:</strong> Status: Research stage, Time Horizon: 10+ years</p>
+                    <p><strong>Trend:</strong> Stable | <strong>Confidence:</strong> 50%</p>
+                    <div class="layer-factors">
+                    <div class="factor-item">
+                        <span class="factor-label">Maturity</span>
+                        <span class="factor-value">research</span>
+                    </div>
+                    <div class="factor-item">
+                        <span class="factor-label">Years To Commercial</span>
+                        <span class="factor-value">15</span>
+                    </div>
+                    <div class="factor-item">
+                        <span class="factor-label">Infrastructure Compatible</span>
+                        <span class="factor-value">No</span>
+                    </div>
+                    <div class="factor-item">
+                        <span class="factor-label">Cost Gap</span>
+                        <span class="factor-value">3.00</span>
+                    </div>
+                    <div class="factor-item">
+                        <span class="factor-label">Status</span>
+                        <span class="factor-value">Research stage</span>
+                    </div>
+                    <div class="factor-item">
+                        <span class="factor-label">Time Horizon</span>
+                        <span class="factor-value">10+ years</span>
+                    </div></div>
+                    <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 1rem; font-style: italic;">* This layer is for reference only and does not influence the overall risk assessment.</p>
+                </div>
+            </div>
+            
+                </div>
+            </section>
+
+            <!-- Alerts -->
+            <section class="section">
+                <div class="section-header">
+                    <div class="section-icon">⚠️</div>
+                    <h2 class="section-title">アラート一覧<span class="section-title-sub">Risk Alerts</span></h2>
+                </div>
+                <div class="section-card">
+                    <ul class="alert-list">
+<li class="alert-item alert-high"><span class="alert-icon">🟠</span><span class="alert-text">High market concentration (HHI > 0.5)</span></li>
+<li class="alert-item alert-high"><span class="alert-icon">🟠</span><span class="alert-text">Only 2 countries have refining capability</span></li>
+<li class="alert-item alert-critical"><span class="alert-icon">🔴</span><span class="alert-text">Single country dominates refining (>85%)</span></li>
+<li class="alert-item alert-high"><span class="alert-icon">🟠</span><span class="alert-text">Technology requires 10+ years to replicate</span></li>
+<li class="alert-item alert-high"><span class="alert-icon">🟠</span><span class="alert-text">No alternative refining capacity outside primary region</span></li>
+<li class="alert-item alert-high"><span class="alert-icon">🟠</span><span class="alert-text">Significant export control exposure</span></li>
+<li class="alert-item alert-elevated"><span class="alert-icon">🟡</span><span class="alert-text">Recent export policy changes detected</span></li>
+<li class="alert-item alert-elevated"><span class="alert-icon">🟡</span><span class="alert-text">Historical export restrictions on record</span></li>
+<li class="alert-item alert-elevated"><span class="alert-icon">🟡</span><span class="alert-text">Social opposition incidents on record</span></li>
+</ul>
+                </div>
+            </section>
+
+            <!-- Recommendations -->
+            <section class="section">
+                <div class="section-header">
+                    <div class="section-icon">✅</div>
+                    <h2 class="section-title">推奨アクション<span class="section-title-sub">Recommended Actions</span></h2>
+                </div>
+                <div class="section-card">
+                    <ul class="rec-list">
+
+            <li class="rec-item">
+                <div class="rec-header">
+                    <span class="rec-priority rec-priority-high">高</span>
+                    <span class="rec-title">サプライヤー多様化戦略の策定</span>
+                </div>
+                <div class="rec-body">単一国・単一企業への依存度が高いため、代替供給源の特定と関係構築を優先的に進めることを推奨します。</div>
+            </li>
+            
+
+            <li class="rec-item">
+                <div class="rec-header">
+                    <span class="rec-priority rec-priority-medium">中</span>
+                    <span class="rec-title">地政学リスクモニタリングの強化</span>
+                </div>
+                <div class="rec-body">輸出規制や政策変更のリスクが検出されています。該当国の政策動向を継続的に監視し、早期警戒体制を構築することを推奨します。</div>
+            </li>
+            
+
+            <li class="rec-item">
+                <div class="rec-header">
+                    <span class="rec-priority rec-priority-medium">中</span>
+                    <span class="rec-title">ESG・環境規制対応の評価</span>
+                </div>
+                <div class="rec-body">供給元における環境・社会的制約リスクが検出されています。サプライチェーンのESGデューデリジェンスを強化することを推奨します。</div>
+            </li>
+            
+
+            <li class="rec-item">
+                <div class="rec-header">
+                    <span class="rec-priority rec-priority-low">低</span>
+                    <span class="rec-title">定期的なリスク再評価の実施</span>
+                </div>
+                <div class="rec-body">戦略資源のリスク状況は継続的に変化します。四半期ごとのリスク再評価を実施し、前提条件の変化を早期に検出することを推奨します。</div>
+            </li>
+            
+</ul>
+                </div>
+            </section>
+
+            <!-- Disclaimer -->
+            <div class="disclaimer">
+                <div class="disclaimer-title">免責事項</div>
+                <div class="disclaimer-text">本レポートは公開情報および独自の分析手法に基づいて作成されています。評価結果は参考情報であり、投資判断や事業決定を推奨するものではありません。重要な意思決定を行う前に、専門家による追加評価を推奨します。資源価格の予測、投資助言、売買推奨は本サービスの範囲外です。</div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-brand">NEXUS</div>
+            <div class="footer-text">
+                Critical Materials Supply Chain Intelligence by Avisail<br>
+                Report ID: NXS-202512241539 | 2025-12-24
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

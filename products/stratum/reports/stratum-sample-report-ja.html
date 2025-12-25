@@ -1,0 +1,2316 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stratum Report - デモAIインフラストラクチャ</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+        :root {
+            --primary: #10b981;
+            --primary-light: #34d399;
+            --primary-dark: #059669;
+            --bg-dark: #030712;
+            --bg-card: #0f172a;
+            --bg-card-alt: #1e293b;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --border: #1e293b;
+            --danger: #ef4444;
+            --warning: #f59e0b;
+            --success: #10b981;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.7;
+            font-size: 15px;
+        }
+
+        .container { max-width: 1140px; margin: 0 auto; padding: 0 2rem; }
+
+        /* Cover Section */
+        .cover {
+            background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-dark) 50%, rgba(16, 185, 129, 0.1) 100%);
+            border-bottom: 1px solid var(--border);
+            padding: 3rem 0 2.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cover::before {
+            content: '';
+            position: absolute;
+            top: 0; right: 0;
+            width: 50%; height: 100%;
+            background: radial-gradient(ellipse at top right, rgba(16, 185, 129, 0.15), transparent 60%);
+            pointer-events: none;
+        }
+
+        .cover-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo {
+            font-size: 2.25rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.03em;
+        }
+
+        .logo-subtitle {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-top: 4px;
+        }
+
+        .report-meta { text-align: right; font-size: 0.8rem; color: var(--text-secondary); }
+        .report-meta div { margin-bottom: 4px; }
+        .report-meta strong { color: var(--text-primary); }
+
+        .classification {
+            display: inline-block;
+            padding: 4px 12px;
+            background: rgba(16, 185, 129, 0.15);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--primary);
+            text-transform: uppercase;
+            margin-top: 8px;
+        }
+
+        .target-section {
+            margin-top: 2.5rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+            position: relative;
+            z-index: 1;
+        }
+
+        .target-category {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        .target-name { font-size: 2.75rem; font-weight: 800; letter-spacing: -0.03em; }
+        .target-info { display: flex; gap: 2rem; color: var(--text-secondary); font-size: 0.9rem; margin-top: 0.75rem; }
+
+        /* Risk Banner - Compact */
+        .risk-banner {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.15), rgba(239, 68, 68, 0.05));
+            border: 1px solid rgba(239, 68, 68, 0.4);
+            border-radius: 12px;
+            padding: 1rem 1.5rem;
+            margin-top: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .risk-banner-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+            margin-right: 0.5rem;
+        }
+
+        .risk-banner-level {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #ef4444;
+            margin-right: 1rem;
+        }
+
+        .risk-banner-sub {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .risk-banner-divider {
+            color: var(--text-muted);
+            font-size: 1.25rem;
+            margin-right: 1rem;
+        }
+
+        /* Indicators Grid - Balanced */
+        .risk-overview {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .risk-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Main Content */
+        .main-content { padding: 3rem 0; }
+        .section { margin-bottom: 3rem; }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; }
+        .section-title-sub { display: block; font-size: 0.8rem; font-weight: 400; color: var(--text-muted); margin-top: 2px; }
+
+        .section-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+        }
+
+        .section-card p { margin-bottom: 1rem; color: var(--text-secondary); }
+        .section-card strong { color: var(--text-primary); }
+        .section-card ul, .section-card ol { margin: 1rem 0; padding-left: 1.5rem; }
+        .section-card li { margin-bottom: 0.75rem; color: var(--text-secondary); }
+        .section-card code { background: var(--bg-dark); padding: 2px 6px; border-radius: 4px; font-family: 'JetBrains Mono', monospace; font-size: 0.85em; color: var(--primary); }
+        .section-card pre { background: var(--bg-dark); padding: 1rem; border-radius: 8px; overflow-x: auto; margin: 1rem 0; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: var(--text-secondary); }
+
+        /* Metrics Grid */
+        .metrics-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-bottom: 2rem; }
+        .metric-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; text-align: center; }
+        .metric-value { font-size: 2.5rem; font-weight: 700; font-family: 'JetBrains Mono', monospace; }
+        .metric-value.safe { color: var(--success); }
+        .metric-value.warning { color: var(--warning); }
+        .metric-value.danger { color: var(--danger); }
+        .metric-label { font-size: 0.85rem; color: var(--text-muted); }
+
+        /* Visualizations */
+        .viz-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
+        .viz-container { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 1.5rem; display: flex; justify-content: center; align-items: center; }
+        .viz-container svg { max-width: 100%; height: auto; }
+        .viz-full { grid-column: 1 / -1; }
+
+        /* Info Grid */
+        .info-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+        .info-item { display: flex; flex-direction: column; gap: 0.25rem; }
+        .info-label { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; }
+        .info-value { font-size: 1rem; color: var(--text-primary); font-family: 'JetBrains Mono', monospace; }
+
+        /* Profile Cards */
+        .profile-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+        .profile-card {
+            background: var(--bg-card-alt);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1rem 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: border-color 0.2s;
+        }
+        .profile-card:hover {
+            border-color: var(--primary);
+        }
+        .profile-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
+        .profile-icon.network { background: rgba(59, 130, 246, 0.15); color: #3b82f6; }
+        .profile-icon.org { background: rgba(168, 85, 247, 0.15); color: #a855f7; }
+        .profile-icon.cloud { background: rgba(249, 115, 22, 0.15); color: #f97316; }
+        .profile-icon.location { background: rgba(16, 185, 129, 0.15); color: #10b981; }
+        .profile-icon.os { background: rgba(100, 116, 139, 0.15); color: #94a3b8; }
+        .profile-icon.gpu { background: rgba(34, 197, 94, 0.15); color: #22c55e; }
+        .profile-content { flex: 1; min-width: 0; }
+        .profile-label {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 2px;
+        }
+        .profile-value {
+            font-size: 0.95rem;
+            color: var(--text-primary);
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 500;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* Port Tags */
+        .port-list { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0; }
+        .port-tag { background: var(--bg-dark); border: 1px solid var(--border); padding: 0.5rem 1rem; border-radius: 8px; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; }
+        .port-tag.danger { border-color: var(--danger); color: var(--danger); }
+
+        /* Alert Box */
+        .alert-box { background: rgba(239, 68, 68, 0.1); border: 1px solid var(--danger); border-radius: 12px; padding: 1.25rem; margin: 1.5rem 0; }
+        .alert-title { color: var(--danger); font-weight: 600; margin-bottom: 0.5rem; }
+        .alert-content { color: var(--text-secondary); font-size: 0.9rem; }
+
+        /* Alert List with CSS indicators */
+        .alert-list { list-style: none; padding-left: 0 !important; }
+        .alert-item { display: flex; align-items: flex-start; gap: 12px; padding: 1rem 1.25rem; margin-bottom: 0.75rem; background: var(--bg-card-alt); border-radius: 10px; border-left: 4px solid; }
+        .alert-critical { border-color: #dc2626; background: rgba(220, 38, 38, 0.1); }
+        .alert-high { border-color: #ef4444; background: rgba(239, 68, 68, 0.08); }
+        .alert-elevated { border-color: #f97316; background: rgba(249, 115, 22, 0.08); }
+        .alert-info { border-color: #3b82f6; background: rgba(59, 130, 246, 0.08); }
+
+        .alert-indicator { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; margin-top: 4px; }
+        .alert-indicator.critical { background: #ef4444; box-shadow: 0 0 8px rgba(239, 68, 68, 0.5); }
+        .alert-indicator.high { background: #f97316; box-shadow: 0 0 8px rgba(249, 115, 22, 0.5); }
+        .alert-indicator.elevated { background: #eab308; box-shadow: 0 0 8px rgba(234, 179, 8, 0.5); }
+        .alert-indicator.info { background: #3b82f6; box-shadow: 0 0 8px rgba(59, 130, 246, 0.5); }
+        .alert-text { font-size: 0.95rem; color: var(--text-primary); }
+
+        /* Disclaimer & Footer */
+        .disclaimer { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; margin-top: 2rem; }
+        .disclaimer-title { font-size: 0.8rem; font-weight: 600; color: var(--text-muted); margin-bottom: 8px; text-transform: uppercase; }
+        .disclaimer-text { font-size: 0.85rem; color: var(--text-muted); }
+        .footer { border-top: 1px solid var(--border); padding: 2rem 0; text-align: center; }
+        .footer-brand { font-weight: 700; background: linear-gradient(135deg, var(--primary), var(--primary-light)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .footer-text { color: var(--text-muted); font-size: 0.85rem; margin-top: 8px; }
+
+        /* Risk Badges */
+        .risk-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .risk-badge.critical { background: rgba(220, 38, 38, 0.2); color: #dc2626; border: 1px solid #dc2626; }
+        .risk-badge.high { background: rgba(239, 68, 68, 0.2); color: #ef4444; border: 1px solid #ef4444; }
+        .risk-badge.elevated { background: rgba(249, 115, 22, 0.2); color: #f97316; border: 1px solid #f97316; }
+        .risk-badge.moderate { background: rgba(234, 179, 8, 0.2); color: #eab308; border: 1px solid #eab308; }
+        .risk-badge.low { background: rgba(16, 185, 129, 0.2); color: #10b981; border: 1px solid #10b981; }
+
+        /* Metrics Table */
+        .metrics-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin: 1rem 0;
+        }
+        .metrics-table td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .metrics-table tr:last-child td { border-bottom: none; }
+        .metrics-table td:first-child {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            width: 50%;
+        }
+        .metrics-table td:last-child {
+            color: var(--text-primary);
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 600;
+        }
+
+        /* CVE Cards */
+        .cve-card {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: var(--bg-card-alt);
+            border-radius: 10px;
+            margin-bottom: 0.75rem;
+            border-left: 4px solid;
+        }
+        .cve-card.critical { border-color: #dc2626; }
+        .cve-card.high { border-color: #ef4444; }
+        .cve-card.medium { border-color: #f97316; }
+        .cve-id {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--text-primary);
+            white-space: nowrap;
+        }
+        .cve-details { flex: 1; }
+        .cve-score {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            padding: 0.25rem 0.5rem;
+            border-radius: 6px;
+            font-size: 0.8rem;
+        }
+        .cve-score.critical { background: #dc2626; color: white; }
+        .cve-score.high { background: #ef4444; color: white; }
+        .cve-score.medium { background: #f97316; color: white; }
+        .cve-desc { font-size: 0.85rem; color: var(--text-secondary); }
+
+        /* Tier Cards */
+        .tier-card {
+            background: var(--bg-card-alt);
+            border-radius: 12px;
+            padding: 1.25rem;
+            margin-bottom: 1rem;
+            border-left: 4px solid;
+        }
+        .tier-card.tier-1 { border-color: #dc2626; background: rgba(220, 38, 38, 0.08); }
+        .tier-card.tier-2 { border-color: #f97316; background: rgba(249, 115, 22, 0.06); }
+        .tier-card.tier-3 { border-color: #eab308; background: rgba(234, 179, 8, 0.05); }
+        .tier-card.tier-4 { border-color: #3b82f6; background: rgba(59, 130, 246, 0.05); }
+        .tier-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+        }
+        .tier-label {
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 0.25rem 0.75rem;
+            border-radius: 6px;
+            text-transform: uppercase;
+        }
+        .tier-1 .tier-label { background: #dc2626; color: white; }
+        .tier-2 .tier-label { background: #f97316; color: white; }
+        .tier-3 .tier-label { background: #eab308; color: #1e293b; }
+        .tier-4 .tier-label { background: #3b82f6; color: white; }
+        .tier-title { font-weight: 600; color: var(--text-primary); font-size: 0.9rem; }
+        .tier-card ul { margin: 0.5rem 0 0 0; padding-left: 1.25rem; }
+        .tier-card li { margin-bottom: 0.5rem; font-size: 0.9rem; }
+
+        /* Timeline */
+        .timeline { position: relative; padding-left: 2rem; }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0.5rem;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary), var(--danger));
+        }
+        .timeline-item {
+            position: relative;
+            padding-bottom: 1.5rem;
+        }
+        .timeline-item:last-child { padding-bottom: 0; }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -1.65rem;
+            top: 0.25rem;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--primary);
+            border: 2px solid var(--bg-dark);
+        }
+        .timeline-time {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.25rem;
+        }
+        .timeline-content {
+            background: var(--bg-card-alt);
+            padding: 1rem;
+            border-radius: 8px;
+        }
+        .timeline-title { font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem; }
+        .timeline-content ul { margin: 0; padding-left: 1.25rem; }
+        .timeline-content li { margin-bottom: 0.35rem; font-size: 0.9rem; color: var(--text-secondary); }
+
+        /* Highlight Box */
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(16, 185, 129, 0.05));
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            border-radius: 10px;
+            padding: 1rem 1.25rem;
+            margin: 1rem 0;
+        }
+        .highlight-box.warning {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.15), rgba(239, 68, 68, 0.05));
+            border-color: rgba(239, 68, 68, 0.3);
+        }
+        .highlight-box-title {
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        .highlight-box.warning .highlight-box-title { color: #ef4444; }
+
+        /* Alert with description */
+        .alert-desc {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 0.35rem;
+            padding-left: 0;
+        }
+
+        @media (max-width: 768px) {
+            .cover-header { flex-direction: column; gap: 1.5rem; }
+            .report-meta { text-align: left; }
+            .risk-overview, .viz-row { grid-template-columns: 1fr; }
+            .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+            .info-grid { grid-template-columns: 1fr; }
+            .profile-grid { grid-template-columns: 1fr; }
+            .target-name { font-size: 2rem; }
+            .risk-banner { flex-direction: column; text-align: center; gap: 0.5rem; }
+        }
+
+        @media (max-width: 1024px) and (min-width: 769px) {
+            .profile-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        /* Collapsible Sections */
+        .section-header {
+            cursor: pointer;
+            user-select: none;
+            transition: opacity 0.2s;
+        }
+        .section-header:hover { opacity: 0.8; }
+        .section-header::after {
+            content: '';
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-right: 2px solid var(--primary);
+            border-bottom: 2px solid var(--primary);
+            transform: rotate(-45deg);
+            margin-left: 12px;
+            transition: transform 0.3s;
+        }
+        .section.collapsed .section-header::after {
+            transform: rotate(45deg);
+        }
+        .section-content {
+            max-height: 5000px;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out, opacity 0.3s;
+        }
+        .section.collapsed .section-content {
+            max-height: 0;
+            opacity: 0;
+        }
+
+        /* Compliance Grid */
+        .compliance-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+        .compliance-card {
+            background: var(--bg-card-alt);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        .compliance-card-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        .compliance-logo {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.7rem;
+        }
+        .compliance-logo.nist { background: linear-gradient(135deg, #3b82f6, #1d4ed8); color: white; }
+        .compliance-logo.iso { background: linear-gradient(135deg, #10b981, #059669); color: white; }
+        .compliance-logo.pci { background: linear-gradient(135deg, #f59e0b, #d97706); color: white; }
+        .compliance-name { font-weight: 600; font-size: 1rem; }
+        .compliance-score {
+            font-size: 2.5rem;
+            font-weight: 800;
+            font-family: 'JetBrains Mono', monospace;
+            margin: 0.5rem 0;
+        }
+        .compliance-score.low { color: #ef4444; }
+        .compliance-score.medium { color: #f59e0b; }
+        .compliance-score.high { color: #10b981; }
+        .compliance-bar {
+            height: 8px;
+            background: var(--bg-dark);
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 1rem 0;
+        }
+        .compliance-bar-fill {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 0.5s ease-out;
+        }
+        .compliance-bar-fill.low { background: linear-gradient(90deg, #ef4444, #f87171); }
+        .compliance-bar-fill.medium { background: linear-gradient(90deg, #f59e0b, #fbbf24); }
+        .compliance-bar-fill.high { background: linear-gradient(90deg, #10b981, #34d399); }
+        .compliance-details { text-align: left; margin-top: 1rem; }
+        .compliance-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.85rem;
+        }
+        .compliance-item:last-child { border-bottom: none; }
+        .compliance-status {
+            font-weight: 600;
+            font-size: 0.75rem;
+            padding: 0.15rem 0.5rem;
+            border-radius: 4px;
+        }
+        .compliance-status.pass { background: rgba(16, 185, 129, 0.2); color: #10b981; }
+        .compliance-status.partial { background: rgba(245, 158, 11, 0.2); color: #f59e0b; }
+        .compliance-status.fail { background: rgba(239, 68, 68, 0.2); color: #ef4444; }
+
+        /* Financial Impact */
+        .finance-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+        .finance-card {
+            background: var(--bg-card-alt);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+        }
+        .finance-card-title {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+        .finance-amount {
+            font-size: 2rem;
+            font-weight: 700;
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--text-primary);
+        }
+        .finance-amount.negative { color: #ef4444; }
+        .finance-amount.positive { color: #10b981; }
+        .finance-detail { font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.5rem; }
+        .roi-indicator {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            padding: 0.75rem;
+            background: rgba(16, 185, 129, 0.1);
+            border-radius: 8px;
+        }
+        .roi-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #10b981;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* Benchmark Chart */
+        .benchmark-container {
+            background: var(--bg-card-alt);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-top: 1rem;
+        }
+        .benchmark-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        .benchmark-label {
+            width: 120px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+        .benchmark-bar-container {
+            flex: 1;
+            height: 24px;
+            background: var(--bg-dark);
+            border-radius: 6px;
+            position: relative;
+            overflow: hidden;
+        }
+        .benchmark-bar {
+            height: 100%;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 8px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: white;
+            transition: width 0.5s ease-out;
+        }
+        .benchmark-bar.you { background: linear-gradient(90deg, #ef4444, #f87171); }
+        .benchmark-bar.industry { background: linear-gradient(90deg, #3b82f6, #60a5fa); }
+        .benchmark-bar.leader { background: linear-gradient(90deg, #10b981, #34d399); }
+        .benchmark-legend {
+            display: flex;
+            gap: 2rem;
+            margin-top: 1rem;
+            justify-content: center;
+        }
+        .benchmark-legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+        .benchmark-legend-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 3px;
+        }
+
+        /* Kill Chain */
+        .killchain {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin: 2rem 0;
+            position: relative;
+        }
+        .killchain::before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 60px;
+            right: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, #10b981, #f59e0b, #ef4444, #dc2626);
+            border-radius: 2px;
+        }
+        .killchain-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 120px;
+            position: relative;
+            z-index: 1;
+        }
+        .killchain-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
+            border: 3px solid;
+        }
+        .killchain-icon.recon { background: rgba(16, 185, 129, 0.15); border-color: #10b981; color: #10b981; }
+        .killchain-icon.weapon { background: rgba(245, 158, 11, 0.15); border-color: #f59e0b; color: #f59e0b; }
+        .killchain-icon.delivery { background: rgba(249, 115, 22, 0.15); border-color: #f97316; color: #f97316; }
+        .killchain-icon.exploit { background: rgba(239, 68, 68, 0.15); border-color: #ef4444; color: #ef4444; }
+        .killchain-icon.install { background: rgba(220, 38, 38, 0.15); border-color: #dc2626; color: #dc2626; }
+        .killchain-icon.c2 { background: rgba(168, 85, 247, 0.15); border-color: #a855f7; color: #a855f7; }
+        .killchain-icon.action { background: rgba(239, 68, 68, 0.15); border-color: #dc2626; color: #dc2626; }
+        .killchain-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-primary);
+            text-align: center;
+        }
+        .killchain-desc {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            text-align: center;
+            margin-top: 0.25rem;
+        }
+        .attack-scenario {
+            background: var(--bg-card-alt);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+            border-left: 4px solid #ef4444;
+        }
+        .attack-scenario-title {
+            font-weight: 600;
+            color: #ef4444;
+            margin-bottom: 0.75rem;
+        }
+        .attack-step {
+            display: flex;
+            gap: 1rem;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .attack-step:last-child { border-bottom: none; }
+        .attack-step-num {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: #ef4444;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        /* Threat Intel */
+        .threat-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+        .apt-card {
+            background: var(--bg-card-alt);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.25rem;
+            border-left: 4px solid #a855f7;
+        }
+        .apt-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+        }
+        .apt-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            background: rgba(168, 85, 247, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+        }
+        .apt-name { font-weight: 600; color: var(--text-primary); }
+        .apt-alias { font-size: 0.8rem; color: var(--text-muted); }
+        .apt-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 0.75rem 0;
+        }
+        .apt-tag {
+            font-size: 0.7rem;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            background: var(--bg-dark);
+            color: var(--text-secondary);
+        }
+        .recent-attack {
+            background: var(--bg-card-alt);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.25rem;
+            margin-bottom: 1rem;
+        }
+        .attack-date {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+        .attack-title {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+        .attack-impact {
+            display: inline-block;
+            font-size: 0.75rem;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            background: rgba(239, 68, 68, 0.2);
+            color: #ef4444;
+        }
+
+        /* Print Styles */
+        @media print {
+            body { background: white; color: black; font-size: 12px; }
+            .container { max-width: 100%; padding: 0 1cm; }
+            .cover { background: none; border-bottom: 2px solid #333; padding: 1cm 0; }
+            .cover::before { display: none; }
+            .logo { color: #10b981; -webkit-text-fill-color: #10b981; }
+            .section-card, .viz-container, .risk-card {
+                background: #f5f5f5;
+                border: 1px solid #ddd;
+                box-shadow: none;
+                page-break-inside: avoid;
+            }
+            .section { page-break-inside: avoid; }
+            .section-header::after { display: none; }
+            .section.collapsed .section-content { max-height: none; opacity: 1; }
+            .risk-banner { background: #fee2e2; border-color: #ef4444; }
+            .no-print { display: none !important; }
+            .print-only { display: block !important; }
+            svg { max-width: 100%; }
+            .metrics-grid { grid-template-columns: repeat(4, 1fr); }
+            .metric-card { background: #f0f0f0; }
+            a { color: inherit; text-decoration: none; }
+        }
+        .print-only { display: none; }
+
+        /* Action Buttons */
+        .action-buttons {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 0.5rem;
+            z-index: 1000;
+        }
+        .action-btn {
+            padding: 0.75rem 1.25rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.2s;
+        }
+        .action-btn.primary {
+            background: var(--primary);
+            color: white;
+        }
+        .action-btn.secondary {
+            background: var(--bg-card);
+            color: var(--text-primary);
+            border: 1px solid var(--border);
+        }
+        .action-btn:hover { transform: translateY(-2px); }
+        @media print {
+            .action-buttons { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Action Buttons -->
+    <div class="action-buttons no-print">
+        <button class="action-btn secondary" onclick="toggleAllSections()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            全て展開/折りたたみ
+        </button>
+        <button class="action-btn secondary" onclick="window.print()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9V2h12v7M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2M6 14h12v8H6z"/></svg>
+            印刷
+        </button>
+        <button class="action-btn primary" onclick="exportPDF()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M12 18v-6M9 15l3 3 3-3"/></svg>
+            PDF出力
+        </button>
+    </div>
+
+    <header class="cover">
+        <div class="container">
+            <div class="cover-header">
+                <div class="brand">
+                    <div class="logo">STRATUM</div>
+                    <div class="logo-subtitle">AI Infrastructure Risk Intelligence</div>
+                </div>
+                <div class="report-meta">
+                    <div><strong>Report ID:</strong> STR-202512251500</div>
+                    <div><strong>Generated:</strong> 2025-12-25 15:00 UTC</div>
+                    <div class="classification">Confidential</div>
+                </div>
+            </div>
+
+            <div class="target-section">
+                <div class="target-category">AI Infrastructure Assessment</div>
+                <h1 class="target-name">デモAIインフラストラクチャ</h1>
+                <div class="target-info">
+                    <span>IP: 203.0.113.42</span>
+                    <span>AWS ap-northeast-1</span>
+                    <span>Tokyo, Japan</span>
+                </div>
+            </div>
+
+            <!-- Compact Risk Banner -->
+            <div class="risk-banner">
+                <span class="risk-banner-label">総合リスクレベル</span>
+                <span class="risk-banner-level">重大</span>
+                <span class="risk-banner-divider">|</span>
+                <span class="risk-banner-sub">信頼度: 88% - 即時対応が必要なセキュリティリスクが検出されました</span>
+            </div>
+
+            <!-- Balanced Indicators -->
+            <div class="risk-overview">
+                <div class="risk-card">
+                    <svg width="280" height="200" viewBox="0 0 280 200" xmlns="http://www.w3.org/2000/svg">
+<defs>
+    <filter id="gauge-shadow">
+        <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#ef4444" flood-opacity="0.5"/>
+    </filter>
+</defs>
+<rect width="280" height="200" fill="#111827" rx="16" stroke="#ef4444" stroke-width="2"/>
+<text x="140" y="28" text-anchor="middle" fill="#f8fafc" font-family="Inter, sans-serif" font-size="12" font-weight="600">総合リスクレベル</text>
+<path d="M 70.71796769724492 170.0 A 80 80 0 0 1 61.215379759023364 116.10814578664558" stroke="#10b981" stroke-width="12" fill="none" stroke-linecap="round"/>
+<path d="M 61.215379759023364 116.10814578664558 A 80 80 0 0 1 88.57699122507685 68.71644455048175" stroke="#22c55e" stroke-width="12" fill="none" stroke-linecap="round"/>
+<path d="M 88.57699122507685 68.71644455048175 A 80 80 0 0 1 140.0 50.0" stroke="#eab308" stroke-width="12" fill="none" stroke-linecap="round"/>
+<path d="M 140.0 50.0 A 80 80 0 0 1 191.42300877492318 68.71644455048175" stroke="#f97316" stroke-width="12" fill="none" stroke-linecap="round"/>
+<path d="M 191.42300877492318 68.71644455048175 A 80 80 0 0 1 218.78462024097666 116.1081457866456" stroke="#ef4444" stroke-width="12" fill="none" stroke-linecap="round"/>
+<path d="M 218.78462024097666 116.1081457866456 A 80 80 0 0 1 209.28203230275508 170.0" stroke="#dc2626" stroke-width="12" fill="none" stroke-linecap="round"/>
+<line x1="140" y1="130" x2="201.818673559185" y2="109.91389536562845" stroke="#ef4444" stroke-width="4" stroke-linecap="round" filter="url(#gauge-shadow)"/>
+<circle cx="140" cy="130" r="8" fill="#ef4444"/>
+<circle cx="140" cy="130" r="4" fill="#1f2937"/>
+<text x="140" y="165" text-anchor="middle" fill="#ef4444" font-family="Inter, sans-serif" font-size="24" font-weight="700">重大</text>
+<text x="140" y="185" text-anchor="middle" fill="#6b7280" font-family="Inter, sans-serif" font-size="10">信頼度: 88%</text>
+</svg>
+                </div>
+                <div class="risk-card">
+                    <svg width="300" height="200" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+<rect width="300" height="200" fill="#111827" rx="12"/>
+<text x="150" y="24" text-anchor="middle" fill="#f8fafc" font-family="Inter, sans-serif" font-size="12" font-weight="600">リスク分布</text>
+<text x="20" y="60" fill="#9ca3af" font-family="Inter, sans-serif" font-size="10">CRITICAL</text>
+<rect x="90" y="48" width="160" height="18" rx="4" fill="#1f2937"/>
+<rect x="90" y="48" width="80" height="18" rx="4" fill="#dc2626"/>
+<text x="260" y="61" fill="#f9fafb" font-family="JetBrains Mono, monospace" font-size="12" font-weight="600">1</text>
+<text x="20" y="95" fill="#9ca3af" font-family="Inter, sans-serif" font-size="10">HIGH</text>
+<rect x="90" y="83" width="160" height="18" rx="4" fill="#1f2937"/>
+<rect x="90" y="83" width="160" height="18" rx="4" fill="#ef4444"/>
+<text x="260" y="96" fill="#f9fafb" font-family="JetBrains Mono, monospace" font-size="12" font-weight="600">2</text>
+<text x="20" y="130" fill="#9ca3af" font-family="Inter, sans-serif" font-size="10">ELEVATED</text>
+<rect x="90" y="118" width="160" height="18" rx="4" fill="#1f2937"/>
+<rect x="90" y="118" width="160" height="18" rx="4" fill="#f97316"/>
+<text x="260" y="131" fill="#f9fafb" font-family="JetBrains Mono, monospace" font-size="12" font-weight="600">2</text>
+<text x="20" y="165" fill="#9ca3af" font-family="Inter, sans-serif" font-size="10">INFO</text>
+<rect x="90" y="153" width="160" height="18" rx="4" fill="#1f2937"/>
+<rect x="90" y="153" width="160" height="18" rx="4" fill="#3b82f6"/>
+<text x="260" y="166" fill="#f9fafb" font-family="JetBrains Mono, monospace" font-size="12" font-weight="600">2</text>
+</svg>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-value danger">15</div>
+                    <div class="metric-label">露出サービス</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value danger">3</div>
+                    <div class="metric-label">管理ポート</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value warning">5</div>
+                    <div class="metric-label">既知CVE</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value danger">1</div>
+                    <div class="metric-label">Critical CVE</div>
+                </div>
+            </div>
+
+            <!-- Security Stack -->
+            <section class="section">
+                <div class="section-header">
+                    <h2 class="section-title">セキュリティスタック<span class="section-title-sub">Security Architecture Analysis</span></h2>
+                </div>
+                <div class="viz-row">
+                    <div class="viz-container">
+                        <svg width="400" height="280" viewBox="0 0 400 280" xmlns="http://www.w3.org/2000/svg">
+<defs>
+    <linearGradient id="stack-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" style="stop-color:#0f172a;stop-opacity:1" />
+        <stop offset="100%" style="stop-color:#030712;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+        <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+        <feMerge>
+            <feMergeNode in="coloredBlur"/>
+            <feMergeNode in="SourceGraphic"/>
+        </feMerge>
+    </filter>
+</defs>
+<rect width="400" height="280" fill="url(#stack-bg)" rx="16"/>
+<text x="200" y="28" text-anchor="middle" fill="#f8fafc" font-family="Inter, sans-serif" font-size="14" font-weight="600">セキュリティスタック</text>
+<polygon points="60.0,110.0 220.0,110.0 240.0,155 220.0,200.0 60.0,200.0 40.0,155" fill="#ef4444" fill-opacity="0.24" stroke="#ef4444" stroke-width="2" filter="url(#glow)"/>
+<polygon points="77.6,119.9 202.4,119.9 218.0,155 202.4,190.1 77.6,190.1 62.0,155" fill="#dc2626" fill-opacity="0.21" stroke="#dc2626" stroke-width="2" filter="url(#glow)"/>
+<polygon points="95.2,129.8 184.8,129.8 196.0,155 184.8,180.2 95.2,180.2 84.0,155" fill="#eab308" fill-opacity="0.18" stroke="#eab308" stroke-width="2" filter="url(#glow)"/>
+<polygon points="112.8,139.7 167.2,139.7 174.0,155 167.2,170.3 112.8,170.3 106.0,155" fill="#f97316" fill-opacity="0.15" stroke="#f97316" stroke-width="2" filter="url(#glow)"/>
+<rect x="260" y="65" width="12" height="12" rx="3" fill="#ef4444"/>
+<text x="280" y="75" fill="#f8fafc" font-family="Inter, sans-serif" font-size="11" font-weight="500">ネットワーク層</text>
+<text x="280" y="89" fill="#ef4444" font-family="Inter, sans-serif" font-size="10" font-weight="600">HIGH</text>
+<rect x="260" y="115" width="12" height="12" rx="3" fill="#dc2626"/>
+<text x="280" y="125" fill="#f8fafc" font-family="Inter, sans-serif" font-size="11" font-weight="500">コンピュート層</text>
+<text x="280" y="139" fill="#dc2626" font-family="Inter, sans-serif" font-size="10" font-weight="600">CRITICAL</text>
+<rect x="260" y="165" width="12" height="12" rx="3" fill="#eab308"/>
+<text x="280" y="175" fill="#f8fafc" font-family="Inter, sans-serif" font-size="11" font-weight="500">アプリケーション層</text>
+<text x="280" y="189" fill="#eab308" font-family="Inter, sans-serif" font-size="10" font-weight="600">MODERATE</text>
+<rect x="260" y="215" width="12" height="12" rx="3" fill="#f97316"/>
+<text x="280" y="225" fill="#f8fafc" font-family="Inter, sans-serif" font-size="11" font-weight="500">データ層</text>
+<text x="280" y="239" fill="#f97316" font-family="Inter, sans-serif" font-size="10" font-weight="600">ELEVATED</text>
+</svg>
+                    </div>
+                    <div class="viz-container">
+                        <svg width="320" height="280" viewBox="0 0 320 280" xmlns="http://www.w3.org/2000/svg">
+<defs>
+    <linearGradient id="radar-fill" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" style="stop-color:#10b981;stop-opacity:0.6" />
+        <stop offset="100%" style="stop-color:#ef4444;stop-opacity:0.4" />
+    </linearGradient>
+</defs>
+<rect width="320" height="280" fill="#0f172a" rx="12"/>
+<text x="160" y="28" text-anchor="middle" fill="#f8fafc" font-family="Inter, sans-serif" font-size="13" font-weight="600">攻撃対象領域分析</text>
+<circle cx="160" cy="150" r="30" fill="none" stroke="#374151" stroke-width="1" stroke-dasharray="3,3"/>
+<circle cx="160" cy="150" r="60" fill="none" stroke="#374151" stroke-width="1" stroke-dasharray="3,3"/>
+<circle cx="160" cy="150" r="90" fill="none" stroke="#374151" stroke-width="1" stroke-dasharray="3,3"/>
+<line x1="160" y1="150" x2="160" y2="60" stroke="#374151" stroke-width="1"/>
+<text x="160" y="35" text-anchor="middle" fill="#f8fafc" font-family="Inter, sans-serif" font-size="10" font-weight="500">ポート露出</text>
+<text x="160" y="47" text-anchor="middle" fill="#10b981" font-family="JetBrains Mono, monospace" font-size="11" font-weight="600">35%</text>
+<line x1="160" y1="150" x2="245.6" y2="122.2" stroke="#374151" stroke-width="1"/>
+<text x="268" y="110" text-anchor="middle" fill="#f8fafc" font-family="Inter, sans-serif" font-size="10" font-weight="500">管理IF</text>
+<text x="268" y="122" text-anchor="middle" fill="#f97316" font-family="JetBrains Mono, monospace" font-size="11" font-weight="600">50%</text>
+<line x1="160" y1="150" x2="212.9" y2="222.8" stroke="#374151" stroke-width="1"/>
+<text x="228" y="248" text-anchor="middle" fill="#f8fafc" font-family="Inter, sans-serif" font-size="10" font-weight="500">脆弱性</text>
+<text x="228" y="260" text-anchor="middle" fill="#f97316" font-family="JetBrains Mono, monospace" font-size="11" font-weight="600">45%</text>
+<line x1="160" y1="150" x2="107.1" y2="222.8" stroke="#374151" stroke-width="1"/>
+<text x="92" y="248" text-anchor="middle" fill="#f8fafc" font-family="Inter, sans-serif" font-size="10" font-weight="500">サービス</text>
+<text x="92" y="260" text-anchor="middle" fill="#f97316" font-family="JetBrains Mono, monospace" font-size="11" font-weight="600">60%</text>
+<line x1="160" y1="150" x2="74.4" y2="122.2" stroke="#374151" stroke-width="1"/>
+<text x="52" y="110" text-anchor="middle" fill="#f8fafc" font-family="Inter, sans-serif" font-size="10" font-weight="500">プロトコル</text>
+<text x="52" y="122" text-anchor="middle" fill="#10b981" font-family="JetBrains Mono, monospace" font-size="11" font-weight="600">21%</text>
+<polygon points="160,118.5 202.8,136.1 183.8,182.8 128.3,193.7 142,144.2" fill="url(#radar-fill)" stroke="#10b981" stroke-width="2"/>
+<circle cx="160" cy="118.5" r="4" fill="#10b981" stroke="#0f172a" stroke-width="2"/>
+<circle cx="202.8" cy="136.1" r="4" fill="#10b981" stroke="#0f172a" stroke-width="2"/>
+<circle cx="183.8" cy="182.8" r="4" fill="#10b981" stroke="#0f172a" stroke-width="2"/>
+<circle cx="128.3" cy="193.7" r="4" fill="#10b981" stroke="#0f172a" stroke-width="2"/>
+<circle cx="142" cy="144.2" r="4" fill="#10b981" stroke="#0f172a" stroke-width="2"/>
+</svg>
+                    </div>
+                </div>
+                <div class="viz-container viz-full">
+                    <svg width="700" height="140" viewBox="0 0 700 140" xmlns="http://www.w3.org/2000/svg">
+<rect width="700" height="140" fill="#0f172a" rx="12"/>
+<text x="20" y="28" fill="#f8fafc" font-family="Inter, sans-serif" font-size="12" font-weight="600">露出サービス</text>
+<line x1="20" y1="70" x2="680" y2="70" stroke="#374151" stroke-width="2"/>
+<circle cx="40" cy="70" r="6" fill="#ef4444" stroke="#0f172a" stroke-width="2"/>
+<text x="40" y="95" text-anchor="middle" fill="#ef4444" font-family="JetBrains Mono, monospace" font-size="9" font-weight="500">22</text>
+<text x="40" y="110" text-anchor="middle" fill="#64748b" font-family="Inter, sans-serif" font-size="8">tcp SSH</text>
+<circle cx="135" cy="70" r="6" fill="#10b981" stroke="#0f172a" stroke-width="2"/>
+<text x="135" y="95" text-anchor="middle" fill="#10b981" font-family="JetBrains Mono, monospace" font-size="9" font-weight="500">80</text>
+<text x="135" y="110" text-anchor="middle" fill="#64748b" font-family="Inter, sans-serif" font-size="8">tcp HTTP</text>
+<circle cx="230" cy="70" r="6" fill="#10b981" stroke="#0f172a" stroke-width="2"/>
+<text x="230" y="95" text-anchor="middle" fill="#10b981" font-family="JetBrains Mono, monospace" font-size="9" font-weight="500">443</text>
+<text x="230" y="110" text-anchor="middle" fill="#64748b" font-family="Inter, sans-serif" font-size="8">tcp HTTPS</text>
+<circle cx="325" cy="70" r="6" fill="#ef4444" stroke="#0f172a" stroke-width="2"/>
+<text x="325" y="95" text-anchor="middle" fill="#ef4444" font-family="JetBrains Mono, monospace" font-size="9" font-weight="500">8080</text>
+<text x="325" y="110" text-anchor="middle" fill="#64748b" font-family="Inter, sans-serif" font-size="8">tcp Proxy</text>
+<circle cx="420" cy="70" r="6" fill="#ef4444" stroke="#0f172a" stroke-width="2"/>
+<text x="420" y="95" text-anchor="middle" fill="#ef4444" font-family="JetBrains Mono, monospace" font-size="9" font-weight="500">3389</text>
+<text x="420" y="110" text-anchor="middle" fill="#64748b" font-family="Inter, sans-serif" font-size="8">tcp RDP</text>
+<circle cx="515" cy="70" r="6" fill="#ef4444" stroke="#0f172a" stroke-width="2"/>
+<text x="515" y="95" text-anchor="middle" fill="#ef4444" font-family="JetBrains Mono, monospace" font-size="9" font-weight="500">5432</text>
+<text x="515" y="110" text-anchor="middle" fill="#64748b" font-family="Inter, sans-serif" font-size="8">tcp Postgres</text>
+<circle cx="610" cy="70" r="6" fill="#ef4444" stroke="#0f172a" stroke-width="2"/>
+<text x="610" y="95" text-anchor="middle" fill="#ef4444" font-family="JetBrains Mono, monospace" font-size="9" font-weight="500">5555</text>
+<text x="610" y="110" text-anchor="middle" fill="#64748b" font-family="Inter, sans-serif" font-size="8">tcp GPU-MGMT</text>
+<circle cx="620" cy="28" r="4" fill="#10b981"/>
+<text x="630" y="32" fill="#64748b" font-family="Inter, sans-serif" font-size="9">Safe</text>
+<circle cx="660" cy="28" r="4" fill="#ef4444"/>
+<text x="670" y="32" fill="#64748b" font-family="Inter, sans-serif" font-size="9">Risk</text>
+</svg>
+                </div>
+            </section>
+
+            <!-- Executive Summary -->
+            <section class="section">
+                <div class="section-header">
+                    <h2 class="section-title">エグゼクティブサマリー<span class="section-title-sub">Executive Summary</span></h2>
+                </div>
+                <div class="section-card">
+<div class="highlight-box warning">
+    <div class="highlight-box-title">セキュリティ態勢概要</div>
+    <p style="margin:0;">デモAIインフラストラクチャの包括的なセキュリティ評価を実施しました。総合リスクレベルは <span class="risk-badge critical">HIGH（重大）</span> と判定されました。これは業界平均を大幅に上回るリスク水準であり、早急な対応が必要です。</p>
+</div>
+
+<p>セキュリティ成熟度は <span class="risk-badge moderate">Initial</span> に位置しており、基本的なセキュリティ対策の実装が不十分です。NIST Cybersecurity Frameworkの観点から、特に「Protect」および「Detect」機能に重大なギャップが確認されました。</p>
+
+<div class="highlight-box">
+    <div class="highlight-box-title">主要な発見事項</div>
+    <div class="cve-card critical">
+        <span class="cve-id">CVE-2024-1234</span>
+        <div class="cve-details">
+            <span class="cve-score critical">CVSS 9.8</span>
+            <span class="cve-desc">リモートコード実行 - エクスプロイト公開済み、24時間以内のパッチ適用必須</span>
+        </div>
+    </div>
+    <div class="cve-card high">
+        <span class="cve-id">GPU管理露出</span>
+        <div class="cve-details">
+            <span class="risk-badge critical">Critical</span>
+            <span class="cve-desc">NVIDIA DCGM（5555/tcp）がインターネットに公開、クリプトマイニング・データ窃取リスク</span>
+        </div>
+    </div>
+    <div class="cve-card high">
+        <span class="cve-id">管理ポート露出</span>
+        <div class="cve-details">
+            <span class="risk-badge high">High</span>
+            <span class="cve-desc">SSH（22）/ RDP（3389）が公開、ブルートフォース攻撃のリスク</span>
+        </div>
+    </div>
+    <div class="cve-card medium">
+        <span class="cve-id">DB/TLS問題</span>
+        <div class="cve-details">
+            <span class="risk-badge elevated">Elevated</span>
+            <span class="cve-desc">PostgreSQL（5432）公開、TLS 1.1検出（PCI DSS非準拠）</span>
+        </div>
+    </div>
+</div>
+
+<p><strong>ビジネスインパクト評価</strong></p>
+<table class="metrics-table">
+    <tr><td>財務的影響</td><td>約4.45億円（データ侵害時の平均コスト）</td></tr>
+    <tr><td>規制リスク</td><td>GDPR・個人情報保護法違反による制裁金</td></tr>
+    <tr><td>レピュテーション</td><td>モデル・データ漏洩による顧客信頼喪失</td></tr>
+    <tr><td>事業継続性</td><td>GPU管理侵害によるサービス停止</td></tr>
+</table>
+
+<p><strong>主要メトリクス</strong></p>
+<table class="metrics-table">
+    <tr><td>攻撃対象面スコア</td><td><span class="risk-badge high">78/100</span> 大幅な縮小が必要</td></tr>
+    <tr><td>露出サービス数</td><td>15（うち高リスク: 5）</td></tr>
+    <tr><td>脆弱性サマリー</td><td><span class="risk-badge critical">Critical 1</span> <span class="risk-badge high">High 1</span> <span class="risk-badge elevated">Medium 3</span></td></tr>
+    <tr><td>管理IF露出</td><td>3ポート（SSH、RDP、GPU-MGMT）</td></tr>
+</table>
+                </div>
+            </section>
+
+            <!-- Compliance Mapping -->
+            <section class="section" id="compliance">
+                <div class="section-header" onclick="toggleSection(this)">
+                    <h2 class="section-title">コンプライアンスマッピング<span class="section-title-sub">Compliance Framework Mapping</span></h2>
+                </div>
+                <div class="section-content">
+                    <div class="section-card">
+                        <div class="compliance-grid">
+                            <div class="compliance-card">
+                                <div class="compliance-card-header">
+                                    <div class="compliance-logo nist">NIST</div>
+                                    <span class="compliance-name">NIST CSF</span>
+                                </div>
+                                <div class="compliance-score low">32%</div>
+                                <div class="compliance-bar">
+                                    <div class="compliance-bar-fill low" style="width: 32%;"></div>
+                                </div>
+                                <div class="compliance-details">
+                                    <div class="compliance-item">
+                                        <span>Identify (ID)</span>
+                                        <span class="compliance-status partial">45%</span>
+                                    </div>
+                                    <div class="compliance-item">
+                                        <span>Protect (PR)</span>
+                                        <span class="compliance-status fail">25%</span>
+                                    </div>
+                                    <div class="compliance-item">
+                                        <span>Detect (DE)</span>
+                                        <span class="compliance-status fail">20%</span>
+                                    </div>
+                                    <div class="compliance-item">
+                                        <span>Respond (RS)</span>
+                                        <span class="compliance-status partial">40%</span>
+                                    </div>
+                                    <div class="compliance-item">
+                                        <span>Recover (RC)</span>
+                                        <span class="compliance-status partial">35%</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="compliance-card">
+                                <div class="compliance-card-header">
+                                    <div class="compliance-logo iso">ISO</div>
+                                    <span class="compliance-name">ISO 27001</span>
+                                </div>
+                                <div class="compliance-score medium">48%</div>
+                                <div class="compliance-bar">
+                                    <div class="compliance-bar-fill medium" style="width: 48%;"></div>
+                                </div>
+                                <div class="compliance-details">
+                                    <div class="compliance-item">
+                                        <span>A.5 情報セキュリティ方針</span>
+                                        <span class="compliance-status pass">準拠</span>
+                                    </div>
+                                    <div class="compliance-item">
+                                        <span>A.9 アクセス制御</span>
+                                        <span class="compliance-status fail">非準拠</span>
+                                    </div>
+                                    <div class="compliance-item">
+                                        <span>A.12 運用セキュリティ</span>
+                                        <span class="compliance-status partial">部分</span>
+                                    </div>
+                                    <div class="compliance-item">
+                                        <span>A.13 通信セキュリティ</span>
+                                        <span class="compliance-status fail">非準拠</span>
+                                    </div>
+                                    <div class="compliance-item">
+                                        <span>A.18 適合性</span>
+                                        <span class="compliance-status partial">部分</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="compliance-card">
+                                <div class="compliance-card-header">
+                                    <div class="compliance-logo pci">PCI</div>
+                                    <span class="compliance-name">PCI DSS 4.0</span>
+                                </div>
+                                <div class="compliance-score low">28%</div>
+                                <div class="compliance-bar">
+                                    <div class="compliance-bar-fill low" style="width: 28%;"></div>
+                                </div>
+                                <div class="compliance-details">
+                                    <div class="compliance-item">
+                                        <span>Req.1 ネットワーク</span>
+                                        <span class="compliance-status fail">非準拠</span>
+                                    </div>
+                                    <div class="compliance-item">
+                                        <span>Req.2 セキュア構成</span>
+                                        <span class="compliance-status fail">非準拠</span>
+                                    </div>
+                                    <div class="compliance-item">
+                                        <span>Req.4 暗号化</span>
+                                        <span class="compliance-status fail">非準拠</span>
+                                    </div>
+                                    <div class="compliance-item">
+                                        <span>Req.6 脆弱性管理</span>
+                                        <span class="compliance-status partial">部分</span>
+                                    </div>
+                                    <div class="compliance-item">
+                                        <span>Req.11 テスト</span>
+                                        <span class="compliance-status partial">部分</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="highlight-box warning" style="margin-top: 1.5rem;">
+                            <div class="highlight-box-title">主要なコンプライアンスギャップ</div>
+                            <ul style="margin: 0.5rem 0 0 1rem;">
+                                <li><strong>TLS 1.1使用:</strong> PCI DSS 4.0 要件4.2.1に違反（TLS 1.2以上必須）</li>
+                                <li><strong>管理ポート公開:</strong> NIST PR.AC-5、ISO A.9.1.2に違反</li>
+                                <li><strong>WAF未実装:</strong> PCI DSS 6.4要件、OWASP準拠に不足</li>
+                                <li><strong>ログ監視不足:</strong> NIST DE.CM、ISO A.12.4に違反</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Financial Impact Analysis -->
+            <section class="section" id="financial">
+                <div class="section-header" onclick="toggleSection(this)">
+                    <h2 class="section-title">財務インパクト分析<span class="section-title-sub">Financial Impact Analysis</span></h2>
+                </div>
+                <div class="section-content">
+                    <div class="section-card">
+                        <div class="finance-grid">
+                            <div class="finance-card">
+                                <div class="finance-card-title">想定被害額（データ侵害時）</div>
+                                <div class="finance-amount negative">¥445,000,000</div>
+                                <div class="finance-detail">IBM Cost of Data Breach Report 2024 日本平均ベース</div>
+                                <table class="metrics-table" style="margin-top: 1rem;">
+                                    <tr><td>検知・エスカレーション</td><td>¥89,000,000</td></tr>
+                                    <tr><td>通知コスト</td><td>¥15,000,000</td></tr>
+                                    <tr><td>侵害後対応</td><td>¥156,000,000</td></tr>
+                                    <tr><td>機会損失</td><td>¥185,000,000</td></tr>
+                                </table>
+                            </div>
+                            <div class="finance-card">
+                                <div class="finance-card-title">規制制裁金リスク</div>
+                                <div class="finance-amount negative">¥120,000,000</div>
+                                <div class="finance-detail">GDPR・個人情報保護法違反の想定最大額</div>
+                                <table class="metrics-table" style="margin-top: 1rem;">
+                                    <tr><td>GDPR（対象の場合）</td><td>売上高4%または€20M</td></tr>
+                                    <tr><td>個人情報保護法</td><td>最大¥100,000,000</td></tr>
+                                    <tr><td>業界規制違反</td><td>¥20,000,000〜</td></tr>
+                                </table>
+                            </div>
+                            <div class="finance-card">
+                                <div class="finance-card-title">推奨対策実施コスト</div>
+                                <div class="finance-amount">¥35,000,000</div>
+                                <div class="finance-detail">Tier 1-3 対策の概算総額</div>
+                                <table class="metrics-table" style="margin-top: 1rem;">
+                                    <tr><td>Tier 1（緊急）</td><td>¥2,000,000</td></tr>
+                                    <tr><td>Tier 2（短期）</td><td>¥8,000,000</td></tr>
+                                    <tr><td>Tier 3（中期）</td><td>¥25,000,000</td></tr>
+                                </table>
+                            </div>
+                            <div class="finance-card">
+                                <div class="finance-card-title">投資対効果（ROI）</div>
+                                <div class="finance-amount positive">1,171%</div>
+                                <div class="finance-detail">リスク低減額 ÷ 対策コスト</div>
+                                <div class="roi-indicator">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+                                    <div>
+                                        <div class="roi-value">¥410M</div>
+                                        <div style="font-size: 0.8rem; color: var(--text-muted);">リスク低減効果</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="highlight-box" style="margin-top: 1.5rem;">
+                            <div class="highlight-box-title">コスト削減ポイント</div>
+                            <p style="margin: 0;">早期対応により平均コストを<strong>30%削減</strong>可能。AI/ML環境では、モデル・データ窃取による競争優位喪失（定量化困難だが数億円規模）も考慮が必要です。</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Industry Benchmark -->
+            <section class="section" id="benchmark">
+                <div class="section-header" onclick="toggleSection(this)">
+                    <h2 class="section-title">業界ベンチマーク比較<span class="section-title-sub">Industry Benchmark Comparison</span></h2>
+                </div>
+                <div class="section-content">
+                    <div class="section-card">
+                        <p>同業他社（テクノロジー・AI業界）との比較分析結果です。</p>
+                        <div class="benchmark-container">
+                            <div class="benchmark-row">
+                                <div class="benchmark-label">攻撃対象面</div>
+                                <div class="benchmark-bar-container">
+                                    <div class="benchmark-bar you" style="width: 78%;">78</div>
+                                </div>
+                            </div>
+                            <div class="benchmark-row">
+                                <div class="benchmark-label"></div>
+                                <div class="benchmark-bar-container">
+                                    <div class="benchmark-bar industry" style="width: 52%;">52</div>
+                                </div>
+                            </div>
+                            <div class="benchmark-row">
+                                <div class="benchmark-label"></div>
+                                <div class="benchmark-bar-container">
+                                    <div class="benchmark-bar leader" style="width: 25%;">25</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="benchmark-container">
+                            <div class="benchmark-row">
+                                <div class="benchmark-label">脆弱性スコア</div>
+                                <div class="benchmark-bar-container">
+                                    <div class="benchmark-bar you" style="width: 85%;">8.5</div>
+                                </div>
+                            </div>
+                            <div class="benchmark-row">
+                                <div class="benchmark-label"></div>
+                                <div class="benchmark-bar-container">
+                                    <div class="benchmark-bar industry" style="width: 58%;">5.8</div>
+                                </div>
+                            </div>
+                            <div class="benchmark-row">
+                                <div class="benchmark-label"></div>
+                                <div class="benchmark-bar-container">
+                                    <div class="benchmark-bar leader" style="width: 32%;">3.2</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="benchmark-container">
+                            <div class="benchmark-row">
+                                <div class="benchmark-label">パッチ適用率</div>
+                                <div class="benchmark-bar-container">
+                                    <div class="benchmark-bar you" style="width: 45%;">45%</div>
+                                </div>
+                            </div>
+                            <div class="benchmark-row">
+                                <div class="benchmark-label"></div>
+                                <div class="benchmark-bar-container">
+                                    <div class="benchmark-bar industry" style="width: 72%;">72%</div>
+                                </div>
+                            </div>
+                            <div class="benchmark-row">
+                                <div class="benchmark-label"></div>
+                                <div class="benchmark-bar-container">
+                                    <div class="benchmark-bar leader" style="width: 95%;">95%</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="benchmark-legend">
+                            <div class="benchmark-legend-item">
+                                <div class="benchmark-legend-dot" style="background: #ef4444;"></div>
+                                <span>御社</span>
+                            </div>
+                            <div class="benchmark-legend-item">
+                                <div class="benchmark-legend-dot" style="background: #3b82f6;"></div>
+                                <span>業界平均</span>
+                            </div>
+                            <div class="benchmark-legend-item">
+                                <div class="benchmark-legend-dot" style="background: #10b981;"></div>
+                                <span>業界リーダー</span>
+                            </div>
+                        </div>
+                        <div class="highlight-box warning" style="margin-top: 1.5rem;">
+                            <div class="highlight-box-title">業界比較サマリー</div>
+                            <table class="metrics-table">
+                                <tr><td>攻撃対象面</td><td>業界平均より <span style="color: #ef4444; font-weight: 700;">50%高リスク</span></td></tr>
+                                <tr><td>脆弱性スコア</td><td>業界平均より <span style="color: #ef4444; font-weight: 700;">47%高い</span></td></tr>
+                                <tr><td>パッチ適用率</td><td>業界平均より <span style="color: #ef4444; font-weight: 700;">27ポイント低い</span></td></tr>
+                                <tr><td>総合順位</td><td>下位 <span style="color: #ef4444; font-weight: 700;">15%</span> に位置</td></tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Attack Scenario (Kill Chain) -->
+            <section class="section" id="killchain">
+                <div class="section-header" onclick="toggleSection(this)">
+                    <h2 class="section-title">攻撃シナリオ分析<span class="section-title-sub">Kill Chain Analysis</span></h2>
+                </div>
+                <div class="section-content">
+                    <div class="section-card">
+                        <p>現在の脆弱性を悪用した場合の想定攻撃シナリオです。MITRE ATT&CK フレームワークに基づく分析。</p>
+
+                        <div class="killchain">
+                            <div class="killchain-step">
+                                <div class="killchain-icon recon">
+                                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+                                </div>
+                                <div class="killchain-label">偵察</div>
+                                <div class="killchain-desc">Shodan検索</div>
+                            </div>
+                            <div class="killchain-step">
+                                <div class="killchain-icon weapon">
+                                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+                                </div>
+                                <div class="killchain-label">武器化</div>
+                                <div class="killchain-desc">Exploit準備</div>
+                            </div>
+                            <div class="killchain-step">
+                                <div class="killchain-icon delivery">
+                                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                                </div>
+                                <div class="killchain-label">配送</div>
+                                <div class="killchain-desc">直接アクセス</div>
+                            </div>
+                            <div class="killchain-step">
+                                <div class="killchain-icon exploit">
+                                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                                </div>
+                                <div class="killchain-label">悪用</div>
+                                <div class="killchain-desc">CVE-2024-1234</div>
+                            </div>
+                            <div class="killchain-step">
+                                <div class="killchain-icon install">
+                                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>
+                                </div>
+                                <div class="killchain-label">インストール</div>
+                                <div class="killchain-desc">バックドア設置</div>
+                            </div>
+                            <div class="killchain-step">
+                                <div class="killchain-icon c2">
+                                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.55a11 11 0 0114.08 0M1.42 9a16 16 0 0121.16 0M8.53 16.11a6 6 0 016.95 0M12 20h.01"/></svg>
+                                </div>
+                                <div class="killchain-label">C2通信</div>
+                                <div class="killchain-desc">持続的アクセス</div>
+                            </div>
+                            <div class="killchain-step">
+                                <div class="killchain-icon action">
+                                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M12 8v4M12 16h.01"/></svg>
+                                </div>
+                                <div class="killchain-label">目的達成</div>
+                                <div class="killchain-desc">データ窃取</div>
+                            </div>
+                        </div>
+
+                        <div class="attack-scenario">
+                            <div class="attack-scenario-title">想定攻撃シナリオ: GPU管理インターフェース経由のAIモデル窃取</div>
+                            <div class="attack-step">
+                                <div class="attack-step-num">1</div>
+                                <div>
+                                    <strong>偵察フェーズ</strong><br>
+                                    <span style="color: var(--text-secondary);">攻撃者がShodanで「port:5555 NVIDIA」を検索し、公開されたGPU管理インターフェースを発見。IPアドレス203.0.113.42を特定。</span>
+                                </div>
+                            </div>
+                            <div class="attack-step">
+                                <div class="attack-step-num">2</div>
+                                <div>
+                                    <strong>初期アクセス（T1190）</strong><br>
+                                    <span style="color: var(--text-secondary);">CVE-2024-1234を利用してリモートコード実行。認証をバイパスしてGPUノードにシェルアクセスを取得。</span>
+                                </div>
+                            </div>
+                            <div class="attack-step">
+                                <div class="attack-step-num">3</div>
+                                <div>
+                                    <strong>横展開（T1021）</strong><br>
+                                    <span style="color: var(--text-secondary);">GPUノードから内部ネットワークをスキャン。SSH鍵を発見し、他のAIトレーニングサーバーへ横展開。</span>
+                                </div>
+                            </div>
+                            <div class="attack-step">
+                                <div class="attack-step-num">4</div>
+                                <div>
+                                    <strong>データ窃取（T1567）</strong><br>
+                                    <span style="color: var(--text-secondary);">トレーニング済みモデルパラメータ（数GB〜数百GB）を分割して外部にエクスフィルトレーション。クラウドストレージ経由で検出回避。</span>
+                                </div>
+                            </div>
+                            <div class="attack-step">
+                                <div class="attack-step-num">5</div>
+                                <div>
+                                    <strong>持続化（T1053）</strong><br>
+                                    <span style="color: var(--text-secondary);">cronジョブでバックドアを設定。GPU使用率を監視し、低負荷時にクリプトマイニングを実行。</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="highlight-box" style="margin-top: 1.5rem;">
+                            <div class="highlight-box-title">攻撃実現までの推定時間</div>
+                            <table class="metrics-table">
+                                <tr><td>偵察〜初期アクセス</td><td><span style="color: #ef4444; font-weight: 700;">2-4時間</span></td></tr>
+                                <tr><td>横展開〜データ窃取</td><td><span style="color: #ef4444; font-weight: 700;">4-8時間</span></td></tr>
+                                <tr><td>総攻撃時間</td><td><span style="color: #dc2626; font-weight: 700;">6-12時間</span></td></tr>
+                                <tr><td>検知確率（現状）</td><td><span style="color: #dc2626; font-weight: 700;">15%以下</span></td></tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Infrastructure Profile -->
+            <section class="section">
+                <div class="section-header">
+                    <h2 class="section-title">インフラストラクチャプロファイル<span class="section-title-sub">Infrastructure Profile</span></h2>
+                </div>
+                <div class="section-card">
+                    <div class="profile-grid">
+                        <div class="profile-card">
+                            <div class="profile-icon network">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                            </div>
+                            <div class="profile-content">
+                                <div class="profile-label">IPアドレス</div>
+                                <div class="profile-value">203.0.113.42</div>
+                            </div>
+                        </div>
+                        <div class="profile-card">
+                            <div class="profile-icon org">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M9 8h1M9 12h1M9 16h1M14 8h1M14 12h1M14 16h1M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16"/></svg>
+                            </div>
+                            <div class="profile-content">
+                                <div class="profile-label">組織</div>
+                                <div class="profile-value">Demo Corp</div>
+                            </div>
+                        </div>
+                        <div class="profile-card">
+                            <div class="profile-icon cloud">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
+                            </div>
+                            <div class="profile-content">
+                                <div class="profile-label">クラウドプロバイダー</div>
+                                <div class="profile-value">AWS (ap-northeast-1)</div>
+                            </div>
+                        </div>
+                        <div class="profile-card">
+                            <div class="profile-icon location">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            </div>
+                            <div class="profile-content">
+                                <div class="profile-label">所在地</div>
+                                <div class="profile-value">Tokyo, Japan</div>
+                            </div>
+                        </div>
+                        <div class="profile-card">
+                            <div class="profile-icon os">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                            </div>
+                            <div class="profile-content">
+                                <div class="profile-label">オペレーティングシステム</div>
+                                <div class="profile-value">Ubuntu 22.04</div>
+                            </div>
+                        </div>
+                        <div class="profile-card">
+                            <div class="profile-icon gpu">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg>
+                            </div>
+                            <div class="profile-content">
+                                <div class="profile-label">GPU</div>
+                                <div class="profile-value">NVIDIA A100 x 8</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 2rem;">
+                        <p><strong>1. ネットワークアーキテクチャ分析</strong></p>
+                        <p>AWSの東京リージョン（ap-northeast-1）でホストされており、以下の構成が確認されました：</p>
+                        <ul>
+                            <li><strong>露出サービス:</strong> 15サービス（HTTP/HTTPS、SSH、RDP、PostgreSQL、GPU管理等）</li>
+                            <li><strong>高リスクサービス:</strong> 5ポート（22、3389、5432、5555、8080）</li>
+                            <li><strong>CDN/WAF:</strong> CloudFront検出、AWS WAF未検出</li>
+                            <li><strong>ロードバランサー:</strong> ALB確認</li>
+                            <li><strong>ネットワークセグメンテーション:</strong> 不十分 - 管理サービスが直接公開</li>
+                        </ul>
+
+                        <p><strong>2. サービス構成セキュリティ</strong></p>
+                        <p><strong>TLS/SSL:</strong></p>
+                        <ul>
+                            <li>TLS 1.1検出（非推奨）- PCI DSS 4.0非準拠</li>
+                            <li>TLS 1.2/1.3も併用</li>
+                            <li>一部弱い暗号スイート（3DES、RC4）が有効</li>
+                            <li>証明書: Let's Encrypt発行、有効期限まで45日</li>
+                        </ul>
+                        <p><strong>セキュリティヘッダー:</strong></p>
+                        <ul>
+                            <li>Content-Security-Policy: 未設定</li>
+                            <li>X-Frame-Options: 未設定</li>
+                            <li>Strict-Transport-Security: 設定済み</li>
+                            <li>X-Content-Type-Options: 未設定</li>
+                        </ul>
+
+                        <p><strong>3. GPU/AIインフラストラクチャ詳細</strong></p>
+                        <ul>
+                            <li>GPU管理ポート: 5555/tcp（NVIDIA DCGM相当）が外部公開</li>
+                            <li>検出されたフレームワーク: TensorFlow Serving、Tritonの可能性</li>
+                            <li>推論エンドポイント: 8080/tcpで確認</li>
+                        </ul>
+
+                        <p><strong>4. アーキテクチャの強み</strong></p>
+                        <ul>
+                            <li>CloudFrontによる基本的なDDoS緩和</li>
+                            <li>HSTSヘッダーの実装</li>
+                            <li>ALBによる負荷分散</li>
+                        </ul>
+
+                        <p><strong>5. アーキテクチャの弱点</strong></p>
+                        <ul>
+                            <li style="color: #ef4444;">管理ポート（SSH、RDP、GPU-MGMT）の直接公開</li>
+                            <li style="color: #ef4444;">データベースポートの外部公開</li>
+                            <li style="color: #ef4444;">WAF未実装</li>
+                            <li style="color: #f97316;">単一AZ構成</li>
+                            <li style="color: #f97316;">セキュリティヘッダー不足</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Attack Surface -->
+            <section class="section">
+                <div class="section-header">
+                    <h2 class="section-title">攻撃対象領域分析<span class="section-title-sub">Attack Surface Analysis</span></h2>
+                </div>
+                <div class="section-card">
+                    <div class="port-list">
+                        <span class="port-tag danger">22/ssh</span>
+                        <span class="port-tag">80/http</span>
+                        <span class="port-tag">443/https</span>
+                        <span class="port-tag danger">3389/rdp</span>
+                        <span class="port-tag danger">5432/postgresql</span>
+                        <span class="port-tag danger">5555/gpu-mgmt</span>
+                        <span class="port-tag danger">8080/http-proxy</span>
+                    </div>
+
+                    <div class="alert-box">
+                        <div class="alert-title">GPU Management Exposed</div>
+                        <div class="alert-content">GPU管理インターフェース（ポート5555）がインターネットに公開されています。これはAI/MLワークロードに対する重大なセキュリティリスクです。攻撃者がGPUリソースを不正利用したり、モデルデータにアクセスする可能性があります。</div>
+                    </div>
+
+                    <p><strong>検出された脆弱性:</strong></p>
+                    <ul>
+                        <li style="font-family: JetBrains Mono, monospace; color: #dc2626;">CVE-2024-1234 - Critical (CVSS 9.8) - リモートコード実行</li>
+                        <li style="font-family: JetBrains Mono, monospace; color: #ef4444;">CVE-2024-5678 - High (CVSS 7.5) - 認証バイパス</li>
+                        <li style="font-family: JetBrains Mono, monospace; color: #f97316;">CVE-2024-9012 - Medium (CVSS 5.4) - 情報漏洩</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Risk Analysis -->
+            <section class="section">
+                <div class="section-header">
+                    <h2 class="section-title">リスク分析<span class="section-title-sub">Risk Analysis</span></h2>
+                </div>
+                <div class="section-card">
+<p><strong>1. 外部攻撃面分析（External Attack Surface）</strong></p>
+<p>15のサービスがインターネットに露出しており、そのうち5つが高リスクサービスです。MITRE ATT&CK T1133（External Remote Services）およびT1190（Exploit Public-Facing Application）が適用可能な状態です。</p>
+<ul>
+    <li><strong>発見:</strong> 管理サービス（SSH、RDP）およびGPU管理インターフェースがインターネットに直接公開</li>
+    <li><strong>リスクレベル:</strong> <span style="color: #dc2626; font-weight: 700;">CRITICAL</span></li>
+    <li><strong>可能性:</strong> 非常に高い - Shodan/Censysで即座に発見可能。自動化された攻撃ツールの標的</li>
+    <li><strong>影響:</strong> 初期侵入の足がかり。ラテラルムーブメントによる完全侵害の可能性</li>
+    <li><strong>証拠:</strong> ポートスキャンにより22/tcp、3389/tcp、5555/tcpの応答を確認</li>
+</ul>
+
+<p><strong>2. 脆弱性評価（Vulnerability Assessment）</strong></p>
+<p>5件の既知CVEが検出され、うち1件がCritical（CVSS 9.8）です。エクスプロイトが公開されており、積極的な悪用が報告されています。</p>
+<ul>
+    <li><strong>発見:</strong> CVE-2024-1234 - リモートコード実行脆弱性</li>
+    <li><strong>リスクレベル:</strong> <span style="color: #dc2626; font-weight: 700;">CRITICAL</span></li>
+    <li><strong>可能性:</strong> エクスプロイト公開済み、野生での悪用確認</li>
+    <li><strong>影響:</strong> 認証なしでのリモートコード実行、完全なシステム侵害</li>
+    <li><strong>証拠:</strong> バージョンフィンガープリンティングにより脆弱なバージョンを確認</li>
+</ul>
+
+<p><strong>3. インフラストラクチャ耐性（Infrastructure Resilience）</strong></p>
+<p>単一アベイラビリティゾーン構成が確認され、障害時の影響が大きくなります。</p>
+<ul>
+    <li><strong>発見:</strong> 地理的分散なし、単一障害点（SPOF）の存在</li>
+    <li><strong>リスクレベル:</strong> <span style="color: #f97316; font-weight: 700;">ELEVATED</span></li>
+    <li><strong>可能性:</strong> データセンター障害、ネットワーク障害時にサービス停止</li>
+    <li><strong>影響:</strong> 事業継続性への重大な影響、SLA違反リスク</li>
+</ul>
+
+<p><strong>4. AI/ML固有のリスク</strong></p>
+<p>GPU管理インターフェース（NVIDIA DCGM相当）が外部に露出しており、AI/MLワークロード特有のリスクが存在します。</p>
+<ul>
+    <li><strong>発見:</strong> ポート5555/tcpでGPU管理インターフェースが応答</li>
+    <li><strong>リスクレベル:</strong> <span style="color: #dc2626; font-weight: 700;">CRITICAL</span></li>
+    <li><strong>可能性:</strong> 認証バイパスまたはデフォルト資格情報による不正アクセス</li>
+    <li><strong>影響:</strong>
+        <ul>
+            <li>GPUリソースの不正利用（クリプトマイニング）</li>
+            <li>トレーニングデータ・モデルパラメータの窃取</li>
+            <li>推論エンドポイントへの不正アクセス</li>
+            <li>サービス妨害（DoS）</li>
+        </ul>
+    </li>
+</ul>
+
+<p><strong>5. サプライチェーンリスク</strong></p>
+<ul>
+    <li><strong>発見:</strong> NVIDIA GPUへの95%依存</li>
+    <li><strong>リスクレベル:</strong> <span style="color: #eab308; font-weight: 700;">MODERATE</span></li>
+    <li><strong>影響:</strong> 供給制約、輸出規制、価格変動リスク</li>
+</ul>
+                </div>
+            </section>
+
+            <!-- Alerts -->
+            <section class="section">
+                <div class="section-header">
+                    <h2 class="section-title">検出アラート<span class="section-title-sub">Detected Security Alerts</span></h2>
+                </div>
+                <div class="section-card">
+                    <ul class="alert-list">
+                        <li class="alert-item alert-critical">
+                            <span class="alert-indicator critical"></span>
+                            <div>
+                                <span class="alert-text">GPU management interface publicly accessible (Port 5555)</span>
+                                <div class="alert-desc">NVIDIA DCGMインターフェースが外部公開。攻撃者によるGPUリソース不正利用やモデルデータ窃取のリスク。</div>
+                            </div>
+                        </li>
+                        <li class="alert-item alert-high">
+                            <span class="alert-indicator high"></span>
+                            <div>
+                                <span class="alert-text">SSH port 22 exposed to internet</span>
+                                <div class="alert-desc">SSHがインターネットに公開。自動化されたブルートフォース攻撃の標的となります。</div>
+                            </div>
+                        </li>
+                        <li class="alert-item alert-high">
+                            <span class="alert-indicator high"></span>
+                            <div>
+                                <span class="alert-text">RDP port 3389 exposed to internet</span>
+                                <div class="alert-desc">リモートデスクトップが外部公開。資格情報スタッフィング攻撃のリスクが高い。</div>
+                            </div>
+                        </li>
+                        <li class="alert-item alert-elevated">
+                            <span class="alert-indicator elevated"></span>
+                            <div>
+                                <span class="alert-text">PostgreSQL database port (5432) publicly accessible</span>
+                                <div class="alert-desc">データベースポートが公開。SQLインジェクションや認証バイパスの攻撃ベクトル。</div>
+                            </div>
+                        </li>
+                        <li class="alert-item alert-elevated">
+                            <span class="alert-indicator elevated"></span>
+                            <div>
+                                <span class="alert-text">Outdated TLS 1.1 detected</span>
+                                <div class="alert-desc">非推奨の暗号化プロトコル使用。PCI DSS 4.0に非準拠。</div>
+                            </div>
+                        </li>
+                        <li class="alert-item alert-info">
+                            <span class="alert-indicator info"></span>
+                            <div>
+                                <span class="alert-text">Single availability zone configuration</span>
+                                <div class="alert-desc">単一AZ構成により、障害時のサービス継続性リスク。</div>
+                            </div>
+                        </li>
+                        <li class="alert-item alert-info">
+                            <span class="alert-indicator info"></span>
+                            <div>
+                                <span class="alert-text">95% GPU vendor concentration (NVIDIA)</span>
+                                <div class="alert-desc">サプライチェーン集中リスク。供給制約や価格変動の影響を受けやすい。</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Threat Intelligence -->
+            <section class="section" id="threat-intel">
+                <div class="section-header" onclick="toggleSection(this)">
+                    <h2 class="section-title">脅威インテリジェンス<span class="section-title-sub">Threat Intelligence</span></h2>
+                </div>
+                <div class="section-content">
+                    <div class="section-card">
+                        <p>御社のインフラストラクチャを標的とする可能性が高い脅威アクターと、関連する最近の攻撃事例です。</p>
+
+                        <p style="margin-top: 1.5rem;"><strong>関連する脅威アクター</strong></p>
+                        <div class="threat-grid">
+                            <div class="apt-card">
+                                <div class="apt-header">
+                                    <div class="apt-icon">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                                    </div>
+                                    <div>
+                                        <div class="apt-name">APT41 (Double Dragon)</div>
+                                        <div class="apt-alias">別名: Winnti, Barium, Wicked Panda</div>
+                                    </div>
+                                </div>
+                                <div class="apt-tags">
+                                    <span class="apt-tag">中国</span>
+                                    <span class="apt-tag">テクノロジー</span>
+                                    <span class="apt-tag">IP窃取</span>
+                                    <span class="apt-tag">サプライチェーン</span>
+                                </div>
+                                <p style="font-size: 0.85rem; color: var(--text-secondary); margin: 0;">
+                                    テクノロジー企業を主要ターゲットとし、知的財産の窃取を目的とする。AI/ML研究機関への攻撃実績あり。
+                                </p>
+                                <div style="margin-top: 0.75rem;">
+                                    <span style="font-size: 0.75rem; color: var(--text-muted);">関連性スコア:</span>
+                                    <span class="risk-badge high" style="margin-left: 0.5rem;">HIGH</span>
+                                </div>
+                            </div>
+                            <div class="apt-card">
+                                <div class="apt-header">
+                                    <div class="apt-icon">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                                    </div>
+                                    <div>
+                                        <div class="apt-name">Lazarus Group</div>
+                                        <div class="apt-alias">別名: Hidden Cobra, Zinc</div>
+                                    </div>
+                                </div>
+                                <div class="apt-tags">
+                                    <span class="apt-tag">北朝鮮</span>
+                                    <span class="apt-tag">金融</span>
+                                    <span class="apt-tag">暗号通貨</span>
+                                    <span class="apt-tag">ランサムウェア</span>
+                                </div>
+                                <p style="font-size: 0.85rem; color: var(--text-secondary); margin: 0;">
+                                    GPUリソースを狙ったクリプトジャッキング、ランサムウェア攻撃の実績。金銭目的の攻撃に注意。
+                                </p>
+                                <div style="margin-top: 0.75rem;">
+                                    <span style="font-size: 0.75rem; color: var(--text-muted);">関連性スコア:</span>
+                                    <span class="risk-badge elevated" style="margin-left: 0.5rem;">ELEVATED</span>
+                                </div>
+                            </div>
+                            <div class="apt-card">
+                                <div class="apt-header">
+                                    <div class="apt-icon">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
+                                    </div>
+                                    <div>
+                                        <div class="apt-name">TeamTNT</div>
+                                        <div class="apt-alias">クラウド特化型脅威グループ</div>
+                                    </div>
+                                </div>
+                                <div class="apt-tags">
+                                    <span class="apt-tag">クラウド</span>
+                                    <span class="apt-tag">コンテナ</span>
+                                    <span class="apt-tag">クリプトマイニング</span>
+                                    <span class="apt-tag">AWS</span>
+                                </div>
+                                <p style="font-size: 0.85rem; color: var(--text-secondary); margin: 0;">
+                                    クラウド環境とコンテナを標的とし、GPUを悪用したクリプトマイニングを実行。AWS環境への攻撃に特化。
+                                </p>
+                                <div style="margin-top: 0.75rem;">
+                                    <span style="font-size: 0.75rem; color: var(--text-muted);">関連性スコア:</span>
+                                    <span class="risk-badge critical" style="margin-left: 0.5rem;">CRITICAL</span>
+                                </div>
+                            </div>
+                            <div class="apt-card">
+                                <div class="apt-header">
+                                    <div class="apt-icon">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
+                                    </div>
+                                    <div>
+                                        <div class="apt-name">FIN7</div>
+                                        <div class="apt-alias">別名: Carbanak, Navigator Group</div>
+                                    </div>
+                                </div>
+                                <div class="apt-tags">
+                                    <span class="apt-tag">東欧</span>
+                                    <span class="apt-tag">フィッシング</span>
+                                    <span class="apt-tag">RaaS</span>
+                                    <span class="apt-tag">データ窃取</span>
+                                </div>
+                                <p style="font-size: 0.85rem; color: var(--text-secondary); margin: 0;">
+                                    高度なフィッシング攻撃とランサムウェア・アズ・ア・サービス。SSH/RDP露出環境を標的に。
+                                </p>
+                                <div style="margin-top: 0.75rem;">
+                                    <span style="font-size: 0.75rem; color: var(--text-muted);">関連性スコア:</span>
+                                    <span class="risk-badge high" style="margin-left: 0.5rem;">HIGH</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p style="margin-top: 2rem;"><strong>最近の関連攻撃事例</strong></p>
+                        <div class="recent-attack">
+                            <div class="attack-date">2024年12月 - 公開情報</div>
+                            <div class="attack-title">大手AIスタートアップ、GPUクラスタへの不正アクセスで$2M相当の計算資源を悪用される</div>
+                            <p style="font-size: 0.85rem; color: var(--text-secondary); margin: 0.5rem 0;">
+                                露出したNVIDIA DCGM管理インターフェース経由で侵入。3週間にわたりクリプトマイニングに悪用。
+                            </p>
+                            <span class="attack-impact">推定被害額: $2,000,000+</span>
+                        </div>
+                        <div class="recent-attack">
+                            <div class="attack-date">2024年11月 - セキュリティ研究報告</div>
+                            <div class="attack-title">TeamTNTによるAWS上のMLインフラを標的とした大規模攻撃キャンペーン</div>
+                            <p style="font-size: 0.85rem; color: var(--text-secondary); margin: 0.5rem 0;">
+                                認証情報漏洩とポートスキャンを組み合わせた攻撃。日本を含むAPAC地域の50+組織が影響。
+                            </p>
+                            <span class="attack-impact">影響組織: 50+</span>
+                        </div>
+                        <div class="recent-attack">
+                            <div class="attack-date">2024年10月 - インシデントレポート</div>
+                            <div class="attack-title">製造業向けAI企業、トレーニングデータ窃取により競合他社にIP流出</div>
+                            <p style="font-size: 0.85rem; color: var(--text-secondary); margin: 0.5rem 0;">
+                                SSH鍵の不適切な管理が原因。APT41との関連が疑われる。
+                            </p>
+                            <span class="attack-impact">競争優位喪失</span>
+                        </div>
+
+                        <div class="highlight-box warning" style="margin-top: 1.5rem;">
+                            <div class="highlight-box-title">御社環境への適用</div>
+                            <p style="margin: 0;">現在の脆弱性（GPU管理ポート露出、SSH/RDP公開）は、TeamTNTやLazarus Groupの攻撃パターンと完全に一致します。特にGPU管理インターフェースの露出は、クリプトマイニング攻撃の格好の標的となります。</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Recommendations -->
+            <section class="section">
+                <div class="section-header">
+                    <h2 class="section-title">推奨事項<span class="section-title-sub">Recommendations</span></h2>
+                </div>
+                <div class="section-card">
+<div class="tier-card tier-1">
+    <div class="tier-header">
+        <span class="tier-label">Tier 1</span>
+        <span class="tier-title">CRITICAL - 即時対応（24-48時間）</span>
+    </div>
+    <ul>
+        <li><strong>CVE-2024-1234 緊急パッチ適用</strong> - CVSS 9.8、エクスプロイト公開済み
+            <pre>sudo apt update && sudo apt upgrade vulnerable-package</pre>
+        </li>
+        <li><strong>GPU管理ポート（5555）遮断</strong> - 工数: 30分
+            <pre>aws ec2 revoke-security-group-ingress --port 5555 --cidr 0.0.0.0/0</pre>
+        </li>
+        <li><strong>SSH/RDP をVPN経由に制限</strong> - Security Groupで0.0.0.0/0を削除</li>
+    </ul>
+</div>
+
+<div class="tier-card tier-2">
+    <div class="tier-header">
+        <span class="tier-label">Tier 2</span>
+        <span class="tier-title">HIGH PRIORITY - 1-2週間</span>
+    </div>
+    <ul>
+        <li>TLS 1.0/1.1の無効化、TLS 1.3への完全移行</li>
+        <li>PostgreSQLポート（5432）の内部ネットワーク制限</li>
+        <li>AWS WAFの導入（OWASP Top 10ルールセット）</li>
+        <li>セキュリティヘッダーの実装（CSP、X-Frame-Options）</li>
+    </ul>
+</div>
+
+<div class="tier-card tier-3">
+    <div class="tier-header">
+        <span class="tier-label">Tier 3</span>
+        <span class="tier-title">MEDIUM PRIORITY - 1-3ヶ月</span>
+    </div>
+    <ul>
+        <li>マルチAZ構成への移行</li>
+        <li>ネットワークセグメンテーションの実装（管理用VPC分離）</li>
+        <li>脆弱性スキャンの自動化（週次）</li>
+        <li>SIEM/ログ監視の導入</li>
+    </ul>
+</div>
+
+<div class="tier-card tier-4">
+    <div class="tier-header">
+        <span class="tier-label">Tier 4</span>
+        <span class="tier-title">ENHANCEMENT - 継続的改善</span>
+    </div>
+    <ul>
+        <li>ゼロトラストアーキテクチャへの移行検討</li>
+        <li>セキュリティ意識向上トレーニング</li>
+        <li>インシデント対応訓練（年2回）</li>
+        <li>ペネトレーションテスト（年1回）</li>
+    </ul>
+</div>
+                </div>
+            </section>
+
+            <!-- First 24 Hours Action Plan -->
+            <section class="section">
+                <div class="section-header">
+                    <h2 class="section-title">初動24時間アクションプラン<span class="section-title-sub">First 24 Hours Action Plan</span></h2>
+                </div>
+                <div class="section-card">
+<div class="timeline">
+    <div class="timeline-item">
+        <div class="timeline-time">HOUR 0-2</div>
+        <div class="timeline-content">
+            <div class="timeline-title">即時対応</div>
+            <ul>
+                <li>CVE-2024-1234の影響範囲確認</li>
+                <li>GPU管理ポートへの不正アクセスログ確認</li>
+                <li>セキュリティチームリーダーへエスカレーション</li>
+                <li>証拠保全（Security Group設定エクスポート、ログスナップショット）</li>
+            </ul>
+        </div>
+    </div>
+    <div class="timeline-item">
+        <div class="timeline-time">HOUR 2-6</div>
+        <div class="timeline-content">
+            <div class="timeline-title">緊急対策</div>
+            <ul>
+                <li><strong>Quick Win:</strong> GPU管理ポート（5555）遮断</li>
+                <li><strong>Quick Win:</strong> SSH/RDPを0.0.0.0/0から削除、VPN CIDRのみ許可</li>
+                <li>外部からのポートスキャンで遮断確認</li>
+            </ul>
+        </div>
+    </div>
+    <div class="timeline-item">
+        <div class="timeline-time">HOUR 6-12</div>
+        <div class="timeline-content">
+            <div class="timeline-title">詳細分析</div>
+            <ul>
+                <li>CVE-2024-1234の技術的詳細確認</li>
+                <li>パッチ適用手順の策定</li>
+                <li>テスト環境でのパッチ検証</li>
+                <li>変更管理チケット作成</li>
+            </ul>
+        </div>
+    </div>
+    <div class="timeline-item">
+        <div class="timeline-time">HOUR 12-18</div>
+        <div class="timeline-content">
+            <div class="timeline-title">修復実施</div>
+            <ul>
+                <li>Critical CVEパッチの本番適用</li>
+                <li>TLS 1.1の無効化</li>
+                <li>PostgreSQLポートの制限</li>
+            </ul>
+        </div>
+    </div>
+    <div class="timeline-item">
+        <div class="timeline-time">HOUR 18-24</div>
+        <div class="timeline-content">
+            <div class="timeline-title">報告と計画</div>
+            <ul>
+                <li>ステークホルダーへの完了報告</li>
+                <li>7日/30日/90日ロードマップ策定</li>
+                <li>lessons learnedの文書化</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="highlight-box" style="margin-top: 1.5rem;">
+    <div class="highlight-box-title">成功基準（24時間後）</div>
+    <table class="metrics-table">
+        <tr><td>Critical CVEパッチ</td><td><span class="risk-badge low">適用完了</span></td></tr>
+        <tr><td>GPU管理ポート</td><td><span class="risk-badge low">外部遮断完了</span></td></tr>
+        <tr><td>SSH/RDPアクセス</td><td><span class="risk-badge low">制限完了</span></td></tr>
+        <tr><td>検証スキャン</td><td><span class="risk-badge low">完了</span></td></tr>
+        <tr><td>ステークホルダー報告</td><td><span class="risk-badge low">完了</span></td></tr>
+    </table>
+</div>
+                </div>
+            </section>
+
+            <div class="disclaimer">
+                <div class="disclaimer-title">免責事項</div>
+                <div class="disclaimer-text">本レポートは外部から取得可能な情報（OSINT）に基づいて作成されています。評価結果は参考情報であり、完全性を保証するものではありません。重要な意思決定を行う前に、専門家による追加評価を推奨します。</div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>Generated by <span class="footer-brand">STRATUM</span></p>
+            <p class="footer-text">Report ID: STR-202512251500 | 2025-12-25 15:00 UTC</p>
+        </div>
+    </footer>
+
+    <script>
+        // Section toggle functionality
+        function toggleSection(header) {
+            const section = header.closest('.section');
+            section.classList.toggle('collapsed');
+        }
+
+        // Toggle all sections
+        let allCollapsed = false;
+        function toggleAllSections() {
+            const sections = document.querySelectorAll('.section');
+            allCollapsed = !allCollapsed;
+            sections.forEach(section => {
+                if (allCollapsed) {
+                    section.classList.add('collapsed');
+                } else {
+                    section.classList.remove('collapsed');
+                }
+            });
+        }
+
+        // PDF Export function
+        function exportPDF() {
+            // Expand all sections before printing
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => section.classList.remove('collapsed'));
+
+            // Short delay to ensure sections are expanded
+            setTimeout(() => {
+                // Create a notification
+                const notification = document.createElement('div');
+                notification.style.cssText = `
+                    position: fixed;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    background: #1e293b;
+                    border: 1px solid #10b981;
+                    border-radius: 12px;
+                    padding: 2rem;
+                    z-index: 10000;
+                    text-align: center;
+                    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+                `;
+                notification.innerHTML = `
+                    <div style="color: #10b981; font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem;">
+                        PDF出力準備完了
+                    </div>
+                    <div style="color: #94a3b8; font-size: 0.9rem; margin-bottom: 1.5rem;">
+                        印刷ダイアログで「PDFとして保存」を選択してください
+                    </div>
+                    <button onclick="this.parentElement.remove(); window.print();" style="
+                        background: #10b981;
+                        color: white;
+                        border: none;
+                        padding: 0.75rem 2rem;
+                        border-radius: 8px;
+                        font-weight: 600;
+                        cursor: pointer;
+                    ">印刷ダイアログを開く</button>
+                    <button onclick="this.parentElement.remove();" style="
+                        background: transparent;
+                        color: #94a3b8;
+                        border: 1px solid #374151;
+                        padding: 0.75rem 1.5rem;
+                        border-radius: 8px;
+                        margin-left: 0.5rem;
+                        cursor: pointer;
+                    ">キャンセル</button>
+                `;
+                document.body.appendChild(notification);
+            }, 100);
+        }
+
+        // Add click handlers to all section headers
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add section-content wrapper to sections that don't have onclick
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                const header = section.querySelector('.section-header');
+                if (header && !header.hasAttribute('onclick')) {
+                    header.setAttribute('onclick', 'toggleSection(this)');
+                }
+
+                // Wrap section card in section-content if not already
+                const card = section.querySelector('.section-card');
+                if (card && !section.querySelector('.section-content')) {
+                    const content = document.createElement('div');
+                    content.className = 'section-content';
+                    card.parentNode.insertBefore(content, card);
+                    content.appendChild(card);
+                }
+            });
+
+            // Animate compliance bars on scroll
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const bars = entry.target.querySelectorAll('.compliance-bar-fill, .benchmark-bar');
+                        bars.forEach(bar => {
+                            const width = bar.style.width;
+                            bar.style.width = '0';
+                            setTimeout(() => {
+                                bar.style.width = width;
+                            }, 100);
+                        });
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.2 });
+
+            document.querySelectorAll('.compliance-grid, .benchmark-container').forEach(el => {
+                observer.observe(el);
+            });
+        });
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            // Ctrl/Cmd + P for print
+            if ((e.ctrlKey || e.metaKey) && e.key === 'p') {
+                e.preventDefault();
+                window.print();
+            }
+            // Escape to collapse all
+            if (e.key === 'Escape') {
+                const sections = document.querySelectorAll('.section');
+                sections.forEach(section => section.classList.add('collapsed'));
+                allCollapsed = true;
+            }
+        });
+    </script>
+</body>
+</html>
