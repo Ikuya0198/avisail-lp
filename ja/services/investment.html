@@ -832,8 +832,13 @@
                 </div>
 
                 <!-- AI Infrastructure Risk -->
-                <div class="flagship-card">
-                    <div class="flagship-left">
+                <div class="flagship-card" style="position: relative;">
+                    <!-- Logo Badge -->
+                    <div style="position: absolute; top: -14px; left: 24px; display: flex; flex-direction: column; background: var(--card-bg); padding: 6px 14px; border-radius: 8px; border: 1px solid rgba(16,185,129,0.5); box-shadow: 0 4px 12px rgba(16,185,129,0.2);">
+                        <span style="font-size: 1.4rem; font-weight: 800; background: linear-gradient(135deg, #10b981, #34d399); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: -0.02em;">STRATUM</span>
+                        <span style="font-size: 7px; color: #64748b; text-transform: uppercase; letter-spacing: 0.15em;">AI INFRASTRUCTURE RISK INTELLIGENCE</span>
+                    </div>
+                    <div class="flagship-left" style="padding-top: 24px;">
                         <div class="flagship-tag intel">Intelligence / B2B</div>
                         <h3>
                             AIインフラ リスク評価
@@ -847,7 +852,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="flagship-right">
+                    <div class="flagship-right" style="padding-top: 24px;">
                         <p>
                             AIデータセンター・GPUインフラを「投資対象」ではなく「止まってはいけないインフラ」として評価。
                             信用・稼働・サイバーリスクを多角的に分析し、投資・事業判断の前提を可視化します。
@@ -861,23 +866,25 @@
                         <div class="non-scope">
                             ※ 投資推奨・売買判断、価格予測・リターン予測は行いません
                         </div>
-                        <div style="margin-top: 20px; padding: 16px; background: linear-gradient(135deg, rgba(16,185,129,0.15), rgba(52,211,153,0.08)); border: 1px solid rgba(16,185,129,0.4); border-radius: 12px;">
-                            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
-                                <span style="font-size: 1.5rem; font-weight: 800; background: linear-gradient(135deg, #10b981, #34d399); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">STRATUM</span>
-                                <span style="font-size: 9px; color: #64748b; text-transform: uppercase; letter-spacing: 0.15em;">SAMPLE REPORT</span>
-                            </div>
-                            <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 12px;">実際の評価レポートのサンプルをご覧いただけます</p>
-                            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-                                <a href="../../products/stratum/reports/stratum-sample-report-ja.html" style="text-decoration: none;"><button class="btn-primary" style="font-size: 12px; padding: 8px 16px; background: linear-gradient(135deg,#10b981,#34d399);">日本語版</button></a>
-                                <a href="../../products/stratum/reports/stratum-sample-report-en.html" style="text-decoration: none;"><button class="btn-secondary" style="font-size: 12px; padding: 8px 16px;">English</button></a>
-                            </div>
+                    </div>
+                    <!-- Sample Report Section -->
+                    <div style="grid-column: 1 / -1; margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(16,185,129,0.2); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;">
+                        <span style="font-size: 13px; color: var(--text-muted);">サンプルレポートを確認する</span>
+                        <div style="display: flex; gap: 10px;">
+                            <a href="../../products/stratum/reports/stratum-sample-report-ja.html" style="text-decoration: none;"><button class="btn-primary" style="font-size: 12px; padding: 8px 16px; background: linear-gradient(135deg,#10b981,#34d399);">日本語版</button></a>
+                            <a href="../../products/stratum/reports/stratum-sample-report-en.html" style="text-decoration: none;"><button class="btn-secondary" style="font-size: 12px; padding: 8px 16px;">English</button></a>
                         </div>
                     </div>
                 </div>
 
                 <!-- Critical Materials -->
-                <div class="flagship-card">
-                    <div class="flagship-left">
+                <div class="flagship-card" style="position: relative;">
+                    <!-- Logo Badge -->
+                    <div style="position: absolute; top: -14px; left: 24px; display: flex; flex-direction: column; background: var(--card-bg); padding: 6px 14px; border-radius: 8px; border: 1px solid rgba(217,119,6,0.5); box-shadow: 0 4px 12px rgba(217,119,6,0.2);">
+                        <span style="font-size: 1.4rem; font-weight: 800; background: linear-gradient(135deg, #d97706, #fbbf24); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: -0.02em;">NEXUS</span>
+                        <span style="font-size: 7px; color: #64748b; text-transform: uppercase; letter-spacing: 0.15em;">SUPPLY CHAIN RISK INTELLIGENCE</span>
+                    </div>
+                    <div class="flagship-left" style="padding-top: 24px;">
                         <div class="flagship-tag intel">Intelligence / B2B</div>
                         <h3>
                             戦略資源サプライチェーン評価
@@ -891,7 +898,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="flagship-right">
+                    <div class="flagship-right" style="padding-top: 24px;">
                         <p>
                             レアアース等の戦略資源について、価格や短期需給ではなく「供給が止まるリスク・歪むリスク」に焦点を当てて評価。
                             地政学・規制・環境要因を含む多角的なリスク分析を提供します。
@@ -905,15 +912,12 @@
                         <div class="non-scope">
                             ※ 資源価格の予測、投資判断・売買推奨は行いません
                         </div>
-                        <div style="margin-top: 20px; padding: 16px; background: linear-gradient(135deg, rgba(217,119,6,0.15), rgba(251,191,36,0.08)); border: 1px solid rgba(217,119,6,0.4); border-radius: 12px;">
-                            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
-                                <span style="font-size: 1.5rem; font-weight: 800; background: linear-gradient(135deg, #d97706, #fbbf24); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">NEXUS</span>
-                                <span style="font-size: 9px; color: #64748b; text-transform: uppercase; letter-spacing: 0.15em;">SAMPLE REPORT</span>
-                            </div>
-                            <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 12px;">実際の評価レポートのサンプルをご覧いただけます</p>
-                            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-                                <a href="../../products/nexus/reports/nexus-sample-report-ja.html" style="text-decoration: none;"><button class="btn-primary" style="font-size: 12px; padding: 8px 16px; background: linear-gradient(135deg,#d97706,#fbbf24);">日本語版</button></a>
-                            </div>
+                    </div>
+                    <!-- Sample Report Section -->
+                    <div style="grid-column: 1 / -1; margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(217,119,6,0.2); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;">
+                        <span style="font-size: 13px; color: var(--text-muted);">サンプルレポートを確認する</span>
+                        <div style="display: flex; gap: 10px;">
+                            <a href="../../products/nexus/reports/nexus-sample-report-ja.html" style="text-decoration: none;"><button class="btn-primary" style="font-size: 12px; padding: 8px 16px; background: linear-gradient(135deg,#d97706,#fbbf24);">日本語版</button></a>
                         </div>
                     </div>
                 </div>
