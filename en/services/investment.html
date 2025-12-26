@@ -31,9 +31,9 @@
         body {
             font-family: 'Inter', system-ui, sans-serif;
             background:
-                radial-gradient(circle at 0% 0%, rgba(56, 189, 248, 0.15), transparent 50%),
-                radial-gradient(circle at 100% 100%, rgba(190, 242, 100, 0.08), transparent 50%),
-                linear-gradient(135deg, #000000, #020617 55%, #020617);
+                radial-gradient(circle at 0% 0%, rgba(56, 189, 248, 0.12), transparent 50%),
+                radial-gradient(circle at 100% 100%, rgba(190, 242, 100, 0.06), transparent 50%),
+                #020617;
             color: var(--text-main);
             line-height: 1.7;
         }
@@ -42,7 +42,7 @@
         a:hover { text-decoration: underline; }
 
         .page {
-            max-width: 1200px;
+            max-width: 1100px;
             margin: 0 auto;
             padding: 20px 24px 60px;
         }
@@ -52,7 +52,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 8px 0 24px;
+            padding: 8px 0 32px;
         }
 
         .logo {
@@ -93,7 +93,7 @@
         .nav {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 8px;
             font-size: 13px;
         }
 
@@ -126,15 +126,15 @@
             color: var(--text-main);
         }
 
-        /* Hero */
+        /* Hero - Simple and Clear */
         .hero {
-            padding: 48px 0 40px;
             text-align: center;
+            padding: 40px 0 48px;
         }
 
         .hero-kicker {
             font-size: 11px;
-            letter-spacing: 0.35em;
+            letter-spacing: 0.3em;
             text-transform: uppercase;
             color: var(--accent-cyan);
             margin-bottom: 16px;
@@ -142,9 +142,9 @@
 
         .hero-title {
             font-family: 'Space Grotesk', system-ui, sans-serif;
-            font-size: clamp(32px, 5vw, 48px);
-            line-height: 1.15;
-            margin-bottom: 20px;
+            font-size: clamp(28px, 4.5vw, 42px);
+            line-height: 1.2;
+            margin-bottom: 16px;
         }
 
         .hero-title span { color: var(--accent-cyan); }
@@ -153,280 +153,173 @@
             color: var(--text-muted);
             font-size: 16px;
             line-height: 1.8;
-            max-width: 720px;
-            margin: 0 auto 32px;
+            max-width: 640px;
+            margin: 0 auto;
         }
 
-        /* Category Navigation - The Main Split */
-        .category-nav {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 24px;
-            margin: 0 auto 60px;
-            max-width: 900px;
-        }
-
-        .category-card {
+        /* Product Map - Visual Overview */
+        .product-map {
+            margin: 48px 0;
+            padding: 40px;
             background: var(--card-bg);
-            border-radius: 20px;
-            padding: 32px;
-            border: 2px solid var(--border-soft);
-            transition: all 0.3s;
-            cursor: pointer;
-            text-decoration: none;
-            display: block;
+            border-radius: 24px;
+            border: 1px solid var(--border-soft);
         }
 
-        .category-card:hover {
-            transform: translateY(-4px);
-            text-decoration: none;
-        }
-
-        .category-card.trading {
-            border-color: rgba(163, 230, 53, 0.3);
-        }
-
-        .category-card.trading:hover {
-            border-color: var(--accent-lime);
-            box-shadow: 0 0 40px rgba(163, 230, 53, 0.2);
-        }
-
-        .category-card.intelligence {
-            border-color: rgba(56, 189, 248, 0.3);
-        }
-
-        .category-card.intelligence:hover {
-            border-color: var(--accent-cyan);
-            box-shadow: 0 0 40px rgba(56, 189, 248, 0.2);
-        }
-
-        .category-icon {
-            width: 56px;
-            height: 56px;
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            margin-bottom: 20px;
-        }
-
-        .category-card.trading .category-icon {
-            background: linear-gradient(135deg, rgba(163, 230, 53, 0.2), rgba(34, 211, 238, 0.1));
-        }
-
-        .category-card.intelligence .category-icon {
-            background: linear-gradient(135deg, rgba(56, 189, 248, 0.2), rgba(167, 139, 250, 0.1));
-        }
-
-        .category-label {
-            font-size: 10px;
+        .product-map-title {
+            text-align: center;
+            font-size: 12px;
             letter-spacing: 0.2em;
             text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 32px;
+        }
+
+        .product-map-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+        }
+
+        .product-map-category {
+            padding: 28px;
+            border-radius: 16px;
+            border: 2px solid var(--border-soft);
+            transition: all 0.3s;
+        }
+
+        .product-map-category.trading {
+            border-color: rgba(163, 230, 53, 0.3);
+            background: linear-gradient(135deg, rgba(163, 230, 53, 0.05), transparent);
+        }
+
+        .product-map-category.intelligence {
+            border-color: rgba(56, 189, 248, 0.3);
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.05), transparent);
+        }
+
+        .category-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
             margin-bottom: 8px;
         }
 
-        .category-card.trading .category-label { color: var(--accent-lime); }
-        .category-card.intelligence .category-label { color: var(--accent-cyan); }
-
-        .category-title {
-            font-family: 'Space Grotesk', system-ui, sans-serif;
-            font-size: 22px;
-            font-weight: 600;
-            margin-bottom: 12px;
-            color: var(--text-main);
+        .category-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
         }
 
-        .category-desc {
-            font-size: 14px;
+        .trading .category-icon {
+            background: linear-gradient(135deg, rgba(163, 230, 53, 0.2), rgba(34, 211, 238, 0.1));
+        }
+
+        .intelligence .category-icon {
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.2), rgba(167, 139, 250, 0.1));
+        }
+
+        .category-name {
+            font-family: 'Space Grotesk', system-ui, sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .category-purpose {
+            font-size: 13px;
             color: var(--text-muted);
-            line-height: 1.7;
             margin-bottom: 20px;
+            line-height: 1.7;
+        }
+
+        .category-audience {
+            font-size: 11px;
+            padding: 8px 12px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        .category-audience strong {
+            color: var(--text-main);
+            font-weight: 500;
         }
 
         .category-products {
             display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-
-        .category-product {
-            font-size: 11px;
-            padding: 6px 12px;
-            border-radius: 999px;
-            background: rgba(15, 23, 42, 0.8);
-            border: 1px solid var(--border-soft);
-            color: var(--text-main);
-        }
-
-        /* Section */
-        .section {
-            margin-top: 60px;
-            padding-top: 40px;
-            border-top: 1px solid var(--border-soft);
-        }
-
-        .section-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 10px;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            padding: 6px 14px;
-            border-radius: 999px;
-            margin-bottom: 16px;
-        }
-
-        .section-badge.trading {
-            background: rgba(163, 230, 53, 0.1);
-            color: var(--accent-lime);
-            border: 1px solid rgba(163, 230, 53, 0.3);
-        }
-
-        .section-badge.intelligence {
-            background: rgba(56, 189, 248, 0.1);
-            color: var(--accent-cyan);
-            border: 1px solid rgba(56, 189, 248, 0.3);
-        }
-
-        .section-header {
-            margin-bottom: 32px;
-        }
-
-        .section-title {
-            font-family: 'Space Grotesk', system-ui, sans-serif;
-            font-size: 28px;
-            font-weight: 600;
-            margin-bottom: 12px;
-        }
-
-        .section-subtitle {
-            font-size: 15px;
-            color: var(--text-muted);
-            max-width: 700px;
-            line-height: 1.8;
-        }
-
-        /* Product Cards */
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 24px;
-        }
-
-        .product-card {
-            background: var(--card-bg);
-            border-radius: 20px;
-            padding: 28px;
-            border: 1px solid var(--border-soft);
-            transition: all 0.3s;
-            display: flex;
             flex-direction: column;
+            gap: 12px;
         }
 
-        .product-card:hover {
-            border-color: rgba(148, 163, 184, 0.5);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-        }
-
-        .product-card.featured {
-            grid-column: 1 / -1;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 32px;
+        .product-item {
+            display: flex;
             align-items: center;
+            justify-content: space-between;
+            padding: 14px 16px;
+            background: rgba(15, 23, 42, 0.6);
+            border-radius: 12px;
+            border: 1px solid var(--border-soft);
+            transition: all 0.2s;
         }
 
-        .product-brand {
+        .product-item:hover {
+            border-color: rgba(148, 163, 184, 0.5);
+            background: rgba(15, 23, 42, 0.8);
+        }
+
+        .product-item-info {
             display: flex;
             align-items: center;
             gap: 12px;
-            margin-bottom: 16px;
         }
 
-        .product-logo {
+        .product-item-logo {
             font-family: 'Space Grotesk', system-ui, sans-serif;
-            font-size: 24px;
-            font-weight: 800;
-            letter-spacing: -0.02em;
+            font-size: 16px;
+            font-weight: 700;
         }
 
-        .product-logo.stratum {
-            background: linear-gradient(135deg, #10b981, #34d399);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .product-logo.nexus {
-            background: linear-gradient(135deg, #d97706, #fbbf24);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .product-logo.aviscore {
+        .product-item-logo.aviscore {
             background: linear-gradient(135deg, var(--accent-cyan), var(--accent-lime));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        .product-tagline {
-            font-size: 9px;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
+        .product-item-logo.stratum {
+            background: linear-gradient(135deg, #10b981, #34d399);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .product-item-logo.nexus {
+            background: linear-gradient(135deg, #d97706, #fbbf24);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .product-item-desc {
+            font-size: 11px;
             color: var(--text-muted);
         }
 
-        .product-title {
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 12px;
-        }
-
-        .product-desc {
-            font-size: 14px;
-            color: var(--text-muted);
-            line-height: 1.8;
-            margin-bottom: 20px;
-            flex: 1;
-        }
-
-        .product-features {
-            list-style: none;
-            margin-bottom: 24px;
-        }
-
-        .product-features li {
-            font-size: 13px;
-            padding: 8px 0;
-            border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+        .product-item-action {
             display: flex;
             align-items: center;
-            gap: 10px;
-        }
-
-        .product-features li::before {
-            content: '';
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: var(--accent-cyan);
-        }
-
-        .product-actions {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: auto;
+            gap: 8px;
         }
 
         .btn {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            padding: 10px 18px;
+            padding: 8px 14px;
             border-radius: 999px;
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 500;
             cursor: pointer;
             transition: all 0.2s;
@@ -443,7 +336,7 @@
 
         .btn-primary:hover {
             transform: translateY(-1px);
-            box-shadow: 0 8px 20px rgba(56, 189, 248, 0.4);
+            box-shadow: 0 6px 16px rgba(56, 189, 248, 0.4);
         }
 
         .btn-stratum {
@@ -456,133 +349,182 @@
             color: #020617;
         }
 
-        .btn-secondary {
+        .btn-ghost {
             background: transparent;
-            border: 1px solid rgba(148, 163, 184, 0.5);
+            color: var(--text-muted);
+            padding: 8px 12px;
+        }
+
+        .btn-ghost:hover {
             color: var(--text-main);
         }
 
-        .btn-secondary:hover {
+        /* Internal R&D Note */
+        .internal-note {
+            margin-top: 12px;
+            padding: 12px 16px;
+            background: rgba(167, 139, 250, 0.08);
+            border-radius: 10px;
+            border-left: 3px solid var(--accent-purple);
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        .internal-note strong {
+            color: var(--accent-purple);
+            font-weight: 500;
+        }
+
+        /* Section Divider */
+        .section-divider {
+            text-align: center;
+            padding: 48px 0 32px;
+        }
+
+        .section-divider-line {
+            width: 60px;
+            height: 1px;
+            background: var(--border-soft);
+            margin: 0 auto 16px;
+        }
+
+        .section-divider-text {
+            font-size: 11px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+
+        /* Product Details */
+        .details-section {
+            margin-top: 32px;
+        }
+
+        .details-header {
+            margin-bottom: 24px;
+        }
+
+        .details-title {
+            font-family: 'Space Grotesk', system-ui, sans-serif;
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .details-subtitle {
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .detail-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 24px;
+            border: 1px solid var(--border-soft);
+            transition: all 0.3s;
+        }
+
+        .detail-card:hover {
+            border-color: rgba(148, 163, 184, 0.5);
+        }
+
+        .detail-card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 16px;
+        }
+
+        .detail-card-logo {
+            font-family: 'Space Grotesk', system-ui, sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .detail-card-badge {
+            font-size: 9px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 4px 8px;
+            border-radius: 999px;
+            background: rgba(148, 163, 184, 0.1);
+            color: var(--text-muted);
+        }
+
+        .detail-card-audience {
+            font-size: 12px;
+            color: var(--text-main);
+            padding: 12px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            margin-bottom: 16px;
+            line-height: 1.6;
+        }
+
+        .detail-card-desc {
+            font-size: 13px;
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin-bottom: 16px;
+        }
+
+        .detail-card-features {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+
+        .detail-card-features li {
+            font-size: 12px;
+            padding: 6px 0;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .detail-card-features li::before {
+            content: '';
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: var(--accent-cyan);
+        }
+
+        .detail-card-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .detail-card-actions .btn {
+            justify-content: center;
+            width: 100%;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--border-soft);
+            color: var(--text-main);
+            font-size: 11px;
+        }
+
+        .btn-outline:hover {
             border-color: var(--accent-cyan);
             background: rgba(56, 189, 248, 0.1);
         }
 
-        /* Target Audience Box */
-        .target-box {
-            padding: 16px 20px;
-            background: rgba(56, 189, 248, 0.08);
-            border-radius: 12px;
-            border-left: 3px solid var(--accent-cyan);
-            margin-bottom: 20px;
-        }
-
-        .target-label {
-            font-size: 10px;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: var(--accent-cyan);
-            margin-bottom: 6px;
-        }
-
-        .target-text {
-            font-size: 14px;
-            color: var(--text-main);
-            line-height: 1.6;
-        }
-
-        /* Aviscore Special Card */
-        .aviscore-card {
-            background:
-                radial-gradient(circle at 0 0, rgba(56, 189, 248, 0.15), transparent 50%),
-                radial-gradient(circle at 100% 100%, rgba(163, 230, 53, 0.08), transparent 50%),
-                var(--card-bg);
-            border: 2px solid var(--accent-cyan);
-            border-radius: 24px;
-            padding: 36px;
-            box-shadow: 0 0 40px rgba(56, 189, 248, 0.2);
-        }
-
-        .score-demo {
-            display: grid;
-            grid-template-columns: 160px 1fr;
-            gap: 24px;
-            margin: 24px 0;
-            padding: 24px;
-            background: rgba(15, 23, 42, 0.6);
-            border-radius: 16px;
-        }
-
-        .score-circle {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .score-ring {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            background: conic-gradient(var(--accent-lime) 0deg 295deg, rgba(148, 163, 184, 0.2) 295deg 360deg);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
-
-        .score-ring::before {
-            content: '';
-            position: absolute;
-            width: 96px;
-            height: 96px;
-            border-radius: 50%;
-            background: var(--card-bg);
-        }
-
-        .score-value {
-            position: relative;
-            z-index: 1;
-            font-family: 'Space Grotesk', system-ui, sans-serif;
-            font-size: 36px;
-            font-weight: 700;
-            color: var(--accent-lime);
-            text-shadow: 0 0 20px rgba(163, 230, 53, 0.5);
-        }
-
-        .score-status {
-            margin-top: 12px;
-            padding: 4px 12px;
-            border-radius: 999px;
-            background: rgba(163, 230, 53, 0.15);
-            color: var(--accent-lime);
-            font-size: 11px;
-            font-weight: 600;
-        }
-
-        .score-details {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .score-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 14px;
-            background: rgba(15, 23, 42, 0.8);
-            border-radius: 10px;
-            font-size: 12px;
-        }
-
-        .score-row-label { color: var(--text-muted); }
-        .score-row-value { color: var(--text-main); font-weight: 500; }
-
         /* Disclaimer */
         .disclaimer-box {
-            margin: 20px 0;
-            padding: 14px 18px;
+            margin-top: 32px;
+            padding: 16px 20px;
             background: rgba(251, 113, 133, 0.06);
-            border-radius: 10px;
+            border-radius: 12px;
             border-left: 3px solid rgba(251, 113, 133, 0.5);
             font-size: 12px;
             color: rgba(251, 113, 133, 0.9);
@@ -593,39 +535,43 @@
         .contact-section {
             text-align: center;
             margin-top: 60px;
-            padding: 48px;
+            padding: 40px;
             background: var(--card-bg);
-            border-radius: 24px;
+            border-radius: 20px;
             border: 1px solid var(--border-soft);
         }
 
         .contact-section h2 {
             font-family: 'Space Grotesk', system-ui, sans-serif;
-            font-size: 26px;
-            margin-bottom: 16px;
+            font-size: 22px;
+            margin-bottom: 12px;
         }
 
         .contact-section p {
-            font-size: 15px;
+            font-size: 14px;
             color: var(--text-muted);
-            margin-bottom: 24px;
-            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .contact-section .btn {
+            font-size: 14px;
+            padding: 12px 24px;
         }
 
         /* Footer */
         .footer {
-            margin-top: 60px;
+            margin-top: 48px;
             padding-top: 24px;
             border-top: 1px solid var(--border-soft);
         }
 
         .footer-disclaimer {
             background: rgba(251, 113, 133, 0.06);
-            padding: 20px;
+            padding: 16px 20px;
             border-radius: 12px;
-            margin-bottom: 24px;
+            margin-bottom: 20px;
             border-left: 3px solid rgba(251, 113, 133, 0.5);
-            font-size: 12px;
+            font-size: 11px;
             color: rgba(251, 113, 133, 0.9);
             line-height: 1.8;
         }
@@ -638,15 +584,17 @@
 
         /* Responsive */
         @media (max-width: 900px) {
-            .category-nav { grid-template-columns: 1fr; }
-            .product-grid { grid-template-columns: 1fr; }
-            .product-card.featured { grid-template-columns: 1fr; }
-            .score-demo { grid-template-columns: 1fr; }
+            .product-map-grid { grid-template-columns: 1fr; }
+            .details-grid { grid-template-columns: 1fr; }
         }
 
         @media (max-width: 600px) {
             .header { flex-direction: column; gap: 16px; align-items: flex-start; }
             .nav { flex-wrap: wrap; }
+            .product-map { padding: 24px; }
+            .product-item { flex-direction: column; align-items: flex-start; gap: 12px; }
+            .product-item-action { width: 100%; }
+            .product-item-action .btn { flex: 1; justify-content: center; }
         }
     </style>
 </head>
@@ -665,10 +613,10 @@
             </div>
             <nav class="nav">
                 <a href="../../index.html">Home</a>
-                <a href="#trading">Trading Tools</a>
-                <a href="#intelligence">Intelligence</a>
+                <a href="#products">Products</a>
+                <a href="#details">Details</a>
                 <a href="#contact">Contact</a>
-                <a href="../../ja/services/investment.html" class="nav-lang">日本語</a>
+                <a href="../../ja/services/investment.html" class="nav-lang">JP</a>
             </nav>
         </header>
 
@@ -676,214 +624,178 @@
         <section class="hero">
             <div class="hero-kicker">Investment & Intelligence Division</div>
             <h1 class="hero-title">
-                Tools and Intelligence for<br><span>Smarter Investment Decisions</span>
+                <span>Two Services</span> to Support<br>Your Investment Decisions
             </h1>
             <p class="hero-subtitle">
-                Two distinct offerings to support your investment activities:
-                real-time trading tools for market assessment, and in-depth intelligence reports
-                for evaluating strategic risks in AI infrastructure and critical materials.
+                We provide trading tools for active market assessment and
+                risk intelligence reports for strategic investment evaluation.
             </p>
         </section>
 
-        <!-- Category Navigation -->
-        <div class="category-nav">
-            <a href="#trading" class="category-card trading">
-                <div class="category-icon">📊</div>
-                <div class="category-label">Active Investment</div>
-                <h2 class="category-title">Trading & Scoring Tools</h2>
-                <p class="category-desc">
-                    Real-time market assessment and scoring systems to help you understand
-                    current market conditions and make informed timing decisions.
-                </p>
-                <div class="category-products">
-                    <span class="category-product">Aviscore</span>
-                    <span class="category-product">Algorithmic R&D</span>
-                </div>
-            </a>
-            <a href="#intelligence" class="category-card intelligence">
-                <div class="category-icon">📋</div>
-                <div class="category-label">Strategic Analysis</div>
-                <h2 class="category-title">Risk Intelligence Reports</h2>
-                <p class="category-desc">
-                    Comprehensive risk assessments for strategic investments in AI infrastructure
-                    and critical materials supply chains.
-                </p>
-                <div class="category-products">
-                    <span class="category-product">Stratum</span>
-                    <span class="category-product">Nexus</span>
-                </div>
-            </a>
-        </div>
+        <!-- Product Map - Visual Overview -->
+        <section class="product-map" id="products">
+            <div class="product-map-title">Our Offerings</div>
 
-        <!-- Trading & Scoring Section -->
-        <section class="section" id="trading">
-            <span class="section-badge trading">Trading & Scoring Tools</span>
-            <div class="section-header">
-                <h2 class="section-title">Market Assessment Tools</h2>
-                <p class="section-subtitle">
-                    Understand market conditions at a glance. Our AI-powered scoring system
-                    synthesizes multiple perspectives to give you actionable market intelligence.
-                </p>
-            </div>
+            <div class="product-map-grid">
+                <!-- Trading & Scoring -->
+                <div class="product-map-category trading">
+                    <div class="category-header">
+                        <div class="category-icon">📊</div>
+                        <div class="category-name">Trading & Scoring</div>
+                    </div>
+                    <p class="category-purpose">
+                        Real-time market assessment tools. Understand current conditions and timing without daily chart analysis.
+                    </p>
+                    <div class="category-audience">
+                        <strong>For:</strong> Active investors who want weekly market summaries with clear action context
+                    </div>
 
-            <!-- Aviscore -->
-            <div class="aviscore-card">
-                <div class="product-brand">
-                    <span class="product-logo aviscore">Aviscore</span>
-                    <span class="product-tagline">AI Consensus Market Scoring</span>
-                </div>
+                    <div class="category-products">
+                        <div class="product-item">
+                            <div class="product-item-info">
+                                <span class="product-item-logo aviscore">Aviscore</span>
+                                <span class="product-item-desc">AI consensus market scoring (0-100)</span>
+                            </div>
+                            <div class="product-item-action">
+                                <a href="../../products/aviscore-en.html" class="btn btn-primary">Details</a>
+                                <a href="../../products/aviscore-customer-ui-en.html" class="btn btn-ghost">Sample</a>
+                            </div>
+                        </div>
+                    </div>
 
-                <div class="target-box">
-                    <div class="target-label">Who This Is For</div>
-                    <div class="target-text">
-                        Busy investors who want to understand market conditions without daily chart analysis.
-                        Get a clear weekly assessment with actionable context.
+                    <div class="internal-note">
+                        <strong>R&D / Internal:</strong> We also conduct algorithmic research using proprietary capital.
+                        We do not accept external funds.
                     </div>
                 </div>
 
-                <div class="score-demo">
-                    <div class="score-circle">
-                        <div class="score-ring">
-                            <div class="score-value">82</div>
-                        </div>
-                        <div class="score-status">Stable / Watch</div>
+                <!-- Risk Intelligence -->
+                <div class="product-map-category intelligence">
+                    <div class="category-header">
+                        <div class="category-icon">📋</div>
+                        <div class="category-name">Risk Intelligence</div>
                     </div>
-                    <div class="score-details">
-                        <div class="score-row">
-                            <span class="score-row-label">Momentum</span>
-                            <span class="score-row-value">Bullish continuation</span>
+                    <p class="category-purpose">
+                        In-depth risk reports for strategic investments. Focus on operational risks, not price predictions.
+                    </p>
+                    <div class="category-audience">
+                        <strong>For:</strong> Investors evaluating AI infrastructure or critical materials supply chains
+                    </div>
+
+                    <div class="category-products">
+                        <div class="product-item">
+                            <div class="product-item-info">
+                                <span class="product-item-logo stratum">STRATUM</span>
+                                <span class="product-item-desc">AI data center & GPU infrastructure risk</span>
+                            </div>
+                            <div class="product-item-action">
+                                <a href="../../products/stratum-en.html" class="btn btn-stratum">Details</a>
+                                <a href="../../products/stratum/reports/stratum-sample-report-en.html" class="btn btn-ghost">Sample</a>
+                            </div>
                         </div>
-                        <div class="score-row">
-                            <span class="score-row-label">Risk Level</span>
-                            <span class="score-row-value" style="color: var(--accent-pink);">Elevated</span>
-                        </div>
-                        <div class="score-row">
-                            <span class="score-row-label">Next 7 Days Focus</span>
-                            <span class="score-row-value">CPI / FOMC / Earnings</span>
-                        </div>
-                        <div class="score-row">
-                            <span class="score-row-label">AI Consensus</span>
-                            <span class="score-row-value">3 Personas Aligned</span>
+
+                        <div class="product-item">
+                            <div class="product-item-info">
+                                <span class="product-item-logo nexus">NEXUS</span>
+                                <span class="product-item-desc">Rare earth & critical materials supply risk</span>
+                            </div>
+                            <div class="product-item-action">
+                                <a href="../../products/nexus-en.html" class="btn btn-nexus">Details</a>
+                                <a href="../../products/nexus/reports/nexus-sample-report-en.html" class="btn btn-ghost">Sample</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-
-                <p class="product-desc">
-                    Three AI personas (Macro Economics, Technical Analysis, Risk Management) evaluate
-                    the market from their perspectives. Their consensus is presented as a simple 0-100 score
-                    with clear action labels.
-                </p>
-
-                <div class="disclaimer-box">
-                    Aviscore provides decision-making context, not investment recommendations.
-                    It does not constitute advice to buy or sell specific financial products.
-                </div>
-
-                <div class="product-actions">
-                    <a href="../../products/aviscore-en.html" class="btn btn-primary">View Details</a>
-                    <a href="../../products/aviscore-customer-ui-en.html" class="btn btn-secondary">Sample UI</a>
-                </div>
-            </div>
-
-            <!-- Algorithmic R&D Note -->
-            <div style="margin-top: 24px; padding: 24px; background: var(--card-bg); border-radius: 16px; border: 1px solid var(--border-soft);">
-                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
-                    <span style="font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent-purple);">R&D / Internal</span>
-                </div>
-                <h3 style="font-size: 16px; margin-bottom: 8px;">Algorithmic Research & Internal Trading</h3>
-                <p style="font-size: 13px; color: var(--text-muted); line-height: 1.8;">
-                    Using proprietary capital, we conduct continuous algorithmic research and validation across multiple markets.
-                    This internal R&D informs the development of our risk assessment technologies.
-                    <span style="color: var(--accent-pink);">We do not accept external funds or provide investment advice.</span>
-                </p>
             </div>
         </section>
 
-        <!-- Intelligence Reports Section -->
-        <section class="section" id="intelligence">
-            <span class="section-badge intelligence">Risk Intelligence Reports</span>
-            <div class="section-header">
-                <h2 class="section-title">Strategic Risk Intelligence</h2>
-                <p class="section-subtitle">
-                    In-depth analysis for evaluating strategic investments. Our reports focus on
-                    "operational preconditions" rather than price predictions—helping you understand
-                    the risks that could impact your investments.
-                </p>
-            </div>
+        <!-- Section Divider -->
+        <div class="section-divider" id="details">
+            <div class="section-divider-line"></div>
+            <div class="section-divider-text">Product Details</div>
+        </div>
 
-            <div class="product-grid">
-                <!-- Stratum -->
-                <div class="product-card">
-                    <div class="product-brand">
-                        <span class="product-logo stratum">STRATUM</span>
-                        <span class="product-tagline">AI Infrastructure Risk</span>
+        <!-- Product Details -->
+        <section class="details-section">
+            <div class="details-grid">
+                <!-- Aviscore Detail -->
+                <div class="detail-card">
+                    <div class="detail-card-header">
+                        <span class="detail-card-logo aviscore">Aviscore</span>
+                        <span class="detail-card-badge">Market Scoring</span>
                     </div>
-
-                    <div class="target-box" style="border-left-color: var(--accent-emerald); background: rgba(16, 185, 129, 0.08);">
-                        <div class="target-label" style="color: var(--accent-emerald);">Who This Is For</div>
-                        <div class="target-text">
-                            Investors evaluating AI data centers and GPU infrastructure.
-                            Those assessing operational reliability of AI compute facilities.
-                        </div>
+                    <div class="detail-card-audience">
+                        Busy investors who want to understand market conditions without daily chart analysis.
                     </div>
-
-                    <p class="product-desc">
-                        Evaluates AI infrastructure not as "investment targets" but as
-                        "critical infrastructure that must not fail." Multi-dimensional analysis of
-                        credit, operational, and cyber risks.
+                    <p class="detail-card-desc">
+                        Three AI personas (Macro, Technical, Risk) evaluate the market.
+                        Their consensus becomes a simple 0-100 score with action labels.
                     </p>
+                    <ul class="detail-card-features">
+                        <li>Weekly consensus score delivery</li>
+                        <li>Next 7-day risk assessment</li>
+                        <li>Multi-perspective AI evaluation</li>
+                        <li>Clear action labels included</li>
+                    </ul>
+                    <div class="detail-card-actions">
+                        <a href="../../products/aviscore-en.html" class="btn btn-primary">View Details</a>
+                        <a href="../../products/aviscore-customer-ui-en.html" class="btn btn-outline">Sample UI</a>
+                    </div>
+                </div>
 
-                    <ul class="product-features">
-                        <li>Operator continuity & dependency analysis</li>
-                        <li>Power/cooling/network single points of failure</li>
-                        <li>Cyber risk & vulnerability assessment</li>
+                <!-- Stratum Detail -->
+                <div class="detail-card">
+                    <div class="detail-card-header">
+                        <span class="detail-card-logo stratum">STRATUM</span>
+                        <span class="detail-card-badge">AI Infrastructure</span>
+                    </div>
+                    <div class="detail-card-audience">
+                        Investors evaluating AI data centers and GPU infrastructure investments.
+                    </div>
+                    <p class="detail-card-desc">
+                        Evaluates AI infrastructure as "critical infrastructure that must not fail."
+                        Multi-dimensional credit, operational, and cyber risk analysis.
+                    </p>
+                    <ul class="detail-card-features">
+                        <li>Operator continuity analysis</li>
+                        <li>Single points of failure identification</li>
+                        <li>Cyber risk assessment</li>
                         <li>Time-series risk tracking</li>
                     </ul>
-
-                    <div class="product-actions">
-                        <a href="../../products/stratum/reports/stratum-sample-report-en.html" class="btn btn-stratum">Sample Report (EN)</a>
-                        <a href="../../products/stratum/reports/stratum-sample-report-ja.html" class="btn btn-secondary">日本語版</a>
-                        <a href="../../products/stratum-en.html" class="btn btn-secondary">Learn More</a>
+                    <div class="detail-card-actions">
+                        <a href="../../products/stratum-en.html" class="btn btn-stratum">View Details</a>
+                        <a href="../../products/stratum/reports/stratum-sample-report-en.html" class="btn btn-outline">Sample Report</a>
                     </div>
                 </div>
 
-                <!-- Nexus -->
-                <div class="product-card">
-                    <div class="product-brand">
-                        <span class="product-logo nexus">NEXUS</span>
-                        <span class="product-tagline">Supply Chain Risk</span>
+                <!-- Nexus Detail -->
+                <div class="detail-card">
+                    <div class="detail-card-header">
+                        <span class="detail-card-logo nexus">NEXUS</span>
+                        <span class="detail-card-badge">Supply Chain</span>
                     </div>
-
-                    <div class="target-box" style="border-left-color: var(--accent-amber); background: rgba(217, 119, 6, 0.08);">
-                        <div class="target-label" style="color: var(--accent-amber);">Who This Is For</div>
-                        <div class="target-text">
-                            Organizations assessing rare earth and critical materials supply risks.
-                            Those analyzing supply chain vulnerabilities.
-                        </div>
+                    <div class="detail-card-audience">
+                        Organizations assessing rare earth and critical materials supply risks.
                     </div>
-
-                    <p class="product-desc">
+                    <p class="detail-card-desc">
                         5-layer risk framework for strategic resources. Evaluates supply concentration,
-                        midstream chokepoints, geopolitical risks, ESG constraints, and substitutability.
+                        chokepoints, geopolitical risks, ESG constraints, and substitutability.
                     </p>
-
-                    <ul class="product-features">
+                    <ul class="detail-card-features">
                         <li>Country/region dependency analysis</li>
                         <li>Refining bottleneck assessment</li>
-                        <li>Geopolitical & export restriction risks</li>
-                        <li>ESG constraint evaluation</li>
+                        <li>Geopolitical risk evaluation</li>
+                        <li>ESG constraint analysis</li>
                     </ul>
-
-                    <div class="product-actions">
-                        <a href="../../products/nexus/reports/nexus-sample-report-en.html" class="btn btn-nexus">Sample Report (EN)</a>
-                        <a href="../../products/nexus/reports/nexus-sample-report-ja.html" class="btn btn-secondary">日本語版</a>
-                        <a href="../../products/nexus-en.html" class="btn btn-secondary">Learn More</a>
+                    <div class="detail-card-actions">
+                        <a href="../../products/nexus-en.html" class="btn btn-nexus">View Details</a>
+                        <a href="../../products/nexus/reports/nexus-sample-report-en.html" class="btn btn-outline">Sample Report</a>
                     </div>
                 </div>
             </div>
 
-            <div class="disclaimer-box" style="margin-top: 24px;">
-                Our intelligence reports provide analytical context for strategic decisions.
+            <div class="disclaimer-box">
+                <strong>Important:</strong> Our services provide analytical context for investment decisions.
                 They do not constitute investment recommendations, price forecasts, or trading advice.
             </div>
         </section>
@@ -892,10 +804,9 @@
         <section class="contact-section" id="contact">
             <h2>Ready to Get Started?</h2>
             <p>
-                For service details, API access, sample reports, or partnership inquiries,<br>
-                we'd love to hear from you.
+                For service details, API access, or partnership inquiries, we'd love to hear from you.
             </p>
-            <a href="mailto:info@avisail.com?subject=Investment%20Services%20Inquiry" class="btn btn-primary" style="font-size: 15px; padding: 14px 28px;">
+            <a href="mailto:info@avisail.com?subject=Investment%20Services%20Inquiry" class="btn btn-primary">
                 Contact Us
             </a>
         </section>
@@ -909,7 +820,7 @@
                 Final investment decisions should be made at your own judgment and responsibility.
             </div>
             <div class="footer-bottom">
-                &copy; 2025 Avisail Inc. – Investment & Intelligence Services
+                &copy; 2025 Avisail Inc. - Investment & Intelligence Services
             </div>
         </footer>
 
