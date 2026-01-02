@@ -5,6 +5,33 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Avisail Technologies - AI×貿易×投資×セキュリティ</title>
 <meta name="description" content="Avisail Technologiesは、AIと技術探究の力で貿易・投資・セキュリティを再定義する次世代テクノロジー企業です">
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/png" href="favicon.png">
+
+<!-- Canonical & hreflang -->
+<link rel="canonical" href="https://avisail.com/index.ja.html">
+<link rel="alternate" hreflang="ja" href="https://avisail.com/index.ja.html">
+<link rel="alternate" hreflang="en" href="https://avisail.com/index.html">
+<link rel="alternate" hreflang="x-default" href="https://avisail.com/index.html">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://avisail.com/index.ja.html">
+<meta property="og:title" content="Avisail Technologies - AI×貿易×投資×セキュリティ">
+<meta property="og:description" content="Avisail Technologiesは、AIと技術探究の力で貿易・投資・セキュリティを再定義する次世代テクノロジー企業です">
+<meta property="og:image" content="https://avisail.com/images/hero-bg.jpg">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:site_name" content="Avisail Technologies">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://avisail.com/index.ja.html">
+<meta name="twitter:title" content="Avisail Technologies - AI×貿易×投資×セキュリティ">
+<meta name="twitter:description" content="Avisail Technologiesは、AIと技術探究の力で貿易・投資・セキュリティを再定義する次世代テクノロジー企業です">
+<meta name="twitter:image" content="https://avisail.com/images/hero-bg.jpg">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
@@ -931,7 +958,7 @@ footer{
         <li class="menu-item">
           <a href="#business">事業概要</a>
           <div class="dropdown">
-            <a href="ja/services/vessel-trading.html">貿易</a>
+            <a href="ja/services/vessel-trading.html">Marine事業</a>
             <a href="ja/services/investment.html">投資</a>
             <a href="products/security.html">セキュリティ</a>
           </div>
@@ -1031,25 +1058,30 @@ footer{
     <!-- TOP 3 BUSINESSES -->
     <div class="business-grid">
 
-      <!-- TRADING -->
+      <!-- MARINE TRADING -->
       <div class="card" id="business-trading">
         <div class="thumb" style="background-image:url('images/vessel-trading.jpg');"></div>
-        <h3>貿易（Trading）</h3>
+        <h3>Marine Trading</h3>
         <p>
-          アジアと世界を繋ぐグローバル船舶マッチングプラットフォーム。<br>
-          AI駆動型の在庫管理とリアルタイム市場分析により、最適な船舶を迅速にマッチング。<br>
-          安全な決済構造とエスクローサービスで、国際取引の不安を解消します
+          アジアと欧州・中東の商圏をつなぎ、商用船からヨットまで幅広い船舶をご紹介。<br>
+          AIによる在庫更新、法務プロによる安全な支払い枠組みで、透明性と競争力を両立します
         </p>
-        <div class="use-case-box">
-          <h4>ユースケース: 国際取引の安全性確保</h4>
-          <p>初めての船舶購入を検討する企業。言語・商習慣の違いによる不安を、エスクローサービスと透明な取引プロセスで解消</p>
-          <div class="use-case-details">
-            <span><strong>業種:</strong> 物流・海運</span>
-            <span><strong>課題:</strong> 国際取引の不安</span>
-            <span><strong>ソリューション:</strong> 船舶売買プラットフォーム</span>
-          </div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin:16px 0;">
+          <a href="https://avisail-vessel-trading.vercel.app/" class="cta" target="_blank">Working Ship</a>
+          <a href="https://avisail-yachts.vercel.app/" class="cta" target="_blank">Yacht Club</a>
         </div>
-        <a href="#" class="btn" style="margin-top:auto;">詳細を見る</a>
+        <a href="ja/services/vessel-trading.html" class="btn" style="margin-top:auto;">詳細を見る</a>
+      </div>
+
+      <!-- MARINE EDGE DEVELOPMENT -->
+      <div class="card" id="business-edge">
+        <div class="thumb" style="background-image:url('images/ai-development.jpg');"></div>
+        <h3>Marine Edge開発</h3>
+        <p>
+          YOLOベースの画像解析技術を活用した船舶の航行支援システム、および自動運転技術の研究開発。<br>
+          リアルタイム物体検知による衝突回避、夜間・悪天候時の視認性向上、最適航路提案などを目指します
+        </p>
+        <a href="ja/services/vessel-trading.html#edge-development" class="btn" style="margin-top:auto;">詳細を見る</a>
       </div>
 
       <!-- INVESTMENT -->
@@ -1069,7 +1101,7 @@ footer{
             <span><strong>ソリューション:</strong> AI資産運用</span>
           </div>
         </div>
-        <a href="#" class="btn" style="margin-top:auto;">詳細を見る</a>
+        <a href="ja/services/investment.html" class="btn" style="margin-top:auto;">詳細を見る</a>
       </div>
 
       <!-- SECURITY -->
@@ -1090,7 +1122,7 @@ footer{
             <span><strong>ソリューション:</strong> ADCS継続診断</span>
           </div>
         </div>
-        <a href="#" class="btn" style="margin-top:auto;">詳細を見る</a>
+        <a href="products/security.html" class="btn" style="margin-top:auto;">詳細を見る</a>
       </div>
 
     </div>
@@ -1271,7 +1303,7 @@ footer{
           </div>
         </div>
 
-        <form>
+        <form id="contact-form" action="https://formspree.io/f/mykzwlze" method="POST">
           <div class="form-group">
             <label for="name">お名前 *</label>
             <input type="text" id="name" name="name" placeholder="山田 太郎" required>
@@ -1300,7 +1332,8 @@ footer{
             <textarea id="message" name="message" placeholder="ご相談内容をご記入ください"></textarea>
           </div>
 
-          <button type="submit" class="cta">送信する</button>
+          <button type="submit" class="cta" id="submit-btn">送信する</button>
+          <div id="form-status" style="margin-top:16px; display:none;"></div>
         </form>
     </div>
   </div>
@@ -1346,7 +1379,7 @@ footer{
         <div class="faq-a">
           データ保護とプライバシーを最優先事項としています。<br>
           通信の暗号化、アクセス管理、定期的な脆弱性診断などの技術的安全対策を実施。<br>
-          詳細は<a href="ja/legal/privacy-policy.html">プライバシーポリシー</a>および<a href="ja/legal/security.html">セキュリティ方針</a>をご確認ください
+          詳細はお問い合わせください
         </div>
       </div>
 
@@ -1386,10 +1419,10 @@ footer{
       <div class="footer-col">
         <h4>Services</h4>
         <ul>
-          <li><a href="#business-trading">船舶売買（Trading）</a></li>
+          <li><a href="#business-trading">Marine Trading</a></li>
+          <li><a href="#business-edge">Marine Edge開発</a></li>
           <li><a href="#business-investment">資産運用（Investment）</a></li>
           <li><a href="#business-security">セキュリティ（ADCS）</a></li>
-          <li><a href="#business">AI & Development</a></li>
         </ul>
       </div>
 
@@ -1403,14 +1436,11 @@ footer{
         </ul>
       </div>
 
-      <!-- COLUMN 4: LEGAL -->
+      <!-- COLUMN 4: CONTACT -->
       <div class="footer-col">
-        <h4>Legal</h4>
+        <h4>Contact</h4>
         <ul>
-          <li><a href="ja/legal/privacy-policy.html">プライバシーポリシー</a></li>
-          <li><a href="ja/legal/terms.html">利用規約</a></li>
-          <li><a href="ja/legal/cookies.html">クッキーポリシー</a></li>
-          <li><a href="ja/legal/security.html">セキュリティ方針</a></li>
+          <li><a href="mailto:info@avisail.com">info@avisail.com</a></li>
         </ul>
       </div>
 
@@ -1543,6 +1573,50 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     }, 250);
   });
+
+  // Contact Form Submission
+  const contactForm = document.getElementById('contact-form');
+  const submitBtn = document.getElementById('submit-btn');
+  const formStatus = document.getElementById('form-status');
+
+  if (contactForm) {
+    contactForm.addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      // Show loading state
+      submitBtn.disabled = true;
+      submitBtn.textContent = '送信中...';
+      formStatus.style.display = 'none';
+
+      const formData = new FormData(contactForm);
+
+      try {
+        const response = await fetch(contactForm.action, {
+          method: 'POST',
+          body: formData,
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
+
+        if (response.ok) {
+          formStatus.style.display = 'block';
+          formStatus.style.color = 'var(--accent-teal)';
+          formStatus.textContent = '送信完了しました。24時間以内にご連絡いたします。';
+          contactForm.reset();
+        } else {
+          throw new Error('送信に失敗しました');
+        }
+      } catch (error) {
+        formStatus.style.display = 'block';
+        formStatus.style.color = '#ff6b6b';
+        formStatus.textContent = '送信に失敗しました。info@avisail.com まで直接ご連絡ください。';
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = '送信する';
+      }
+    });
+  }
 });
 </script>
 
