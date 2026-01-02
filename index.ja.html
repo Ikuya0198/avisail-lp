@@ -533,27 +533,12 @@ h3{
   border:1px solid var(--line);
   border-radius:16px;
   padding:24px 28px;
-  display:flex;
-  align-items:flex-start;
-  gap:20px;
   transition:all 0.3s;
 }
 
 .why-card:hover{
   border-color:rgba(106,166,255,0.3);
   transform:translateX(5px);
-}
-
-.why-icon{
-  width:48px;
-  height:48px;
-  min-width:48px;
-  background:var(--primary-gradient);
-  border-radius:12px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:1.5rem;
 }
 
 .why-content h3{
@@ -873,15 +858,7 @@ footer{
   }
 
   .why-card{
-    flex-direction:column;
     padding:20px;
-  }
-
-  .why-icon{
-    width:40px;
-    height:40px;
-    min-width:40px;
-    font-size:1.3rem;
   }
 
   .card{
@@ -1080,32 +1057,21 @@ footer{
   margin-top:20px;
 }
 
-.foundation-connector{
+.support-arrows{
   display:flex;
-  align-items:center;
   justify-content:center;
-  gap:20px;
-  margin-bottom:24px;
+  margin-bottom:16px;
 }
 
-.connector-line{
-  flex:1;
-  max-width:200px;
-  height:1px;
-  background:linear-gradient(90deg, transparent, rgba(126,240,212,0.3), transparent);
+.arrow-group{
+  display:flex;
+  gap:80px;
+  justify-content:center;
 }
 
-.connector-label{
-  font-family:'Inter', sans-serif;
-  font-size:0.7rem;
-  font-weight:600;
-  letter-spacing:0.15em;
-  text-transform:uppercase;
-  color:var(--accent-teal);
-  padding:8px 16px;
-  background:rgba(126,240,212,0.08);
-  border:1px solid rgba(126,240,212,0.2);
-  border-radius:20px;
+.support-arrow{
+  width:24px;
+  height:40px;
 }
 
 .foundation-card{
@@ -1113,21 +1079,7 @@ footer{
   border:1px solid rgba(126,240,212,0.2);
   border-radius:24px;
   padding:40px;
-  display:flex;
-  align-items:flex-start;
-  gap:32px;
-}
-
-.foundation-icon{
-  width:80px;
-  height:80px;
-  min-width:80px;
-  background:linear-gradient(135deg, rgba(126,240,212,0.15), rgba(106,166,255,0.1));
-  border-radius:20px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:var(--accent-teal);
+  text-align:center;
 }
 
 .foundation-content h3{
@@ -1172,12 +1124,10 @@ footer{
     gap:20px;
   }
   .foundation-card{
-    flex-direction:column;
-    text-align:center;
     padding:32px 24px;
   }
-  .foundation-icon{
-    margin:0 auto;
+  .arrow-group{
+    gap:40px;
   }
 }
 
@@ -1188,20 +1138,15 @@ footer{
   .pillar-number{
     font-size:2rem;
   }
-  .pillar-icon{
-    width:56px;
-    height:56px;
-  }
   .pillar-actions{
     flex-direction:column;
   }
-  .foundation-icon{
-    width:64px;
-    height:64px;
-    min-width:64px;
+  .arrow-group{
+    gap:24px;
   }
-  .foundation-tags{
-    justify-content:center;
+  .support-arrow{
+    width:20px;
+    height:32px;
   }
 }
 
@@ -1422,7 +1367,7 @@ footer{
           <p class="about-visual-text">
             目前に巨大な船（新たな技術）が現れたとき、私たちは恐れず前に進み、テクノロジーを実際に価値ある使い方へと導きます
           </p>
-          <p class="about-visual-highlight">
+          <p class="about-visual-text">
             勇気はイノベーションの火種です<br>
             その価値を人々に届けることに、私たちは情熱を注ぎます
           </p>
@@ -1435,7 +1380,7 @@ footer{
           <p class="about-visual-text">
             人の豊かさにつながる技術を誠実に磨き、変革が生む新しいアクセスを広げます
           </p>
-          <p class="about-visual-highlight">
+          <p class="about-visual-text">
             進歩を止めず、実装ベースでの技術価値を高め続け利便性を提供すること、それが私たちの存在意義です
           </p>
         </div>
@@ -1465,11 +1410,6 @@ footer{
           <!-- PILLAR 1: Marine Trading & Development -->
           <div class="pillar-card" id="business-trading">
             <div class="pillar-number">01</div>
-            <div class="pillar-icon">
-              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                <path d="M3 17h18M5 12h14l-2-5H7l-2 5zM12 17v4M8 21h8"/>
-              </svg>
-            </div>
             <div class="pillar-content">
               <h3>Marine Trading<br>and Development</h3>
               <p class="pillar-subtitle">船舶貿易とエッジ技術開発事業</p>
@@ -1489,11 +1429,6 @@ footer{
           <!-- PILLAR 2: Investment & System Engineering -->
           <div class="pillar-card" id="business-investment">
             <div class="pillar-number">02</div>
-            <div class="pillar-icon">
-              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
-              </svg>
-            </div>
             <div class="pillar-content">
               <h3>Investment and<br>System Engineering</h3>
               <p class="pillar-subtitle">投資とシステム開発事業</p>
@@ -1513,12 +1448,6 @@ footer{
           <!-- PILLAR 3: Security Development -->
           <div class="pillar-card" id="business-security">
             <div class="pillar-number">03</div>
-            <div class="pillar-icon">
-              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                <path d="M9 12l2 2 4-4"/>
-              </svg>
-            </div>
             <div class="pillar-content">
               <h3>Security<br>Development</h3>
               <p class="pillar-subtitle">セキュリティ事業</p>
@@ -1540,18 +1469,23 @@ footer{
 
       <!-- Foundation: AI & System Development -->
       <div class="foundation-container">
-        <div class="foundation-connector">
-          <div class="connector-line"></div>
-          <div class="connector-label">Powered by</div>
-          <div class="connector-line"></div>
-        </div>
-        <div class="foundation-card">
-          <div class="foundation-icon">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <circle cx="12" cy="12" r="3"/>
-              <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+        <div class="support-arrows">
+          <div class="arrow-group">
+            <svg class="support-arrow" viewBox="0 0 24 40" fill="none">
+              <path d="M12 40V8M12 8L4 16M12 8L20 16" stroke="url(#arrowGrad)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <defs><linearGradient id="arrowGrad" x1="12" y1="40" x2="12" y2="8"><stop offset="0%" stop-color="rgba(126,240,212,0.1)"/><stop offset="100%" stop-color="rgba(126,240,212,0.6)"/></linearGradient></defs>
+            </svg>
+            <svg class="support-arrow" viewBox="0 0 24 40" fill="none">
+              <path d="M12 40V8M12 8L4 16M12 8L20 16" stroke="url(#arrowGrad2)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <defs><linearGradient id="arrowGrad2" x1="12" y1="40" x2="12" y2="8"><stop offset="0%" stop-color="rgba(106,166,255,0.1)"/><stop offset="100%" stop-color="rgba(106,166,255,0.6)"/></linearGradient></defs>
+            </svg>
+            <svg class="support-arrow" viewBox="0 0 24 40" fill="none">
+              <path d="M12 40V8M12 8L4 16M12 8L20 16" stroke="url(#arrowGrad3)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <defs><linearGradient id="arrowGrad3" x1="12" y1="40" x2="12" y2="8"><stop offset="0%" stop-color="rgba(126,240,212,0.1)"/><stop offset="100%" stop-color="rgba(126,240,212,0.6)"/></linearGradient></defs>
             </svg>
           </div>
+        </div>
+        <div class="foundation-card">
           <div class="foundation-content">
             <h3>AI & System Development</h3>
             <p class="foundation-subtitle">3つの事業を支える技術基盤</p>
@@ -1673,7 +1607,6 @@ footer{
     <div class="why-avisail-grid">
 
       <div class="why-card">
-        <div class="why-icon">⚡</div>
         <div class="why-content">
           <h3>実装ファースト哲学</h3>
           <p>
@@ -1685,7 +1618,6 @@ footer{
       </div>
 
       <div class="why-card">
-        <div class="why-icon">🤖</div>
         <div class="why-content">
           <h3>AI駆動の効率性</h3>
           <p>
@@ -1697,7 +1629,6 @@ footer{
       </div>
 
       <div class="why-card">
-        <div class="why-icon">🌏</div>
         <div class="why-content">
           <h3>グローバル視点、ローカル対応</h3>
           <p>
