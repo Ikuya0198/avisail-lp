@@ -1,803 +1,328 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8" />
-    <title>Avisail | Investment and Intelligence Services</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Avisail Investment and Intelligence Division. Trading tools, market scoring, and risk intelligence reports.">
-
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&family=Noto+Sans+JP:wght@400;500;600;700&display=swap');
-
-        :root {
-            --bg-deep: #020617;
-            --bg-main: #020617;
-            --bg-elevated: #0f172a;
-            --accent-cyan: #22d3ee;
-            --accent-lime: #a3e635;
-            --accent-emerald: #10b981;
-            --accent-amber: #d97706;
-            --accent-pink: #fb7185;
-            --accent-purple: #a78bfa;
-            --text-main: #e5e7eb;
-            --text-muted: #94a3b8;
-            --border-soft: #1e293b;
-            --border-strong: #38bdf8;
-            --card-bg: #0f172a;
-        }
-
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-
-        body {
-            font-family: 'Noto Sans JP', 'Inter', system-ui, sans-serif;
-            background:
-                radial-gradient(circle at 0% 0%, rgba(56, 189, 248, 0.12), transparent 50%),
-                radial-gradient(circle at 100% 100%, rgba(190, 242, 100, 0.06), transparent 50%),
-                #020617;
-            color: var(--text-main);
-            line-height: 1.8;
-        }
-
-        a { color: var(--accent-cyan); text-decoration: none; }
-        a:hover { text-decoration: underline; }
-
-        .page {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 20px 24px 60px;
-        }
-
-        /* Header */
-        .header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 8px 0 32px;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .logo-mark {
-            width: 36px;
-            height: 36px;
-            border-radius: 999px;
-            background: radial-gradient(circle at 30% 20%, rgba(56, 189, 248, 0.9), #020617);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Space Grotesk', system-ui, sans-serif;
-            font-size: 16px;
-            color: #020617;
-            box-shadow: 0 0 20px rgba(56, 189, 248, 0.8);
-        }
-
-        .logo-text-main {
-            font-family: 'Space Grotesk', system-ui, sans-serif;
-            font-weight: 600;
-            letter-spacing: 0.12em;
-            font-size: 20px;
-            text-transform: uppercase;
-        }
-
-        .logo-text-sub {
-            font-size: 10px;
-            letter-spacing: 0.1em;
-            color: var(--text-muted);
-        }
-
-        .nav {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 13px;
-        }
-
-        .nav a {
-            color: var(--text-muted);
-            text-decoration: none;
-            padding: 6px 12px;
-            border-radius: 6px;
-            transition: all 0.2s;
-        }
-
-        .nav a:hover {
-            color: var(--text-main);
-            background: rgba(255,255,255,0.05);
-            text-decoration: none;
-        }
-
-        .nav-lang {
-            padding: 6px 14px;
-            border-radius: 999px;
-            border: 1px solid rgba(148, 163, 184, 0.5);
-            background: rgba(15, 23, 42, 0.8);
-            color: var(--text-muted);
-            font-size: 12px;
-            transition: all 0.3s;
-        }
-
-        .nav-lang:hover {
-            border-color: var(--accent-cyan);
-            color: var(--text-main);
-        }
-
-        /* Hero */
-        .hero {
-            text-align: center;
-            padding: 40px 0 48px;
-        }
-
-        .hero-kicker {
-            font-size: 11px;
-            letter-spacing: 0.3em;
-            text-transform: uppercase;
-            color: var(--accent-cyan);
-            margin-bottom: 16px;
-        }
-
-        .hero-title {
-            font-family: 'Noto Sans JP', system-ui, sans-serif;
-            font-size: clamp(26px, 4vw, 38px);
-            font-weight: 700;
-            line-height: 1.4;
-            margin-bottom: 16px;
-        }
-
-        .hero-title span { color: var(--accent-cyan); }
-
-        .hero-subtitle {
-            color: var(--text-muted);
-            font-size: 15px;
-            line-height: 1.9;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        /* Product Map */
-        .product-map {
-            margin: 48px 0;
-            padding: 40px;
-            background: var(--card-bg);
-            border-radius: 24px;
-            border: 1px solid var(--border-soft);
-        }
-
-        .product-map-title {
-            text-align: center;
-            font-size: 12px;
-            letter-spacing: 0.15em;
-            color: var(--text-muted);
-            margin-bottom: 32px;
-        }
-
-        .product-map-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 32px;
-        }
-
-        .product-map-category {
-            padding: 28px;
-            border-radius: 16px;
-            border: 2px solid var(--border-soft);
-            transition: all 0.3s;
-        }
-
-        .product-map-category.trading {
-            border-color: rgba(163, 230, 53, 0.3);
-            background: linear-gradient(135deg, rgba(163, 230, 53, 0.05), transparent);
-        }
-
-        .product-map-category.intelligence {
-            border-color: rgba(56, 189, 248, 0.3);
-            background: linear-gradient(135deg, rgba(56, 189, 248, 0.05), transparent);
-        }
-
-        .category-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 8px;
-        }
-
-        .category-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px;
-        }
-
-        .trading .category-icon {
-            background: linear-gradient(135deg, rgba(163, 230, 53, 0.2), rgba(34, 211, 238, 0.1));
-        }
-
-        .intelligence .category-icon {
-            background: linear-gradient(135deg, rgba(56, 189, 248, 0.2), rgba(167, 139, 250, 0.1));
-        }
-
-        .category-name {
-            font-family: 'Noto Sans JP', system-ui, sans-serif;
-            font-size: 17px;
-            font-weight: 700;
-        }
-
-        .category-purpose {
-            font-size: 13px;
-            color: var(--text-muted);
-            margin-bottom: 20px;
-            line-height: 1.8;
-        }
-
-        .category-audience {
-            font-size: 11px;
-            padding: 8px 12px;
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 8px;
-            color: var(--text-muted);
-            margin-bottom: 20px;
-        }
-
-        .category-audience strong {
-            color: var(--text-main);
-            font-weight: 500;
-        }
-
-        .category-products {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .product-item {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 14px 16px;
-            background: rgba(15, 23, 42, 0.6);
-            border-radius: 12px;
-            border: 1px solid var(--border-soft);
-            transition: all 0.2s;
-        }
-
-        .product-item:hover {
-            border-color: rgba(148, 163, 184, 0.5);
-            background: rgba(15, 23, 42, 0.8);
-        }
-
-        .product-item-info {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .product-item-logo {
-            font-family: 'Space Grotesk', system-ui, sans-serif;
-            font-size: 16px;
-            font-weight: 700;
-        }
-
-        .product-item-logo.aviscore {
-            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-lime));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .product-item-logo.stratum {
-            background: linear-gradient(135deg, #10b981, #34d399);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .product-item-logo.nexus {
-            background: linear-gradient(135deg, #d97706, #fbbf24);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .product-item-desc {
-            font-size: 11px;
-            color: var(--text-muted);
-        }
-
-        .product-item-action {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 8px 14px;
-            border-radius: 999px;
-            font-size: 12px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.2s;
-            text-decoration: none;
-            border: none;
-        }
-
-        .btn:hover { text-decoration: none; }
-
-        .btn-primary {
-            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-lime));
-            color: #020617;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 6px 16px rgba(56, 189, 248, 0.4);
-        }
-
-        .btn-stratum {
-            background: linear-gradient(135deg, #10b981, #34d399);
-            color: #020617;
-        }
-
-        .btn-nexus {
-            background: linear-gradient(135deg, #d97706, #fbbf24);
-            color: #020617;
-        }
-
-        .btn-ghost {
-            background: transparent;
-            color: var(--text-muted);
-            padding: 8px 12px;
-        }
-
-        .btn-ghost:hover {
-            color: var(--text-main);
-        }
-
-        /* Internal R&D Note */
-        .internal-note {
-            margin-top: 12px;
-            padding: 12px 16px;
-            background: rgba(167, 139, 250, 0.08);
-            border-radius: 10px;
-            border-left: 3px solid var(--accent-purple);
-            font-size: 11px;
-            color: var(--text-muted);
-        }
-
-        .internal-note strong {
-            color: var(--accent-purple);
-            font-weight: 500;
-        }
-
-        /* Section Divider */
-        .section-divider {
-            text-align: center;
-            padding: 48px 0 32px;
-        }
-
-        .section-divider-line {
-            width: 60px;
-            height: 1px;
-            background: var(--border-soft);
-            margin: 0 auto 16px;
-        }
-
-        .section-divider-text {
-            font-size: 11px;
-            letter-spacing: 0.15em;
-            color: var(--text-muted);
-        }
-
-        /* Product Details */
-        .details-section {
-            margin-top: 32px;
-        }
-
-        .details-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-
-        .detail-card {
-            background: var(--card-bg);
-            border-radius: 16px;
-            padding: 24px;
-            border: 1px solid var(--border-soft);
-            transition: all 0.3s;
-        }
-
-        .detail-card:hover {
-            border-color: rgba(148, 163, 184, 0.5);
-        }
-
-        .detail-card-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 16px;
-        }
-
-        .detail-card-logo {
-            font-family: 'Space Grotesk', system-ui, sans-serif;
-            font-size: 20px;
-            font-weight: 700;
-        }
-
-        .detail-card-badge {
-            font-size: 9px;
-            letter-spacing: 0.1em;
-            padding: 4px 8px;
-            border-radius: 999px;
-            background: rgba(148, 163, 184, 0.1);
-            color: var(--text-muted);
-        }
-
-        .detail-card-audience {
-            font-size: 12px;
-            color: var(--text-main);
-            padding: 12px;
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 8px;
-            margin-bottom: 16px;
-            line-height: 1.7;
-        }
-
-        .detail-card-desc {
-            font-size: 13px;
-            color: var(--text-muted);
-            line-height: 1.9;
-            margin-bottom: 16px;
-        }
-
-        .detail-card-features {
-            list-style: none;
-            margin-bottom: 20px;
-        }
-
-        .detail-card-features li {
-            font-size: 12px;
-            padding: 6px 0;
-            color: var(--text-muted);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .detail-card-features li::before {
-            content: '';
-            width: 4px;
-            height: 4px;
-            border-radius: 50%;
-            background: var(--accent-cyan);
-        }
-
-        .detail-card-actions {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .detail-card-actions .btn {
-            justify-content: center;
-            width: 100%;
-        }
-
-        .btn-outline {
-            background: transparent;
-            border: 1px solid var(--border-soft);
-            color: var(--text-main);
-            font-size: 11px;
-        }
-
-        .btn-outline:hover {
-            border-color: var(--accent-cyan);
-            background: rgba(56, 189, 248, 0.1);
-        }
-
-        /* Disclaimer */
-        .disclaimer-box {
-            margin-top: 32px;
-            padding: 16px 20px;
-            background: rgba(251, 113, 133, 0.06);
-            border-radius: 12px;
-            border-left: 3px solid rgba(251, 113, 133, 0.5);
-            font-size: 12px;
-            color: rgba(251, 113, 133, 0.9);
-            line-height: 1.8;
-        }
-
-        /* Contact Section */
-        .contact-section {
-            text-align: center;
-            margin-top: 60px;
-            padding: 40px;
-            background: var(--card-bg);
-            border-radius: 20px;
-            border: 1px solid var(--border-soft);
-        }
-
-        .contact-section h2 {
-            font-family: 'Noto Sans JP', system-ui, sans-serif;
-            font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 12px;
-        }
-
-        .contact-section p {
-            font-size: 14px;
-            color: var(--text-muted);
-            margin-bottom: 20px;
-        }
-
-        .contact-section .btn {
-            font-size: 14px;
-            padding: 12px 24px;
-        }
-
-        /* Footer */
-        .footer {
-            margin-top: 48px;
-            padding-top: 24px;
-            border-top: 1px solid var(--border-soft);
-        }
-
-        .footer-disclaimer {
-            background: rgba(251, 113, 133, 0.06);
-            padding: 16px 20px;
-            border-radius: 12px;
-            margin-bottom: 20px;
-            border-left: 3px solid rgba(251, 113, 133, 0.5);
-            font-size: 11px;
-            color: rgba(251, 113, 133, 0.9);
-            line-height: 1.9;
-        }
-
-        .footer-bottom {
-            text-align: center;
-            font-size: 12px;
-            color: var(--text-muted);
-        }
-
-        /* Responsive */
-        @media (max-width: 900px) {
-            .product-map-grid { grid-template-columns: 1fr; }
-            .details-grid { grid-template-columns: 1fr; }
-        }
-
-        @media (max-width: 600px) {
-            .header { flex-direction: column; gap: 16px; align-items: flex-start; }
-            .nav { flex-wrap: wrap; }
-            .product-map { padding: 24px; }
-            .product-item { flex-direction: column; align-items: flex-start; gap: 12px; }
-            .product-item-action { width: 100%; }
-            .product-item-action .btn { flex: 1; justify-content: center; }
-        }
-    </style>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Investment and System Engineering | Avisail Technologies</title>
+<meta name="description" content="Avisail Technologies - 投資とシステム開発事業。AI駆動型資産運用、マーケットスコアリング、リスクインテリジェンス、カスタムシステム開発を提供します。">
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --line: rgba(255,255,255,.08);
+  --primary-gradient: linear-gradient(135deg,#6aa6ff,#7ef0d4);
+  --accent-teal: #7ef0d4;
+  --accent-blue: #6aa6ff;
+  --bg-dark: #0a0f1a;
+  --bg-darker: #05080f;
+  --text-primary: #e9f0ff;
+  --text-secondary: #cfe2ff;
+  --text-muted: #9fb0cc;
+}
+
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{background:var(--bg-dark);color:var(--text-primary);font-family:'Inter','Noto Sans JP',sans-serif;line-height:1.7;}
+html{scroll-behavior:smooth;}
+a{color:var(--text-secondary);text-decoration:none;transition:color 0.3s;}
+a:hover{color:var(--accent-teal);}
+.wrap{max-width:1200px;margin:0 auto;padding:0 20px;}
+
+/* Header */
+header{position:sticky;top:0;z-index:50;background:linear-gradient(to bottom,rgba(10,15,26,.95),rgba(10,15,26,.85));border-bottom:1px solid var(--line);backdrop-filter:blur(10px);}
+.nav{display:flex;align-items:center;justify-content:space-between;height:70px;}
+.brand{display:flex;align-items:center;gap:12px;font-weight:600;color:#fff;}
+.logo{width:32px;height:32px;border-radius:8px;background:conic-gradient(from 210deg,var(--accent-blue),var(--accent-teal));}
+nav ul{display:flex;gap:24px;list-style:none;align-items:center;font-size:0.9rem;}
+.menu-item{position:relative;padding:10px 0;}
+.dropdown{position:absolute;top:100%;left:-10px;min-width:200px;background:#0d1424;border:1px solid var(--line);border-radius:12px;padding:12px;display:none;flex-direction:column;gap:8px;box-shadow:0 10px 30px rgba(0,0,0,0.5);}
+.menu-item:hover .dropdown{display:flex;}
+.dropdown a{padding:6px 12px;border-radius:6px;color:var(--text-muted);}
+.dropdown a:hover{background:rgba(255,255,255,0.05);color:#fff;}
+.globe-icon{font-size:1.2rem;cursor:pointer;color:var(--text-muted);transition:color 0.3s;}
+.globe-icon:hover{color:var(--accent-teal);}
+
+/* Buttons */
+.btn{display:inline-block;padding:12px 28px;border-radius:50px;border:1px solid var(--line);background:rgba(255,255,255,0.05);color:var(--text-primary);font-size:0.95rem;transition:all 0.3s;}
+.btn:hover{border-color:rgba(106,166,255,0.5);transform:translateY(-2px);}
+.cta{display:inline-block;padding:12px 28px;border-radius:50px;background:var(--primary-gradient);color:#06101a;font-weight:700;font-size:0.95rem;box-shadow:0 10px 20px rgba(106,166,255,.2);border:none;transition:all 0.3s;}
+.cta:hover{transform:translateY(-2px);box-shadow:0 15px 30px rgba(106,166,255,.3);}
+
+/* Hero */
+.page-hero{padding:120px 0 80px;text-align:center;background:linear-gradient(rgba(10,15,26,0.85),rgba(10,15,26,0.95)),radial-gradient(ellipse at 30% 20%,rgba(106,166,255,0.15),transparent 50%),radial-gradient(ellipse at 70% 80%,rgba(126,240,212,0.1),transparent 50%);}
+.page-hero h1{font-size:clamp(2rem,5vw,3rem);margin-bottom:16px;color:#fff;font-weight:700;}
+.page-hero h1 span{background:var(--primary-gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.page-hero .lead{color:var(--text-secondary);max-width:700px;margin:0 auto 16px;font-size:1.1rem;line-height:1.8;}
+.page-hero .subtitle{color:var(--text-muted);font-size:0.9rem;}
+
+/* Sections */
+section{padding:80px 0;border-bottom:1px solid var(--line);}
+h2{font-size:1.8rem;margin-bottom:32px;display:flex;align-items:center;gap:16px;color:#fff;}
+h2::before{content:'';width:4px;height:28px;background:var(--primary-gradient);display:block;border-radius:2px;}
+h3{color:#fff;font-size:1.3rem;margin-bottom:12px;}
+
+/* Cards */
+.card{background:rgba(255,255,255,0.02);border:1px solid var(--line);border-radius:20px;padding:32px;transition:all 0.3s;}
+.card:hover{transform:translateY(-5px);border-color:rgba(106,166,255,0.3);}
+.card p{color:var(--text-muted);line-height:1.8;}
+
+/* Grid */
+.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:28px;}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;}
+
+/* Business Overview */
+.business-overview{background:linear-gradient(135deg,rgba(126,240,212,0.05),rgba(106,166,255,0.03));border:1px solid rgba(126,240,212,0.15);border-radius:24px;padding:48px;margin-bottom:48px;text-align:center;}
+.business-overview h3{font-size:1.6rem;margin-bottom:16px;}
+.business-overview p{max-width:800px;margin:0 auto;font-size:1.05rem;line-height:1.9;}
+
+/* Service Cards */
+.service-card{background:rgba(255,255,255,0.02);border:1px solid var(--line);border-radius:20px;padding:32px;position:relative;overflow:hidden;}
+.service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--primary-gradient);}
+.service-card:hover{border-color:rgba(126,240,212,0.3);}
+.service-icon{width:60px;height:60px;background:linear-gradient(135deg,rgba(106,166,255,0.15),rgba(126,240,212,0.1));border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;color:var(--accent-teal);font-size:1.5rem;}
+.service-tag{display:inline-block;font-size:0.75rem;padding:4px 12px;background:rgba(126,240,212,0.1);border:1px solid rgba(126,240,212,0.2);border-radius:20px;color:var(--accent-teal);margin-bottom:16px;font-weight:500;letter-spacing:0.05em;}
+
+/* Product Cards */
+.product-card{background:rgba(255,255,255,0.02);border:1px solid var(--line);border-radius:16px;padding:24px;display:flex;flex-direction:column;}
+.product-card:hover{border-color:rgba(106,166,255,0.3);}
+.product-logo{font-family:'Inter',sans-serif;font-size:1.4rem;font-weight:700;margin-bottom:8px;}
+.product-logo.aviscore{background:linear-gradient(135deg,var(--accent-blue),var(--accent-teal));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.product-logo.stratum{background:linear-gradient(135deg,#10b981,#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.product-logo.nexus{background:linear-gradient(135deg,#d97706,#fbbf24);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.product-desc{font-size:0.9rem;color:var(--text-muted);margin-bottom:16px;flex-grow:1;}
+.product-actions{display:flex;gap:10px;}
+.product-actions .btn,.product-actions .cta{padding:10px 20px;font-size:0.85rem;flex:1;text-align:center;}
+
+/* Features List */
+.features-list{list-style:none;padding:0;margin:0;}
+.features-list li{padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.05);color:var(--text-muted);display:flex;align-items:center;gap:12px;font-size:0.95rem;}
+.features-list li:last-child{border-bottom:none;}
+.features-list li::before{content:'';width:8px;height:8px;background:var(--accent-teal);border-radius:50%;flex-shrink:0;}
+
+/* Disclaimer */
+.disclaimer{background:rgba(251,113,133,0.06);border:1px solid rgba(251,113,133,0.2);border-left:3px solid rgba(251,113,133,0.5);border-radius:0 12px 12px 0;padding:20px 24px;margin-top:32px;font-size:0.9rem;color:rgba(251,113,133,0.9);line-height:1.8;}
+
+/* Footer */
+footer{background:var(--bg-darker);padding:60px 0 30px;border-top:1px solid var(--line);}
+.footer-content{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-bottom:40px;}
+.footer-col h4{color:#fff;font-size:1rem;margin-bottom:16px;}
+.footer-col ul{list-style:none;}
+.footer-col ul li{margin-bottom:10px;}
+.footer-col a{color:var(--text-muted);font-size:0.85rem;}
+.footer-bottom{border-top:1px solid var(--line);padding-top:24px;text-align:center;color:var(--text-muted);font-size:0.82rem;}
+
+@media(max-width:980px){.grid-2,.grid-3{grid-template-columns:1fr;}.footer-content{grid-template-columns:1fr;}nav ul{display:none;}.page-hero h1{font-size:2rem;}}
+@media(max-width:640px){.business-overview{padding:32px 24px;}.service-card,.card{padding:24px;}}
+</style>
 </head>
-
 <body>
-    <div class="page">
 
-        <!-- Header -->
-        <header class="header">
-            <div class="logo">
-                <div class="logo-mark">A</div>
-                <div>
-                    <div class="logo-text-main">Avisail</div>
-                    <div class="logo-text-sub">Investment and Intelligence</div>
-                </div>
-            </div>
-            <nav class="nav">
-                <a href="../../ja/index.html">Home</a>
-                <a href="#products">Products</a>
-                <a href="#details">Details</a>
-                <a href="#contact">Contact</a>
-                <a href="../../en/services/investment.html" class="nav-lang">EN</a>
-            </nav>
-        </header>
+<header>
+<div class="wrap nav">
+<a href="/index.ja.html" class="brand"><div class="logo"></div><span>Avisail Technologies</span></a>
+<nav>
+<ul>
+<li><a href="/index.ja.html">ホーム</a></li>
+<li><a href="/ja/about.html">会社概要</a></li>
+<li class="menu-item"><span>サービス ▾</span>
+<div class="dropdown">
+<a href="/ja/services/vessel-trading.html">Marine Trading and Development</a>
+<a href="/ja/services/investment.html" class="active">Investment and System Engineering</a>
+<a href="/products/security.html">Security Development</a>
+</div>
+</li>
+<li><a href="/ja/contact.html">お問い合わせ</a></li>
+<li class="menu-item"><span class="globe-icon">🌐 ▾</span>
+<div class="dropdown">
+<a href="/en/services/investment.html">English</a>
+<a href="/ja/services/investment.html">日本語</a>
+</div>
+</li>
+</ul>
+</nav>
+</div>
+</header>
 
-        <!-- Hero -->
-        <section class="hero">
-            <div class="hero-kicker">Investment and Intelligence Division</div>
-            <h1 class="hero-title">
-                <span>2つのサービス</span>で<br>投資判断をサポート
-            </h1>
-            <p class="hero-subtitle">
-                アクティブな市場評価のためのトレーディングツールと、戦略的投資評価のためのリスクインテリジェンスレポートを提供します。
-            </p>
-        </section>
+<main class="page-hero">
+<div class="wrap">
+<h1><span>Investment</span> and System Engineering</h1>
+<p class="lead">投資とシステム開発事業</p>
+<p class="subtitle">AI駆動型の資産運用ツール、市場分析、リスクインテリジェンス、そしてカスタムシステム開発を提供します</p>
+</div>
+</main>
 
-        <!-- Product Map -->
-        <section class="product-map" id="products">
-            <div class="product-map-title">サービス一覧</div>
+<section class="wrap">
+<div class="business-overview">
+<h3>この事業について</h3>
+<p>
+Investment and System Engineering事業は、AI技術を活用した投資判断支援ツールの開発・提供と、クライアント向けのカスタムシステム開発を行っています。<br><br>
+自社開発のマーケットスコアリングエンジン「Aviscore」をはじめ、AIインフラや戦略資源のリスク評価レポートを提供。また、企業の業務効率化やDX推進のためのシステム開発も手がけています。
+</p>
+</div>
 
-            <div class="product-map-grid">
-                <!-- Trading and Scoring -->
-                <div class="product-map-category trading">
-                    <div class="category-header">
-                        <div class="category-icon">📊</div>
-                        <div class="category-name">Trading and Scoring</div>
-                    </div>
-                    <p class="category-purpose">
-                        リアルタイム市場評価ツール。毎日のチャート分析なしで現在の状況とタイミングを把握。
-                    </p>
-                    <div class="category-audience">
-                        <strong>対象:</strong> 週次の市場サマリーで明確なアクション指針を求めるアクティブ投資家
-                    </div>
+<h2>提供サービス</h2>
 
-                    <div class="category-products">
-                        <div class="product-item">
-                            <div class="product-item-info">
-                                <span class="product-item-logo aviscore">Aviscore</span>
-                                <span class="product-item-desc">AI合議制マーケットスコアリング (0-100)</span>
-                            </div>
-                            <div class="product-item-action">
-                                <a href="../../products/aviscore.html" class="btn btn-primary">詳細</a>
-                                <a href="../../products/aviscore-customer-ui.html" class="btn btn-ghost">サンプル</a>
-                            </div>
-                        </div>
-                    </div>
+<div class="grid-2" style="margin-bottom:40px;">
 
-                    <div class="internal-note">
-                        <strong>R&D / 内部運用:</strong> 自己資本によるアルゴリズム研究も実施。外部資金の受託は行っておりません。
-                    </div>
-                </div>
+<!-- Trading & Scoring -->
+<div class="service-card">
+<div class="service-icon">
+<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+<path d="M3 3v18h18"/><path d="M18 9l-5 5-4-4-3 3"/>
+</svg>
+</div>
+<span class="service-tag">Market Intelligence</span>
+<h3>マーケットスコアリング</h3>
+<p>AIによる市場評価ツール。3つのAIペルソナ（マクロ、テクニカル、リスク）が市場を多角的に分析し、週次のコンセンサススコア（0-100）を提供。毎日のチャート分析なしで現在の市場状況とタイミングを把握できます。</p>
+<ul class="features-list" style="margin-top:20px;">
+<li>週次コンセンサススコア配信</li>
+<li>マルチ視点AI評価</li>
+<li>明確なアクションラベル付き</li>
+</ul>
+</div>
 
-                <!-- Risk Intelligence -->
-                <div class="product-map-category intelligence">
-                    <div class="category-header">
-                        <div class="category-icon">📋</div>
-                        <div class="category-name">Risk Intelligence</div>
-                    </div>
-                    <p class="category-purpose">
-                        戦略的投資のための深度あるリスクレポート。価格予測ではなく運用リスクにフォーカス。
-                    </p>
-                    <div class="category-audience">
-                        <strong>対象:</strong> AIインフラや戦略資源サプライチェーンへの投資を評価する投資家
-                    </div>
+<!-- Risk Intelligence -->
+<div class="service-card">
+<div class="service-icon">
+<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+<path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/>
+<rect x="9" y="3" width="6" height="4" rx="1"/>
+<path d="M9 12h6M9 16h6"/>
+</svg>
+</div>
+<span class="service-tag">Risk Intelligence</span>
+<h3>リスクインテリジェンス</h3>
+<p>戦略的投資のための深度あるリスクレポート。価格予測ではなく運用リスクにフォーカスし、AIインフラ投資や戦略資源サプライチェーンのリスク評価を提供します。</p>
+<ul class="features-list" style="margin-top:20px;">
+<li>AIデータセンター・GPUインフラリスク評価</li>
+<li>レアアース・戦略資源サプライリスク分析</li>
+<li>時系列リスク追跡</li>
+</ul>
+</div>
 
-                    <div class="category-products">
-                        <div class="product-item">
-                            <div class="product-item-info">
-                                <span class="product-item-logo stratum">STRATUM</span>
-                                <span class="product-item-desc">AIデータセンター・GPUインフラリスク</span>
-                            </div>
-                            <div class="product-item-action">
-                                <a href="../../products/stratum.html" class="btn btn-stratum">詳細</a>
-                                <a href="../../products/stratum/reports/stratum-sample-report-ja.html" class="btn btn-ghost">サンプル</a>
-                            </div>
-                        </div>
+</div>
 
-                        <div class="product-item">
-                            <div class="product-item-info">
-                                <span class="product-item-logo nexus">NEXUS</span>
-                                <span class="product-item-desc">レアアース・戦略資源サプライリスク</span>
-                            </div>
-                            <div class="product-item-action">
-                                <a href="../../products/nexus.html" class="btn btn-nexus">詳細</a>
-                                <a href="../../products/nexus/reports/nexus-sample-report-ja.html" class="btn btn-ghost">サンプル</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+<div class="grid-2">
 
-        <!-- Section Divider -->
-        <div class="section-divider" id="details">
-            <div class="section-divider-line"></div>
-            <div class="section-divider-text">各サービスの詳細</div>
-        </div>
+<!-- System Development -->
+<div class="service-card">
+<div class="service-icon">
+<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+<polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
+</svg>
+</div>
+<span class="service-tag">System Development</span>
+<h3>カスタムシステム開発</h3>
+<p>企業のDX推進を支援するカスタムシステム開発。Webアプリケーション、API開発、データ分析基盤の構築など、クライアントのニーズに合わせたソリューションを提供します。</p>
+<ul class="features-list" style="margin-top:20px;">
+<li>Webアプリケーション開発</li>
+<li>API設計・開発</li>
+<li>データ分析基盤構築</li>
+<li>AI/ML統合</li>
+</ul>
+</div>
 
-        <!-- Product Details -->
-        <section class="details-section">
-            <div class="details-grid">
-                <!-- Aviscore Detail -->
-                <div class="detail-card">
-                    <div class="detail-card-header">
-                        <span class="detail-card-logo aviscore">Aviscore</span>
-                        <span class="detail-card-badge">Market Scoring</span>
-                    </div>
-                    <div class="detail-card-audience">
-                        毎日のチャート分析なしで市場状況を把握したい忙しい投資家向け。
-                    </div>
-                    <p class="detail-card-desc">
-                        3つのAIペルソナ（マクロ、テクニカル、リスク）が市場を評価。そのコンセンサスを0-100のスコアで表示。
-                    </p>
-                    <ul class="detail-card-features">
-                        <li>週次コンセンサススコア配信</li>
-                        <li>今後7日間のリスク評価</li>
-                        <li>マルチ視点AI評価</li>
-                        <li>明確なアクションラベル付き</li>
-                    </ul>
-                    <div class="detail-card-actions">
-                        <a href="../../products/aviscore.html" class="btn btn-primary">詳細を見る</a>
-                        <a href="../../products/aviscore-customer-ui.html" class="btn btn-outline">サンプルUI</a>
-                    </div>
-                </div>
+<!-- R&D -->
+<div class="service-card">
+<div class="service-icon">
+<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+<circle cx="12" cy="12" r="3"/>
+<path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+</svg>
+</div>
+<span class="service-tag">R&D</span>
+<h3>アルゴリズム研究</h3>
+<p>自己資本による投資アルゴリズムの研究開発。市場分析手法の高度化、新たな評価指標の開発など、継続的な技術革新に取り組んでいます。</p>
+<p style="margin-top:16px;padding:12px 16px;background:rgba(167,139,250,0.08);border-radius:10px;border-left:3px solid #a78bfa;font-size:0.85rem;color:#a78bfa;">
+<strong>注:</strong> 外部資金の受託運用は行っておりません
+</p>
+</div>
 
-                <!-- Stratum Detail -->
-                <div class="detail-card">
-                    <div class="detail-card-header">
-                        <span class="detail-card-logo stratum">STRATUM</span>
-                        <span class="detail-card-badge">AI Infrastructure</span>
-                    </div>
-                    <div class="detail-card-audience">
-                        AIデータセンター・GPUインフラへの投資を検討している投資家向け。
-                    </div>
-                    <p class="detail-card-desc">
-                        AIインフラを「止まってはいけない重要インフラ」として評価。信用・運用・サイバーリスクを多角的に分析。
-                    </p>
-                    <ul class="detail-card-features">
-                        <li>事業者継続性分析</li>
-                        <li>単一障害点の特定</li>
-                        <li>サイバーリスク評価</li>
-                        <li>時系列リスク追跡</li>
-                    </ul>
-                    <div class="detail-card-actions">
-                        <a href="../../products/stratum.html" class="btn btn-stratum">詳細を見る</a>
-                        <a href="../../products/stratum/reports/stratum-sample-report-ja.html" class="btn btn-outline">サンプルレポート</a>
-                    </div>
-                </div>
+</div>
 
-                <!-- Nexus Detail -->
-                <div class="detail-card">
-                    <div class="detail-card-header">
-                        <span class="detail-card-logo nexus">NEXUS</span>
-                        <span class="detail-card-badge">Supply Chain</span>
-                    </div>
-                    <div class="detail-card-audience">
-                        レアアース等の戦略資源の供給リスクを評価したい組織向け。
-                    </div>
-                    <p class="detail-card-desc">
-                        戦略資源のための5層リスクフレームワーク。供給集中度、ボトルネック、地政学リスク、ESG制約、代替可能性を評価。
-                    </p>
-                    <ul class="detail-card-features">
-                        <li>国・地域別依存度分析</li>
-                        <li>精製工程ボトルネック評価</li>
-                        <li>地政学リスク評価</li>
-                        <li>ESG制約分析</li>
-                    </ul>
-                    <div class="detail-card-actions">
-                        <a href="../../products/nexus.html" class="btn btn-nexus">詳細を見る</a>
-                        <a href="../../products/nexus/reports/nexus-sample-report-ja.html" class="btn btn-outline">サンプルレポート</a>
-                    </div>
-                </div>
-            </div>
+</section>
 
-            <div class="disclaimer-box">
-                <strong>重要:</strong> 当社のサービスは投資判断のための分析的文脈を提供するものです。投資推奨、価格予測、売買助言を構成するものではありません。
-            </div>
-        </section>
+<section class="wrap" style="background:rgba(5,8,15,0.3);margin-left:calc(-50vw + 50%);margin-right:calc(-50vw + 50%);padding-left:calc(50vw - 50% + 20px);padding-right:calc(50vw - 50% + 20px);">
+<h2>主要プロダクト</h2>
 
-        <!-- Contact Section -->
-        <section class="contact-section" id="contact">
-            <h2>お問い合わせ</h2>
-            <p>
-                サービス詳細、APIアクセス、パートナーシップに関するお問い合わせはこちら。
-            </p>
-            <a href="mailto:info@avisail.com?subject=Investment%20Services%20Inquiry" class="btn btn-primary">
-                お問い合わせ
-            </a>
-        </section>
+<div class="grid-3">
 
-        <!-- Footer -->
-        <footer class="footer">
-            <div class="footer-disclaimer">
-                <strong>重要事項:</strong>
-                当社が提供する情報およびサービスは、投資判断のための参考情報として提供するものであり、特定の金融商品の売買を推奨・勧誘するものではありません。最終的な投資判断は、ご自身の判断と責任において行ってください。
-            </div>
-            <div class="footer-bottom">
-                &copy; 2025 Avisail Inc. - Investment and Intelligence Services
-            </div>
-        </footer>
+<div class="product-card">
+<div class="product-logo aviscore">Aviscore</div>
+<p class="product-desc">AI合議制マーケットスコアリング。3つのAIペルソナが市場を評価し、0-100のコンセンサススコアを提供</p>
+<div class="product-actions">
+<a href="/products/aviscore.html" class="cta">詳細</a>
+<a href="/products/aviscore-customer-ui.html" class="btn">サンプル</a>
+</div>
+</div>
 
-    </div>
+<div class="product-card">
+<div class="product-logo stratum">STRATUM</div>
+<p class="product-desc">AIデータセンター・GPUインフラのリスク評価。運用継続性、単一障害点、サイバーリスクを多角的に分析</p>
+<div class="product-actions">
+<a href="/products/stratum.html" class="cta" style="background:linear-gradient(135deg,#10b981,#34d399);">詳細</a>
+<a href="/products/stratum/reports/stratum-sample-report-ja.html" class="btn">サンプル</a>
+</div>
+</div>
+
+<div class="product-card">
+<div class="product-logo nexus">NEXUS</div>
+<p class="product-desc">レアアース・戦略資源のサプライチェーンリスク評価。供給集中度、地政学リスク、ESG制約を分析</p>
+<div class="product-actions">
+<a href="/products/nexus.html" class="cta" style="background:linear-gradient(135deg,#d97706,#fbbf24);">詳細</a>
+<a href="/products/nexus/reports/nexus-sample-report-ja.html" class="btn">サンプル</a>
+</div>
+</div>
+
+</div>
+
+<div class="disclaimer">
+<strong>重要:</strong> 当社のサービスは投資判断のための分析的文脈を提供するものです。投資推奨、価格予測、売買助言を構成するものではありません。最終的な投資判断は、ご自身の判断と責任において行ってください。
+</div>
+
+</section>
+
+<section class="wrap" id="contact">
+<h2>お問い合わせ</h2>
+<div class="card" style="max-width:700px;">
+<h3 style="margin-bottom:16px;">サービスに関するご相談</h3>
+<p style="margin-bottom:24px;">
+マーケットスコアリング、リスクインテリジェンス、システム開発に関するお問い合わせはこちらからどうぞ。
+</p>
+<a href="mailto:info@avisail.com?subject=Investment%20Services%20Inquiry" class="cta">お問い合わせ</a>
+</div>
+</section>
+
+<footer>
+<div class="wrap">
+<div class="footer-content">
+<div class="footer-col">
+<h4>会社</h4>
+<ul>
+<li><a href="/ja/about.html">会社概要</a></li>
+<li><a href="/ja/contact.html">お問い合わせ</a></li>
+</ul>
+</div>
+<div class="footer-col">
+<h4>サービス</h4>
+<ul>
+<li><a href="/ja/services/vessel-trading.html">Marine Trading and Development</a></li>
+<li><a href="/ja/services/investment.html">Investment and System Engineering</a></li>
+<li><a href="/products/security.html">Security Development</a></li>
+</ul>
+</div>
+<div class="footer-col">
+<h4>法務</h4>
+<ul>
+<li><a href="/ja/privacy-policy.html">プライバシーポリシー</a></li>
+<li><a href="/ja/terms-of-service.html">利用規約</a></li>
+</ul>
+</div>
+</div>
+<div class="footer-bottom">
+<p>© 2025 Avisail Technologies — All rights reserved.</p>
+</div>
+</div>
+</footer>
+
 </body>
 </html>

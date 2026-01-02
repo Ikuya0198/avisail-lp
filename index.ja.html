@@ -926,6 +926,394 @@ footer{
   }
 }
 
+/* ========== BUSINESS STRUCTURE (3 Pillars + Foundation) ========== */
+.business-structure{
+  margin-top:20px;
+}
+
+.structure-intro{
+  text-align:center;
+  margin-bottom:48px;
+}
+
+.structure-intro p{
+  font-size:1.2rem;
+  color:var(--text-secondary);
+  line-height:1.8;
+}
+
+.structure-intro strong{
+  color:var(--accent-teal);
+  font-weight:600;
+}
+
+.pillars-container{
+  margin-bottom:40px;
+}
+
+.pillars-label{
+  text-align:center;
+  font-family:'Inter', sans-serif;
+  font-size:0.75rem;
+  font-weight:600;
+  letter-spacing:0.2em;
+  text-transform:uppercase;
+  color:var(--accent-blue);
+  margin-bottom:24px;
+}
+
+.pillars-grid{
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:24px;
+}
+
+.pillar-card{
+  position:relative;
+  background:linear-gradient(180deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
+  border:1px solid rgba(106,166,255,0.2);
+  border-radius:20px;
+  padding:32px 28px;
+  transition:all 0.3s;
+  overflow:hidden;
+}
+
+.pillar-card::before{
+  content:'';
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  height:3px;
+  background:var(--primary-gradient);
+}
+
+.pillar-card:hover{
+  transform:translateY(-8px);
+  border-color:rgba(126,240,212,0.4);
+  box-shadow:0 20px 40px rgba(0,0,0,0.3);
+}
+
+.pillar-number{
+  position:absolute;
+  top:20px;
+  right:20px;
+  font-family:'Inter', sans-serif;
+  font-size:2.5rem;
+  font-weight:700;
+  color:rgba(106,166,255,0.1);
+  line-height:1;
+}
+
+.pillar-icon{
+  width:64px;
+  height:64px;
+  background:linear-gradient(135deg, rgba(106,166,255,0.15), rgba(126,240,212,0.1));
+  border-radius:16px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin-bottom:20px;
+  color:var(--accent-teal);
+}
+
+.pillar-content h3{
+  font-size:1.3rem;
+  font-weight:700;
+  color:#fff;
+  margin:0 0 8px 0;
+  line-height:1.4;
+}
+
+.pillar-subtitle{
+  font-size:0.85rem;
+  color:var(--accent-teal);
+  margin:0 0 20px 0;
+  font-weight:500;
+}
+
+.pillar-features{
+  list-style:none;
+  padding:0;
+  margin:0 0 24px 0;
+}
+
+.pillar-features li{
+  font-size:0.9rem;
+  color:var(--text-muted);
+  padding:8px 0;
+  border-bottom:1px solid rgba(255,255,255,0.05);
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.pillar-features li:last-child{
+  border-bottom:none;
+}
+
+.pillar-features li::before{
+  content:'';
+  width:6px;
+  height:6px;
+  background:var(--accent-teal);
+  border-radius:50%;
+  flex-shrink:0;
+}
+
+.pillar-actions{
+  display:flex;
+  gap:12px;
+  margin-top:auto;
+}
+
+.pillar-actions .cta,
+.pillar-actions .btn{
+  flex:1;
+  text-align:center;
+  padding:10px 16px;
+  font-size:0.85rem;
+}
+
+/* Foundation */
+.foundation-container{
+  margin-top:20px;
+}
+
+.foundation-connector{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:20px;
+  margin-bottom:24px;
+}
+
+.connector-line{
+  flex:1;
+  max-width:200px;
+  height:1px;
+  background:linear-gradient(90deg, transparent, rgba(126,240,212,0.3), transparent);
+}
+
+.connector-label{
+  font-family:'Inter', sans-serif;
+  font-size:0.7rem;
+  font-weight:600;
+  letter-spacing:0.15em;
+  text-transform:uppercase;
+  color:var(--accent-teal);
+  padding:8px 16px;
+  background:rgba(126,240,212,0.08);
+  border:1px solid rgba(126,240,212,0.2);
+  border-radius:20px;
+}
+
+.foundation-card{
+  background:linear-gradient(135deg, rgba(126,240,212,0.06), rgba(106,166,255,0.04));
+  border:1px solid rgba(126,240,212,0.2);
+  border-radius:24px;
+  padding:40px;
+  display:flex;
+  align-items:flex-start;
+  gap:32px;
+}
+
+.foundation-icon{
+  width:80px;
+  height:80px;
+  min-width:80px;
+  background:linear-gradient(135deg, rgba(126,240,212,0.15), rgba(106,166,255,0.1));
+  border-radius:20px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:var(--accent-teal);
+}
+
+.foundation-content h3{
+  font-size:1.5rem;
+  font-weight:700;
+  color:#fff;
+  margin:0 0 8px 0;
+}
+
+.foundation-subtitle{
+  font-size:0.9rem;
+  color:var(--accent-teal);
+  margin:0 0 16px 0;
+  font-weight:500;
+}
+
+.foundation-desc{
+  font-size:0.95rem;
+  color:var(--text-muted);
+  line-height:1.8;
+  margin:0 0 20px 0;
+}
+
+.foundation-tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+
+.foundation-tags span{
+  font-size:0.75rem;
+  padding:6px 12px;
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.1);
+  border-radius:20px;
+  color:var(--text-muted);
+}
+
+@media(max-width:980px){
+  .pillars-grid{
+    grid-template-columns:1fr;
+    gap:20px;
+  }
+  .foundation-card{
+    flex-direction:column;
+    text-align:center;
+    padding:32px 24px;
+  }
+  .foundation-icon{
+    margin:0 auto;
+  }
+}
+
+@media(max-width:640px){
+  .pillar-card{
+    padding:24px 20px;
+  }
+  .pillar-number{
+    font-size:2rem;
+  }
+  .pillar-icon{
+    width:56px;
+    height:56px;
+  }
+  .pillar-actions{
+    flex-direction:column;
+  }
+  .foundation-icon{
+    width:64px;
+    height:64px;
+    min-width:64px;
+  }
+  .foundation-tags{
+    justify-content:center;
+  }
+}
+
+/* ========== ABOUT VISUAL SECTION ========== */
+.about-visual-section{
+  padding:0;
+  border-bottom:none;
+}
+
+.about-visual-bg{
+  position:relative;
+  min-height:70vh;
+  background:
+    linear-gradient(135deg, rgba(10,15,26,0.85) 0%, rgba(5,8,15,0.9) 50%, rgba(10,15,26,0.85) 100%),
+    radial-gradient(ellipse at 20% 30%, rgba(106,166,255,0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 70%, rgba(126,240,212,0.12) 0%, transparent 50%),
+    url('images/hero-bg.jpg') center/cover no-repeat;
+  display:flex;
+  align-items:center;
+  padding:80px 0;
+}
+
+.about-overlay{
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  background:linear-gradient(180deg, rgba(5,8,15,0.3) 0%, transparent 30%, transparent 70%, rgba(5,8,15,0.5) 100%);
+  pointer-events:none;
+}
+
+.about-visual-content{
+  position:relative;
+  z-index:2;
+}
+
+.about-visual-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:60px;
+  max-width:1100px;
+  margin:0 auto;
+}
+
+.about-visual-item{
+  text-align:left;
+}
+
+.about-visual-label{
+  font-family:'Inter', sans-serif;
+  font-size:0.75rem;
+  font-weight:600;
+  letter-spacing:0.25em;
+  text-transform:uppercase;
+  color:var(--accent-teal);
+  margin-bottom:12px;
+}
+
+.about-visual-title{
+  font-size:clamp(2rem, 4vw, 2.8rem);
+  font-weight:700;
+  color:#fff;
+  margin:0 0 24px 0;
+  text-shadow:0 2px 20px rgba(0,0,0,0.3);
+}
+
+.about-visual-text{
+  font-size:1rem;
+  line-height:1.9;
+  color:rgba(255,255,255,0.85);
+  margin-bottom:20px;
+  text-shadow:0 1px 10px rgba(0,0,0,0.2);
+}
+
+.about-visual-highlight{
+  font-size:1.05rem;
+  line-height:1.9;
+  color:#fff;
+  font-weight:500;
+  padding:20px 24px;
+  background:linear-gradient(135deg, rgba(126,240,212,0.12), rgba(106,166,255,0.08));
+  border-left:3px solid var(--accent-teal);
+  border-radius:0 12px 12px 0;
+  margin:24px 0 0 0;
+  text-shadow:0 1px 10px rgba(0,0,0,0.2);
+}
+
+@media(max-width:980px){
+  .about-visual-grid{
+    grid-template-columns:1fr;
+    gap:50px;
+  }
+  .about-visual-bg{
+    min-height:auto;
+    padding:60px 0;
+  }
+}
+
+@media(max-width:640px){
+  .about-visual-title{
+    font-size:1.8rem;
+  }
+  .about-visual-text,
+  .about-visual-highlight{
+    font-size:0.95rem;
+  }
+  .about-visual-highlight{
+    padding:16px 20px;
+  }
+}
+
 /* ========== UTILITY CLASSES ========== */
 .text-center{ text-align:center; }
 .mb-0{ margin-bottom:0; }
@@ -1012,130 +1400,177 @@ footer{
 </section>
 
 <!-- ========================================
-     SECTION 2: PASSION & PURPOSE
+     SECTION 2: PASSION & PURPOSE (Full-width visual design)
 ======================================== -->
-<section id="about">
-  <div class="wrap">
-    <h2>会社概要（About Us）</h2>
-    <div class="grid-2">
+<section id="about" class="about-visual-section">
+  <div class="about-visual-bg">
+    <div class="about-overlay"></div>
+    <div class="wrap about-visual-content">
+      <h2 style="color:#fff; border:none; margin-bottom:60px; text-align:center; justify-content:center;">
+        <span style="background:var(--primary-gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">About Us</span>
+      </h2>
 
-      <!-- PASSION -->
-      <div class="card">
-        <h3 style="margin-bottom:16px;">情熱（Passion）</h3>
-        <p style="color:var(--text-secondary); font-size:1rem; line-height:1.8; margin-bottom:0;">
-          世界に距離の概念は、もはや存在しないと考えます<br>
-          文化も市場も隣り合い、新たな技術は常に目の前に現れます<br><br>
-          目前に巨大な船（新たな技術）が現れたとき、私たちは恐れず前に進み、テクノロジーを実際に価値ある使い方へと導きます<br><br>
-          勇気はイノベーションの火種です<br>
-          その価値を人々に届けることに、私たちは情熱を注ぎます
-        </p>
+      <div class="about-visual-grid">
+        <!-- PASSION -->
+        <div class="about-visual-item">
+          <div class="about-visual-label">Passion</div>
+          <h3 class="about-visual-title">情熱</h3>
+          <p class="about-visual-text">
+            世界に距離の概念は、もはや存在しないと考えます<br>
+            文化も市場も隣り合い、新たな技術は常に目の前に現れます
+          </p>
+          <p class="about-visual-text">
+            目前に巨大な船（新たな技術）が現れたとき、私たちは恐れず前に進み、テクノロジーを実際に価値ある使い方へと導きます
+          </p>
+          <p class="about-visual-highlight">
+            勇気はイノベーションの火種です<br>
+            その価値を人々に届けることに、私たちは情熱を注ぎます
+          </p>
+        </div>
+
+        <!-- PURPOSE -->
+        <div class="about-visual-item">
+          <div class="about-visual-label">Purpose</div>
+          <h3 class="about-visual-title">存在意義</h3>
+          <p class="about-visual-text">
+            人の豊かさにつながる技術を誠実に磨き、変革が生む新しいアクセスを広げます
+          </p>
+          <p class="about-visual-highlight">
+            進歩を止めず、実装ベースでの技術価値を高め続け利便性を提供すること、それが私たちの存在意義です
+          </p>
+        </div>
       </div>
-
-      <!-- PURPOSE -->
-      <div class="card card-highlight">
-        <h3 style="margin-bottom:16px;">存在意義（Purpose）</h3>
-        <p style="color:var(--text-primary); font-size:1rem; line-height:1.8; font-weight:400; margin-bottom:0;">
-          人の豊かさにつながる技術を誠実に磨き、変革が生む新しいアクセスを広げます。<br><br>
-          進歩を止めず、実装ベースでの技術価値を高め続け利便性を提供すること、それが私たちの存在意義です
-        </p>
-      </div>
-
     </div>
   </div>
 </section>
 
 <!-- ========================================
-     SECTION 3: 事業領域 (3+1 Layout)
+     SECTION 3: 事業領域 (3 Pillars + Foundation)
 ======================================== -->
 <section id="business">
   <div class="wrap">
     <h2>事業領域（Our Business）</h2>
-    <p style="color:var(--text-secondary); max-width:850px; margin-bottom:48px; font-size:1rem; line-height:1.75;">
-      Avisailは、4つの事業領域でAI技術を活用し、従来の手法を革新します。<br>
-      それぞれの事業は独立していながら、共通のAI基盤によって結びついています
-    </p>
 
-    <!-- TOP 3 BUSINESSES -->
-    <div class="business-grid">
+    <!-- Business Structure Visual -->
+    <div class="business-structure">
+      <div class="structure-intro">
+        <p>Avisailは<strong>3つの事業</strong>を柱とし、<strong>AI・システム開発</strong>がそれらを支えています</p>
+      </div>
 
-      <!-- MARINE TRADING -->
-      <div class="card" id="business-trading">
-        <div class="thumb" style="background-image:url('images/vessel-trading.jpg');"></div>
-        <h3>Marine Trading</h3>
-        <p>
-          アジアと欧州・中東の商圏をつなぎ、商用船からヨットまで幅広い船舶をご紹介。<br>
-          AIによる在庫更新、法務プロによる安全な支払い枠組みで、透明性と競争力を両立します
-        </p>
-        <div style="display:flex;gap:12px;flex-wrap:wrap;margin:16px 0;">
-          <a href="https://avisail-vessel-trading.vercel.app/" class="cta" target="_blank">Working Ship</a>
-          <a href="https://avisail-yachts.vercel.app/" class="cta" target="_blank">Yacht Club</a>
+      <!-- 3 Pillars -->
+      <div class="pillars-container">
+        <div class="pillars-label">3 Core Business Pillars</div>
+        <div class="pillars-grid">
+
+          <!-- PILLAR 1: Marine Trading & Development -->
+          <div class="pillar-card" id="business-trading">
+            <div class="pillar-number">01</div>
+            <div class="pillar-icon">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M3 17h18M5 12h14l-2-5H7l-2 5zM12 17v4M8 21h8"/>
+              </svg>
+            </div>
+            <div class="pillar-content">
+              <h3>Marine Trading<br>and Development</h3>
+              <p class="pillar-subtitle">船舶貿易とエッジ技術開発事業</p>
+              <ul class="pillar-features">
+                <li>国際船舶売買（商用船・ヨット）</li>
+                <li>AI駆動型在庫マッチング</li>
+                <li>YOLOベース航行支援システム開発</li>
+                <li>自動運転技術R&D</li>
+              </ul>
+              <div class="pillar-actions">
+                <a href="https://avisail-vessel-trading.vercel.app/" class="cta" target="_blank">船舶在庫</a>
+                <a href="ja/services/vessel-trading.html" class="btn">詳細</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- PILLAR 2: Investment & System Engineering -->
+          <div class="pillar-card" id="business-investment">
+            <div class="pillar-number">02</div>
+            <div class="pillar-icon">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+              </svg>
+            </div>
+            <div class="pillar-content">
+              <h3>Investment and<br>System Engineering</h3>
+              <p class="pillar-subtitle">投資とシステム開発事業</p>
+              <ul class="pillar-features">
+                <li>AI駆動型資産運用（Aviscore）</li>
+                <li>マーケットスコアリング</li>
+                <li>リスクインテリジェンス（STRATUM/NEXUS）</li>
+                <li>カスタムシステム開発</li>
+              </ul>
+              <div class="pillar-actions">
+                <a href="products/aviscore.html" class="cta">Aviscore</a>
+                <a href="ja/services/investment.html" class="btn">詳細</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- PILLAR 3: Security Development -->
+          <div class="pillar-card" id="business-security">
+            <div class="pillar-number">03</div>
+            <div class="pillar-icon">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                <path d="M9 12l2 2 4-4"/>
+              </svg>
+            </div>
+            <div class="pillar-content">
+              <h3>Security<br>Development</h3>
+              <p class="pillar-subtitle">セキュリティ事業</p>
+              <ul class="pillar-features">
+                <li>アクティブディフェンス診断（ADCS）</li>
+                <li>OSINT分析・脅威検出</li>
+                <li>攻撃面可視化</li>
+                <li>セキュリティレポート</li>
+              </ul>
+              <div class="pillar-actions">
+                <a href="products/security.html" class="cta">ADCS</a>
+                <a href="products/security.html" class="btn">詳細</a>
+              </div>
+            </div>
+          </div>
+
         </div>
-        <a href="ja/services/vessel-trading.html" class="btn" style="margin-top:auto;">詳細を見る</a>
       </div>
 
-      <!-- MARINE EDGE DEVELOPMENT -->
-      <div class="card" id="business-edge">
-        <div class="thumb" style="background-image:url('images/ai-development.jpg');"></div>
-        <h3>Marine Edge開発</h3>
-        <p>
-          YOLOベースの画像解析技術を活用した船舶の航行支援システム、および自動運転技術の研究開発。<br>
-          リアルタイム物体検知による衝突回避、夜間・悪天候時の視認性向上、最適航路提案などを目指します
-        </p>
-        <a href="ja/services/vessel-trading.html#edge-development" class="btn" style="margin-top:auto;">詳細を見る</a>
-      </div>
-
-      <!-- INVESTMENT -->
-      <div class="card" id="business-investment">
-        <div class="thumb" style="background-image:url('images/investment.jpg');"></div>
-        <h3>投資（Investment）</h3>
-        <p>
-          AI駆動型資産管理エンジン「Aviscore」による安定性と成長を重視した堅実な資産形成。<br>
-          FX自動売買とETFポートフォリオ戦略を組み合わせ、市場の変動に柔軟に対応しながらリスクを抑えた運用を実現します
-        </p>
-        <div class="use-case-box">
-          <h4>ユースケース: スタートアップの資産運用</h4>
-          <p>急成長中のSaaS企業。余剰資金の効率的運用が課題。Aviscoreによる自動運用で、本業に集中しながら安定的なリターンを実現</p>
-          <div class="use-case-details">
-            <span><strong>業種:</strong> SaaS / テクノロジー</span>
-            <span><strong>課題:</strong> 余剰資金の効率運用</span>
-            <span><strong>ソリューション:</strong> AI資産運用</span>
+      <!-- Foundation: AI & System Development -->
+      <div class="foundation-container">
+        <div class="foundation-connector">
+          <div class="connector-line"></div>
+          <div class="connector-label">Powered by</div>
+          <div class="connector-line"></div>
+        </div>
+        <div class="foundation-card">
+          <div class="foundation-icon">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="12" cy="12" r="3"/>
+              <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+            </svg>
+          </div>
+          <div class="foundation-content">
+            <h3>AI & System Development</h3>
+            <p class="foundation-subtitle">3つの事業を支える技術基盤</p>
+            <p class="foundation-desc">
+              実装ファーストの哲学のもと、初日から実運用可能なAIシステムを開発。<br>
+              データパイプライン、自動化、インテリジェントな意思決定支援により、各事業の競争力を加速します
+            </p>
+            <div class="foundation-tags">
+              <span>Python</span>
+              <span>FastAPI</span>
+              <span>React</span>
+              <span>Next.js</span>
+              <span>AWS/GCP</span>
+              <span>Machine Learning</span>
+            </div>
           </div>
         </div>
-        <a href="ja/services/investment.html" class="btn" style="margin-top:auto;">詳細を見る</a>
       </div>
 
-      <!-- SECURITY -->
-      <div class="card" id="business-security">
-        <div class="thumb" style="background-image:url('images/security.jpg');"></div>
-        <h3>セキュリティ（Security）</h3>
-        <p>
-          中小企業・自治体向けのアクティブディフェンス型サイバーセキュリティソリューション「ADCS」。<br>
-          OSINT分析とAI駆動の脅威検出により、攻撃者視点でのセキュリティ診断を実現。<br>
-          フルSOCへの架け橋となる基盤を提供します
-        </p>
-        <div class="use-case-box">
-          <h4>ユースケース: 中堅企業のセキュリティ強化</h4>
-          <p>従業員50名規模の製造業。古いインフラと限られた予算の中で、攻撃面の可視化とインシデント初動体制を構築。取引先への説明資料としても活用可能なレポートを提供</p>
-          <div class="use-case-details">
-            <span><strong>業種:</strong> 製造業</span>
-            <span><strong>課題:</strong> レガシーシステムのセキュリティ</span>
-            <span><strong>ソリューション:</strong> ADCS継続診断</span>
-          </div>
-        </div>
-        <a href="products/security.html" class="btn" style="margin-top:auto;">詳細を見る</a>
-      </div>
-
-    </div>
-
-    <!-- AI & DEVELOPMENT (Full width bottom) -->
-    <div class="business-tech">
-      <div class="thumb" style="background-image:url('images/ai-development.jpg'); max-width:600px; margin:0 auto 20px; height:200px;"></div>
-      <h3>技術開発（AI & Development）</h3>
-      <p>
-        3つの事業領域全てを支える技術基盤。<br>
-        実装ファーストの哲学のもと、初日から実運用可能なAIシステムを開発。<br>
-        データパイプライン、自動化、インテリジェントな意思決定支援により、各事業の競争力を加速します
-      </p>
     </div>
   </div>
 </section>
@@ -1419,10 +1854,9 @@ footer{
       <div class="footer-col">
         <h4>Services</h4>
         <ul>
-          <li><a href="#business-trading">Marine Trading</a></li>
-          <li><a href="#business-edge">Marine Edge開発</a></li>
-          <li><a href="#business-investment">資産運用（Investment）</a></li>
-          <li><a href="#business-security">セキュリティ（ADCS）</a></li>
+          <li><a href="#business-trading">Marine Trading and Development</a></li>
+          <li><a href="#business-investment">Investment and System Engineering</a></li>
+          <li><a href="#business-security">Security Development</a></li>
         </ul>
       </div>
 
