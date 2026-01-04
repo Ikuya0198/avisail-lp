@@ -4,133 +4,603 @@
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Contact Us | Avisail Technologies</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<meta name="description" content="Contact Avisail Technologies. We welcome inquiries about our services, partnerships, and business proposals.">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="canonical" href="https://avisail.com/en/contact.html">
+<link rel="alternate" hreflang="ja" href="https://avisail.com/ja/contact.html">
+<link rel="alternate" hreflang="en" href="https://avisail.com/en/contact.html">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://avisail.com/en/contact.html">
+<meta property="og:title" content="Contact Us | Avisail Technologies">
+<meta property="og:description" content="Contact Avisail Technologies for service inquiries and partnerships.">
+<meta property="og:locale" content="en_US">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
 <style>
-:root{--line:rgba(255,255,255,.08);--hero-bg:url('/images/contact-hero.jpg');}
-*{box-sizing:border-box;}
-html,body{margin:0;background:#0a0f1a;color:#e9f0ff;font-family:'Inter',sans-serif;line-height:1.7;}
-html{scroll-behavior:smooth;}
-a{color:#cfe2ff;text-decoration:none;transition:color 0.3s;}
-a:hover{color:#7ef0d4;}
-.wrap{max-width:1200px;margin:0 auto;padding:0 20px;}
-header{position:sticky;top:0;z-index:50;background:rgba(10,15,26,.9);border-bottom:1px solid var(--line);backdrop-filter:blur(10px);}
-.nav{display:flex;align-items:center;justify-content:space-between;height:70px;}
-.brand{display:flex;align-items:center;gap:12px;font-weight:600;color:#fff;}
-.logo{width:32px;height:32px;border-radius:8px;background:conic-gradient(from 210deg,#6aa6ff,#7ef0d4);}
-nav ul{display:flex;gap:24px;list-style:none;margin:0;padding:0;align-items:center;font-size:0.95rem;}
-.menu-item{position:relative;padding:10px 0;}
-.dropdown{position:absolute;top:100%;left:-10px;min-width:200px;background:#0d1424;border:1px solid var(--line);border-radius:12px;padding:12px;display:none;flex-direction:column;gap:8px;box-shadow:0 10px 30px rgba(0,0,0,0.5);}
-.menu-item:hover .dropdown{display:flex;}
-.dropdown a{padding:6px 12px;border-radius:6px;color:#9fb0cc;}
-.dropdown a:hover{background:rgba(255,255,255,0.05);color:#fff;}
-.globe-icon{font-size:1.2rem;cursor:pointer;color:#9fb0cc;transition:color 0.3s;}
-.globe-icon:hover{color:#7ef0d4;}
-.page-hero{padding:140px 0 100px;text-align:center;background:linear-gradient(rgba(10,15,26,0.7),rgba(10,15,26,0.9)),var(--hero-bg) center/cover;}
-.page-hero h1{font-size:3.5rem;margin-bottom:24px;color:#fff;font-weight:700;}
-.page-hero .lead{color:#cfe2ff;max-width:800px;margin:0 auto 16px;font-size:1.2rem;}
-.muted{color:#9fb0cc;}
-section{padding:100px 0;border-bottom:1px solid var(--line);}
-h2{font-size:2rem;margin-bottom:40px;color:#fff;display:flex;align-items:center;gap:16px;}
-h2::before{content:'';width:4px;height:32px;background:linear-gradient(to bottom,#6aa6ff,#7ef0d4);display:block;}
-.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;}
-.card{background:rgba(255,255,255,0.02);border:1px solid var(--line);border-radius:24px;padding:32px;backdrop-filter:blur(5px);transition:transform 0.3s,border-color 0.3s;height:100%;display:flex;flex-direction:column;}
-.card:hover{transform:translateY(-5px);border-color:rgba(106,166,255,0.3);}
-.card h3{color:#fff;margin-top:0;font-size:1.3rem;}
-.card p{color:#9fb0cc;margin-bottom:16px;}
-.highlight-box{background:rgba(126,240,212,0.05);border:1px solid rgba(126,240,212,0.2);border-radius:16px;padding:40px;margin:40px auto;max-width:700px;text-align:center;}
-.cta{display:inline-block;padding:12px 28px;border-radius:50px;background:linear-gradient(135deg,#6aa6ff,#7ef0d4);color:#06101a;font-weight:700;font-size:0.95rem;box-shadow:0 10px 20px rgba(106,166,255,.2);border:none;transition:all 0.3s;}
-.cta:hover{transform:translateY(-2px);box-shadow:0 15px 30px rgba(106,166,255,.3);}
-.btn{display:inline-block;padding:12px 28px;border-radius:50px;border:1px solid var(--line);background:rgba(255,255,255,0.05);color:#e9f0ff;font-size:0.95rem;transition:all 0.3s;}
-.btn:hover{border-color:rgba(106,166,255,0.5);transform:translateY(-2px);}
-footer{background:rgba(5,8,15,0.8);padding:60px 0 30px;border-top:1px solid var(--line);}
-.footer-content{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-bottom:40px;}
-.footer-col h4{color:#fff;font-size:1.1rem;margin-bottom:20px;}
-.footer-col ul{list-style:none;padding:0;margin:0;}
-.footer-col ul li{margin-bottom:12px;}
-.footer-col a{color:#9fb0cc;font-size:0.9rem;}
-.footer-col a:hover{color:#7ef0d4;}
-.footer-bottom{border-top:1px solid var(--line);padding-top:30px;text-align:center;color:#9fb0cc;font-size:0.85rem;}
-@media(max-width:980px){.grid-3{grid-template-columns:1fr;}.footer-content{grid-template-columns:1fr;}nav ul{display:none;}.page-hero h1{font-size:2.5rem;}}
+:root{
+  --line: rgba(255,255,255,.08);
+  --primary-gradient: linear-gradient(135deg,#6aa6ff,#7ef0d4);
+  --accent-teal: #7ef0d4;
+  --accent-blue: #6aa6ff;
+  --bg-dark: #0a0f1a;
+  --bg-darker: #05080f;
+  --text-primary: #e9f0ff;
+  --text-secondary: #cfe2ff;
+  --text-muted: #9fb0cc;
+}
+
+*{ box-sizing: border-box; margin:0; padding:0; }
+
+html,body{
+  margin:0;
+  background:var(--bg-dark);
+  color:var(--text-primary);
+  font-family: 'Inter', 'Noto Sans JP', sans-serif;
+  line-height:1.7;
+  overflow-x:hidden;
+  width:100%;
+}
+
+html{ scroll-behavior: smooth; }
+
+a{
+  color:var(--text-secondary);
+  text-decoration:none;
+  transition: color 0.3s;
+}
+a:hover{ color:var(--accent-teal); }
+
+.wrap{
+  max-width:1200px;
+  margin:0 auto;
+  padding:0 20px;
+  width:100%;
+}
+
+/* ========== HERO ========== */
+.page-hero{
+  padding:140px 0 80px;
+  text-align:center;
+  background: radial-gradient(circle at center, rgba(106, 166, 255, 0.08) 0%, rgba(5, 8, 15, 0) 70%),
+              linear-gradient(180deg, rgba(5,8,15,0.3) 0%, rgba(5,8,15,1) 100%);
+}
+
+.page-hero h1{
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+  margin-bottom: 20px;
+  background: linear-gradient(to right, #fff, var(--text-muted));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.page-hero .lead{
+  font-size:1.1rem;
+  color:var(--text-secondary);
+  max-width:700px;
+  margin:0 auto 16px;
+  line-height:1.8;
+}
+
+.page-hero .muted{
+  color:var(--text-muted);
+  font-size:0.95rem;
+}
+
+/* ========== SECTIONS ========== */
+section{
+  padding:70px 0;
+  border-bottom:1px solid var(--line);
+}
+
+h2{
+  font-size:1.8rem;
+  margin-bottom:32px;
+  display:flex;
+  align-items:center;
+  gap:16px;
+  color:#fff;
+}
+
+h2::before{
+  content:'';
+  width:4px;
+  height:28px;
+  background:var(--primary-gradient);
+  display:block;
+  border-radius:2px;
+}
+
+h3{
+  color:#fff;
+  font-size:1.3rem;
+}
+
+/* ========== FORM ========== */
+.form-container{
+  max-width:800px;
+  margin:0 auto;
+}
+
+.form-card{
+  background:rgba(255,255,255,0.02);
+  backdrop-filter:blur(10px);
+  border:1px solid var(--line);
+  border-radius:24px;
+  padding:48px;
+}
+
+.form-intro{
+  margin-bottom:40px;
+  padding:24px;
+  background:rgba(126,240,212,0.03);
+  border-radius:16px;
+  border:1px solid rgba(126,240,212,0.15);
+}
+
+.form-intro-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+  text-align:center;
+}
+
+.form-intro-item h4{
+  color:var(--accent-teal);
+  font-size:0.9rem;
+  margin-bottom:6px;
+  font-weight:600;
+}
+
+.form-intro-item p{
+  color:var(--text-muted);
+  font-size:0.85rem;
+  margin:0;
+}
+
+.form-row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+}
+
+.form-group{
+  margin-bottom:24px;
+}
+
+.form-group.full-width{
+  grid-column:1/-1;
+}
+
+.form-group label{
+  display:block;
+  font-size:0.9rem;
+  color:var(--text-secondary);
+  margin-bottom:8px;
+  font-weight:500;
+}
+
+.form-group label .required{
+  color:#fb7185;
+  margin-left:4px;
+}
+
+.form-group label .optional{
+  color:var(--text-muted);
+  font-size:0.8rem;
+  font-weight:400;
+  margin-left:6px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea{
+  width:100%;
+  padding:14px 18px;
+  border-radius:12px;
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.1);
+  color:var(--text-primary);
+  font-family:inherit;
+  font-size:0.95rem;
+  transition:all 0.3s;
+  outline:none;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus{
+  border-color:var(--accent-blue);
+  background:rgba(255,255,255,0.06);
+  box-shadow:0 0 0 3px rgba(106,166,255,0.1);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder{
+  color:var(--text-muted);
+  opacity:0.7;
+}
+
+.form-group select{
+  cursor:pointer;
+  appearance:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%239fb0cc' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;
+  background-position:right 16px center;
+  padding-right:40px;
+}
+
+.form-group select option{
+  background:var(--bg-dark);
+  color:var(--text-primary);
+}
+
+.form-group textarea{
+  resize:vertical;
+  min-height:140px;
+}
+
+.privacy-note{
+  font-size:0.85rem;
+  color:var(--text-muted);
+  margin-bottom:28px;
+  line-height:1.7;
+}
+
+.privacy-note a{
+  color:var(--accent-teal);
+}
+
+.btn-submit{
+  display:inline-block;
+  padding:16px 48px;
+  border-radius:50px;
+  background:var(--primary-gradient);
+  color:#06101a;
+  font-weight:700;
+  font-size:1rem;
+  box-shadow:0 10px 20px rgba(106,166,255,.2);
+  border:none;
+  transition:all 0.3s;
+  cursor:pointer;
+  width:100%;
+}
+
+.btn-submit:hover{
+  transform:translateY(-2px);
+  box-shadow:0 15px 30px rgba(106,166,255,.3);
+}
+
+.btn-submit:disabled{
+  opacity:0.7;
+  cursor:not-allowed;
+  transform:none;
+}
+
+#form-status{
+  margin-top:20px;
+  padding:16px;
+  border-radius:12px;
+  text-align:center;
+  font-size:0.95rem;
+}
+
+#form-status.success{
+  background:rgba(126,240,212,0.1);
+  border:1px solid rgba(126,240,212,0.3);
+  color:var(--accent-teal);
+}
+
+#form-status.error{
+  background:rgba(251,113,133,0.1);
+  border:1px solid rgba(251,113,133,0.3);
+  color:#fb7185;
+}
+
+/* ========== INFO SECTION ========== */
+.info-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:28px;
+  margin-top:40px;
+}
+
+.info-card{
+  background:rgba(255,255,255,0.02);
+  border:1px solid var(--line);
+  border-radius:20px;
+  padding:28px;
+  transition:all 0.3s;
+}
+
+.info-card:hover{
+  border-color:rgba(106,166,255,0.3);
+  transform:translateY(-3px);
+}
+
+.info-card h3{
+  font-size:1.1rem;
+  margin-bottom:16px;
+}
+
+.info-card p{
+  color:var(--text-muted);
+  font-size:0.9rem;
+  line-height:1.8;
+  margin-bottom:12px;
+}
+
+.info-card a{
+  color:var(--accent-teal);
+  font-size:0.95rem;
+}
+
+/* ========== RESPONSIVE ========== */
+@media(max-width:980px){
+  .form-row{
+    grid-template-columns:1fr;
+  }
+  .form-intro-grid{
+    grid-template-columns:1fr;
+    gap:16px;
+  }
+  .info-grid{
+    grid-template-columns:1fr;
+    gap:20px;
+  }
+  .form-card{
+    padding:32px 24px;
+  }
+}
+
+@media(max-width:640px){
+  .page-hero{
+    padding:100px 0 60px;
+  }
+  .page-hero h1{
+    font-size:1.75rem;
+  }
+  section{
+    padding:50px 0;
+  }
+  h2{
+    font-size:1.4rem;
+  }
+  .form-card{
+    padding:24px 20px;
+  }
+  .btn-submit{
+    padding:14px 32px;
+  }
+}
 </style>
 </head>
 <body>
+
 <!-- Shared Header -->
 <div id="site-header"></div>
 
-<main class="page-hero">
-<div class="wrap">
-<h1>Contact Us</h1>
-<p class="lead">We welcome inquiries about our services, partnership opportunities, and business proposals.</p>
-<p class="muted">Reach out via email or phone, and we'll respond within 1 business day</p>
-</div>
-</main>
-
-<section class="wrap">
-<h2>General Inquiries</h2>
-<div class="highlight-box">
-<h3 style="color:#7ef0d4;margin-top:0;font-size:1.5rem;">Get in Touch</h3>
-<p style="color:#9fb0cc;margin-bottom:32px;">For general questions, partnership opportunities, or service inquiries, contact us directly.</p>
-<div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
-<a href="mailto:info@avisail.com" class="cta">info@avisail.com</a>
-<a href="tel:+817093101362" class="btn">+81 70-9310-1362</a>
-</div>
-<p style="margin-top:24px;color:#9fb0cc;font-size:0.9rem;">Business Hours: 9:00 AM - 6:00 PM (JST) | Monday - Friday</p>
-</div>
+<!-- Hero Section -->
+<section class="page-hero">
+  <div class="wrap">
+    <h1>Contact Us</h1>
+    <p class="lead">
+      We welcome inquiries about our services, partnerships, and business proposals.<br>
+      Please fill out the form below to get in touch.
+    </p>
+    <p class="muted">We will respond within 1 business day</p>
+  </div>
 </section>
 
-<section class="wrap">
-<h2>Business Divisions</h2>
-<p class="muted" style="max-width:800px;margin-bottom:40px;">For specific inquiries related to our business domains, use the contact information below.</p>
-<div class="grid-3">
-<div class="card">
-<h3>Vessel Trading</h3>
-<p>For vessel buying/selling inquiries, inventory questions, or financing options.</p>
-<p><strong>Email:</strong><br><a href="mailto:trading@avisail.com">trading@avisail.com</a></p>
-<p><strong>Topics:</strong> Coaster vessels, Tugboats, Landing craft, Escrow services, ETF-backed financing</p>
-</div>
-<div class="card">
-<h3>Investment (Aviscore)</h3>
-<p>For investment management services, portfolio inquiries, or partnership opportunities.</p>
-<p><strong>Email:</strong><br><a href="mailto:investment@avisail.com">investment@avisail.com</a></p>
-<p><strong>Topics:</strong> Asset management, FX carry trades, ETF strategies, Performance reports, Client onboarding</p>
-</div>
-<div class="card">
-<h3>Technology (ADCS)</h3>
-<p>For ADCS platform inquiries, security assessments, or white-label partnerships.</p>
-<p><strong>Email:</strong><br><a href="mailto:security@avisail.com">security@avisail.com</a></p>
-<p><strong>Topics:</strong> Cybersecurity scans, OSINT assessments, Sample reports, MSP partnerships, Enterprise deployments</p>
-</div>
-</div>
+<!-- Contact Form Section -->
+<section id="form-section">
+  <div class="wrap">
+    <div class="form-container">
+      <div class="form-card">
+
+        <div class="form-intro">
+          <div class="form-intro-grid">
+            <div class="form-intro-item">
+              <h4>Email</h4>
+              <p>info@avisail.com</p>
+            </div>
+            <div class="form-intro-item">
+              <h4>Languages</h4>
+              <p>English / Japanese / Italian</p>
+            </div>
+            <div class="form-intro-item">
+              <h4>Response</h4>
+              <p>Within 1 business day</p>
+            </div>
+          </div>
+        </div>
+
+        <form id="contact-form" action="https://formspree.io/f/mykzwlze" method="POST">
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="company">Company Name<span class="optional">(Optional)</span></label>
+              <input type="text" id="company" name="company" placeholder="Acme Corporation">
+            </div>
+            <div class="form-group">
+              <label for="department">Department<span class="optional">(Optional)</span></label>
+              <input type="text" id="department" name="department" placeholder="Sales Department">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Full Name<span class="required">*</span></label>
+              <input type="text" id="name" name="name" placeholder="John Smith" required>
+            </div>
+            <div class="form-group">
+              <label for="title">Job Title<span class="optional">(Optional)</span></label>
+              <input type="text" id="title" name="title" placeholder="Director of Operations">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="email">Email Address<span class="required">*</span></label>
+              <input type="email" id="email" name="email" placeholder="your@email.com" required>
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number<span class="optional">(Optional)</span></label>
+              <input type="tel" id="phone" name="phone" placeholder="+1 234 567 8900">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="service">Service of Interest<span class="required">*</span></label>
+              <select id="service" name="service" required>
+                <option value="">Please select</option>
+                <optgroup label="Maritime Business">
+                  <option value="vessel-trading">Vessel Trading</option>
+                  <option value="maritime-security">Maritime Security</option>
+                </optgroup>
+                <optgroup label="Security Business">
+                  <option value="adcs">ADCS - Security Assessment</option>
+                  <option value="stratum">STRATUM - OSINT Threat Intelligence</option>
+                  <option value="nexus">NEXUS - Attack Surface Analysis</option>
+                </optgroup>
+                <optgroup label="Other">
+                  <option value="ai-development">AI & System Development</option>
+                  <option value="partnership">Partnership & Collaboration</option>
+                  <option value="media">Media & Press</option>
+                  <option value="recruitment">Careers</option>
+                  <option value="other">Other</option>
+                </optgroup>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="inquiry_type">Inquiry Type<span class="required">*</span></label>
+              <select id="inquiry_type" name="inquiry_type" required>
+                <option value="">Please select</option>
+                <option value="new-inquiry">New Inquiry</option>
+                <option value="quote-request">Quote Request</option>
+                <option value="demo-request">Demo / Information Request</option>
+                <option value="technical-support">Technical Question</option>
+                <option value="partnership">Partnership Inquiry</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group full-width">
+            <label for="how_found">How did you hear about us?<span class="optional">(Optional)</span></label>
+            <select id="how_found" name="how_found">
+              <option value="">Please select</option>
+              <option value="search">Search Engine (Google, etc.)</option>
+              <option value="social">Social Media (Twitter/X, LinkedIn, etc.)</option>
+              <option value="referral">Referral from Colleague/Partner</option>
+              <option value="event">Trade Show / Conference</option>
+              <option value="media">Media Article</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <div class="form-group full-width">
+            <label for="message">Your Message<span class="required">*</span></label>
+            <textarea id="message" name="message" placeholder="Please describe your inquiry, questions, or requirements" required></textarea>
+          </div>
+
+          <p class="privacy-note">
+            The information you submit will be used to respond to your inquiry and improve our services.
+          </p>
+
+          <button type="submit" class="btn-submit" id="submit-btn">Send Message</button>
+          <div id="form-status" style="display:none;"></div>
+
+        </form>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section class="wrap">
-<h2>Office Information</h2>
-<div class="grid-3">
-<div class="card">
-<h3>Japan Office (Primary)</h3>
-<p><strong>Legal Entity:</strong> Godo Kaisha (GK) formation planned January 2026</p>
-<p><strong>Current Status:</strong> Individual business registration December 2025</p>
-<p><strong>Location:</strong> Tokyo, Japan</p>
-<p>Primary hub for business development, client relations, and operational management.</p>
-</div>
-<div class="card">
-<h3>Global Operations</h3>
-<p><strong>Panama Entity:</strong> International transaction hub for vessel trading and cross-border commerce</p>
-<p><strong>Banking:</strong> Estonia and Dubai facilities for fintech integration and multi-currency support</p>
-<p>24/7 global operations across Asia-Pacific, Middle East, and Europe</p>
-</div>
-<div class="card">
-<h3>Response Time</h3>
-<p><strong>Email Inquiries:</strong> Within 1 business day</p>
-<p><strong>Phone Calls:</strong> 9AM-6PM JST, Monday-Friday</p>
-<p><strong>Urgent Matters:</strong> Same-day response for existing clients</p>
-<p>We operate across multiple time zones to provide responsive global service.</p>
-</div>
-</div>
+<!-- Office Information -->
+<section id="office-info" style="background:rgba(5,8,15,0.3);">
+  <div class="wrap">
+    <h2>Office Information</h2>
+
+    <div class="info-grid">
+      <div class="info-card">
+        <h3>Japan Office (HQ)</h3>
+        <p><strong>Location:</strong> Tokyo, Japan</p>
+        <p><strong>Hours:</strong> 9:00 AM - 6:00 PM (JST)<br>Monday - Friday</p>
+        <a href="mailto:info@avisail.com">info@avisail.com</a>
+      </div>
+
+      <div class="info-card">
+        <h3>Global Reach</h3>
+        <p>We serve clients across Asia, Middle East, and Europe.</p>
+        <p>Support available in English, Japanese, and Italian.</p>
+        <p>24/7 operations for global customer support.</p>
+      </div>
+
+      <div class="info-card">
+        <h3>Response Times</h3>
+        <p><strong>Email:</strong> Within 1 business day</p>
+        <p><strong>Urgent Matters:</strong> Same-day for existing clients</p>
+        <p>We operate across multiple time zones for fast service.</p>
+      </div>
+    </div>
+
+  </div>
 </section>
 
 <!-- Shared Footer -->
 <div id="site-footer"></div>
 <script src="../includes/components.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const contactForm = document.getElementById('contact-form');
+  const submitBtn = document.getElementById('submit-btn');
+  const formStatus = document.getElementById('form-status');
+
+  if (contactForm) {
+    contactForm.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending...';
+      formStatus.style.display = 'none';
+      formStatus.className = '';
+
+      const formData = new FormData(contactForm);
+
+      try {
+        const response = await fetch(contactForm.action, {
+          method: 'POST',
+          body: formData,
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (response.ok) {
+          formStatus.style.display = 'block';
+          formStatus.className = 'success';
+          formStatus.textContent = 'Message sent successfully. We will respond within 1 business day.';
+          contactForm.reset();
+        } else {
+          throw new Error('Failed to send');
+        }
+      } catch (error) {
+        formStatus.style.display = 'block';
+        formStatus.className = 'error';
+        formStatus.textContent = 'Failed to send. Please email us directly at info@avisail.com.';
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Send Message';
+      }
+    });
+  }
+});
+</script>
+
 </body>
 </html>

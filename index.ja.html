@@ -1605,64 +1605,38 @@ footer{
 </section>
 
 <!-- ========================================
-     SECTION 7: CONTACT & FORM
+     SECTION 7: CONTACT
 ======================================== -->
 <section id="contact">
   <div class="wrap">
     <h2>お問い合わせ（Contact Us）</h2>
 
-    <p style="color:var(--text-secondary); max-width:850px; margin-bottom:48px; font-size:1rem; line-height:1.75;">
-      ご質問、サービスのご相談、パートナーシップのご提案など、お気軽にご連絡ください。<br>
-      担当者が24時間以内に返信いたします
-    </p>
+    <div class="card" style="max-width:800px; margin:0 auto; text-align:center; padding:48px;">
+        <h3 class="mt-0" style="font-size:1.5rem; margin-bottom:20px;">サービスに関するご相談</h3>
 
-    <div class="card" style="max-width:900px; margin:0 auto;">
-        <h3 class="mt-0">お問い合わせフォーム</h3>
+        <p style="color:var(--text-secondary); font-size:1rem; line-height:1.8; margin-bottom:32px;">
+          ご質問、サービスのご相談、パートナーシップのご提案など、お気軽にご連絡ください。<br>
+          担当者が1営業日以内に返信いたします
+        </p>
 
-        <div style="margin-bottom:28px; display:flex; flex-direction:column; gap:14px; font-size:0.95rem; padding:16px; background:rgba(126,240,212,0.03); border-radius:12px; border:1px solid rgba(126,240,212,0.15);">
-          <div>
-            <a href="mailto:info@avisail.com" style="color:var(--accent-teal);">info@avisail.com</a>
-          </div>
-          <div>
-            <span style="color:var(--text-muted);">多言語対応可能</span>
-          </div>
-          <div>
-            <span style="color:var(--text-muted);">24時間以内に返信</span>
-          </div>
+        <div style="display:flex; flex-direction:column; gap:16px; align-items:center; margin-bottom:32px;">
+          <a href="ja/contact.html" class="cta" style="padding:16px 48px; font-size:1rem;">お問い合わせフォームへ</a>
         </div>
 
-        <form id="contact-form" action="https://formspree.io/f/mykzwlze" method="POST">
-          <div class="form-group">
-            <label for="name">お名前 *</label>
-            <input type="text" id="name" name="name" placeholder="山田 太郎" required>
+        <div style="display:flex; justify-content:center; gap:32px; flex-wrap:wrap; padding:20px; background:rgba(126,240,212,0.03); border-radius:12px; border:1px solid rgba(126,240,212,0.15);">
+          <div style="text-align:center;">
+            <span style="color:var(--accent-teal); font-size:0.9rem; font-weight:600;">メール</span>
+            <p style="color:var(--text-muted); font-size:0.85rem; margin:4px 0 0;">info@avisail.com</p>
           </div>
-
-          <div class="form-group">
-            <label for="email">メールアドレス *</label>
-            <input type="email" id="email" name="email" placeholder="your@email.com" required>
+          <div style="text-align:center;">
+            <span style="color:var(--accent-teal); font-size:0.9rem; font-weight:600;">対応言語</span>
+            <p style="color:var(--text-muted); font-size:0.85rem; margin:4px 0 0;">日本語 / English / Italiano</p>
           </div>
-
-          <div class="form-group">
-            <label for="business">関心のある事業領域 *</label>
-            <select id="business" name="business" required>
-              <option value="">選択してください</option>
-              <option value="maritime">Maritime（海事事業・船舶売買）</option>
-              <option value="maritime-security">Maritime Security（海事セキュリティ）</option>
-              <option value="security">Security（ADCS / サイバーセキュリティ）</option>
-              <option value="ai-dev">AI & Development（AI開発）</option>
-              <option value="partnership">Partnership / 協業</option>
-              <option value="other">その他</option>
-            </select>
+          <div style="text-align:center;">
+            <span style="color:var(--accent-teal); font-size:0.9rem; font-weight:600;">返信</span>
+            <p style="color:var(--text-muted); font-size:0.85rem; margin:4px 0 0;">1営業日以内</p>
           </div>
-
-          <div class="form-group">
-            <label for="message">メッセージ</label>
-            <textarea id="message" name="message" placeholder="ご相談内容をご記入ください"></textarea>
-          </div>
-
-          <button type="submit" class="cta" id="submit-btn">送信する</button>
-          <div id="form-status" style="margin-top:16px; display:none;"></div>
-        </form>
+        </div>
     </div>
   </div>
 </section>
@@ -1729,51 +1703,6 @@ footer{
 
 <!-- Shared Components Loader -->
 <script src="includes/components.js"></script>
-
-<!-- Page-specific Scripts -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  // Contact Form Submission
-  const contactForm = document.getElementById('contact-form');
-  const submitBtn = document.getElementById('submit-btn');
-  const formStatus = document.getElementById('form-status');
-
-  if (contactForm) {
-    contactForm.addEventListener('submit', async function(e) {
-      e.preventDefault();
-      submitBtn.disabled = true;
-      submitBtn.textContent = '送信中...';
-      formStatus.style.display = 'none';
-
-      const formData = new FormData(contactForm);
-
-      try {
-        const response = await fetch(contactForm.action, {
-          method: 'POST',
-          body: formData,
-          headers: { 'Accept': 'application/json' }
-        });
-
-        if (response.ok) {
-          formStatus.style.display = 'block';
-          formStatus.style.color = 'var(--accent-teal)';
-          formStatus.textContent = '送信完了しました。24時間以内にご連絡いたします。';
-          contactForm.reset();
-        } else {
-          throw new Error('送信に失敗しました');
-        }
-      } catch (error) {
-        formStatus.style.display = 'block';
-        formStatus.style.color = '#ff6b6b';
-        formStatus.textContent = '送信に失敗しました。info@avisail.com まで直接ご連絡ください。';
-      } finally {
-        submitBtn.disabled = false;
-        submitBtn.textContent = '送信する';
-      }
-    });
-  }
-});
-</script>
 
 </body>
 </html>

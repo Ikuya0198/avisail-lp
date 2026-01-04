@@ -1581,64 +1581,38 @@ footer{
 </section>
 
 <!-- ========================================
-     SECTION 7: CONTACT & FORM
+     SECTION 7: CONTACT
 ======================================== -->
 <section id="contact">
   <div class="wrap">
     <h2>Contact Us</h2>
 
-    <p style="color:var(--text-secondary); max-width:850px; margin-bottom:48px; font-size:1rem; line-height:1.75;">
-      Feel free to contact us with questions, service inquiries, or partnership proposals.<br>
-      Our team will respond within 24 hours
-    </p>
+    <div class="card" style="max-width:800px; margin:0 auto; text-align:center; padding:48px;">
+        <h3 class="mt-0" style="font-size:1.5rem; margin-bottom:20px;">Get in Touch</h3>
 
-    <div class="card" style="max-width:900px; margin:0 auto;">
-        <h3 class="mt-0">Contact Form</h3>
+        <p style="color:var(--text-secondary); font-size:1rem; line-height:1.8; margin-bottom:32px;">
+          Feel free to contact us with questions, service inquiries, or partnership proposals.<br>
+          Our team will respond within 1 business day
+        </p>
 
-        <div style="margin-bottom:28px; display:flex; flex-direction:column; gap:14px; font-size:0.95rem; padding:16px; background:rgba(126,240,212,0.03); border-radius:12px; border:1px solid rgba(126,240,212,0.15);">
-          <div>
-            <a href="mailto:info@avisail.com" style="color:var(--accent-teal);">info@avisail.com</a>
-          </div>
-          <div>
-            <span style="color:var(--text-muted);">Multilingual support available</span>
-          </div>
-          <div>
-            <span style="color:var(--text-muted);">24-hour response</span>
-          </div>
+        <div style="display:flex; flex-direction:column; gap:16px; align-items:center; margin-bottom:32px;">
+          <a href="en/contact.html" class="cta" style="padding:16px 48px; font-size:1rem;">Contact Form</a>
         </div>
 
-        <form id="contact-form" action="https://formspree.io/f/mykzwlze" method="POST">
-          <div class="form-group">
-            <label for="name">Name *</label>
-            <input type="text" id="name" name="name" placeholder="John Doe" required>
+        <div style="display:flex; justify-content:center; gap:32px; flex-wrap:wrap; padding:20px; background:rgba(126,240,212,0.03); border-radius:12px; border:1px solid rgba(126,240,212,0.15);">
+          <div style="text-align:center;">
+            <span style="color:var(--accent-teal); font-size:0.9rem; font-weight:600;">Email</span>
+            <p style="color:var(--text-muted); font-size:0.85rem; margin:4px 0 0;">info@avisail.com</p>
           </div>
-
-          <div class="form-group">
-            <label for="email">Email Address *</label>
-            <input type="email" id="email" name="email" placeholder="your@email.com" required>
+          <div style="text-align:center;">
+            <span style="color:var(--accent-teal); font-size:0.9rem; font-weight:600;">Languages</span>
+            <p style="color:var(--text-muted); font-size:0.85rem; margin:4px 0 0;">English / Japanese / Italian</p>
           </div>
-
-          <div class="form-group">
-            <label for="business">Business Area of Interest *</label>
-            <select id="business" name="business" required>
-              <option value="">Please select</option>
-              <option value="maritime">Maritime (Vessel Trading)</option>
-              <option value="maritime-security">Maritime Security</option>
-              <option value="security">Security (ADCS / Cybersecurity)</option>
-              <option value="ai-dev">AI & Development</option>
-              <option value="partnership">Partnership / Collaboration</option>
-              <option value="other">Other</option>
-            </select>
+          <div style="text-align:center;">
+            <span style="color:var(--accent-teal); font-size:0.9rem; font-weight:600;">Response</span>
+            <p style="color:var(--text-muted); font-size:0.85rem; margin:4px 0 0;">Within 1 business day</p>
           </div>
-
-          <div class="form-group">
-            <label for="message">Message</label>
-            <textarea id="message" name="message" placeholder="Please describe your inquiry"></textarea>
-          </div>
-
-          <button type="submit" class="cta" id="submit-btn">Send Message</button>
-          <div id="form-status" style="margin-top:16px; display:none;"></div>
-        </form>
+        </div>
     </div>
   </div>
 </section>
@@ -1705,51 +1679,6 @@ footer{
 
 <!-- Shared Components Loader -->
 <script src="includes/components.js"></script>
-
-<!-- Page-specific Scripts -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  // Contact Form Submission
-  const contactForm = document.getElementById('contact-form');
-  const submitBtn = document.getElementById('submit-btn');
-  const formStatus = document.getElementById('form-status');
-
-  if (contactForm) {
-    contactForm.addEventListener('submit', async function(e) {
-      e.preventDefault();
-      submitBtn.disabled = true;
-      submitBtn.textContent = 'Sending...';
-      formStatus.style.display = 'none';
-
-      const formData = new FormData(contactForm);
-
-      try {
-        const response = await fetch(contactForm.action, {
-          method: 'POST',
-          body: formData,
-          headers: { 'Accept': 'application/json' }
-        });
-
-        if (response.ok) {
-          formStatus.style.display = 'block';
-          formStatus.style.color = 'var(--accent-teal)';
-          formStatus.textContent = 'Message sent successfully. We will contact you within 24 hours.';
-          contactForm.reset();
-        } else {
-          throw new Error('Failed to send');
-        }
-      } catch (error) {
-        formStatus.style.display = 'block';
-        formStatus.style.color = '#ff6b6b';
-        formStatus.textContent = 'Failed to send. Please contact us directly at info@avisail.com';
-      } finally {
-        submitBtn.disabled = false;
-        submitBtn.textContent = 'Send Message';
-      }
-    });
-  }
-});
-</script>
 
 </body>
 </html>
