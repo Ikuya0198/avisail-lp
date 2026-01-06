@@ -135,11 +135,11 @@
         <!-- Background Arrow -->
         <div class="background-flow-arrow">
           <svg viewBox="0 0 400 800" fill="none">
-            <path d="M200 0V800" stroke="url(#paint0_linear)" stroke-width="100" stroke-opacity="0.05"
+            <path d="M200 0V800" stroke="url(#paint0_linear)" stroke-width="80" stroke-opacity="0.05"
               stroke-linecap="round" />
-            <path d="M200 800L50 650" stroke="url(#paint1_linear)" stroke-width="100" stroke-opacity="0.05"
+            <path d="M200 800L50 650" stroke="url(#paint1_linear)" stroke-width="80" stroke-opacity="0.05"
               stroke-linecap="round" />
-            <path d="M200 800L350 650" stroke="url(#paint1_linear)" stroke-width="100" stroke-opacity="0.05"
+            <path d="M200 800L350 650" stroke="url(#paint1_linear)" stroke-width="80" stroke-opacity="0.05"
               stroke-linecap="round" />
             <defs>
               <linearGradient id="paint0_linear" x1="200" y1="0" x2="200" y2="800" gradientUnits="userSpaceOnUse">
@@ -154,47 +154,33 @@
           </svg>
         </div>
 
-        <!-- LAYER 1: Core Business Pillars -->
+        <!-- LAYER 1: Core Business Pillars (Divisions) -->
         <div class="structure-intro-text">
-          <p>イノベーションを推進する2つのコア事業</p>
+          <p>イノベーションを推進する2つの事業本部</p>
         </div>
 
         <div class="twin-pillars-grid">
-          <!-- PILLAR 1: Maritime Business -->
+          <!-- PILLAR 1: Maritime Business Division -->
           <div class="pillar-card pillar-main" id="business-maritime">
             <div class="pillar-number">01</div>
             <div class="pillar-content">
               <h3>Maritime<br>Business</h3>
-              <p class="pillar-subtitle">海事事業</p>
-              <ul class="pillar-features">
-                <li>国際船舶売買（商船・ヨット）</li>
-                <li>AIによる在庫マッチング</li>
-                <li>海事システム開発</li>
-                <li>航行支援・自動化における研究開発</li>
-              </ul>
-              <div class="pillar-actions">
-                <a href="https://avisail-vessel-trading.vercel.app/" class="cta" target="_blank">在庫一覧</a>
-                <a href="maritime/vessel-trading-ja.html" class="btn">詳細</a>
-              </div>
+              <p class="pillar-subtitle">海事事業本部</p>
+              <p class="pillar-desc" style="color:var(--text-secondary); margin-bottom:20px;">
+                世界的な海運ネットワークと海事専門知識を活かし、船舶売買から海事DX支援まで、海事産業全体のイノベーションを牽引します。
+              </p>
             </div>
           </div>
 
-          <!-- PILLAR 2: Security Business -->
+          <!-- PILLAR 2: Security Business Division -->
           <div class="pillar-card pillar-main" id="business-security">
             <div class="pillar-number">02</div>
             <div class="pillar-content">
               <h3>Security<br>Business</h3>
-              <p class="pillar-subtitle">サイバーセキュリティ事業</p>
-              <ul class="pillar-features">
-                <li>ADCS: 能動的防衛サイバーセキュリティ</li>
-                <li>STRATUM: OSINT脅威インテリジェンス</li>
-                <li>NEXUS: 攻撃対象領域の可視化</li>
-                <li>専用セキュリティレポート作成</li>
-              </ul>
-              <div class="pillar-actions">
-                <a href="security/adcs-ja.html" class="cta">ADCS</a>
-                <a href="security/stratum-ja.html" class="btn">STRATUM</a>
-              </div>
+              <p class="pillar-subtitle">セキュリティ事業本部</p>
+              <p class="pillar-desc" style="color:var(--text-secondary); margin-bottom:20px;">
+                国家機関レベルの高度な攻撃手法研究と防衛技術（Offensive Security）を基盤に、デジタル空間のあらゆる脅威から資産を守り抜きます。
+              </p>
             </div>
           </div>
         </div>
@@ -227,26 +213,58 @@
           </div>
         </div>
 
-        <!-- LAYER 3: Maritime Security (The Outcome) -->
-        <div class="bridge-card-container">
-          <div class="pillar-card highlight-security" id="business-maritime-security"
-            style="max-width:800px; margin:0 auto;">
-            <div class="pillar-number">×</div>
-            <div class="pillar-content">
-              <h3>Maritime<br>Security</h3>
-              <p class="pillar-subtitle">海事セキュリティ事業</p>
-              <div class="maritime-security-layout">
-                <ul class="pillar-features">
-                  <li>船舶・港湾のサイバーセキュリティ</li>
-                  <li>海事OSINT・脅威インテリジェンス</li>
-                  <li>AIS/衛星データ解析</li>
-                  <li>海事リスク評価レポート</li>
-                </ul>
-                <div class="pillar-actions">
-                  <a href="maritime/maritime-security-ja.html" class="cta">詳細</a>
-                  <a href="security/adcs-ja.html" class="btn">ADCS</a>
-                </div>
-              </div>
+        <!-- LAYER 3: Products & Solutions (The Outcome) -->
+        <div class="products-section-header"
+          style="text-align:center; margin-top:60px; margin-bottom:30px; position:relative; z-index:2;">
+          <h3 class="gradient-title-text" style="font-size:1.8rem; display:inline-block;">Products & Solutions</h3>
+          <p style="color:var(--text-muted); margin-top:8px;">技術と事業の融合から生まれたソリューション</p>
+        </div>
+
+        <div class="products-layer-grid" style="position:relative; z-index:2;">
+          <!-- Maritime Security -->
+          <div class="product-card">
+            <h4>Maritime Security</h4>
+            <p>船舶・港湾のサイバーセキュリティ、AIS/衛星データ解析、包括的リスク評価レポート。</p>
+            <div class="pillar-actions" style="margin-top:auto;">
+              <a href="maritime/maritime-security-ja.html" class="btn" style="width:100%">詳細を見る</a>
+            </div>
+          </div>
+
+          <!-- ADCS -->
+          <div class="product-card">
+            <h4>ADCS</h4>
+            <p>能動的防衛サイバーセキュリティ。攻撃者の予兆を検知し、被害を未然に防ぐActive Defense。</p>
+            <div class="pillar-actions" style="margin-top:auto;">
+              <a href="security/adcs-ja.html" class="cta" style="width:100%">ADCS詳細</a>
+            </div>
+          </div>
+
+          <!-- STRATUM -->
+          <div class="product-card">
+            <h4>STRATUM</h4>
+            <p>次世代OSINT脅威インテリジェンス。SNSやダークウェブからリスク情報を収集・分析。</p>
+            <div class="pillar-actions" style="margin-top:auto;">
+              <a href="security/stratum-ja.html" class="btn" style="width:100%">STRATUM詳細</a>
+            </div>
+          </div>
+
+          <!-- NEXUS -->
+          <div class="product-card">
+            <h4>NEXUS</h4>
+            <p>攻撃対象領域（Attack Surface）の可視化システム。組織の脆弱性を継続的にモニタリング。</p>
+            <div class="pillar-actions" style="margin-top:auto;">
+              <!-- Placeholder link or contact -->
+              <a href="#contact" class="btn" style="width:100%">お問い合わせ</a>
+            </div>
+          </div>
+
+          <!-- Vessel Trading -->
+          <div class="product-card">
+            <h4>Vessel Inventory</h4>
+            <p>AIマッチングによる船舶在庫検索システム。商船からヨットまで世界中の在庫にアクセス。</p>
+            <div class="pillar-actions" style="margin-top:auto;">
+              <a href="https://avisail-vessel-trading.vercel.app/" class="cta" target="_blank"
+                style="width:100%">在庫を見る</a>
             </div>
           </div>
         </div>
