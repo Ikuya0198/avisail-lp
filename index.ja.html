@@ -122,7 +122,7 @@
   </section>
 
   <!-- ========================================
-     SECTION 3: Our Business (3 Pillars + Foundation)
+     SECTION 3: Our Business (2 Pillars + Bridge + Foundation)
 ======================================== -->
   <section id="business">
     <div class="wrap">
@@ -136,13 +136,13 @@
           </p>
         </div>
 
-        <!-- 3 Pillars -->
+        <!-- 2 Main Pillars -->
         <div class="pillars-container">
-          <div class="pillars-label">3 Core Business Pillars</div>
-          <div class="pillars-grid">
+          <div class="pillars-label">Twin Business Pillars</div>
+          <div class="twin-pillars-grid">
 
             <!-- PILLAR 1: Maritime Business -->
-            <div class="pillar-card" id="business-maritime">
+            <div class="pillar-card pillar-main" id="business-maritime">
               <div class="pillar-number">01</div>
               <div class="pillar-content">
                 <h3>Maritime<br>Business</h3>
@@ -160,29 +160,9 @@
               </div>
             </div>
 
-            <!-- PILLAR 2: Maritime Security (Bridge) -->
-            <div class="pillar-card" id="business-maritime-security"
-              style="background:linear-gradient(180deg, rgba(126,240,212,0.05) 0%, rgba(106,166,255,0.03) 100%); border-color:rgba(126,240,212,0.3);">
+            <!-- PILLAR 2: Security Business -->
+            <div class="pillar-card pillar-main" id="business-security">
               <div class="pillar-number">02</div>
-              <div class="pillar-content">
-                <h3>Maritime<br>Security</h3>
-                <p class="pillar-subtitle">海事セキュリティ事業</p>
-                <ul class="pillar-features">
-                  <li>船舶・港湾のサイバーセキュリティ</li>
-                  <li>海事OSINT・脅威インテリジェンス</li>
-                  <li>AIS/衛星データ解析</li>
-                  <li>海事リスク評価レポート</li>
-                </ul>
-                <div class="pillar-actions">
-                  <a href="maritime/maritime-security-ja.html" class="cta">詳細</a>
-                  <a href="security/adcs-ja.html" class="btn">ADCS</a>
-                </div>
-              </div>
-            </div>
-
-            <!-- PILLAR 3: Security Business -->
-            <div class="pillar-card" id="business-security">
-              <div class="pillar-number">03</div>
               <div class="pillar-content">
                 <h3>Security<br>Business</h3>
                 <p class="pillar-subtitle">サイバーセキュリティ事業</p>
@@ -199,6 +179,50 @@
               </div>
             </div>
 
+          </div>
+        </div>
+
+        <!-- Bridge: Maritime Security -->
+        <div class="bridge-container">
+          <div class="bridge-arrows">
+            <svg class="bridge-arrow left-arrow" viewBox="0 0 60 24" fill="none">
+              <path d="M60 12H8M8 12L16 4M8 12L16 20" stroke="url(#bridgeGradLeft)" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" />
+              <defs>
+                <linearGradient id="bridgeGradLeft" x1="60" y1="12" x2="8" y2="12">
+                  <stop offset="0%" stop-color="rgba(106,166,255,0.1)" />
+                  <stop offset="100%" stop-color="rgba(126,240,212,0.6)" />
+                </linearGradient>
+              </defs>
+            </svg>
+            <svg class="bridge-arrow right-arrow" viewBox="0 0 60 24" fill="none">
+              <path d="M0 12H52M52 12L44 4M52 12L44 20" stroke="url(#bridgeGradRight)" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" />
+              <defs>
+                <linearGradient id="bridgeGradRight" x1="0" y1="12" x2="52" y2="12">
+                  <stop offset="0%" stop-color="rgba(106,166,255,0.1)" />
+                  <stop offset="100%" stop-color="rgba(126,240,212,0.6)" />
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+
+          <div class="pillar-card bridge-card highlight-security" id="business-maritime-security">
+            <div class="pillar-number">×</div>
+            <div class="pillar-content">
+              <h3>Maritime<br>Security</h3>
+              <p class="pillar-subtitle">海事セキュリティ事業</p>
+              <ul class="pillar-features">
+                <li>船舶・港湾のサイバーセキュリティ</li>
+                <li>海事OSINT・脅威インテリジェンス</li>
+                <li>AIS/衛星データ解析</li>
+                <li>海事リスク評価レポート</li>
+              </ul>
+              <div class="pillar-actions">
+                <a href="maritime/maritime-security-ja.html" class="cta">詳細</a>
+                <a href="security/adcs-ja.html" class="btn">ADCS</a>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -241,7 +265,7 @@
           <div class="foundation-card">
             <div class="foundation-content">
               <h3>AI & System Development</h3>
-              <p class="foundation-subtitle">全3事業を支える技術基盤</p>
+              <p class="foundation-subtitle">全事業を支える技術基盤</p>
               <p class="foundation-desc">
                 「まず動くものを作る」という実装主義のもと、初日から実運用可能なAIシステムを構築。<br>
                 データパイプライン、自動化、インテリジェントな意思決定支援が各事業の競争力を加速させます。
