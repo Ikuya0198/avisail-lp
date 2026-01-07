@@ -1094,12 +1094,6 @@ h3 {
 /* ========== FOOTER ========== */
 footer {
   background-color: var(--bg-darker);
-  /* Use linear-gradient to fade out the pattern slightly but keep it visible */
-  background-image: linear-gradient(to bottom, rgba(5, 8, 15, 0.8), rgba(5, 8, 15, 0.6)), url('images/footer-bg.png');
-  background-size: cover;
-  background-position: center;
-  /* Screen mode ensures light lines show up on dark background */
-  background-blend-mode: screen;
   padding: 60px 0 20px;
   margin-top: 80px;
   position: relative;
