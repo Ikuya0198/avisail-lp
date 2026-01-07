@@ -1201,14 +1201,15 @@ footer {
 
 .jp-subtitle {
   display: inline-block;
-  font-size: 0.5em;
-  margin-left: 16px;
-  color: var(--text-muted);
-  font-weight: 500;
+  font-size: 1em;
+  margin-left: 20px;
+  /* Increased margin slightly since text is larger */
+  color: inherit;
+  font-weight: inherit;
   vertical-align: middle;
   background: none;
-  -webkit-text-fill-color: var(--text-muted);
-  /* Reset gradient text effect if inherited */
+  -webkit-text-fill-color: inherit;
+  /* Make it equal to Japanese title */
 }
 
 
