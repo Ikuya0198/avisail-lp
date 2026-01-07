@@ -495,92 +495,63 @@
       document.querySelectorAll('.stat-item').forEach(el => observer.observe(el));
     });
 
-    // Global Background Animation (Antigravity Style)
+    // Global Background Animation (Digital Ocean Style)
     (function () {
       const canvas = document.getElementById('global-bg');
       if (!canvas) return;
       const ctx = canvas.getContext('2d');
       let width, height;
-      let stars = [];
-      let shootingStars = [];
+      let particles = [];
 
       function resize() {
         width = canvas.width = window.innerWidth;
         height = canvas.height = window.innerHeight;
-        initStars();
+        initParticles();
       }
       window.addEventListener('resize', resize);
 
-      function initStars() {
-        stars = [];
-        const count = Math.floor(width * height / 12000);
+      function initParticles() {
+        particles = [];
+        const count = Math.floor(width * height / 10000); // Density
         for (let i = 0; i < count; i++) {
-          stars.push({
+          particles.push({
             x: Math.random() * width,
             y: Math.random() * height,
-            size: Math.random() * 1.5,
-            alpha: Math.random() * 0.5 + 0.1,
-            pulsate: Math.random() * 0.02
+            vx: (Math.random() - 0.5) * 0.15, // Gentle drift
+            vy: (Math.random() - 0.5) * 0.15,
+            size: Math.random() * 1.5 + 0.5,
+            phase: Math.random() * Math.PI * 2,
+            color: Math.random() > 0.6 ? '#6AA6FF' : '#7EF0D4' // Blue or Teal mix
           });
         }
       }
 
       function update() {
-        // Shooting Star Logic
-        if (Math.random() < 0.01 && shootingStars.length < 3) {
-          shootingStars.push(createShootingStar());
-        }
-        shootingStars.forEach((s, index) => {
-          s.x += s.vx;
-          s.y += s.vy;
-          s.len -= s.speed * 0.05;
-          if (s.x > width + 100 || s.y > height + 100 || s.len <= 0) {
-            shootingStars.splice(index, 1);
-          }
-        });
-      }
+        particles.forEach(p => {
+          // Gentle wave motion
+          p.x += p.vx + Math.sin(p.y * 0.005 + Date.now() * 0.0005) * 0.05;
+          p.y += p.vy;
 
-      function createShootingStar() {
-        const angle = 45 * Math.PI / 180;
-        const speed = Math.random() * 15 + 10;
-        return {
-          x: Math.random() * width * 0.8,
-          y: Math.random() * height * 0.5 - 200,
-          vx: Math.cos(angle) * speed,
-          vy: Math.sin(angle) * speed,
-          len: Math.random() * 150 + 50,
-          speed: speed,
-          size: Math.random() * 2 + 1
-        };
+          // Wrap around
+          if (p.x < -20) p.x = width + 20;
+          if (p.x > width + 20) p.x = -20;
+          if (p.y < -20) p.y = height + 20;
+          if (p.y > height + 20) p.y = -20;
+        });
       }
 
       function draw() {
         ctx.clearRect(0, 0, width, height);
 
-        // Stars
-        ctx.fillStyle = '#fff';
-        stars.forEach(s => {
-          s.alpha += s.pulsate;
-          if (s.alpha > 0.6 || s.alpha < 0.1) s.pulsate *= -1;
-          ctx.globalAlpha = s.alpha;
-          ctx.beginPath();
-          ctx.arc(s.x, s.y, s.size, 0, Math.PI * 2);
-          ctx.fill();
-        });
+        particles.forEach(p => {
+          // Subtle pulsation
+          const alpha = (Math.sin(Date.now() * 0.001 + p.phase) + 1) / 2 * 0.3 + 0.1; // Max 0.4 opacity
 
-        // Shooting Stars
-        ctx.globalAlpha = 1;
-        shootingStars.forEach(s => {
-          const grad = ctx.createLinearGradient(s.x, s.y, s.x - s.len, s.y - s.len);
-          grad.addColorStop(0, 'rgba(255,255,255,1)');
-          grad.addColorStop(1, 'rgba(255,255,255,0)');
-          ctx.strokeStyle = grad;
-          ctx.lineWidth = s.size;
-          ctx.lineCap = 'round';
+          ctx.fillStyle = p.color;
+          ctx.globalAlpha = alpha;
           ctx.beginPath();
-          ctx.moveTo(s.x, s.y);
-          ctx.lineTo(s.x - s.len * Math.cos(45 * Math.PI / 180), s.y - s.len * Math.sin(45 * Math.PI / 180));
-          ctx.stroke();
+          ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+          ctx.fill();
         });
 
         requestAnimationFrame(function () {
@@ -592,6 +563,7 @@
       resize();
       draw();
     })();
+
   </script>
 </body>
 
