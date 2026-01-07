@@ -111,17 +111,20 @@ header .lang-selector {
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 8px 16px;
-  border-radius: 20px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  /* Slightly less rounded than pill */
   cursor: pointer;
   transition: all 0.3s;
-  border: 1px solid rgba(126, 240, 212, 0.4);
-  background: rgba(126, 240, 212, 0.05);
+  border: 1px solid transparent;
+  /* Keep layout stable */
+  background: transparent;
 }
 
 header .lang-selector:hover {
-  background: rgba(126, 240, 212, 0.15);
-  border-color: #7ef0d4;
+  background: rgba(255, 255, 255, 0.05);
+  /* Subtle hover only */
+  border-color: transparent;
 }
 
 header .lang-current {
