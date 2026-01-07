@@ -20,7 +20,8 @@
 html,
 body {
   margin: 0;
-  background: var(--bg-dark);
+  background: transparent;
+  /* Use global canvas background */
   color: var(--text-primary);
   font-family: var(--font-main);
   line-height: 1.7;
