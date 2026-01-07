@@ -110,28 +110,46 @@ header .lang-selector {
   position: relative;
   display: flex;
   align-items: center;
-  gap: 6px;
-  padding: 8px 12px;
-  border-radius: 8px;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 20px;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: all 0.3s;
+  border: 1px solid rgba(126, 240, 212, 0.4);
+  background: rgba(126, 240, 212, 0.05);
 }
 
 header .lang-selector:hover {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(126, 240, 212, 0.15);
+  border-color: #7ef0d4;
 }
 
-header .globe-icon {
-  font-size: 1.1rem;
+header .lang-current {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #fff;
+  font-size: 0.95rem;
+}
+
+header .lang-current::after {
+  content: '';
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid #7ef0d4;
+  margin-left: 4px;
 }
 
 header .lang-dropdown {
   position: absolute;
-  top: 100%;
+  top: 120%;
   right: 0;
-  min-width: 120px;
+  min-width: 160px;
   background: #0d1424;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(126, 240, 212, 0.2);
   border-radius: 12px;
   padding: 8px;
   display: none;
@@ -139,6 +157,7 @@ header .lang-dropdown {
   gap: 4px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
   margin-top: 8px;
+  z-index: 1005;
 }
 
 header .lang-selector:hover .lang-dropdown,
@@ -147,16 +166,20 @@ header .lang-selector.menu-open .lang-dropdown {
 }
 
 header .lang-dropdown a {
-  padding: 8px 12px;
-  border-radius: 6px;
-  color: #9fb0cc;
-  font-size: 0.9rem;
+  padding: 10px 14px;
+  border-radius: 8px;
+  color: #cfe2ff;
+  font-size: 0.95rem;
   text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.2s;
 }
 
 header .lang-dropdown a:hover {
-  background: rgba(255, 255, 255, 0.05);
-  color: #fff;
+  background: rgba(126, 240, 212, 0.1);
+  color: #7ef0d4;
 }
 
 /* Login Button */
