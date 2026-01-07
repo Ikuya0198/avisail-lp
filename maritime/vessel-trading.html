@@ -18,8 +18,9 @@
             align-items: center;
             position: relative;
             overflow: hidden;
-            background: radial-gradient(circle at 50% 50%, rgba(126, 240, 212, 0.05) 0%, transparent 50%),
-                var(--bg-dark);
+            /* Ship photo background with heavy dark overlay for text readability */
+            background: linear-gradient(to right, rgba(5, 8, 15, 0.9) 0%, rgba(5, 8, 15, 0.7) 100%),
+                url('../images/vessel-trading-hero.jpg') center/cover no-repeat fixed;
         }
 
         .hero-grid {

@@ -53,15 +53,15 @@
       // index.ja.html -> index.html
       jaPage = path;
       enPage = path.replace('.ja.html', '.html');
-    } else if (filename.includes('-en.html')) {
-      // vessel-trading-en.html -> vessel-trading-jp.html
+    } else if (filename.includes('vessel-trading-en.html')) {
+      // vessel-trading-en.html -> vessel-trading.html
       enPage = path;
-      jaPage = path.replace('-en.html', '-jp.html');
-    } else if (filename.includes('-jp.html')) {
-      // vessel-trading-jp.html -> vessel-trading-en.html
+      jaPage = path.replace('-en.html', '.html');
+    } else if (filename.includes('vessel-trading.html')) {
+      // vessel-trading.html -> vessel-trading-en.html
       jaPage = path;
-      enPage = path.replace('-jp.html', '-en.html');
-    } else if (dir.includes('/en/')) {
+      enPage = path.replace('.html', '-en.html');
+    } else if (filename.includes('-en.html')) {
       // /en/about.html -> /ja/about.html
       enPage = path;
       jaPage = path.replace('/en/', '/ja/');
