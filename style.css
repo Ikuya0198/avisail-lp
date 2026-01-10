@@ -1622,6 +1622,25 @@ footer {
   .arrow-group {
     gap: 40px;
   }
+
+  .twin-pillars-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .tech-content-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .products-layer-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .pillars-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 640px) {
