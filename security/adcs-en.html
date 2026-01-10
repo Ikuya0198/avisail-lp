@@ -11,23 +11,6 @@
 <link rel="icon" type="image/svg+xml" href="../favicon.svg">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../style.css">
-<style>
-.cta-green{background:linear-gradient(135deg,#10b981,#7ef0d4);box-shadow:0 10px 20px rgba(16,185,129,.2);color:#06101a;}
-.cta-green:hover{box-shadow:0 15px 30px rgba(16,185,129,.3);color:#06101a;}
-.service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(135deg,#10b981,#7ef0d4);}
-.service-icon{width:60px;height:60px;background:linear-gradient(135deg,rgba(16,185,129,0.15),rgba(126,240,212,0.1));border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;color:#7ef0d4;font-size:1.5rem;}
-.adcs-hero{background:linear-gradient(135deg,rgba(16,185,129,0.08),rgba(126,240,212,0.04));border:1px solid rgba(126,240,212,0.25);border-radius:20px;padding:40px;margin-bottom:40px;}
-.adcs-badge{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;background:rgba(126,240,212,0.12);border:1px solid rgba(126,240,212,0.25);border-radius:20px;color:#7ef0d4;font-size:0.8rem;font-weight:600;margin-bottom:16px;}
-.price-card{background:rgba(255,255,255,0.02);border:1px solid var(--line);border-radius:20px;padding:32px;transition:all 0.3s;height:100%;}
-.price-card:hover{transform:translateY(-5px);border-color:rgba(126,240,212,0.4);}
-.price-card.featured{border:2px solid rgba(126,240,212,0.5);background:rgba(126,240,212,0.03);}
-.price-number{font-size:2.5rem;font-weight:700;color:var(--accent-teal);margin:16px 0;}
-.price-period{font-size:0.9rem;color:var(--text-muted);}
-.feature-check{color:#10b981;margin-right:8px;}
-@media(max-width:980px){
-  .grid-2,.grid-3{grid-template-columns:1fr;}
-}
-</style>
 </head>
 <body>
 
@@ -35,19 +18,34 @@
 <div id="site-header"></div>
 
 <!-- Hero Section -->
-<section class="hero" style="min-height:65vh;">
+<section class="page-hero">
 <div class="wrap">
-<div class="adcs-badge">
+<div class="hero-badge">
 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
 <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
 </svg>
-Security Services
+Security Services for SMBs
 </div>
-<h1><span>Practical Security Solutions</span><br>for Small & Medium Businesses</h1>
+<h1><span>Practical Security Solutions</span> for Small & Medium Businesses</h1>
 <p class="lead">Avisail provides affordable, high-quality security assessments for SMBs and local governments with annual budgets under ¥500,000. Leveraging AI and global expertise, choose from one-time assessments to continuous security support.</p>
 <div style="margin-top:32px;display:flex;gap:14px;flex-wrap:wrap;">
-<a href="#contact" class="cta cta-green">Book Free Consultation</a>
+<a href="#contact" class="cta">Book Free Consultation</a>
 <a href="#adcs" class="btn">Learn More About ADCS</a>
+</div>
+
+<div class="hero-stats">
+<div class="hero-stat">
+<div class="hero-stat-number">50+</div>
+<div class="hero-stat-label">Sites Scanned</div>
+</div>
+<div class="hero-stat">
+<div class="hero-stat-number">¥150k</div>
+<div class="hero-stat-label">Starting Price</div>
+</div>
+<div class="hero-stat">
+<div class="hero-stat-number">2 weeks</div>
+<div class="hero-stat-label">Fastest Delivery</div>
+</div>
 </div>
 </div>
 </section>
@@ -56,78 +54,88 @@ Security Services
 <section id="adcs">
 <div class="wrap">
 <h2>Recommended: ADCS Security Assessment</h2>
-<p style="color:var(--text-muted);font-size:1.05rem;margin-bottom:40px;">Based on Active Defense principles, visualizes your security posture from an attacker's perspective. Ideal as the first security initiative for SMBs.</p>
+<p style="color:var(--text-muted);font-size:1.05rem;margin-bottom:40px;max-width:800px;">Based on Active Defense principles, visualizes your security posture from an attacker's perspective. Ideal as the first security initiative for SMBs.</p>
 
-<div class="adcs-hero">
-<h3 style="font-size:1.8rem;margin-bottom:16px;color:#7ef0d4;">ADCS Active Defense × SOC Framework</h3>
-<p style="color:var(--text-secondary);font-size:1.05rem;line-height:1.9;margin-bottom:24px;">
+<div class="card" style="padding:48px;background:linear-gradient(135deg,rgba(16,185,129,0.05),rgba(126,240,212,0.02));border:1px solid rgba(126,240,212,0.2);">
+<h3 style="font-size:2rem;margin-bottom:16px;background:linear-gradient(135deg,#10b981,#7ef0d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">ADCS Active Defense × SOC Framework</h3>
+<p style="color:var(--text-secondary);font-size:1.1rem;line-height:1.9;margin-bottom:32px;">
 ADCS visualizes your organization's "Attack Surface" from an attacker's viewpoint and provides concrete action items for improvement.
 </p>
 
 <div class="grid-2" style="gap:32px;">
 <div>
-<h4 style="margin-bottom:16px;">Key Features</h4>
+<h4 style="margin-bottom:20px;color:#fff;font-size:1.2rem;">Key Features</h4>
 <ul style="list-style:none;padding:0;margin:0;">
-<li style="padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.05);display:flex;align-items:center;gap:10px;">
-<span class="feature-check">✓</span>
-<span>Inventory of public servers, ports, and services</span>
+<li style="padding:14px 0;border-bottom:1px solid var(--line);display:flex;align-items:flex-start;gap:12px;">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" style="flex-shrink:0;margin-top:2px;">
+<polyline points="20 6 9 17 4 12"></polyline>
+</svg>
+<span style="color:var(--text-secondary);">Inventory of public servers, ports, and services</span>
 </li>
-<li style="padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.05);display:flex;align-items:center;gap:10px;">
-<span class="feature-check">✓</span>
-<span>OSINT (Open Source Intelligence) utilization</span>
+<li style="padding:14px 0;border-bottom:1px solid var(--line);display:flex;align-items:flex-start;gap:12px;">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" style="flex-shrink:0;margin-top:2px;">
+<polyline points="20 6 9 17 4 12"></polyline>
+</svg>
+<span style="color:var(--text-secondary);">OSINT (Open Source Intelligence) utilization</span>
 </li>
-<li style="padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.05);display:flex;align-items:center;gap:10px;">
-<span class="feature-check">✓</span>
-<span>Attack scenarios and defense strategies</span>
+<li style="padding:14px 0;border-bottom:1px solid var(--line);display:flex;align-items:flex-start;gap:12px;">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" style="flex-shrink:0;margin-top:2px;">
+<polyline points="20 6 9 17 4 12"></polyline>
+</svg>
+<span style="color:var(--text-secondary);">Attack scenarios and defense strategies</span>
 </li>
-<li style="padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.05);display:flex;align-items:center;gap:10px;">
-<span class="feature-check">✓</span>
-<span>Incident response guidelines creation</span>
+<li style="padding:14px 0;border-bottom:1px solid var(--line);display:flex;align-items:flex-start;gap:12px;">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" style="flex-shrink:0;margin-top:2px;">
+<polyline points="20 6 9 17 4 12"></polyline>
+</svg>
+<span style="color:var(--text-secondary);">Incident response guidelines creation</span>
 </li>
-<li style="padding:10px 0;display:flex;align-items:center;gap:10px;">
-<span class="feature-check">✓</span>
-<span>Executive summary (1-page) included</span>
+<li style="padding:14px 0;display:flex;align-items:flex-start;gap:12px;">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" style="flex-shrink:0;margin-top:2px;">
+<polyline points="20 6 9 17 4 12"></polyline>
+</svg>
+<span style="color:var(--text-secondary);">Executive summary (1-page) included</span>
 </li>
 </ul>
 </div>
 
-<div class="card" style="background:linear-gradient(135deg,rgba(106,166,255,0.1),rgba(126,240,212,0.05));border:2px solid var(--accent-teal);padding:28px;text-align:center;">
-<h4 style="font-size:1.2rem;margin-bottom:16px;">📄 Check Out Our Sample Reports!</h4>
-<p style="color:var(--text-secondary);margin-bottom:20px;">View actual ADCS assessment report samples to see what content we deliver.</p>
+<div class="card" style="background:linear-gradient(135deg,rgba(106,166,255,0.08),rgba(126,240,212,0.04));border:2px solid var(--accent-teal);padding:32px;text-align:center;">
+<h4 style="font-size:1.3rem;margin-bottom:16px;color:#fff;">📄 Sample Reports Available</h4>
+<p style="color:var(--text-secondary);margin-bottom:24px;line-height:1.7;">View actual ADCS assessment report samples to see what content we deliver.</p>
 <div style="display:flex;gap:12px;flex-direction:column;">
-<a href="adcs/reports/avisail-report-en.html" class="cta cta-sm">📥 English Sample</a>
-<a href="adcs/reports/avisail-report-jp.html" class="btn">📥 日本語版サンプル</a>
+<a href="adcs/reports/avisail-report-en.html" class="cta cta-sm" style="width:100%;text-align:center;">📥 English Sample</a>
+<a href="adcs/reports/avisail-report-jp.html" class="btn" style="width:100%;text-align:center;">📥 日本語版サンプル</a>
 </div>
 </div>
 </div>
 </div>
 
 <!-- ADCS Plans -->
-<div class="grid-2" style="margin-top:40px;gap:28px;">
-<div class="price-card">
-<h4 style="font-size:1.3rem;margin-bottom:8px;">💼 One-Time Assessment</h4>
-<div class="price-number">¥150,000</div>
-<p class="price-period">Visualize your security posture in as fast as 2 weeks</p>
-<p style="color:var(--text-muted);margin:20px 0;line-height:1.8;">
+<div class="grid-2" style="margin-top:48px;gap:28px;">
+<div class="card">
+<h4 style="font-size:1.4rem;margin-bottom:16px;color:#fff;">💼 One-Time Assessment</h4>
+<div style="font-size:2.8rem;font-weight:700;color:var(--accent-teal);margin:16px 0;">¥150,000</div>
+<p style="color:var(--text-muted);font-size:0.95rem;margin-bottom:24px;">Visualize your security posture in as fast as 2 weeks</p>
+<p style="color:var(--text-secondary);margin-bottom:24px;line-height:1.8;">
 Perfect for those who want to inventory their current attack surface and incident response readiness. Includes Attack Surface & OSINT report, Active Defense risk assessment, and Incident Response Guidelines (draft).
 </p>
-<a href="#contact" class="btn" style="width:100%;text-align:center;display:block;margin-top:auto;">Apply Now</a>
+<a href="#contact" class="btn" style="width:100%;text-align:center;display:block;">Apply Now</a>
 </div>
 
-<div class="price-card featured">
-<div style="display:inline-block;font-size:0.75rem;padding:4px 12px;background:rgba(126,240,212,0.15);border:1px solid rgba(126,240,212,0.3);border-radius:20px;color:#7ef0d4;margin-bottom:12px;font-weight:600;">⭐ Recommended</div>
-<h4 style="font-size:1.3rem;margin-bottom:8px;">🔄 Subscription Plan</h4>
-<div class="price-number">From ¥48,000<span style="font-size:1rem;color:var(--text-muted);"> / month</span></div>
-<p class="price-period">Continuous improvement program with different value each month</p>
-<p style="color:var(--text-muted);margin:20px 0;line-height:1.8;">
+<div class="card" style="border:2px solid var(--accent-teal);background:linear-gradient(135deg,rgba(126,240,212,0.05),rgba(16,185,129,0.02));">
+<div style="display:inline-block;font-size:0.75rem;padding:5px 14px;background:linear-gradient(135deg,#10b981,#7ef0d4);color:#06101a;border-radius:20px;margin-bottom:12px;font-weight:700;">⭐ RECOMMENDED</div>
+<h4 style="font-size:1.4rem;margin-bottom:16px;color:#fff;">🔄 Subscription Plan</h4>
+<div style="font-size:2.8rem;font-weight:700;color:var(--accent-teal);margin:16px 0;">From ¥48,000<span style="font-size:1.2rem;color:var(--text-muted);font-weight:400;"> / month</span></div>
+<p style="color:var(--text-muted);font-size:0.95rem;margin-bottom:24px;">Continuous improvement program with different value each month</p>
+<p style="color:var(--text-secondary);margin-bottom:24px;line-height:1.8;">
 Beyond one-time assessment, receive different security services each month including phishing tests, policy development, employee training, and more. Save up to 50% annually.
 </p>
-<a href="avisail-adcs-detail-en.html" class="cta cta-green" style="width:100%;text-align:center;display:block;margin-top:auto;">View Subscription Details</a>
+<a href="avisail-adcs-detail-en.html" class="cta" style="width:100%;text-align:center;display:block;background:linear-gradient(135deg,#10b981,#7ef0d4);">View Subscription Details</a>
 </div>
 </div>
 
-<div style="text-align:center;margin-top:32px;">
-<a href="avisail-adcs-detail-en.html" class="cta" style="background:linear-gradient(135deg,#f59e0b,#fbbf24);color:#06101a;">📋 View ADCS Details & Plan Comparison</a>
+<div style="text-align:center;margin-top:40px;">
+<a href="avisail-adcs-detail-en.html" class="btn" style="padding:14px 32px;font-size:1rem;">📋 View Full ADCS Details & Plan Comparison</a>
 </div>
 
 </div>
@@ -137,85 +145,77 @@ Beyond one-time assessment, receive different security services each month inclu
 <section id="services">
 <div class="wrap">
 <h2>Additional Security Services</h2>
-<p style="color:var(--text-muted);font-size:1.05rem;margin-bottom:40px;">Beyond ADCS, we offer advanced security testing. For complex assessments, we partner with trusted overseas firms to deliver Japanese-language reports and support.</p>
+<p style="color:var(--text-muted);font-size:1.05rem;margin-bottom:40px;max-width:800px;">Beyond ADCS, we offer advanced security testing. For complex assessments, we partner with trusted overseas firms to deliver Japanese-language reports and support.</p>
 
 <div class="grid-2">
 
 <div class="card">
-<div class="service-icon">
-<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+<div style="width:64px;height:64px;background:linear-gradient(135deg,rgba(16,185,129,0.15),rgba(126,240,212,0.1));border-radius:16px;display:flex;align-items:center;justify-content:center;margin-bottom:24px;">
+<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#7ef0d4" stroke-width="1.5">
 <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
 </svg>
 </div>
-<h3>Phishing Simulation</h3>
-<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
-<span style="font-size:1.5rem;font-weight:700;color:var(--accent-teal);">¥80,000</span>
-</div>
-<p style="color:var(--text-muted);margin-bottom:16px;">Measure employee security awareness. Conduct realistic phishing email training and provide detailed results reporting.</p>
-<ul style="list-style:none;padding:0;font-size:0.9rem;color:var(--text-muted);">
-<li style="padding:6px 0;">• Realistic phishing email campaigns</li>
-<li style="padding:6px 0;">• Click-through rate tracking</li>
-<li style="padding:6px 0;">• Credential entry analysis</li>
-<li style="padding:6px 0;">• Department-level comparison reports</li>
+<h3 style="font-size:1.4rem;margin-bottom:12px;">Phishing Simulation</h3>
+<div style="font-size:1.8rem;font-weight:700;color:var(--accent-teal);margin-bottom:16px;">¥80,000</div>
+<p style="color:var(--text-secondary);margin-bottom:20px;line-height:1.8;">Measure employee security awareness. Conduct realistic phishing email training and provide detailed results reporting.</p>
+<ul style="list-style:none;padding:0;font-size:0.95rem;color:var(--text-muted);">
+<li style="padding:8px 0;">• Realistic phishing email campaigns</li>
+<li style="padding:8px 0;">• Click-through rate tracking</li>
+<li style="padding:8px 0;">• Credential entry analysis</li>
+<li style="padding:8px 0;">• Department-level comparison reports</li>
 </ul>
 </div>
 
 <div class="card">
-<div class="service-icon">
-<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+<div style="width:64px;height:64px;background:linear-gradient(135deg,rgba(16,185,129,0.15),rgba(126,240,212,0.1));border-radius:16px;display:flex;align-items:center;justify-content:center;margin-bottom:24px;">
+<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#7ef0d4" stroke-width="1.5">
 <path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/>
 </svg>
 </div>
-<h3>Web Application Testing</h3>
-<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
-<span style="font-size:1.5rem;font-weight:700;color:var(--accent-teal);">¥500,000~</span>
-</div>
-<p style="color:var(--text-muted);margin-bottom:16px;">Comprehensive testing for web apps and APIs. Assess OWASP Top 10 and common vulnerability patterns.</p>
-<ul style="list-style:none;padding:0;font-size:0.9rem;color:var(--text-muted);">
-<li style="padding:6px 0;">• OWASP Top 10 vulnerability assessment</li>
-<li style="padding:6px 0;">• Authentication & authorization testing</li>
-<li style="padding:6px 0;">• SQL injection & XSS detection</li>
-<li style="padding:6px 0;">• Business logic flaw analysis</li>
+<h3 style="font-size:1.4rem;margin-bottom:12px;">Web Application Testing</h3>
+<div style="font-size:1.8rem;font-weight:700;color:var(--accent-teal);margin-bottom:16px;">¥500,000~</div>
+<p style="color:var(--text-secondary);margin-bottom:20px;line-height:1.8;">Comprehensive testing for web apps and APIs. Assess OWASP Top 10 and common vulnerability patterns.</p>
+<ul style="list-style:none;padding:0;font-size:0.95rem;color:var(--text-muted);">
+<li style="padding:8px 0;">• OWASP Top 10 vulnerability assessment</li>
+<li style="padding:8px 0;">• Authentication & authorization testing</li>
+<li style="padding:8px 0;">• SQL injection & XSS detection</li>
+<li style="padding:8px 0;">• Business logic flaw analysis</li>
 </ul>
-<span style="display:inline-block;font-size:0.7rem;padding:4px 10px;background:rgba(106,166,255,0.1);border:1px solid rgba(106,166,255,0.2);border-radius:15px;color:var(--accent-blue);margin-top:12px;">Partner collaboration</span>
+<span style="display:inline-block;font-size:0.75rem;padding:4px 12px;background:rgba(106,166,255,0.1);border:1px solid rgba(106,166,255,0.25);border-radius:20px;color:var(--accent-blue);margin-top:16px;">Partner collaboration</span>
 </div>
 
 <div class="card">
-<div class="service-icon">
-<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+<div style="width:64px;height:64px;background:linear-gradient(135deg,rgba(16,185,129,0.15),rgba(126,240,212,0.1));border-radius:16px;display:flex;align-items:center;justify-content:center;margin-bottom:24px;">
+<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#7ef0d4" stroke-width="1.5">
 <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/>
 </svg>
 </div>
-<h3>Penetration Testing</h3>
-<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
-<span style="font-size:1.5rem;font-weight:700;color:var(--accent-teal);">¥800,000~</span>
-</div>
-<p style="color:var(--text-muted);margin-bottom:16px;">Full-scale attack simulation by security experts. Combines infrastructure and application testing for comprehensive assessment.</p>
-<ul style="list-style:none;padding:0;font-size:0.9rem;color:var(--text-muted);">
-<li style="padding:6px 0;">• Multi-stage attack simulation</li>
-<li style="padding:6px 0;">• Internal network lateral movement</li>
-<li style="padding:6px 0;">• Privilege escalation testing</li>
-<li style="padding:6px 0;">• Post-exploitation scenario analysis</li>
+<h3 style="font-size:1.4rem;margin-bottom:12px;">Penetration Testing</h3>
+<div style="font-size:1.8rem;font-weight:700;color:var(--accent-teal);margin-bottom:16px;">¥800,000~</div>
+<p style="color:var(--text-secondary);margin-bottom:20px;line-height:1.8;">Full-scale attack simulation by security experts. Combines infrastructure and application testing for comprehensive assessment.</p>
+<ul style="list-style:none;padding:0;font-size:0.95rem;color:var(--text-muted);">
+<li style="padding:8px 0;">• Multi-stage attack simulation</li>
+<li style="padding:8px 0;">• Internal network lateral movement</li>
+<li style="padding:8px 0;">• Privilege escalation testing</li>
+<li style="padding:8px 0;">• Post-exploitation scenario analysis</li>
 </ul>
-<span style="display:inline-block;font-size:0.7rem;padding:4px 10px;background:rgba(106,166,255,0.1);border:1px solid rgba(106,166,255,0.2);border-radius:15px;color:var(--accent-blue);margin-top:12px;">Partner collaboration</span>
+<span style="display:inline-block;font-size:0.75rem;padding:4px 12px;background:rgba(106,166,255,0.1);border:1px solid rgba(106,166,255,0.25);border-radius:20px;color:var(--accent-blue);margin-top:16px;">Partner collaboration</span>
 </div>
 
 <div class="card">
-<div class="service-icon">
-<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+<div style="width:64px;height:64px;background:linear-gradient(135deg,rgba(16,185,129,0.15),rgba(126,240,212,0.1));border-radius:16px;display:flex;align-items:center;justify-content:center;margin-bottom:24px;">
+<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#7ef0d4" stroke-width="1.5">
 <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
 </svg>
 </div>
-<h3>Vulnerability Scanning</h3>
-<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
-<span style="font-size:1.5rem;font-weight:700;color:var(--accent-teal);">¥300,000~</span>
-</div>
-<p style="color:var(--text-muted);margin-bottom:16px;">Scan servers and network devices for known vulnerabilities. CVE-based assessment and prioritization.</p>
-<ul style="list-style:none;padding:0;font-size:0.9rem;color:var(--text-muted);">
-<li style="padding:6px 0;">• OS & middleware vulnerability scanning</li>
-<li style="padding:6px 0;">• Patch status verification</li>
-<li style="padding:6px 0;">• Unnecessary port/service exposure checks</li>
-<li style="padding:6px 0;">• Prioritized remediation recommendations</li>
+<h3 style="font-size:1.4rem;margin-bottom:12px;">Vulnerability Scanning</h3>
+<div style="font-size:1.8rem;font-weight:700;color:var(--accent-teal);margin-bottom:16px;">¥300,000~</div>
+<p style="color:var(--text-secondary);margin-bottom:20px;line-height:1.8;">Scan servers and network devices for known vulnerabilities. CVE-based assessment and prioritization.</p>
+<ul style="list-style:none;padding:0;font-size:0.95rem;color:var(--text-muted);">
+<li style="padding:8px 0;">• OS & middleware vulnerability scanning</li>
+<li style="padding:8px 0;">• Patch status verification</li>
+<li style="padding:8px 0;">• Unnecessary port/service exposure checks</li>
+<li style="padding:8px 0;">• Prioritized remediation recommendations</li>
 </ul>
 </div>
 
@@ -227,43 +227,43 @@ Beyond one-time assessment, receive different security services each month inclu
 <section id="comparison">
 <div class="wrap">
 <h2>Service Pricing Comparison</h2>
-<p style="color:var(--text-muted);font-size:1.05rem;margin-bottom:40px;">Compared to typical security firms, Avisail offers pricing accessible to SMBs. By leveraging AI and overseas partners, we reduce costs while maintaining quality.</p>
+<p style="color:var(--text-muted);font-size:1.05rem;margin-bottom:40px;max-width:800px;">Compared to typical security firms, Avisail offers pricing accessible to SMBs. By leveraging AI and overseas partners, we reduce costs while maintaining quality.</p>
 
-<div class="card" style="padding:40px;">
-<h3 style="text-align:center;margin-bottom:32px;">💰 Price Comparison: Avisail vs. Typical Security Firms</h3>
+<div class="card" style="padding:48px;">
+<h3 style="text-align:center;margin-bottom:40px;font-size:1.6rem;">💰 Avisail vs. Typical Security Firms</h3>
 <div style="overflow-x:auto;">
 <table style="width:100%;border-collapse:collapse;">
 <thead>
-<tr style="border-bottom:2px solid var(--line);">
-<th style="text-align:left;padding:16px 12px;color:var(--text-primary);">Service</th>
-<th style="text-align:right;padding:16px 12px;color:var(--text-primary);">Typical Price</th>
-<th style="text-align:right;padding:16px 12px;color:var(--accent-teal);">Avisail Price</th>
+<tr style="border-bottom:2px solid rgba(126,240,212,0.3);">
+<th style="text-align:left;padding:20px 16px;color:#fff;font-size:1.05rem;">Service</th>
+<th style="text-align:right;padding:20px 16px;color:#fff;font-size:1.05rem;">Typical Price</th>
+<th style="text-align:right;padding:20px 16px;color:var(--accent-teal);font-size:1.05rem;">Avisail Price</th>
 </tr>
 </thead>
 <tbody>
-<tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
-<td style="padding:16px 12px;color:var(--text-secondary);">Security Assessment (Basic)</td>
-<td style="padding:16px 12px;text-align:right;color:var(--text-muted);">¥300,000~500,000</td>
-<td style="padding:16px 12px;text-align:right;color:var(--accent-teal);font-weight:700;">¥150,000</td>
+<tr style="border-bottom:1px solid var(--line);">
+<td style="padding:20px 16px;color:var(--text-secondary);font-size:1rem;">Security Assessment (Basic)</td>
+<td style="padding:20px 16px;text-align:right;color:var(--text-muted);font-size:1rem;">¥300,000~500,000</td>
+<td style="padding:20px 16px;text-align:right;color:var(--accent-teal);font-weight:700;font-size:1.1rem;">¥150,000</td>
 </tr>
-<tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
-<td style="padding:16px 12px;color:var(--text-secondary);">Phishing Simulation</td>
-<td style="padding:16px 12px;text-align:right;color:var(--text-muted);">¥150,000~250,000</td>
-<td style="padding:16px 12px;text-align:right;color:var(--accent-teal);font-weight:700;">¥80,000</td>
+<tr style="border-bottom:1px solid var(--line);">
+<td style="padding:20px 16px;color:var(--text-secondary);font-size:1rem;">Phishing Simulation</td>
+<td style="padding:20px 16px;text-align:right;color:var(--text-muted);font-size:1rem;">¥150,000~250,000</td>
+<td style="padding:20px 16px;text-align:right;color:var(--accent-teal);font-weight:700;font-size:1.1rem;">¥80,000</td>
 </tr>
-<tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
-<td style="padding:16px 12px;color:var(--text-secondary);">Web Application Testing</td>
-<td style="padding:16px 12px;text-align:right;color:var(--text-muted);">¥800,000~1,500,000</td>
-<td style="padding:16px 12px;text-align:right;color:var(--accent-teal);font-weight:700;">¥500,000~</td>
+<tr style="border-bottom:1px solid var(--line);">
+<td style="padding:20px 16px;color:var(--text-secondary);font-size:1rem;">Web Application Testing</td>
+<td style="padding:20px 16px;text-align:right;color:var(--text-muted);font-size:1rem;">¥800,000~1,500,000</td>
+<td style="padding:20px 16px;text-align:right;color:var(--accent-teal);font-weight:700;font-size:1.1rem;">¥500,000~</td>
 </tr>
-<tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
-<td style="padding:16px 12px;color:var(--text-secondary);">Penetration Testing</td>
-<td style="padding:16px 12px;text-align:right;color:var(--text-muted);">¥1,500,000~3,000,000</td>
-<td style="padding:16px 12px;text-align:right;color:var(--accent-teal);font-weight:700;">¥800,000~</td>
+<tr style="border-bottom:1px solid var(--line);">
+<td style="padding:20px 16px;color:var(--text-secondary);font-size:1rem;">Penetration Testing</td>
+<td style="padding:20px 16px;text-align:right;color:var(--text-muted);font-size:1rem;">¥1,500,000~3,000,000</td>
+<td style="padding:20px 16px;text-align:right;color:var(--accent-teal);font-weight:700;font-size:1.1rem;">¥800,000~</td>
 </tr>
 <tr>
-<td colspan="3" style="padding:20px 12px;text-align:center;color:var(--accent-teal);font-weight:700;font-size:1.1rem;">
-Avisail delivers <span style="color:#7ef0d4;">40-50% cost savings</span> on average
+<td colspan="3" style="padding:28px 16px;text-align:center;font-weight:700;font-size:1.2rem;">
+<span style="color:var(--text-primary);">Avisail delivers </span><span style="background:linear-gradient(135deg,#10b981,#7ef0d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">40-50% cost savings</span><span style="color:var(--text-primary);"> on average</span>
 </td>
 </tr>
 </tbody>
@@ -278,41 +278,41 @@ Avisail delivers <span style="color:#7ef0d4;">40-50% cost savings</span> on aver
 <section>
 <div class="wrap">
 <h2>Why Choose Avisail</h2>
-<p style="color:var(--text-muted);font-size:1.05rem;margin-bottom:40px;">Avisail's security services are trusted by numerous SMBs and local governments.</p>
+<p style="color:var(--text-muted);font-size:1.05rem;margin-bottom:40px;max-width:800px;">Avisail's security services are trusted by numerous SMBs and local governments.</p>
 
 <div class="grid-3" style="margin-bottom:48px;">
-<div class="card" style="text-align:center;">
-<div style="font-size:3rem;font-weight:700;color:var(--accent-teal);margin-bottom:12px;">50+</div>
-<p style="color:var(--text-muted);margin:0;">Sites Scanned</p>
+<div class="card" style="text-align:center;padding:40px;">
+<div style="font-size:3.5rem;font-weight:700;background:linear-gradient(135deg,#10b981,#7ef0d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:16px;">50+</div>
+<p style="color:var(--text-secondary);margin:0;font-size:1.05rem;">Sites Scanned</p>
 </div>
-<div class="card" style="text-align:center;">
-<div style="font-size:3rem;font-weight:700;color:var(--accent-teal);margin-bottom:12px;">20+</div>
-<p style="color:var(--text-muted);margin:0;">Security Scanners Utilized</p>
+<div class="card" style="text-align:center;padding:40px;">
+<div style="font-size:3.5rem;font-weight:700;background:linear-gradient(135deg,#10b981,#7ef0d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:16px;">20+</div>
+<p style="color:var(--text-secondary);margin:0;font-size:1.05rem;">Security Scanners Utilized</p>
 </div>
-<div class="card" style="text-align:center;">
-<div style="font-size:2.5rem;font-weight:700;color:var(--accent-teal);margin-bottom:12px;">Global</div>
-<p style="color:var(--text-muted);margin:0;">Expert Network Collaboration</p>
+<div class="card" style="text-align:center;padding:40px;">
+<div style="font-size:3rem;font-weight:700;background:linear-gradient(135deg,#10b981,#7ef0d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:16px;">Global</div>
+<p style="color:var(--text-secondary);margin:0;font-size:1.05rem;">Expert Network</p>
 </div>
 </div>
 
-<h3 style="margin-bottom:24px;">Customer Testimonials</h3>
+<h3 style="margin-bottom:28px;font-size:1.6rem;">Customer Testimonials</h3>
 <div class="grid-2">
-<div class="card">
-<p style="color:var(--text-secondary);font-style:italic;margin-bottom:16px;line-height:1.8;">
+<div class="card" style="padding:36px;">
+<p style="color:var(--text-secondary);font-style:italic;margin-bottom:20px;line-height:1.9;font-size:1.05rem;">
 "Major security firms quoted prices well over our budget, but Avisail delivered equivalent services at less than half the cost. The reports were clear and extremely helpful for executive presentations."
 </p>
-<div style="color:var(--text-muted);font-size:0.9rem;">
-<strong>IT Manager A</strong><br>
-<span style="color:#7ef0d4;">Manufacturing (50 employees)</span>
+<div style="color:var(--text-muted);">
+<strong style="color:#fff;">IT Manager A</strong><br>
+<span style="color:var(--accent-teal);">Manufacturing (50 employees)</span>
 </div>
 </div>
-<div class="card">
-<p style="color:var(--text-secondary);font-style:italic;margin-bottom:16px;line-height:1.8;">
+<div class="card" style="padding:36px;">
+<p style="color:var(--text-secondary);font-style:italic;margin-bottom:20px;line-height:1.9;font-size:1.05rem;">
 "The subscription plan delivering different services each month is excellent. Rather than a one-time assessment, we can feel our security level continuously improving."
 </p>
-<div style="color:var(--text-muted);font-size:0.9rem;">
-<strong>Information Systems Director B</strong><br>
-<span style="color:#7ef0d4;">SaaS Company (30 employees)</span>
+<div style="color:var(--text-muted);">
+<strong style="color:#fff;">Information Systems Director B</strong><br>
+<span style="color:var(--accent-teal);">SaaS Company (30 employees)</span>
 </div>
 </div>
 </div>
@@ -325,35 +325,35 @@ Avisail delivers <span style="color:#7ef0d4;">40-50% cost savings</span> on aver
 <div class="wrap">
 <h2>Frequently Asked Questions</h2>
 
-<div style="max-width:800px;">
-<div style="padding:24px 0;border-bottom:1px solid var(--line);">
-<h4 style="font-size:1.1rem;margin-bottom:12px;color:var(--text-primary);">Q. How long does an assessment take?</h4>
-<p style="color:var(--text-muted);margin:0;">A. For ADCS one-time assessments, we deliver reports within 2 weeks from order. Comprehensive penetration testing takes approximately 3-4 weeks.</p>
+<div style="max-width:900px;">
+<div class="card" style="padding:28px;margin-bottom:20px;">
+<h4 style="font-size:1.15rem;margin-bottom:14px;color:#fff;">Q. How long does an assessment take?</h4>
+<p style="color:var(--text-secondary);margin:0;line-height:1.8;">A. For ADCS one-time assessments, we deliver reports within 2 weeks from order. Comprehensive penetration testing takes approximately 3-4 weeks.</p>
 </div>
 
-<div style="padding:24px 0;border-bottom:1px solid var(--line);">
-<h4 style="font-size:1.1rem;margin-bottom:12px;color:var(--text-primary);">Q. Can assessments be conducted remotely?</h4>
-<p style="color:var(--text-muted);margin:0;">A. Yes, possible. ADCS can be conducted entirely remotely. For on-site visits if needed, please contact us separately.</p>
+<div class="card" style="padding:28px;margin-bottom:20px;">
+<h4 style="font-size:1.15rem;margin-bottom:14px;color:#fff;">Q. Can assessments be conducted remotely?</h4>
+<p style="color:var(--text-secondary);margin:0;line-height:1.8;">A. Yes, possible. ADCS can be conducted entirely remotely. For on-site visits if needed, please contact us separately.</p>
 </div>
 
-<div style="padding:24px 0;border-bottom:1px solid var(--line);">
-<h4 style="font-size:1.1rem;margin-bottom:12px;color:var(--text-primary);">Q. What payment methods are available?</h4>
-<p style="color:var(--text-muted);margin:0;">A. We accept bank transfer and credit card payments (via Stripe). Subscription plans offer monthly or annual payment options.</p>
+<div class="card" style="padding:28px;margin-bottom:20px;">
+<h4 style="font-size:1.15rem;margin-bottom:14px;color:#fff;">Q. What payment methods are available?</h4>
+<p style="color:var(--text-secondary);margin:0;line-height:1.8;">A. We accept bank transfer and credit card payments (via Stripe). Subscription plans offer monthly or annual payment options.</p>
 </div>
 
-<div style="padding:24px 0;border-bottom:1px solid var(--line);">
-<h4 style="font-size:1.1rem;margin-bottom:12px;color:var(--text-primary);">Q. Are reports in Japanese?</h4>
-<p style="color:var(--text-muted);margin:0;">A. Yes, we provide Japanese reports as standard. English reports are also available at no additional cost.</p>
+<div class="card" style="padding:28px;margin-bottom:20px;">
+<h4 style="font-size:1.15rem;margin-bottom:14px;color:#fff;">Q. Are reports in Japanese?</h4>
+<p style="color:var(--text-secondary);margin:0;line-height:1.8;">A. Yes, we provide Japanese reports as standard. English reports are also available at no additional cost.</p>
 </div>
 
-<div style="padding:24px 0;border-bottom:1px solid var(--line);">
-<h4 style="font-size:1.1rem;margin-bottom:12px;color:var(--text-primary);">Q. Can you work with small businesses?</h4>
-<p style="color:var(--text-muted);margin:0;">A. Absolutely. Avisail is specifically designed for SMBs and small organizations. Many of our clients have fewer than 10 employees.</p>
+<div class="card" style="padding:28px;margin-bottom:20px;">
+<h4 style="font-size:1.15rem;margin-bottom:14px;color:#fff;">Q. Can you work with small businesses?</h4>
+<p style="color:var(--text-secondary);margin:0;line-height:1.8;">A. Absolutely. Avisail is specifically designed for SMBs and small organizations. Many of our clients have fewer than 10 employees.</p>
 </div>
 
-<div style="padding:24px 0;">
-<h4 style="font-size:1.1rem;margin-bottom:12px;color:var(--text-primary);">Q. Is post-assessment support available?</h4>
-<p style="color:var(--text-muted);margin:0;">A. After report delivery, we provide 30 days of free email support. For continuous support needs, please consider our subscription plan.</p>
+<div class="card" style="padding:28px;">
+<h4 style="font-size:1.15rem;margin-bottom:14px;color:#fff;">Q. Is post-assessment support available?</h4>
+<p style="color:var(--text-secondary);margin:0;line-height:1.8;">A. After report delivery, we provide 30 days of free email support. For continuous support needs, please consider our subscription plan.</p>
 </div>
 </div>
 
@@ -363,18 +363,18 @@ Avisail delivers <span style="color:#7ef0d4;">40-50% cost savings</span> on aver
 <!-- CTA Section -->
 <section id="contact" style="border-bottom:none;">
 <div class="wrap">
-<div class="card" style="background:linear-gradient(135deg,rgba(16,185,129,0.08),rgba(126,240,212,0.04));border:2px solid rgba(126,240,212,0.3);padding:60px 40px;text-align:center;">
-<h2 style="margin-bottom:20px;display:block;">Start with a Free Consultation?</h2>
-<p style="color:var(--text-secondary);max-width:700px;margin:0 auto 32px;font-size:1.05rem;line-height:1.8;">
+<div class="card" style="background:linear-gradient(135deg,rgba(16,185,129,0.08),rgba(126,240,212,0.04));border:2px solid rgba(126,240,212,0.4);padding:64px 48px;text-align:center;">
+<h2 style="margin-bottom:24px;display:block;font-size:2.2rem;">Start with a Free Consultation</h2>
+<p style="color:var(--text-secondary);max-width:750px;margin:0 auto 36px;font-size:1.1rem;line-height:1.9;">
 "Not sure which service is right for you?" "Want to know what's possible within budget?"<br>
 We offer 30-minute free online consultations for such inquiries.<br><br>
 We'll listen to your current situation and propose the best security measures.
 </p>
-<div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
-<a href="mailto:info@avisail.com?subject=Inquiry%20about%20Security%20Services" class="cta cta-green">Book Free Consultation</a>
-<a href="avisail-adcs-detail-en.html" class="btn">View ADCS Details & Subscription Plans</a>
+<div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+<a href="mailto:info@avisail.com?subject=Inquiry%20about%20Security%20Services" class="cta" style="background:linear-gradient(135deg,#10b981,#7ef0d4);padding:14px 36px;font-size:1.05rem;">Book Free Consultation</a>
+<a href="avisail-adcs-detail-en.html" class="btn" style="padding:14px 36px;font-size:1.05rem;">View ADCS Details</a>
 </div>
-<p style="margin-top:24px;font-size:0.85rem;color:var(--text-muted);">
+<p style="margin-top:28px;font-size:0.9rem;color:var(--text-muted);">
 Please include "Company Name / Contact Person / Employee Count / Inquiry Details" in your email.<br>
 We'll respond within 2 business days.
 </p>
