@@ -53,6 +53,10 @@
       // index.ja.html -> index.html
       jaPage = path;
       enPage = path.replace('.ja.html', '.html');
+    } else if (filename.includes('-ja.html')) {
+      // security-ja.html -> security-en.html
+      jaPage = path;
+      enPage = path.replace('-ja.html', '-en.html');
     } else if (filename.includes('vessel-trading-en.html')) {
       // vessel-trading-en.html -> vessel-trading.html
       enPage = path;
@@ -62,13 +66,17 @@
       jaPage = path;
       enPage = path.replace('.html', '-en.html');
     } else if (filename.includes('-en.html')) {
-      // /en/about.html -> /ja/about.html
+      // security-en.html -> security-ja.html
       enPage = path;
-      jaPage = path.replace('/en/', '/ja/');
+      jaPage = path.replace('-en.html', '-ja.html');
     } else if (dir.includes('/ja/')) {
       // /ja/about.html -> /en/about.html
       jaPage = path;
       enPage = path.replace('/ja/', '/en/');
+    } else if (dir.includes('/en/')) {
+      // /en/about.html -> /ja/about.html
+      enPage = path;
+      jaPage = path.replace('/en/', '/ja/');
     } else {
       // Default: assume English, add .ja for Japanese
       enPage = path;
