@@ -116,42 +116,64 @@
 
   // Initialize mobile menu
   function initMobileMenu() {
+    console.log('[MobileMenu] Initializing...');
+    console.log('[MobileMenu] Window width:', window.innerWidth);
+
     const mobileMenuBtn = document.querySelector('header .mobile-menu-btn');
     const navMenu = document.querySelector('header nav ul');
     const body = document.body;
 
+    console.log('[MobileMenu] Elements found:', {
+      mobileMenuBtn: !!mobileMenuBtn,
+      navMenu: !!navMenu,
+      mobileMenuBtnElement: mobileMenuBtn,
+      navMenuElement: navMenu
+    });
+
     if (!mobileMenuBtn || !navMenu) {
-      console.warn('Mobile menu elements not found:', { mobileMenuBtn: !!mobileMenuBtn, navMenu: !!navMenu });
+      console.error('[MobileMenu] ERROR: Mobile menu elements not found!');
       return;
     }
 
-    console.log('Mobile menu initialized successfully');
+    console.log('[MobileMenu] Initialized successfully!');
 
     mobileMenuBtn.addEventListener('click', function (e) {
+      console.log('[MobileMenu] Button clicked!');
       e.preventDefault();
       e.stopPropagation();
 
       const isOpen = this.classList.contains('active');
+      console.log('[MobileMenu] Menu is currently:', isOpen ? 'open' : 'closed');
+
       if (isOpen) {
+        console.log('[MobileMenu] Closing menu...');
         closeMobileMenu();
       } else {
+        console.log('[MobileMenu] Opening menu...');
         openMobileMenu();
       }
     });
 
     function openMobileMenu() {
+      console.log('[MobileMenu] Adding classes to open menu');
       mobileMenuBtn.classList.add('active');
       navMenu.classList.add('mobile-menu-open');
       body.style.overflow = 'hidden';
+      console.log('[MobileMenu] Menu opened. Classes:', {
+        btnClasses: mobileMenuBtn.className,
+        navClasses: navMenu.className
+      });
     }
 
     function closeMobileMenu() {
+      console.log('[MobileMenu] Removing classes to close menu');
       mobileMenuBtn.classList.remove('active');
       navMenu.classList.remove('mobile-menu-open');
       body.style.overflow = '';
       document.querySelectorAll('header .menu-item.menu-open, header .lang-selector.menu-open').forEach(item => {
         item.classList.remove('menu-open');
       });
+      console.log('[MobileMenu] Menu closed');
     }
 
     // Close menu when clicking outside
