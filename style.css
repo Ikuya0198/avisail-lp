@@ -578,13 +578,13 @@ h3 {
 .twin-pillars-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 40px;
+  gap: 24px;
   max-width: 1000px;
   margin: 0 auto;
 }
 
 .pillar-main {
-  min-height: 420px;
+  min-height: auto;
 }
 
 .pillar-card {
