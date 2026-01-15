@@ -353,9 +353,11 @@ footer .footer-bottom a:hover {
     right: 0;
     bottom: 0;
     background: rgba(10, 15, 26, 0.98);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     flex-direction: column;
-    padding: 32px 24px;
-    gap: 0;
+    padding: 20px 24px 40px;
+    gap: 4px;
     display: none;
     overflow-y: auto;
     z-index: 1000;
@@ -370,10 +372,14 @@ footer .footer-bottom a:hover {
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   }
 
+  header nav ul li:last-child {
+    border-bottom: none;
+  }
+
   header nav ul li a {
     display: block;
-    padding: 16px 0;
-    font-size: 1.1rem;
+    padding: 18px 8px;
+    font-size: 1.05rem;
   }
 
   header .menu-item {
@@ -402,9 +408,14 @@ footer .footer-bottom a:hover {
     background: rgba(0, 0, 0, 0.3);
     border: none;
     border-radius: 8px;
-    margin: 8px 0 16px;
-    padding: 8px;
+    margin: 8px 0 12px;
+    padding: 4px 8px;
     box-shadow: none;
+  }
+
+  header .dropdown a {
+    padding: 14px 12px !important;
+    font-size: 1rem !important;
   }
 
   header .menu-item.menu-open .dropdown {
@@ -415,13 +426,9 @@ footer .footer-bottom a:hover {
     display: none;
   }
 
-  header .menu-item.menu-open .dropdown {
-    display: flex;
-  }
-
   header .lang-selector {
     justify-content: space-between;
-    padding: 16px 0;
+    padding: 18px 8px;
     border-radius: 0;
   }
 
@@ -431,9 +438,14 @@ footer .footer-bottom a:hover {
     background: rgba(0, 0, 0, 0.3);
     border: none;
     border-radius: 8px;
-    margin: 8px 0 16px;
-    padding: 8px;
+    margin: 8px 0 12px;
+    padding: 4px 8px;
     box-shadow: none;
+  }
+
+  header .lang-dropdown a {
+    padding: 14px 12px !important;
+    font-size: 1rem !important;
   }
 
   header .lang-selector.menu-open .lang-dropdown {
@@ -444,8 +456,11 @@ footer .footer-bottom a:hover {
     display: none;
   }
 
-  header .lang-selector.menu-open .lang-dropdown {
-    display: flex;
+  header .login-btn {
+    width: auto;
+    margin: 4px 0;
+    padding: 14px 24px !important;
+    font-size: 1.05rem !important;
   }
 
   /* Footer responsive */
