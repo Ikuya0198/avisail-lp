@@ -406,6 +406,35 @@ footer{background:var(--bg-darker);padding:60px 0 30px;border-top:1px solid var(
 .footer-col a{color:var(--text-muted);font-size:0.85rem;}
 .footer-bottom{border-top:1px solid var(--line);padding-top:24px;display:flex;justify-content:space-between;align-items:center;color:var(--text-muted);font-size:0.82rem;}
 
+/* Fleet Dashboard */
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;}
+.dashboard-preview{background:var(--bg-dark);border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 20px 40px rgba(0,0,0,0.3);}
+.dashboard-header{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:rgba(0,0,0,0.2);border-bottom:1px solid var(--line);}
+.dashboard-title{font-size:0.8rem;font-weight:600;color:#fff;display:flex;align-items:center;gap:8px;}
+.dashboard-dots{display:flex;gap:6px;}
+.dashboard-dots span{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,0.1);}
+.dashboard-dots span:nth-child(1){background:#ef4444;}
+.dashboard-dots span:nth-child(2){background:#f59e0b;}
+.dashboard-dots span:nth-child(3){background:#10b981;}
+.dashboard-body{padding:16px;}
+.dashboard-score{display:flex;align-items:center;gap:16px;margin-bottom:16px;padding:16px;background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.2);border-radius:12px;}
+.score-circle{width:70px;height:70px;border-radius:50%;background:conic-gradient(#10b981 0deg 302deg, rgba(255,255,255,0.1) 302deg 360deg);display:flex;align-items:center;justify-content:center;position:relative;}
+.score-circle::before{content:'';position:absolute;width:54px;height:54px;background:var(--bg-dark);border-radius:50%;}
+.score-value{position:relative;z-index:1;font-size:1.3rem;font-weight:700;color:#10b981;}
+.score-info h4{color:#fff;font-size:0.9rem;margin-bottom:2px;}
+.score-info p{color:var(--text-muted);font-size:0.75rem;}
+.dashboard-ships{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px;}
+.ship-card{background:rgba(255,255,255,0.03);border:1px solid var(--line);border-radius:8px;padding:10px;text-align:center;}
+.ship-name{font-size:0.7rem;color:var(--text-muted);margin-bottom:4px;}
+.ship-status{font-size:0.75rem;font-weight:600;display:flex;align-items:center;justify-content:center;gap:4px;}
+.ship-status.green{color:#10b981;}
+.ship-status.yellow{color:#f59e0b;}
+.ship-status::before{content:'';width:6px;height:6px;border-radius:50%;background:currentColor;}
+.dashboard-alerts{background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.15);border-radius:8px;padding:10px;}
+.alert-header{display:flex;align-items:center;gap:6px;font-size:0.75rem;color:#ef4444;font-weight:600;margin-bottom:8px;}
+.alert-item{font-size:0.7rem;color:var(--text-muted);padding:4px 0;border-bottom:1px solid rgba(255,255,255,0.03);}
+.alert-item:last-child{border-bottom:none;}
+
 /* Responsive */
 @media(max-width:980px){
   .grid-2,.grid-3,.grid-4,.pricing-grid{grid-template-columns:1fr;}
@@ -420,6 +449,8 @@ footer{background:var(--bg-darker);padding:60px 0 30px;border-top:1px solid var(
   .timeline-date{min-width:auto;}
   .timeline-marker{display:none;}
   .warning-banner{flex-direction:column;}
+  .hero-grid{grid-template-columns:1fr;gap:30px;}
+  .dashboard-preview{max-width:500px;margin:0 auto;}
 }
 @media(max-width:640px){
   .stats-grid{grid-template-columns:1fr;}
@@ -452,40 +483,82 @@ footer{background:var(--bg-darker);padding:60px 0 30px;border-top:1px solid var(
 IMO/IACS Compliance is Now Mandatory
 </div>
 
+<div class="hero-grid">
+
+<div class="hero-content">
 <h1>
-Maritime <span>Cyber Security</span><br>
-Regulatory Compliance Solutions for Ship Owners
+Unified Fleet<br><span>Cyber Risk Management</span>
 </h1>
 
 <p class="lead">
-IMO MSC.428(98) mandates cyber risk management for all international voyaging vessels.<br>
-Avisail provides affordable, fully compliant IMO/IACS maritime security services for ship owners with 1-50 vessels.
+Fully compliant with IMO/IACS regulations. Real-time visualization of your entire fleet's security status and automated compliance for ship owners with 1-50 vessels.
 </p>
 
 <div style="display:flex;gap:14px;flex-wrap:wrap;">
-<a href="#contact" class="cta">Request Free Consultation</a>
-<a href="#services" class="btn">View Services</a>
+<a href="#contact" class="cta">Request Free Demo</a>
+<a href="#platform" class="btn">View Platform</a>
 </div>
 
 <div class="hero-stats">
 <div class="hero-stat">
-<div class="hero-stat-number">400%</div>
-<div class="hero-stat-label">Attack Increase (2019→2023)</div>
-</div>
-<div class="hero-stat">
-<div class="hero-stat-number">$9B</div>
-<div class="hero-stat-label">2033 Market Size Forecast</div>
-</div>
-<div class="hero-stat">
-<div class="hero-stat-number">75%</div>
-<div class="hero-stat-label">USB-Based Infections</div>
+<div class="hero-stat-number">84%</div>
+<div class="hero-stat-label">Compliance Workload Reduction</div>
 </div>
 <div class="hero-stat">
 <div class="hero-stat-number">24/7</div>
-<div class="hero-stat-label">Continuous Monitoring</div>
+<div class="hero-stat-label">Automated Monitoring</div>
+</div>
+<div class="hero-stat">
+<div class="hero-stat-number">10 min</div>
+<div class="hero-stat-label">Deployment Time</div>
+</div>
 </div>
 </div>
 
+<div class="dashboard-preview">
+<div class="dashboard-header">
+<div class="dashboard-title">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+Fleet Security Dashboard
+</div>
+<div class="dashboard-dots"><span></span><span></span><span></span></div>
+</div>
+<div class="dashboard-body">
+<div class="dashboard-score">
+<div class="score-circle">
+<span class="score-value">84</span>
+</div>
+<div class="score-info">
+<h4>Fleet Security Score</h4>
+<p>Average of 5 vessels | IMO Compliant | Next Audit: 45 days</p>
+</div>
+</div>
+<div class="dashboard-ships">
+<div class="ship-card">
+<div class="ship-name">AVISAIL MARU</div>
+<div class="ship-status green">92 Normal</div>
+</div>
+<div class="ship-card">
+<div class="ship-name">PACIFIC STAR</div>
+<div class="ship-status green">88 Normal</div>
+</div>
+<div class="ship-card">
+<div class="ship-name">OCEAN BREEZE</div>
+<div class="ship-status yellow">76 Review</div>
+</div>
+</div>
+<div class="dashboard-alerts">
+<div class="alert-header">
+<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+Latest Alerts
+</div>
+<div class="alert-item">🔴 OCEAN BREEZE: USB connection detected - Unauthorized device (2h ago)</div>
+<div class="alert-item">🟡 PACIFIC STAR: Firmware update recommended (1d ago)</div>
+</div>
+</div>
+</div>
+
+</div>
 </div>
 </section>
 

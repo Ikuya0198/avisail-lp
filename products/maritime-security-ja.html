@@ -406,6 +406,35 @@ footer{background:var(--bg-darker);padding:60px 0 30px;border-top:1px solid var(
 .footer-col a{color:var(--text-muted);font-size:0.85rem;}
 .footer-bottom{border-top:1px solid var(--line);padding-top:24px;display:flex;justify-content:space-between;align-items:center;color:var(--text-muted);font-size:0.82rem;}
 
+/* Fleet Dashboard */
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;}
+.dashboard-preview{background:var(--bg-dark);border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 20px 40px rgba(0,0,0,0.3);}
+.dashboard-header{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:rgba(0,0,0,0.2);border-bottom:1px solid var(--line);}
+.dashboard-title{font-size:0.8rem;font-weight:600;color:#fff;display:flex;align-items:center;gap:8px;}
+.dashboard-dots{display:flex;gap:6px;}
+.dashboard-dots span{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,0.1);}
+.dashboard-dots span:nth-child(1){background:#ef4444;}
+.dashboard-dots span:nth-child(2){background:#f59e0b;}
+.dashboard-dots span:nth-child(3){background:#10b981;}
+.dashboard-body{padding:16px;}
+.dashboard-score{display:flex;align-items:center;gap:16px;margin-bottom:16px;padding:16px;background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.2);border-radius:12px;}
+.score-circle{width:70px;height:70px;border-radius:50%;background:conic-gradient(#10b981 0deg 302deg, rgba(255,255,255,0.1) 302deg 360deg);display:flex;align-items:center;justify-content:center;position:relative;}
+.score-circle::before{content:'';position:absolute;width:54px;height:54px;background:var(--bg-dark);border-radius:50%;}
+.score-value{position:relative;z-index:1;font-size:1.3rem;font-weight:700;color:#10b981;}
+.score-info h4{color:#fff;font-size:0.9rem;margin-bottom:2px;}
+.score-info p{color:var(--text-muted);font-size:0.75rem;}
+.dashboard-ships{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px;}
+.ship-card{background:rgba(255,255,255,0.03);border:1px solid var(--line);border-radius:8px;padding:10px;text-align:center;}
+.ship-name{font-size:0.7rem;color:var(--text-muted);margin-bottom:4px;}
+.ship-status{font-size:0.75rem;font-weight:600;display:flex;align-items:center;justify-content:center;gap:4px;}
+.ship-status.green{color:#10b981;}
+.ship-status.yellow{color:#f59e0b;}
+.ship-status::before{content:'';width:6px;height:6px;border-radius:50%;background:currentColor;}
+.dashboard-alerts{background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.15);border-radius:8px;padding:10px;}
+.alert-header{display:flex;align-items:center;gap:6px;font-size:0.75rem;color:#ef4444;font-weight:600;margin-bottom:8px;}
+.alert-item{font-size:0.7rem;color:var(--text-muted);padding:4px 0;border-bottom:1px solid rgba(255,255,255,0.03);}
+.alert-item:last-child{border-bottom:none;}
+
 /* Responsive */
 @media(max-width:980px){
   .grid-2,.grid-3,.grid-4,.pricing-grid{grid-template-columns:1fr;}
@@ -420,6 +449,8 @@ footer{background:var(--bg-darker);padding:60px 0 30px;border-top:1px solid var(
   .timeline-date{min-width:auto;}
   .timeline-marker{display:none;}
   .warning-banner{flex-direction:column;}
+  .hero-grid{grid-template-columns:1fr;gap:30px;}
+  .dashboard-preview{max-width:500px;margin:0 auto;}
 }
 @media(max-width:640px){
   .stats-grid{grid-template-columns:1fr;}
@@ -452,40 +483,80 @@ footer{background:var(--bg-darker);padding:60px 0 30px;border-top:1px solid var(
 IMO/IACS規制対応が義務化されています
 </div>
 
-<h1>
-海運業界の<span>サイバーセキュリティ</span><br>
-中小船主のための規制対応ソリューション
-</h1>
+<div class="hero-grid">
+
+<div class="hero-content">
+<h1>船隊の<span>サイバーリスク</span>を<br>一元管理</h1>
 
 <p class="lead">
-IMO MSC.428(98)により、全ての国際航海船舶にサイバーリスク管理が義務化されています。<br>
-Avisailは、1〜50隻規模の中小船主様向けに、手頃な価格でIMO・IACS規制に完全対応したセキュリティサービスを提供します。
+IMO/IACS規制に完全対応。1〜50隻規模の中小船主様向けに、船隊全体のセキュリティ状況をリアルタイムで可視化し、規制対応を自動化します。
 </p>
 
 <div style="display:flex;gap:14px;flex-wrap:wrap;">
-<a href="#contact" class="cta">無料相談を申し込む</a>
-<a href="#services" class="btn">サービス内容を見る</a>
+<a href="#contact" class="cta">無料デモを申し込む</a>
+<a href="#platform" class="btn">プラットフォームを見る</a>
 </div>
 
 <div class="hero-stats">
 <div class="hero-stat">
-<div class="hero-stat-number">400%</div>
-<div class="hero-stat-label">攻撃増加率（2019→2023）</div>
-</div>
-<div class="hero-stat">
-<div class="hero-stat-number">$9B</div>
-<div class="hero-stat-label">2033年市場規模予測</div>
-</div>
-<div class="hero-stat">
-<div class="hero-stat-number">75%</div>
-<div class="hero-stat-label">USB経由の感染</div>
+<div class="hero-stat-number">84%</div>
+<div class="hero-stat-label">規制対応工数削減</div>
 </div>
 <div class="hero-stat">
 <div class="hero-stat-number">24/7</div>
-<div class="hero-stat-label">継続監視対応</div>
+<div class="hero-stat-label">自動監視</div>
+</div>
+<div class="hero-stat">
+<div class="hero-stat-number">10分</div>
+<div class="hero-stat-label">導入時間</div>
+</div>
 </div>
 </div>
 
+<div class="dashboard-preview">
+<div class="dashboard-header">
+<div class="dashboard-title">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+Fleet Security Dashboard
+</div>
+<div class="dashboard-dots"><span></span><span></span><span></span></div>
+</div>
+<div class="dashboard-body">
+<div class="dashboard-score">
+<div class="score-circle">
+<span class="score-value">84</span>
+</div>
+<div class="score-info">
+<h4>船隊セキュリティスコア</h4>
+<p>全5隻の平均 | IMO対応: 完了 | 次回監査: 45日後</p>
+</div>
+</div>
+<div class="dashboard-ships">
+<div class="ship-card">
+<div class="ship-name">AVISAIL MARU</div>
+<div class="ship-status green">92 正常</div>
+</div>
+<div class="ship-card">
+<div class="ship-name">PACIFIC STAR</div>
+<div class="ship-status green">88 正常</div>
+</div>
+<div class="ship-card">
+<div class="ship-name">OCEAN BREEZE</div>
+<div class="ship-status yellow">76 要確認</div>
+</div>
+</div>
+<div class="dashboard-alerts">
+<div class="alert-header">
+<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+最新アラート
+</div>
+<div class="alert-item">🔴 OCEAN BREEZE: USB接続検知 - 未承認デバイス (2時間前)</div>
+<div class="alert-item">🟡 PACIFIC STAR: ファームウェア更新推奨 (1日前)</div>
+</div>
+</div>
+</div>
+
+</div>
 </div>
 </section>
 
