@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>AI & System Development | Avisail Technologies</title>
+<meta name="description" content="Avisail Technologies' AI & System Development services. Implementation-first philosophy, delivering working systems from day one. Modern development using Python, FastAPI, React, and Next.js.">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="canonical" href="https://avisail.com/technology/ai-development-en.html">
+<link rel="alternate" hreflang="en" href="https://avisail.com/technology/ai-development-en.html">
+<link rel="alternate" hreflang="ja" href="https://avisail.com/technology/ai-development-ja.html">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://avisail.com/technology/ai-development-en.html">
+<meta property="og:title" content="AI & System Development | Avisail Technologies">
+<meta property="og:description" content="Implementation-first philosophy, delivering working systems from day one.">
+<meta property="og:locale" content="en_US">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --line: rgba(255,255,255,.08);
+  --primary-gradient: linear-gradient(135deg,#a78bfa,#8b5cf6);
+  --accent-teal: #7ef0d4;
+  --accent-blue: #6aa6ff;
+  --accent-purple: #a78bfa;
+  --bg-dark: #0a0f1a;
+  --bg-darker: #05080f;
+  --text-primary: #e9f0ff;
+  --text-secondary: #cfe2ff;
+  --text-muted: #9fb0cc;
+}
+
+*{ box-sizing: border-box; margin:0; padding:0; }
+
+html,body{
+  margin:0;
+  background:var(--bg-dark);
+  color:var(--text-primary);
+  font-family: 'Inter', 'Noto Sans JP', sans-serif;
+  line-height:1.7;
+  overflow-x:hidden;
+  width:100%;
+}
+
+html{ scroll-behavior: smooth; }
+
+a{
+  color:var(--text-secondary);
+  text-decoration:none;
+  transition: color 0.3s;
+}
+a:hover{ color:var(--accent-purple); }
+
+.wrap{
+  max-width:1200px;
+  margin:0 auto;
+  padding:0 20px;
+  width:100%;
+}
+
+img{
+  max-width:100%;
+  height:auto;
+}
+
+/* ========== BUTTONS ========== */
+.btn{
+  display:inline-block;
+  padding:10px 20px;
+  border-radius:50px;
+  border:1px solid var(--line);
+  background:rgba(255,255,255,0.05);
+  color:var(--text-primary);
+  font-size:0.9rem;
+  transition:all 0.3s;
+  cursor:pointer;
+}
+
+.btn:hover{
+  border-color:rgba(167,139,250,0.5);
+  transform:translateY(-2px);
+  color:var(--text-primary);
+}
+
+.cta{
+  display:inline-block;
+  padding:12px 28px;
+  border-radius:50px;
+  background:var(--primary-gradient);
+  color:#fff;
+  font-weight:700;
+  font-size:0.95rem;
+  box-shadow:0 10px 20px rgba(167,139,250,.2);
+  border:none;
+  transition:all 0.3s;
+  cursor:pointer;
+}
+
+.cta:hover{
+  transform:translateY(-2px);
+  box-shadow:0 15px 30px rgba(167,139,250,.3);
+  color:#fff;
+}
+
+/* ========== HERO ========== */
+.hero{
+  position:relative;
+  overflow:hidden;
+  min-height: 85vh;
+  display:flex;
+  align-items:center;
+  background: radial-gradient(circle at 30% 30%, rgba(167, 139, 250, 0.12) 0%, transparent 50%),
+              radial-gradient(circle at 70% 70%, rgba(139, 92, 246, 0.08) 0%, transparent 50%),
+              linear-gradient(180deg, rgba(5,8,15,0.3) 0%, rgba(5,8,15,1) 100%);
+}
+
+.hero .wrap{
+  position:relative;
+  z-index:2;
+  width:100%;
+  padding-top:50px;
+  padding-bottom:60px;
+}
+
+.slogan{
+  font-family:'Inter';
+  letter-spacing:0.25em;
+  color:var(--accent-purple);
+  text-transform:uppercase;
+  margin-bottom:16px;
+  display:block;
+  font-size:0.8rem;
+  font-weight:600;
+}
+
+.hero h1{
+  font-size: clamp(2.5rem, 5.5vw, 4rem);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 24px;
+  background: linear-gradient(to right, #fff, var(--text-muted));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero h1 .gradient-text{
+  background:var(--primary-gradient);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  display:block;
+  margin-top:8px;
+}
+
+.lead{
+  font-size:1.05rem;
+  color:var(--text-secondary);
+  max-width:900px;
+  margin-bottom:20px;
+  line-height:1.75;
+}
+
+.hero-quote{
+  border-left:2px solid var(--accent-purple);
+  padding-left:16px;
+  margin-top:24px;
+  max-width:650px;
+  color:var(--text-muted);
+  font-size:0.95rem;
+  font-style:italic;
+}
+
+/* ========== SECTIONS ========== */
+section{
+  padding:70px 0;
+  border-bottom:1px solid var(--line);
+  position:relative;
+}
+
+h2{
+  font-size:1.8rem;
+  margin-bottom:32px;
+  display:flex;
+  align-items:center;
+  gap:16px;
+  color:#fff;
+}
+
+h2::before{
+  content:'';
+  width:4px;
+  height:28px;
+  background:var(--primary-gradient);
+  display:block;
+  border-radius:2px;
+}
+
+h3{
+  color:#fff;
+  font-size:1.3rem;
+}
+
+/* ========== CARDS ========== */
+.card{
+  background:rgba(255,255,255,0.02);
+  backdrop-filter:blur(10px);
+  border:1px solid var(--line);
+  border-radius:20px;
+  padding:28px;
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  transition:transform 0.3s, border-color 0.3s;
+}
+
+.card:hover{
+  transform:translateY(-5px);
+  border-color:rgba(167,139,250,0.3);
+}
+
+.card h3{
+  margin-top:0;
+  font-size:1.3rem;
+}
+
+.card p{
+  color:var(--text-muted);
+  margin-bottom:16px;
+  flex-grow:1;
+  line-height:1.75;
+}
+
+/* ========== GRID LAYOUTS ========== */
+.grid-2{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:28px;
+}
+
+.grid-3{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:28px;
+}
+
+.grid-4{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:20px;
+}
+
+/* ========== STATS ========== */
+.stats-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:20px;
+  margin-top:32px;
+}
+
+.stat-item{
+  text-align:center;
+  padding:20px 16px;
+  background:rgba(255,255,255,0.02);
+  border:1px solid var(--line);
+  border-radius:14px;
+  transition:all 0.3s;
+}
+
+.stat-item:hover{
+  border-color:rgba(167,139,250,0.3);
+  transform:translateY(-3px);
+}
+
+.stat-number{
+  font-size:1.8rem;
+  font-weight:700;
+  background:var(--primary-gradient);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  margin-bottom:6px;
+}
+
+.stat-label{
+  color:var(--text-muted);
+  font-size:0.85rem;
+}
+
+/* ========== PILLARS ========== */
+.pillars-container{
+  margin-bottom:40px;
+}
+
+.pillars-label{
+  text-align:center;
+  font-family:'Inter', sans-serif;
+  font-size:0.75rem;
+  font-weight:600;
+  letter-spacing:0.2em;
+  text-transform:uppercase;
+  color:var(--accent-purple);
+  margin-bottom:24px;
+}
+
+.pillars-grid{
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:24px;
+}
+
+.pillar-card{
+  position:relative;
+  background:linear-gradient(180deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
+  border:1px solid rgba(167,139,250,0.2);
+  border-radius:20px;
+  padding:32px 28px;
+  transition:all 0.3s;
+  overflow:hidden;
+}
+
+.pillar-card::before{
+  content:'';
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  height:3px;
+  background:var(--primary-gradient);
+}
+
+.pillar-card:hover{
+  transform:translateY(-8px);
+  border-color:rgba(167,139,250,0.4);
+  box-shadow:0 20px 40px rgba(0,0,0,0.3);
+}
+
+.pillar-number{
+  position:absolute;
+  top:20px;
+  right:20px;
+  font-family:'Inter', sans-serif;
+  font-size:2.5rem;
+  font-weight:700;
+  color:rgba(167,139,250,0.1);
+  line-height:1;
+}
+
+.pillar-icon{
+  width:64px;
+  height:64px;
+  background:linear-gradient(135deg, rgba(167,139,250,0.15), rgba(139,92,246,0.1));
+  border-radius:16px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin-bottom:20px;
+  color:var(--accent-purple);
+}
+
+.pillar-content h3{
+  font-size:1.3rem;
+  font-weight:700;
+  color:#fff;
+  margin:0 0 8px 0;
+  line-height:1.4;
+}
+
+.pillar-subtitle{
+  font-size:0.85rem;
+  color:var(--accent-purple);
+  margin:0 0 20px 0;
+  font-weight:500;
+}
+
+.pillar-features{
+  list-style:none;
+  padding:0;
+  margin:0;
+}
+
+.pillar-features li{
+  font-size:0.9rem;
+  color:var(--text-muted);
+  padding:8px 0;
+  border-bottom:1px solid rgba(255,255,255,0.05);
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.pillar-features li:last-child{
+  border-bottom:none;
+}
+
+.pillar-features li::before{
+  content:'';
+  width:6px;
+  height:6px;
+  background:var(--accent-purple);
+  border-radius:50%;
+  flex-shrink:0;
+}
+
+/* ========== TECH STACK ========== */
+.tech-category{
+  margin-bottom:32px;
+}
+
+.tech-category h4{
+  color:var(--accent-purple);
+  font-size:0.9rem;
+  margin-bottom:16px;
+  font-weight:600;
+  text-transform:uppercase;
+  letter-spacing:0.1em;
+}
+
+.tech-tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+
+.tech-tag{
+  padding:8px 16px;
+  background:rgba(167,139,250,0.08);
+  border:1px solid rgba(167,139,250,0.2);
+  border-radius:8px;
+  font-size:0.85rem;
+  color:var(--text-secondary);
+  transition:all 0.3s;
+}
+
+.tech-tag:hover{
+  background:rgba(167,139,250,0.15);
+  border-color:rgba(167,139,250,0.4);
+}
+
+/* ========== PROCESS ========== */
+.process-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:20px;
+  margin-top:40px;
+}
+
+.process-step{
+  position:relative;
+  padding:28px 24px;
+  background:rgba(255,255,255,0.02);
+  border:1px solid var(--line);
+  border-radius:16px;
+  text-align:center;
+  transition:all 0.3s;
+}
+
+.process-step:hover{
+  border-color:rgba(167,139,250,0.3);
+  transform:translateY(-5px);
+}
+
+.step-number{
+  width:48px;
+  height:48px;
+  background:var(--primary-gradient);
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin:0 auto 16px;
+  font-weight:700;
+  color:#fff;
+  font-size:1.2rem;
+}
+
+.process-step h4{
+  color:#fff;
+  font-size:1rem;
+  margin-bottom:10px;
+}
+
+.process-step p{
+  color:var(--text-muted);
+  font-size:0.9rem;
+  margin:0;
+  line-height:1.7;
+}
+
+/* ========== WHY CARDS ========== */
+.why-grid{
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+}
+
+.why-card{
+  background:rgba(255,255,255,0.02);
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:24px 28px;
+  transition:all 0.3s;
+}
+
+.why-card:hover{
+  border-color:rgba(167,139,250,0.3);
+  transform:translateX(5px);
+}
+
+.why-content h3{
+  margin:0 0 8px 0;
+  font-size:1.2rem;
+}
+
+.why-content p{
+  margin:0;
+  color:var(--text-muted);
+  line-height:1.7;
+  font-size:0.95rem;
+}
+
+/* ========== HIGHLIGHT BOX ========== */
+.highlight-box{
+  background:linear-gradient(135deg, rgba(167,139,250,0.08), rgba(139,92,246,0.04));
+  border:1px solid rgba(167,139,250,0.25);
+  border-radius:24px;
+  padding:48px;
+  margin-bottom:48px;
+  text-align:center;
+}
+
+.highlight-box h3{
+  font-size:2rem;
+  margin-bottom:8px;
+  background:var(--primary-gradient);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+.highlight-subtitle{
+  font-size:1rem;
+  color:var(--accent-purple);
+  margin-bottom:24px;
+  font-weight:500;
+}
+
+.highlight-box > p{
+  color:var(--text-secondary);
+  font-size:1.05rem;
+  line-height:1.9;
+  max-width:900px;
+  margin:0 auto 32px;
+}
+
+/* ========== CONTACT CARD ========== */
+.contact-card{
+  background:linear-gradient(135deg, rgba(167,139,250,0.06), rgba(139,92,246,0.04));
+  border:1px solid rgba(167,139,250,0.2);
+  border-radius:24px;
+  padding:48px;
+  text-align:center;
+  max-width:800px;
+  margin:0 auto;
+}
+
+.contact-card h3{
+  font-size:1.6rem;
+  margin-bottom:16px;
+}
+
+.contact-card > p{
+  color:var(--text-secondary);
+  font-size:1.05rem;
+  line-height:1.8;
+  margin-bottom:32px;
+}
+
+.contact-info{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  margin-bottom:32px;
+  padding:20px;
+  background:rgba(0,0,0,0.2);
+  border-radius:12px;
+}
+
+.contact-info span{
+  color:var(--text-muted);
+  font-size:0.9rem;
+}
+
+/* ========== UTILITY ========== */
+.mt-0{ margin-top:0; }
+.mt-2{ margin-top:16px; }
+.mt-3{ margin-top:24px; }
+.mb-0{ margin-bottom:0; }
+.mb-2{ margin-bottom:16px; }
+.mb-3{ margin-bottom:24px; }
+
+/* ========== RESPONSIVE ========== */
+@media(max-width:980px){
+  .grid-2,.grid-3,.grid-4{
+    grid-template-columns:1fr;
+    gap:20px;
+  }
+
+  .pillars-grid{
+    grid-template-columns:1fr;
+    gap:20px;
+  }
+
+  .stats-grid{
+    grid-template-columns:repeat(2,1fr);
+    gap:16px;
+  }
+
+  .process-grid{
+    grid-template-columns:repeat(2,1fr);
+    gap:16px;
+  }
+
+  .hero h1{
+    font-size:2rem;
+    word-wrap:break-word;
+  }
+
+  .lead{
+    font-size:1rem;
+    word-wrap:break-word;
+  }
+
+  section{
+    padding:50px 0;
+  }
+
+  h2{
+    font-size:1.5rem;
+  }
+
+  .wrap{
+    padding:0 16px;
+  }
+}
+
+@media(max-width:640px){
+  .stats-grid, .process-grid{
+    grid-template-columns:1fr;
+    gap:12px;
+  }
+
+  .hero{
+    min-height:75vh;
+  }
+
+  .hero .wrap{
+    padding-top:30px;
+    padding-bottom:40px;
+  }
+
+  .hero h1{
+    font-size:1.75rem;
+  }
+
+  .slogan{
+    font-size:0.75rem;
+  }
+
+  .lead{
+    font-size:0.95rem;
+  }
+
+  .hero-quote{
+    font-size:0.9rem;
+  }
+
+  h2{
+    font-size:1.35rem;
+  }
+
+  h2::before{
+    width:3px;
+    height:24px;
+  }
+
+  h3{
+    font-size:1.15rem;
+  }
+
+  .pillar-card{
+    padding:24px 20px;
+  }
+
+  .pillar-number{
+    font-size:2rem;
+  }
+
+  .why-card{
+    padding:20px;
+  }
+
+  .card{
+    padding:20px;
+  }
+
+  .highlight-box, .contact-card{
+    padding:32px 24px;
+  }
+
+  .btn, .cta{
+    width:100%;
+    text-align:center;
+    display:block;
+  }
+
+  section{
+    padding:40px 0;
+  }
+
+  .wrap{
+    padding:0 12px;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- Shared Header -->
+<div id="site-header"></div>
+
+<!-- ========================================
+     HERO SECTION
+======================================== -->
+<section class="hero" id="top">
+  <div class="wrap">
+    <span class="slogan">IMPLEMENTATION FIRST</span>
+
+    <p class="hero-quote">
+      Not just theory and planning, but working systems from day one. That's our development philosophy
+    </p>
+
+    <h1>
+      AI & System Development.
+      <span class="gradient-text">Implementation-First Technology</span>
+    </h1>
+
+    <p class="lead">
+      Avisail's technology development is the foundation supporting all our businesses.<br>
+      From AI-powered automation, analysis, and decision support to full-stack system development.<br>
+      We apply proven technologies directly to your business
+    </p>
+
+    <div style="margin-top:36px; display:flex; gap:14px; flex-wrap:wrap;">
+      <a href="../en/contact.html?service=ai-development" class="cta">Request Consultation</a>
+      <a href="#services" class="btn">View Our Services</a>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================
+     PHILOSOPHY
+======================================== -->
+<section id="philosophy">
+  <div class="wrap">
+    <div class="highlight-box">
+      <h3>Implementation First</h3>
+      <p class="highlight-subtitle">Our Development Philosophy</p>
+      <p>
+        We prioritize "working systems" above all else.<br>
+        Rather than spending time on lengthy planning phases or theoretical considerations,<br>
+        we implement first, then iterate improvements with real data and feedback.<br><br>
+        All our solutions are based on technologies we operate in-house.<br>
+        We deliver proven value directly to our customers
+      </p>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-item">
+        <div class="stat-number">Day 1</div>
+        <div class="stat-label">Working from Day One</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">24/7</div>
+        <div class="stat-label">System Operation</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">AI</div>
+        <div class="stat-label">Automation Platform</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">Global</div>
+        <div class="stat-label">Multi-language Support</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================
+     SERVICES
+======================================== -->
+<section id="services" style="background:rgba(5,8,15,0.3);">
+  <div class="wrap">
+    <h2>Our Services</h2>
+
+    <div class="pillars-container">
+      <div class="pillars-label">3 Core Development Areas</div>
+      <div class="pillars-grid">
+
+        <!-- AI Development -->
+        <div class="pillar-card">
+          <div class="pillar-number">01</div>
+          <div class="pillar-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M12 2a4 4 0 0 1 4 4v2a4 4 0 0 1-8 0V6a4 4 0 0 1 4-4z"/>
+              <path d="M16 14h.01M8 14h.01M12 17v3"/>
+              <path d="M6 10a6 6 0 0 0 12 0"/>
+              <rect x="4" y="14" width="16" height="6" rx="2"/>
+            </svg>
+          </div>
+          <div class="pillar-content">
+            <h3>AI Development</h3>
+            <p class="pillar-subtitle">AI & Machine Learning</p>
+            <ul class="pillar-features">
+              <li>Custom AI Model Development</li>
+              <li>Natural Language Processing (NLP)</li>
+              <li>Data Analysis & Predictive Models</li>
+              <li>AI Integration & API Development</li>
+              <li>Automated Workflow Construction</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Web/App Development -->
+        <div class="pillar-card">
+          <div class="pillar-number">02</div>
+          <div class="pillar-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="2" y="3" width="20" height="14" rx="2"/>
+              <path d="M8 21h8M12 17v4"/>
+              <path d="m7 8 3 3-3 3M13 14h4"/>
+            </svg>
+          </div>
+          <div class="pillar-content">
+            <h3>Web & App Development</h3>
+            <p class="pillar-subtitle">Full-Stack Development</p>
+            <ul class="pillar-features">
+              <li>Web Application Development</li>
+              <li>Dashboards & Admin Panels</li>
+              <li>API Design & Development</li>
+              <li>Database Design</li>
+              <li>Cloud Infrastructure Setup</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Data & Integration -->
+        <div class="pillar-card">
+          <div class="pillar-number">03</div>
+          <div class="pillar-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <ellipse cx="12" cy="5" rx="9" ry="3"/>
+              <path d="M3 5v14a9 3 0 0 0 18 0V5"/>
+              <path d="M3 12a9 3 0 0 0 18 0"/>
+            </svg>
+          </div>
+          <div class="pillar-content">
+            <h3>Data & Integration</h3>
+            <p class="pillar-subtitle">Data & Integration</p>
+            <ul class="pillar-features">
+              <li>Data Pipeline Construction</li>
+              <li>ETL & Data Transformation</li>
+              <li>External API Integration</li>
+              <li>Legacy System Integration</li>
+              <li>Real-time Data Processing</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================
+     TECH STACK
+======================================== -->
+<section id="tech-stack">
+  <div class="wrap">
+    <h2>Technology Stack</h2>
+
+    <p style="color:var(--text-secondary); max-width:800px; margin-bottom:40px; font-size:1rem; line-height:1.8;">
+      We adopt modern, proven technologies. Our technology choices prioritize scalability, maintainability, and performance
+    </p>
+
+    <div class="grid-2">
+      <div class="card">
+        <div class="tech-category">
+          <h4>Backend</h4>
+          <div class="tech-tags">
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">FastAPI</span>
+            <span class="tech-tag">Node.js</span>
+            <span class="tech-tag">PostgreSQL</span>
+            <span class="tech-tag">Redis</span>
+          </div>
+        </div>
+        <div class="tech-category">
+          <h4>Frontend</h4>
+          <div class="tech-tags">
+            <span class="tech-tag">React</span>
+            <span class="tech-tag">Next.js</span>
+            <span class="tech-tag">TypeScript</span>
+            <span class="tech-tag">Tailwind CSS</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="tech-category">
+          <h4>AI / ML</h4>
+          <div class="tech-tags">
+            <span class="tech-tag">OpenAI API</span>
+            <span class="tech-tag">Claude API</span>
+            <span class="tech-tag">LangChain</span>
+            <span class="tech-tag">Pandas</span>
+            <span class="tech-tag">scikit-learn</span>
+          </div>
+        </div>
+        <div class="tech-category">
+          <h4>Infrastructure</h4>
+          <div class="tech-tags">
+            <span class="tech-tag">AWS</span>
+            <span class="tech-tag">GCP</span>
+            <span class="tech-tag">Vercel</span>
+            <span class="tech-tag">Docker</span>
+            <span class="tech-tag">GitHub Actions</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================
+     PROCESS
+======================================== -->
+<section id="process" style="background:rgba(5,8,15,0.3);">
+  <div class="wrap">
+    <h2>Development Process</h2>
+
+    <p style="color:var(--text-secondary); max-width:800px; margin-bottom:20px; font-size:1rem; line-height:1.8;">
+      With an agile approach, we deliver value in short cycles
+    </p>
+
+    <div class="process-grid">
+      <div class="process-step">
+        <div class="step-number">1</div>
+        <h4>Discovery</h4>
+        <p>Clarify challenges and goals. Assess technical feasibility</p>
+      </div>
+      <div class="process-step">
+        <div class="step-number">2</div>
+        <h4>Prototype</h4>
+        <p>Quickly build a working prototype with minimal features</p>
+      </div>
+      <div class="process-step">
+        <div class="step-number">3</div>
+        <h4>Iteration</h4>
+        <p>Add and improve features based on feedback</p>
+      </div>
+      <div class="process-step">
+        <div class="step-number">4</div>
+        <h4>Operations</h4>
+        <p>Provide ongoing support and improvements after deployment</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================
+     USE CASES
+======================================== -->
+<section id="use-cases">
+  <div class="wrap">
+    <h2>Use Cases</h2>
+
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-content">
+          <h3>Business Automation Systems</h3>
+          <p>
+            Automate repetitive tasks such as data collection, report generation, and notification delivery with AI.<br>
+            Reduce manual work by 90% and achieve 24/7 operation
+          </p>
+        </div>
+      </div>
+
+      <div class="why-card">
+        <div class="why-content">
+          <h3>Data Analysis Dashboards</h3>
+          <p>
+            Integrate scattered data and visualize in real-time.<br>
+            Provide information needed for decision-making at the right moment
+          </p>
+        </div>
+      </div>
+
+      <div class="why-card">
+        <div class="why-content">
+          <h3>AI Chatbots & Assistants</h3>
+          <p>
+            For customer support, internal FAQs, knowledge base searches, and more.<br>
+            Enhance user experience with natural conversations powered by LLMs
+          </p>
+        </div>
+      </div>
+
+      <div class="why-card">
+        <div class="why-content">
+          <h3>API Integration & Data Connectivity</h3>
+          <p>
+            Connect multiple SaaS platforms, external services, and legacy systems.<br>
+            Achieve centralized data management and streamlined workflows
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================
+     WHY US
+======================================== -->
+<section id="why-us" style="background:rgba(5,8,15,0.3);">
+  <div class="wrap">
+    <h2>Why Choose Us</h2>
+
+    <div class="grid-3">
+      <div class="card">
+        <h3 class="mt-0 mb-2">Proven Track Record</h3>
+        <p class="mb-0">
+          All technologies are currently operating in our own business.<br>
+          We provide proven solutions, not just theory
+        </p>
+      </div>
+
+      <div class="card">
+        <h3 class="mt-0 mb-2">Speed-Focused</h3>
+        <p class="mb-0">
+          Minimal lengthy requirement definition and design phases.<br>
+          Quickly build prototypes and improve while running
+        </p>
+      </div>
+
+      <div class="card">
+        <h3 class="mt-0 mb-2">Cost Efficiency</h3>
+        <p class="mb-0">
+          Through AI-powered automation and efficient development processes,<br>
+          we significantly reduce traditional development costs
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================
+     CONTACT
+======================================== -->
+<section id="contact">
+  <div class="wrap">
+    <h2>Contact</h2>
+
+    <div class="contact-card">
+      <h3>Development Consultation & Quotes</h3>
+      <p>
+        For inquiries about AI development, system construction, and automation.<br>
+        Initial consultations are provided free of charge
+      </p>
+      <div class="contact-info">
+        <span>We will respond within 1 business day</span>
+      </div>
+      <a href="../en/contact.html?service=ai-development" class="cta">Contact Us</a>
+    </div>
+  </div>
+</section>
+
+<!-- Shared Footer -->
+<div id="site-footer"></div>
+<script src="../includes/components.js"></script>
+</body>
+</html>
