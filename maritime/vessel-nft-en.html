@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Broker Reputation Protocol | Avisail Technologies</title>
+    <meta name="description" content="Blockchain-based broker reputation system and charter rights marketplace">
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        /* Page Specific Overrides */
+        .page-hero {
+            padding: 160px 0 100px;
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            background: radial-gradient(circle at 50% 50%, rgba(168, 85, 247, 0.05) 0%, transparent 50%),
+                var(--bg-dark);
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-visual {
+            position: relative;
+            perspective: 1000px;
+        }
+
+        .platform-preview {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.1);
+            transform: rotateY(-5deg) rotateX(5deg);
+            transition: transform 0.5s ease;
+        }
+
+        .platform-preview:hover {
+            transform: rotateY(0) rotateX(0) scale(1.02);
+        }
+
+        section {
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.05), rgba(106, 166, 255, 0.05));
+            border: 1px solid rgba(168, 85, 247, 0.2);
+            border-radius: 24px;
+            padding: 60px;
+            margin: 60px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .highlight-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(168, 85, 247, 0.5), transparent);
+        }
+
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 20px;
+            border-radius: 16px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #a855f7;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.02);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            background: rgba(255, 255, 255, 0.04);
+            border-color: rgba(168, 85, 247, 0.3);
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .feature-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+
+        .feature-description {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.1), rgba(106, 166, 255, 0.1));
+            border-radius: 24px;
+            padding: 80px 60px;
+            text-align: center;
+            border: 1px solid rgba(168, 85, 247, 0.2);
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 40px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #a855f7, #8b5cf6);
+            color: white;
+            padding: 16px 40px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(168, 85, 247, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            padding: 16px 40px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            border: 2px solid rgba(168, 85, 247, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(168, 85, 247, 0.1);
+            border-color: #a855f7;
+        }
+
+        @media (max-width: 768px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .highlight-box {
+                padding: 40px 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <div id="header-placeholder"></div>
+
+    <!-- Hero Section -->
+    <section class="page-hero">
+        <div class="container">
+            <div class="hero-grid">
+                <div>
+                    <div class="label">Maritime DX / Blockchain</div>
+                    <h1 class="gradient-text">Broker Reputation Protocol</h1>
+                    <p class="hero-subtitle">
+                        Prove your track record on blockchain,<br>
+                        Win new deals with your reputation score
+                    </p>
+                    <div class="stat-grid" style="margin-top: 60px;">
+                        <div class="stat-card">
+                            <div class="stat-number">100%</div>
+                            <div class="stat-label">Immutable Records</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">24/7</div>
+                            <div class="stat-label">Real-time Updates</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">Transparent</div>
+                            <div class="stat-label">Complete Audit Trail</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <img src="../assets/placeholder-dashboard.png" alt="Dashboard Preview" class="platform-preview"
+                        onerror="this.style.display='none'">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section>
+        <div class="container">
+            <h2 class="text-center">Challenges Facing Ship Brokers</h2>
+            <div class="feature-grid" style="margin-top: 40px;">
+                <div class="feature-card">
+                    <div class="feature-icon">❌</div>
+                    <div class="feature-title">Difficulty Proving Track Record</div>
+                    <div class="feature-description">
+                        No objective way to prove past transaction history, making it time-consuming to acquire new clients
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚠️</div>
+                    <div class="feature-title">Time-Consuming Trust Building</div>
+                    <div class="feature-description">
+                        Business models dependent on networks and referrals have limited market expansion potential
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📄</div>
+                    <div class="feature-title">Complex Record Management</div>
+                    <div class="feature-description">
+                        Dispersed transaction records make performance analysis and track record management inefficient
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section style="background: rgba(255,255,255,0.01);">
+        <div class="container">
+            <h2 class="text-center gradient-text">Turn Your Track Record Into an Asset</h2>
+            <p class="text-center" style="max-width: 700px; margin: 20px auto 0; color: var(--text-secondary);">
+                Record your transaction history on blockchain to build an immutable reputation score.<br>
+                Your track record automatically proves your credibility.
+            </p>
+
+            <div class="highlight-box">
+                <h3 style="text-align: center; margin-bottom: 50px;">Key Features</h3>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">📊</div>
+                        <div class="feature-title">Reputation Score System</div>
+                        <div class="feature-description">
+                            Automatically calculated reputation score (0-1000) from multiple metrics including deal volume, success rate, and commission income. Industry ranking displayed.
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🔗</div>
+                        <div class="feature-title">Blockchain Records</div>
+                        <div class="feature-description">
+                            All transactions recorded on blockchain, making them immutable. Third-party verification possible, achieving complete transparency.
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🏆</div>
+                        <div class="feature-title">Track Record Visualization</div>
+                        <div class="feature-description">
+                            Centrally manage total deals, transaction volume, commission income, and other metrics on your dashboard. Easy to present to clients.
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📈</div>
+                        <div class="feature-title">Performance Analytics</div>
+                        <div class="feature-description">
+                            Support data-driven decision making with reputation score trends, success rates by deal type, and revenue analysis.
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🎯</div>
+                        <div class="feature-title">Achievements</div>
+                        <div class="feature-description">
+                            Badge system for milestone achievements. Visually represent your accomplishments and use them for branding.
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🔍</div>
+                        <div class="feature-title">Public Profile</div>
+                        <div class="feature-description">
+                            Publish your reputation score and track record to attract inquiries from new clients. Improve sales efficiency.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Charter Market Section -->
+    <section>
+        <div class="container">
+            <h2 class="text-center">Charter Rights Marketplace</h2>
+            <p class="text-center" style="max-width: 700px; margin: 20px auto 40px; color: var(--text-secondary);">
+                Tokenize charter contracts as NFTs and enable trading on the secondary market.<br>
+                Improve liquidity and optimize capital allocation.
+            </p>
+
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">💎</div>
+                    <div class="feature-title">Charter Rights NFTs</div>
+                    <div class="feature-description">
+                        Issue time charters, voyage charters, and other contracts as NFTs. Monetize contracts with remaining terms.
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔄</div>
+                    <div class="feature-title">Secondary Market Trading</div>
+                    <div class="feature-description">
+                        Resell unwanted contracts to other brokers or charterers. Enable early capital recovery and contract optimization.
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💰</div>
+                    <div class="feature-title">Ensure Liquidity</div>
+                    <div class="feature-description">
+                        Unlock capital previously tied up until contract expiration by selling at market price. Improve investment efficiency.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Use Cases Section -->
+    <section style="background: rgba(255,255,255,0.01);">
+        <div class="container">
+            <h2 class="text-center">Use Cases</h2>
+            <div class="feature-grid" style="margin-top: 60px;">
+                <div class="feature-card">
+                    <div class="feature-title">🎯 New Brokers</div>
+                    <div class="feature-description">
+                        Build reputation score by accumulating track record. Gain trust through performance even without established networks, opening new client channels.
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-title">🏢 Established Brokers</div>
+                    <div class="feature-description">
+                        Visualize past track record and use it as a differentiator. Win larger deals and justify premium commissions.
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-title">🚢 Shipowners & Charterers</div>
+                    <div class="feature-description">
+                        Select trustworthy brokers by referencing reputation scores. Achieve improved transaction transparency and risk reduction.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Specs -->
+    <section>
+        <div class="container">
+            <h2 class="text-center">Technical Specifications</h2>
+            <div class="highlight-box">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px;">
+                    <div>
+                        <h4 style="color: #a855f7; margin-bottom: 12px;">Blockchain</h4>
+                        <p style="color: var(--text-secondary);">Polygon (Low cost, high-speed transactions)</p>
+                    </div>
+                    <div>
+                        <h4 style="color: #a855f7; margin-bottom: 12px;">Smart Contracts</h4>
+                        <p style="color: var(--text-secondary);">ERC-721 compliant NFTs, Audited</p>
+                    </div>
+                    <div>
+                        <h4 style="color: #a855f7; margin-bottom: 12px;">Wallet Support</h4>
+                        <p style="color: var(--text-secondary);">MetaMask, WalletConnect compatible</p>
+                    </div>
+                    <div>
+                        <h4 style="color: #a855f7; margin-bottom: 12px;">Data Storage</h4>
+                        <p style="color: var(--text-secondary);">IPFS distributed storage</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section>
+        <div class="container">
+            <div class="cta-section">
+                <h2 style="margin-bottom: 20px;">Turn Your Track Record Into Capital</h2>
+                <p style="color: var(--text-secondary); max-width: 600px; margin: 0 auto;">
+                    Transform your transaction history into a reputation score<br>
+                    with blockchain-based broker reputation protocol.
+                </p>
+                <div class="cta-buttons">
+                    <a href="https://dashboard.avisail.com/vessel-nft" class="btn-primary">View Dashboard</a>
+                    <a href="../en/contact.html" class="btn-secondary">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <div id="footer-placeholder"></div>
+
+    <script>
+        // Load header
+        fetch('../includes/header-en.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-placeholder').innerHTML = data;
+            });
+
+        // Load footer
+        fetch('../includes/footer-en.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            });
+    </script>
+</body>
+
+</html>

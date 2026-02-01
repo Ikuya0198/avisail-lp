@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ブローカー評価プロトコル | Avisail Technologies</title>
+    <meta name="description" content="ブロックチェーンベースのブローカー信用評価システムとチャーター権マーケットプレイス">
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        /* Page Specific Overrides */
+        .page-hero {
+            padding: 160px 0 100px;
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            background: radial-gradient(circle at 50% 50%, rgba(168, 85, 247, 0.05) 0%, transparent 50%),
+                var(--bg-dark);
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-visual {
+            position: relative;
+            perspective: 1000px;
+        }
+
+        .platform-preview {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.1);
+            transform: rotateY(-5deg) rotateX(5deg);
+            transition: transform 0.5s ease;
+        }
+
+        .platform-preview:hover {
+            transform: rotateY(0) rotateX(0) scale(1.02);
+        }
+
+        section {
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.05), rgba(106, 166, 255, 0.05));
+            border: 1px solid rgba(168, 85, 247, 0.2);
+            border-radius: 24px;
+            padding: 60px;
+            margin: 60px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .highlight-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(168, 85, 247, 0.5), transparent);
+        }
+
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 20px;
+            border-radius: 16px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #a855f7;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.02);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            background: rgba(255, 255, 255, 0.04);
+            border-color: rgba(168, 85, 247, 0.3);
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .feature-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+
+        .feature-description {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.1), rgba(106, 166, 255, 0.1));
+            border-radius: 24px;
+            padding: 80px 60px;
+            text-align: center;
+            border: 1px solid rgba(168, 85, 247, 0.2);
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 40px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #a855f7, #8b5cf6);
+            color: white;
+            padding: 16px 40px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(168, 85, 247, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            padding: 16px 40px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            border: 2px solid rgba(168, 85, 247, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(168, 85, 247, 0.1);
+            border-color: #a855f7;
+        }
+
+        @media (max-width: 768px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .highlight-box {
+                padding: 40px 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <div id="header-placeholder"></div>
+
+    <!-- Hero Section -->
+    <section class="page-hero">
+        <div class="container">
+            <div class="hero-grid">
+                <div>
+                    <div class="label">海事DX / ブロックチェーン</div>
+                    <h1 class="gradient-text">ブローカー評価プロトコル</h1>
+                    <p class="hero-subtitle">
+                        ブロックチェーンで取引実績を証明し、<br>
+                        信用スコアで新たな案件を獲得
+                    </p>
+                    <div class="stat-grid" style="margin-top: 60px;">
+                        <div class="stat-card">
+                            <div class="stat-number">100%</div>
+                            <div class="stat-label">改ざん不可能な記録</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">24/7</div>
+                            <div class="stat-label">リアルタイム更新</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">透明性</div>
+                            <div class="stat-label">完全な監査証跡</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <img src="../assets/placeholder-dashboard.png" alt="ダッシュボードプレビュー" class="platform-preview"
+                        onerror="this.style.display='none'">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section>
+        <div class="container">
+            <h2 class="text-center">海運ブローカーが直面する課題</h2>
+            <div class="feature-grid" style="margin-top: 40px;">
+                <div class="feature-card">
+                    <div class="feature-icon">❌</div>
+                    <div class="feature-title">実績の証明が困難</div>
+                    <div class="feature-description">
+                        過去の取引実績を客観的に証明する手段がなく、新規顧客の獲得に時間がかかる
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚠️</div>
+                    <div class="feature-title">信頼構築に時間がかかる</div>
+                    <div class="feature-description">
+                        人脈と紹介に依存したビジネスモデルでは、市場拡大に限界がある
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📄</div>
+                    <div class="feature-title">記録管理の煩雑さ</div>
+                    <div class="feature-description">
+                        取引記録が分散し、パフォーマンス分析や実績管理が非効率
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section style="background: rgba(255,255,255,0.01);">
+        <div class="container">
+            <h2 class="text-center gradient-text">ブロックチェーンで実績を資産化</h2>
+            <p class="text-center" style="max-width: 700px; margin: 20px auto 0; color: var(--text-secondary);">
+                取引実績をブロックチェーンに記録し、改ざん不可能な信用スコアを構築。<br>
+                実績が自動的にあなたの信頼を証明します。
+            </p>
+
+            <div class="highlight-box">
+                <h3 style="text-align: center; margin-bottom: 50px;">主要機能</h3>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">📊</div>
+                        <div class="feature-title">信用スコアシステム</div>
+                        <div class="feature-description">
+                            取引量、成約率、手数料収入など複数の指標から自動算出される信用スコア（0-1000点）。業界内での順位も表示。
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🔗</div>
+                        <div class="feature-title">ブロックチェーン記録</div>
+                        <div class="feature-description">
+                            全ての取引がブロックチェーンに記録され、改ざん不可能。第三者による検証も可能で、完全な透明性を実現。
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🏆</div>
+                        <div class="feature-title">実績の可視化</div>
+                        <div class="feature-description">
+                            総取引件数、取引総額、手数料収入などの実績をダッシュボードで一元管理。顧客への提示も簡単。
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📈</div>
+                        <div class="feature-title">パフォーマンス分析</div>
+                        <div class="feature-description">
+                            時系列での信用スコア推移、取引タイプ別の成約率、収益分析など、データドリブンな意思決定を支援。
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🎯</div>
+                        <div class="feature-title">アチーブメント</div>
+                        <div class="feature-description">
+                            マイルストーン達成時に獲得できるバッジシステム。実績を視覚的に表現し、ブランディングに活用。
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🔍</div>
+                        <div class="feature-title">公開プロフィール</div>
+                        <div class="feature-description">
+                            信用スコアと実績を公開し、新規顧客からの問い合わせを獲得。営業活動の効率化に貢献。
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Charter Market Section -->
+    <section>
+        <div class="container">
+            <h2 class="text-center">チャーター権マーケットプレイス</h2>
+            <p class="text-center" style="max-width: 700px; margin: 20px auto 40px; color: var(--text-secondary);">
+                チャーター契約をNFT化し、二次市場で売買可能に。<br>
+                流動性の向上と資金の最適化を実現します。
+            </p>
+
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">💎</div>
+                    <div class="feature-title">チャーター権のNFT化</div>
+                    <div class="feature-description">
+                        タイムチャーター、ボヤージチャーターなどの契約をNFTとして発行。残存期間のある契約を資産化。
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔄</div>
+                    <div class="feature-title">二次市場での売買</div>
+                    <div class="feature-description">
+                        不要になった契約を他のブローカーや傭船者に転売可能。早期資金回収や契約の最適化が可能に。
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💰</div>
+                    <div class="feature-title">流動性の確保</div>
+                    <div class="feature-description">
+                        従来は契約期間満了まで拘束されていた資金を、市場価格で売却することで流動化。投資効率が向上。
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Use Cases Section -->
+    <section style="background: rgba(255,255,255,0.01);">
+        <div class="container">
+            <h2 class="text-center">活用シーン</h2>
+            <div class="feature-grid" style="margin-top: 60px;">
+                <div class="feature-card">
+                    <div class="feature-title">🎯 新規ブローカー</div>
+                    <div class="feature-description">
+                        実績を積み上げることで信用スコアを構築。人脈がなくても実績で信頼を獲得し、新規顧客を開拓。
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-title">🏢 確立されたブローカー</div>
+                    <div class="feature-description">
+                        過去の実績を可視化し、差別化要因として活用。より大型の案件獲得や、プレミアム手数料の正当化に。
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-title">🚢 船主・傭船者</div>
+                    <div class="feature-description">
+                        信用スコアを参考に、信頼できるブローカーを選定。取引の透明性向上とリスク低減を実現。
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Specs -->
+    <section>
+        <div class="container">
+            <h2 class="text-center">技術仕様</h2>
+            <div class="highlight-box">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px;">
+                    <div>
+                        <h4 style="color: #a855f7; margin-bottom: 12px;">ブロックチェーン</h4>
+                        <p style="color: var(--text-secondary);">Polygon（低コスト・高速トランザクション）</p>
+                    </div>
+                    <div>
+                        <h4 style="color: #a855f7; margin-bottom: 12px;">スマートコントラクト</h4>
+                        <p style="color: var(--text-secondary);">ERC-721準拠のNFT、監査済み</p>
+                    </div>
+                    <div>
+                        <h4 style="color: #a855f7; margin-bottom: 12px;">ウォレット対応</h4>
+                        <p style="color: var(--text-secondary);">MetaMask、WalletConnect対応</p>
+                    </div>
+                    <div>
+                        <h4 style="color: #a855f7; margin-bottom: 12px;">データ保存</h4>
+                        <p style="color: var(--text-secondary);">IPFS分散ストレージ</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section>
+        <div class="container">
+            <div class="cta-section">
+                <h2 style="margin-bottom: 20px;">実績を資産に変える</h2>
+                <p style="color: var(--text-secondary); max-width: 600px; margin: 0 auto;">
+                    ブロックチェーンベースのブローカー評価プロトコルで、<br>
+                    あなたの取引実績を信用スコアに変換しましょう。
+                </p>
+                <div class="cta-buttons">
+                    <a href="https://dashboard.avisail.com/vessel-nft" class="btn-primary">ダッシュボードを見る</a>
+                    <a href="../ja/contact.html" class="btn-secondary">お問い合わせ</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <div id="footer-placeholder"></div>
+
+    <script>
+        // Load header
+        fetch('../includes/header-ja.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-placeholder').innerHTML = data;
+            });
+
+        // Load footer
+        fetch('../includes/footer-ja.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            });
+    </script>
+</body>
+
+</html>
