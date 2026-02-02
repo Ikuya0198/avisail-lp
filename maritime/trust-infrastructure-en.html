@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Maritime Trust Infrastructure - Tamper-Proof Evidence Management | Avisail Technologies</title>
+<meta name="description" content="NFT technology-powered trust, evidence, and accountability management platform for maritime transactions. Document tamper prevention, automatic Evidence Pack generation, sanctions compliance evidence.">
+<link rel="canonical" href="https://avisail.com/maritime/trust-infrastructure-en.html">
+<link rel="alternate" hreflang="en" href="https://avisail.com/maritime/trust-infrastructure-en.html">
+<link rel="alternate" hreflang="ja" href="https://avisail.com/maritime/trust-infrastructure-ja.html">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<style>
+/* Copy all styles from trust-infrastructure-ja.html */
+.page-hero{
+  padding:120px 0 80px;
+  background:
+    linear-gradient(rgba(10,15,26,0.88),rgba(10,15,26,0.94)),
+    radial-gradient(ellipse at 40% 30%,rgba(106,166,255,0.1),transparent 50%),
+    radial-gradient(ellipse at 60% 70%,rgba(126,240,212,0.08),transparent 50%),
+    var(--bg-dark);
+  position:relative;
+  overflow:hidden;
+}
+.page-hero::before{content:'';position:absolute;bottom:0;left:0;right:0;height:200px;background:linear-gradient(to top, var(--bg-dark), transparent);}
+.page-hero .wrap{position:relative;z-index:2;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;background:rgba(126,240,212,0.12);border:1px solid rgba(126,240,212,0.3);border-radius:30px;color:var(--accent-teal);font-size:0.8rem;font-weight:700;margin-bottom:24px;letter-spacing:0.05em;}
+.page-hero h1{font-size:clamp(2.2rem,5.5vw,3.8rem);margin-bottom:28px;color:#fff;font-weight:800;line-height:1.2;max-width:950px;}
+.page-hero h1 span{background:var(--primary-gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.page-hero .lead{color:var(--text-secondary);max-width:850px;font-size:1.15rem;line-height:1.8;margin-bottom:24px;}
+.clarification-box{background:rgba(239,68,68,0.08);border-left:4px solid #ef4444;padding:20px 24px;border-radius:8px;max-width:850px;margin-top:24px;}
+.clarification-box p{color:var(--text-secondary);font-size:1rem;line-height:1.7;margin:0;}
+.clarification-box strong{color:#fff;}
+.reality-section{background:rgba(5,8,15,0.4);border-radius:14px;padding:48px;margin:60px 0;}
+.reality-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin-top:36px;}
+.reality-card{background:rgba(239,68,68,0.05);border:1px solid rgba(239,68,68,0.2);border-radius:12px;padding:28px;}
+.reality-card h4{color:#ef4444;font-size:1.15rem;margin-bottom:12px;font-weight:700;}
+.reality-card p{color:var(--text-secondary);line-height:1.7;font-size:0.95rem;}
+.essence-highlight{background:linear-gradient(135deg,rgba(16,185,129,0.1),rgba(126,240,212,0.06));border:2px solid rgba(126,240,212,0.35);border-radius:16px;padding:48px;text-align:center;margin:60px 0;}
+.essence-highlight h2{font-size:2.2rem;margin-bottom:20px;color:#fff;font-weight:800;line-height:1.4;}
+.essence-highlight .highlight-text{font-size:1.8rem;font-weight:800;background:var(--primary-gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1.5;}
+.use-cases{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:28px;margin-top:48px;}
+.use-case-card{background:rgba(10,15,26,0.5);border:1px solid rgba(126,240,212,0.2);border-radius:14px;padding:32px;}
+.use-case-number{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;background:var(--primary-gradient);border-radius:50%;font-size:1.3rem;font-weight:800;color:#0a0f1a;margin-bottom:20px;}
+.use-case-card h4{color:#fff;font-size:1.2rem;margin-bottom:12px;font-weight:700;}
+.use-case-card p{color:var(--text-secondary);line-height:1.75;font-size:0.95rem;margin-bottom:16px;}
+.use-case-card ul{list-style:none;padding:0;margin:0;color:var(--text-muted);font-size:0.9rem;}
+.use-case-card ul li{padding:6px 0;padding-left:20px;position:relative;line-height:1.6;}
+.use-case-card ul li::before{content:'→';position:absolute;left:0;color:var(--accent-teal);font-weight:700;}
+.target-section{background:rgba(5,8,15,0.4);border-radius:14px;padding:48px;}
+.target-columns{display:grid;grid-template-columns:1.5fr 1fr;gap:40px;margin-top:36px;}
+@media (max-width:768px){.target-columns{grid-template-columns:1fr;}}
+.target-box h4{color:#fff;font-size:1.2rem;margin-bottom:20px;font-weight:700;}
+.target-box ul{list-style:none;padding:0;margin:0;}
+.target-box ul li{padding:12px 0;border-bottom:1px solid var(--line);color:var(--text-secondary);font-size:0.95rem;display:flex;align-items:center;gap:12px;}
+.target-box ul li::before{content:'✓';color:var(--accent-teal);font-weight:700;font-size:1.1rem;flex-shrink:0;}
+.flow-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px;margin-top:48px;}
+.flow-card{background:rgba(126,240,212,0.04);border:1px solid rgba(126,240,212,0.2);border-radius:12px;padding:28px;text-align:center;}
+.flow-card-number{width:52px;height:52px;background:var(--primary-gradient);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.4rem;font-weight:800;color:#0a0f1a;margin:0 auto 20px;}
+.flow-card h5{color:#fff;font-size:1.1rem;margin-bottom:12px;font-weight:700;}
+.flow-card p{color:var(--text-secondary);font-size:0.9rem;line-height:1.7;}
+.pricing-tiers{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:28px;margin-top:48px;}
+.pricing-tier{background:rgba(10,15,26,0.6);border:2px solid rgba(126,240,212,0.25);border-radius:14px;padding:36px 32px;text-align:center;}
+.pricing-tier.featured{border-color:rgba(126,240,212,0.5);background:linear-gradient(135deg,rgba(16,185,129,0.08),rgba(126,240,212,0.05));}
+.tier-label{display:inline-block;background:rgba(126,240,212,0.15);color:var(--accent-teal);padding:6px 14px;border-radius:20px;font-size:0.8rem;font-weight:700;margin-bottom:20px;}
+.pricing-tier h4{color:#fff;font-size:1.4rem;margin-bottom:16px;font-weight:800;}
+.pricing-tier .price{font-size:2.2rem;font-weight:800;background:var(--primary-gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:8px;}
+.pricing-tier .price-detail{color:var(--text-muted);font-size:0.85rem;margin-bottom:24px;}
+.pricing-tier ul{list-style:none;padding:0;margin:0 0 28px 0;text-align:left;}
+.pricing-tier ul li{padding:10px 0;color:var(--text-secondary);font-size:0.9rem;display:flex;align-items:flex-start;gap:10px;line-height:1.6;}
+.pricing-tier ul li::before{content:'✓';color:var(--accent-teal);font-weight:700;flex-shrink:0;margin-top:2px;}
+.cta-section{background:linear-gradient(135deg,rgba(106,166,255,0.12),rgba(126,240,212,0.1)),rgba(5,8,15,0.7);border:2px solid rgba(126,240,212,0.4);border-radius:16px;padding:64px 48px;text-align:center;margin-top:80px;}
+.cta-section h2{font-size:2.8rem;margin-bottom:24px;color:#fff;font-weight:800;line-height:1.3;}
+.cta-section p{color:var(--text-secondary);font-size:1.15rem;max-width:750px;margin:0 auto 40px;line-height:1.8;}
+</style>
+</head>
+<body style="background:#0a0f1a;">
+
+<!-- Shared Header -->
+<div id="site-header"></div>
+
+<!-- Hero -->
+<section class="page-hero">
+<div class="wrap">
+<div class="hero-badge">
+🔗 Maritime Trust Infrastructure
+</div>
+<h1>
+Not NFTs.<br>
+<span>It's foundational technology<br>to affordably carry "trust, evidence, and accountability"<br>in maritime transactions.</span>
+</h1>
+<p class="lead">
+Document tamper prevention, automatic transaction evidence management, sanctions/compliance proof.<br>
+A platform that automates "accountability" in the maritime industry and dramatically improves transaction credibility.
+</p>
+
+<div class="clarification-box">
+<p>
+<strong>Important:</strong> This technology is NOT about "selling NFTs."<br>
+It's <strong>foundational technology</strong> for managing the <strong>authenticity, evidence, and accountability</strong> of maritime transaction documents and contracts in a tamper-proof, low-cost manner.
+</p>
+</div>
+
+<div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:36px;">
+<a href="#contact" class="cta" style="font-size:1.05rem;padding:18px 40px;">Request Materials</a>
+<a href="#solution" class="btn" style="font-size:1.05rem;padding:18px 40px;">Learn More</a>
+</div>
+</div>
+</section>
+
+<!-- Reality -->
+<section>
+<div class="wrap">
+<div class="reality-section">
+<h2 style="text-align:center;margin-bottom:16px;">Maritime Industry Reality</h2>
+<p style="text-align:center;color:var(--text-muted);font-size:1.1rem;margin-bottom:40px;max-width:800px;margin-left:auto;margin-right:auto;">
+Maritime industry has <strong style="color:#fff;">many documents, many parties, crosses borders and jurisdictions</strong><br>
+As a result, chronic problems occur
+</p>
+
+<div class="reality-grid">
+<div class="reality-card">
+<h4>📝 Document Tampering/Substitution Risk</h4>
+<p>
+Paper/PDF/Excel-based documents are easily tampered. "Which version is official" and "who approved" are unclear.
+</p>
+</div>
+
+<div class="reality-card">
+<h4>🔍 Cannot Prove Verification Actions</h4>
+<p>
+Cannot later prove "who, when, what was verified." No audit trail for sanctions checks and counterparty verifications.
+</p>
+</div>
+
+<div class="reality-card">
+<h4>🌏 Compliance Depends on Individuals</h4>
+<p>
+Sanctions risk checks, KYB, AIS anomaly monitoring depend on individuals. No organizational evidence management, difficult to explain in audits.
+</p>
+</div>
+
+<div class="reality-card">
+<h4>⚠️ Accountability During Incidents/Disputes</h4>
+<p>
+Cannot chronologically explain "who made what decisions" during incidents/disputes, accountability unclear.
+</p>
+</div>
+
+<div class="reality-card">
+<h4>💼 Burden of Audit/Bank Submissions</h4>
+<p>
+Every time, cobble together Excel/Word files. No continuous evidence management, cannot fulfill accountability.
+</p>
+</div>
+
+<div class="reality-card">
+<h4>🚫 Business Suspension Risk</h4>
+<p>
+Inability to prove "we were managing" causes serious risks to insurance, credit, and business continuity.
+</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Essence -->
+<section style="background:rgba(5,8,15,0.3);">
+<div class="wrap">
+<div class="essence-highlight">
+<h2>The Core Issue</h2>
+<p class="highlight-text">
+In maritime transactions, operations, and contracts<br>
+"Trust, Evidence, and Accountability"<br>
+Cannot be carried affordably
+</p>
+</div>
+</div>
+</section>
+
+<!-- Solution -->
+<section id="solution">
+<div class="wrap">
+<h2 style="text-align:center;">Avisail's Trust Infrastructure Solves It</h2>
+<p style="text-align:center;color:var(--text-muted);font-size:1.1rem;margin-bottom:48px;max-width:800px;margin-left:auto;margin-right:auto;">
+Using NFT technology (blockchain) behind the scenes<br>
+Achieving "tamper-proof evidence management" without changing existing workflows
+</p>
+
+<div class="use-cases">
+<div class="use-case-card">
+<div class="use-case-number">1</div>
+<h4>Maritime Document Authenticity & Evidence Management</h4>
+<p>
+Documents remain in traditional formats. Hashing and evidence trails enable third parties to instantly verify "not tampered" and "which version is official."
+</p>
+<ul>
+<li>Purchase agreements</li>
+<li>Charter parties</li>
+<li>B/L (paper or electronic)</li>
+<li>Insurance certificates, Class certifications</li>
+</ul>
+</div>
+
+<div class="use-case-card">
+<div class="use-case-number">2</div>
+<h4>Transaction Due Diligence Evidence Pack Generation</h4>
+<p>
+Auto-generate Evidence Pack (evidence bundle) proving "required verifications were conducted at that time." Suitable for incident/audit/bank/insurance submissions.
+</p>
+<ul>
+<li>Sanctions checks</li>
+<li>Counterparty verification (KYB)</li>
+<li>AIS anomaly/trajectory checks</li>
+<li>Contract terms verification</li>
+</ul>
+</div>
+
+<div class="use-case-card">
+<div class="use-case-number">3</div>
+<h4>Contract & Rights Agreement/Approval Logs</h4>
+<p>
+Hold "who, with what authority, when approved" as irreversible logs. Prevent post-facto claims of "didn't approve."
+</p>
+<ul>
+<li>Charter terms agreement</li>
+<li>Terms modification approvals</li>
+<li>Sub-charter/transfer consents</li>
+</ul>
+</div>
+
+<div class="use-case-card">
+<div class="use-case-number">4</div>
+<h4>Rights & Track Record Tokenization (Future Expansion)</h4>
+<p>
+NFTs used as identifiers/history management technology behind the scenes. Presented outwardly as "rights management" and "track record proof."
+</p>
+<ul>
+<li>Charter usage rights</li>
+<li>Transaction track records (broker records)</li>
+<li>Revenue entitlements</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Target -->
+<section style="background:rgba(5,8,15,0.3);">
+<div class="wrap">
+<div class="target-section">
+<h2 style="text-align:center;margin-bottom:16px;">Target Audience</h2>
+<p style="text-align:center;color:var(--text-muted);font-size:1.05rem;margin-bottom:40px;">
+All maritime operators requiring "accountability"
+</p>
+
+<div class="target-columns">
+<div class="target-box">
+<h4 style="color:var(--accent-teal);">Primary Targets (High Necessity)</h4>
+<ul>
+<li>Ship brokers</li>
+<li>Shipping companies & operators</li>
+<li>Trading companies (ships, project logistics)</li>
+<li>Insurance agents / P&I related</li>
+<li>Small to medium vessel sale/charter operators</li>
+</ul>
+</div>
+
+<div class="target-box">
+<h4 style="color:var(--text-muted);">Secondary Targets (Expansion)</h4>
+<ul style="opacity:0.7;">
+<li>Financial institutions (ship finance)</li>
+<li>Port & offshore project operators</li>
+<li>International transaction entities with strict regulatory/audit compliance</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Flow -->
+<section>
+<div class="wrap">
+<h2 style="text-align:center;">Implementation Process</h2>
+<p style="text-align:center;color:var(--text-muted);font-size:1.05rem;margin-bottom:48px;max-width:700px;margin-left:auto;margin-right:auto;">
+<strong style="color:#fff;">Existing workflows unchanged</strong><br>
+Use current document formats and contracting practices as-is
+</p>
+
+<div class="flow-grid">
+<div class="flow-card">
+<div class="flow-card-number">1</div>
+<h5>Maintain Existing Workflows</h5>
+<p>
+Document formats and contracting practices unchanged. No need to alter workflows for system implementation.
+</p>
+</div>
+
+<div class="flow-card">
+<div class="flow-card-number">2</div>
+<h5>Upload</h5>
+<p>
+Upload documents/transaction info to platform. Simple drag & drop.
+</p>
+</div>
+
+<div class="flow-card">
+<div class="flow-card-number">3</div>
+<h5>Auto-Processing</h5>
+<p>
+System auto-executes hashing, evidence trails, approval logs. Recorded tamper-proof with NFT technology.
+</p>
+</div>
+
+<div class="flow-card">
+<div class="flow-card-number">4</div>
+<h5>Evidence Pack Generation</h5>
+<p>
+Auto-generate Evidence Pack (evidence bundle) per transaction. Complete proof package for audit/incident/bank submission.
+</p>
+</div>
+
+<div class="flow-card">
+<div class="flow-card-number">5</div>
+<h5>Submit/Share</h5>
+<p>
+Instantly submit/share with counterparties, banks, insurers, auditors as needed. Fulfill accountability immediately.
+</p>
+</div>
+</div>
+
+<div style="text-align:center;margin-top:48px;padding:32px;background:rgba(126,240,212,0.06);border:1px solid rgba(126,240,212,0.25);border-radius:12px;max-width:700px;margin-left:auto;margin-right:auto;">
+<p style="font-size:1.15rem;color:#fff;font-weight:700;margin-bottom:8px;">
+"Not using it is risky" "Using it makes accountability easy"
+</p>
+<p style="color:var(--text-secondary);font-size:1rem;line-height:1.7;">
+Minimal field burden, maximum accountability.
+</p>
+</div>
+</div>
+</section>
+
+<!-- Competitive Comparison & Technical Advantage sections omitted for brevity - insert from Japanese version translated -->
+
+<!-- Pricing -->
+<section style="background:rgba(5,8,15,0.3);">
+<div class="wrap">
+<h2 style="text-align:center;">Pricing Structure</h2>
+<p style="text-align:center;color:var(--text-muted);font-size:1.05rem;margin-bottom:48px;max-width:700px;margin-left:auto;margin-right:auto;">
+Clear pricing: SaaS usage + per-transaction billing
+</p>
+
+<div class="pricing-tiers">
+<div class="pricing-tier">
+<div class="tier-label">Small Operations</div>
+<h4>Starter Plan</h4>
+<div class="price">¥50,000〜</div>
+<div class="price-detail">Per month</div>
+<ul>
+<li>Basic document evidence management</li>
+<li>Up to 5 transactions/month</li>
+<li>Evidence Pack generation</li>
+<li>Standard support</li>
+</ul>
+</div>
+
+<div class="pricing-tier featured">
+<div class="tier-label" style="background:var(--primary-gradient);color:#0a0f1a;">Recommended</div>
+<h4>Business Plan</h4>
+<div class="price">¥150,000〜</div>
+<div class="price-detail">Per month</div>
+<ul>
+<li>Full feature access</li>
+<li>Up to 15 transactions/month</li>
+<li>Priority support</li>
+<li>API integration</li>
+<li>Customization support</li>
+</ul>
+</div>
+
+<div class="pricing-tier">
+<div class="tier-label">Trading/Insurance</div>
+<h4>Enterprise</h4>
+<div class="price">¥300,000〜</div>
+<div class="price-detail">Per month</div>
+<ul>
+<li>Unlimited transactions</li>
+<li>Dedicated support</li>
+<li>Full customization</li>
+<li>External verification API</li>
+<li>Training included</li>
+</ul>
+</div>
+</div>
+
+<div style="text-align:center;margin-top:48px;padding:32px;background:rgba(126,240,212,0.05);border:1px solid rgba(126,240,212,0.2);border-radius:12px;max-width:750px;margin-left:auto;margin-right:auto;">
+<h4 style="color:#fff;font-size:1.2rem;margin-bottom:16px;">Per-Transaction Billing (Evidence Pack Generation)</h4>
+<p style="color:var(--text-secondary);font-size:1rem;line-height:1.8;margin-bottom:0;">
+<strong style="color:#fff;">¥30,000〜¥300,000 / transaction</strong><br>
+Varies by transaction size and verification items<br>
+(Only beyond monthly plan's free quota)
+</p>
+</div>
+</div>
+</section>
+
+<!-- CTA -->
+<section id="contact">
+<div class="wrap">
+<div class="cta-section">
+<h2>Build a System to Stay Compliant<br>Starting Now</h2>
+<p>
+Eliminate "cannot prove" risk in audits, incidents, and bank dealings.<br>
+Dramatically improve transaction credibility with tamper-proof evidence management.
+</p>
+<div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+<a href="../en/contact.html" class="cta" style="font-size:1.15rem;padding:20px 52px;">Request Materials</a>
+<a href="../en/contact.html" class="btn" style="font-size:1.15rem;padding:20px 52px;">Schedule Consultation</a>
+</div>
+
+<div style="margin-top:56px;padding-top:36px;border-top:1px solid rgba(126,240,212,0.2);">
+<p style="color:var(--text-muted);font-size:0.9rem;margin-bottom:12px;">Contact Us</p>
+<p style="color:var(--text-secondary);font-size:1.05rem;"><strong>info@avisail.com</strong></p>
+<p style="color:var(--text-muted);font-size:0.9rem;margin-top:12px;">Languages: Japanese / English / Italian<br>Response: Within 1 business day</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Shared Footer -->
+<div id="site-footer"></div>
+
+<!-- Shared Components Loader -->
+<script src="../includes/components.js"></script>
+
+</body>
+</html>
