@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>船舶取引 信頼インフラ技術 - 改ざん不可能な証跡管理 | Avisail Technologies</title>
+<meta name="description" content="NFT技術を活用した船舶取引の信頼・証跡・責任管理プラットフォーム。書類改ざん防止、Evidence Pack自動生成、制裁・コンプラ対応の証跡化。">
+<link rel="canonical" href="https://avisail.com/maritime/trust-infrastructure-ja.html">
+<link rel="alternate" hreflang="ja" href="https://avisail.com/maritime/trust-infrastructure-ja.html">
+<link rel="alternate" hreflang="en" href="https://avisail.com/maritime/trust-infrastructure-en.html">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<style>
+.page-hero{
+  padding:120px 0 80px;
+  background:
+    linear-gradient(rgba(10,15,26,0.88),rgba(10,15,26,0.94)),
+    radial-gradient(ellipse at 40% 30%,rgba(106,166,255,0.1),transparent 50%),
+    radial-gradient(ellipse at 60% 70%,rgba(126,240,212,0.08),transparent 50%),
+    var(--bg-dark);
+  position:relative;
+  overflow:hidden;
+}
+.page-hero::before{
+  content:'';
+  position:absolute;
+  bottom:0;
+  left:0;
+  right:0;
+  height:200px;
+  background:linear-gradient(to top, var(--bg-dark), transparent);
+}
+.page-hero .wrap{position:relative;z-index:2;}
+.hero-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:10px 20px;
+  background:rgba(126,240,212,0.12);
+  border:1px solid rgba(126,240,212,0.3);
+  border-radius:30px;
+  color:var(--accent-teal);
+  font-size:0.8rem;
+  font-weight:700;
+  margin-bottom:24px;
+  letter-spacing:0.05em;
+}
+.page-hero h1{
+  font-size:clamp(2.2rem,5.5vw,3.8rem);
+  margin-bottom:28px;
+  color:#fff;
+  font-weight:800;
+  line-height:1.2;
+  max-width:950px;
+}
+.page-hero h1 span{
+  background:var(--primary-gradient);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.page-hero .lead{
+  color:var(--text-secondary);
+  max-width:850px;
+  font-size:1.15rem;
+  line-height:1.8;
+  margin-bottom:24px;
+}
+.clarification-box{
+  background:rgba(239,68,68,0.08);
+  border-left:4px solid #ef4444;
+  padding:20px 24px;
+  border-radius:8px;
+  max-width:850px;
+  margin-top:24px;
+}
+.clarification-box p{
+  color:var(--text-secondary);
+  font-size:1rem;
+  line-height:1.7;
+  margin:0;
+}
+.clarification-box strong{
+  color:#fff;
+}
+.reality-section{
+  background:rgba(5,8,15,0.4);
+  border-radius:14px;
+  padding:48px;
+  margin:60px 0;
+}
+.reality-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:24px;
+  margin-top:36px;
+}
+.reality-card{
+  background:rgba(239,68,68,0.05);
+  border:1px solid rgba(239,68,68,0.2);
+  border-radius:12px;
+  padding:28px;
+}
+.reality-card h4{
+  color:#ef4444;
+  font-size:1.15rem;
+  margin-bottom:12px;
+  font-weight:700;
+}
+.reality-card p{
+  color:var(--text-secondary);
+  line-height:1.7;
+  font-size:0.95rem;
+}
+.essence-highlight{
+  background:linear-gradient(135deg,rgba(16,185,129,0.1),rgba(126,240,212,0.06));
+  border:2px solid rgba(126,240,212,0.35);
+  border-radius:16px;
+  padding:48px;
+  text-align:center;
+  margin:60px 0;
+}
+.essence-highlight h2{
+  font-size:2.2rem;
+  margin-bottom:20px;
+  color:#fff;
+  font-weight:800;
+  line-height:1.4;
+}
+.essence-highlight .highlight-text{
+  font-size:1.8rem;
+  font-weight:800;
+  background:var(--primary-gradient);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  line-height:1.5;
+}
+.use-cases{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:28px;
+  margin-top:48px;
+}
+.use-case-card{
+  background:rgba(10,15,26,0.5);
+  border:1px solid rgba(126,240,212,0.2);
+  border-radius:14px;
+  padding:32px;
+}
+.use-case-number{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:44px;
+  height:44px;
+  background:var(--primary-gradient);
+  border-radius:50%;
+  font-size:1.3rem;
+  font-weight:800;
+  color:#0a0f1a;
+  margin-bottom:20px;
+}
+.use-case-card h4{
+  color:#fff;
+  font-size:1.2rem;
+  margin-bottom:12px;
+  font-weight:700;
+}
+.use-case-card p{
+  color:var(--text-secondary);
+  line-height:1.75;
+  font-size:0.95rem;
+  margin-bottom:16px;
+}
+.use-case-card ul{
+  list-style:none;
+  padding:0;
+  margin:0;
+  color:var(--text-muted);
+  font-size:0.9rem;
+}
+.use-case-card ul li{
+  padding:6px 0;
+  padding-left:20px;
+  position:relative;
+  line-height:1.6;
+}
+.use-case-card ul li::before{
+  content:'→';
+  position:absolute;
+  left:0;
+  color:var(--accent-teal);
+  font-weight:700;
+}
+.target-section{
+  background:rgba(5,8,15,0.4);
+  border-radius:14px;
+  padding:48px;
+}
+.target-columns{
+  display:grid;
+  grid-template-columns:1.5fr 1fr;
+  gap:40px;
+  margin-top:36px;
+}
+@media (max-width:768px){
+  .target-columns{grid-template-columns:1fr;}
+}
+.target-box h4{
+  color:#fff;
+  font-size:1.2rem;
+  margin-bottom:20px;
+  font-weight:700;
+}
+.target-box ul{
+  list-style:none;
+  padding:0;
+  margin:0;
+}
+.target-box ul li{
+  padding:12px 0;
+  border-bottom:1px solid var(--line);
+  color:var(--text-secondary);
+  font-size:0.95rem;
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+.target-box ul li::before{
+  content:'✓';
+  color:var(--accent-teal);
+  font-weight:700;
+  font-size:1.1rem;
+  flex-shrink:0;
+}
+.flow-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:24px;
+  margin-top:48px;
+}
+.flow-card{
+  background:rgba(126,240,212,0.04);
+  border:1px solid rgba(126,240,212,0.2);
+  border-radius:12px;
+  padding:28px;
+  text-align:center;
+}
+.flow-card-number{
+  width:52px;
+  height:52px;
+  background:var(--primary-gradient);
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:1.4rem;
+  font-weight:800;
+  color:#0a0f1a;
+  margin:0 auto 20px;
+}
+.flow-card h5{
+  color:#fff;
+  font-size:1.1rem;
+  margin-bottom:12px;
+  font-weight:700;
+}
+.flow-card p{
+  color:var(--text-secondary);
+  font-size:0.9rem;
+  line-height:1.7;
+}
+.pricing-tiers{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:28px;
+  margin-top:48px;
+}
+.pricing-tier{
+  background:rgba(10,15,26,0.6);
+  border:2px solid rgba(126,240,212,0.25);
+  border-radius:14px;
+  padding:36px 32px;
+  text-align:center;
+}
+.pricing-tier.featured{
+  border-color:rgba(126,240,212,0.5);
+  background:linear-gradient(135deg,rgba(16,185,129,0.08),rgba(126,240,212,0.05));
+}
+.tier-label{
+  display:inline-block;
+  background:rgba(126,240,212,0.15);
+  color:var(--accent-teal);
+  padding:6px 14px;
+  border-radius:20px;
+  font-size:0.8rem;
+  font-weight:700;
+  margin-bottom:20px;
+}
+.pricing-tier h4{
+  color:#fff;
+  font-size:1.4rem;
+  margin-bottom:16px;
+  font-weight:800;
+}
+.pricing-tier .price{
+  font-size:2.2rem;
+  font-weight:800;
+  background:var(--primary-gradient);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  margin-bottom:8px;
+}
+.pricing-tier .price-detail{
+  color:var(--text-muted);
+  font-size:0.85rem;
+  margin-bottom:24px;
+}
+.pricing-tier ul{
+  list-style:none;
+  padding:0;
+  margin:0 0 28px 0;
+  text-align:left;
+}
+.pricing-tier ul li{
+  padding:10px 0;
+  color:var(--text-secondary);
+  font-size:0.9rem;
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
+  line-height:1.6;
+}
+.pricing-tier ul li::before{
+  content:'✓';
+  color:var(--accent-teal);
+  font-weight:700;
+  flex-shrink:0;
+  margin-top:2px;
+}
+.cta-section{
+  background:
+    linear-gradient(135deg,rgba(106,166,255,0.12),rgba(126,240,212,0.1)),
+    rgba(5,8,15,0.7);
+  border:2px solid rgba(126,240,212,0.4);
+  border-radius:16px;
+  padding:64px 48px;
+  text-align:center;
+  margin-top:80px;
+}
+.cta-section h2{
+  font-size:2.8rem;
+  margin-bottom:24px;
+  color:#fff;
+  font-weight:800;
+  line-height:1.3;
+}
+.cta-section p{
+  color:var(--text-secondary);
+  font-size:1.15rem;
+  max-width:750px;
+  margin:0 auto 40px;
+  line-height:1.8;
+}
+</style>
+</head>
+<body style="background:#0a0f1a;">
+
+<!-- Shared Header -->
+<div id="site-header"></div>
+
+<!-- Hero Section -->
+<section class="page-hero">
+<div class="wrap">
+<div class="hero-badge">
+🔗 船舶取引の信頼インフラ
+</div>
+<h1>
+NFTではありません。<br>
+<span>船舶取引における「信頼・証跡・責任」を<br>低コストで持ち運ぶ基盤技術です。</span>
+</h1>
+<p class="lead">
+書類改ざん防止、取引証跡の自動管理、制裁・コンプラ対応の証明。<br>
+海事業界の「説明責任」を自動化し、取引の信頼性を劇的に向上させるプラットフォーム。
+</p>
+
+<div class="clarification-box">
+<p>
+<strong>重要：</strong>本技術は「NFTを売るもの」ではありません。<br>
+海事取引における書類・契約・確認作業の<strong>真正性・証跡・責任の所在</strong>を、改ざん不可能な形で低コストで管理するための<strong>基盤技術</strong>です。
+</p>
+</div>
+
+<div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:36px;">
+<a href="#contact" class="cta" style="font-size:1.05rem;padding:18px 40px;">資料請求</a>
+<a href="#solution" class="btn" style="font-size:1.05rem;padding:18px 40px;">詳細を見る</a>
+</div>
+</div>
+</section>
+
+<!-- Reality Section -->
+<section>
+<div class="wrap">
+<div class="reality-section">
+<h2 style="text-align:center;margin-bottom:16px;">海事業界の現実</h2>
+<p style="text-align:center;color:var(--text-muted);font-size:1.1rem;margin-bottom:40px;max-width:800px;margin-left:auto;margin-right:auto;">
+海事業界は<strong style="color:#fff;">書類が多い・当事者が多い・国境と法域が絡む</strong>構造<br>
+その結果、慢性的な問題が発生しています
+</p>
+
+<div class="reality-grid">
+<div class="reality-card">
+<h4>📝 書類改ざん・差し替えリスク</h4>
+<p>
+紙・PDF・Excelベースの書類は改ざんが容易。「どのバージョンが正式か」「誰が承認したか」が不明確。
+</p>
+</div>
+
+<div class="reality-card">
+<h4>🔍 確認作業の証明不可</h4>
+<p>
+「誰が・いつ・何を確認したか」を後から証明できない。制裁チェック、相手方確認の証跡が残らない。
+</p>
+</div>
+
+<div class="reality-card">
+<h4>🌏 制裁・コンプラ対応の属人化</h4>
+<p>
+制裁リスク確認、KYB、AIS異常監視が担当者依存。組織的な証跡管理ができず、監査で説明困難。
+</p>
+</div>
+
+<div class="reality-card">
+<h4>⚠️ 事故・紛争時の説明責任</h4>
+<p>
+事故・紛争発生時に「誰が・何を判断したか」を時系列で説明できず、責任の所在が曖昧に。
+</p>
+</div>
+
+<div class="reality-card">
+<h4>💼 監査・銀行提出の負担</h4>
+<p>
+毎回、Excel・Wordを寄せ集めて対応。継続的な証跡管理ができず、説明責任を果たせない。
+</p>
+</div>
+
+<div class="reality-card">
+<h4>🚫 事業停止リスク</h4>
+<p>
+「管理していた」と証明できないことで、保険・信用・取引継続に重大なリスクが発生。
+</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Essence -->
+<section style="background:rgba(5,8,15,0.3);">
+<div class="wrap">
+<div class="essence-highlight">
+<h2>本質的な課題</h2>
+<p class="highlight-text">
+船舶取引・運航・契約における<br>
+「信頼・証跡・責任の所在」が<br>
+低コストで持ち運べない
+</p>
+</div>
+</div>
+</section>
+
+<!-- Solution -->
+<section id="solution">
+<div class="wrap">
+<h2 style="text-align:center;">Avisailの信頼インフラ技術が解決</h2>
+<p style="text-align:center;color:var(--text-muted);font-size:1.1rem;margin-bottom:48px;max-width:800px;margin-left:auto;margin-right:auto;">
+NFT技術（ブロックチェーン）を裏側で活用し、<br>
+既存業務を変えずに「改ざん不可能な証跡管理」を実現
+</p>
+
+<div class="use-cases">
+<div class="use-case-card">
+<div class="use-case-number">1</div>
+<h4>船舶関連書類の真正性・証跡管理</h4>
+<p>
+書類そのものは従来形式のまま。ハッシュ化・証跡化により「改ざんされていない」「どの版が正か」を第三者が即時検証可能。
+</p>
+<ul>
+<li>売買契約書</li>
+<li>傭船契約（Charter Party）</li>
+<li>B/L（紙・電子問わず）</li>
+<li>保険証書・Class証明</li>
+</ul>
+</div>
+
+<div class="use-case-card">
+<div class="use-case-number">2</div>
+<h4>取引・DDの証跡パック生成</h4>
+<p>
+「その時点で必要な確認を行った」ことを証明するEvidence Pack（証跡束）を自動生成。事故・監査・銀行・保険提出に耐える形で保存。
+</p>
+<ul>
+<li>制裁チェック</li>
+<li>相手方確認（KYB）</li>
+<li>AIS異常・航跡確認</li>
+<li>契約条件確認</li>
+</ul>
+</div>
+
+<div class="use-case-card">
+<div class="use-case-number">3</div>
+<h4>契約・権利の合意・承認ログ</h4>
+<p>
+誰が・どの権限で・いつ承認したかを不可逆ログとして保持。後から「承認していない」という主張を防ぐ。
+</p>
+<ul>
+<li>傭船条件の合意</li>
+<li>条件変更の承認</li>
+<li>再委託・移転に関する同意</li>
+</ul>
+</div>
+
+<div class="use-case-card">
+<div class="use-case-number">4</div>
+<h4>権利・実績のトークン化（将来拡張）</h4>
+<p>
+NFTは裏側の識別子・履歴管理技術として使用。表向きは「権利管理」「実績証明」として提供。
+</p>
+<ul>
+<li>傭船使用権</li>
+<li>取引実績（ブローカー実績）</li>
+<li>収益受益権</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Target -->
+<section style="background:rgba(5,8,15,0.3);">
+<div class="wrap">
+<div class="target-section">
+<h2 style="text-align:center;margin-bottom:16px;">導入対象</h2>
+<p style="text-align:center;color:var(--text-muted);font-size:1.05rem;margin-bottom:40px;">
+「説明責任」が求められるあらゆる海事事業者
+</p>
+
+<div class="target-columns">
+<div class="target-box">
+<h4 style="color:var(--accent-teal);">一次ターゲット（必須度が高い層）</h4>
+<ul>
+<li>船舶ブローカー</li>
+<li>海運会社・オペレーター</li>
+<li>商社（船舶・プロジェクト物流）</li>
+<li>保険代理店 / P&I関連</li>
+<li>船舶売買・傭船を扱う中小〜中堅事業者</li>
+</ul>
+</div>
+
+<div class="target-box">
+<h4 style="color:var(--text-muted);">二次ターゲット（拡張）</h4>
+<ul style="opacity:0.7;">
+<li>金融機関（船舶ファイナンス）</li>
+<li>港湾・オフショアプロジェクト事業者</li>
+<li>規制・監査対応が厳しい国際取引主体</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Flow -->
+<section>
+<div class="wrap">
+<h2 style="text-align:center;">導入の流れ</h2>
+<p style="text-align:center;color:var(--text-muted);font-size:1.05rem;margin-bottom:48px;max-width:700px;margin-left:auto;margin-right:auto;">
+<strong style="color:#fff;">既存業務は変えません</strong><br>
+今の書類形式・契約慣行をそのまま使えます
+</p>
+
+<div class="flow-grid">
+<div class="flow-card">
+<div class="flow-card-number">1</div>
+<h5>既存業務維持</h5>
+<p>
+書類形式・契約慣行はそのまま。システム導入のために業務フローを変える必要はありません。
+</p>
+</div>
+
+<div class="flow-card">
+<div class="flow-card-number">2</div>
+<h5>アップロード</h5>
+<p>
+書類・取引情報をプラットフォームにアップロード。ドラッグ&ドロップで簡単。
+</p>
+</div>
+
+<div class="flow-card">
+<div class="flow-card-number">3</div>
+<h5>自動処理</h5>
+<p>
+システムがハッシュ化・証跡化・承認ログ生成を自動実行。NFT技術で改ざん不可能な形で記録。
+</p>
+</div>
+
+<div class="flow-card">
+<div class="flow-card-number">4</div>
+<h5>Evidence Pack生成</h5>
+<p>
+案件ごとにEvidence Pack（証跡束）を自動生成。監査・事故・銀行提出用の完全な証明パッケージ。
+</p>
+</div>
+
+<div class="flow-card">
+<div class="flow-card-number">5</div>
+<h5>提出・共有</h5>
+<p>
+必要に応じて取引先・銀行・保険・監査に即座に提出・共有。説明責任を即座に果たせます。
+</p>
+</div>
+</div>
+
+<div style="text-align:center;margin-top:48px;padding:32px;background:rgba(126,240,212,0.06);border:1px solid rgba(126,240,212,0.25);border-radius:12px;max-width:700px;margin-left:auto;margin-right:auto;">
+<p style="font-size:1.15rem;color:#fff;font-weight:700;margin-bottom:8px;">
+「使わないと危ない」「使うと説明責任が楽」
+</p>
+<p style="color:var(--text-secondary);font-size:1rem;line-height:1.7;">
+現場負荷を最小限に、説明責任を最大限に。
+</p>
+</div>
+</div>
+</section>
+
+<!-- Pricing -->
+<section style="background:rgba(5,8,15,0.3);">
+<div class="wrap">
+<h2 style="text-align:center;">料金体系</h2>
+<p style="text-align:center;color:var(--text-muted);font-size:1.05rem;margin-bottom:48px;max-width:700px;margin-left:auto;margin-right:auto;">
+SaaS利用料 + 案件課金の明確な料金設計
+</p>
+
+<div class="pricing-tiers">
+<div class="pricing-tier">
+<div class="tier-label">小規模事業者</div>
+<h4>スタータープラン</h4>
+<div class="price">¥50,000〜</div>
+<div class="price-detail">月額</div>
+<ul>
+<li>基本的な書類証跡管理</li>
+<li>月5案件まで</li>
+<li>Evidence Pack生成</li>
+<li>標準サポート</li>
+</ul>
+</div>
+
+<div class="pricing-tier featured">
+<div class="tier-label" style="background:var(--primary-gradient);color:#0a0f1a;">推奨</div>
+<h4>ビジネスプラン</h4>
+<div class="price">¥150,000〜</div>
+<div class="price-detail">月額</div>
+<ul>
+<li>全機能利用可能</li>
+<li>月15案件まで</li>
+<li>優先サポート</li>
+<li>API連携</li>
+<li>カスタマイズ対応</li>
+</ul>
+</div>
+
+<div class="pricing-tier">
+<div class="tier-label">商社・保険系</div>
+<h4>エンタープライズ</h4>
+<div class="price">¥300,000〜</div>
+<div class="price-detail">月額</div>
+<ul>
+<li>無制限案件</li>
+<li>専任サポート</li>
+<li>完全カスタマイズ</li>
+<li>外部検証API提供</li>
+<li>トレーニング込み</li>
+</ul>
+</div>
+</div>
+
+<div style="text-align:center;margin-top:48px;padding:32px;background:rgba(126,240,212,0.05);border:1px solid rgba(126,240,212,0.2);border-radius:12px;max-width:750px;margin-left:auto;margin-right:auto;">
+<h4 style="color:#fff;font-size:1.2rem;margin-bottom:16px;">案件課金（Evidence Pack生成）</h4>
+<p style="color:var(--text-secondary);font-size:1rem;line-height:1.8;margin-bottom:0;">
+<strong style="color:#fff;">¥30,000〜¥300,000 / 案件</strong><br>
+取引規模・確認項目数に応じて変動<br>
+（月額プランの無料枠を超えた場合のみ）
+</p>
+</div>
+</div>
+</section>
+
+<!-- CTA -->
+<section id="contact">
+<div class="wrap">
+<div class="cta-section">
+<h2>「詰まない仕組み」を<br>今から構築しませんか</h2>
+<p>
+監査・事故・銀行対応で「証明できない」リスクを排除。<br>
+改ざん不可能な証跡管理で、取引の信頼性を劇的に向上させます。
+</p>
+<div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+<a href="../ja/contact.html" class="cta" style="font-size:1.15rem;padding:20px 52px;">資料請求</a>
+<a href="../ja/contact.html" class="btn" style="font-size:1.15rem;padding:20px 52px;">相談する</a>
+</div>
+
+<div style="margin-top:56px;padding-top:36px;border-top:1px solid rgba(126,240,212,0.2);">
+<p style="color:var(--text-muted);font-size:0.9rem;margin-bottom:12px;">お問い合わせ</p>
+<p style="color:var(--text-secondary);font-size:1.05rem;"><strong>info@avisail.com</strong></p>
+<p style="color:var(--text-muted);font-size:0.9rem;margin-top:12px;">対応言語：日本語 / English / Italiano<br>返信：1営業日以内</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Shared Footer -->
+<div id="site-footer"></div>
+
+<!-- Shared Components Loader -->
+<script src="../includes/components.js"></script>
+
+</body>
+</html>
