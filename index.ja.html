@@ -39,9 +39,30 @@
     href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Noto+Sans+JP:wght@300;400;700&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+
+  <!-- Analytics & Tracking -->
+  <!-- Replace GTM-XXXXXXX with your Google Tag Manager ID -->
+  <!-- Replace G-XXXXXXXXXX with your Google Analytics 4 Measurement ID -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-XXXXXXX');</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
 </head>
 
 <body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
   <canvas id="global-bg"></canvas>
   <div class="noise-overlay"></div>
 
@@ -522,6 +543,82 @@
 
   <!-- Shared Components Loader -->
   <script src="includes/components.js"></script>
+
+  <!-- Schema.org Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Avisail Technologies",
+    "url": "https://avisail.com",
+    "logo": "https://avisail.com/images/logo.png",
+    "description": "Avisail Technologiesは、AIと技術探究の力で海事事業・セキュリティ事業を再定義する次世代テクノロジー企業です",
+    "foundingDate": "2024",
+    "email": "info@avisail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "JP"
+    },
+    "sameAs": [
+      "https://avisail.com"
+    ],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "Customer Service",
+      "email": "info@avisail.com",
+      "availableLanguage": ["English", "Japanese", "Italian"]
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Avisail Technologiesはどのような会社ですか？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Avisailは、AI技術を基盤に海事事業・セキュリティ事業・AI開発の3領域を展開するテクノロジー企業です。業界の慣習に縛られない実装ファーストのアプローチで、少人数でも高いスピードと品質を両立します。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "法人・個人どちらでも利用できますか？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "はい。事業により異なりますが、法人・個人ともにご利用いただけます。船舶売買・サイバーセキュリティは主に法人向け、一部システム開発サービスは個人にも対応しています。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "グローバル対応は可能ですか？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "はい、可能です。Avisailはアジア・中東・欧州との取引を前提に設計されているため、多言語・多通貨・国際法務を考慮した対応が可能です。日本語・英語・イタリア語を含む多言語でのサポートを提供しています。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "セキュリティやプライバシーへの配慮は？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "データ保護とプライバシーを最優先事項としています。通信の暗号化、アクセス管理、定期的な脆弱性診断などの技術的安全対策を実施。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "パートナーシップや協業の相談は可能ですか？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "はい、積極的に検討しております。お問い合わせフォームより「パートナーシップ」を選択してご連絡ください。技術提携、販売代理店、共同開発など、様々な形態での協業を歓迎します。"
+        }
+      }
+    ]
+  }
+  </script>
 
   <script>
     document.addEventListener("DOMContentLoaded", function () {

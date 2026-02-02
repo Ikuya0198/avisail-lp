@@ -42,9 +42,30 @@
     href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Noto+Sans+JP:wght@300;400;700&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+
+  <!-- Analytics & Tracking -->
+  <!-- Replace GTM-XXXXXXX with your Google Tag Manager ID -->
+  <!-- Replace G-XXXXXXXXXX with your Google Analytics 4 Measurement ID -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-XXXXXXX');</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
 </head>
 
 <body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
   <canvas id="global-bg"></canvas>
   <div class="noise-overlay"></div>
 
@@ -517,6 +538,82 @@
 
   <!-- Shared Components Loader -->
   <script src="includes/components.js"></script>
+
+  <!-- Schema.org Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Avisail Technologies",
+    "url": "https://avisail.com",
+    "logo": "https://avisail.com/images/logo.png",
+    "description": "Avisail Technologies is a next-generation technology company redefining maritime business and security through the power of AI and technological exploration",
+    "foundingDate": "2024",
+    "email": "info@avisail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "JP"
+    },
+    "sameAs": [
+      "https://avisail.com"
+    ],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "Customer Service",
+      "email": "info@avisail.com",
+      "availableLanguage": ["English", "Japanese", "Italian"]
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What kind of company is Avisail Technologies?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Avisail is a technology company operating in three domains: maritime business, security business, and AI development, all based on AI technology. With an implementation-first approach unconstrained by industry conventions, we achieve both high speed and quality even with a small team."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can both corporations and individuals use your services?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Availability varies by service, but both corporations and individuals can use our services. Vessel trading and cybersecurity primarily target corporations, while some system development services are also available to individuals."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you support global operations?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, we do. Avisail is designed for transactions across Asia, the Middle East, and Europe, enabling multilingual, multi-currency, and internationally compliant support. We provide support in multiple languages including Japanese, English, and Italian."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you approach security and privacy?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Data protection and privacy are our top priorities. We implement technical security measures including communication encryption, access management, and regular vulnerability assessments."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can we discuss partnerships or collaborations?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, we actively welcome such discussions. Please select 'Partnership' in the contact form and reach out to us. We welcome various forms of collaboration, including technical partnerships, sales agencies, and joint development."
+        }
+      }
+    ]
+  }
+  </script>
 
   <script>
     document.addEventListener("DOMContentLoaded", function () {

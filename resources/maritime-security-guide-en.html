@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Free Maritime Cybersecurity Guide - Avisail Technologies</title>
+  <meta name="description"
+    content="Download our comprehensive guide to maritime cybersecurity. Learn best practices for ISM/SMS compliance and cyber risk management.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="icon" type="image/png" href="../favicon.png">
+
+  <!-- Canonical & hreflang -->
+  <link rel="canonical" href="https://avisail.com/resources/maritime-security-guide-en.html">
+  <link rel="alternate" hreflang="en" href="https://avisail.com/resources/maritime-security-guide-en.html">
+  <link rel="alternate" hreflang="ja" href="https://avisail.com/resources/maritime-security-guide-ja.html">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Noto+Sans+JP:wght@300;400;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+  <canvas id="global-bg"></canvas>
+  <div class="noise-overlay"></div>
+
+  <!-- Shared Header -->
+  <div id="site-header"></div>
+
+  <!-- Lead Magnet Page -->
+  <section style="padding: 120px 0 80px; min-height: 80vh;">
+    <div class="wrap" style="max-width: 800px;">
+      <div class="card" style="padding: 60px 48px; text-align: center;">
+
+        <!-- Icon/Badge -->
+        <div style="display: inline-block; background: linear-gradient(135deg, #6AA6FF, #7EF0D4); padding: 16px; border-radius: 16px; margin-bottom: 24px;">
+          <svg width="48" height="48" fill="none" stroke="#0a0f1a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+          </svg>
+        </div>
+
+        <h1 style="font-size: 2rem; margin-bottom: 16px; color: var(--accent-teal);">
+          Maritime Cybersecurity Guide
+        </h1>
+
+        <p style="color: var(--text-secondary); font-size: 1.1rem; line-height: 1.8; margin-bottom: 32px;">
+          A comprehensive 25-page guide covering essential cybersecurity practices for maritime operations, ISM Code compliance, and SMS audit preparation.
+        </p>
+
+        <!-- What's Inside -->
+        <div style="text-align: left; background: rgba(126, 240, 212, 0.05); padding: 32px; border-radius: 12px; border: 1px solid rgba(126, 240, 212, 0.2); margin-bottom: 32px;">
+          <h3 style="color: var(--accent-teal); margin-bottom: 20px; text-align: center;">What's Inside</h3>
+          <ul style="list-style: none; padding: 0; margin: 0; display: grid; gap: 12px;">
+            <li style="display: flex; align-items: flex-start; gap: 12px;">
+              <span style="color: var(--accent-teal); font-size: 1.2rem;">✓</span>
+              <span style="color: var(--text-secondary);">ISM Code Cyber Risk Management Requirements</span>
+            </li>
+            <li style="display: flex; align-items: flex-start; gap: 12px;">
+              <span style="color: var(--accent-teal); font-size: 1.2rem;">✓</span>
+              <span style="color: var(--text-secondary);">5 Common Vulnerabilities in Ship Systems</span>
+            </li>
+            <li style="display: flex; align-items: flex-start; gap: 12px;">
+              <span style="color: var(--accent-teal); font-size: 1.2rem;">✓</span>
+              <span style="color: var(--text-secondary);">SMS Audit Preparation Checklist</span>
+            </li>
+            <li style="display: flex; align-items: flex-start; gap: 12px;">
+              <span style="color: var(--accent-teal); font-size: 1.2rem;">✓</span>
+              <span style="color: var(--text-secondary);">Incident Response Framework for Maritime</span>
+            </li>
+            <li style="display: flex; align-items: flex-start; gap: 12px;">
+              <span style="color: var(--accent-teal); font-size: 1.2rem;">✓</span>
+              <span style="color: var(--text-secondary);">Evidence Management Best Practices</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Download Form -->
+        <h3 style="margin-bottom: 20px; color: #fff;">Download Your Free Guide</h3>
+        <form id="lead-form" style="display: flex; flex-direction: column; gap: 16px; max-width: 500px; margin: 0 auto 24px;">
+          <input
+            type="text"
+            id="lead-name"
+            placeholder="Your Name"
+            required
+            style="padding: 16px; border: 1px solid rgba(126, 240, 212, 0.3); background: rgba(10, 15, 26, 0.8); color: #fff; border-radius: 6px; font-size: 1rem;"
+          />
+          <input
+            type="email"
+            id="lead-email"
+            placeholder="Work Email"
+            required
+            style="padding: 16px; border: 1px solid rgba(126, 240, 212, 0.3); background: rgba(10, 15, 26, 0.8); color: #fff; border-radius: 6px; font-size: 1rem;"
+          />
+          <input
+            type="text"
+            id="lead-company"
+            placeholder="Company Name (Optional)"
+            style="padding: 16px; border: 1px solid rgba(126, 240, 212, 0.3); background: rgba(10, 15, 26, 0.8); color: #fff; border-radius: 6px; font-size: 1rem;"
+          />
+          <button
+            type="submit"
+            class="cta"
+            style="width: 100%; padding: 18px; font-size: 1.1rem;"
+          >
+            Download Free Guide
+          </button>
+        </form>
+
+        <p id="lead-message" style="color: var(--accent-teal); font-size: 0.9rem; display: none;"></p>
+
+        <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 20px;">
+          We respect your privacy. Your information will only be used to send you the guide and relevant updates. Unsubscribe anytime.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Shared Footer -->
+  <div id="site-footer"></div>
+
+  <!-- Shared Components Loader -->
+  <script src="../includes/components.js"></script>
+
+  <script>
+    document.getElementById('lead-form')?.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('lead-name').value;
+      const email = document.getElementById('lead-email').value;
+      const company = document.getElementById('lead-company').value;
+      const message = document.getElementById('lead-message');
+
+      // TODO: Replace with actual backend integration
+      // For now, just show a success message and trigger download
+      message.textContent = 'Thank you! Your download will start shortly. Check your email for the guide.';
+      message.style.display = 'block';
+      this.reset();
+
+      // Send to your backend
+      // fetch('/api/leads/maritime-guide', {
+      //   method: 'POST',
+      //   headers: { 'Content-Type': 'application/json' },
+      //   body: JSON.stringify({ name, email, company, resource: 'maritime-security-guide' })
+      // });
+
+      // Simulate download
+      setTimeout(() => {
+        // window.location.href = '/resources/pdfs/maritime-security-guide.pdf';
+        alert('PDF download will be available once you integrate the backend. For now, this is a placeholder.');
+      }, 1000);
+    });
+  </script>
+
+</body>
+
+</html>

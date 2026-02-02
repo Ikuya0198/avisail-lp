@@ -1,0 +1,15 @@
+# robots.txt for https://avisail.com/
+
+User-agent: *
+Allow: /
+
+# Disallow backup and temporary directories
+Disallow: /_backup/
+Disallow: /temp/
+Disallow: /tmp/
+
+# Disallow includes directory (header/footer fragments)
+Disallow: /includes/
+
+# Sitemap location
+Sitemap: https://avisail.com/sitemap.xml

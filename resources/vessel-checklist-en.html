@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Free Vessel Purchase Checklist - Avisail Technologies</title>
+  <meta name="description"
+    content="Download the ultimate vessel purchase checklist. Ensure due diligence, avoid costly mistakes, and secure your maritime investment.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="icon" type="image/png" href="../favicon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Noto+Sans+JP:wght@300;400;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+  <canvas id="global-bg"></canvas>
+  <div class="noise-overlay"></div>
+
+  <!-- Shared Header -->
+  <div id="site-header"></div>
+
+  <!-- Lead Magnet Page -->
+  <section style="padding: 120px 0 80px; min-height: 80vh;">
+    <div class="wrap" style="max-width: 800px;">
+      <div class="card" style="padding: 60px 48px; text-align: center;">
+
+        <!-- Icon/Badge -->
+        <div style="display: inline-block; background: linear-gradient(135deg, #7EF0D4, #6AA6FF); padding: 16px; border-radius: 16px; margin-bottom: 24px;">
+          <svg width="48" height="48" fill="none" stroke="#0a0f1a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+            <polyline points="9 11 12 14 22 4"></polyline>
+            <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+          </svg>
+        </div>
+
+        <h1 style="font-size: 2rem; margin-bottom: 16px; color: var(--accent-teal);">
+          Ultimate Vessel Purchase Checklist
+        </h1>
+
+        <p style="color: var(--text-secondary); font-size: 1.1rem; line-height: 1.8; margin-bottom: 32px;">
+          A comprehensive 50-point checklist covering every critical aspect of vessel acquisition, from technical inspection to legal compliance.
+        </p>
+
+        <!-- What's Inside -->
+        <div style="text-align: left; background: rgba(126, 240, 212, 0.05); padding: 32px; border-radius: 12px; border: 1px solid rgba(126, 240, 212, 0.2); margin-bottom: 32px;">
+          <h3 style="color: var(--accent-teal); margin-bottom: 20px; text-align: center;">Checklist Sections</h3>
+          <ul style="list-style: none; padding: 0; margin: 0; display: grid; gap: 12px;">
+            <li style="display: flex; align-items: flex-start; gap: 12px;">
+              <span style="color: var(--accent-teal); font-size: 1.2rem;">✓</span>
+              <span style="color: var(--text-secondary);">Pre-Purchase Documentation Review (12 points)</span>
+            </li>
+            <li style="display: flex; align-items: flex-start; gap: 12px;">
+              <span style="color: var(--accent-teal); font-size: 1.2rem;">✓</span>
+              <span style="color: var(--text-secondary);">Technical & Mechanical Inspection (15 points)</span>
+            </li>
+            <li style="display: flex; align-items: flex-start; gap: 12px;">
+              <span style="color: var(--accent-teal); font-size: 1.2rem;">✓</span>
+              <span style="color: var(--text-secondary);">Legal Compliance & Registration (10 points)</span>
+            </li>
+            <li style="display: flex; align-items: flex-start; gap: 12px;">
+              <span style="color: var(--accent-teal); font-size: 1.2rem;">✓</span>
+              <span style="color: var(--text-secondary);">Financial Due Diligence (8 points)</span>
+            </li>
+            <li style="display: flex; align-items: flex-start; gap: 12px;">
+              <span style="color: var(--accent-teal); font-size: 1.2rem;">✓</span>
+              <span style="color: var(--text-secondary);">Post-Purchase Handover (5 points)</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Download Form -->
+        <h3 style="margin-bottom: 20px; color: #fff;">Get Your Free Checklist</h3>
+        <form id="lead-form-vessel" style="display: flex; flex-direction: column; gap: 16px; max-width: 500px; margin: 0 auto 24px;">
+          <input
+            type="text"
+            id="lead-name-vessel"
+            placeholder="Your Name"
+            required
+            style="padding: 16px; border: 1px solid rgba(126, 240, 212, 0.3); background: rgba(10, 15, 26, 0.8); color: #fff; border-radius: 6px; font-size: 1rem;"
+          />
+          <input
+            type="email"
+            id="lead-email-vessel"
+            placeholder="Work Email"
+            required
+            style="padding: 16px; border: 1px solid rgba(126, 240, 212, 0.3); background: rgba(10, 15, 26, 0.8); color: #fff; border-radius: 6px; font-size: 1rem;"
+          />
+          <select
+            id="lead-interest"
+            style="padding: 16px; border: 1px solid rgba(126, 240, 212, 0.3); background: rgba(10, 15, 26, 0.8); color: #fff; border-radius: 6px; font-size: 1rem;"
+          >
+            <option value="">I am interested in... (Optional)</option>
+            <option value="buying">Buying a vessel</option>
+            <option value="selling">Selling a vessel</option>
+            <option value="broker">Vessel brokerage services</option>
+            <option value="research">Just researching</option>
+          </select>
+          <button
+            type="submit"
+            class="cta"
+            style="width: 100%; padding: 18px; font-size: 1.1rem;"
+          >
+            Download Free Checklist
+          </button>
+        </form>
+
+        <p id="lead-message-vessel" style="color: var(--accent-teal); font-size: 0.9rem; display: none;"></p>
+
+        <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 20px;">
+          Your information is secure. We'll only use it to send you the checklist and relevant vessel trading updates.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Shared Footer -->
+  <div id="site-footer"></div>
+
+  <!-- Shared Components Loader -->
+  <script src="../includes/components.js"></script>
+
+  <script>
+    document.getElementById('lead-form-vessel')?.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const message = document.getElementById('lead-message-vessel');
+
+      message.textContent = 'Success! Check your email for the checklist. Download starting now...';
+      message.style.display = 'block';
+      this.reset();
+
+      setTimeout(() => {
+        alert('PDF download will be available after backend integration.');
+      }, 1000);
+    });
+  </script>
+
+</body>
+
+</html>

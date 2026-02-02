@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- Main Pages -->
+  <url>
+    <loc>https://avisail.com/index.html</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://avisail.com/index.ja.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://avisail.com/index.html"/>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://avisail.com/index.ja.html</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://avisail.com/index.ja.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://avisail.com/index.html"/>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- About Pages -->
+  <url>
+    <loc>https://avisail.com/en/about.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://avisail.com/ja/about.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Contact Pages -->
+  <url>
+    <loc>https://avisail.com/en/contact.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://avisail.com/ja/contact.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Maritime Business - Vessel Trading -->
+  <url>
+    <loc>https://avisail.com/maritime/vessel-trading-en.html</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://avisail.com/maritime/vessel-trading-ja.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://avisail.com/maritime/vessel-trading-en.html"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://avisail.com/maritime/vessel-trading-ja.html</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://avisail.com/maritime/vessel-trading-ja.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://avisail.com/maritime/vessel-trading-en.html"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Maritime Business - Cyber Accountability -->
+  <url>
+    <loc>https://avisail.com/maritime/cyber-accountability-en.html</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://avisail.com/maritime/cyber-accountability-ja.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://avisail.com/maritime/cyber-accountability-en.html"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://avisail.com/maritime/cyber-accountability-ja.html</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://avisail.com/maritime/cyber-accountability-ja.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://avisail.com/maritime/cyber-accountability-en.html"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Maritime Business - Trust Infrastructure -->
+  <url>
+    <loc>https://avisail.com/maritime/trust-infrastructure-en.html</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://avisail.com/maritime/trust-infrastructure-ja.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://avisail.com/maritime/trust-infrastructure-en.html"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://avisail.com/maritime/trust-infrastructure-ja.html</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://avisail.com/maritime/trust-infrastructure-ja.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://avisail.com/maritime/trust-infrastructure-en.html"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Maritime Business - Maritime Security -->
+  <url>
+    <loc>https://avisail.com/products/maritime-security-en.html</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://avisail.com/products/maritime-security-ja.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://avisail.com/products/maritime-security-en.html"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://avisail.com/products/maritime-security-ja.html</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://avisail.com/products/maritime-security-ja.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://avisail.com/products/maritime-security-en.html"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Security Business - ADCS -->
+  <url>
+    <loc>https://avisail.com/security/adcs-en.html</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://avisail.com/security/adcs-ja.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://avisail.com/security/adcs-en.html"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://avisail.com/security/adcs-ja.html</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://avisail.com/security/adcs-ja.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://avisail.com/security/adcs-en.html"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Security Business - STRATUM -->
+  <url>
+    <loc>https://avisail.com/security/stratum-en.html</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://avisail.com/security/stratum-ja.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://avisail.com/security/stratum-en.html"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://avisail.com/security/stratum-ja.html</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://avisail.com/security/stratum-ja.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://avisail.com/security/stratum-en.html"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Security Business - NEXUS -->
+  <url>
+    <loc>https://avisail.com/security/nexus-en.html</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://avisail.com/security/nexus-ja.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://avisail.com/security/nexus-en.html"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://avisail.com/security/nexus-ja.html</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://avisail.com/security/nexus-ja.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://avisail.com/security/nexus-en.html"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Technology Pages -->
+  <url>
+    <loc>https://avisail.com/technology/technology-en.html</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://avisail.com/technology/ai-development-ja.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://avisail.com/technology/technology-en.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://avisail.com/technology/ai-development-ja.html</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://avisail.com/technology/ai-development-ja.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://avisail.com/technology/technology-en.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+</urlset>

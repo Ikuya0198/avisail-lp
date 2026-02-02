@@ -41,6 +41,55 @@
       </div>
     </div>
 
+    <!-- NEWSLETTER SIGNUP -->
+    <div style="margin-top: 48px; padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.1);">
+      <div style="max-width: 600px; margin: 0 auto; text-align: center;">
+        <h4 style="font-size: 1.3rem; margin-bottom: 12px; color: var(--accent-teal);">最新情報をお届け</h4>
+        <p style="color: var(--text-secondary); margin-bottom: 24px; font-size: 0.95rem;">
+          海事テクノロジー、サイバーセキュリティのトレンド、製品アップデート情報をメールでお届けします。
+        </p>
+        <form id="newsletter-form-ja" style="display: flex; gap: 12px; max-width: 500px; margin: 0 auto; flex-wrap: wrap;">
+          <input
+            type="email"
+            id="newsletter-email-ja"
+            placeholder="メールアドレスを入力"
+            required
+            style="flex: 1; min-width: 250px; padding: 14px 18px; border: 1px solid rgba(126, 240, 212, 0.3); background: rgba(10, 15, 26, 0.8); color: #fff; border-radius: 6px; font-size: 0.95rem;"
+          />
+          <button
+            type="submit"
+            style="padding: 14px 32px; background: linear-gradient(135deg, #6AA6FF, #7EF0D4); border: none; border-radius: 6px; color: #0a0f1a; font-weight: 600; cursor: pointer; font-size: 0.95rem; transition: transform 0.2s;"
+            onmouseover="this.style.transform='scale(1.05)'"
+            onmouseout="this.style.transform='scale(1)'"
+          >
+            登録する
+          </button>
+        </form>
+        <p id="newsletter-message-ja" style="margin-top: 12px; font-size: 0.85rem; color: var(--accent-teal); display: none;"></p>
+      </div>
+    </div>
+
+    <script>
+      document.getElementById('newsletter-form-ja')?.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const email = document.getElementById('newsletter-email-ja').value;
+        const message = document.getElementById('newsletter-message-ja');
+
+        // TODO: Replace with actual newsletter service integration (Mailchimp, ConvertKit, etc.)
+        // For now, just show a success message
+        message.textContent = 'ご登録ありがとうございます！近日中にご連絡いたします。';
+        message.style.display = 'block';
+        this.reset();
+
+        // Send to your backend or newsletter service
+        // fetch('/api/newsletter/subscribe', {
+        //   method: 'POST',
+        //   headers: { 'Content-Type': 'application/json' },
+        //   body: JSON.stringify({ email })
+        // });
+      });
+    </script>
+
     <!-- BOTTOM ROW -->
     <div class="footer-bottom">
       <p style="margin:0;">© 2025 Avisail Technologies — All rights reserved.</p>
