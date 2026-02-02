@@ -43,6 +43,7 @@
 
 <body>
   <canvas id="global-bg"></canvas>
+  <div class="noise-overlay"></div>
 
   <!-- Shared Header -->
   <div id="site-header"></div>
@@ -164,9 +165,26 @@
             <div class="pillar-number">01</div>
             <div class="pillar-content">
               <h3>海事事業<span class="jp-subtitle">Maritime Business</span></h3>
-              <p class="pillar-desc" style="color:var(--text-secondary); margin-bottom:20px;">
-                世界的な海運ネットワークと海事専門知識を活かし、船舶売買から海事DX支援まで、海事産業全体のイノベーションを牽引します。
+              <p class="pillar-desc" style="color:var(--text-secondary); margin-bottom:16px;">
+                AI搭載の船舶取引プラットフォームにより、日本の高品質な船舶を世界中に提供。包括的なブローカーサービス付き。
               </p>
+              <ul style="list-style: none; padding: 0; margin: 0 0 16px 0; color:var(--text-secondary); font-size: 0.9rem; line-height: 1.8;">
+                <li style="margin-bottom: 8px; display: flex; align-items: flex-start; gap: 10px;">
+                  <span style="color: var(--accent-teal); flex-shrink: 0; margin-top: 4px;">✓</span>
+                  <span>日本・韓国・東欧から高品質な中古船舶在庫をリアルタイム提供</span>
+                </li>
+                <li style="margin-bottom: 8px; display: flex; align-items: flex-start; gap: 10px;">
+                  <span style="color: var(--accent-teal); flex-shrink: 0; margin-top: 4px;">✓</span>
+                  <span>安全で透明性の高い取引を保証する完全なブローカーサービス</span>
+                </li>
+                <li style="margin-bottom: 8px; display: flex; align-items: flex-start; gap: 10px;">
+                  <span style="color: var(--accent-teal); flex-shrink: 0; margin-top: 4px;">✓</span>
+                  <span>検査から支払い・書類作成まで一貫したサポート</span>
+                </li>
+              </ul>
+              <div style="margin-top: 16px; border-radius: 12px; overflow: hidden; border: 1px solid rgba(126, 240, 212, 0.2); box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);">
+                <img src="images/vessel-trading-platform-preview.png" alt="船舶取引プラットフォーム" style="width: 100%; height: auto; display: block;">
+              </div>
             </div>
           </div>
 
@@ -175,9 +193,26 @@
             <div class="pillar-number">02</div>
             <div class="pillar-content">
               <h3>セキュリティ事業<span class="jp-subtitle">Security Business</span></h3>
-              <p class="pillar-desc" style="color:var(--text-secondary); margin-bottom:20px;">
-                国家機関レベルの高度な攻撃手法研究と防衛技術（Offensive Security）を基盤に、デジタル空間のあらゆる脅威から資産を守り抜きます。
+              <p class="pillar-desc" style="color:var(--text-secondary); margin-bottom:16px;">
+                国家機関レベルのOffensive Securityの能力で、高度なデジタル脅威から組織を保護します。
               </p>
+              <ul style="list-style: none; padding: 0; margin: 0 0 16px 0; color:var(--text-secondary); font-size: 0.9rem; line-height: 1.8;">
+                <li style="margin-bottom: 8px; display: flex; align-items: flex-start; gap: 10px;">
+                  <span style="color: var(--accent-teal); flex-shrink: 0; margin-top: 4px;">✓</span>
+                  <span>予測的脅威検知と事前防御（ADCS）</span>
+                </li>
+                <li style="margin-bottom: 8px; display: flex; align-items: flex-start; gap: 10px;">
+                  <span style="color: var(--accent-teal); flex-shrink: 0; margin-top: 4px;">✓</span>
+                  <span>ダークウェブとSNSからの次世代OSINT脅威インテリジェンス</span>
+                </li>
+                <li style="margin-bottom: 8px; display: flex; align-items: flex-start; gap: 10px;">
+                  <span style="color: var(--accent-teal); flex-shrink: 0; margin-top: 4px;">✓</span>
+                  <span>攻撃対象領域の継続的モニタリングと脆弱性可視化</span>
+                </li>
+              </ul>
+              <div style="margin-top: 16px; border-radius: 12px; overflow: hidden; border: 1px solid rgba(126, 240, 212, 0.2); box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);">
+                <img src="images/security-dashboard-preview.png" alt="セキュリティダッシュボード" style="width: 100%; height: auto; display: block;">
+              </div>
             </div>
           </div>
         </div>
@@ -186,7 +221,8 @@
         <div class="tech-foundation-integrated-card">
 
           <div class="tech-header">
-            <h3>技術基盤<span class="jp-subtitle">AI & System Development</span></h3>
+            <h3>AI & System Development</h3>
+            <p>すべての事業を支える技術基盤</p>
           </div>
 
           <div class="tech-content-grid">
