@@ -1,16 +1,16 @@
-<header>
+<header role="banner">
   <div class="wrap nav">
     <a href="{BASE}index.html" class="brand">
       <div class="logo"></div>
       <span>Avisail Technologies</span>
     </a>
-    <nav>
+    <nav role="navigation" aria-label="Main navigation">
       <ul>
         <li><a href="{BASE}index.html">Home</a></li>
         <li><a href="{BASE}en/about.html">About Us</a></li>
         <li class="menu-item">
           <a href="{BASE}index.html#business">Business</a>
-          <div class="dropdown">
+          <div class="dropdown" role="menu" aria-hidden="true">
             <a href="{BASE}maritime/vessel-trading-en.html">Vessel Trading</a>
             <a href="{BASE}products/maritime-security-en.html">Maritime Security</a>
             <a href="{BASE}security/adcs-en.html">Corporate Security</a>
@@ -31,10 +31,10 @@
         </li>
       </ul>
     </nav>
-    <div class="mobile-menu-btn">
+    <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false" aria-controls="main-navigation">
       <span></span>
       <span></span>
       <span></span>
-    </div>
+    </button>
   </div>
 </header>

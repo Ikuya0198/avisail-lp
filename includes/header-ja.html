@@ -1,16 +1,16 @@
-<header>
+<header role="banner">
   <div class="wrap nav">
     <a href="{BASE}index.ja.html" class="brand">
       <div class="logo"></div>
       <span>Avisail Technologies</span>
     </a>
-    <nav>
+    <nav role="navigation" aria-label="メインナビゲーション">
       <ul>
         <li><a href="{BASE}index.ja.html">ホーム</a></li>
         <li><a href="{BASE}ja/about.html">会社概要</a></li>
         <li class="menu-item">
           <a href="{BASE}index.ja.html#business">事業概要</a>
-          <div class="dropdown">
+          <div class="dropdown" role="menu" aria-hidden="true">
             <a href="{BASE}maritime/vessel-trading.html">船舶売買</a>
             <a href="{BASE}products/maritime-security-ja.html">海事セキュリティ</a>
             <a href="{BASE}security/adcs-ja.html">企業セキュリティ</a>
@@ -31,10 +31,10 @@
         </li>
       </ul>
     </nav>
-    <div class="mobile-menu-btn">
+    <button class="mobile-menu-btn" aria-label="メニューを開閉" aria-expanded="false" aria-controls="main-navigation">
       <span></span>
       <span></span>
       <span></span>
-    </div>
+    </button>
   </div>
 </header>
