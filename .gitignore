@@ -120,3 +120,8 @@ pnpm-lock.yaml
 test-local/
 dev-local/
 scratch/
+# Project documentation
+LP.md
+LP_CONTENT.md
+*.md
+!README.md
