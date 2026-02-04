@@ -10,7 +10,7 @@
 <link rel="alternate" hreflang="en" href="https://avisail.com/legal/terms-en.html">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--line:rgba(255,255,255,.08);}
+:root{--line:rgba(255,255,255,.08);--warning-bg:rgba(255,152,0,0.1);--warning-border:rgba(255,152,0,0.3);--warning-text:#ffab40;}
 *{box-sizing:border-box;}
 html,body{margin:0;background:#0a0f1a;color:#e9f0ff;font-family:'Inter',sans-serif;line-height:1.7;}
 html{scroll-behavior:smooth;}
@@ -38,11 +38,21 @@ section{padding:80px 0;}
 .legal-content h2{font-size:1.8rem;margin:60px 0 24px;color:#fff;display:flex;align-items:center;gap:16px;}
 .legal-content h2::before{content:'';width:4px;height:28px;background:linear-gradient(to bottom,#6aa6ff,#7ef0d4);display:block;}
 .legal-content h3{font-size:1.3rem;margin:40px 0 16px;color:#cfe2ff;}
+.legal-content h4{font-size:1.1rem;margin:30px 0 12px;color:#cfe2ff;}
 .legal-content p{color:#9fb0cc;margin-bottom:20px;}
 .legal-content ul{color:#9fb0cc;margin-bottom:20px;padding-left:24px;}
+.legal-content ol{color:#9fb0cc;margin-bottom:20px;padding-left:24px;}
 .legal-content li{margin-bottom:12px;}
 .legal-content strong{color:#fff;}
 .last-updated{display:inline-block;padding:8px 16px;background:rgba(126,240,212,0.1);border:1px solid rgba(126,240,212,0.3);border-radius:8px;color:#7ef0d4;font-size:0.9rem;margin-bottom:40px;}
+.warning-box{background:var(--warning-bg);border:2px solid var(--warning-border);border-radius:12px;padding:24px;margin:32px 0;color:var(--warning-text);}
+.warning-box h3{color:var(--warning-text);margin-top:0;font-size:1.4rem;}
+.warning-box p{color:#fff;margin-bottom:12px;}
+.warning-box ul{color:#fff;}
+.warning-box strong{color:var(--warning-text);}
+.critical-notice{background:rgba(255,82,82,0.1);border:3px solid rgba(255,82,82,0.4);border-radius:12px;padding:32px;margin:40px 0;text-align:center;}
+.critical-notice h3{color:#ff5252;font-size:1.6rem;margin:0 0 16px 0;}
+.critical-notice p{color:#fff;font-size:1.1rem;line-height:1.8;margin:12px 0;}
 footer{background:rgba(5,8,15,0.8);padding:60px 0 30px;border-top:1px solid var(--line);margin-top:80px;}
 .footer-content{display:grid;grid-template-columns:repeat(4,1fr);gap:40px;margin-bottom:40px;}
 .footer-brand{font-size:0.9rem;color:#9fb0cc;margin-top:12px;max-width:280px;}
@@ -64,80 +74,913 @@ footer{background:rgba(5,8,15,0.8);padding:60px 0 30px;border-top:1px solid var(
 <div class="wrap">
 <h1>Terms of Service</h1>
 <p class="lead">Conditions for using services provided by Avisail Technologies</p>
-<p class="muted">Last Updated: February 3, 2025</p>
+<p class="muted">Last Updated: February 5, 2025</p>
 </div>
 </main>
 
 <section class="wrap">
 <div class="legal-content">
-<span class="last-updated">Last Updated: February 3, 2025</span>
+<span class="last-updated">Last Updated: February 5, 2025</span>
+
+<div class="critical-notice">
+<h3>⚠️ IMPORTANT NOTICE ⚠️</h3>
+<p>These Terms constitute a legally binding agreement. Please read the entire document carefully before using the Services.</p>
+<p>If you are using <strong>Meshscore / Aviscore (Investment Scoring Services)</strong> or <strong>Vessel NFT (Blockchain Services)</strong>, you must read the applicable Special Terms sections.</p>
+</div>
 
 <h2>1. Introduction</h2>
-<p>These Terms of Service (the "Terms") govern your use of all services, websites, and products (the "Services") provided by Avisail Technologies ("we," "us," or "our").</p>
-<p>By using the Services, you agree to be bound by these Terms. If you do not agree to these Terms, you may not use the Services.</p>
+<p>These Terms of Service (the "Terms") govern your use of all services, websites, applications, and products (the "Services") provided by Avisail Technologies Inc. ("we," "us," "our," or "Company").</p>
+<p>By using the Services, you agree to be bound by all provisions of these Terms. If you do not agree to these Terms, you may not use the Services.</p>
+<p>These Terms are drafted in compliance with the Civil Code, Consumer Contract Act, Personal Information Protection Act, Financial Instruments and Exchange Act, Payment Services Act, and other applicable laws and regulations.</p>
 
-<h2>2. Services Description</h2>
-<p>We provide the following services:</p>
+<h2>2. Definitions</h2>
+<p>The following terms have the meanings set forth below:</p>
 <ul>
-<li><strong>Vessel Trading Services</strong> - Matchmaking and transaction support for vessel purchases and sales</li>
-<li><strong>Maritime Security Services</strong> - Cybersecurity solutions for the maritime industry</li>
-<li><strong>Enterprise Security Services</strong> - Security solutions including ADCS (Active Defense Cyber Security)</li>
-<li><strong>Technology Development & Consulting</strong> - AI system development and technology consulting</li>
+<li><strong>"User" or "You"</strong>: Any individual or entity using the Services.</li>
+<li><strong>"Service Agreement"</strong>: These Terms and all agreements between you and us regarding your use of the Services.</li>
+<li><strong>"Intellectual Property Rights"</strong>: Copyrights, patents, utility model rights, design rights, trademark rights, and other intellectual property rights (including the right to obtain or apply for registration of such rights).</li>
+<li><strong>"Personal Information"</strong>: Personal information as defined in Article 2, Paragraph 1 of the Personal Information Protection Act.</li>
+<li><strong>"Investment Scoring Services"</strong>: Services such as Meshscore and Aviscore that analyze financial products using AI and provide scoring results.</li>
+<li><strong>"NFT Services"</strong>: Services such as Vessel NFT that issue and manage NFTs using blockchain technology.</li>
 </ul>
 
-<h2>3. Account Registration</h2>
-<h3>3.1 Accuracy of Information</h3>
-<p>Some features of the Services require account registration. You must provide accurate and current information and keep it updated.</p>
+<h2>3. Services Description</h2>
+<p>We provide the following services. For details and special terms for each service, please refer to the applicable sections of these Terms.</p>
 
-<h3>3.2 Account Security</h3>
-<p>You are responsible for maintaining the confidentiality of your password and account credentials. If you become aware of any unauthorized use of your account, you must notify us immediately.</p>
-
-<h2>4. Prohibited Conduct</h2>
-<p>You may not use the Services to:</p>
+<h3>3.1 Enterprise Cybersecurity Services</h3>
 <ul>
-<li>Violate any applicable laws or regulations</li>
-<li>Engage in or promote illegal activities</li>
-<li>Infringe intellectual property rights, privacy rights, publicity rights, or other rights of us or third parties</li>
-<li>Impose an unreasonable load on our servers or networks</li>
-<li>Interfere with or disrupt the Services</li>
-<li>Attempt unauthorized access to our systems</li>
-<li>Use another user's account without permission</li>
-<li>Provide false or misleading information</li>
-<li>Send spam or unsolicited commercial communications</li>
-<li>Engage in any other conduct that we reasonably determine to be inappropriate</li>
+<li><strong>ADCS (Active Defense Cyber Security)</strong>: Security assessment, vulnerability detection, threat intelligence, and automated remediation for enterprises (Special Terms: Article 15)</li>
+<li><strong>Stratum</strong>: Threat intelligence platform, enterprise risk analysis, watchlist management (Special Terms: Article 16)</li>
+<li><strong>Nexus</strong>: Resource management platform, supply chain risk analysis (Special Terms: Article 17)</li>
 </ul>
 
-<h2>5. Intellectual Property</h2>
-<p>All intellectual property rights (including copyrights, trademarks, and patents) in the Services belong to us or our licensors. You may not reproduce, distribute, or commercially exploit any content from the Services without our prior written consent.</p>
+<h3>3.2 Investment Information Services</h3>
+<ul>
+<li><strong>Meshscore / Aviscore</strong>: AI-powered scoring of cryptocurrencies, stocks, ETFs, portfolio analysis, market information (Special Terms: Article 18)</li>
+</ul>
 
-<h2>6. Disclaimers</h2>
-<h3>6.1 Service Provision</h3>
-<p>The Services are provided "as is" without warranties of any kind, whether express or implied. We do not guarantee the completeness, accuracy, reliability, or usefulness of the Services.</p>
+<h3>3.3 Maritime Services</h3>
+<ul>
+<li><strong>Maritime Security</strong>: Vessel cybersecurity, threat detection and analysis (Special Terms: Article 19)</li>
+<li><strong>Vessel NFT</strong>: Blockchain-based vessel information recording, maritime professional credential certification (Special Terms: Article 20)</li>
+<li><strong>Vessel Trading Services</strong>: Matchmaking and transaction support for vessel purchases and sales</li>
+</ul>
 
-<h3>6.2 Limitation of Liability</h3>
-<p>We shall not be liable for any damages arising from your use of the Services, except in cases of our willful misconduct or gross negligence.</p>
+<h3>3.4 Technology Development & Consulting</h3>
+<ul>
+<li>AI system development, technology consulting, custom solution development</li>
+</ul>
 
-<h3>6.3 Third-Party Services</h3>
-<p>The Services may contain links to third-party services or content. We are not responsible for the content or quality of such third-party services.</p>
+<h2>4. Account Registration</h2>
+<h3>4.1 Eligibility</h3>
+<p>To use the Services, you must meet the following conditions:</p>
+<ul>
+<li>Be at least 18 years of age or a legal entity with legal capacity</li>
+<li>Be located in Japan and subject to Japanese law</li>
+<li>Not have been previously suspended from using the Services</li>
+<li>Not be affiliated with organized crime groups and have no relationship with such groups</li>
+</ul>
 
-<h2>7. Service Modifications, Suspension, and Termination</h2>
-<p>We may modify, suspend, or terminate the Services at any time without prior notice. We shall not be liable for any damages resulting from such actions.</p>
+<h3>4.2 Accuracy of Information</h3>
+<p>You must provide true, accurate, current, and complete information during account registration and maintain such information. If you provide false information, we may immediately terminate the Service Agreement and reserve the right to claim damages.</p>
 
-<h2>8. Changes to Terms</h2>
-<p>We may modify these Terms as necessary. Modified Terms become effective when posted on this website. Continued use of the Services after such changes constitutes acceptance of the modified Terms.</p>
+<h3>4.3 Account Security</h3>
+<p>You are responsible for maintaining the confidentiality of your password, authentication credentials, and API keys. If such information is leaked to a third party or if there is a possibility of unauthorized use, you must immediately notify us and take appropriate measures such as changing your password.</p>
+<p>All actions performed using your account will be deemed your own actions, and you will be responsible for them. You bear the burden of proving that unauthorized use was by a third party.</p>
 
-<h2>9. Privacy</h2>
-<p>Our collection and use of personal information is governed by our <a href="privacy-en.html">Privacy Policy</a>.</p>
+<h3>4.4 Corporate Accounts</h3>
+<p>If you register an account as a corporation, the registrant warrants that they have the authority to agree to these Terms on behalf of that corporation. If multiple employees of a corporation use the Services, the corporation shall be collectively responsible.</p>
 
-<h2>10. Governing Law and Jurisdiction</h2>
-<p>These Terms shall be governed by the laws of Japan. Any disputes arising from these Terms shall be subject to the exclusive jurisdiction of the Tokyo District Court as the court of first instance.</p>
+<h2>5. Prohibited Conduct</h2>
+<p>You may not engage in the following conduct when using the Services. If you violate any prohibited conduct, we may suspend or delete your account without prior notice and take legal action.</p>
 
-<h2>11. Contact</h2>
-<p>For questions or inquiries regarding these Terms, please contact us at:</p>
-<p><strong>Email:</strong> <a href="mailto:info@avisail.com">info@avisail.com</a></p>
+<h3>5.1 Illegal Activities</h3>
+<ul>
+<li>Violating laws, ordinances, or regulations of Japan or your jurisdiction</li>
+<li>Criminal activities (fraud, money laundering, insider trading, unauthorized access, etc.) or related activities</li>
+<li>Activities contrary to public order and morals, or providing benefits to organized crime groups</li>
+<li>Providing information harmful to minors</li>
+</ul>
+
+<h3>5.2 Rights Infringement</h3>
+<ul>
+<li>Infringing intellectual property rights, portrait rights, privacy rights, reputation rights, credit, or other rights of us or third parties</li>
+<li>Unauthorized use of our trademarks, logos, or service names</li>
+<li>Reverse engineering, decompiling, disassembling, or otherwise analyzing the source code of the Services</li>
+</ul>
+
+<h3>5.3 System Attacks and Interference</h3>
+<ul>
+<li>Imposing excessive load on our servers, networks, or systems (DoS attacks, DDoS attacks, etc.)</li>
+<li>Interfering with or likely to interfere with the operation of the Services</li>
+<li>Unauthorized access, hacking, cracking, or attempting such activities</li>
+<li>Transmitting or distributing computer viruses, malware, or other harmful programs</li>
+<li>Mass access using automated tools, bots, or scraping tools (unless explicitly permitted by us)</li>
+</ul>
+
+<h3>5.4 Misuse and Abuse</h3>
+<ul>
+<li>Unauthorized use of other users' accounts or impersonation</li>
+<li>Registering, providing, or disseminating false information</li>
+<li>Exploiting vulnerabilities of the Services</li>
+<li>Reselling or redistributing the Services for commercial purposes without our permission</li>
+<li>Creating multiple accounts fraudulently to obtain benefits from campaigns or promotions</li>
+</ul>
+
+<h3>5.5 Harassment</h3>
+<ul>
+<li>Commercial spam, advertising, or solicitation (including multi-level marketing, network business, etc.)</li>
+<li>Harassment, defamation, or threatening other users</li>
+<li>Posting content containing discriminatory, violent, or obscene expressions</li>
+<li>Inappropriate use of community features of the Services</li>
+</ul>
+
+<h3>5.6 Investment Scoring Services Specific Prohibitions</h3>
+<ul>
+<li>Providing investment advice to third parties based on information from the Services (violation of Financial Instruments and Exchange Act)</li>
+<li>Falsifying and providing scoring results from the Services to third parties</li>
+<li>Using the Services for market manipulation, spreading rumors, or price manipulation</li>
+</ul>
+
+<h3>5.7 NFT Services Specific Prohibitions</h3>
+<ul>
+<li>Issuing NFTs containing false vessel information or performance records</li>
+<li>NFT-izing others' vessels or rights without permission</li>
+<li>Using NFTs for money laundering or terrorist financing purposes</li>
+</ul>
+
+<h3>5.8 Other Prohibitions</h3>
+<ul>
+<li>Prohibited conduct specified in each Special Terms section of these Terms</li>
+<li>Any other conduct that we reasonably determine to be inappropriate</li>
+</ul>
+
+<h2>6. Intellectual Property Rights</h2>
+<h3>6.1 Our Intellectual Property Rights</h3>
+<p>All intellectual property rights (including copyrights, trademarks, patents, design rights, trade secrets, know-how, and database rights) in the Services belong to us or our licensors.</p>
+<p>You may not, without our prior written explicit permission, engage in the following:</p>
+<ul>
+<li>Reproducing, reprinting, distributing, publicly transmitting, adapting, or modifying content from the Services (text, images, videos, audio, software, data, UI, design, etc.)</li>
+<li>Commercial use or resale of content from the Services</li>
+<li>Using our trademarks, logos, or service names</li>
+<li>Developing or providing derivative services using the Services' API (except as permitted under API terms of use)</li>
+</ul>
+
+<h3>6.2 Your Content</h3>
+<p>Intellectual property rights in content that you upload, post, or transmit to the Services ("Your Content") remain with you.</p>
+<p>However, you grant us a non-exclusive, royalty-free, perpetual, irrevocable, sublicensable, worldwide license to use Your Content for the following purposes:</p>
+<ul>
+<li>Providing, operating, and improving the Services</li>
+<li>Promoting and marketing the Services (in a form that does not identify individuals)</li>
+<li>Fulfilling disclosure obligations under applicable laws</li>
+</ul>
+
+<h3>6.3 Copyright Infringement Notice</h3>
+<p>Rights holders who believe that Your Content infringes their copyrights may notify us. We will take appropriate measures in accordance with copyright law.</p>
+
+<h2>7. Fees and Payment</h2>
+<h3>7.1 Pricing</h3>
+<p>Fees for the Services are as stated on each service's pricing page. We reserve the right to change fees with 30 days' notice.</p>
+
+<h3>7.2 Payment Methods</h3>
+<p>You shall pay fees by credit card, bank transfer, or other methods specified by us. Payment information is securely processed by our payment processors.</p>
+
+<h3>7.3 Auto-Renewal</h3>
+<p>Subscription-based services will automatically renew until you cancel. Upon renewal, your registered payment method will be automatically charged.</p>
+
+<h3>7.4 Refund Policy</h3>
+<p>In principle, we do not refund fees once paid. However, for periods when the Services could not be provided due to reasons attributable to us, we will refund fees prorated for that period.</p>
+
+<h3>7.5 Payment Delay</h3>
+<p>If you delay payment of fees, we may suspend provision of the Services. We also reserve the right to claim late payment damages at an annual rate of 14.6%.</p>
+
+<h2>8. Handling of Personal Information</h2>
+<p>Our collection and use of your personal information is governed by our <a href="privacy-en.html">Privacy Policy</a>. The Privacy Policy constitutes part of these Terms.</p>
+<p>We comply with the Personal Information Protection Act, GDPR, and other applicable personal information protection laws, and properly manage your personal information.</p>
+
+<h2>9. Data Handling</h2>
+<h3>9.1 Data Use</h3>
+<p>We may use your usage data (access logs, usage history, behavioral data, etc.) for the following purposes:</p>
+<ul>
+<li>Providing, operating, and improving the Services</li>
+<li>Providing customer support</li>
+<li>Detecting and preventing unauthorized use</li>
+<li>Creating statistical data (aggregated in a form that does not identify individuals)</li>
+<li>Marketing and advertising distribution (if you do not object)</li>
+</ul>
+
+<h3>9.2 Data Backup</h3>
+<p>We will back up your data to a reasonable extent, but do not guarantee the preservation of all data. You are responsible for backing up important data yourself.</p>
+
+<h3>9.3 Data Deletion</h3>
+<p>If you delete your account, we will delete your data within a reasonable period. However, data that is required to be retained by law and data that needs to be retained for our legitimate interests (dispute resolution, fraud prevention, etc.) will be retained for the statutory period or necessary period.</p>
+
+<h2>10. Service Changes, Suspension, and Termination</h2>
+<h3>10.1 Service Changes</h3>
+<p>We may change, add, or reduce the content, features, and specifications of the Services without prior notice to you. However, if making changes that would significantly disadvantage you, we will endeavor to provide 30 days' notice.</p>
+
+<h3>10.2 Service Suspension</h3>
+<p>We may temporarily suspend all or part of the Services in the following cases:</p>
+<ul>
+<li>Performing regular or emergency maintenance</li>
+<li>System failures or server failures occur</li>
+<li>Provision is difficult due to natural disasters, war, terrorism, strikes, riots, or other force majeure events</li>
+<li>Provision is restricted by laws, regulations, or court orders</li>
+<li>Provision is difficult due to attacks by third parties (DDoS attacks, etc.)</li>
+<li>Provision is difficult due to service suspension by power companies or telecommunications carriers</li>
+</ul>
+<p>We shall not be liable for damages caused by service suspension unless we have willful misconduct or gross negligence.</p>
+
+<h3>10.3 Service Termination</h3>
+<p>We may terminate all or part of the Services with 90 days' notice. However, in the following cases, we may shorten the notice period or terminate without notice:</p>
+<ul>
+<li>Continued provision becomes difficult or illegal due to changes in laws or regulations</li>
+<li>Continuation is difficult due to significant business reasons (deterioration of profitability, changes in business strategy, etc.)</li>
+<li>Continued provision is difficult due to termination of third-party services</li>
+</ul>
+<p>In case of service termination, we will refund fees for unused periods on a pro-rata basis. However, we shall not be liable for other damages (data loss, opportunity loss, etc.).</p>
+
+<h2>11. Disclaimers</h2>
+<p>This article clarifies the scope of our liability regarding use of the Services. You use the Services understanding and agreeing to the following disclaimers.</p>
+
+<h3>11.1 Service Provision</h3>
+<p>We provide the Services "AS IS" and "AS AVAILABLE." We make no warranties regarding the Services, including but not limited to:</p>
+<ul>
+<li>That the Services will be uninterrupted or error-free</li>
+<li>Completeness, accuracy, reliability, timeliness, or usefulness of the Services</li>
+<li>That the Services will meet your specific purposes</li>
+<li>Accuracy and reliability of information, content, and data provided by the Services</li>
+<li>That the Services are free from security flaws or vulnerabilities</li>
+<li>That the Services are free from computer viruses, malware, etc.</li>
+</ul>
+
+<h3>11.2 Limitation of Liability</h3>
+<p>We shall not be liable for the following damages arising in connection with the Services, except in cases of our willful misconduct or gross negligence:</p>
+<ul>
+<li>Direct damages, indirect damages, special damages, consequential damages, incidental damages</li>
+<li>Lost profits, opportunity loss, business interruption damages</li>
+<li>Data loss, corruption, or leakage damages</li>
+<li>Damages based on third-party claims</li>
+<li>Damage to your credit or reputation</li>
+<li>Costs of procuring alternative services</li>
+</ul>
+
+<p>Even if damages occur due to reasons attributable to us, <strong>our liability shall be limited to direct and ordinary damages, not exceeding the total amount of fees paid by you to us during the 12 months preceding the occurrence of the damage.</strong></p>
+
+<p>If all or part of this disclaimer is invalidated by the Consumer Contract Act or other consumer protection laws, we shall be liable only for direct and ordinary damages actually incurred by you due to our breach of contract or tort caused by our negligence (excluding gross negligence).</p>
+
+<h3>11.3 Third-Party Services and External Links</h3>
+<p>The Services may contain links to services, content, or websites provided by third parties. We assume no responsibility for the content, quality, safety, or legality of such third-party services. Use of third-party services is at your own risk.</p>
+
+<h3>11.4 User Disputes</h3>
+<p>We assume no responsibility for troubles or disputes arising between you and other users. Such matters shall be resolved between users, and if we incur damages, users shall be jointly liable for compensation.</p>
+
+<h3>11.5 Force Majeure</h3>
+<p>We shall not be liable if we cannot provide the Services due to natural disasters, war, civil unrest, terrorism, riots, enactment or amendment of laws, government orders, labor disputes, epidemics, pandemics, third-party attacks, telecommunications carrier failures, power company outages, or other events beyond our reasonable control.</p>
+
+<h2>12. Exclusion of Organized Crime Groups</h2>
+<h3>12.1 Representation and Warranty</h3>
+<p>You represent and warrant that you do not and will not fall under any of the following categories now or in the future:</p>
+<ul>
+<li>Organized crime groups, members of organized crime groups, associate members of organized crime groups, companies related to organized crime groups, corporate racketeers, groups claiming to be social movements, special intelligence organized crime groups, or similar groups (collectively "Organized Crime Groups")</li>
+<li>Having Organized Crime Groups substantially involved in management</li>
+<li>Using Organized Crime Groups</li>
+<li>Providing funds or convenience to Organized Crime Groups</li>
+<li>Officers or persons substantially involved in management having socially condemnable relationships with Organized Crime Groups</li>
+</ul>
+
+<h3>12.2 Termination of Agreement</h3>
+<p>If you violate or are reasonably determined by us to be likely to violate the representations and warranties in the preceding paragraph, we may immediately terminate the Service Agreement without notice and refuse to perform any obligations to you. In such case, we shall not be liable for any damages incurred by you.</p>
+
+<h2>13. Service Suspension and Termination</h2>
+<h3>13.1 Our Suspension of Service</h3>
+<p>We may suspend your account and suspend your use of the Services without prior notice or demand if you fall under any of the following:</p>
+<ul>
+<li>Violating any provision of these Terms</li>
+<li>False statements, errors, or omissions in registration information</li>
+<li>Delaying payment of fees</li>
+<li>Bills or checks are dishonored</li>
+<li>Subject to attachment, provisional attachment, provisional disposition, compulsory execution, bankruptcy proceedings, civil rehabilitation proceedings, corporate reorganization proceedings, or special liquidation proceedings</li>
+<li>Subject to tax delinquency disposition</li>
+<li>Death or subject to commencement of guardianship, curatorship, or assistance</li>
+<li>No use of the Services for 6 months or more</li>
+<li>No response to our communications for 30 days or more</li>
+<li>We reasonably determine that use of the Services is inappropriate</li>
+</ul>
+
+<h3>13.2 Our Termination of Agreement</h3>
+<p>In addition to the reasons in the preceding paragraph, if your violation is not corrected or if there is a serious violation, we may terminate the Service Agreement.</p>
+
+<h3>13.3 Your Cancellation</h3>
+<p>You may cancel the Services at any time from your account settings screen or by contacting customer support. Cancellation becomes effective upon completion of cancellation procedures.</p>
+
+<h3>13.4 Post-Termination Measures</h3>
+<p>Upon termination of the Service Agreement, you shall immediately cease use of the Services and delete or destroy all materials and data related to the Services. We are not obligated to retain your data after termination and will delete it after a reasonable period.</p>
+
+<h2>14. Changes to Terms</h2>
+<h3>14.1 Right to Change</h3>
+<p>We may change these Terms in the following cases:</p>
+<ul>
+<li>Changes are necessary due to enactment or amendment of laws</li>
+<li>Changes are necessary due to addition or improvement of Service features</li>
+<li>Changes conform to the general interests of users</li>
+<li>Changes do not disadvantage users and do not contradict the purpose of the Service Agreement</li>
+</ul>
+
+<h3>14.2 Notice of Changes</h3>
+<p>When changing these Terms, we will post the changes on this website or notify you by email. For material changes, we will provide 30 days' notice.</p>
+
+<h3>14.3 Effectiveness of Changes</h3>
+<p>Changed Terms become effective at the later of when posted on this website or the date/time stated in the notice. If you continue to use the Services after the changes, you are deemed to have agreed to the changed Terms.</p>
+
+<p>If you do not agree to the changes, please stop using the Services and delete your account before the changes take effect.</p>
+
+<h2>15. ADCS (Active Defense Cyber Security) Service Special Terms</h2>
+<p>This article applies to users of ADCS Services. ADCS Services provide security assessment, vulnerability detection, threat intelligence, and automated remediation for enterprise websites, systems, and networks.</p>
+
+<h3>15.1 Nature and Limitations of Services</h3>
+<ol>
+<li>The Services are information services that assess the security status of your systems and provide improvement recommendations. <strong>They do not guarantee complete security.</strong></li>
+<li>Assessments are performed only on domains, IP addresses, and systems explicitly designated by you. You warrant that the assessment targets are under your ownership or control.</li>
+<li>Automated remediation features will not be executed without your explicit approval. You shall review the content of remediation scripts before execution and approve execution at your own responsibility.</li>
+<li>The Services detect known vulnerabilities and common attack methods, and cannot detect all zero-day vulnerabilities, advanced persistent threats (APT), insider threats, etc.</li>
+</ol>
+
+<h3>15.2 Legality of Assessment Targets</h3>
+<ol>
+<li>You warrant that you have legitimate authority to perform assessments on the target systems and networks.</li>
+<li>If you erroneously designate a third party's system as an assessment target or perform an assessment on a system without authority, you shall bear all responsibility and indemnify us.</li>
+<li>We have no obligation to investigate the legality of assessment targets. However, if an assessment is clearly determined to be unauthorized, we may suspend the assessment.</li>
+</ol>
+
+<h3>15.3 Handling of Assessment Results</h3>
+<ol>
+<li>Assessment results contain vulnerability information about your systems. You shall strictly manage assessment results and take necessary measures to prevent leakage to third parties.</li>
+<li>We will not disclose vulnerability information contained in assessment results to third parties without your prior written consent. However, this shall not apply if there is an obligation to disclose under law or if we determine that warnings to other customers about similar threats are necessary (in a form that does not identify you).</li>
+<li>If critical vulnerabilities are discovered, you shall promptly take appropriate response measures. We shall not be liable for damages resulting from failure to take response measures.</li>
+</ol>
+
+<h3>15.4 Disclaimer for Automated Remediation</h3>
+<ol>
+<li>Automated remediation features provide scripts to automatically remediate detected vulnerabilities. You shall fully review the content of scripts, test their operation in a test environment, and then execute them in a production environment.</li>
+<li>We shall not be liable for the following damages resulting from execution of automated remediation scripts unless we have willful misconduct or gross negligence:
+<ul>
+<li>System stoppage, downtime</li>
+<li>Data loss, corruption</li>
+<li>Business interruption, opportunity loss</li>
+<li>Other consequential damages</li>
+</ul>
+</li>
+<li>You are responsible for taking a complete backup of your system before executing automated remediation features.</li>
+</ol>
+
+<h3>15.5 Accuracy of Assessments and Disclaimer</h3>
+<ol>
+<li>We do not warrant the accuracy or completeness of assessment results, and you acknowledge the following possibilities:
+<ul>
+<li>False Positive: Determining vulnerability exists when there is none</li>
+<li>False Negative: Not detecting vulnerability that exists</li>
+<li>Discovery of new vulnerabilities after assessment</li>
+</ul>
+</li>
+<li>We shall not be liable for temporary service delays or increased load during assessment. You may request that assessments be performed outside of critical business hours.</li>
+</ol>
+
+<h3>15.6 Your Obligations</h3>
+<p>You have the following obligations:</p>
+<ul>
+<li>Warrant that you have legitimate authority over assessment target systems</li>
+<li>Properly manage assessment results and not leak them to third parties</li>
+<li>Promptly take response measures if critical vulnerabilities are discovered</li>
+<li>Take backups before executing automated remediation scripts</li>
+<li>Comply with the Unauthorized Computer Access Prohibition Act and other laws</li>
+</ul>
+
+<h3>15.7 Limitation of Liability</h3>
+<p>Even if damages occur due to reasons attributable to us, our liability shall not exceed the total fees paid by you for ADCS Services during the 12 months preceding the occurrence of the damage.</p>
+
+<h2>16. Stratum Service Special Terms</h2>
+<p>This article applies to users of Stratum Services (threat intelligence platform).</p>
+
+<h3>16.1 Nature of Services</h3>
+<ol>
+<li>The Services are information services that analyze and evaluate cybersecurity risks of third-party companies based on public information and legally obtained information sources.</li>
+<li>Evaluations are based on information at the time of analysis and <strong>do not guarantee future risk status of companies.</strong></li>
+<li>The Services provide reference information to support your decision-making such as investment decisions and supplier selection, and <strong>do not constitute our recommendation or non-recommendation of transactions with specific companies.</strong></li>
+</ol>
+
+<h3>16.2 Accuracy of Information and Disclaimer</h3>
+<ol>
+<li>We will make commercially reasonable efforts regarding the accuracy, completeness, and timeliness of information provided by the Services, but do not warrant such.</li>
+<li>We shall not be liable for damages arising from:
+<ul>
+<li>Damages from your decisions based on Service evaluation results</li>
+<li>Damages from divergence between actual risk status of evaluated companies and evaluation results</li>
+<li>Damages from changes in circumstances of evaluated companies after analysis</li>
+<li>Evaluation errors due to errors in information sources provided by third parties</li>
+<li>Intentional concealment or falsification of information by evaluated companies</li>
+</ul>
+</li>
+</ol>
+
+<h3>16.3 User Usage Restrictions</h3>
+<ol>
+<li>You may not use information obtained from the Services for the following purposes:
+<ul>
+<li>Purposes of damaging the reputation or credit of evaluated companies</li>
+<li>Purposes of exerting undue pressure on evaluated companies</li>
+<li>Purposes of illegally obtaining trade secrets of evaluated companies</li>
+<li>Resale or redistribution to third parties (excluding internal sharing)</li>
+<li>Illegal discrimination against evaluated companies</li>
+</ul>
+</li>
+<li>If you publicly disclose Service evaluation results, you must obtain our prior written consent.</li>
+</ol>
+
+<h3>16.4 Claims from Third-Party Companies</h3>
+<p>If we receive claims or demands from third-party companies that are evaluation targets, we will notify you and take appropriate action. Claims arising from your inappropriate use of Service information shall be resolved at your responsibility and expense.</p>
+
+<h3>16.5 Limitations of Watchlist Features</h3>
+<p>Watchlist features monitor changes in companies you designate, but do not guarantee real-time detection of all changes. When making important decisions, please verify the latest information.</p>
+
+<h2>17. Nexus Service Special Terms</h2>
+<p>This article applies to users of Nexus Services (resource management and supply chain risk analysis).</p>
+
+<h3>17.1 Nature of Services</h3>
+<ol>
+<li>The Services analyze supply chain risks of critical resources and materials and provide information. <strong>Actual procurement and investment decisions shall be made at your own responsibility.</strong></li>
+<li>The Services provide risk evaluations based on 5-layer analysis (supply concentration, midstream bottlenecks, geopolitical risks, ESG constraints, substitutability), which are based on our analytical methods and are not absolute standards.</li>
+</ol>
+
+<h3>17.2 Disclaimers</h3>
+<ol>
+<li>We do not warrant the accuracy of Service analysis results or accuracy of future predictions, and shall not be liable for damages arising from:
+<ul>
+<li>Analysis results becoming outdated due to changes in supply chain information</li>
+<li>Unexpected risks occurring due to sudden changes in geopolitical situations</li>
+<li>Losses from procurement or investment decisions based on Service information</li>
+<li>Errors in market data or statistical data provided by third parties</li>
+<li>Inaccurate predictions of resource prices, exchange rates, political situations, etc.</li>
+</ul>
+</li>
+<li>Predictions of resource prices, exchange rates, political situations, etc. are based on our views and are not guaranteed.</li>
+</ol>
+
+<h3>17.3 Nature of Weekly Updates</h3>
+<p>Service data is updated weekly in principle, but may not be able to respond immediately to rapid market changes or political situation changes. When making important decisions, we recommend referring to multiple information sources.</p>
+
+<h3>17.4 Handling of Strategic Materials Information</h3>
+<p>The Services may contain information about strategic materials regulated by the Foreign Exchange and Foreign Trade Act. You shall comply with relevant laws and use the Services only within the legal scope.</p>
+
+<div class="warning-box">
+<h3>⚠️ For Users of Investment Scoring Services - Must Read ⚠️</h3>
+<p>Meshscore / Aviscore Services provide information about financial products. Please be sure to read the following important matters.</p>
+<ul>
+<li><strong>These Services are NOT "Investment Advisory Services" under the Financial Instruments and Exchange Act.</strong></li>
+<li><strong>Investment decisions must be made at your own responsibility.</strong></li>
+<li><strong>Investment involves risks, and losses exceeding your principal may occur.</strong></li>
+<li><strong>Past score performance does not guarantee future investment results.</strong></li>
+</ul>
+</div>
+
+<h2>18. Meshscore / Aviscore Service Special Terms (Investment Scoring)</h2>
+<p>This article contains extremely important provisions that apply to users of Meshscore, Aviscore, and other investment scoring services. <strong>Please read the entire text carefully and fully understand the content before using these Services.</strong></p>
+
+<h3>18.1 Nature of Services and Non-Applicability as Investment Advisory Services</h3>
+<ol>
+<li>The Services are <strong>information services</strong> that analyze market assets such as cryptocurrencies, stocks, and ETFs using AI technology and display scoring results.</li>
+<li>The Services <strong>do NOT constitute "Investment Advisory Services" under the Financial Instruments and Exchange Act</strong> for the following reasons:
+<ul>
+<li>Do not provide individual specific investment judgment advice to specific customers</li>
+<li>Do not enter into investment advisory contracts with customers</li>
+<li>Scores are general analysis results, not purchase or sale recommendations</li>
+<li>All investment judgment and investment behavior are performed at the customer's responsibility</li>
+</ul>
+</li>
+<li>Service scores aggregate analysis results from 6 AI personas (Alpha, Beta, Gamma, Delta, Epsilon, Zeta) and <strong>do not represent our investment judgment or recommendations.</strong></li>
+<li>You are strongly encouraged to <strong>not rely solely on Service scores, but to refer to multiple information sources, seek advice from experts, and make comprehensive judgments.</strong></li>
+</ol>
+
+<h3>18.2 Disclosure of Investment Risks</h3>
+<p>Investment in cryptocurrencies, stocks, ETFs, etc. involves the following risks. You shall fully understand these risks and make investments at your own judgment and responsibility.</p>
+
+<h4>18.2.1 Price Fluctuation Risk</h4>
+<ul>
+<li>Your investment principal may be lost due to market fluctuations.</li>
+<li>Cryptocurrencies in particular have very large price fluctuations, with potential declines of 50% or more in a short period.</li>
+<li>Stocks and ETFs also fluctuate significantly due to company performance, economic conditions, interest rate changes, etc.</li>
+</ul>
+
+<h4>18.2.2 Liquidity Risk</h4>
+<ul>
+<li>You may not be able to sell when you want to due to market conditions.</li>
+<li>Low-volume issues may not be tradable at desired prices.</li>
+</ul>
+
+<h4>18.2.3 Credit Risk</h4>
+<ul>
+<li>If a stock issuer goes bankrupt, you may lose your entire investment.</li>
+<li>If a cryptocurrency exchange goes bankrupt, you may lose assets deposited with the exchange.</li>
+</ul>
+
+<h4>18.2.4 Foreign Exchange Risk</h4>
+<ul>
+<li>When investing in foreign currency-denominated assets, losses may occur due to exchange rate fluctuations.</li>
+</ul>
+
+<h4>18.2.5 Cryptocurrency-Specific Risks</h4>
+<ul>
+<li><strong>Not Legal Tender</strong>: Cryptocurrencies are not legal tender and have no government value guarantee.</li>
+<li><strong>Hacking Risk</strong>: Assets may be lost due to wallet or exchange hacking.</li>
+<li><strong>Private Key Loss Risk</strong>: If you lose your private key, you will permanently lose your assets. Recovery is impossible.</li>
+<li><strong>Regulatory Change Risk</strong>: Trading may be restricted due to regulatory changes in various countries.</li>
+<li><strong>Blockchain Fork Risk</strong>: The value of cryptocurrencies you hold may fluctuate due to hard forks, etc.</li>
+</ul>
+
+<h4>18.2.6 Risk of Losses Exceeding Principal</h4>
+<ul>
+<li>When engaging in leveraged trading, margin trading, derivatives trading, etc., losses exceeding your investment principal may occur.</li>
+</ul>
+
+<h3>18.3 Disclaimer: Liability for Investment Losses</h3>
+<ol>
+<li><strong>We shall not be liable for any damages (including investment principal losses, opportunity losses, lost profits, and all other consequential damages) arising from investment actions taken based on Service information.</strong></li>
+<li>Information provided by the Services is reference information for investment decisions only, and we make no warranties regarding the following and assume no liability:
+<ul>
+<li>Accuracy or validity of scores</li>
+<li>Accuracy of future price predictions</li>
+<li>Price increases or decreases of recommended assets</li>
+<li>Effectiveness of portfolio optimization proposals</li>
+<li>Validity of AI persona analysis content</li>
+<li>Accuracy of social sentiment information</li>
+<li>Accuracy of community predictions</li>
+</ul>
+</li>
+<li>Service scores are based on past data and current analysis, and <strong>do NOT guarantee future investment results whatsoever.</strong></li>
+<li>Investment decisions must be made at your own responsibility, and you should consult with experts (financial instruments business operators, tax accountants, attorneys, etc.) as necessary.</li>
+</ol>
+
+<h3>18.4 AI Limitations and Possibility of Misjudgment</h3>
+<ol>
+<li>Service scoring is based on AI technology, but you understand that AI has the following limitations:
+<ul>
+<li><strong>Training Data Limitations</strong>: AI learns from past data, so it has difficulty responding to unprecedented events (black swans, pandemics, wars, etc.).</li>
+<li><strong>Delayed Response to Rapid Market Changes</strong>: AI analysis is based on past data, so it cannot respond immediately to rapid market changes.</li>
+<li><strong>Possibility of Containing Bias</strong>: If AI training data contains bias, analysis results may also contain bias.</li>
+<li><strong>Black Box Problem</strong>: AI judgment rationale may be opaque.</li>
+<li><strong>Possibility of Misjudgment</strong>: AI is not perfect and may produce erroneous analysis results.</li>
+</ul>
+</li>
+<li>We recommend that you do not rely solely on AI scores, but refer to multiple information sources and make comprehensive judgments.</li>
+</ol>
+
+<h3>18.5 Prohibition of Exaggeration and Exclusion of Definitive Judgments</h3>
+<ol>
+<li>We will not use the following expressions in Service advertising or displays:
+<ul>
+<li>Definitive expressions such as "guaranteed profit" or "absolutely no loss"</li>
+<li>Profit guarantee expressions such as "guaranteed ○○% profit"</li>
+<li>Misleading by selectively presenting performance data</li>
+<li>Easy expressions such as "anyone can easily make money"</li>
+</ul>
+</li>
+<li>When displaying past score performance, we will display fairly, including issues where losses occurred.</li>
+<li>When providing Service information to third parties, you shall not use misleading or exaggerated expressions.</li>
+</ol>
+
+<h3>18.6 Special Provisions for Cryptocurrency Trading</h3>
+<ol>
+<li>We <strong>do NOT operate Cryptocurrency Exchange Services (Payment Services Act Article 2, Paragraph 7)</strong> and do not mediate, broker, or act as agent for cryptocurrency buying, selling, or exchange.</li>
+<li>Actual cryptocurrency trading shall be conducted through cryptocurrency exchange operators (registered with the Financial Services Agency) that you select.</li>
+<li>You understand that cryptocurrencies have the following specific risks:
+<ul>
+<li>Not legal tender and have no value guarantee</li>
+<li>Very large price fluctuations (potential changes of 50% or more per day)</li>
+<li>Risk of losing assets due to exchange hacking or bankruptcy</li>
+<li>Possibility of trading being restricted or prohibited due to regulatory changes in various countries</li>
+<li>Permanently losing assets if private key is lost</li>
+</ul>
+</li>
+</ol>
+
+<h3>18.7 Disclaimer for Social Sentiment Information</h3>
+<ol>
+<li>The Services may provide sentiment information collected from social media such as Reddit and Twitter (X), but these are opinions of general investors and <strong>are not expert views or our recommendations.</strong></li>
+<li>Social sentiment information may contain the following problems, and investment decisions based on it are at your own risk:
+<ul>
+<li>Manipulated or exaggerated information (pump and dump, etc.)</li>
+<li>Fake information, rumors, fake news</li>
+<li>Intentional information dissemination by specific investor groups</li>
+<li>Automated posts by bots</li>
+</ul>
+</li>
+</ol>
+
+<h3>18.8 Nature of Community Predictions</h3>
+<p>Service community prediction features (AI vs Humans) contain entertainment elements and <strong>should NOT be used as a basis for investment decisions.</strong> Prediction accuracy rates are reference information and do not guarantee future accuracy.</p>
+
+<h3>18.9 Disclaimer for Portfolio Optimization</h3>
+<p>Portfolio optimization proposals provided by the Services (based on MPT theory) are statistical analyses based on past data and <strong>do NOT guarantee future performance.</strong> Adjustments according to your investment objectives, risk tolerance, and financial situation are necessary.</p>
+
+<h3>18.10 Limitation of Damages Liability</h3>
+<ol>
+<li>Even if damages occur due to reasons attributable to us, our liability shall be limited to direct and ordinary damages, not exceeding the total fees paid by you for investment scoring services (during the past 12 months).</li>
+<li>We shall not be liable for the following damages:
+<ul>
+<li>Lost profits, opportunity losses</li>
+<li>Investment principal losses</li>
+<li>Losses exceeding principal due to leveraged trading</li>
+<li>Damages based on third-party claims</li>
+<li>Data loss or corruption</li>
+<li>Tax losses</li>
+</ul>
+</li>
+</ol>
+
+<h3>18.11 Your Confirmation Items</h3>
+<p>When using the Services, you confirm and agree to the following:</p>
+<ul style="list-style-type: none; padding-left: 0;">
+<li>☑ The Services are information services, not investment advisory services</li>
+<li>☑ Investment decisions and investment actions are made at my own responsibility</li>
+<li>☑ Investment involves risks and losses may occur</li>
+<li>☑ Losses exceeding principal may occur (leveraged trading, etc.)</li>
+<li>☑ Service scores and information do not guarantee future prices</li>
+<li>☑ AI analysis has limitations and misjudgment is possible</li>
+<li>☑ It is necessary to refer to multiple information sources and make comprehensive judgments</li>
+<li>☑ Consult with experts (financial instruments business operators, tax accountants, etc.) as necessary</li>
+<li>☑ Understand cryptocurrency-specific risks (hacking, private key loss, etc.)</li>
+<li>☑ Invest considering my own financial situation and risk tolerance</li>
+</ul>
+
+<h2>19. Maritime Security Service Special Terms</h2>
+<p>This article applies to users of Maritime Security (vessel cybersecurity) Services.</p>
+
+<h3>19.1 Nature of Services</h3>
+<ol>
+<li>The Services provide cybersecurity assessment and threat detection for vessel IT and OT systems.</li>
+<li>The Services reference IMO (International Maritime Organization) cybersecurity guidelines, but <strong>do not guarantee compliance with all international regulations.</strong></li>
+<li>The Services address cybersecurity aspects and do not cover vessel physical safety or navigation safety.</li>
+</ol>
+
+<h3>19.2 Disclaimer for Impact on Vessel Operations</h3>
+<ol>
+<li>We will exercise maximum care so that Service assessment and threat detection activities do not affect vessel operations, but shall not be liable for the following:
+<ul>
+<li>Temporary delays or stoppages of navigation systems during assessment</li>
+<li>Impact on operational decisions due to threat detection alerts</li>
+<li>Communication failures during security measure implementation</li>
+<li>Increased load on vessel systems during assessment work</li>
+</ul>
+</li>
+<li>You have the right to postpone assessment work during critical operational phases (port entry/departure, bad weather, narrow waterway navigation, etc.).</li>
+</ol>
+
+<h3>19.3 Priority of Human Life Safety</h3>
+<p>Both you and we confirm that <strong>human life safety takes priority</strong> in vessel operations. If human life safety takes priority over security measures, you may temporarily suspend or interrupt the Services at your discretion.</p>
+
+<h3>19.4 Obligation to Comply with International Regulations</h3>
+<ol>
+<li>You are obligated to confirm and comply with cybersecurity regulations of countries and ports where vessels call.</li>
+<li>We do not warrant the following:
+<ul>
+<li>Compliance with all international maritime regulations (SOLAS, ISPS, MARPOL, etc.)</li>
+<li>Response to Port State Control (PSC) inspections in various ports</li>
+<li>Compliance with classification society (NK, LR, DNV, etc.) requirements</li>
+<li>Compliance with flag state regulations</li>
+</ul>
+</li>
+</ol>
+
+<h3>19.5 Limitations of Remote Assessment</h3>
+<ol>
+<li>The Services perform security assessments remotely in principle, but you understand the following limitations:
+<ul>
+<li>Physical security vulnerabilities cannot be detected</li>
+<li>Assessment accuracy varies depending on vessel network conditions (satellite communication bandwidth, latency, etc.)</li>
+<li>Not all vessel systems (navigation instruments, engine control systems, etc.) may be accessible</li>
+<li>May be affected by vessel physical installation environment</li>
+</ul>
+</li>
+<li>For more detailed assessments, we recommend on-site assessments (separate fees apply).</li>
+</ol>
+
+<h3>19.6 Confidentiality of Threat Information</h3>
+<p>Threat information detected by the Services is treated as confidential information of the vessel and vessel operating company, and we will not disclose it to third parties without your consent. However, this shall not apply if there is an obligation to disclose under law or if we determine that warnings to other vessels about similar threats are necessary (in a form that does not identify the vessel).</p>
+
+<h3>19.7 Limitation of Liability</h3>
+<p>Even if damages occur due to reasons attributable to us, our liability shall not exceed the fees paid by you (for 12 months). We shall not be liable for the following damages:</p>
+<ul>
+<li>Damages from vessel operation delays (charter hire losses, delay damages, etc.)</li>
+<li>Actual damages from cyber attacks (except in cases of our gross negligence)</li>
+<li>Claims from third parties (passengers, cargo owners, port administrators, etc.)</li>
+<li>Damages from marine accidents or collision accidents</li>
+<li>Human damages (deaths or injuries)</li>
+</ul>
+
+<div class="warning-box">
+<h3>⚠️ For Users of Vessel NFT Services - Must Read ⚠️</h3>
+<p>Vessel NFT Services issue and manage NFTs using blockchain technology. Please be sure to read the following important matters.</p>
+<ul>
+<li><strong>NFTs are auxiliary recording means and are not legal proof of ownership.</strong></li>
+<li><strong>They do not substitute for vessel registration under the Ships Act.</strong></li>
+<li><strong>Due to blockchain characteristics, once recorded data cannot be deleted.</strong></li>
+<li><strong>If you lose your private key, you will permanently lose your NFT. Recovery is impossible.</strong></li>
+</ul>
+</div>
+
+<h2>20. Vessel NFT Service Special Terms</h2>
+<p>This article contains extremely important provisions that apply to users of Vessel NFT (Maritime Professional Reputation Protocol) Services. <strong>Please read the entire text carefully and fully understand the content before using these Services.</strong></p>
+
+<h3>20.1 Nature and Limitations of Services</h3>
+<ol>
+<li>The Services are information management services that record and certify vessel information and maritime professional performance using blockchain technology.</li>
+<li>Service NFT certificates are auxiliary recording means and have no legal effect for:
+<ul>
+<li><strong>Not substituting for vessel registration under the Ships Act</strong></li>
+<li><strong>Not legal requirements for vessel ownership transfer</strong></li>
+<li><strong>Not official certification of maritime professional qualifications or licenses</strong></li>
+<li><strong>Not guaranteeing evidentiary capacity in courts or other public institutions</strong></li>
+<li><strong>Not requirements for vessel security interests or vessel mortgages</strong></li>
+</ul>
+</li>
+<li>Actual vessel ownership transfers, charter contracts, vessel security interest establishment, and other legal procedures must be performed separately in accordance with the Commercial Code, Ships Act, Maritime Commercial Code, Civil Code, and other relevant laws.</li>
+</ol>
+
+<h3>20.2 Legal Nature and Regulatory Application of NFTs</h3>
+<ol>
+<li>Service NFTs have the following characteristics:
+<ul>
+<li>Information recording means, not cryptocurrencies (virtual currencies)</li>
+<li>Not securities as defined in the Financial Instruments and Exchange Act</li>
+<li>Tokens for information management and credential certification purposes, not investment purposes</li>
+</ul>
+</li>
+<li>However, NFT-related regulations may change, and if new regulations are applied in the future, you shall comply with them.</li>
+<li>The Services do not mediate, broker, or act as agent for NFT buying, selling, or exchange, and are not involved in NFT transfers between users.</li>
+</ol>
+
+<h3>20.3 Authenticity of Vessel Information and Disclaimer</h3>
+<ol>
+<li>You warrant that vessel information registered with the Services (vessel name, nationality, IMO number, gross tonnage, year of construction, classification, owner information, etc.) is true and accurate, and will not register false information.</li>
+<li>We have no obligation to verify the authenticity of information registered by you, and shall not be liable for damages from:
+<ul>
+<li>Damages from you registering false vessel information</li>
+<li>Discrepancies between information on NFTs and actual vessel conditions</li>
+<li>Discrepancies between NFT transfers and actual vessel ownership transfers (double transfers, etc.)</li>
+<li>Legal disputes due to contradictions with vessel registration</li>
+<li>Hidden defects or flaws in vessels</li>
+</ul>
+</li>
+<li>You are responsible for thoroughly verifying current vessel conditions and conducting vessel inspections and classification inspections as necessary.</li>
+</ol>
+
+<h3>20.4 Disclaimer for Performance and Reputation Information</h3>
+<ol>
+<li>Maritime professional (vessel brokers, chartering brokers, etc.) transaction performance and reputation information recorded in the Services is self-registered by users, and <strong>we do not warrant the authenticity of the content.</strong></li>
+<li>When referring to reputation information of other users, you must conduct independent investigation and confirmation (reference checks, credit checks, etc.) and make judgments at your own responsibility.</li>
+<li>We shall not be liable for transaction troubles based on false performance information.</li>
+</ol>
+
+<h3>20.5 Disclaimer for NFT Minting and Transfer</h3>
+<ol>
+<li>NFT minting (issuance) requires blockchain gas fees, which are your expense. Gas fees vary depending on network congestion.</li>
+<li>We shall not be liable for NFT minting or transfer failures due to:
+<ul>
+<li>Blockchain network (Polygon, Ethereum, etc.) congestion or failures</li>
+<li>Errors in your wallet settings</li>
+<li>Smart contract bugs or vulnerabilities</li>
+<li>Third-party hacking or unauthorized access</li>
+<li>Insufficient gas fees</li>
+<li>Transaction timeouts</li>
+</ul>
+</li>
+<li><strong>Once minted NFTs cannot be canceled or refunded.</strong> Transactions are irreversible due to blockchain characteristics.</li>
+</ol>
+
+<h3>20.6 Blockchain Characteristics and Limitations</h3>
+<ol>
+<li>Blockchain is distributed ledger technology, and you understand the following characteristics:
+<ul>
+<li><strong>Irreversibility</strong>: Once recorded data cannot be deleted or changed in principle</li>
+<li><strong>Public Nature</strong>: Data on blockchain is public and viewable by anyone</li>
+<li><strong>Network Dependency</strong>: Blockchain network failures may make it temporarily inaccessible</li>
+<li><strong>Non-guarantee of Complete Security</strong>: Blockchain security itself is not perfect, with risks such as 51% attacks, cryptographic decryption by quantum computers, etc.</li>
+</ul>
+</li>
+<li>You are responsible for strictly managing private keys and bear responsibility in case of loss or leakage. <strong>We cannot recover or reissue private keys.</strong></li>
+<li>If you lose your private key, you will permanently lose your NFT. There is no means of recovery.</li>
+</ol>
+
+<h3>20.7 Relationship with Maritime Commercial Law and Ships Act</h3>
+<ol>
+<li>Service NFT certificates do not substitute for vessel registration under the Japanese Ships Act, and vessel registration and registry must be performed separately in accordance with law.</li>
+<li>Vessel sales and transfers shall be performed according to Commercial Code Article 686 et seq., following legal procedures. <strong>NFT transfer alone does not satisfy legal requirements.</strong></li>
+<li>Establishment of security interests in vessels shall follow Commercial Code Article 848 et seq., requiring vessel registration.</li>
+<li>Vessels engaged in international voyages must comply with SOLAS Convention, MARPOL Convention, and other international conventions.</li>
+</ol>
+
+<h3>20.8 Restrictions on International Transactions</h3>
+<ol>
+<li>The Services may be used for international vessel transactions, but you are responsible for complying with vessel laws, foreign exchange laws, sanctions (OFAC, UN, etc.), export control regulations, etc. of various countries.</li>
+<li>We do not provide international legal support. When conducting international transactions, you must consult with experts (maritime attorneys, international tax specialists, etc.).</li>
+<li>Transactions with countries or regions subject to US, EU, Japan, etc. economic sanctions are prohibited.</li>
+</ol>
+
+<h3>20.9 Anti-Money Laundering Measures (AML/KYC)</h3>
+<ol>
+<li>The Services conduct customer identification (KYC: Know Your Customer) for certain transactions in accordance with the Act on Prevention of Transfer of Criminal Proceeds.</li>
+<li>You warrant that you will not use NFTs for money laundering or terrorist financing purposes.</li>
+<li>If we detect suspicious transactions, we are obligated to report to the Financial Services Agency, police, etc.</li>
+</ol>
+
+<h3>20.10 Response to Future Regulatory Changes</h3>
+<p>NFT and blockchain technology regulations are developing, and new regulations may be introduced in the future. In such cases, we may change or terminate Service content to comply with regulations, and you consent to this.</p>
+
+<h3>20.11 Limitation of Liability</h3>
+<p>Even if damages occur due to reasons attributable to us, our liability shall not exceed the fees paid by you (for 12 months). We shall not be liable for the following damages:</p>
+<ul>
+<li>NFT value fluctuations or losses</li>
+<li>NFT loss due to private key loss</li>
+<li>Disputes regarding vessel ownership</li>
+<li>Damages from hidden vessel defects</li>
+<li>Transaction troubles based on false performance information</li>
+<li>Blockchain network failures</li>
+</ul>
+
+<h2>21. Security</h2>
+<h3>21.1 Our Security Measures</h3>
+<p>We implement the following measures to secure the Services:</p>
+<ul>
+<li>SSL/TLS encrypted communication</li>
+<li>Implementation of firewalls, IDS/IPS</li>
+<li>Regular vulnerability assessments, penetration testing</li>
+<li>Access control, multi-factor authentication</li>
+<li>Log monitoring, anomaly detection</li>
+<li>Data backups</li>
+<li>Establishment of incident response systems</li>
+</ul>
+
+<h3>21.2 Your Security Responsibilities</h3>
+<p>You are responsible for implementing the following security measures:</p>
+<ul>
+<li>Setting strong passwords (8+ characters, combination of alphanumeric symbols)</li>
+<li>Regular password changes</li>
+<li>Prohibition of password reuse</li>
+<li>Enabling multi-factor authentication (when available)</li>
+<li>Prohibition of saving login information on shared terminals</li>
+<li>Caution against phishing scams</li>
+<li>Installing antivirus software on terminals</li>
+</ul>
+
+<h3>21.3 Security Incident Notification</h3>
+<p>If a security incident (unauthorized access, information leakage, etc.) occurs in the Services, we will promptly notify you and take necessary response measures. If you discover an incident on your side, please notify us immediately.</p>
+
+<h2>22. Governing Law and Jurisdiction</h2>
+<h3>22.1 Governing Law</h3>
+<p>These Terms and the Service Agreement shall be governed by and construed in accordance with the laws of Japan.</p>
+
+<h3>22.2 Jurisdiction</h3>
+<p>Disputes related to the Services shall be subject to the <strong>exclusive jurisdiction of the Tokyo District Court as the court of first instance</strong>.</p>
+
+<h3>22.3 Dispute Resolution</h3>
+<p>If disputes arise regarding these Terms, you and we shall negotiate in good faith and seek amicable resolution. If resolution cannot be achieved through negotiation, litigation shall be filed in the court specified in the preceding paragraph.</p>
+
+<h2>23. Severability</h2>
+<p>If any provision of these Terms is determined to be invalid or unenforceable by law, the validity and enforceability of other provisions shall not be affected. Provisions determined to be invalid or unenforceable shall be deemed modified to the extent valid and enforceable, in a manner closest to the intent of the original provision.</p>
+
+<h2>24. Entire Agreement</h2>
+<p>These Terms constitute the entire agreement between you and us regarding use of the Services, and supersede all prior oral or written agreements, representations, and warranties. However, if there are individual service contracts, Privacy Policy, or other terms separately established by us, they also constitute part of the Service Agreement.</p>
+
+<h2>25. Prohibition of Assignment of Rights and Obligations</h2>
+<p>You may not assign, succeed, set security interests in, or otherwise dispose of all or part of your position, rights, or obligations under the Service Agreement to third parties without our prior written consent.</p>
+<p>We may assign our position, rights, and obligations under the Service Agreement to a third party in case of business transfer, company split, merger, or other reasons for succeeding to the Services business. In such case, you consent in advance without objection.</p>
+
+<h2>26. Surviving Provisions</h2>
+<p>The following provisions of these Terms shall remain effective after termination of the Service Agreement:</p>
+<ul>
+<li>Article 5 (Prohibited Conduct)</li>
+<li>Article 6 (Intellectual Property Rights)</li>
+<li>Article 11 (Disclaimers)</li>
+<li>Article 12 (Exclusion of Organized Crime Groups)</li>
+<li>Articles 15-20 (Service Special Terms)</li>
+<li>Article 22 (Governing Law and Jurisdiction)</li>
+<li>Other provisions that should survive by nature</li>
+</ul>
+
+<h2>27. Contact</h2>
+<p>For questions, inquiries, complaints, or comments regarding these Terms, please contact us at:</p>
+<p><strong>Company Name:</strong> Avisail Technologies Inc.<br>
+<strong>Address:</strong> Tokyo, Japan (for details, please inquire separately)<br>
+<strong>Email:</strong> <a href="mailto:info@avisail.com">info@avisail.com</a><br>
+<strong>Customer Support:</strong> <a href="mailto:support@avisail.com">support@avisail.com</a></p>
 
 <p style="margin-top:60px;padding-top:40px;border-top:1px solid var(--line);color:#9fb0cc;font-size:0.9rem;">
-These Terms apply to all services provided by Avisail Technologies.
+These Terms apply to all services provided by Avisail Technologies Inc.<br>
+Special Terms for each service apply to users of the applicable services.
+</p>
+
+<p style="margin-top:20px;color:#7ef0d4;font-size:0.9rem;text-align:center;">
+Last Updated: February 5, 2025
 </p>
 </div>
 </section>
