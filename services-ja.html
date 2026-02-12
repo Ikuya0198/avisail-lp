@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>サービス選択 | Avisail Technologies</title>
+<meta name="description" content="Avisail Technologiesのサービスにアクセス - Maritime SecurityとADCS法人セキュリティプラットフォーム">
+<link rel="canonical" href="https://avisail.com/services-ja.html">
+<link rel="alternate" hreflang="en" href="https://avisail.com/services-en.html">
+<link rel="alternate" hreflang="ja" href="https://avisail.com/services-ja.html">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --line: rgba(255,255,255,.08);
+  --primary-gradient: linear-gradient(135deg,#6aa6ff,#7ef0d4);
+  --accent-teal: #7ef0d4;
+  --accent-blue: #6aa6ff;
+  --bg-dark: #0a0f1a;
+  --bg-darker: #05080f;
+  --text-primary: #e9f0ff;
+  --text-secondary: #cfe2ff;
+  --text-muted: #9fb0cc;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{background:var(--bg-dark);color:var(--text-primary);font-family:'Noto Sans JP','Inter',sans-serif;line-height:1.7;min-height:100vh;}
+a{color:var(--text-secondary);text-decoration:none;transition:all 0.3s;}
+a:hover{color:var(--accent-teal);}
+
+/* Header */
+header{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(10,15,26,.95);border-bottom:1px solid var(--line);backdrop-filter:blur(10px);}
+.nav{max-width:1200px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:70px;}
+.brand{display:flex;align-items:center;gap:12px;font-weight:600;color:#fff;}
+.logo{width:32px;height:32px;border-radius:8px;background:conic-gradient(from 210deg,var(--accent-blue),var(--accent-teal));}
+.lang-btn{padding:8px 16px;border:1px solid var(--line);border-radius:8px;background:transparent;color:var(--text-muted);font-size:0.85rem;cursor:pointer;transition:all 0.3s;}
+.lang-btn:hover{border-color:var(--accent-teal);color:var(--accent-teal);}
+
+/* Main */
+.container{max-width:900px;margin:0 auto;padding:140px 20px 80px;min-height:100vh;display:flex;flex-direction:column;}
+.header-section{text-align:center;margin-bottom:60px;}
+.header-section h1{font-size:2.5rem;margin-bottom:16px;color:#fff;}
+.header-section h1 span{background:var(--primary-gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.header-section p{color:var(--text-muted);font-size:1.1rem;}
+
+/* Service Cards */
+.services-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;flex:1;}
+.service-card{
+  background:rgba(255,255,255,0.02);
+  border:1px solid var(--line);
+  border-radius:20px;
+  padding:40px;
+  display:flex;
+  flex-direction:column;
+  transition:all 0.3s;
+  position:relative;
+  overflow:hidden;
+}
+.service-card:hover{
+  transform:translateY(-5px);
+  border-color:rgba(106,166,255,0.4);
+  box-shadow:0 20px 40px rgba(0,0,0,0.3);
+}
+.service-card::before{
+  content:'';
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  height:4px;
+  background:var(--primary-gradient);
+  opacity:0;
+  transition:opacity 0.3s;
+}
+.service-card:hover::before{opacity:1;}
+
+.service-icon{
+  width:64px;
+  height:64px;
+  border-radius:16px;
+  background:linear-gradient(135deg,rgba(106,166,255,0.15),rgba(126,240,212,0.1));
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin-bottom:24px;
+}
+.service-icon svg{width:32px;height:32px;stroke:var(--accent-teal);}
+
+.service-card h2{font-size:1.5rem;color:#fff;margin-bottom:12px;}
+.service-card p{color:var(--text-muted);font-size:0.95rem;line-height:1.8;margin-bottom:24px;flex:1;}
+
+.service-features{margin-bottom:24px;}
+.service-features li{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  color:var(--text-secondary);
+  font-size:0.9rem;
+  padding:8px 0;
+  border-bottom:1px solid rgba(255,255,255,0.03);
+}
+.service-features li:last-child{border-bottom:none;}
+.service-features li::before{
+  content:'';
+  width:6px;
+  height:6px;
+  border-radius:50%;
+  background:var(--accent-teal);
+  flex-shrink:0;
+}
+
+.access-btn{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  padding:16px 24px;
+  border-radius:12px;
+  background:var(--primary-gradient);
+  color:#06101a;
+  font-weight:600;
+  font-size:1rem;
+  border:none;
+  cursor:pointer;
+  transition:all 0.3s;
+  text-decoration:none;
+}
+.access-btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 10px 30px rgba(106,166,255,0.3);
+  color:#06101a;
+}
+.access-btn svg{width:20px;height:20px;}
+
+/* Footer */
+footer{text-align:center;padding:40px 20px;border-top:1px solid var(--line);color:var(--text-muted);font-size:0.85rem;}
+footer a{color:var(--text-muted);}
+footer a:hover{color:var(--accent-teal);}
+
+/* Responsive */
+@media(max-width:700px){
+  .services-grid{grid-template-columns:1fr;}
+  .header-section h1{font-size:1.8rem;}
+  .service-card{padding:28px;}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <a href="index.ja.html" class="brand">
+      <div class="logo"></div>
+      <span>Avisail Technologies</span>
+    </a>
+    <a href="services-en.html" class="lang-btn">English</a>
+  </div>
+</header>
+
+<main class="container">
+  <div class="header-section">
+    <h1>サービス<span>選択</span></h1>
+    <p>ご利用になるプラットフォームを選択してください</p>
+  </div>
+
+  <div class="services-grid">
+    <!-- Maritime Security -->
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/>
+          <path d="M12 2v1"/>
+          <path d="M4.22 4.22l.71.71"/>
+          <path d="M19.78 4.22l-.71.71"/>
+        </svg>
+      </div>
+      <h2>Maritime Security</h2>
+      <p>フリートサイバーセキュリティ管理プラットフォーム。船主向けのIMO/IACSコンプライアンス、リアルタイム監視、脅威検知。</p>
+      <ul class="service-features">
+        <li>フリートセキュリティダッシュボード</li>
+        <li>脆弱性スキャン</li>
+        <li>コンプライアンスレポート</li>
+        <li>24時間脅威監視</li>
+      </ul>
+      <a href="https://maritime.avisail.com/login" class="access-btn">
+        プラットフォームにアクセス
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+        </svg>
+      </a>
+    </div>
+
+    <!-- ADCS -->
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          <path d="m9 12 2 2 4-4"/>
+        </svg>
+      </div>
+      <h2>ADCS</h2>
+      <p>法人向けドメインセキュリティ診断プラットフォーム。デジタル資産の自動脆弱性スキャンとセキュリティレポート。</p>
+      <ul class="service-features">
+        <li>ドメインセキュリティスキャン</li>
+        <li>脆弱性レポート</li>
+        <li>SSL/TLS監視</li>
+        <li>セキュリティ推奨事項</li>
+      </ul>
+      <a href="https://adcs.avisail.com/login" class="access-btn">
+        プラットフォームにアクセス
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <p>&copy; 2026 Avisail Technologies Inc. All rights reserved.</p>
+  <p style="margin-top:8px;"><a href="index.ja.html">ホームページに戻る</a></p>
+</footer>
+
+</body>
+</html>

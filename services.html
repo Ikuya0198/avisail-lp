@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Redirecting... | Avisail Technologies</title>
+<script>
+const lang = navigator.language || navigator.userLanguage;
+const isJapanese = lang.startsWith('ja');
+window.location.href = isJapanese ? 'services-ja.html' : 'services-en.html';
+</script>
+<noscript>
+<meta http-equiv="refresh" content="0;url=services-en.html">
+</noscript>
+</head>
+<body>
+<p>Redirecting...</p>
+</body>
+</html>
