@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>海事事業 - 船舶取引×セキュリティで海運業界を革新 | Avisail</title>
+<meta name="description" content="Avisailの海事事業。中古船舶ブローカープラットフォームと海事専門セキュリティシステムで、海運業界のデジタル化とセキュリティ強化を実現。">
+<link rel="canonical" href="https://avisail.com/maritime/maritime-services-ja.html">
+<link rel="alternate" hreflang="ja" href="https://avisail.com/maritime/maritime-services-ja.html">
+<link rel="alternate" hreflang="en" href="https://avisail.com/maritime/maritime-services-en.html">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<style>
+.page-hero{
+  padding:140px 0 100px;
+  background:
+    linear-gradient(rgba(10,15,26,0.85),rgba(10,15,26,0.92)),
+    radial-gradient(ellipse at 30% 20%,rgba(59,130,246,0.15),transparent 50%),
+    radial-gradient(ellipse at 70% 80%,rgba(16,185,129,0.12),transparent 50%),
+    url('../images/hero-bg.jpg') center/cover,
+    var(--bg-dark);
+  position:relative;
+  overflow:hidden;
+}
+.page-hero::before{
+  content:'';
+  position:absolute;
+  bottom:0;
+  left:0;
+  right:0;
+  height:200px;
+  background:linear-gradient(to top, var(--bg-dark), transparent);
+}
+.page-hero .wrap{position:relative;z-index:2;}
+.hero-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:12px 24px;
+  background:rgba(59,130,246,0.15);
+  border:2px solid rgba(59,130,246,0.35);
+  border-radius:30px;
+  color:#3b82f6;
+  font-size:0.85rem;
+  font-weight:700;
+  margin-bottom:28px;
+  letter-spacing:0.05em;
+}
+.page-hero h1{
+  font-size:clamp(2.8rem,6vw,4.5rem);
+  margin-bottom:32px;
+  color:#fff;
+  font-weight:800;
+  line-height:1.2;
+}
+.page-hero h1 span{
+  background:linear-gradient(135deg,#3b82f6,#10b981);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.page-hero .lead{
+  color:var(--text-secondary);
+  max-width:950px;
+  font-size:1.25rem;
+  line-height:1.8;
+  margin-bottom:40px;
+}
+
+.services-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(500px,1fr));
+  gap:48px;
+  margin-top:80px;
+}
+@media(max-width:1100px){
+  .services-grid{
+    grid-template-columns:1fr;
+  }
+}
+.service-card{
+  background:linear-gradient(135deg,rgba(59,130,246,0.08),rgba(16,185,129,0.05));
+  border:2px solid rgba(59,130,246,0.3);
+  border-radius:20px;
+  padding:56px 48px;
+  position:relative;
+  overflow:hidden;
+  transition:all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor:pointer;
+}
+.service-card::before{
+  content:'';
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:linear-gradient(135deg,rgba(59,130,246,0.12),rgba(16,185,129,0.08));
+  opacity:0;
+  transition:opacity 0.4s ease;
+}
+.service-card:hover{
+  border-color:rgba(59,130,246,0.6);
+  transform:translateY(-8px);
+  box-shadow:0 20px 60px rgba(59,130,246,0.2);
+}
+.service-card:hover::before{
+  opacity:1;
+}
+.service-card > *{
+  position:relative;
+  z-index:2;
+}
+.service-icon{
+  width:80px;
+  height:80px;
+  background:linear-gradient(135deg,#3b82f6,#10b981);
+  border-radius:16px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:2.5rem;
+  margin-bottom:28px;
+  box-shadow:0 8px 24px rgba(59,130,246,0.3);
+}
+.service-number{
+  display:inline-block;
+  background:rgba(59,130,246,0.2);
+  border:1px solid rgba(59,130,246,0.4);
+  padding:6px 14px;
+  border-radius:20px;
+  font-size:0.75rem;
+  font-weight:800;
+  color:#3b82f6;
+  margin-bottom:20px;
+  letter-spacing:0.05em;
+}
+.service-card h3{
+  font-size:2rem;
+  margin-bottom:16px;
+  color:#fff;
+  font-weight:800;
+}
+.service-card .subtitle{
+  color:#3b82f6;
+  font-size:1.05rem;
+  font-weight:700;
+  margin-bottom:24px;
+  letter-spacing:0.02em;
+}
+.service-card p{
+  color:var(--text-secondary);
+  font-size:1.05rem;
+  line-height:1.8;
+  margin-bottom:32px;
+}
+.feature-list{
+  list-style:none;
+  padding:0;
+  margin:0 0 36px 0;
+}
+.feature-list li{
+  padding:12px 0;
+  color:var(--text-secondary);
+  font-size:0.95rem;
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+  line-height:1.7;
+  border-bottom:1px solid rgba(59,130,246,0.15);
+}
+.feature-list li:last-child{
+  border-bottom:none;
+}
+.feature-list li::before{
+  content:'✓';
+  color:#10b981;
+  font-weight:700;
+  flex-shrink:0;
+  margin-top:2px;
+  font-size:1.1rem;
+}
+.service-card .cta{
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  padding:18px 40px;
+  font-size:1.1rem;
+  background:linear-gradient(135deg,#3b82f6,#10b981);
+  color:#fff;
+  text-decoration:none;
+  border-radius:10px;
+  font-weight:700;
+  transition:all 0.3s ease;
+  box-shadow:0 4px 16px rgba(59,130,246,0.3);
+}
+.service-card .cta:hover{
+  transform:translateX(4px);
+  box-shadow:0 6px 24px rgba(59,130,246,0.4);
+}
+.service-card .cta svg{
+  width:20px;
+  height:20px;
+  transition:transform 0.3s ease;
+}
+.service-card:hover .cta svg{
+  transform:translateX(4px);
+}
+
+.stats-section{
+  background:rgba(5,8,15,0.6);
+  border-radius:16px;
+  padding:64px 48px;
+  margin-top:80px;
+  border:2px solid rgba(59,130,246,0.2);
+}
+.stats-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:40px;
+  margin-top:40px;
+}
+.stat-item{
+  text-align:center;
+}
+.stat-number{
+  font-size:3rem;
+  font-weight:800;
+  background:linear-gradient(135deg,#3b82f6,#10b981);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  margin-bottom:12px;
+}
+.stat-label{
+  color:var(--text-secondary);
+  font-size:1rem;
+}
+
+@media(max-width:768px){
+  .page-hero{padding:100px 0 60px;}
+  .service-card{padding:40px 32px;}
+  .services-grid{gap:32px;}
+}
+</style>
+
+<!-- JSON-LD 構造化データ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Avisail",
+  "description": "海事事業：船舶取引プラットフォームと海事専門セキュリティシステムを提供",
+  "url": "https://avisail.com/maritime/maritime-services-ja.html",
+  "serviceType": ["Maritime Trading", "Maritime Cybersecurity"]
+}
+</script>
+</head>
+<body style="background:#0a0f1a;">
+
+<!-- Shared Header -->
+<div id="site-header"></div>
+
+<!-- Hero Section -->
+<section class="page-hero">
+<div class="wrap">
+<div class="hero-badge">
+⚓ 海事事業
+</div>
+<h1>
+<span>船舶取引×セキュリティ</span><br>
+海運業界のデジタル革命
+</h1>
+<p class="lead">
+Avisailは、最先端のテクノロジーで海運業界の2つの課題を解決します。<br>
+中古船舶取引の透明化・効率化と、海事業界特有のサイバーセキュリティ対策。<br>
+グローバルな視点と専門知識で、海運業界のDXを推進します。
+</p>
+
+<div style="display:inline-flex;align-items:center;gap:16px;padding:20px 32px;background:rgba(59,130,246,0.12);border:2px solid rgba(59,130,246,0.3);border-radius:12px;">
+<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2">
+<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+</svg>
+<span style="color:var(--text-secondary);font-size:1.05rem;">
+<strong style="color:#fff;">2つの専門商材</strong>で海運業界を包括的にサポート
+</span>
+</div>
+</div>
+</section>
+
+<!-- Services Grid -->
+<section style="padding:100px 0;">
+<div class="wrap">
+<h2 style="text-align:center;font-size:2.8rem;margin-bottom:24px;color:#fff;font-weight:800;">Avisail 海事事業の商材</h2>
+<p style="text-align:center;color:var(--text-secondary);font-size:1.15rem;margin-bottom:60px;max-width:850px;margin-left:auto;margin-right:auto;line-height:1.8;">
+海運業界に特化した2つのソリューション。それぞれが独立した価値を提供し、<br>
+組み合わせることで、船舶取引からセキュリティまで一貫したサポートを実現。
+</p>
+
+<div class="services-grid">
+<!-- 中古船舶ブローカー -->
+<a href="vessel-trading-ja.html" class="service-card" style="text-decoration:none;">
+<div class="service-number">商材 01</div>
+<div class="service-icon">🚢</div>
+<h3>中古船舶ブローカー</h3>
+<div class="subtitle">Vessel Trading Platform</div>
+<p>
+世界中の中古船舶を一元管理するブローカープラットフォーム。340隻以上の船舶データベースを活用し、透明性の高い取引を実現。AI査定機能により適正価格を即座に算出。
+</p>
+
+<ul class="feature-list">
+<li>340隻以上の船舶データベース</li>
+<li>AI搭載の市場価格査定</li>
+<li>配送コスト自動計算</li>
+<li>多言語対応（日本語・英語・アラビア語）</li>
+<li>Total Cost Calculator搭載</li>
+<li>9カ国の配送ルート対応</li>
+</ul>
+
+<div class="cta">
+詳細を見る
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+<path d="M5 12h14M12 5l7 7-7 7"/>
+</svg>
+</div>
+</a>
+
+<!-- 海事専門セキュリティ -->
+<a href="maritime-security-ja.html" class="service-card" style="text-decoration:none;">
+<div class="service-number">商材 02</div>
+<div class="service-icon">🔐</div>
+<h3>海事専門セキュリティシステム</h3>
+<div class="subtitle">Maritime Cybersecurity Solution</div>
+<p>
+海運業界に特化したサイバーセキュリティプラットフォーム。IMO規制・NIS2指令に完全準拠。船舶運航データ、港湾システム、サプライチェーン全体を包括的に保護。
+</p>
+
+<ul class="feature-list">
+<li>IMO規制・NIS2指令完全準拠</li>
+<li>船舶OT/IT統合セキュリティ</li>
+<li>リアルタイム脅威検知</li>
+<li>GDPR対応の航海データ保護</li>
+<li>サプライチェーン可視化</li>
+<li>世界トップクラスのセキュリティ水準</li>
+</ul>
+
+<div class="cta">
+詳細を見る
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+<path d="M5 12h14M12 5l7 7-7 7"/>
+</svg>
+</div>
+</a>
+</div>
+
+<!-- Stats Section -->
+<div class="stats-section">
+<h3 style="text-align:center;font-size:2rem;margin-bottom:48px;color:#fff;font-weight:800;">海事事業の実績</h3>
+<div class="stats-grid">
+<div class="stat-item">
+<div class="stat-number">340+</div>
+<div class="stat-label">掲載船舶数</div>
+</div>
+<div class="stat-item">
+<div class="stat-number">9カ国</div>
+<div class="stat-label">配送ルート対応</div>
+</div>
+<div class="stat-item">
+<div class="stat-number">100%</div>
+<div class="stat-label">IMO規制準拠</div>
+</div>
+<div class="stat-item">
+<div class="stat-number">24/7</div>
+<div class="stat-label">セキュリティ監視</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Why Choose Avisail -->
+<section style="padding:80px 0;background:rgba(5,8,15,0.5);">
+<div class="wrap">
+<h2 style="text-align:center;font-size:2.5rem;margin-bottom:60px;color:#fff;font-weight:800;">なぜAvisailの海事事業か</h2>
+
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:40px;">
+<div style="background:rgba(10,15,26,0.7);border:2px solid rgba(59,130,246,0.3);border-radius:16px;padding:40px;text-align:center;">
+<div style="font-size:3.5rem;margin-bottom:20px;">🌏</div>
+<h4 style="color:#fff;font-size:1.3rem;margin-bottom:16px;font-weight:700;">グローバルネットワーク</h4>
+<p style="color:var(--text-secondary);line-height:1.7;">
+世界中の船舶データとセキュリティ専門家ネットワークを活用。国際的な視点で最適なソリューションを提供。
+</p>
+</div>
+
+<div style="background:rgba(10,15,26,0.7);border:2px solid rgba(59,130,246,0.3);border-radius:16px;padding:40px;text-align:center;">
+<div style="font-size:3.5rem;margin-bottom:20px;">🎯</div>
+<h4 style="color:#fff;font-size:1.3rem;margin-bottom:16px;font-weight:700;">海運業界特化</h4>
+<p style="color:var(--text-secondary);line-height:1.7;">
+一般的なソリューションではなく、海運業界の特性と規制を深く理解した専門システムを提供。
+</p>
+</div>
+
+<div style="background:rgba(10,15,26,0.7);border:2px solid rgba(59,130,246,0.3);border-radius:16px;padding:40px;text-align:center;">
+<div style="font-size:3.5rem;margin-bottom:20px;">⚡</div>
+<h4 style="color:#fff;font-size:1.3rem;margin-bottom:16px;font-weight:700;">最新テクノロジー</h4>
+<p style="color:var(--text-secondary);line-height:1.7;">
+AI・自動化・クラウドネイティブ技術で、従来の海事サービスを圧倒的に進化させたソリューション。
+</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- CTA Section -->
+<section style="padding:100px 0;">
+<div class="wrap">
+<div style="background:linear-gradient(135deg,rgba(59,130,246,0.15),rgba(16,185,129,0.12));border:3px solid rgba(59,130,246,0.4);border-radius:20px;padding:80px 48px;text-align:center;">
+<h2 style="font-size:2.8rem;margin-bottom:24px;color:#fff;font-weight:800;">
+海事事業について<br>詳しく知りたい方へ
+</h2>
+<p style="color:var(--text-secondary);font-size:1.15rem;line-height:1.8;margin-bottom:40px;max-width:750px;margin-left:auto;margin-right:auto;">
+各商材の詳細、価格情報、導入事例など、さらに詳しい情報をご覧いただけます。<br>
+ご不明な点がございましたら、お気軽にお問い合わせください。
+</p>
+<div style="display:flex;gap:20px;justify-content:center;flex-wrap:wrap;">
+<a href="vessel-trading-ja.html" class="cta" style="padding:20px 48px;font-size:1.15rem;">中古船舶ブローカーを見る</a>
+<a href="maritime-security-ja.html" class="cta" style="padding:20px 48px;font-size:1.15rem;">海事セキュリティを見る</a>
+</div>
+<div style="margin-top:48px;padding-top:40px;border-top:2px solid rgba(59,130,246,0.3);">
+<p style="color:var(--text-muted);font-size:0.95rem;margin-bottom:12px;">お問い合わせ</p>
+<p style="color:var(--text-secondary);font-size:1.1rem;"><strong>info@avisail.com</strong></p>
+<p style="color:var(--text-muted);font-size:0.95rem;margin-top:12px;">対応言語：日本語 / English / Italiano<br>返信：1営業日以内</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Shared Footer -->
+<div id="site-footer"></div>
+
+<!-- Shared Components Loader -->
+<script src="../includes/components.js"></script>
+
+</body>
+</html>

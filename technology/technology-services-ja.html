@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>技術事業 - AI・セキュリティコンサルティング＆システム開発 | Avisail</title>
+<meta name="description" content="Avisailの技術事業。AIコンサルティング、セキュリティ強化、システム開発で組織をサポート。自社開発システム（ADCS、船舶取引、海事セキュリティ等）の導入支援も提供。">
+<link rel="canonical" href="https://avisail.com/technology/technology-services-ja.html">
+<link rel="alternate" hreflang="ja" href="https://avisail.com/technology/technology-services-ja.html">
+<link rel="alternate" hreflang="en" href="https://avisail.com/technology/technology-services-en.html">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<style>
+.page-hero{
+  padding:140px 0 100px;
+  background:
+    linear-gradient(rgba(10,15,26,0.85),rgba(10,15,26,0.92)),
+    radial-gradient(ellipse at 30% 20%,rgba(167,139,250,0.15),transparent 50%),
+    radial-gradient(ellipse at 70% 80%,rgba(59,130,246,0.12),transparent 50%),
+    var(--bg-dark);
+  position:relative;
+  overflow:hidden;
+}
+.page-hero::before{
+  content:'';
+  position:absolute;
+  bottom:0;
+  left:0;
+  right:0;
+  height:200px;
+  background:linear-gradient(to top, var(--bg-dark), transparent);
+}
+.page-hero .wrap{position:relative;z-index:2;}
+.hero-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:12px 24px;
+  background:rgba(167,139,250,0.15);
+  border:2px solid rgba(167,139,250,0.35);
+  border-radius:30px;
+  color:#a78bfa;
+  font-size:0.85rem;
+  font-weight:700;
+  margin-bottom:28px;
+  letter-spacing:0.05em;
+}
+.page-hero h1{
+  font-size:clamp(2.8rem,6vw,4.5rem);
+  margin-bottom:32px;
+  color:#fff;
+  font-weight:800;
+  line-height:1.2;
+}
+.page-hero h1 span{
+  background:linear-gradient(135deg,#a78bfa,#3b82f6);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.page-hero .lead{
+  color:var(--text-secondary);
+  max-width:950px;
+  font-size:1.25rem;
+  line-height:1.8;
+  margin-bottom:40px;
+}
+
+.service-section{
+  background:rgba(5,8,15,0.5);
+  border-radius:16px;
+  padding:64px 48px;
+  margin-bottom:60px;
+}
+.service-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+  gap:32px;
+  margin-top:48px;
+}
+.service-card{
+  background:rgba(10,15,26,0.7);
+  border:2px solid rgba(167,139,250,0.3);
+  border-radius:14px;
+  padding:40px;
+  transition:all 0.3s ease;
+}
+.service-card:hover{
+  border-color:rgba(167,139,250,0.6);
+  transform:translateY(-4px);
+  box-shadow:0 12px 40px rgba(167,139,250,0.2);
+}
+.service-icon{
+  width:64px;
+  height:64px;
+  background:linear-gradient(135deg,#a78bfa,#3b82f6);
+  border-radius:14px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:2rem;
+  margin-bottom:24px;
+}
+.service-card h4{
+  color:#fff;
+  font-size:1.4rem;
+  margin-bottom:16px;
+  font-weight:700;
+}
+.service-card p{
+  color:var(--text-secondary);
+  font-size:1rem;
+  line-height:1.8;
+  margin-bottom:24px;
+}
+.service-card ul{
+  list-style:none;
+  padding:0;
+  margin:0;
+}
+.service-card ul li{
+  padding:10px 0;
+  color:var(--text-secondary);
+  font-size:0.95rem;
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+  line-height:1.7;
+  border-bottom:1px solid rgba(167,139,250,0.15);
+}
+.service-card ul li:last-child{
+  border-bottom:none;
+}
+.service-card ul li::before{
+  content:'✓';
+  color:#a78bfa;
+  font-weight:700;
+  flex-shrink:0;
+  margin-top:2px;
+}
+
+.systems-section{
+  margin:80px 0;
+}
+.systems-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
+  gap:28px;
+  margin-top:48px;
+}
+.system-card{
+  background:linear-gradient(135deg,rgba(167,139,250,0.08),rgba(59,130,246,0.05));
+  border:2px solid rgba(167,139,250,0.3);
+  border-radius:16px;
+  padding:36px;
+  transition:all 0.3s ease;
+  position:relative;
+  overflow:hidden;
+}
+.system-card::before{
+  content:'';
+  position:absolute;
+  top:0;
+  right:0;
+  width:150px;
+  height:150px;
+  background:radial-gradient(circle,rgba(167,139,250,0.15),transparent 70%);
+  pointer-events:none;
+}
+.system-card:hover{
+  border-color:rgba(167,139,250,0.6);
+  transform:translateY(-4px);
+  box-shadow:0 16px 48px rgba(167,139,250,0.25);
+}
+.system-badge{
+  display:inline-block;
+  background:rgba(167,139,250,0.2);
+  border:1px solid rgba(167,139,250,0.4);
+  padding:6px 14px;
+  border-radius:20px;
+  font-size:0.75rem;
+  font-weight:700;
+  color:#a78bfa;
+  margin-bottom:16px;
+  letter-spacing:0.05em;
+  text-transform:uppercase;
+}
+.system-card h4{
+  color:#fff;
+  font-size:1.3rem;
+  margin-bottom:12px;
+  font-weight:700;
+}
+.system-card .subtitle{
+  color:#a78bfa;
+  font-size:0.9rem;
+  margin-bottom:16px;
+  font-weight:600;
+}
+.system-card p{
+  color:var(--text-secondary);
+  font-size:0.95rem;
+  line-height:1.7;
+  margin-bottom:20px;
+}
+.system-card .learn-more{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  color:#a78bfa;
+  font-weight:600;
+  font-size:0.9rem;
+  transition:all 0.3s ease;
+}
+.system-card:hover .learn-more{
+  gap:12px;
+  color:#c4b5fd;
+}
+
+@media(max-width:768px){
+  .page-hero{padding:100px 0 60px;}
+  .service-grid{grid-template-columns:1fr;}
+  .systems-grid{grid-template-columns:1fr;}
+}
+</style>
+
+<!-- JSON-LD 構造化データ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Avisail",
+  "description": "技術事業：AIコンサルティング、セキュリティ強化、システム開発で組織をサポート",
+  "url": "https://avisail.com/technology/technology-services-ja.html",
+  "serviceType": ["AI Consulting", "Cybersecurity Consulting", "System Development"]
+}
+</script>
+</head>
+<body style="background:#0a0f1a;">
+
+<!-- Shared Header -->
+<div id="site-header"></div>
+
+<!-- Hero Section -->
+<section class="page-hero">
+<div class="wrap">
+<div class="hero-badge">
+💻 技術事業
+</div>
+<h1>
+<span>AI × セキュリティ</span><br>
+テクノロジーで組織を進化させる
+</h1>
+<p class="lead">
+最先端のAI技術とサイバーセキュリティの専門知識で、組織のデジタル変革を支援。<br>
+コンサルティングからシステム開発、運用サポートまで、包括的な技術サービスを提供します。
+</p>
+
+<div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:36px;">
+<a href="#contact" class="cta" style="font-size:1.1rem;padding:18px 44px;">相談する</a>
+<a href="#systems" class="btn" style="font-size:1.1rem;padding:18px 44px;">自社開発システムを見る</a>
+</div>
+</div>
+</section>
+
+<!-- コンサルティングサービス -->
+<section style="padding:80px 0;">
+<div class="wrap">
+<h2 style="text-align:center;font-size:2.8rem;margin-bottom:24px;color:#fff;font-weight:800;">技術コンサルティングサービス</h2>
+<p style="text-align:center;color:var(--text-secondary);font-size:1.15rem;line-height:1.8;max-width:900px;margin:0 auto 60px;">
+AI・セキュリティに関する深い専門知識で、組織のデジタル戦略を支援。<br>
+戦略立案から実装、運用まで、一貫したサポートを提供します。
+</p>
+
+<div class="service-section">
+<div class="service-grid">
+<!-- AIコンサルティング -->
+<div class="service-card">
+<div class="service-icon">🤖</div>
+<h4>AIコンサルティング</h4>
+<p>
+生成AI、機械学習、データ分析の導入を戦略的にサポート。業務効率化、意思決定の高度化、新規ビジネス創出を実現します。
+</p>
+<ul>
+<li>AI導入戦略の立案</li>
+<li>生成AI（GPT、Claude等）の業務活用</li>
+<li>機械学習モデルの開発・実装</li>
+<li>データ分析基盤の構築</li>
+<li>AIガバナンス体制の整備</li>
+</ul>
+</div>
+
+<!-- セキュリティコンサルティング -->
+<div class="service-card">
+<div class="service-icon">🛡️</div>
+<h4>セキュリティコンサルティング</h4>
+<p>
+サイバーセキュリティの専門家が、組織のセキュリティ体制を診断・強化。脅威から組織を守る包括的なセキュリティ戦略を構築します。
+</p>
+<ul>
+<li>セキュリティ診断・リスク評価</li>
+<li>セキュリティ戦略の立案</li>
+<li>CSIRT構築・運用支援</li>
+<li>インシデント対応体制の整備</li>
+<li>コンプライアンス対応（GDPR、NIS2等）</li>
+</ul>
+</div>
+
+<!-- システム開発 -->
+<div class="service-card">
+<div class="service-icon">⚙️</div>
+<h4>システム開発・導入支援</h4>
+<p>
+要件定義から設計、開発、運用まで、システム開発のライフサイクル全体をサポート。最新技術を活用した高品質なシステムを提供します。
+</p>
+<ul>
+<li>カスタムシステム開発</li>
+<li>既存システムの現代化・リファクタリング</li>
+<li>API統合・システム連携</li>
+<li>クラウド移行・インフラ構築</li>
+<li>保守・運用サポート</li>
+</ul>
+</div>
+</div>
+
+<!-- サポート体制 -->
+<div style="margin-top:60px;padding:40px;background:linear-gradient(135deg,rgba(167,139,250,0.1),rgba(59,130,246,0.08));border:2px solid rgba(167,139,250,0.3);border-radius:14px;text-align:center;">
+<h3 style="color:#fff;font-size:1.8rem;margin-bottom:16px;font-weight:800;">柔軟なサポート体制</h3>
+<p style="color:var(--text-secondary);font-size:1.05rem;line-height:1.8;max-width:750px;margin:0 auto;">
+短期コンサルティングから長期プロジェクト、継続的な技術顧問まで、<br>
+貴社のニーズに合わせた柔軟な契約形態に対応。
+</p>
+
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:32px;margin-top:40px;max-width:900px;margin-left:auto;margin-right:auto;">
+<div>
+<div style="font-size:2rem;margin-bottom:12px;">💼</div>
+<h5 style="color:#fff;font-size:1.1rem;margin-bottom:8px;font-weight:700;">短期コンサル</h5>
+<p style="color:var(--text-secondary);font-size:0.9rem;">1ヶ月〜の短期プロジェクト</p>
+</div>
+<div>
+<div style="font-size:2rem;margin-bottom:12px;">🤝</div>
+<h5 style="color:#fff;font-size:1.1rem;margin-bottom:8px;font-weight:700;">技術顧問</h5>
+<p style="color:var(--text-secondary);font-size:0.9rem;">継続的な技術アドバイス</p>
+</div>
+<div>
+<div style="font-size:2rem;margin-bottom:12px;">🚀</div>
+<h5 style="color:#fff;font-size:1.1rem;margin-bottom:8px;font-weight:700;">プロジェクト支援</h5>
+<p style="color:var(--text-secondary);font-size:0.9rem;">開発〜運用までフルサポート</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- 自社開発システム -->
+<section id="systems" style="padding:80px 0;background:rgba(5,8,15,0.5);">
+<div class="wrap">
+<div class="systems-section">
+<h2 style="text-align:center;font-size:2.8rem;margin-bottom:24px;color:#fff;font-weight:800;">自社開発システム</h2>
+<p style="text-align:center;color:var(--text-secondary);font-size:1.15rem;line-height:1.8;max-width:900px;margin:0 auto 60px;">
+Avisailが開発した各種システムの導入支援・カスタマイズも対応。<br>
+実証済みのソリューションで、導入リスクを最小化します。
+</p>
+
+<div class="systems-grid">
+<!-- ADCS -->
+<div class="system-card">
+<div class="system-badge">セキュリティ</div>
+<h4>ADCS</h4>
+<div class="subtitle">Autonomous Defensive Cybersecurity System</div>
+<p>
+AI完全自動化によるエンタープライズ級セキュリティ評価・管理プラットフォーム。脆弱性診断、リスク分析、改善提案を自動化。
+</p>
+<a href="../security/adcs-ja.html" class="learn-more">
+詳細を見る
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+<path d="M5 12h14M12 5l7 7-7 7"/>
+</svg>
+</a>
+</div>
+
+<!-- 船舶売買プラットフォーム -->
+<div class="system-card">
+<div class="system-badge">海事事業</div>
+<h4>船舶売買プラットフォーム</h4>
+<div class="subtitle">Vessel Trading Platform</div>
+<p>
+340隻以上の中古船舶データベースを活用したブローカープラットフォーム。AI査定、配送コスト計算、エクスクロー決済を統合。
+</p>
+<a href="../maritime/vessel-trading-ja.html" class="learn-more">
+詳細を見る
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+<path d="M5 12h14M12 5l7 7-7 7"/>
+</svg>
+</a>
+</div>
+
+<!-- 海事セキュリティシステム -->
+<div class="system-card">
+<div class="system-badge">海事セキュリティ</div>
+<h4>海事専門セキュリティシステム</h4>
+<div class="subtitle">Maritime Cybersecurity Solution</div>
+<p>
+IMO規制・NIS2指令完全準拠。船舶OT/IT統合セキュリティ、サプライチェーン可視化、24/7リアルタイム監視を提供。
+</p>
+<a href="../maritime/maritime-security-ja.html" class="learn-more">
+詳細を見る
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+<path d="M5 12h14M12 5l7 7-7 7"/>
+</svg>
+</a>
+</div>
+
+<!-- NFT化システム -->
+<div class="system-card">
+<div class="system-badge">ブロックチェーン</div>
+<h4>NFT化システム</h4>
+<div class="subtitle">Vessel NFT Certification</div>
+<p>
+船舶所有権をブロックチェーン上でNFT化。所有権証明、履歴追跡、詐欺防止を実現する世界初のシステム。
+</p>
+<span class="learn-more" style="opacity:0.5;cursor:default;">
+開発中
+</span>
+</div>
+
+<!-- サプライチェーン統合システム -->
+<div class="system-card">
+<div class="system-badge">物流・SCM</div>
+<h4>サプライチェーン統合システム</h4>
+<div class="subtitle">Supply Chain Integration Platform</div>
+<p>
+物流・在庫・通関データを一元管理。サプライチェーン全体の可視化とセキュリティリスク管理を実現。
+</p>
+<span class="learn-more" style="opacity:0.5;cursor:default;">
+開発中
+</span>
+</div>
+
+<!-- Meshscore -->
+<div class="system-card">
+<div class="system-badge">評価・分析</div>
+<h4>Meshscore</h4>
+<div class="subtitle">Comprehensive Evaluation System</div>
+<p>
+多面的評価指標で組織・プロジェクト・個人を総合的にスコアリング。データドリブンな意思決定をサポート。
+</p>
+<span class="learn-more" style="opacity:0.5;cursor:default;">
+開発中
+</span>
+</div>
+</div>
+
+<div style="margin-top:60px;text-align:center;padding:40px;background:rgba(167,139,250,0.08);border:2px solid rgba(167,139,250,0.3);border-radius:14px;">
+<h3 style="color:#fff;font-size:1.6rem;margin-bottom:16px;font-weight:800;">カスタマイズ・導入支援</h3>
+<p style="color:var(--text-secondary);font-size:1.05rem;line-height:1.8;max-width:750px;margin:0 auto;">
+自社開発システムの貴社環境への導入、カスタマイズ、運用支援を提供。<br>
+既存システムとの統合、機能追加、専用機能の開発にも対応します。
+</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- 実績・強み -->
+<section style="padding:80px 0;">
+<div class="wrap">
+<h2 style="text-align:center;font-size:2.5rem;margin-bottom:60px;color:#fff;font-weight:800;">Avisail技術事業の強み</h2>
+
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:40px;">
+<div style="background:rgba(10,15,26,0.7);border:2px solid rgba(167,139,250,0.3);border-radius:16px;padding:40px;text-align:center;">
+<div style="font-size:3.5rem;margin-bottom:20px;">🎓</div>
+<h4 style="color:#fff;font-size:1.3rem;margin-bottom:16px;font-weight:700;">深い専門知識</h4>
+<p style="color:var(--text-secondary);line-height:1.7;">
+AI、サイバーセキュリティ、システム開発の各分野で豊富な実績。最新技術動向を常にキャッチアップ。
+</p>
+</div>
+
+<div style="background:rgba(10,15,26,0.7);border:2px solid rgba(167,139,250,0.3);border-radius:16px;padding:40px;text-align:center;">
+<div style="font-size:3.5rem;margin-bottom:20px;">🚀</div>
+<h4 style="color:#fff;font-size:1.3rem;margin-bottom:16px;font-weight:700;">実践的アプローチ</h4>
+<p style="color:var(--text-secondary);line-height:1.7;">
+理論だけでなく、実際に稼働するシステムを開発・運用した経験に基づく実践的な提案。
+</p>
+</div>
+
+<div style="background:rgba(10,15,26,0.7);border:2px solid rgba(167,139,250,0.3);border-radius:16px;padding:40px;text-align:center;">
+<div style="font-size:3.5rem;margin-bottom:20px;">🌏</div>
+<h4 style="color:#fff;font-size:1.3rem;margin-bottom:16px;font-weight:700;">グローバル視点</h4>
+<p style="color:var(--text-secondary);line-height:1.7;">
+国際標準・ベストプラクティスを熟知。グローバル展開を見据えたシステム設計・セキュリティ対策を提供。
+</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- CTA Section -->
+<section id="contact" style="padding:100px 0;background:rgba(5,8,15,0.5);">
+<div class="wrap">
+<div style="background:linear-gradient(135deg,rgba(167,139,250,0.15),rgba(59,130,246,0.12));border:3px solid rgba(167,139,250,0.4);border-radius:20px;padding:80px 48px;text-align:center;">
+<h2 style="font-size:2.8rem;margin-bottom:24px;color:#fff;font-weight:800;">
+技術的な課題を<br>一緒に解決しませんか
+</h2>
+<p style="color:var(--text-secondary);font-size:1.15rem;line-height:1.8;margin-bottom:40px;max-width:750px;margin-left:auto;margin-right:auto;">
+AIの導入、セキュリティの強化、システム開発など、<br>
+技術に関するあらゆるご相談を承ります。
+</p>
+<div style="display:flex;gap:20px;justify-content:center;flex-wrap:wrap;">
+<a href="../ja/contact.html?type=technology" class="cta" style="font-size:1.2rem;padding:22px 60px;background:linear-gradient(135deg,#a78bfa,#3b82f6);text-decoration:none;border-radius:8px;">無料相談を申し込む</a>
+</div>
+
+<div style="margin-top:60px;padding-top:40px;border-top:2px solid rgba(167,139,250,0.3);">
+<p style="color:var(--text-muted);font-size:0.95rem;margin-bottom:12px;">お問い合わせ</p>
+<p style="color:var(--text-secondary);font-size:1.1rem;"><strong>info@avisail.com</strong></p>
+<p style="color:var(--text-muted);font-size:0.95rem;margin-top:12px;">対応言語：日本語 / English / Italiano<br>返信：1営業日以内</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Shared Footer -->
+<div id="site-footer"></div>
+
+<!-- Shared Components Loader -->
+<script src="../includes/components.js"></script>
+
+</body>
+</html>

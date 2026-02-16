@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>海事専門セキュリティシステム - IMO規制・NIS2指令完全準拠 | Avisail</title>
+<meta name="description" content="海運業界に特化したサイバーセキュリティプラットフォーム。IMO規制・NIS2指令完全準拠。船舶OT/IT統合セキュリティ、リアルタイム脅威検知、世界トップクラスのセキュリティ水準。">
+<link rel="canonical" href="https://avisail.com/maritime/maritime-security-ja.html">
+<link rel="alternate" hreflang="ja" href="https://avisail.com/maritime/maritime-security-ja.html">
+<link rel="alternate" hreflang="en" href="https://avisail.com/maritime/maritime-security-en.html">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<style>
+.page-hero{
+  padding:140px 0 100px;
+  background:
+    linear-gradient(rgba(10,15,26,0.88),rgba(10,15,26,0.95)),
+    radial-gradient(ellipse at 35% 25%,rgba(59,130,246,0.12),transparent 50%),
+    radial-gradient(ellipse at 65% 75%,rgba(16,185,129,0.08),transparent 50%),
+    var(--bg-dark);
+  position:relative;
+  overflow:hidden;
+}
+.page-hero::before{
+  content:'';
+  position:absolute;
+  bottom:0;
+  left:0;
+  right:0;
+  height:200px;
+  background:linear-gradient(to top, var(--bg-dark), transparent);
+}
+.page-hero .wrap{position:relative;z-index:2;}
+.hero-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:12px 24px;
+  background:rgba(59,130,246,0.15);
+  border:2px solid rgba(59,130,246,0.35);
+  border-radius:30px;
+  color:#3b82f6;
+  font-size:0.85rem;
+  font-weight:700;
+  margin-bottom:28px;
+  letter-spacing:0.05em;
+}
+.page-hero h1{
+  font-size:clamp(2.8rem,6vw,4.5rem);
+  margin-bottom:32px;
+  color:#fff;
+  font-weight:800;
+  line-height:1.2;
+}
+.page-hero h1 span{
+  background:linear-gradient(135deg,#3b82f6,#10b981);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.page-hero .lead{
+  color:var(--text-secondary);
+  max-width:950px;
+  font-size:1.25rem;
+  line-height:1.8;
+  margin-bottom:40px;
+}
+.hero-stats{
+  display:flex;
+  gap:48px;
+  flex-wrap:wrap;
+  margin-top:48px;
+}
+.hero-stat{
+  text-align:left;
+}
+.hero-stat-number{
+  font-size:2.5rem;
+  font-weight:800;
+  background:linear-gradient(135deg,#3b82f6,#10b981);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  margin-bottom:8px;
+}
+.hero-stat-label{
+  font-size:0.95rem;
+  color:var(--text-muted);
+}
+
+/* ADCSページからスタイルを継承 */
+.problem-section{
+  background:rgba(239,68,68,0.06);
+  border:2px solid rgba(239,68,68,0.25);
+  border-radius:16px;
+  padding:56px;
+  margin:60px 0;
+}
+.problem-section h2{
+  color:#ef4444;
+  font-size:2.3rem;
+  margin-bottom:20px;
+  text-align:center;
+  font-weight:800;
+}
+.solution-section{
+  background:linear-gradient(135deg,rgba(59,130,246,0.1),rgba(16,185,129,0.08));
+  border:2px solid rgba(16,185,129,0.3);
+  border-radius:16px;
+  padding:64px;
+  margin:60px 0;
+  text-align:center;
+}
+.features-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:32px;
+  margin-top:48px;
+}
+.feature-box{
+  background:rgba(10,15,26,0.7);
+  border:1px solid rgba(59,130,246,0.25);
+  border-radius:14px;
+  padding:36px;
+  text-align:left;
+}
+.feature-icon{
+  width:56px;
+  height:56px;
+  background:linear-gradient(135deg,#3b82f6,#10b981);
+  border-radius:12px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:1.8rem;
+  margin-bottom:20px;
+}
+.feature-box h4{
+  color:#fff;
+  font-size:1.25rem;
+  margin-bottom:12px;
+  font-weight:700;
+}
+.feature-box p{
+  color:var(--text-secondary);
+  line-height:1.75;
+  font-size:0.95rem;
+}
+
+@media(max-width:768px){
+  .page-hero{padding:100px 0 60px;}
+}
+</style>
+
+<!-- JSON-LD 構造化データ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "海事専門セキュリティシステム",
+  "description": "海運業界に特化したサイバーセキュリティプラットフォーム。IMO規制・NIS2指令完全準拠。",
+  "brand": {
+    "@type": "Organization",
+    "name": "Avisail"
+  },
+  "offers": {
+    "@type": "Offer",
+    "availability": "https://schema.org/InStock"
+  }
+}
+</script>
+</head>
+<body style="background:#0a0f1a;">
+
+<!-- Shared Header -->
+<div id="site-header"></div>
+
+<!-- Hero Section -->
+<section class="page-hero">
+<div class="wrap">
+<div class="hero-badge">
+🔐 海事専門セキュリティ
+</div>
+<h1>
+<span>海運業界のための</span><br>
+世界トップクラスの<br>
+サイバーセキュリティ
+</h1>
+<p class="lead">
+IMO規制・NIS2指令に完全準拠した海事専門セキュリティプラットフォーム。<br>
+船舶OT/ITシステム、港湾インフラ、サプライチェーン全体を包括的に保護。<br>
+もはや「贅沢品」ではなく、海運業界で生き残るための「必須品」です。
+</p>
+
+<div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:36px;">
+<a href="#free-assessment" class="cta" style="font-size:1.1rem;padding:18px 44px;">無料セキュリティ診断</a>
+<a href="#contact" class="btn" style="font-size:1.1rem;padding:18px 44px;">詳細を見る</a>
+</div>
+
+<div class="hero-stats">
+<div class="hero-stat">
+<div class="hero-stat-number">100%</div>
+<div class="hero-stat-label">IMO規制準拠</div>
+</div>
+<div class="hero-stat">
+<div class="hero-stat-number">24/7</div>
+<div class="hero-stat-label">リアルタイム監視</div>
+</div>
+<div class="hero-stat">
+<div class="hero-stat-number">世界Top</div>
+<div class="hero-stat-label">セキュリティ水準</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- なぜ今、海事セキュリティが必須か -->
+<section style="padding:80px 0;background:linear-gradient(135deg,rgba(239,68,68,0.08),rgba(10,15,26,0.95));">
+<div class="wrap">
+<div style="text-align:center;margin-bottom:60px;">
+<div style="display:inline-block;background:rgba(239,68,68,0.2);border:2px solid rgba(239,68,68,0.4);padding:12px 24px;border-radius:30px;margin-bottom:24px;">
+<span style="color:#ef4444;font-weight:800;font-size:0.9rem;letter-spacing:0.05em;">⚠️ 贅沢品から必須品へ</span>
+</div>
+<h2 style="font-size:2.8rem;margin-bottom:24px;color:#fff;font-weight:800;">
+なぜ今、海事業界で<br>
+<span style="background:linear-gradient(135deg,#ef4444,#f59e0b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">セキュリティが必須</span>なのか？
+</h2>
+<p style="color:var(--text-secondary);font-size:1.15rem;line-height:1.8;max-width:900px;margin:0 auto;">
+2026年、海運業界を取り巻くセキュリティ環境は劇的に変化。<br>
+法規制の強化、サイバー攻撃の激化により、対策なしでは事業継続が困難に。
+</p>
+</div>
+
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(350px,1fr));gap:32px;margin-bottom:64px;">
+<!-- 統計1 -->
+<div style="background:rgba(10,15,26,0.7);border:2px solid rgba(239,68,68,0.3);border-radius:14px;padding:40px;text-align:center;">
+<div style="font-size:4rem;margin-bottom:16px;">⚖️</div>
+<div style="font-size:3rem;font-weight:800;color:#ef4444;margin-bottom:12px;">2026年施行</div>
+<h4 style="color:#fff;font-size:1.2rem;margin-bottom:12px;font-weight:700;">IMO規制・NIS2指令</h4>
+<p style="color:var(--text-secondary);font-size:0.95rem;line-height:1.7;">
+国際海事機関（IMO）の新規制とEUのNIS2指令により、海運企業のサイバーセキュリティ対策が法的義務に。違反時の罰金は最大1,000万ユーロ。
+</p>
+</div>
+
+<!-- 統計2 -->
+<div style="background:rgba(10,15,26,0.7);border:2px solid rgba(239,68,68,0.3);border-radius:14px;padding:40px;text-align:center;">
+<div style="font-size:4rem;margin-bottom:16px;">🎯</div>
+<div style="font-size:3rem;font-weight:800;color:#ef4444;margin-bottom:12px;">400%増加</div>
+<h4 style="color:#fff;font-size:1.2rem;margin-bottom:12px;font-weight:700;">海運業界への攻撃</h4>
+<p style="color:var(--text-secondary);font-size:0.95rem;line-height:1.7;">
+2025年比で海運業界へのランサムウェア攻撃が4倍に激増。マースク、コスコ等の大手企業も被害。平均被害額は5億円以上。
+</p>
+</div>
+
+<!-- 統計3 -->
+<div style="background:rgba(10,15,26,0.7);border:2px solid rgba(239,68,68,0.3);border-radius:14px;padding:40px;text-align:center;">
+<div style="font-size:4rem;margin-bottom:16px;">⛴️</div>
+<div style="font-size:3rem;font-weight:800;color:#ef4444;margin-bottom:12px;">船舶運航停止</div>
+<h4 style="color:#fff;font-size:1.2rem;margin-bottom:12px;font-weight:700;">事業継続の危機</h4>
+<p style="color:var(--text-secondary);font-size:0.95rem;line-height:1.7;">
+サイバー攻撃により船舶運航システムが停止、数週間の業務停止で数十億円の損失。保険も適用されないケースが増加。
+</p>
+</div>
+</div>
+
+<!-- 2026年の主要脅威（海事特化） -->
+<div style="background:rgba(5,8,15,0.8);border:2px solid rgba(239,68,68,0.3);border-radius:16px;padding:56px;margin-bottom:64px;">
+<h3 style="text-align:center;font-size:2.2rem;margin-bottom:48px;color:#fff;font-weight:800;">2026年 海運業界の主要セキュリティ脅威</h3>
+
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:28px;">
+<div style="background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.25);border-radius:12px;padding:32px;">
+<h4 style="color:#ef4444;font-size:1.15rem;margin-bottom:12px;font-weight:700;">🏴‍☠️ 船舶OTシステムへの攻撃</h4>
+<p style="color:var(--text-secondary);font-size:0.9rem;line-height:1.7;">
+GPS・AIS・ECDIS等の航海システムへの侵入。偽装位置情報、衝突回避システムの無効化により、船舶の安全が直接脅かされる。
+</p>
+</div>
+
+<div style="background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.25);border-radius:12px;padding:32px;">
+<h4 style="color:#ef4444;font-size:1.15rem;margin-bottom:12px;font-weight:700;">🔗 サプライチェーン攻撃</h4>
+<p style="color:var(--text-secondary);font-size:0.9rem;line-height:1.7;">
+港湾システム、物流管理システム、通関システムへの侵入。サプライチェーン全体が停止し、グローバル物流に甚大な影響。
+</p>
+</div>
+
+<div style="background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.25);border-radius:12px;padding:32px;">
+<h4 style="color:#ef4444;font-size:1.15rem;margin-bottom:12px;font-weight:700;">💰 ランサムウェア攻撃</h4>
+<p style="color:var(--text-secondary);font-size:0.9rem;line-height:1.7;">
+船舶管理システム、予約システム、顧客データベースを暗号化。身代金を支払わなければ業務再開不可能。保険適用外。
+</p>
+</div>
+
+<div style="background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.25);border-radius:12px;padding:32px;">
+<h4 style="color:#ef4444;font-size:1.15rem;margin-bottom:12px;font-weight:700;">📡 衛星通信の脆弱性</h4>
+<p style="color:var(--text-secondary);font-size:0.9rem;line-height:1.7;">
+VSAT等の船舶衛星通信への侵入。遠隔操作、通信傍受、データ窃取。公海上の船舶は特に無防備。
+</p>
+</div>
+</div>
+</div>
+
+<!-- 自社チェックシート CTA -->
+<div style="background:linear-gradient(135deg,rgba(16,185,129,0.15),rgba(59,130,246,0.12));border:3px solid rgba(16,185,129,0.4);border-radius:16px;padding:56px;text-align:center;">
+<div style="display:inline-block;background:linear-gradient(135deg,#10b981,#7ef0d4);padding:10px 20px;border-radius:8px;margin-bottom:24px;">
+<span style="color:#0a0f1a;font-weight:800;font-size:0.85rem;letter-spacing:0.05em;">📋 無料チェックシート配布中</span>
+</div>
+<h3 style="font-size:2.2rem;margin-bottom:20px;color:#fff;font-weight:800;">
+貴社の海事セキュリティリスクを<br>今すぐ診断
+</h3>
+<p style="color:var(--text-secondary);font-size:1.1rem;line-height:1.8;margin-bottom:36px;max-width:750px;margin-left:auto;margin-right:auto;">
+<strong style="color:#10b981;">3分で完了する自己診断シート</strong>を無料でダウンロード。<br>
+IMO規制・NIS2指令への準拠状況を今すぐ確認できます。
+</p>
+
+<div style="background:rgba(10,15,26,0.6);border:1px solid rgba(59,130,246,0.3);border-radius:12px;padding:32px;max-width:650px;margin:0 auto 32px;">
+<h4 style="color:#fff;font-size:1.1rem;margin-bottom:20px;font-weight:700;">チェックシートの内容</h4>
+<ul style="list-style:none;padding:0;margin:0;text-align:left;">
+<li style="padding:10px 0;color:var(--text-secondary);display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--line);">
+<span style="color:#10b981;font-weight:700;flex-shrink:0;">✓</span>
+船舶OT/ITシステムのセキュリティ状況
+</li>
+<li style="padding:10px 0;color:var(--text-secondary);display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--line);">
+<span style="color:#10b981;font-weight:700;flex-shrink:0;">✓</span>
+IMO規制・NIS2指令への準拠度チェック
+</li>
+<li style="padding:10px 0;color:var(--text-secondary);display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--line);">
+<span style="color:#10b981;font-weight:700;flex-shrink:0;">✓</span>
+サプライチェーンセキュリティの評価
+</li>
+<li style="padding:10px 0;color:var(--text-secondary);display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--line);">
+<span style="color:#10b981;font-weight:700;flex-shrink:0;">✓</span>
+インシデント対応体制の整備状況
+</li>
+<li style="padding:10px 0;color:var(--text-secondary);display:flex;align-items:center;gap:12px;">
+<span style="color:#10b981;font-weight:700;flex-shrink:0;">✓</span>
+航海データ・顧客情報の保護状況
+</li>
+</ul>
+</div>
+
+<a href="../ja/contact.html?type=maritime-checklist" class="cta" style="display:inline-block;padding:20px 52px;font-size:1.2rem;background:linear-gradient(135deg,#10b981,#7ef0d4);text-decoration:none;border-radius:8px;color:#0a0f1a;font-weight:700;">
+📥 無料チェックシートをダウンロード
+</a>
+<p style="color:var(--text-muted);font-size:0.85rem;margin-top:16px;">
+メールアドレスの入力のみ • 即時ダウンロード • 営業連絡なし
+</p>
+</div>
+</div>
+</section>
+
+<!-- 商材紹介 -->
+<section style="padding:80px 0;">
+<div class="wrap">
+<h2 style="text-align:center;font-size:2.8rem;margin-bottom:24px;color:#fff;font-weight:800;">海事専門セキュリティシステム</h2>
+<p style="text-align:center;color:var(--text-secondary);font-size:1.15rem;line-height:1.8;max-width:900px;margin:0 auto 60px;">
+海運業界に特化した包括的なサイバーセキュリティプラットフォーム。<br>
+船舶OT/IT、港湾システム、サプライチェーン全体を一元管理・保護します。
+</p>
+
+<div class="features-grid">
+<div class="feature-box">
+<div class="feature-icon">⛴️</div>
+<h4>船舶OT/IT統合セキュリティ</h4>
+<p>
+航海システム（GPS、AIS、ECDIS）、機関制御システム、通信システムを統合的に保護。OTとITの境界を越えた包括的なセキュリティ。
+</p>
+</div>
+
+<div class="feature-box">
+<div class="feature-icon">🚨</div>
+<h4>リアルタイム脅威検知</h4>
+<p>
+24/7でサイバー脅威を監視。AIによる異常検知で、攻撃を事前に察知し自動でブロック。平均検知時間0.3秒。
+</p>
+</div>
+
+<div class="feature-box">
+<div class="feature-icon">⚖️</div>
+<h4>IMO・NIS2完全準拠</h4>
+<p>
+国際海事機関（IMO）の最新規制とEUのNIS2指令に完全準拠。コンプライアンスレポートを自動生成。
+</p>
+</div>
+
+<div class="feature-box">
+<div class="feature-icon">🔗</div>
+<h4>サプライチェーン可視化</h4>
+<p>
+港湾システム、物流パートナー、通関システムのセキュリティ状況を一元管理。サプライチェーン全体のリスクを可視化。
+</p>
+</div>
+
+<div class="feature-box">
+<div class="feature-icon">🛡️</div>
+<h4>GDPR対応データ保護</h4>
+<p>
+航海データ、乗組員情報、顧客データをGDPR基準で保護。EU域内での事業にも完全対応。
+</p>
+</div>
+
+<div class="feature-box">
+<div class="feature-icon">📊</div>
+<h4>経営層向けダッシュボード</h4>
+<p>
+セキュリティ状況を経営層向けに可視化。リスク評価、コンプライアンス状況、インシデント履歴を一目で把握。
+</p>
+</div>
+</div>
+
+<!-- UIプレビュー（プレースホルダー） -->
+<div style="margin-top:80px;">
+<h3 style="text-align:center;font-size:2rem;margin-bottom:48px;color:#fff;font-weight:800;">プラットフォームUI</h3>
+
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(350px,1fr));gap:32px;">
+<!-- プレースホルダー1 -->
+<div style="background:rgba(10,15,26,0.7);border:2px solid rgba(59,130,246,0.3);border-radius:14px;padding:24px;">
+<div style="background:linear-gradient(135deg,rgba(59,130,246,0.08),rgba(16,185,129,0.05));border:2px dashed rgba(59,130,246,0.3);border-radius:8px;aspect-ratio:16/10;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;margin-bottom:16px;">
+<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="1.5">
+<rect x="3" y="3" width="18" height="18" rx="2"></rect>
+<path d="M3 9h18M9 21V9"></path>
+</svg>
+<p style="color:#3b82f6;font-weight:600;font-size:0.9rem;">ダッシュボード画面</p>
+</div>
+<p style="color:var(--text-secondary);font-size:0.9rem;text-align:center;">
+リアルタイムセキュリティ状況、脅威アラート、コンプライアンススコア表示
+</p>
+</div>
+
+<!-- プレースホルダー2 -->
+<div style="background:rgba(10,15,26,0.7);border:2px solid rgba(59,130,246,0.3);border-radius:14px;padding:24px;">
+<div style="background:linear-gradient(135deg,rgba(59,130,246,0.08),rgba(16,185,129,0.05));border:2px dashed rgba(59,130,246,0.3);border-radius:8px;aspect-ratio:16/10;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;margin-bottom:16px;">
+<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="1.5">
+<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+</svg>
+<p style="color:#10b981;font-weight:600;font-size:0.9rem;">脅威検知画面</p>
+</div>
+<p style="color:var(--text-secondary);font-size:0.9rem;text-align:center;">
+検知された脅威の詳細、影響範囲、推奨対処法をリアルタイム表示
+</p>
+</div>
+
+<!-- プレースホルダー3 -->
+<div style="background:rgba(10,15,26,0.7);border:2px solid rgba(59,130,246,0.3);border-radius:14px;padding:24px;">
+<div style="background:linear-gradient(135deg,rgba(59,130,246,0.08),rgba(16,185,129,0.05));border:2px dashed rgba(59,130,246,0.3);border-radius:8px;aspect-ratio:16/10;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;margin-bottom:16px;">
+<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#7ef0d4" stroke-width="1.5">
+<line x1="18" y1="20" x2="18" y2="10"></line>
+<line x1="12" y1="20" x2="12" y2="4"></line>
+<line x1="6" y1="20" x2="6" y2="14"></line>
+</svg>
+<p style="color:#7ef0d4;font-weight:600;font-size:0.9rem;">コンプライアンス画面</p>
+</div>
+<p style="color:var(--text-secondary);font-size:0.9rem;text-align:center;">
+IMO規制・NIS2指令への準拠状況、監査レポート自動生成
+</p>
+</div>
+</div>
+
+<div style="text-align:center;margin-top:32px;padding:20px;background:rgba(59,130,246,0.08);border:2px dashed rgba(59,130,246,0.3);border-radius:12px;">
+<p style="color:#3b82f6;font-weight:600;margin-bottom:8px;font-size:0.9rem;">📸 UIスクリーンショット追加予定</p>
+<p style="color:var(--text-muted);font-size:0.85rem;margin:0;line-height:1.5;">
+実際のプラットフォーム画面のスクリーンショットをここに表示
+</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ご使用の流れ -->
+<section style="padding:80px 0;background:rgba(5,8,15,0.5);">
+<div class="wrap">
+<h2 style="text-align:center;font-size:2.5rem;margin-bottom:60px;color:#fff;font-weight:800;">ご使用の流れ</h2>
+
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px;max-width:1100px;margin:0 auto;">
+<div style="text-align:center;background:rgba(59,130,246,0.05);border:1px solid rgba(59,130,246,0.2);border-radius:12px;padding:32px 24px;">
+<div style="width:56px;height:56px;background:linear-gradient(135deg,#3b82f6,#10b981);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.5rem;font-weight:800;color:#fff;margin:0 auto 20px;">1</div>
+<h5 style="color:#fff;font-size:1.1rem;margin-bottom:10px;font-weight:700;">無料診断申込</h5>
+<p style="color:var(--text-secondary);font-size:0.9rem;line-height:1.7;">
+フォームから申込。基本情報のみで診断開始。
+</p>
+<span style="display:inline-block;background:rgba(16,185,129,0.15);border:1px solid rgba(16,185,129,0.3);padding:6px 14px;border-radius:20px;font-size:0.8rem;color:#10b981;font-weight:700;margin-top:12px;">⏱ 3分</span>
+</div>
+
+<div style="text-align:center;background:rgba(59,130,246,0.05);border:1px solid rgba(59,130,246,0.2);border-radius:12px;padding:32px 24px;">
+<div style="width:56px;height:56px;background:linear-gradient(135deg,#3b82f6,#10b981);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.5rem;font-weight:800;color:#fff;margin:0 auto 20px;">2</div>
+<h5 style="color:#fff;font-size:1.1rem;margin-bottom:10px;font-weight:700;">自動セキュリティスキャン</h5>
+<p style="color:var(--text-secondary);font-size:0.9rem;line-height:1.7;">
+AIが自動的にセキュリティ診断を実施。
+</p>
+<span style="display:inline-block;background:rgba(16,185,129,0.15);border:1px solid rgba(16,185,129,0.3);padding:6px 14px;border-radius:20px;font-size:0.8rem;color:#10b981;font-weight:700;margin-top:12px;">⏱ 48時間以内</span>
+</div>
+
+<div style="text-align:center;background:rgba(59,130,246,0.05);border:1px solid rgba(59,130,246,0.2);border-radius:12px;padding:32px 24px;">
+<div style="width:56px;height:56px;background:linear-gradient(135deg,#3b82f6,#10b981);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.5rem;font-weight:800;color:#fff;margin:0 auto 20px;">3</div>
+<h5 style="color:#fff;font-size:1.1rem;margin-bottom:10px;font-weight:700;">詳細レポート配信</h5>
+<p style="color:var(--text-secondary);font-size:0.9rem;line-height:1.7;">
+脆弱性、リスク評価、改善提案を含む詳細レポート。
+</p>
+<span style="display:inline-block;background:rgba(16,185,129,0.15);border:1px solid rgba(16,185,129,0.3);padding:6px 14px;border-radius:20px;font-size:0.8rem;color:#10b981;font-weight:700;margin-top:12px;">⏱ 自動送信</span>
+</div>
+
+<div style="text-align:center;background:rgba(59,130,246,0.05);border:1px solid rgba(59,130,246,0.2);border-radius:12px;padding:32px 24px;">
+<div style="width:56px;height:56px;background:linear-gradient(135deg,#3b82f6,#10b981);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.5rem;font-weight:800;color:#fff;margin:0 auto 20px;">4</div>
+<h5 style="color:#fff;font-size:1.1rem;margin-bottom:10px;font-weight:700;">プラン選択・契約</h5>
+<p style="color:var(--text-secondary);font-size:0.9rem;line-height:1.7;">
+貴社に最適なプランを選択。オンライン契約で即日開始。
+</p>
+<span style="display:inline-block;background:rgba(16,185,129,0.15);border:1px solid rgba(16,185,129,0.3);padding:6px 14px;border-radius:20px;font-size:0.8rem;color:#10b981;font-weight:700;margin-top:12px;">⏱ 即日</span>
+</div>
+
+<div style="text-align:center;background:rgba(59,130,246,0.05);border:1px solid rgba(59,130,246,0.2);border-radius:12px;padding:32px 24px;">
+<div style="width:56px;height:56px;background:linear-gradient(135deg,#3b82f6,#10b981);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.5rem;font-weight:800;color:#fff;margin:0 auto 20px;">5</div>
+<h5 style="color:#fff;font-size:1.1rem;margin-bottom:10px;font-weight:700;">システム統合・稼働開始</h5>
+<p style="color:var(--text-secondary);font-size:0.9rem;line-height:1.7;">
+既存システムと統合。24/7監視を開始。
+</p>
+<span style="display:inline-block;background:rgba(16,185,129,0.15);border:1px solid rgba(16,185,129,0.3);padding:6px 14px;border-radius:20px;font-size:0.8rem;color:#10b981;font-weight:700;margin-top:12px;">⏱ 1週間</span>
+</div>
+</div>
+</div>
+</section>
+
+<!-- 料金プラン -->
+<section style="padding:80px 0;">
+<div class="wrap">
+<h2 style="text-align:center;font-size:2.5rem;margin-bottom:20px;color:#fff;font-weight:800;">料金プラン</h2>
+<p style="text-align:center;color:var(--text-secondary);font-size:1.1rem;max-width:750px;margin:0 auto 60px;line-height:1.8;">
+企業規模・船舶数に応じた柔軟な料金体系。<br>
+まずは無料診断で現状を把握してください。
+</p>
+
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:32px;max-width:1200px;margin:0 auto;">
+<!-- スタータープラン -->
+<div style="background:rgba(10,15,26,0.7);border:2px solid rgba(59,130,246,0.3);border-radius:14px;padding:40px;text-align:center;">
+<div style="display:inline-block;background:rgba(59,130,246,0.15);color:#3b82f6;padding:6px 14px;border-radius:20px;font-size:0.8rem;font-weight:700;margin-bottom:20px;">スタート</div>
+<h4 style="color:#fff;font-size:1.6rem;margin-bottom:16px;font-weight:800;">無料診断</h4>
+<div style="font-size:2.5rem;font-weight:800;background:linear-gradient(135deg,#3b82f6,#10b981);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:12px;">¥0</div>
+<div style="color:var(--text-muted);font-size:0.9rem;margin-bottom:28px;">完全無料</div>
+<ul style="list-style:none;padding:0;margin:0 0 32px 0;text-align:left;">
+<li style="padding:10px 0;color:var(--text-secondary);font-size:0.95rem;display:flex;align-items:flex-start;gap:12px;line-height:1.7;">
+<span style="color:#10b981;font-weight:700;flex-shrink:0;margin-top:2px;">✓</span>
+セキュリティ状況の可視化
+</li>
+<li style="padding:10px 0;color:var(--text-secondary);font-size:0.95rem;display:flex;align-items:flex-start;gap:12px;line-height:1.7;">
+<span style="color:#10b981;font-weight:700;flex-shrink:0;margin-top:2px;">✓</span>
+脆弱性の自動検出
+</li>
+<li style="padding:10px 0;color:var(--text-secondary);font-size:0.95rem;display:flex;align-items:flex-start;gap:12px;line-height:1.7;">
+<span style="color:#10b981;font-weight:700;flex-shrink:0;margin-top:2px;">✓</span>
+詳細PDFレポート
+</li>
+<li style="padding:10px 0;color:var(--text-secondary);font-size:0.95rem;display:flex;align-items:flex-start;gap:12px;line-height:1.7;">
+<span style="color:#10b981;font-weight:700;flex-shrink:0;margin-top:2px;">✓</span>
+改善提案
+</li>
+</ul>
+<a href="#free-assessment" class="cta" style="width:100%;text-align:center;display:inline-block;padding:16px;text-decoration:none;border-radius:8px;">無料診断を申し込む</a>
+</div>
+
+<!-- ビジネスプラン -->
+<div style="background:linear-gradient(135deg,rgba(59,130,246,0.1),rgba(16,185,129,0.08));border:2px solid rgba(16,185,129,0.4);border-radius:14px;padding:40px;text-align:center;">
+<div style="display:inline-block;background:linear-gradient(135deg,#3b82f6,#10b981);color:#fff;padding:6px 14px;border-radius:20px;font-size:0.8rem;font-weight:700;margin-bottom:20px;">おすすめ</div>
+<h4 style="color:#fff;font-size:1.6rem;margin-bottom:16px;font-weight:800;">ビジネスプラン</h4>
+<div style="font-size:2.5rem;font-weight:800;background:linear-gradient(135deg,#3b82f6,#10b981);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:12px;">¥500,000〜</div>
+<div style="color:var(--text-muted);font-size:0.9rem;margin-bottom:28px;">月額 / 船舶5隻まで</div>
+<ul style="list-style:none;padding:0;margin:0 0 32px 0;text-align:left;">
+<li style="padding:10px 0;color:var(--text-secondary);font-size:0.95rem;display:flex;align-items:flex-start;gap:12px;line-height:1.7;">
+<span style="color:#10b981;font-weight:700;flex-shrink:0;margin-top:2px;">✓</span>
+24/7リアルタイム監視
+</li>
+<li style="padding:10px 0;color:var(--text-secondary);font-size:0.95rem;display:flex;align-items:flex-start;gap:12px;line-height:1.7;">
+<span style="color:#10b981;font-weight:700;flex-shrink:0;margin-top:2px;">✓</span>
+船舶OT/IT統合セキュリティ
+</li>
+<li style="padding:10px 0;color:var(--text-secondary);font-size:0.95rem;display:flex;align-items:flex-start;gap:12px;line-height:1.7;">
+<span style="color:#10b981;font-weight:700;flex-shrink:0;margin-top:2px;">✓</span>
+IMO・NIS2準拠レポート自動生成
+</li>
+<li style="padding:10px 0;color:var(--text-secondary);font-size:0.95rem;display:flex;align-items:flex-start;gap:12px;line-height:1.7;">
+<span style="color:#10b981;font-weight:700;flex-shrink:0;margin-top:2px;">✓</span>
+インシデント対応サポート
+</li>
+<li style="padding:10px 0;color:var(--text-secondary);font-size:0.95rem;display:flex;align-items:flex-start;gap:12px;line-height:1.7;">
+<span style="color:#10b981;font-weight:700;flex-shrink:0;margin-top:2px;">✓</span>
+専任セキュリティアナリスト
+</li>
+</ul>
+<a href="#contact" class="cta" style="width:100%;text-align:center;display:inline-block;padding:16px;text-decoration:none;border-radius:8px;background:linear-gradient(135deg,#3b82f6,#10b981);">お問い合わせ</a>
+</div>
+
+<!-- エンタープライズプラン -->
+<div style="background:rgba(10,15,26,0.7);border:2px solid rgba(59,130,246,0.3);border-radius:14px;padding:40px;text-align:center;">
+<div style="display:inline-block;background:rgba(59,130,246,0.15);color:#3b82f6;padding:6px 14px;border-radius:20px;font-size:0.8rem;font-weight:700;margin-bottom:20px;">大規模企業向け</div>
+<h4 style="color:#fff;font-size:1.6rem;margin-bottom:16px;font-weight:800;">エンタープライズ</h4>
+<div style="font-size:2.5rem;font-weight:800;background:linear-gradient(135deg,#3b82f6,#10b981);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:12px;">要見積</div>
+<div style="color:var(--text-muted);font-size:0.9rem;margin-bottom:28px;">カスタマイズ対応</div>
+<ul style="list-style:none;padding:0;margin:0 0 32px 0;text-align:left;">
+<li style="padding:10px 0;color:var(--text-secondary);font-size:0.95rem;display:flex;align-items:flex-start;gap:12px;line-height:1.7;">
+<span style="color:#10b981;font-weight:700;flex-shrink:0;margin-top:2px;">✓</span>
+無制限の船舶・拠点対応
+</li>
+<li style="padding:10px 0;color:var(--text-secondary);font-size:0.95rem;display:flex;align-items:flex-start;gap:12px;line-height:1.7;">
+<span style="color:#10b981;font-weight:700;flex-shrink:0;margin-top:2px;">✓</span>
+サプライチェーン全体の統合管理
+</li>
+<li style="padding:10px 0;color:var(--text-secondary);font-size:0.95rem;display:flex;align-items:flex-start;gap:12px;line-height:1.7;">
+<span style="color:#10b981;font-weight:700;flex-shrink:0;margin-top:2px;">✓</span>
+専任セキュリティチーム配置
+</li>
+<li style="padding:10px 0;color:var(--text-secondary);font-size:0.95rem;display:flex;align-items:flex-start;gap:12px;line-height:1.7;">
+<span style="color:#10b981;font-weight:700;flex-shrink:0;margin-top:2px;">✓</span>
+カスタム開発対応
+</li>
+<li style="padding:10px 0;color:var(--text-secondary);font-size:0.95rem;display:flex;align-items:flex-start;gap:12px;line-height:1.7;">
+<span style="color:#10b981;font-weight:700;flex-shrink:0;margin-top:2px;">✓</span>
+24/7電話サポート
+</li>
+</ul>
+<a href="#contact" class="btn" style="width:100%;text-align:center;display:inline-block;padding:16px;text-decoration:none;border-radius:8px;">相談する</a>
+</div>
+</div>
+</div>
+</section>
+
+<!-- 競合比較 -->
+<section style="padding:80px 0;background:rgba(5,8,15,0.5);">
+<div class="wrap">
+<h2 style="text-align:center;font-size:2.5rem;margin-bottom:24px;color:#fff;font-weight:800;">世界トップクラスのセキュリティ水準</h2>
+<p style="text-align:center;color:var(--text-secondary);font-size:1.1rem;margin-bottom:48px;max-width:850px;margin-left:auto;margin-right:auto;">
+海運業界に特化した唯一の包括的セキュリティプラットフォーム。<br>
+一般的なITセキュリティとは一線を画す専門性。
+</p>
+
+<div style="overflow-x:auto;">
+<table style="width:100%;max-width:1100px;margin:0 auto;border-collapse:collapse;background:rgba(10,15,26,0.6);border-radius:14px;overflow:hidden;">
+<thead>
+<tr style="background:linear-gradient(135deg,rgba(59,130,246,0.15),rgba(16,185,129,0.12));">
+<th style="padding:20px;text-align:left;color:#fff;font-size:1.05rem;font-weight:700;border-bottom:2px solid rgba(59,130,246,0.3);">比較項目</th>
+<th style="padding:20px;text-align:center;color:#10b981;font-size:1.05rem;font-weight:700;border-bottom:2px solid rgba(59,130,246,0.3);">Avisail Maritime Security</th>
+<th style="padding:20px;text-align:center;color:var(--text-muted);font-size:1.05rem;font-weight:700;border-bottom:2px solid rgba(59,130,246,0.3);">一般的ITセキュリティ</th>
+<th style="padding:20px;text-align:center;color:var(--text-muted);font-size:1.05rem;font-weight:700;border-bottom:2px solid rgba(59,130,246,0.3);">海外大手ソリューション</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="padding:18px 20px;color:var(--text-secondary);border-bottom:1px solid var(--line);">海事業界特化</td>
+<td style="padding:18px 20px;text-align:center;color:#10b981;font-weight:700;font-size:1.1rem;border-bottom:1px solid var(--line);">✓ 完全特化</td>
+<td style="padding:18px 20px;text-align:center;color:var(--text-muted);border-bottom:1px solid var(--line);">✕ 汎用</td>
+<td style="padding:18px 20px;text-align:center;color:var(--text-muted);border-bottom:1px solid var(--line);">△ 一部対応</td>
+</tr>
+<tr>
+<td style="padding:18px 20px;color:var(--text-secondary);border-bottom:1px solid var(--line);">船舶OT/IT統合</td>
+<td style="padding:18px 20px;text-align:center;color:#10b981;font-weight:700;border-bottom:1px solid var(--line);">✓ 統合管理</td>
+<td style="padding:18px 20px;text-align:center;color:var(--text-muted);border-bottom:1px solid var(--line);">✕ IT のみ</td>
+<td style="padding:18px 20px;text-align:center;color:var(--text-muted);border-bottom:1px solid var(--line);">△ 別システム</td>
+</tr>
+<tr>
+<td style="padding:18px 20px;color:var(--text-secondary);border-bottom:1px solid var(--line);">IMO・NIS2準拠</td>
+<td style="padding:18px 20px;text-align:center;color:#10b981;font-weight:700;border-bottom:1px solid var(--line);">✓ 自動レポート</td>
+<td style="padding:18px 20px;text-align:center;color:var(--text-muted);border-bottom:1px solid var(--line);">✕ 非対応</td>
+<td style="padding:18px 20px;text-align:center;color:var(--text-muted);border-bottom:1px solid var(--line);">△ 手動対応</td>
+</tr>
+<tr>
+<td style="padding:18px 20px;color:var(--text-secondary);border-bottom:1px solid var(--line);">サプライチェーン可視化</td>
+<td style="padding:18px 20px;text-align:center;color:#10b981;font-weight:700;border-bottom:1px solid var(--line);">✓ 一元管理</td>
+<td style="padding:18px 20px;text-align:center;color:var(--text-muted);border-bottom:1px solid var(--line);">✕ なし</td>
+<td style="padding:18px 20px;text-align:center;color:var(--text-muted);border-bottom:1px solid var(--line);">△ 限定的</td>
+</tr>
+<tr>
+<td style="padding:18px 20px;color:var(--text-secondary);border-bottom:1px solid var(--line);">価格（月額・5隻）</td>
+<td style="padding:18px 20px;text-align:center;color:#10b981;font-weight:700;font-size:1.1rem;border-bottom:1px solid var(--line);">¥500,000〜</td>
+<td style="padding:18px 20px;text-align:center;color:var(--text-muted);border-bottom:1px solid var(--line);">¥300,000〜<br><span style="font-size:0.85rem;">(機能不足)</span></td>
+<td style="padding:18px 20px;text-align:center;color:var(--text-muted);border-bottom:1px solid var(--line);">¥2,000,000〜</td>
+</tr>
+<tr>
+<td style="padding:18px 20px;color:var(--text-secondary);border-bottom:1px solid var(--line);">導入期間</td>
+<td style="padding:18px 20px;text-align:center;color:#10b981;font-weight:700;border-bottom:1px solid var(--line);">1週間</td>
+<td style="padding:18px 20px;text-align:center;color:var(--text-muted);border-bottom:1px solid var(--line);">2〜4週間</td>
+<td style="padding:18px 20px;text-align:center;color:var(--text-muted);border-bottom:1px solid var(--line);">2〜6ヶ月</td>
+</tr>
+<tr>
+<td style="padding:18px 20px;color:var(--text-secondary);">日本語サポート</td>
+<td style="padding:18px 20px;text-align:center;color:#10b981;font-weight:700;">✓ 24/7</td>
+<td style="padding:18px 20px;text-align:center;color:var(--text-muted);">△ 営業時間のみ</td>
+<td style="padding:18px 20px;text-align:center;color:var(--text-muted);">✕ 英語のみ</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div style="text-align:center;margin-top:48px;padding:32px;background:rgba(16,185,129,0.08);border:2px solid rgba(16,185,129,0.3);border-radius:14px;max-width:850px;margin-left:auto;margin-right:auto;">
+<h4 style="color:#10b981;font-size:1.4rem;margin-bottom:12px;font-weight:800;">コストパフォーマンス比較</h4>
+<p style="color:var(--text-secondary);font-size:1.05rem;line-height:1.8;">
+海外大手ソリューションと比較して<strong style="color:#fff;font-size:1.3rem;">約4倍</strong>のコストパフォーマンス。<br>
+海事業界に特化した機能を、圧倒的な低価格で提供します。
+</p>
+</div>
+</div>
+</section>
+
+<!-- Free Assessment CTA -->
+<section id="free-assessment" style="padding:100px 0;">
+<div class="wrap">
+<div style="background:linear-gradient(135deg,rgba(59,130,246,0.15),rgba(16,185,129,0.12));border:3px solid rgba(59,130,246,0.4);border-radius:20px;padding:80px 48px;text-align:center;">
+<div style="display:inline-block;background:linear-gradient(135deg,#10b981,#7ef0d4);padding:12px 24px;border-radius:8px;margin-bottom:24px;color:#0a0f1a;font-weight:800;font-size:0.9rem;letter-spacing:0.05em;">無料診断実施中</div>
+<h2 style="font-size:2.8rem;margin-bottom:24px;color:#fff;font-weight:800;">
+まずは無料診断で<br>現状を確認しませんか
+</h2>
+<p style="color:var(--text-secondary);font-size:1.15rem;line-height:1.8;max-width:750px;margin:0 auto 40px;">
+わずか3分の申込で、48時間以内に詳細なセキュリティレポートを配信。<br>
+貴社の脆弱性と改善点を明確に可視化します。
+</p>
+<div style="display:flex;gap:20px;justify-content:center;flex-wrap:wrap;">
+<a href="../ja/contact.html?type=maritime-security" class="cta" style="font-size:1.2rem;padding:22px 60px;background:linear-gradient(135deg,#3b82f6,#10b981);text-decoration:none;border-radius:8px;">無料診断を申し込む</a>
+<a href="../ja/contact.html" class="btn" style="font-size:1.1rem;padding:22px 52px;text-decoration:none;border-radius:8px;">まずは相談する</a>
+</div>
+
+<div style="margin-top:60px;padding-top:40px;border-top:2px solid rgba(59,130,246,0.3);">
+<p style="color:var(--text-muted);font-size:0.95rem;margin-bottom:12px;">お問い合わせ</p>
+<p style="color:var(--text-secondary);font-size:1.1rem;"><strong>info@avisail.com</strong></p>
+<p style="color:var(--text-muted);font-size:0.95rem;margin-top:12px;">対応言語：日本語 / English / Italiano<br>返信：1営業日以内</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Shared Footer -->
+<div id="site-footer"></div>
+
+<!-- Shared Components Loader -->
+<script src="../includes/components.js"></script>
+
+</body>
+</html>
