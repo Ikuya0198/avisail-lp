@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Technology Services - AI & Security Consulting | System Development | Avisail</title>
+<meta name="description" content="Avisail's Technology Services. Supporting organizations with AI consulting, security enhancement, and system development. We also provide implementation support for our proprietary systems (ADCS, Vessel Trading, Maritime Security, etc.).">
+<link rel="canonical" href="https://avisail.com/technology/technology-services-en.html">
+<link rel="alternate" hreflang="ja" href="https://avisail.com/technology/technology-services-ja.html">
+<link rel="alternate" hreflang="en" href="https://avisail.com/technology/technology-services-en.html">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<style>
+.page-hero{
+  padding:140px 0 100px;
+  background:
+    linear-gradient(rgba(10,15,26,0.85),rgba(10,15,26,0.92)),
+    radial-gradient(ellipse at 30% 20%,rgba(167,139,250,0.15),transparent 50%),
+    radial-gradient(ellipse at 70% 80%,rgba(59,130,246,0.12),transparent 50%),
+    var(--bg-dark);
+  position:relative;
+  overflow:hidden;
+}
+.page-hero::before{
+  content:'';
+  position:absolute;
+  bottom:0;
+  left:0;
+  right:0;
+  height:200px;
+  background:linear-gradient(to top, var(--bg-dark), transparent);
+}
+.page-hero .wrap{position:relative;z-index:2;}
+.hero-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:12px 24px;
+  background:rgba(167,139,250,0.15);
+  border:2px solid rgba(167,139,250,0.35);
+  border-radius:30px;
+  color:#a78bfa;
+  font-size:0.85rem;
+  font-weight:700;
+  margin-bottom:28px;
+  letter-spacing:0.05em;
+}
+.page-hero h1{
+  font-size:clamp(2.8rem,6vw,4.5rem);
+  margin-bottom:32px;
+  color:#fff;
+  font-weight:800;
+  line-height:1.2;
+}
+.page-hero h1 span{
+  background:linear-gradient(135deg,#a78bfa,#3b82f6);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.page-hero .lead{
+  color:var(--text-secondary);
+  max-width:950px;
+  font-size:1.25rem;
+  line-height:1.8;
+  margin-bottom:40px;
+}
+
+.service-section{
+  background:rgba(5,8,15,0.5);
+  border-radius:16px;
+  padding:64px 48px;
+  margin-bottom:60px;
+}
+.service-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+  gap:32px;
+  margin-top:48px;
+}
+.service-card{
+  background:rgba(10,15,26,0.7);
+  border:2px solid rgba(167,139,250,0.3);
+  border-radius:14px;
+  padding:40px;
+  transition:all 0.3s ease;
+}
+.service-card:hover{
+  border-color:rgba(167,139,250,0.6);
+  transform:translateY(-4px);
+  box-shadow:0 12px 40px rgba(167,139,250,0.2);
+}
+.service-icon{
+  width:64px;
+  height:64px;
+  background:linear-gradient(135deg,#a78bfa,#3b82f6);
+  border-radius:14px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:2rem;
+  margin-bottom:24px;
+}
+.service-card h4{
+  color:#fff;
+  font-size:1.4rem;
+  margin-bottom:16px;
+  font-weight:700;
+}
+.service-card p{
+  color:var(--text-secondary);
+  font-size:1rem;
+  line-height:1.8;
+  margin-bottom:24px;
+}
+.service-card ul{
+  list-style:none;
+  padding:0;
+  margin:0;
+}
+.service-card ul li{
+  padding:10px 0;
+  color:var(--text-secondary);
+  font-size:0.95rem;
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+  line-height:1.7;
+  border-bottom:1px solid rgba(167,139,250,0.15);
+}
+.service-card ul li:last-child{
+  border-bottom:none;
+}
+.service-card ul li::before{
+  content:'✓';
+  color:#a78bfa;
+  font-weight:700;
+  flex-shrink:0;
+  margin-top:2px;
+}
+
+.systems-section{
+  margin:80px 0;
+}
+.systems-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
+  gap:28px;
+  margin-top:48px;
+}
+.system-card{
+  background:linear-gradient(135deg,rgba(167,139,250,0.08),rgba(59,130,246,0.05));
+  border:2px solid rgba(167,139,250,0.3);
+  border-radius:16px;
+  padding:36px;
+  transition:all 0.3s ease;
+  position:relative;
+  overflow:hidden;
+}
+.system-card::before{
+  content:'';
+  position:absolute;
+  top:0;
+  right:0;
+  width:150px;
+  height:150px;
+  background:radial-gradient(circle,rgba(167,139,250,0.15),transparent 70%);
+  pointer-events:none;
+}
+.system-card:hover{
+  border-color:rgba(167,139,250,0.6);
+  transform:translateY(-4px);
+  box-shadow:0 16px 48px rgba(167,139,250,0.25);
+}
+.system-badge{
+  display:inline-block;
+  background:rgba(167,139,250,0.2);
+  border:1px solid rgba(167,139,250,0.4);
+  padding:6px 14px;
+  border-radius:20px;
+  font-size:0.75rem;
+  font-weight:700;
+  color:#a78bfa;
+  margin-bottom:16px;
+  letter-spacing:0.05em;
+  text-transform:uppercase;
+}
+.system-card h4{
+  color:#fff;
+  font-size:1.3rem;
+  margin-bottom:12px;
+  font-weight:700;
+}
+.system-card .subtitle{
+  color:#a78bfa;
+  font-size:0.9rem;
+  margin-bottom:16px;
+  font-weight:600;
+}
+.system-card p{
+  color:var(--text-secondary);
+  font-size:0.95rem;
+  line-height:1.7;
+  margin-bottom:20px;
+}
+.system-card .learn-more{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  color:#a78bfa;
+  font-weight:600;
+  font-size:0.9rem;
+  transition:all 0.3s ease;
+}
+.system-card:hover .learn-more{
+  gap:12px;
+  color:#c4b5fd;
+}
+
+@media(max-width:768px){
+  .page-hero{padding:100px 0 60px;}
+  .service-grid{grid-template-columns:1fr;}
+  .systems-grid{grid-template-columns:1fr;}
+}
+</style>
+
+<!-- JSON-LD Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Avisail",
+  "description": "Technology Services: Supporting organizations with AI consulting, security enhancement, and system development",
+  "url": "https://avisail.com/technology/technology-services-en.html",
+  "serviceType": ["AI Consulting", "Cybersecurity Consulting", "System Development"]
+}
+</script>
+</head>
+<body style="background:#0a0f1a;">
+
+<!-- Shared Header -->
+<div id="site-header"></div>
+
+<!-- Hero Section -->
+<section class="page-hero">
+<div class="wrap">
+<div class="hero-badge">
+💻 Technology Services
+</div>
+<h1>
+<span>AI × Security</span><br>
+Evolving Organizations Through Technology
+</h1>
+<p class="lead">
+Supporting digital transformation with cutting-edge AI technology and cybersecurity expertise.<br>
+From consulting to system development and operational support, we provide comprehensive technical services.
+</p>
+
+<div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:36px;">
+<a href="#contact" class="cta" style="font-size:1.1rem;padding:18px 44px;">Get in Touch</a>
+<a href="#systems" class="btn" style="font-size:1.1rem;padding:18px 44px;">View Our Systems</a>
+</div>
+</div>
+</section>
+
+<!-- Consulting Services -->
+<section style="padding:80px 0;">
+<div class="wrap">
+<h2 style="text-align:center;font-size:2.8rem;margin-bottom:24px;color:#fff;font-weight:800;">Technology Consulting Services</h2>
+<p style="text-align:center;color:var(--text-secondary);font-size:1.15rem;line-height:1.8;max-width:900px;margin:0 auto 60px;">
+Supporting digital strategy with deep expertise in AI and security.<br>
+Providing consistent support from strategic planning to implementation and operation.
+</p>
+
+<div class="service-section">
+<div class="service-grid">
+<!-- AI Consulting -->
+<div class="service-card">
+<div class="service-icon">🤖</div>
+<h4>AI Consulting</h4>
+<p>
+Strategic support for implementing generative AI, machine learning, and data analytics. Realize business efficiency, advanced decision-making, and new business creation.
+</p>
+<ul>
+<li>AI adoption strategy planning</li>
+<li>Business utilization of generative AI (GPT, Claude, etc.)</li>
+<li>Machine learning model development & implementation</li>
+<li>Data analytics infrastructure construction</li>
+<li>AI governance framework establishment</li>
+</ul>
+</div>
+
+<!-- Security Consulting -->
+<div class="service-card">
+<div class="service-icon">🛡️</div>
+<h4>Security Consulting</h4>
+<p>
+Cybersecurity experts diagnose and strengthen organizational security posture. Build comprehensive security strategies to protect organizations from threats.
+</p>
+<ul>
+<li>Security assessment & risk evaluation</li>
+<li>Security strategy planning</li>
+<li>CSIRT construction & operational support</li>
+<li>Incident response framework establishment</li>
+<li>Compliance support (GDPR, NIS2, etc.)</li>
+</ul>
+</div>
+
+<!-- System Development -->
+<div class="service-card">
+<div class="service-icon">⚙️</div>
+<h4>System Development & Implementation Support</h4>
+<p>
+Supporting the entire system development lifecycle from requirements definition to design, development, and operations. Deliver high-quality systems utilizing the latest technologies.
+</p>
+<ul>
+<li>Custom system development</li>
+<li>Legacy system modernization & refactoring</li>
+<li>API integration & system connectivity</li>
+<li>Cloud migration & infrastructure construction</li>
+<li>Maintenance & operational support</li>
+</ul>
+</div>
+</div>
+
+<!-- Support Structure -->
+<div style="margin-top:60px;padding:40px;background:linear-gradient(135deg,rgba(167,139,250,0.1),rgba(59,130,246,0.08));border:2px solid rgba(167,139,250,0.3);border-radius:14px;text-align:center;">
+<h3 style="color:#fff;font-size:1.8rem;margin-bottom:16px;font-weight:800;">Flexible Support Structure</h3>
+<p style="color:var(--text-secondary);font-size:1.05rem;line-height:1.8;max-width:750px;margin:0 auto;">
+From short-term consulting to long-term projects and ongoing technical advisory,<br>
+we support flexible contract structures tailored to your needs.
+</p>
+
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:32px;margin-top:40px;max-width:900px;margin-left:auto;margin-right:auto;">
+<div>
+<div style="font-size:2rem;margin-bottom:12px;">💼</div>
+<h5 style="color:#fff;font-size:1.1rem;margin-bottom:8px;font-weight:700;">Short-term Consulting</h5>
+<p style="color:var(--text-secondary);font-size:0.9rem;">Projects from 1 month</p>
+</div>
+<div>
+<div style="font-size:2rem;margin-bottom:12px;">🤝</div>
+<h5 style="color:#fff;font-size:1.1rem;margin-bottom:8px;font-weight:700;">Technical Advisory</h5>
+<p style="color:var(--text-secondary);font-size:0.9rem;">Ongoing technical advice</p>
+</div>
+<div>
+<div style="font-size:2rem;margin-bottom:12px;">🚀</div>
+<h5 style="color:#fff;font-size:1.1rem;margin-bottom:8px;font-weight:700;">Project Support</h5>
+<p style="color:var(--text-secondary);font-size:0.9rem;">Full support from development to operations</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Proprietary Systems -->
+<section id="systems" style="padding:80px 0;background:rgba(5,8,15,0.5);">
+<div class="wrap">
+<div class="systems-section">
+<h2 style="text-align:center;font-size:2.8rem;margin-bottom:24px;color:#fff;font-weight:800;">Proprietary Systems</h2>
+<p style="text-align:center;color:var(--text-secondary);font-size:1.15rem;line-height:1.8;max-width:900px;margin:0 auto 60px;">
+We also provide implementation support and customization for systems developed by Avisail.<br>
+Minimize implementation risks with proven solutions.
+</p>
+
+<div class="systems-grid">
+<!-- ADCS -->
+<div class="system-card">
+<div class="system-badge">Security</div>
+<h4>ADCS</h4>
+<div class="subtitle">Autonomous Defensive Cybersecurity System</div>
+<p>
+Enterprise-grade security assessment and management platform with fully automated AI. Automates vulnerability assessment, risk analysis, and improvement recommendations.
+</p>
+<a href="../security/adcs-en.html" class="learn-more">
+Learn More
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+<path d="M5 12h14M12 5l7 7-7 7"/>
+</svg>
+</a>
+</div>
+
+<!-- Vessel Trading Platform -->
+<div class="system-card">
+<div class="system-badge">Maritime</div>
+<h4>Vessel Trading Platform</h4>
+<div class="subtitle">Vessel Trading Platform</div>
+<p>
+Broker platform utilizing a database of 340+ used vessels. Integrates AI valuation, shipping cost calculation, and escrow payment services.
+</p>
+<a href="../maritime/vessel-trading-en.html" class="learn-more">
+Learn More
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+<path d="M5 12h14M12 5l7 7-7 7"/>
+</svg>
+</a>
+</div>
+
+<!-- Maritime Security System -->
+<div class="system-card">
+<div class="system-badge">Maritime Security</div>
+<h4>Maritime Cybersecurity System</h4>
+<div class="subtitle">Maritime Cybersecurity Solution</div>
+<p>
+Fully compliant with IMO regulations and NIS2 Directive. Provides vessel OT/IT integrated security, supply chain visibility, and 24/7 real-time monitoring.
+</p>
+<a href="../maritime/maritime-security-en.html" class="learn-more">
+Learn More
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+<path d="M5 12h14M12 5l7 7-7 7"/>
+</svg>
+</a>
+</div>
+
+<!-- NFT System -->
+<div class="system-card">
+<div class="system-badge">Blockchain</div>
+<h4>NFT Certification System</h4>
+<div class="subtitle">Vessel NFT Certification</div>
+<p>
+World's first system to tokenize vessel ownership as NFTs on blockchain. Realizes ownership proof, history tracking, and fraud prevention.
+</p>
+<span class="learn-more" style="opacity:0.5;cursor:default;">
+In Development
+</span>
+</div>
+
+<!-- Supply Chain Integration System -->
+<div class="system-card">
+<div class="system-badge">Logistics & SCM</div>
+<h4>Supply Chain Integration System</h4>
+<div class="subtitle">Supply Chain Integration Platform</div>
+<p>
+Centralized management of logistics, inventory, and customs data. Realizes full supply chain visibility and security risk management.
+</p>
+<span class="learn-more" style="opacity:0.5;cursor:default;">
+In Development
+</span>
+</div>
+
+<!-- Meshscore -->
+<div class="system-card">
+<div class="system-badge">Evaluation & Analytics</div>
+<h4>Meshscore</h4>
+<div class="subtitle">Comprehensive Evaluation System</div>
+<p>
+Comprehensive scoring of organizations, projects, and individuals with multifaceted evaluation metrics. Supports data-driven decision-making.
+</p>
+<span class="learn-more" style="opacity:0.5;cursor:default;">
+In Development
+</span>
+</div>
+</div>
+
+<div style="margin-top:60px;text-align:center;padding:40px;background:rgba(167,139,250,0.08);border:2px solid rgba(167,139,250,0.3);border-radius:14px;">
+<h3 style="color:#fff;font-size:1.6rem;margin-bottom:16px;font-weight:800;">Customization & Implementation Support</h3>
+<p style="color:var(--text-secondary);font-size:1.05rem;line-height:1.8;max-width:750px;margin:0 auto;">
+We provide implementation, customization, and operational support for our proprietary systems in your environment.<br>
+We also support integration with existing systems, feature additions, and custom functionality development.
+</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Strengths -->
+<section style="padding:80px 0;">
+<div class="wrap">
+<h2 style="text-align:center;font-size:2.5rem;margin-bottom:60px;color:#fff;font-weight:800;">Avisail Technology Services Strengths</h2>
+
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:40px;">
+<div style="background:rgba(10,15,26,0.7);border:2px solid rgba(167,139,250,0.3);border-radius:16px;padding:40px;text-align:center;">
+<div style="font-size:3.5rem;margin-bottom:20px;">🎓</div>
+<h4 style="color:#fff;font-size:1.3rem;margin-bottom:16px;font-weight:700;">Deep Expertise</h4>
+<p style="color:var(--text-secondary);line-height:1.7;">
+Proven track record in AI, cybersecurity, and system development. Always staying ahead of the latest technology trends.
+</p>
+</div>
+
+<div style="background:rgba(10,15,26,0.7);border:2px solid rgba(167,139,250,0.3);border-radius:16px;padding:40px;text-align:center;">
+<div style="font-size:3.5rem;margin-bottom:20px;">🚀</div>
+<h4 style="color:#fff;font-size:1.3rem;margin-bottom:16px;font-weight:700;">Practical Approach</h4>
+<p style="color:var(--text-secondary);line-height:1.7;">
+Practical proposals based on experience developing and operating real production systems, not just theory.
+</p>
+</div>
+
+<div style="background:rgba(10,15,26,0.7);border:2px solid rgba(167,139,250,0.3);border-radius:16px;padding:40px;text-align:center;">
+<div style="font-size:3.5rem;margin-bottom:20px;">🌏</div>
+<h4 style="color:#fff;font-size:1.3rem;margin-bottom:16px;font-weight:700;">Global Perspective</h4>
+<p style="color:var(--text-secondary);line-height:1.7;">
+Deep knowledge of international standards and best practices. Providing system design and security measures with global expansion in mind.
+</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- CTA Section -->
+<section id="contact" style="padding:100px 0;background:rgba(5,8,15,0.5);">
+<div class="wrap">
+<div style="background:linear-gradient(135deg,rgba(167,139,250,0.15),rgba(59,130,246,0.12));border:3px solid rgba(167,139,250,0.4);border-radius:20px;padding:80px 48px;text-align:center;">
+<h2 style="font-size:2.8rem;margin-bottom:24px;color:#fff;font-weight:800;">
+Let's Solve Your<br>Technical Challenges Together
+</h2>
+<p style="color:var(--text-secondary);font-size:1.15rem;line-height:1.8;margin-bottom:40px;max-width:750px;margin-left:auto;margin-right:auto;">
+AI implementation, security enhancement, system development, and more—<br>
+we welcome all technology-related inquiries.
+</p>
+<div style="display:flex;gap:20px;justify-content:center;flex-wrap:wrap;">
+<a href="../en/contact.html?type=technology" class="cta" style="font-size:1.2rem;padding:22px 60px;background:linear-gradient(135deg,#a78bfa,#3b82f6);text-decoration:none;border-radius:8px;">Request Free Consultation</a>
+</div>
+
+<div style="margin-top:60px;padding-top:40px;border-top:2px solid rgba(167,139,250,0.3);">
+<p style="color:var(--text-muted);font-size:0.95rem;margin-bottom:12px;">Contact Us</p>
+<p style="color:var(--text-secondary);font-size:1.1rem;"><strong>info@avisail.com</strong></p>
+<p style="color:var(--text-muted);font-size:0.95rem;margin-top:12px;">Languages: 日本語 / English / Italiano<br>Response Time: Within 1 business day</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Shared Footer -->
+<div id="site-footer"></div>
+
+<!-- Shared Components Loader -->
+<script src="../includes/components.js"></script>
+
+</body>
+</html>

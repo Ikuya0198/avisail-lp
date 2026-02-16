@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Maritime Business - Revolutionizing Maritime Industry with Vessel Trading × Security | Avisail</title>
+<meta name="description" content="Avisail Maritime Business. Digital transformation and enhanced security for the maritime industry through used vessel brokerage platform and maritime-specialized cybersecurity system.">
+<link rel="canonical" href="https://avisail.com/maritime/maritime-services-en.html">
+<link rel="alternate" hreflang="ja" href="https://avisail.com/maritime/maritime-services-ja.html">
+<link rel="alternate" hreflang="en" href="https://avisail.com/maritime/maritime-services-en.html">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<style>
+.page-hero{
+  padding:140px 0 100px;
+  background:
+    linear-gradient(rgba(10,15,26,0.85),rgba(10,15,26,0.92)),
+    radial-gradient(ellipse at 30% 20%,rgba(59,130,246,0.15),transparent 50%),
+    radial-gradient(ellipse at 70% 80%,rgba(16,185,129,0.12),transparent 50%),
+    url('../images/hero-bg.jpg') center/cover,
+    var(--bg-dark);
+  position:relative;
+  overflow:hidden;
+}
+.page-hero::before{
+  content:'';
+  position:absolute;
+  bottom:0;
+  left:0;
+  right:0;
+  height:200px;
+  background:linear-gradient(to top, var(--bg-dark), transparent);
+}
+.page-hero .wrap{position:relative;z-index:2;}
+.hero-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:12px 24px;
+  background:rgba(59,130,246,0.15);
+  border:2px solid rgba(59,130,246,0.35);
+  border-radius:30px;
+  color:#3b82f6;
+  font-size:0.85rem;
+  font-weight:700;
+  margin-bottom:28px;
+  letter-spacing:0.05em;
+}
+.page-hero h1{
+  font-size:clamp(2.8rem,6vw,4.5rem);
+  margin-bottom:32px;
+  color:#fff;
+  font-weight:800;
+  line-height:1.2;
+}
+.page-hero h1 span{
+  background:linear-gradient(135deg,#3b82f6,#10b981);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.page-hero .lead{
+  color:var(--text-secondary);
+  max-width:950px;
+  font-size:1.25rem;
+  line-height:1.8;
+  margin-bottom:40px;
+}
+
+.services-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(500px,1fr));
+  gap:48px;
+  margin-top:80px;
+}
+@media(max-width:1100px){
+  .services-grid{
+    grid-template-columns:1fr;
+  }
+}
+.service-card{
+  background:linear-gradient(135deg,rgba(59,130,246,0.08),rgba(16,185,129,0.05));
+  border:2px solid rgba(59,130,246,0.3);
+  border-radius:20px;
+  padding:56px 48px;
+  position:relative;
+  overflow:hidden;
+  transition:all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor:pointer;
+}
+.service-card::before{
+  content:'';
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:linear-gradient(135deg,rgba(59,130,246,0.12),rgba(16,185,129,0.08));
+  opacity:0;
+  transition:opacity 0.4s ease;
+}
+.service-card:hover{
+  border-color:rgba(59,130,246,0.6);
+  transform:translateY(-8px);
+  box-shadow:0 20px 60px rgba(59,130,246,0.2);
+}
+.service-card:hover::before{
+  opacity:1;
+}
+.service-card > *{
+  position:relative;
+  z-index:2;
+}
+.service-icon{
+  width:80px;
+  height:80px;
+  background:linear-gradient(135deg,#3b82f6,#10b981);
+  border-radius:16px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:2.5rem;
+  margin-bottom:28px;
+  box-shadow:0 8px 24px rgba(59,130,246,0.3);
+}
+.service-number{
+  display:inline-block;
+  background:rgba(59,130,246,0.2);
+  border:1px solid rgba(59,130,246,0.4);
+  padding:6px 14px;
+  border-radius:20px;
+  font-size:0.75rem;
+  font-weight:800;
+  color:#3b82f6;
+  margin-bottom:20px;
+  letter-spacing:0.05em;
+}
+.service-card h3{
+  font-size:2rem;
+  margin-bottom:16px;
+  color:#fff;
+  font-weight:800;
+}
+.service-card .subtitle{
+  color:#3b82f6;
+  font-size:1.05rem;
+  font-weight:700;
+  margin-bottom:24px;
+  letter-spacing:0.02em;
+}
+.service-card p{
+  color:var(--text-secondary);
+  font-size:1.05rem;
+  line-height:1.8;
+  margin-bottom:32px;
+}
+.feature-list{
+  list-style:none;
+  padding:0;
+  margin:0 0 36px 0;
+}
+.feature-list li{
+  padding:12px 0;
+  color:var(--text-secondary);
+  font-size:0.95rem;
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+  line-height:1.7;
+  border-bottom:1px solid rgba(59,130,246,0.15);
+}
+.feature-list li:last-child{
+  border-bottom:none;
+}
+.feature-list li::before{
+  content:'✓';
+  color:#10b981;
+  font-weight:700;
+  flex-shrink:0;
+  margin-top:2px;
+  font-size:1.1rem;
+}
+.service-card .cta{
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  padding:18px 40px;
+  font-size:1.1rem;
+  background:linear-gradient(135deg,#3b82f6,#10b981);
+  color:#fff;
+  text-decoration:none;
+  border-radius:10px;
+  font-weight:700;
+  transition:all 0.3s ease;
+  box-shadow:0 4px 16px rgba(59,130,246,0.3);
+}
+.service-card .cta:hover{
+  transform:translateX(4px);
+  box-shadow:0 6px 24px rgba(59,130,246,0.4);
+}
+.service-card .cta svg{
+  width:20px;
+  height:20px;
+  transition:transform 0.3s ease;
+}
+.service-card:hover .cta svg{
+  transform:translateX(4px);
+}
+
+.stats-section{
+  background:rgba(5,8,15,0.6);
+  border-radius:16px;
+  padding:64px 48px;
+  margin-top:80px;
+  border:2px solid rgba(59,130,246,0.2);
+}
+.stats-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:40px;
+  margin-top:40px;
+}
+.stat-item{
+  text-align:center;
+}
+.stat-number{
+  font-size:3rem;
+  font-weight:800;
+  background:linear-gradient(135deg,#3b82f6,#10b981);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  margin-bottom:12px;
+}
+.stat-label{
+  color:var(--text-secondary);
+  font-size:1rem;
+}
+
+@media(max-width:768px){
+  .page-hero{padding:100px 0 60px;}
+  .service-card{padding:40px 32px;}
+  .services-grid{gap:32px;}
+}
+</style>
+
+<!-- JSON-LD Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Avisail",
+  "description": "Maritime Business: Providing vessel trading platform and maritime-specialized cybersecurity system",
+  "url": "https://avisail.com/maritime/maritime-services-en.html",
+  "serviceType": ["Maritime Trading", "Maritime Cybersecurity"]
+}
+</script>
+</head>
+<body style="background:#0a0f1a;">
+
+<!-- Shared Header -->
+<div id="site-header"></div>
+
+<!-- Hero Section -->
+<section class="page-hero">
+<div class="wrap">
+<div class="hero-badge">
+⚓ MARITIME BUSINESS
+</div>
+<h1>
+<span>Vessel Trading × Security</span><br>
+Digital Revolution in Maritime Industry
+</h1>
+<p class="lead">
+Avisail solves two critical challenges in the maritime industry with cutting-edge technology.<br>
+Transparency and efficiency in used vessel trading, and cybersecurity measures specific to maritime operations.<br>
+Driving DX in the maritime industry with global perspective and specialized expertise.
+</p>
+
+<div style="display:inline-flex;align-items:center;gap:16px;padding:20px 32px;background:rgba(59,130,246,0.12);border:2px solid rgba(59,130,246,0.3);border-radius:12px;">
+<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2">
+<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+</svg>
+<span style="color:var(--text-secondary);font-size:1.05rem;">
+<strong style="color:#fff;">Two specialized solutions</strong> for comprehensive maritime support
+</span>
+</div>
+</div>
+</section>
+
+<!-- Services Grid -->
+<section style="padding:100px 0;">
+<div class="wrap">
+<h2 style="text-align:center;font-size:2.8rem;margin-bottom:24px;color:#fff;font-weight:800;">Avisail Maritime Solutions</h2>
+<p style="text-align:center;color:var(--text-secondary);font-size:1.15rem;margin-bottom:60px;max-width:850px;margin-left:auto;margin-right:auto;line-height:1.8;">
+Two specialized solutions for the maritime industry. Each delivers independent value,<br>
+and together they provide seamless support from vessel trading to security.
+</p>
+
+<div class="services-grid">
+<!-- Used Vessel Brokerage -->
+<a href="vessel-trading-en.html" class="service-card" style="text-decoration:none;">
+<div class="service-number">SOLUTION 01</div>
+<div class="service-icon">🚢</div>
+<h3>Used Vessel Brokerage</h3>
+<div class="subtitle">Vessel Trading Platform</div>
+<p>
+A brokerage platform managing used vessels worldwide. Utilizing a database of 340+ vessels to enable transparent trading. AI-powered valuation instantly calculates fair market prices.
+</p>
+
+<ul class="feature-list">
+<li>340+ vessel database</li>
+<li>AI-powered market valuation</li>
+<li>Automated shipping cost calculation</li>
+<li>Multi-language support (Japanese, English, Arabic)</li>
+<li>Total Cost Calculator integrated</li>
+<li>9-country shipping route coverage</li>
+</ul>
+
+<div class="cta">
+Learn More
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+<path d="M5 12h14M12 5l7 7-7 7"/>
+</svg>
+</div>
+</a>
+
+<!-- Maritime Cybersecurity -->
+<a href="maritime-security-en.html" class="service-card" style="text-decoration:none;">
+<div class="service-number">SOLUTION 02</div>
+<div class="service-icon">🔐</div>
+<h3>Maritime Cybersecurity System</h3>
+<div class="subtitle">Maritime Cybersecurity Solution</div>
+<p>
+A cybersecurity platform specialized for the maritime industry. Fully compliant with IMO regulations and NIS2 Directive. Comprehensive protection for vessel operations data, port systems, and entire supply chains.
+</p>
+
+<ul class="feature-list">
+<li>Full IMO and NIS2 Directive compliance</li>
+<li>Unified vessel OT/IT security</li>
+<li>Real-time threat detection</li>
+<li>GDPR-compliant navigation data protection</li>
+<li>Supply chain visibility</li>
+<li>World-class security standards</li>
+</ul>
+
+<div class="cta">
+Learn More
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+<path d="M5 12h14M12 5l7 7-7 7"/>
+</svg>
+</div>
+</a>
+</div>
+
+<!-- Stats Section -->
+<div class="stats-section">
+<h3 style="text-align:center;font-size:2rem;margin-bottom:48px;color:#fff;font-weight:800;">Maritime Business Track Record</h3>
+<div class="stats-grid">
+<div class="stat-item">
+<div class="stat-number">340+</div>
+<div class="stat-label">Listed Vessels</div>
+</div>
+<div class="stat-item">
+<div class="stat-number">9 Countries</div>
+<div class="stat-label">Shipping Routes</div>
+</div>
+<div class="stat-item">
+<div class="stat-number">100%</div>
+<div class="stat-label">IMO Compliance</div>
+</div>
+<div class="stat-item">
+<div class="stat-number">24/7</div>
+<div class="stat-label">Security Monitoring</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Why Choose Avisail -->
+<section style="padding:80px 0;background:rgba(5,8,15,0.5);">
+<div class="wrap">
+<h2 style="text-align:center;font-size:2.5rem;margin-bottom:60px;color:#fff;font-weight:800;">Why Avisail Maritime Business</h2>
+
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:40px;">
+<div style="background:rgba(10,15,26,0.7);border:2px solid rgba(59,130,246,0.3);border-radius:16px;padding:40px;text-align:center;">
+<div style="font-size:3.5rem;margin-bottom:20px;">🌏</div>
+<h4 style="color:#fff;font-size:1.3rem;margin-bottom:16px;font-weight:700;">Global Network</h4>
+<p style="color:var(--text-secondary);line-height:1.7;">
+Leveraging worldwide vessel data and security expert networks. Delivering optimal solutions with an international perspective.
+</p>
+</div>
+
+<div style="background:rgba(10,15,26,0.7);border:2px solid rgba(59,130,246,0.3);border-radius:16px;padding:40px;text-align:center;">
+<div style="font-size:3.5rem;margin-bottom:20px;">🎯</div>
+<h4 style="color:#fff;font-size:1.3rem;margin-bottom:16px;font-weight:700;">Maritime Industry Focus</h4>
+<p style="color:var(--text-secondary);line-height:1.7;">
+Not generic solutions, but specialized systems built on deep understanding of maritime industry characteristics and regulations.
+</p>
+</div>
+
+<div style="background:rgba(10,15,26,0.7);border:2px solid rgba(59,130,246,0.3);border-radius:16px;padding:40px;text-align:center;">
+<div style="font-size:3.5rem;margin-bottom:20px;">⚡</div>
+<h4 style="color:#fff;font-size:1.3rem;margin-bottom:16px;font-weight:700;">Latest Technology</h4>
+<p style="color:var(--text-secondary);line-height:1.7;">
+Solutions that dramatically evolve traditional maritime services through AI, automation, and cloud-native technology.
+</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- CTA Section -->
+<section style="padding:100px 0;">
+<div class="wrap">
+<div style="background:linear-gradient(135deg,rgba(59,130,246,0.15),rgba(16,185,129,0.12));border:3px solid rgba(59,130,246,0.4);border-radius:20px;padding:80px 48px;text-align:center;">
+<h2 style="font-size:2.8rem;margin-bottom:24px;color:#fff;font-weight:800;">
+Learn More About<br>Maritime Business
+</h2>
+<p style="color:var(--text-secondary);font-size:1.15rem;line-height:1.8;margin-bottom:40px;max-width:750px;margin-left:auto;margin-right:auto;">
+Explore detailed information about each solution, pricing, case studies, and more.<br>
+Feel free to contact us with any questions.
+</p>
+<div style="display:flex;gap:20px;justify-content:center;flex-wrap:wrap;">
+<a href="vessel-trading-en.html" class="cta" style="padding:20px 48px;font-size:1.15rem;">View Vessel Brokerage</a>
+<a href="maritime-security-en.html" class="cta" style="padding:20px 48px;font-size:1.15rem;">View Maritime Security</a>
+</div>
+<div style="margin-top:48px;padding-top:40px;border-top:2px solid rgba(59,130,246,0.3);">
+<p style="color:var(--text-muted);font-size:0.95rem;margin-bottom:12px;">Contact Us</p>
+<p style="color:var(--text-secondary);font-size:1.1rem;"><strong>info@avisail.com</strong></p>
+<p style="color:var(--text-muted);font-size:0.95rem;margin-top:12px;">Languages: 日本語 / English / Italiano<br>Response: Within 1 business day</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Shared Footer -->
+<div id="site-footer"></div>
+
+<!-- Shared Components Loader -->
+<script src="../includes/components.js"></script>
+
+</body>
+</html>
