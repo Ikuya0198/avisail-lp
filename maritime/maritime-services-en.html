@@ -13,7 +13,7 @@
 <link rel="stylesheet" href="../style.css">
 <style>
 .page-hero{
-  padding:140px 0 100px;
+  padding:80px 0 40px;
   background:
     linear-gradient(rgba(10,15,26,0.85),rgba(10,15,26,0.92)),
     radial-gradient(ellipse at 30% 20%,rgba(59,130,246,0.15),transparent 50%),
@@ -23,33 +23,24 @@
   position:relative;
   overflow:hidden;
 }
-.page-hero::before{
-  content:'';
-  position:absolute;
-  bottom:0;
-  left:0;
-  right:0;
-  height:200px;
-  background:linear-gradient(to top, var(--bg-dark), transparent);
-}
 .page-hero .wrap{position:relative;z-index:2;}
 .hero-badge{
   display:inline-flex;
   align-items:center;
-  gap:10px;
-  padding:12px 24px;
+  gap:8px;
+  padding:8px 16px;
   background:rgba(59,130,246,0.15);
   border:2px solid rgba(59,130,246,0.35);
-  border-radius:30px;
+  border-radius:20px;
   color:#3b82f6;
-  font-size:0.85rem;
+  font-size:0.8rem;
   font-weight:700;
-  margin-bottom:28px;
+  margin-bottom:16px;
   letter-spacing:0.05em;
 }
 .page-hero h1{
-  font-size:clamp(2.8rem,6vw,4.5rem);
-  margin-bottom:32px;
+  font-size:clamp(2rem,5vw,3rem);
+  margin-bottom:16px;
   color:#fff;
   font-weight:800;
   line-height:1.2;
@@ -63,16 +54,16 @@
 .page-hero .lead{
   color:var(--text-secondary);
   max-width:950px;
-  font-size:1.25rem;
-  line-height:1.8;
-  margin-bottom:40px;
+  font-size:1.05rem;
+  line-height:1.6;
+  margin-bottom:20px;
 }
 
 .services-grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(500px,1fr));
-  gap:48px;
-  margin-top:80px;
+  gap:24px;
+  margin-top:30px;
 }
 @media(max-width:1100px){
   .services-grid{
@@ -82,92 +73,78 @@
 .service-card{
   background:linear-gradient(135deg,rgba(59,130,246,0.08),rgba(16,185,129,0.05));
   border:2px solid rgba(59,130,246,0.3);
-  border-radius:20px;
-  padding:56px 48px;
+  border-radius:12px;
+  padding:24px 28px;
   position:relative;
   overflow:hidden;
   transition:all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   cursor:pointer;
 }
-.service-card::before{
-  content:'';
-  position:absolute;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  background:linear-gradient(135deg,rgba(59,130,246,0.12),rgba(16,185,129,0.08));
-  opacity:0;
-  transition:opacity 0.4s ease;
-}
 .service-card:hover{
   border-color:rgba(59,130,246,0.6);
-  transform:translateY(-8px);
-  box-shadow:0 20px 60px rgba(59,130,246,0.2);
-}
-.service-card:hover::before{
-  opacity:1;
+  transform:translateY(-4px);
+  box-shadow:0 12px 40px rgba(59,130,246,0.2);
 }
 .service-card > *{
   position:relative;
   z-index:2;
 }
 .service-icon{
-  width:80px;
-  height:80px;
+  width:50px;
+  height:50px;
   background:linear-gradient(135deg,#3b82f6,#10b981);
-  border-radius:16px;
+  border-radius:10px;
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:2.5rem;
-  margin-bottom:28px;
-  box-shadow:0 8px 24px rgba(59,130,246,0.3);
+  font-size:1.5rem;
+  margin-bottom:12px;
+  box-shadow:0 4px 16px rgba(59,130,246,0.3);
 }
 .service-number{
   display:inline-block;
   background:rgba(59,130,246,0.2);
   border:1px solid rgba(59,130,246,0.4);
-  padding:6px 14px;
-  border-radius:20px;
-  font-size:0.75rem;
+  padding:4px 10px;
+  border-radius:12px;
+  font-size:0.7rem;
   font-weight:800;
   color:#3b82f6;
-  margin-bottom:20px;
+  margin-bottom:10px;
   letter-spacing:0.05em;
 }
 .service-card h3{
-  font-size:2rem;
-  margin-bottom:16px;
+  font-size:1.5rem;
+  margin-bottom:8px;
   color:#fff;
   font-weight:800;
 }
 .service-card .subtitle{
   color:#3b82f6;
-  font-size:1.05rem;
+  font-size:0.9rem;
   font-weight:700;
-  margin-bottom:24px;
+  margin-bottom:12px;
   letter-spacing:0.02em;
 }
 .service-card p{
   color:var(--text-secondary);
-  font-size:1.05rem;
-  line-height:1.8;
-  margin-bottom:32px;
+  font-size:0.95rem;
+  line-height:1.6;
+  margin-bottom:16px;
 }
 .feature-list{
   list-style:none;
   padding:0;
-  margin:0 0 36px 0;
+  margin:0 0 20px 0;
 }
 .feature-list li{
-  padding:12px 0;
+  padding:8px 0;
   color:var(--text-secondary);
-  font-size:0.95rem;
+  font-size:0.9rem;
   display:flex;
   align-items:flex-start;
-  gap:12px;
-  line-height:1.7;
+  gap:10px;
+  line-height:1.5;
   border-bottom:1px solid rgba(59,130,246,0.15);
 }
 .feature-list li:last-child{
@@ -179,18 +156,18 @@
   font-weight:700;
   flex-shrink:0;
   margin-top:2px;
-  font-size:1.1rem;
+  font-size:1rem;
 }
 .service-card .cta{
   display:inline-flex;
   align-items:center;
-  gap:12px;
-  padding:18px 40px;
-  font-size:1.1rem;
+  gap:8px;
+  padding:12px 28px;
+  font-size:0.95rem;
   background:linear-gradient(135deg,#3b82f6,#10b981);
   color:#fff;
   text-decoration:none;
-  border-radius:10px;
+  border-radius:8px;
   font-weight:700;
   transition:all 0.3s ease;
   box-shadow:0 4px 16px rgba(59,130,246,0.3);
@@ -200,8 +177,8 @@
   box-shadow:0 6px 24px rgba(59,130,246,0.4);
 }
 .service-card .cta svg{
-  width:20px;
-  height:20px;
+  width:16px;
+  height:16px;
   transition:transform 0.3s ease;
 }
 .service-card:hover .cta svg{
@@ -210,38 +187,38 @@
 
 .stats-section{
   background:rgba(5,8,15,0.6);
-  border-radius:16px;
-  padding:64px 48px;
-  margin-top:80px;
+  border-radius:12px;
+  padding:32px 28px;
+  margin-top:30px;
   border:2px solid rgba(59,130,246,0.2);
 }
 .stats-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-  gap:40px;
-  margin-top:40px;
+  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  gap:24px;
+  margin-top:20px;
 }
 .stat-item{
   text-align:center;
 }
 .stat-number{
-  font-size:3rem;
+  font-size:2rem;
   font-weight:800;
   background:linear-gradient(135deg,#3b82f6,#10b981);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
   background-clip:text;
-  margin-bottom:12px;
+  margin-bottom:6px;
 }
 .stat-label{
   color:var(--text-secondary);
-  font-size:1rem;
+  font-size:0.9rem;
 }
 
 @media(max-width:768px){
-  .page-hero{padding:100px 0 60px;}
-  .service-card{padding:40px 32px;}
-  .services-grid{gap:32px;}
+  .page-hero{padding:60px 0 30px;}
+  .service-card{padding:24px 20px;}
+  .services-grid{gap:20px;}
 }
 </style>
 
@@ -278,11 +255,11 @@ Transparency and efficiency in used vessel trading, and cybersecurity measures s
 Driving DX in the maritime industry with global perspective and specialized expertise.
 </p>
 
-<div style="display:inline-flex;align-items:center;gap:16px;padding:20px 32px;background:rgba(59,130,246,0.12);border:2px solid rgba(59,130,246,0.3);border-radius:12px;">
-<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2">
+<div style="display:inline-flex;align-items:center;gap:12px;padding:12px 20px;background:rgba(59,130,246,0.12);border:2px solid rgba(59,130,246,0.3);border-radius:8px;">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2">
 <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
 </svg>
-<span style="color:var(--text-secondary);font-size:1.05rem;">
+<span style="color:var(--text-secondary);font-size:0.95rem;">
 <strong style="color:#fff;">Two specialized solutions</strong> for comprehensive maritime support
 </span>
 </div>
@@ -290,12 +267,11 @@ Driving DX in the maritime industry with global perspective and specialized expe
 </section>
 
 <!-- Services Grid -->
-<section style="padding:100px 0;">
+<section style="padding:40px 0;">
 <div class="wrap">
-<h2 style="text-align:center;font-size:2.8rem;margin-bottom:24px;color:#fff;font-weight:800;">Avisail Maritime Solutions</h2>
-<p style="text-align:center;color:var(--text-secondary);font-size:1.15rem;margin-bottom:60px;max-width:850px;margin-left:auto;margin-right:auto;line-height:1.8;">
-Two specialized solutions for the maritime industry. Each delivers independent value,<br>
-and together they provide seamless support from vessel trading to security.
+<h2 style="text-align:center;font-size:2rem;margin-bottom:12px;color:#fff;font-weight:800;">Avisail Maritime Solutions</h2>
+<p style="text-align:center;color:var(--text-secondary);font-size:1rem;margin-bottom:24px;max-width:900px;margin-left:auto;margin-right:auto;line-height:1.6;">
+Two specialized solutions for the maritime industry. Each delivers independent value, and together they provide seamless support from vessel trading to security. Enhancing market transparency and ensuring full compliance with international regulations, we drive efficiency and risk reduction in global maritime business.
 </p>
 
 <div class="services-grid">
@@ -306,7 +282,7 @@ and together they provide seamless support from vessel trading to security.
 <h3>Used Vessel Brokerage</h3>
 <div class="subtitle">Vessel Trading Platform</div>
 <p>
-A brokerage platform managing used vessels worldwide. Utilizing a database of 340+ vessels to enable transparent trading. AI-powered valuation instantly calculates fair market prices.
+A brokerage platform managing used vessels worldwide. Utilizing a database of 340+ vessels to enable transparent trading. AI-powered valuation instantly calculates vessel market value, shipping costs, and total post-purchase costs. Multi-language support in Japanese, English, and Arabic facilitates seamless global transactions. Covering shipping routes across 9 countries, we provide optimal logistics solutions. Digitizing traditional brokerage operations, we significantly enhance transaction efficiency and price fairness.
 </p>
 
 <ul class="feature-list">
@@ -333,7 +309,7 @@ Learn More
 <h3>Maritime Cybersecurity System</h3>
 <div class="subtitle">Maritime Cybersecurity Solution</div>
 <p>
-A cybersecurity platform specialized for the maritime industry. Fully compliant with IMO regulations and NIS2 Directive. Comprehensive protection for vessel operations data, port systems, and entire supply chains.
+A cybersecurity platform specialized for the maritime industry. Fully compliant with IMO regulations, NIS2 Directive, and GDPR, meeting international compliance requirements. Unified protection for vessel OT (Operational Technology) and IT (Information Technology), with 24/7 monitoring of navigation data, port systems, and entire supply chains. Real-time threat detection prevents cyber attacks, data breaches, and system intrusions. Addressing maritime-specific security risks, we ensure vessel operational safety and business continuity.
 </p>
 
 <ul class="feature-list">
@@ -356,7 +332,7 @@ Learn More
 
 <!-- Stats Section -->
 <div class="stats-section">
-<h3 style="text-align:center;font-size:2rem;margin-bottom:48px;color:#fff;font-weight:800;">Maritime Business Track Record</h3>
+<h3 style="text-align:center;font-size:1.5rem;margin-bottom:20px;color:#fff;font-weight:800;">Maritime Business Track Record</h3>
 <div class="stats-grid">
 <div class="stat-item">
 <div class="stat-number">340+</div>
@@ -380,32 +356,32 @@ Learn More
 </section>
 
 <!-- Why Choose Avisail -->
-<section style="padding:80px 0;background:rgba(5,8,15,0.5);">
+<section style="padding:40px 0;background:rgba(5,8,15,0.5);">
 <div class="wrap">
-<h2 style="text-align:center;font-size:2.5rem;margin-bottom:60px;color:#fff;font-weight:800;">Why Avisail Maritime Business</h2>
+<h2 style="text-align:center;font-size:1.8rem;margin-bottom:24px;color:#fff;font-weight:800;">Why Avisail Maritime Business</h2>
 
-<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:40px;">
-<div style="background:rgba(10,15,26,0.7);border:2px solid rgba(59,130,246,0.3);border-radius:16px;padding:40px;text-align:center;">
-<div style="font-size:3.5rem;margin-bottom:20px;">🌏</div>
-<h4 style="color:#fff;font-size:1.3rem;margin-bottom:16px;font-weight:700;">Global Network</h4>
-<p style="color:var(--text-secondary);line-height:1.7;">
-Leveraging worldwide vessel data and security expert networks. Delivering optimal solutions with an international perspective.
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;">
+<div style="background:rgba(10,15,26,0.7);border:2px solid rgba(59,130,246,0.3);border-radius:12px;padding:24px;text-align:center;">
+<div style="font-size:1.5rem;margin-bottom:12px;">🌏</div>
+<h4 style="color:#fff;font-size:1.1rem;margin-bottom:10px;font-weight:700;">Global Network</h4>
+<p style="color:var(--text-secondary);line-height:1.6;font-size:0.9rem;">
+Leveraging worldwide vessel data and security expert networks. Delivering optimal solutions with an international perspective. With proven track records and local partnerships across key maritime markets including Asia, Middle East, and Europe, we enable global trading and security measures.
 </p>
 </div>
 
-<div style="background:rgba(10,15,26,0.7);border:2px solid rgba(59,130,246,0.3);border-radius:16px;padding:40px;text-align:center;">
-<div style="font-size:3.5rem;margin-bottom:20px;">🎯</div>
-<h4 style="color:#fff;font-size:1.3rem;margin-bottom:16px;font-weight:700;">Maritime Industry Focus</h4>
-<p style="color:var(--text-secondary);line-height:1.7;">
-Not generic solutions, but specialized systems built on deep understanding of maritime industry characteristics and regulations.
+<div style="background:rgba(10,15,26,0.7);border:2px solid rgba(59,130,246,0.3);border-radius:12px;padding:24px;text-align:center;">
+<div style="font-size:1.5rem;margin-bottom:12px;">🎯</div>
+<h4 style="color:#fff;font-size:1.1rem;margin-bottom:10px;font-weight:700;">Maritime Industry Focus</h4>
+<p style="color:var(--text-secondary);line-height:1.6;font-size:0.9rem;">
+Not generic solutions, but specialized systems built on deep understanding of maritime industry characteristics and regulations. Fully compliant with international regulations including IMO, SOLAS, MARPOL, and ISPS Code, optimized for vessel operations, port management, and maritime logistics.
 </p>
 </div>
 
-<div style="background:rgba(10,15,26,0.7);border:2px solid rgba(59,130,246,0.3);border-radius:16px;padding:40px;text-align:center;">
-<div style="font-size:3.5rem;margin-bottom:20px;">⚡</div>
-<h4 style="color:#fff;font-size:1.3rem;margin-bottom:16px;font-weight:700;">Latest Technology</h4>
-<p style="color:var(--text-secondary);line-height:1.7;">
-Solutions that dramatically evolve traditional maritime services through AI, automation, and cloud-native technology.
+<div style="background:rgba(10,15,26,0.7);border:2px solid rgba(59,130,246,0.3);border-radius:12px;padding:24px;text-align:center;">
+<div style="font-size:1.5rem;margin-bottom:12px;">⚡</div>
+<h4 style="color:#fff;font-size:1.1rem;margin-bottom:10px;font-weight:700;">Latest Technology</h4>
+<p style="color:var(--text-secondary);line-height:1.6;font-size:0.9rem;">
+Solutions that dramatically evolve traditional maritime services through AI, automation, and cloud-native technology. Machine learning-powered price predictions, automated threat detection, and real-time data analytics enhance decision-making accuracy and speed. Automating traditional manual processes improves operational efficiency by up to 70%.
 </p>
 </div>
 </div>
@@ -413,24 +389,23 @@ Solutions that dramatically evolve traditional maritime services through AI, aut
 </section>
 
 <!-- CTA Section -->
-<section style="padding:100px 0;">
+<section style="padding:40px 0;">
 <div class="wrap">
-<div style="background:linear-gradient(135deg,rgba(59,130,246,0.15),rgba(16,185,129,0.12));border:3px solid rgba(59,130,246,0.4);border-radius:20px;padding:80px 48px;text-align:center;">
-<h2 style="font-size:2.8rem;margin-bottom:24px;color:#fff;font-weight:800;">
-Learn More About<br>Maritime Business
+<div style="background:linear-gradient(135deg,rgba(59,130,246,0.15),rgba(16,185,129,0.12));border:3px solid rgba(59,130,246,0.4);border-radius:12px;padding:40px 32px;text-align:center;">
+<h2 style="font-size:1.8rem;margin-bottom:16px;color:#fff;font-weight:800;">
+Learn More About Maritime Business
 </h2>
-<p style="color:var(--text-secondary);font-size:1.15rem;line-height:1.8;margin-bottom:40px;max-width:750px;margin-left:auto;margin-right:auto;">
-Explore detailed information about each solution, pricing, case studies, and more.<br>
-Feel free to contact us with any questions.
+<p style="color:var(--text-secondary);font-size:1rem;line-height:1.6;margin-bottom:24px;max-width:750px;margin-left:auto;margin-right:auto;">
+Explore detailed information about each solution, pricing, case studies, and more. Feel free to contact us with any questions.
 </p>
-<div style="display:flex;gap:20px;justify-content:center;flex-wrap:wrap;">
-<a href="vessel-trading-en.html" class="cta" style="padding:20px 48px;font-size:1.15rem;">View Vessel Brokerage</a>
-<a href="maritime-security-en.html" class="cta" style="padding:20px 48px;font-size:1.15rem;">View Maritime Security</a>
+<div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+<a href="vessel-trading-en.html" class="cta" style="padding:14px 32px;font-size:1rem;">View Vessel Brokerage</a>
+<a href="maritime-security-en.html" class="cta" style="padding:14px 32px;font-size:1rem;">View Maritime Security</a>
 </div>
-<div style="margin-top:48px;padding-top:40px;border-top:2px solid rgba(59,130,246,0.3);">
-<p style="color:var(--text-muted);font-size:0.95rem;margin-bottom:12px;">Contact Us</p>
-<p style="color:var(--text-secondary);font-size:1.1rem;"><strong>info@avisail.com</strong></p>
-<p style="color:var(--text-muted);font-size:0.95rem;margin-top:12px;">Languages: 日本語 / English / Italiano<br>Response: Within 1 business day</p>
+<div style="margin-top:32px;padding-top:24px;border-top:2px solid rgba(59,130,246,0.3);">
+<p style="color:var(--text-muted);font-size:0.85rem;margin-bottom:8px;">Contact Us</p>
+<p style="color:var(--text-secondary);font-size:1rem;"><strong>info@avisail.com</strong></p>
+<p style="color:var(--text-muted);font-size:0.85rem;margin-top:8px;">Languages: 日本語 / English / Italiano<br>Response: Within 1 business day</p>
 </div>
 </div>
 </div>
