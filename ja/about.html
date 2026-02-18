@@ -4,151 +4,800 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>会社概要 | Avisail Technologies</title>
+<meta name="description" content="Avisail Technologies について - AIイノベーションで海事貿易とサイバーセキュリティを再定義する次世代テクノロジー企業">
 <link rel="icon" type="image/svg+xml" href="../favicon.svg">
 <link rel="apple-touch-icon" sizes="180x180" href="../favicon.svg">
 <meta name="theme-color" content="#0a0f1a">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="msapplication-TileColor" content="#0a0f1a">
 <link rel="canonical" href="https://avisail.com/ja/about.html">
 <link rel="alternate" hreflang="ja" href="https://avisail.com/ja/about.html">
 <link rel="alternate" hreflang="en" href="https://avisail.com/en/about.html">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
-:root{--line:rgba(255,255,255,.08);--hero-bg:url('/images/about-hero.webp');--second-bg:url('/images/about-second.webp');}
-*{box-sizing:border-box;}
-html,body{margin:0;background:#0a0f1a;color:#e9f0ff;font-family:'Inter','Noto Sans JP',sans-serif;line-height:1.7;}
-html{scroll-behavior:smooth;}
-a{color:#cfe2ff;text-decoration:none;transition:color 0.3s;}
-a:hover{color:#7ef0d4;}
-.wrap{max-width:1200px;margin:0 auto;padding:0 20px;}
-header{position:sticky;top:0;z-index:50;background:rgba(10,15,26,.9);border-bottom:1px solid var(--line);backdrop-filter:blur(10px);}
-.nav{display:flex;align-items:center;justify-content:space-between;height:70px;}
-.brand{display:flex;align-items:center;gap:12px;font-weight:600;color:#fff;}
-.logo{width:32px;height:32px;border-radius:8px;background:conic-gradient(from 210deg,#6aa6ff,#7ef0d4);}
-nav ul{display:flex;gap:24px;list-style:none;margin:0;padding:0;align-items:center;font-size:0.95rem;}
-.menu-item{position:relative;padding:10px 0;}
-.dropdown{position:absolute;top:100%;left:-10px;min-width:200px;background:#0d1424;border:1px solid var(--line);border-radius:12px;padding:12px;display:none;flex-direction:column;gap:8px;box-shadow:0 10px 30px rgba(0,0,0,0.5);}
-.menu-item:hover .dropdown{display:flex;}
-.dropdown a{padding:6px 12px;border-radius:6px;color:#9fb0cc;}
-.dropdown a:hover{background:rgba(255,255,255,0.05);color:#fff;}
-.globe-icon{font-size:1.2rem;cursor:pointer;color:#9fb0cc;transition:color 0.3s;}
-.globe-icon:hover{color:#7ef0d4;}
-.page-hero{padding:140px 0 100px;text-align:center;background:linear-gradient(rgba(10,15,26,0.7),rgba(10,15,26,0.9)),var(--hero-bg) center/cover;}
-.page-hero h1{font-size:3.5rem;margin-bottom:24px;color:#fff;font-weight:700;}
-.page-hero .lead{color:#cfe2ff;max-width:800px;margin:0 auto 16px;font-size:1.2rem;}
-.muted{color:#9fb0cc;}
-section{padding:100px 0;border-bottom:1px solid var(--line);}
-h2{font-size:2rem;margin-bottom:40px;color:#fff;display:flex;align-items:center;gap:16px;}
-h2::before{content:'';width:4px;height:32px;background:linear-gradient(to bottom,#6aa6ff,#7ef0d4);display:block;}
-.bg-second{background:linear-gradient(rgba(10,15,26,0.8),rgba(10,15,26,0.9)),var(--second-bg) center/cover;}
-.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;}
-.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:32px;}
-.card{background:rgba(255,255,255,0.02);border:1px solid var(--line);border-radius:24px;padding:32px;backdrop-filter:blur(5px);transition:transform 0.3s,border-color 0.3s;height:100%;display:flex;flex-direction:column;}
-.card:hover{transform:translateY(-5px);border-color:rgba(106,166,255,0.3);}
-.card h3{color:#fff;margin-top:0;font-size:1.3rem;}
-.card p{color:#9fb0cc;margin-bottom:24px;flex-grow:1;}
-.timeline{position:relative;padding-left:40px;}
-.timeline-item{margin-bottom:40px;position:relative;}
-.timeline-item::before{content:'';position:absolute;left:-40px;top:8px;width:12px;height:12px;border-radius:50%;background:#7ef0d4;border:2px solid #0a0f1a;}
-.timeline-item::after{content:'';position:absolute;left:-35px;top:20px;width:2px;height:calc(100% + 20px);background:var(--line);}
-.timeline-item:last-child::after{display:none;}
-.timeline-year{color:#7ef0d4;font-weight:700;font-size:0.9rem;margin-bottom:8px;}
-.timeline-content h4{color:#fff;margin:0 0 8px;}
-.timeline-content p{color:#9fb0cc;margin:0;}
-footer{background:rgba(5,8,15,0.8);padding:60px 0 30px;border-top:1px solid var(--line);}
-.footer-content{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-bottom:40px;}
-.footer-col h4{color:#fff;font-size:1.1rem;margin-bottom:20px;}
-.footer-col ul{list-style:none;padding:0;margin:0;}
-.footer-col ul li{margin-bottom:12px;}
-.footer-col a{color:#9fb0cc;font-size:0.9rem;}
-.footer-col a:hover{color:#7ef0d4;}
-.footer-bottom{border-top:1px solid var(--line);padding-top:30px;text-align:center;color:#9fb0cc;font-size:0.85rem;}
-@media(max-width:980px){.grid-3,.grid-2{grid-template-columns:1fr;}.footer-content{grid-template-columns:1fr;}nav ul{display:none;}.page-hero h1{font-size:2.5rem;}}
+:root {
+  --bg-primary: #0a0f1a;
+  --bg-secondary: #060910;
+  --text-primary: #ffffff;
+  --text-secondary: #b8c5d6;
+  --text-muted: #6b7a8f;
+  --accent: #7ef0d4;
+  --accent-blue: #6aa6ff;
+  --line: rgba(255,255,255,0.08);
+}
 
-@media(max-width:768px){
-  section{ padding:40px 0 !important; }
-  .card{ padding:20px !important; }
-  h2{ font-size:1.5rem; margin-bottom:24px; }
-  .grid-2{ gap:16px !important; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: 'Inter', 'Noto Sans JP', -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; text-decoration: none; }
+
+.wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Hero Section */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  padding: 120px 24px;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(106, 166, 255, 0.15), transparent),
+    radial-gradient(ellipse 60% 40% at 50% 120%, rgba(126, 240, 212, 0.1), transparent);
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 900px;
+}
+
+.hero-label {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 32px;
+  opacity: 0;
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+.hero h1 {
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin-bottom: 32px;
+  opacity: 0;
+  animation: fadeInUp 0.8s ease 0.1s forwards;
+}
+
+.hero h1 span {
+  background: linear-gradient(135deg, var(--accent-blue), var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-lead {
+  font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+  color: var(--text-secondary);
+  line-height: 1.8;
+  max-width: 700px;
+  margin: 0 auto;
+  opacity: 0;
+  animation: fadeInUp 0.8s ease 0.2s forwards;
+}
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 48px;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  animation: fadeInUp 0.8s ease 0.4s forwards;
+}
+
+.scroll-indicator span {
+  display: block;
+  width: 1px;
+  height: 60px;
+  background: linear-gradient(to bottom, var(--accent), transparent);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+
+@keyframes scrollPulse {
+  0%, 100% { transform: scaleY(1); opacity: 1; }
+  50% { transform: scaleY(0.6); opacity: 0.5; }
+}
+
+/* Section Styles */
+section {
+  padding: 140px 0;
+  position: relative;
+}
+
+.section-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+
+.section-title {
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 24px;
+  line-height: 1.3;
+}
+
+.section-lead {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  max-width: 600px;
+  line-height: 1.9;
+}
+
+/* Philosophy Section */
+.philosophy {
+  background: var(--bg-secondary);
+}
+
+.philosophy-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  margin-top: 80px;
+}
+
+.philosophy-item {
+  position: relative;
+}
+
+.philosophy-number {
+  font-size: 8rem;
+  font-weight: 800;
+  line-height: 1;
+  background: linear-gradient(135deg, rgba(106,166,255,0.15), rgba(126,240,212,0.05));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  position: absolute;
+  top: -40px;
+  left: -20px;
+  z-index: 0;
+  user-select: none;
+}
+
+.philosophy-content {
+  position: relative;
+  z-index: 1;
+}
+
+.philosophy-content h3 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 24px;
+  letter-spacing: -0.01em;
+}
+
+.philosophy-content p {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 2;
+  margin-bottom: 16px;
+}
+
+.philosophy-content p:last-child {
+  margin-bottom: 0;
+}
+
+/* Business Section */
+.business-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 48px;
+  margin-top: 80px;
+}
+
+.business-card {
+  padding: 48px 40px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.business-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-blue), var(--accent));
+  transform: scaleX(0);
+  transition: transform 0.4s ease;
+}
+
+.business-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(126, 240, 212, 0.2);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+}
+
+.business-card:hover::before {
+  transform: scaleX(1);
+}
+
+.business-card h3 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  letter-spacing: -0.01em;
+}
+
+.business-card p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.9;
+  margin-bottom: 12px;
+}
+
+.business-card p:last-child {
+  margin-bottom: 0;
+}
+
+/* Stats Section */
+.stats {
+  background: var(--bg-secondary);
+  text-align: center;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 48px;
+  margin-top: 80px;
+}
+
+.stat-item {
+  padding: 32px;
+}
+
+.stat-number {
+  font-size: 4rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  background: linear-gradient(135deg, #fff, var(--text-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+  margin-bottom: 12px;
+}
+
+.stat-label {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+  font-weight: 500;
+}
+
+/* Why Section */
+.why-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  margin-top: 80px;
+}
+
+.why-card {
+  padding: 48px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  transition: all 0.4s ease;
+}
+
+.why-card:hover {
+  border-color: rgba(106, 166, 255, 0.2);
+  background: rgba(255,255,255,0.03);
+}
+
+.why-card h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  letter-spacing: -0.01em;
+}
+
+.why-card p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.9;
+}
+
+/* Tech Section */
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+  margin-top: 80px;
+}
+
+.tech-card {
+  padding: 40px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+}
+
+.tech-card h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: var(--accent);
+}
+
+.tech-list {
+  list-style: none;
+}
+
+.tech-list li {
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line);
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+.tech-list li:last-child {
+  border-bottom: none;
+}
+
+.tech-list strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+/* Security Banner */
+.security-banner {
+  margin-top: 80px;
+  padding: 64px;
+  background: linear-gradient(135deg, rgba(106,166,255,0.08), rgba(126,240,212,0.04));
+  border: 1px solid rgba(126, 240, 212, 0.15);
+  border-radius: 24px;
+  text-align: center;
+}
+
+.security-banner h3 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  letter-spacing: -0.02em;
+}
+
+.security-banner p {
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  max-width: 700px;
+  margin: 0 auto 40px;
+  line-height: 1.9;
+}
+
+.security-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  text-align: left;
+}
+
+.security-item h4 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--accent);
+}
+
+.security-item p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+/* CTA Section */
+.cta-section {
+  text-align: center;
+  padding: 160px 0;
+}
+
+.cta-section h2 {
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 24px;
+}
+
+.cta-section p {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  margin-bottom: 40px;
+}
+
+.cta-btn {
+  display: inline-block;
+  padding: 18px 48px;
+  background: linear-gradient(135deg, var(--accent-blue), var(--accent));
+  color: var(--bg-primary);
+  font-weight: 700;
+  font-size: 1rem;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+}
+
+.cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 20px 40px rgba(106, 166, 255, 0.3);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .philosophy-grid,
+  .why-grid,
+  .tech-grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .business-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .stats-grid,
+  .security-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  section {
+    padding: 80px 0;
+  }
+
+  .hero {
+    padding: 100px 24px;
+    min-height: auto;
+  }
+
+  .philosophy-number {
+    font-size: 5rem;
+    top: -20px;
+    left: -10px;
+  }
+
+  .stats-grid,
+  .security-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .stat-number {
+    font-size: 3rem;
+  }
+
+  .security-banner {
+    padding: 40px 24px;
+  }
+
+  .business-card,
+  .why-card,
+  .tech-card {
+    padding: 32px 24px;
+  }
 }
 </style>
 </head>
 <body>
+
 <!-- Shared Header -->
 <div id="site-header"></div>
 
-<main class="page-hero">
-<div class="wrap">
-<h1>Avisail Technologies について</h1>
-<p class="lead">AIと技術探究の力で貿易・投資・セキュリティを再定義する次世代のテクノロジー商社です。</p>
-<p class="muted">Navigating the Future. DRIVEN BY DISCOVERY.</p>
-</div>
-</main>
-
-<section class="wrap">
-<h2>企業理念</h2>
-<div class="grid-2">
-<div class="card">
-<h3>Passion（情熱）</h3>
-<p>世界に距離の概念は、もはや存在しないと考えます。文化も市場も隣り合い、新たな技術は常に目の前に現れます。</p>
-<p>目前に（新たな技術という）巨大な船が現れたとき、私たちは恐れず前に進み、テクノロジーを「実際に価値ある使い方」へと導きます。</p>
-<p style="margin-bottom:0;">勇気はイノベーションの火種です。その価値を人々に届けることに、私たちは情熱を注ぎます。</p>
-</div>
-<div class="card" style="border-color:#7ef0d4;">
-<h3>Purpose（存在意義）</h3>
-<p>人の豊かさにつながる技術を誠実に磨き、変革が生む新しいアクセスを広げる。</p>
-<p>進歩を止めず、価値を高め続けること。</p>
-<p style="margin-bottom:0;">それが私たちの取り組んでいる意義です。</p>
-</div>
-</div>
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-content">
+    <span class="hero-label">About Avisail Technologies</span>
+    <h1>産業を前進させる<br><span>テクノロジーを創る</span></h1>
+    <p class="hero-lead">AIイノベーションと徹底した実行力で、海事貿易とサイバーセキュリティを再定義する次世代テクノロジー企業です。</p>
+  </div>
+  <div class="scroll-indicator">
+    <span></span>
+  </div>
 </section>
 
-<section class="wrap bg-second">
-<h2>事業内容</h2>
-<div class="grid-3">
-<div class="card">
-<h3>船舶貿易</h3>
-<p>アジアと世界を繋ぐグローバルマッチングサービス。AIによる在庫自動更新とETF組み込み型支払い、エスクロー対応など安全な決済構造を提供します。</p>
-<p>Coaster、Tugboat、Landing Craft を専門とし、日本・韓国・東欧から調達し、中東・アジア市場にサービスを提供しています。</p>
-</div>
-<div class="card">
-<h3>投資</h3>
-<p>独自のAviscore プラットフォームによるAI駆動型資産管理。FX自動売買とETFポートフォリオ戦略を組み合わせ、規律ある実行による安定性と成長を重視します。</p>
-<p>高利回り・低リスクのキャリートレード手法により、富裕層向けの洗練された資産管理ソリューションを提供します。</p>
-</div>
-<div class="card">
-<h3>セキュリティ</h3>
-<p>実装重視のAI開発。世界中の中小企業・自治体向けADCS（Active Defense Cyber Security）を含みます。</p>
-<p>データ基盤・評価フレームワーク・安全性プロトコルを統合し、初日から機能する実運用ソリューションを提供します。</p>
-</div>
-</div>
+<!-- Philosophy -->
+<section class="philosophy">
+  <div class="wrap">
+    <span class="section-label animate-on-scroll">Our Philosophy</span>
+    <h2 class="section-title animate-on-scroll">すべての行動を導く<br>私たちの理念</h2>
+
+    <div class="philosophy-grid">
+      <div class="philosophy-item animate-on-scroll">
+        <span class="philosophy-number">01</span>
+        <div class="philosophy-content">
+          <h3>Passion — 情熱</h3>
+          <p>世界に距離の概念は、もはや存在しないと考えます。文化も市場も隣り合い、新たな技術は常に目の前に現れます。</p>
+          <p>目前に（新たな技術という）巨大な船が現れたとき、私たちは恐れず前に進み、テクノロジーを「実際に価値ある使い方」へと導きます。</p>
+          <p>勇気はイノベーションの火種です。その価値を人々に届けることに、私たちは情熱を注ぎます。</p>
+        </div>
+      </div>
+
+      <div class="philosophy-item animate-on-scroll">
+        <span class="philosophy-number">02</span>
+        <div class="philosophy-content">
+          <h3>Purpose — 存在意義</h3>
+          <p>人の豊かさにつながる技術を誠実に磨き、変革が生む新しいアクセスを広げます。</p>
+          <p>進歩を止めず、価値を高め続けること — それが私たちの取り組んでいる意義です。</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section class="wrap bg-second">
-<h2>Avisail を選ぶ理由</h2>
-<div class="grid-2">
-<div class="card">
-<h3>テクノロジーファースト</h3>
-<p>提供するすべてのサービスは、実運用を前提に設計された独自AIシステムで駆動。技術を開発するだけでなく、まず自社業務で展開し、堅牢性と実用的価値を確認してからクライアントに提供します。</p>
-</div>
-<div class="card">
-<h3>無借金経営</h3>
-<p>高キャッシュフロービジネスモデルにより、借入なしで運営。財務的安定性と独立性を確保し、外部圧力なく長期的戦略決定が可能。顧客価値と持続的成長のみに集中しています。</p>
-</div>
-<div class="card">
-<h3>クロスドメイン専門性</h3>
-<p>貿易・投資・技術の3領域にまたがる独自のポジションにより、単一領域企業では実現できないシナジーを創出。船舶購入者は革新的な支払い構造を利用でき、ADCSクライアントは市場インテリジェンスにアクセスし、投資家は運用データを活用できます。</p>
-</div>
-<div class="card">
-<h3>グローバル・アジャイル構造</h3>
-<p>複数の法域にまたがる法人とフィンテック先進市場での銀行機能により、官僚的遅延に直面する他社が動けない状況でも迅速に行動。この機敏性は、パートナーやクライアントにとって直接的な競争優位性となります。</p>
-</div>
-</div>
+<!-- Business -->
+<section>
+  <div class="wrap">
+    <span class="section-label animate-on-scroll">Our Business</span>
+    <h2 class="section-title animate-on-scroll">3つの事業領域、<br>1つの統合されたビジョン</h2>
+    <p class="section-lead animate-on-scroll">貿易、セキュリティ、テクノロジーの交差点で事業を展開し、単一領域の企業では実現できないシナジーを創出します。</p>
+
+    <div class="business-grid">
+      <div class="business-card animate-on-scroll">
+        <h3>船舶貿易</h3>
+        <p>アジアと世界を繋ぐグローバルマッチングサービス。AIによる在庫自動更新と、エスクロー対応など安全な決済構造を提供します。</p>
+        <p>日本・韓国・東欧からCoaster、Tugboat、Landing Craftを専門に取り扱います。</p>
+      </div>
+
+      <div class="business-card animate-on-scroll">
+        <h3>サイバーセキュリティ</h3>
+        <p>世界中の中小企業・自治体向けADCS（Active Defense Cyber Security）を含む、実装重視のAI開発。</p>
+        <p>初日から機能する実運用ソリューションを、従来の1/10のコストで提供します。</p>
+      </div>
+
+      <div class="business-card animate-on-scroll">
+        <h3>テクノロジー</h3>
+        <p>データ基盤・評価フレームワーク・安全性プロトコルを統合し、エンタープライズグレードのシステムを提供。</p>
+        <p>すべてのサービスは、実運用を前提に設計された独自AIシステムで駆動しています。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Stats -->
+<section class="stats">
+  <div class="wrap">
+    <span class="section-label animate-on-scroll">By The Numbers</span>
+    <h2 class="section-title animate-on-scroll">実証された成果、<br>測定可能なインパクト</h2>
+
+    <div class="stats-grid">
+      <div class="stat-item animate-on-scroll">
+        <div class="stat-number">24/7</div>
+        <div class="stat-label">システム稼働</div>
+      </div>
+      <div class="stat-item animate-on-scroll">
+        <div class="stat-number">99%</div>
+        <div class="stat-label">脅威検出率</div>
+      </div>
+      <div class="stat-item animate-on-scroll">
+        <div class="stat-number">3</div>
+        <div class="stat-label">グローバル展開地域</div>
+      </div>
+      <div class="stat-item animate-on-scroll">
+        <div class="stat-number">&lt;24h</div>
+        <div class="stat-label">レスポンス時間</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Why Avisail -->
+<section>
+  <div class="wrap">
+    <span class="section-label animate-on-scroll">Why Avisail</span>
+    <h2 class="section-title animate-on-scroll">Avisailを選ぶ理由</h2>
+
+    <div class="why-grid">
+      <div class="why-card animate-on-scroll">
+        <h3>テクノロジーファースト</h3>
+        <p>提供するすべてのサービスは独自AIシステムで駆動。技術を開発するだけでなく、まず自社業務で展開し、堅牢性を確認してからクライアントに提供します。</p>
+      </div>
+
+      <div class="why-card animate-on-scroll">
+        <h3>無借金経営</h3>
+        <p>高キャッシュフロービジネスモデルにより、借入なしで運営。外部圧力なく長期的戦略決定が可能で、顧客価値のみに集中しています。</p>
+      </div>
+
+      <div class="why-card animate-on-scroll">
+        <h3>クロスドメイン専門性</h3>
+        <p>貿易・セキュリティ・技術の3領域にまたがる独自のポジションにより、単一領域企業では実現できないシナジーを創出します。</p>
+      </div>
+
+      <div class="why-card animate-on-scroll">
+        <h3>グローバル・アジャイル構造</h3>
+        <p>複数の法域にまたがる法人により、官僚的遅延に直面する他社が動けない状況でも迅速に行動。この機敏性がパートナーへの競争優位性となります。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Technology Stack -->
+<section class="philosophy">
+  <div class="wrap">
+    <span class="section-label animate-on-scroll">Technology Stack</span>
+    <h2 class="section-title animate-on-scroll">エンタープライズグレードの<br>技術基盤</h2>
+    <p class="section-lead animate-on-scroll">すべてのシステムはスケーラビリティ、信頼性、保護を重視して設計。セキュリティを核に据えています。</p>
+
+    <div class="tech-grid">
+      <div class="tech-card animate-on-scroll">
+        <h3>AI & 機械学習</h3>
+        <ul class="tech-list">
+          <li><strong>ディープラーニング:</strong> TensorFlow, PyTorch</li>
+          <li><strong>NLP:</strong> GPT, BERT, カスタムモデル</li>
+          <li><strong>コンピュータビジョン:</strong> YOLO, ResNet</li>
+          <li><strong>MLOps:</strong> Kubernetes, MLflow</li>
+        </ul>
+      </div>
+
+      <div class="tech-card animate-on-scroll">
+        <h3>バックエンド & API</h3>
+        <ul class="tech-list">
+          <li><strong>言語:</strong> Python, Node.js, Go</li>
+          <li><strong>フレームワーク:</strong> FastAPI, Express, Django</li>
+          <li><strong>データベース:</strong> PostgreSQL, MongoDB, Redis</li>
+          <li><strong>API:</strong> REST, GraphQL, WebSocket</li>
+        </ul>
+      </div>
+
+      <div class="tech-card animate-on-scroll">
+        <h3>フロントエンド & UX</h3>
+        <ul class="tech-list">
+          <li><strong>フレームワーク:</strong> React, Next.js</li>
+          <li><strong>言語:</strong> TypeScript</li>
+          <li><strong>状態管理:</strong> Redux, Zustand</li>
+          <li><strong>UI/UX:</strong> Tailwind CSS, Figma</li>
+        </ul>
+      </div>
+
+      <div class="tech-card animate-on-scroll">
+        <h3>インフラストラクチャ</h3>
+        <ul class="tech-list">
+          <li><strong>クラウド:</strong> AWS, GCP, Azure</li>
+          <li><strong>コンテナ:</strong> Docker, Kubernetes</li>
+          <li><strong>CI/CD:</strong> GitHub Actions, Jenkins</li>
+          <li><strong>セキュリティ:</strong> E2E暗号化, SOC 2</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="security-banner animate-on-scroll">
+      <h3>セキュリティファースト開発</h3>
+      <p>すべてのコードはセキュリティを念頭に置いて記述。開発からデプロイまで、業界のベストプラクティスに従っています。</p>
+      <div class="security-grid">
+        <div class="security-item">
+          <h4>暗号化通信</h4>
+          <p>TLS 1.3, E2E暗号化</p>
+        </div>
+        <div class="security-item">
+          <h4>定期セキュリティ監査</h4>
+          <p>四半期ごとのペネトレーションテスト</p>
+        </div>
+        <div class="security-item">
+          <h4>データ保護</h4>
+          <p>GDPR & PDPA 準拠</p>
+        </div>
+        <div class="security-item">
+          <h4>24時間監視</h4>
+          <p>リアルタイム脅威検知</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="wrap">
+    <h2 class="animate-on-scroll">一緒に働きませんか？</h2>
+    <p class="animate-on-scroll">Avisailがあなたのビジネスをどのように変革できるか、ご相談ください。</p>
+    <a href="../ja/contact.html" class="cta-btn animate-on-scroll">お問い合わせ</a>
+  </div>
 </section>
 
 <!-- Shared Footer -->
 <div id="site-footer"></div>
+
 <script src="../includes/components.js"></script>
+<script>
+// Scroll Animation
+document.addEventListener('DOMContentLoaded', function() {
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, index) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, index * 100);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll('.animate-on-scroll').forEach(el => {
+    observer.observe(el);
+  });
+});
+</script>
 </body>
 </html>

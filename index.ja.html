@@ -40,12 +40,27 @@
   <meta name="twitter:description" content="Avisail Technologiesは、AIと技術探究の力で海事事業・セキュリティ事業を再定義する次世代テクノロジー企業です">
   <meta name="twitter:image" content="https://avisail.com/images/hero-bg.jpg">
 
+  <!-- Preconnect for faster font loading -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Noto+Sans+JP:wght@300;400;700&display=swap"
-    rel="stylesheet">
+
+  <!-- Preload critical font (Inter 600/700 for headings) -->
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Noto+Sans+JP:wght@300;400;700&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Noto+Sans+JP:wght@300;400;700&display=swap"
+    rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+  </noscript>
+
+  <!-- Preload critical CSS -->
+  <link rel="preload" href="style.css" as="style">
   <link rel="stylesheet" href="style.css">
+
+  <!-- Preload LCP image (hero background) -->
+  <link rel="preload" href="images/hero-bg.webp" as="image" type="image/webp" fetchpriority="high">
+
+  <!-- DNS prefetch for external resources -->
+  <link rel="dns-prefetch" href="https://www.googletagmanager.com">
 
   <!-- Google Analytics 4 with GDPR Consent -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-CTTYVWRGQD"></script>
@@ -94,10 +109,19 @@
         AIによる自動化・分析・意思決定支援が、国際的な船舶取引からサイバーセキュリティまで、あらゆるビジネス領域に貢献します。
       </p>
 
-      <div style="margin-top:36px; display:flex; gap:14px; flex-wrap:wrap;" class="animate-in delay-4">
-        <a href="#business" class="cta">事業内容を見る</a>
-        <a href="#contact" class="btn">お問い合わせ</a>
+      <div style="margin-top:36px; display:flex; gap:14px; flex-wrap:wrap; align-items:center;" class="animate-in delay-4">
+        <a href="security/adcs-ja.html" class="cta cta-pulse" style="padding:16px 32px; font-size:1.05rem;">
+          <span style="display:block; font-size:0.75rem; opacity:0.9; margin-bottom:2px;">無料セキュリティ診断</span>
+          今すぐ始める
+        </a>
+        <a href="#business" class="btn" style="padding:14px 28px;">事業内容を見る</a>
+        <a href="#contact" class="btn btn-text" style="padding:14px 20px; background:transparent; border:none;">お問い合わせ →</a>
       </div>
+      <p style="margin-top:16px; font-size:0.85rem; color:var(--text-muted);" class="animate-in delay-4">
+        <span style="color:var(--accent-teal);">✓</span> クレジットカード不要
+        <span style="margin:0 12px; opacity:0.3;">|</span>
+        <span style="color:var(--accent-teal);">✓</span> 24時間以内に結果をお届け
+      </p>
     </div>
   </section>
 
@@ -208,7 +232,7 @@
                 </li>
               </ul>
               <div style="margin-top: 16px; border-radius: 12px; overflow: hidden; border: 1px solid rgba(126, 240, 212, 0.2); box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);">
-                <img src="images/vessel-trading-platform-preview.png" alt="船舶取引プラットフォーム" loading="lazy" style="width: 100%; height: auto; display: block;">
+                <img src="images/vessel-trading-platform-preview.png" alt="船舶取引プラットフォーム" loading="lazy" width="1402" height="776" style="width: 100%; height: auto; display: block;">
               </div>
             </div>
           </div>
@@ -236,7 +260,7 @@
                 </li>
               </ul>
               <div style="margin-top: 16px; border-radius: 12px; overflow: hidden; border: 1px solid rgba(126, 240, 212, 0.2); box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);">
-                <img src="images/security-dashboard-preview.png" alt="セキュリティダッシュボード" loading="lazy" style="width: 100%; height: auto; display: block;">
+                <img src="images/security-dashboard-preview.png" alt="セキュリティダッシュボード" loading="lazy" width="2238" height="1548" style="width: 100%; height: auto; display: block;">
               </div>
             </div>
           </div>
@@ -378,23 +402,50 @@
         <div class="stat-item">
           <div class="stat-number">24/7</div>
           <div class="stat-label">システム稼働</div>
+          <p style="font-size:0.8rem; color:var(--text-muted); margin-top:8px;">ローンチ以来ダウンタイムゼロ</p>
         </div>
 
         <div class="stat-item">
-          <div class="stat-number">Multilingual</div>
-          <div class="stat-label">全言語対応</div>
+          <div class="stat-number"><span class="count-up" data-target="99">0</span>%</div>
+          <div class="stat-label">脅威検出率</div>
+          <p style="font-size:0.8rem; color:var(--text-muted); margin-top:8px;">AI搭載の高精度検知</p>
         </div>
 
         <div class="stat-item">
-          <div class="stat-number"><span class="count-up" data-target="10">0</span>+</div>
-          <div class="stat-label">セキュリティチェック</div>
+          <div class="stat-number">&lt;<span class="count-up" data-target="24">0</span>h</div>
+          <div class="stat-label">レスポンス時間</div>
+          <p style="font-size:0.8rem; color:var(--text-muted); margin-top:8px;">診断からレポートまで</p>
         </div>
 
         <div class="stat-item">
-          <div class="stat-number">Global</div>
-          <div class="stat-label">アジア・中東・欧州</div>
+          <div class="stat-number"><span class="count-up" data-target="3">0</span></div>
+          <div class="stat-label">グローバル展開</div>
+          <p style="font-size:0.8rem; color:var(--text-muted); margin-top:8px;">アジア・中東・欧州</p>
         </div>
 
+      </div>
+
+      <!-- Trust Badges -->
+      <div style="margin-top:48px; padding:24px; background:rgba(255,255,255,0.02); border-radius:16px; border:1px solid var(--line);">
+        <p style="text-align:center; color:var(--text-muted); font-size:0.85rem; margin-bottom:16px;">セキュリティ & コンプライアンス</p>
+        <div style="display:flex; justify-content:center; gap:32px; flex-wrap:wrap; align-items:center;">
+          <div style="text-align:center; padding:12px 20px;">
+            <span style="font-size:1.5rem;">🔒</span>
+            <p style="font-size:0.8rem; color:var(--text-secondary); margin-top:4px;">エンドツーエンド<br>暗号化</p>
+          </div>
+          <div style="text-align:center; padding:12px 20px;">
+            <span style="font-size:1.5rem;">🛡️</span>
+            <p style="font-size:0.8rem; color:var(--text-secondary); margin-top:4px;">Security by<br>Design</p>
+          </div>
+          <div style="text-align:center; padding:12px 20px;">
+            <span style="font-size:1.5rem;">🌐</span>
+            <p style="font-size:0.8rem; color:var(--text-secondary); margin-top:4px;">GDPR<br>準拠</p>
+          </div>
+          <div style="text-align:center; padding:12px 20px;">
+            <span style="font-size:1.5rem;">⚡</span>
+            <p style="font-size:0.8rem; color:var(--text-secondary); margin-top:4px;">99.9%<br>稼働率</p>
+          </div>
+        </div>
       </div>
 
     </div>
@@ -442,6 +493,22 @@
           </div>
         </div>
 
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================
+     MID-PAGE CTA BANNER
+======================================== -->
+  <section class="cta-banner" style="padding:60px 0; background:linear-gradient(135deg, rgba(106,166,255,0.1) 0%, rgba(126,240,212,0.1) 100%); border-top:1px solid rgba(126,240,212,0.2); border-bottom:1px solid rgba(126,240,212,0.2);">
+    <div class="wrap" style="text-align:center;">
+      <h3 style="font-size:1.6rem; margin-bottom:12px; color:#fff;">ビジネスのセキュリティ対策、始めませんか？</h3>
+      <p style="color:var(--text-secondary); margin-bottom:24px; max-width:600px; margin-left:auto; margin-right:auto;">
+        まずは無料診断から。導入の義務はありません。
+      </p>
+      <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
+        <a href="security/adcs-ja.html" class="cta" style="padding:14px 32px;">無料診断を受ける</a>
+        <a href="#contact" class="btn" style="padding:14px 32px;">専門家に相談</a>
       </div>
     </div>
   </section>
@@ -544,6 +611,13 @@
   <!-- Shared Footer -->
   <div id="site-footer"></div>
 
+  <!-- Mobile Fixed CTA Bar -->
+  <div class="mobile-cta-bar" id="mobileCta">
+    <a href="security/adcs-ja.html" class="mobile-cta-btn">
+      <span>無料セキュリティ診断</span>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+  </div>
 
   <!-- Shared Components Loader -->
   <script src="includes/components.js"></script>
@@ -658,88 +732,170 @@
     });
 
     // Global Background Animation (Digital Ocean Style)
+    // Performance optimized with reduced-motion support
     (function () {
       const canvas = document.getElementById('global-bg');
       if (!canvas) return;
+
+      // Respect user's motion preferences
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (prefersReducedMotion) {
+        // Static gradient background for reduced motion
+        canvas.style.display = 'none';
+        document.body.style.background = 'linear-gradient(135deg, #0a0f1a 0%, #05080f 100%)';
+        return;
+      }
+
       const ctx = canvas.getContext('2d');
       let width, height;
       let particles = [];
-      let zOff = 0; // Time dimension
+      let zOff = 0;
+      let animationId;
+      let isVisible = true;
+
+      // Pause animation when tab is not visible (save CPU/battery)
+      document.addEventListener('visibilitychange', () => {
+        isVisible = !document.hidden;
+        if (isVisible && !animationId) {
+          animationId = requestAnimationFrame(loop);
+        }
+      });
 
       function resize() {
         width = canvas.width = window.innerWidth;
         height = canvas.height = window.innerHeight;
         initParticles();
       }
-      window.addEventListener('resize', resize);
+
+      // Debounced resize for performance
+      let resizeTimeout;
+      window.addEventListener('resize', () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(resize, 150);
+      });
 
       function initParticles() {
         particles = [];
-        // Increase density for flow field
-        const count = Math.floor(width * height / 2000);
+        // Reduced density for better performance (was /2000, now /4000)
+        const count = Math.min(Math.floor(width * height / 4000), 300);
         for (let i = 0; i < count; i++) {
           particles.push({
             x: Math.random() * width,
             y: Math.random() * height,
             vx: 0,
             vy: 0,
-            maxSpeed: Math.random() * 0.8 + 0.2, // Slower speed
-            size: Math.random() > 0.9 ? 1.5 : 0.8, // Occasional larger particles
-            color: Math.random() > 0.5 ? '#2E64BA' : '#4DB899' // Slightly Darker Blue / Teal
+            maxSpeed: Math.random() * 0.6 + 0.2,
+            size: Math.random() > 0.9 ? 1.5 : 0.8,
+            color: Math.random() > 0.5 ? '#2E64BA' : '#4DB899'
           });
         }
       }
 
       function update() {
-        zOff += 0.0005; // Slower time evolution
-
-        particles.forEach(p => {
-          // Calculate flow angle based on position using pseudo-noise (sine/cos)
-          // Creating a "current" effect without external Perlin noise library
+        zOff += 0.0005;
+        for (let i = 0; i < particles.length; i++) {
+          const p = particles[i];
           const angle = (Math.cos(p.x * 0.002 + zOff) + Math.sin(p.y * 0.002 + zOff)) * Math.PI;
-
-          // Add velocity vector based on angle
-          p.vx += Math.cos(angle) * 0.02; // Reduced acceleration
+          p.vx += Math.cos(angle) * 0.02;
           p.vy += Math.sin(angle) * 0.02;
-
-          // Limit speed
           const speed = Math.sqrt(p.vx * p.vx + p.vy * p.vy);
           if (speed > p.maxSpeed) {
             p.vx = (p.vx / speed) * p.maxSpeed;
             p.vy = (p.vy / speed) * p.maxSpeed;
           }
-
           p.x += p.vx;
           p.y += p.vy;
-
-          // Wrap around edges smoothly
           if (p.x < 0) { p.x = width; p.vx = 0; p.vy = 0; }
           if (p.x > width) { p.x = 0; p.vx = 0; p.vy = 0; }
           if (p.y < 0) { p.y = height; p.vx = 0; p.vy = 0; }
           if (p.y > height) { p.y = 0; p.vx = 0; p.vy = 0; }
-        });
+        }
       }
 
       function draw() {
-        // Use a slight fade effect for trails instead of clearRect
-        ctx.fillStyle = 'rgba(5, 8, 15, 0.2)'; // Dark background with transparency for trails
+        ctx.fillStyle = 'rgba(5, 8, 15, 0.2)';
         ctx.fillRect(0, 0, width, height);
-
-        particles.forEach(p => {
+        for (let i = 0; i < particles.length; i++) {
+          const p = particles[i];
           ctx.fillStyle = p.color;
           ctx.beginPath();
           ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
           ctx.fill();
-        });
+        }
+      }
 
-        requestAnimationFrame(function () {
-          update();
-          draw();
-        });
+      function loop() {
+        if (!isVisible) {
+          animationId = null;
+          return;
+        }
+        update();
+        draw();
+        animationId = requestAnimationFrame(loop);
       }
 
       resize();
-      draw();
+      animationId = requestAnimationFrame(loop);
+    })();
+
+    // Scroll Animations
+    (function() {
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (prefersReducedMotion) return;
+
+      const scrollElements = document.querySelectorAll('.scroll-fade, .scroll-fade-left, .scroll-fade-right, .scroll-scale');
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+      scrollElements.forEach(el => observer.observe(el));
+
+      // Auto-add scroll-fade to section h2 and key elements
+      document.querySelectorAll('section:not(.hero) h2').forEach((el, i) => {
+        if (!el.classList.contains('scroll-fade')) {
+          el.classList.add('scroll-fade');
+          observer.observe(el);
+        }
+      });
+
+      document.querySelectorAll('.stat-item, .why-card, .product-card, .faq-item').forEach((el, i) => {
+        if (!el.classList.contains('scroll-fade')) {
+          el.classList.add('scroll-fade');
+          el.classList.add('scroll-delay-' + Math.min((i % 5) + 1, 5));
+          observer.observe(el);
+        }
+      });
+    })();
+
+    // Mobile CTA Bar - show after scrolling past hero
+    (function() {
+      const mobileCta = document.getElementById('mobileCta');
+      const hero = document.querySelector('.hero');
+      if (!mobileCta || !hero) return;
+
+      let ticking = false;
+      function checkScroll() {
+        const heroBottom = hero.offsetTop + hero.offsetHeight;
+        if (window.scrollY > heroBottom - 100) {
+          mobileCta.classList.add('visible');
+        } else {
+          mobileCta.classList.remove('visible');
+        }
+        ticking = false;
+      }
+
+      window.addEventListener('scroll', function() {
+        if (!ticking) {
+          requestAnimationFrame(checkScroll);
+          ticking = true;
+        }
+      }, { passive: true });
     })();
 
   </script>

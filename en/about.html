@@ -4,358 +4,801 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>About Us | Avisail Technologies</title>
+<meta name="description" content="Learn about Avisail Technologies - a next-generation technology firm redefining maritime trade and cybersecurity through AI innovation.">
 <link rel="icon" type="image/svg+xml" href="../favicon.svg">
 <link rel="apple-touch-icon" sizes="180x180" href="../favicon.svg">
 <meta name="theme-color" content="#0a0f1a">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="msapplication-TileColor" content="#0a0f1a">
 <link rel="canonical" href="https://avisail.com/en/about.html">
 <link rel="alternate" hreflang="ja" href="https://avisail.com/ja/about.html">
 <link rel="alternate" hreflang="en" href="https://avisail.com/en/about.html">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root{
-  --line: rgba(255,255,255,.08);
-  --hero-bg: url('/images/about-hero.webp');
-  --second-bg: url('/images/about-second.webp');
-}
-*{ box-sizing: border-box; }
-html,body{ margin:0; background:#0a0f1a; color:#e9f0ff; font-family:'Inter', sans-serif; line-height:1.7; }
-html{ scroll-behavior: smooth; }
-a{ color:#cfe2ff; text-decoration:none; transition:color 0.3s; }
-a:hover{ color:#7ef0d4; }
-.wrap{ max-width:1200px; margin:0 auto; padding:0 20px; }
-header{ position:sticky; top:0; z-index:50; background:rgba(10,15,26,.9); border-bottom:1px solid var(--line); backdrop-filter:blur(10px); }
-.nav{ display:flex; align-items:center; justify-content:space-between; height:70px; }
-.brand{ display:flex; align-items:center; gap:12px; font-weight:600; color:#fff; }
-.logo{ width:32px; height:32px; border-radius:8px; background:conic-gradient(from 210deg,#6aa6ff,#7ef0d4); }
-nav ul{ display:flex; gap:24px; list-style:none; margin:0; padding:0; align-items:center; font-size:0.95rem; }
-.menu-item{ position:relative; padding:10px 0; }
-.dropdown{ position:absolute; top:100%; left:-10px; min-width:200px; background:#0d1424; border:1px solid var(--line); border-radius:12px; padding:12px; display:none; flex-direction:column; gap:8px; box-shadow:0 10px 30px rgba(0,0,0,0.5); }
-.menu-item:hover .dropdown{ display:flex; }
-.dropdown a{ padding:6px 12px; border-radius:6px; color:#9fb0cc; }
-.dropdown a:hover{ background:rgba(255,255,255,0.05); color:#fff; }
-.globe-icon{ font-size:1.2rem; cursor:pointer; color:#9fb0cc; transition:color 0.3s; }
-.globe-icon:hover{ color:#7ef0d4; }
-
-.page-hero{
-  padding:140px 0 100px; text-align:center;
-  background: linear-gradient(rgba(10,15,26,0.7), rgba(10,15,26,0.9)), var(--hero-bg) center/cover;
-}
-.page-hero h1{ font-size:3.5rem; margin-bottom:24px; color:#fff; font-weight:700; }
-.page-hero .lead{ color:#cfe2ff; max-width:800px; margin:0 auto 16px; font-size:1.2rem; }
-.muted{ color:#9fb0cc; }
-
-section{ padding:100px 0; border-bottom:1px solid var(--line); }
-h2{
-  font-size:2rem; margin-bottom:40px; color:#fff; display:flex; align-items:center; gap:16px;
-}
-h2::before{ content:''; width:4px; height:32px; background:linear-gradient(to bottom, #6aa6ff, #7ef0d4); display:block; }
-.bg-second { background: linear-gradient(rgba(10,15,26,0.8), rgba(10,15,26,0.9)), var(--second-bg) center/cover; }
-
-.grid-3{ display:grid; grid-template-columns:repeat(3,1fr); gap:32px; }
-.grid-2{ display:grid; grid-template-columns:repeat(2,1fr); gap:32px; }
-.card{
-  background:rgba(255,255,255,0.02); border:1px solid var(--line); border-radius:24px; padding:32px;
-  backdrop-filter:blur(5px); transition:transform 0.3s, border-color 0.3s; height:100%; display:flex; flex-direction:column;
-}
-.card:hover{ transform:translateY(-5px); border-color:rgba(106,166,255,0.3); }
-.card h3{ color:#fff; margin-top:0; font-size:1.3rem; }
-.card p{ color:#9fb0cc; margin-bottom:24px; flex-grow:1; }
-
-.timeline{ position:relative; padding-left:40px; }
-.timeline-item{ margin-bottom:40px; position:relative; }
-.timeline-item::before{ content:''; position:absolute; left:-40px; top:8px; width:12px; height:12px; border-radius:50%; background:#7ef0d4; border:2px solid #0a0f1a; }
-.timeline-item::after{ content:''; position:absolute; left:-35px; top:20px; width:2px; height:calc(100% + 20px); background:var(--line); }
-.timeline-item:last-child::after{ display:none; }
-.timeline-year{ color:#7ef0d4; font-weight:700; font-size:0.9rem; margin-bottom:8px; }
-.timeline-content h4{ color:#fff; margin:0 0 8px; }
-.timeline-content p{ color:#9fb0cc; margin:0; }
-
-footer{
-  background:rgba(5,8,15,0.8);
-  padding:60px 0 30px;
-  border-top:1px solid var(--line);
-}
-.footer-content{ display:grid; grid-template-columns:repeat(3,1fr); gap:40px; margin-bottom:40px; }
-.footer-col h4{ color:#fff; font-size:1.1rem; margin-bottom:20px; }
-.footer-col ul{ list-style:none; padding:0; margin:0; }
-.footer-col ul li{ margin-bottom:12px; }
-.footer-col a{ color:#9fb0cc; font-size:0.9rem; }
-.footer-col a:hover{ color:#7ef0d4; }
-.footer-bottom{
-  border-top:1px solid var(--line);
-  padding-top:30px;
-  text-align:center;
-  color:#9fb0cc;
-  font-size:0.85rem;
+:root {
+  --bg-primary: #0a0f1a;
+  --bg-secondary: #060910;
+  --text-primary: #ffffff;
+  --text-secondary: #b8c5d6;
+  --text-muted: #6b7a8f;
+  --accent: #7ef0d4;
+  --accent-blue: #6aa6ff;
+  --line: rgba(255,255,255,0.08);
 }
 
-@media(max-width:980px){
-  .grid-3,.grid-2{ grid-template-columns:1fr; }
-  .footer-content{ grid-template-columns:1fr; }
-  nav ul{ display:none; }
-  .page-hero h1{ font-size:2.5rem; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
 }
 
-@media(max-width:768px){
-  section{ padding:40px 0 !important; }
-  .card{ padding:20px !important; }
-  h2{ font-size:1.5rem; margin-bottom:24px; }
-  .grid-2{ gap:16px !important; }
+body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; text-decoration: none; }
+
+.wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Hero Section */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  padding: 120px 24px;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(106, 166, 255, 0.15), transparent),
+    radial-gradient(ellipse 60% 40% at 50% 120%, rgba(126, 240, 212, 0.1), transparent);
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 900px;
+}
+
+.hero-label {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 32px;
+  opacity: 0;
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+.hero h1 {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin-bottom: 32px;
+  opacity: 0;
+  animation: fadeInUp 0.8s ease 0.1s forwards;
+}
+
+.hero h1 span {
+  background: linear-gradient(135deg, var(--accent-blue), var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-lead {
+  font-size: clamp(1.1rem, 2vw, 1.35rem);
+  color: var(--text-secondary);
+  line-height: 1.7;
+  max-width: 700px;
+  margin: 0 auto;
+  opacity: 0;
+  animation: fadeInUp 0.8s ease 0.2s forwards;
+}
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 48px;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  animation: fadeInUp 0.8s ease 0.4s forwards;
+}
+
+.scroll-indicator span {
+  display: block;
+  width: 1px;
+  height: 60px;
+  background: linear-gradient(to bottom, var(--accent), transparent);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+
+@keyframes scrollPulse {
+  0%, 100% { transform: scaleY(1); opacity: 1; }
+  50% { transform: scaleY(0.6); opacity: 0.5; }
+}
+
+/* Section Styles */
+section {
+  padding: 140px 0;
+  position: relative;
+}
+
+.section-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+
+.section-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 24px;
+  line-height: 1.2;
+}
+
+.section-lead {
+  font-size: 1.15rem;
+  color: var(--text-secondary);
+  max-width: 600px;
+  line-height: 1.8;
+}
+
+/* Philosophy Section */
+.philosophy {
+  background: var(--bg-secondary);
+}
+
+.philosophy-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  margin-top: 80px;
+}
+
+.philosophy-item {
+  position: relative;
+}
+
+.philosophy-number {
+  font-size: 8rem;
+  font-weight: 800;
+  line-height: 1;
+  background: linear-gradient(135deg, rgba(106,166,255,0.15), rgba(126,240,212,0.05));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  position: absolute;
+  top: -40px;
+  left: -20px;
+  z-index: 0;
+  user-select: none;
+}
+
+.philosophy-content {
+  position: relative;
+  z-index: 1;
+}
+
+.philosophy-content h3 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 24px;
+  letter-spacing: -0.01em;
+}
+
+.philosophy-content p {
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  line-height: 1.9;
+  margin-bottom: 16px;
+}
+
+.philosophy-content p:last-child {
+  margin-bottom: 0;
+}
+
+/* Business Section */
+.business-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 48px;
+  margin-top: 80px;
+}
+
+.business-card {
+  padding: 48px 40px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.business-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-blue), var(--accent));
+  transform: scaleX(0);
+  transition: transform 0.4s ease;
+}
+
+.business-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(126, 240, 212, 0.2);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+}
+
+.business-card:hover::before {
+  transform: scaleX(1);
+}
+
+.business-card h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  letter-spacing: -0.01em;
+}
+
+.business-card p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.8;
+  margin-bottom: 12px;
+}
+
+.business-card p:last-child {
+  margin-bottom: 0;
+}
+
+/* Stats Section */
+.stats {
+  background: var(--bg-secondary);
+  text-align: center;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 48px;
+  margin-top: 80px;
+}
+
+.stat-item {
+  padding: 32px;
+}
+
+.stat-number {
+  font-size: 4rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  background: linear-gradient(135deg, #fff, var(--text-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+  margin-bottom: 12px;
+}
+
+.stat-label {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 500;
+}
+
+/* Why Section */
+.why-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  margin-top: 80px;
+}
+
+.why-card {
+  padding: 48px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  transition: all 0.4s ease;
+}
+
+.why-card:hover {
+  border-color: rgba(106, 166, 255, 0.2);
+  background: rgba(255,255,255,0.03);
+}
+
+.why-card h3 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  letter-spacing: -0.01em;
+}
+
+.why-card p {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+/* Tech Section */
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+  margin-top: 80px;
+}
+
+.tech-card {
+  padding: 40px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+}
+
+.tech-card h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: var(--accent);
+}
+
+.tech-list {
+  list-style: none;
+}
+
+.tech-list li {
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line);
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+.tech-list li:last-child {
+  border-bottom: none;
+}
+
+.tech-list strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+/* Security Banner */
+.security-banner {
+  margin-top: 80px;
+  padding: 64px;
+  background: linear-gradient(135deg, rgba(106,166,255,0.08), rgba(126,240,212,0.04));
+  border: 1px solid rgba(126, 240, 212, 0.15);
+  border-radius: 24px;
+  text-align: center;
+}
+
+.security-banner h3 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  letter-spacing: -0.02em;
+}
+
+.security-banner p {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  max-width: 700px;
+  margin: 0 auto 40px;
+  line-height: 1.8;
+}
+
+.security-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  text-align: left;
+}
+
+.security-item h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--accent);
+}
+
+.security-item p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+/* CTA Section */
+.cta-section {
+  text-align: center;
+  padding: 160px 0;
+}
+
+.cta-section h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 24px;
+}
+
+.cta-section p {
+  font-size: 1.15rem;
+  color: var(--text-secondary);
+  margin-bottom: 40px;
+}
+
+.cta-btn {
+  display: inline-block;
+  padding: 18px 48px;
+  background: linear-gradient(135deg, var(--accent-blue), var(--accent));
+  color: var(--bg-primary);
+  font-weight: 700;
+  font-size: 1rem;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+}
+
+.cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 20px 40px rgba(106, 166, 255, 0.3);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .philosophy-grid,
+  .why-grid,
+  .tech-grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .business-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .stats-grid,
+  .security-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  section {
+    padding: 80px 0;
+  }
+
+  .hero {
+    padding: 100px 24px;
+    min-height: auto;
+  }
+
+  .philosophy-number {
+    font-size: 5rem;
+    top: -20px;
+    left: -10px;
+  }
+
+  .stats-grid,
+  .security-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .stat-number {
+    font-size: 3rem;
+  }
+
+  .security-banner {
+    padding: 40px 24px;
+  }
+
+  .business-card,
+  .why-card,
+  .tech-card {
+    padding: 32px 24px;
+  }
 }
 </style>
 </head>
 <body>
+
 <!-- Shared Header -->
 <div id="site-header"></div>
 
-<main class="page-hero">
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-content">
+    <span class="hero-label">About Avisail Technologies</span>
+    <h1>We build technology that <span>moves industries forward</span></h1>
+    <p class="hero-lead">A next-generation technology firm redefining maritime trade and cybersecurity through AI innovation and relentless execution.</p>
+  </div>
+  <div class="scroll-indicator">
+    <span></span>
+  </div>
+</section>
+
+<!-- Philosophy -->
+<section class="philosophy">
   <div class="wrap">
-    <h1>About Avisail Technologies</h1>
-    <p class="lead">We are a next-generation technology firm redefining trade, investment, and engineering through AI and a spirit of discovery.</p>
-    <p class="muted">Navigating the Future. DRIVEN BY DISCOVERY.</p>
-  </div>
-</main>
+    <span class="section-label animate-on-scroll">Our Philosophy</span>
+    <h2 class="section-title animate-on-scroll">The principles that<br>guide everything we do</h2>
 
-<section class="wrap">
-  <h2>Our Philosophy</h2>
-  <div class="grid-2">
-    <div class="card">
-      <h3>Passion</h3>
-      <p>We believe that the notion of "distance" no longer exists in our world. Cultures and markets stand side by side, and new technologies appear before us every day.</p>
-      <p>When a vast vessel — a metaphor for emerging technology — arrives before us, we do not retreat. We move forward and guide that technology toward a truly meaningful and valuable purpose.</p>
-      <p style="margin-bottom:0;">Courage is the spark of innovation. Delivering that value to people is where our passion lives.</p>
-    </div>
-    <div class="card" style="border-color:#7ef0d4;">
-      <h3>Purpose</h3>
-      <p>We devote ourselves to refining technologies that directly enhance human well-being, expanding the new forms of access that transformation makes possible.</p>
-      <p style="margin-bottom:0;">To never halt progress, and to continually elevate the value we create— that is the purpose that drives our work.</p>
+    <div class="philosophy-grid">
+      <div class="philosophy-item animate-on-scroll">
+        <span class="philosophy-number">01</span>
+        <div class="philosophy-content">
+          <h3>Passion</h3>
+          <p>We believe that the notion of "distance" no longer exists in our world. Cultures and markets stand side by side, and new technologies appear before us every day.</p>
+          <p>When a vast vessel — a metaphor for emerging technology — arrives before us, we do not retreat. We move forward and guide that technology toward a truly meaningful and valuable purpose.</p>
+          <p>Courage is the spark of innovation. Delivering that value to people is where our passion lives.</p>
+        </div>
+      </div>
+
+      <div class="philosophy-item animate-on-scroll">
+        <span class="philosophy-number">02</span>
+        <div class="philosophy-content">
+          <h3>Purpose</h3>
+          <p>We devote ourselves to refining technologies that directly enhance human well-being, expanding the new forms of access that transformation makes possible.</p>
+          <p>To never halt progress, and to continually elevate the value we create — that is the purpose that drives our work.</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="wrap bg-second">
-  <h2>Our Business</h2>
-  <div class="grid-3">
-    <div class="card">
-      <h3>Vessel Trading</h3>
-      <p>Global matching service connecting Asia to the world. We combine AI-driven inventory updates with secure payment structures including ETF-based options and escrow services.</p>
-      <p>Specializing in Coaster, Tugboat, and Landing Craft vessels, we source from Japan, Korea, and Eastern Europe while serving markets across the Middle East and Asia.</p>
-    </div>
-    <div class="card">
-      <h3>Investment</h3>
-      <p>AI-driven asset management through our proprietary Aviscore platform. We focus on stability and growth through disciplined execution, combining FX automation with ETF-based portfolio strategies.</p>
-      <p>Our high-yield, low-risk carry trade approach serves high-net-worth individuals seeking sophisticated asset management solutions.</p>
-    </div>
-    <div class="card">
-      <h3>Technology</h3>
-      <p>Implementation-first AI development including ADCS (Active Defense Cyber Security) for SMEs and municipalities worldwide.</p>
-      <p>We integrate data infrastructure, evaluation frameworks, and safety protocols to deliver real-world operational solutions that work from day one.</p>
+<!-- Business -->
+<section>
+  <div class="wrap">
+    <span class="section-label animate-on-scroll">Our Business</span>
+    <h2 class="section-title animate-on-scroll">Three domains,<br>one unified vision</h2>
+    <p class="section-lead animate-on-scroll">We operate at the intersection of trade, security, and technology — creating synergies that single-domain companies cannot achieve.</p>
+
+    <div class="business-grid">
+      <div class="business-card animate-on-scroll">
+        <h3>Vessel Trading</h3>
+        <p>Global matching service connecting Asia to the world. AI-driven inventory updates with secure payment structures including escrow services.</p>
+        <p>Specializing in Coaster, Tugboat, and Landing Craft vessels from Japan, Korea, and Eastern Europe.</p>
+      </div>
+
+      <div class="business-card animate-on-scroll">
+        <h3>Cybersecurity</h3>
+        <p>Implementation-first AI development including ADCS (Active Defense Cyber Security) for SMEs and municipalities worldwide.</p>
+        <p>Real-world operational solutions that work from day one, at 1/10th the cost of traditional services.</p>
+      </div>
+
+      <div class="business-card animate-on-scroll">
+        <h3>Technology</h3>
+        <p>Data infrastructure, evaluation frameworks, and safety protocols integrated to deliver enterprise-grade systems.</p>
+        <p>Every service we offer is powered by proprietary AI systems designed for real-world implementation.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="wrap">
-  <h2>Global Structure</h2>
-  <div class="grid-2">
-    <div class="card">
-      <h3>Corporate Framework</h3>
-      <p><strong>Japan (GK)</strong><br>Primary operating base for business development and client relations. Scheduled incorporation January 2026.</p>
-      <p><strong>Panama Entity</strong><br>Global transaction hub optimized for tax efficiency and international commerce.</p>
-      <p><strong>Banking Infrastructure</strong><br>Estonia and Dubai facilities providing fintech credibility and multi-currency support.</p>
-    </div>
-    <div class="card">
-      <h3>Operating Regions</h3>
-      <p>We operate globally with strategic focus on:</p>
-      <p><strong>Asia-Pacific:</strong> Japan, Korea, Philippines, Singapore<br>
-      <strong>Middle East:</strong> UAE, Oman, Saudi Arabia<br>
-      <strong>Europe:</strong> Estonia, Poland, Netherlands</p>
-      <p>This geographic diversification enables 24/7 operations and responsive client service across time zones.</p>
+<!-- Stats -->
+<section class="stats">
+  <div class="wrap">
+    <span class="section-label animate-on-scroll">By The Numbers</span>
+    <h2 class="section-title animate-on-scroll">Proven results,<br>measured impact</h2>
+
+    <div class="stats-grid">
+      <div class="stat-item animate-on-scroll">
+        <div class="stat-number">24/7</div>
+        <div class="stat-label">System Uptime</div>
+      </div>
+      <div class="stat-item animate-on-scroll">
+        <div class="stat-number">99%</div>
+        <div class="stat-label">Threat Detection</div>
+      </div>
+      <div class="stat-item animate-on-scroll">
+        <div class="stat-number">3</div>
+        <div class="stat-label">Global Regions</div>
+      </div>
+      <div class="stat-item animate-on-scroll">
+        <div class="stat-number">&lt;24h</div>
+        <div class="stat-label">Response Time</div>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="wrap bg-second">
-  <h2>Why Avisail</h2>
-  <div class="grid-2">
-    <div class="card">
-      <h3>Technology-First Approach</h3>
-      <p>Every service we offer is powered by proprietary AI systems designed for real-world implementation. We don't just develop technology—we deploy it in our own operations first, ensuring robustness and practical value before offering it to clients.</p>
-    </div>
-    <div class="card">
-      <h3>No External Debt</h3>
-      <p>Our high-cash-flow business model operates without borrowing, providing financial stability and independence. This allows us to make long-term strategic decisions without external pressure, focusing solely on client value and sustainable growth.</p>
-    </div>
-    <div class="card">
-      <h3>Cross-Domain Expertise</h3>
-      <p>Our unique position across trading, investment, and technology enables synergies unavailable to single-domain firms. Ship buyers benefit from innovative payment structures; ADCS clients access market intelligence; investors leverage our operational data.</p>
-    </div>
-    <div class="card">
-      <h3>Global, Agile Structure</h3>
-      <p>With entities spanning multiple jurisdictions and banking in fintech-forward markets, we move fast where others face bureaucratic delays. This agility translates directly into competitive advantages for our partners and clients.</p>
+<!-- Why Avisail -->
+<section>
+  <div class="wrap">
+    <span class="section-label animate-on-scroll">Why Avisail</span>
+    <h2 class="section-title animate-on-scroll">What sets us apart</h2>
+
+    <div class="why-grid">
+      <div class="why-card animate-on-scroll">
+        <h3>Technology-First Approach</h3>
+        <p>Every service we offer is powered by proprietary AI systems. We don't just develop technology — we deploy it in our own operations first, ensuring robustness before offering it to clients.</p>
+      </div>
+
+      <div class="why-card animate-on-scroll">
+        <h3>No External Debt</h3>
+        <p>Our high-cash-flow business model operates without borrowing. This allows us to make long-term strategic decisions without external pressure, focusing solely on client value.</p>
+      </div>
+
+      <div class="why-card animate-on-scroll">
+        <h3>Cross-Domain Expertise</h3>
+        <p>Our unique position across trading, security, and technology enables synergies unavailable to single-domain firms. Ship buyers benefit from innovative payment structures; security clients access market intelligence.</p>
+      </div>
+
+      <div class="why-card animate-on-scroll">
+        <h3>Global, Agile Structure</h3>
+        <p>With entities spanning multiple jurisdictions, we move fast where others face bureaucratic delays. This agility translates directly into competitive advantages for our partners.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- Technology Stack & Security -->
-<section class="wrap" style="padding: 100px 0;">
-  <h2>Technology Stack & Security</h2>
+<!-- Technology Stack -->
+<section class="philosophy">
+  <div class="wrap">
+    <span class="section-label animate-on-scroll">Technology Stack</span>
+    <h2 class="section-title animate-on-scroll">Built on enterprise-grade<br>foundations</h2>
+    <p class="section-lead animate-on-scroll">Every system is designed for scalability, reliability, and protection — with security at the core.</p>
 
-  <div style="margin-bottom: 60px;">
-    <h3 style="font-size: 1.8rem; margin-bottom: 24px; color: #fff; text-align: center;">Our Technical Foundation</h3>
-    <p style="text-align: center; color: #cfe2ff; font-size: 1.1rem; max-width: 800px; margin: 0 auto 48px; line-height: 1.8;">
-      Built on enterprise-grade technologies with security at the core. Every system is designed for scalability, reliability, and protection.
-    </p>
-  </div>
-
-  <div class="grid-2" style="gap: 40px; margin-bottom: 60px;">
-
-    <!-- AI & Machine Learning -->
-    <div class="card">
-      <h3 style="display: flex; align-items: center; gap: 12px;">
-        <svg width="28" height="28" fill="none" stroke="#7ef0d4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-          <circle cx="12" cy="12" r="3"></circle>
-          <path d="M12 1v6m0 6v6m5.2-13.2l-4.2 4.2m0 6l4.2 4.2M1 12h6m6 0h6m-13.2-5.2l4.2 4.2m0 6l-4.2 4.2"></path>
-        </svg>
-        AI & Machine Learning
-      </h3>
-      <p style="color: #9fb0cc; margin-bottom: 20px;">
-        Custom-optimized AI models for maritime and security applications. Trained on domain-specific data for superior accuracy.
-      </p>
-      <ul style="list-style: none; padding: 0; margin: 0;">
-        <li style="padding: 8px 0; border-bottom: 1px solid var(--line); color: #9fb0cc;">
-          <strong style="color: #7ef0d4;">Deep Learning:</strong> TensorFlow, PyTorch
-        </li>
-        <li style="padding: 8px 0; border-bottom: 1px solid var(--line); color: #9fb0cc;">
-          <strong style="color: #7ef0d4;">NLP:</strong> GPT, BERT, Custom Models
-        </li>
-        <li style="padding: 8px 0; border-bottom: 1px solid var(--line); color: #9fb0cc;">
-          <strong style="color: #7ef0d4;">Computer Vision:</strong> YOLO, ResNet
-        </li>
-        <li style="padding: 8px 0; color: #9fb0cc;">
-          <strong style="color: #7ef0d4;">MLOps:</strong> Kubernetes, MLflow
-        </li>
-      </ul>
-    </div>
-
-    <!-- Backend & API -->
-    <div class="card">
-      <h3 style="display: flex; align-items: center; gap: 12px;">
-        <svg width="28" height="28" fill="none" stroke="#6AA6FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-          <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-          <line x1="8" y1="21" x2="16" y2="21"></line>
-          <line x1="12" y1="17" x2="12" y2="21"></line>
-        </svg>
-        Backend & API
-      </h3>
-      <p style="color: #9fb0cc; margin-bottom: 20px;">
-        High-performance backend infrastructure handling millions of requests with low latency.
-      </p>
-      <ul style="list-style: none; padding: 0; margin: 0;">
-        <li style="padding: 8px 0; border-bottom: 1px solid var(--line); color: #9fb0cc;">
-          <strong style="color: #6AA6FF;">Languages:</strong> Python, Node.js, Go
-        </li>
-        <li style="padding: 8px 0; border-bottom: 1px solid var(--line); color: #9fb0cc;">
-          <strong style="color: #6AA6FF;">Frameworks:</strong> FastAPI, Express, Django
-        </li>
-        <li style="padding: 8px 0; border-bottom: 1px solid var(--line); color: #9fb0cc;">
-          <strong style="color: #6AA6FF;">Databases:</strong> PostgreSQL, MongoDB, Redis
-        </li>
-        <li style="padding: 8px 0; color: #9fb0cc;">
-          <strong style="color: #6AA6FF;">API:</strong> REST, GraphQL, WebSocket
-        </li>
-      </ul>
-    </div>
-
-    <!-- Frontend & UX -->
-    <div class="card">
-      <h3 style="display: flex; align-items: center; gap: 12px;">
-        <svg width="28" height="28" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-          <polyline points="16 18 22 12 16 6"></polyline>
-          <polyline points="8 6 2 12 8 18"></polyline>
-        </svg>
-        Frontend & UX
-      </h3>
-      <p style="color: #9fb0cc; margin-bottom: 20px;">
-        Modern, responsive interfaces optimized for desktop, mobile, and maritime environments.
-      </p>
-      <ul style="list-style: none; padding: 0; margin: 0;">
-        <li style="padding: 8px 0; border-bottom: 1px solid var(--line); color: #9fb0cc;">
-          <strong style="color: #10b981;">Framework:</strong> React, Next.js
-        </li>
-        <li style="padding: 8px 0; border-bottom: 1px solid var(--line); color: #9fb0cc;">
-          <strong style="color: #10b981;">Language:</strong> TypeScript
-        </li>
-        <li style="padding: 8px 0; border-bottom: 1px solid var(--line); color: #9fb0cc;">
-          <strong style="color: #10b981;">State:</strong> Redux, Zustand
-        </li>
-        <li style="padding: 8px 0; color: #9fb0cc;">
-          <strong style="color: #10b981;">UI/UX:</strong> Tailwind CSS, Figma
-        </li>
-      </ul>
-    </div>
-
-    <!-- Infrastructure & Security -->
-    <div class="card">
-      <h3 style="display: flex; align-items: center; gap: 12px;">
-        <svg width="28" height="28" fill="none" stroke="#7ef0d4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-        </svg>
-        Infrastructure & Security
-      </h3>
-      <p style="color: #9fb0cc; margin-bottom: 20px;">
-        Cloud-native architecture with enterprise-grade security and 99.9% uptime guarantee.
-      </p>
-      <ul style="list-style: none; padding: 0; margin: 0;">
-        <li style="padding: 8px 0; border-bottom: 1px solid var(--line); color: #9fb0cc;">
-          <strong style="color: #7ef0d4;">Cloud:</strong> AWS, GCP, Azure
-        </li>
-        <li style="padding: 8px 0; border-bottom: 1px solid var(--line); color: #9fb0cc;">
-          <strong style="color: #7ef0d4;">Containers:</strong> Docker, Kubernetes
-        </li>
-        <li style="padding: 8px 0; border-bottom: 1px solid var(--line); color: #9fb0cc;">
-          <strong style="color: #7ef0d4;">CI/CD:</strong> GitHub Actions, Jenkins
-        </li>
-        <li style="padding: 8px 0; color: #9fb0cc;">
-          <strong style="color: #7ef0d4;">Security:</strong> End-to-end encryption, SOC 2
-        </li>
-      </ul>
-    </div>
-
-  </div>
-
-  <!-- Security Commitments -->
-  <div style="background: linear-gradient(135deg, rgba(126, 240, 212, 0.05), rgba(106, 166, 255, 0.05)); border: 2px solid rgba(126, 240, 212, 0.2); border-radius: 20px; padding: 48px; text-align: center;">
-    <h3 style="font-size: 1.8rem; margin-bottom: 24px; color: #fff;">Security-First Development</h3>
-    <p style="color: #cfe2ff; font-size: 1.1rem; max-width: 800px; margin: 0 auto 32px; line-height: 1.8;">
-      Every line of code is written with security in mind. From development to deployment, we follow industry best practices.
-    </p>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 24px; text-align: left;">
-      <div>
-        <h4 style="color: #7ef0d4; margin-bottom: 8px; font-size: 1.1rem;">✓ Encrypted Communications</h4>
-        <p style="color: #9fb0cc; font-size: 0.9rem; margin: 0;">TLS 1.3, End-to-end encryption</p>
+    <div class="tech-grid">
+      <div class="tech-card animate-on-scroll">
+        <h3>AI & Machine Learning</h3>
+        <ul class="tech-list">
+          <li><strong>Deep Learning:</strong> TensorFlow, PyTorch</li>
+          <li><strong>NLP:</strong> GPT, BERT, Custom Models</li>
+          <li><strong>Computer Vision:</strong> YOLO, ResNet</li>
+          <li><strong>MLOps:</strong> Kubernetes, MLflow</li>
+        </ul>
       </div>
-      <div>
-        <h4 style="color: #7ef0d4; margin-bottom: 8px; font-size: 1.1rem;">✓ Regular Security Audits</h4>
-        <p style="color: #9fb0cc; font-size: 0.9rem; margin: 0;">Quarterly penetration testing</p>
+
+      <div class="tech-card animate-on-scroll">
+        <h3>Backend & API</h3>
+        <ul class="tech-list">
+          <li><strong>Languages:</strong> Python, Node.js, Go</li>
+          <li><strong>Frameworks:</strong> FastAPI, Express, Django</li>
+          <li><strong>Databases:</strong> PostgreSQL, MongoDB, Redis</li>
+          <li><strong>API:</strong> REST, GraphQL, WebSocket</li>
+        </ul>
       </div>
-      <div>
-        <h4 style="color: #7ef0d4; margin-bottom: 8px; font-size: 1.1rem;">✓ Data Protection</h4>
-        <p style="color: #9fb0cc; font-size: 0.9rem; margin: 0;">GDPR & PDPA compliant</p>
+
+      <div class="tech-card animate-on-scroll">
+        <h3>Frontend & UX</h3>
+        <ul class="tech-list">
+          <li><strong>Framework:</strong> React, Next.js</li>
+          <li><strong>Language:</strong> TypeScript</li>
+          <li><strong>State:</strong> Redux, Zustand</li>
+          <li><strong>UI/UX:</strong> Tailwind CSS, Figma</li>
+        </ul>
       </div>
-      <div>
-        <h4 style="color: #7ef0d4; margin-bottom: 8px; font-size: 1.1rem;">✓ 24/7 Monitoring</h4>
-        <p style="color: #9fb0cc; font-size: 0.9rem; margin: 0;">Real-time threat detection</p>
+
+      <div class="tech-card animate-on-scroll">
+        <h3>Infrastructure</h3>
+        <ul class="tech-list">
+          <li><strong>Cloud:</strong> AWS, GCP, Azure</li>
+          <li><strong>Containers:</strong> Docker, Kubernetes</li>
+          <li><strong>CI/CD:</strong> GitHub Actions, Jenkins</li>
+          <li><strong>Security:</strong> E2E Encryption, SOC 2</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="security-banner animate-on-scroll">
+      <h3>Security-First Development</h3>
+      <p>Every line of code is written with security in mind. From development to deployment, we follow industry best practices.</p>
+      <div class="security-grid">
+        <div class="security-item">
+          <h4>Encrypted Communications</h4>
+          <p>TLS 1.3, End-to-end encryption</p>
+        </div>
+        <div class="security-item">
+          <h4>Regular Security Audits</h4>
+          <p>Quarterly penetration testing</p>
+        </div>
+        <div class="security-item">
+          <h4>Data Protection</h4>
+          <p>GDPR & PDPA compliant</p>
+        </div>
+        <div class="security-item">
+          <h4>24/7 Monitoring</h4>
+          <p>Real-time threat detection</p>
+        </div>
       </div>
     </div>
   </div>
+</section>
 
+<!-- CTA -->
+<section class="cta-section">
+  <div class="wrap">
+    <h2 class="animate-on-scroll">Ready to work with us?</h2>
+    <p class="animate-on-scroll">Let's discuss how Avisail can help transform your business.</p>
+    <a href="../en/contact.html" class="cta-btn animate-on-scroll">Get in Touch</a>
+  </div>
 </section>
 
 <!-- Shared Footer -->
 <div id="site-footer"></div>
+
 <script src="../includes/components.js"></script>
+<script>
+// Scroll Animation
+document.addEventListener('DOMContentLoaded', function() {
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, index) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, index * 100);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll('.animate-on-scroll').forEach(el => {
+    observer.observe(el);
+  });
+});
+</script>
 </body>
 </html>

@@ -43,12 +43,27 @@
     content="Avisail Technologies is a next-generation technology company redefining maritime business and security through the power of AI and technological exploration">
   <meta name="twitter:image" content="https://avisail.com/images/hero-bg.jpg">
 
+  <!-- Preconnect for faster font loading -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Noto+Sans+JP:wght@300;400;700&display=swap"
-    rel="stylesheet">
+
+  <!-- Preload critical font (Inter 600/700 for headings) -->
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Noto+Sans+JP:wght@300;400;700&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Noto+Sans+JP:wght@300;400;700&display=swap"
+    rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+  </noscript>
+
+  <!-- Preload critical CSS -->
+  <link rel="preload" href="style.css" as="style">
   <link rel="stylesheet" href="style.css">
+
+  <!-- Preload LCP image (hero background) -->
+  <link rel="preload" href="images/hero-bg.webp" as="image" type="image/webp" fetchpriority="high">
+
+  <!-- DNS prefetch for external resources -->
+  <link rel="dns-prefetch" href="https://www.googletagmanager.com">
 
   <!-- Google Analytics 4 with GDPR Consent -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-CTTYVWRGQD"></script>
@@ -99,11 +114,19 @@
         vessel trading to cyber security.
       </p>
 
-      <div style="margin-top:36px; display:flex; gap:14px; flex-wrap:wrap;" class="animate-in delay-4">
-        <a href="#business" class="cta">Explore Our Business</a>
-        <a href="#contact" class="btn">Contact Us</a>
-        <!-- Add a simple break for mobile aesthetic if needed, but flex wrap handles it -->
+      <div style="margin-top:36px; display:flex; gap:14px; flex-wrap:wrap; align-items:center;" class="animate-in delay-4">
+        <a href="security/adcs-en.html" class="cta cta-pulse" style="padding:16px 32px; font-size:1.05rem;">
+          <span style="display:block; font-size:0.75rem; opacity:0.9; margin-bottom:2px;">Free Security Assessment</span>
+          Get Started Now
+        </a>
+        <a href="#business" class="btn" style="padding:14px 28px;">Explore Our Business</a>
+        <a href="#contact" class="btn btn-text" style="padding:14px 20px; background:transparent; border:none;">Contact Us →</a>
       </div>
+      <p style="margin-top:16px; font-size:0.85rem; color:var(--text-muted);" class="animate-in delay-4">
+        <span style="color:var(--accent-teal);">✓</span> No credit card required
+        <span style="margin:0 12px; opacity:0.3;">|</span>
+        <span style="color:var(--accent-teal);">✓</span> Results in 24 hours
+      </p>
     </div>
   </section>
 
@@ -219,7 +242,7 @@
                 </li>
               </ul>
               <div style="margin-top: 16px; border-radius: 12px; overflow: hidden; border: 1px solid rgba(126, 240, 212, 0.2); box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);">
-                <img src="images/vessel-trading-platform-preview.png" alt="Vessel Trading Platform" loading="lazy" style="width: 100%; height: auto; display: block;">
+                <img src="images/vessel-trading-platform-preview.png" alt="Vessel Trading Platform" loading="lazy" width="1402" height="776" style="width: 100%; height: auto; display: block;">
               </div>
             </div>
           </div>
@@ -247,7 +270,7 @@
                 </li>
               </ul>
               <div style="margin-top: 16px; border-radius: 12px; overflow: hidden; border: 1px solid rgba(126, 240, 212, 0.2); box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);">
-                <img src="images/security-dashboard-preview.png" alt="Security Dashboard" loading="lazy" style="width: 100%; height: auto; display: block;">
+                <img src="images/security-dashboard-preview.png" alt="Security Dashboard" loading="lazy" width="2238" height="1548" style="width: 100%; height: auto; display: block;">
               </div>
             </div>
           </div>
@@ -287,59 +310,84 @@
         <!-- LAYER 3: Products & Solutions (The Outcome) -->
         <div class="products-section-header"
           style="text-align:center; margin-top:60px; margin-bottom:30px; position:relative; z-index:2;">
-          <h3 class="gradient-title-text" style="font-size:1.8rem; display:inline-block;">Products & Solutions</h3>
-          <p style="color:var(--text-muted); margin-top:8px;">Solutions born from the fusion of technology and business
-          </p>
+          <h3 class="gradient-title-text" style="font-size:1.8rem; display:inline-block;">Core Products & Services</h3>
+          <p style="color:var(--text-muted); margin-top:8px;">Ready to deploy. Full support from problem-solving to purchase.</p>
         </div>
 
-        <div class="products-layer-grid" style="position:relative; z-index:2;">
-          <!-- Maritime Security -->
-          <div class="product-card">
-            <h4>Maritime Security</h4>
-            <p>Cybersecurity for vessels & ports, AIS/Satellite data analysis, and comprehensive risk assessment
-              reports.</p>
-            <div class="pillar-actions" style="margin-top:auto;">
-              <a href="products/maritime-security-en.html" class="btn" style="width:100%">Details</a>
-            </div>
-          </div>
+        <div class="products-layer-grid" style="position:relative; z-index:2; gap: 32px;">
 
-          <!-- ADCS -->
-          <div class="product-card">
-            <h4>ADCS</h4>
-            <p>Active Defense Cyber Security. Predictive threat detection and pre-emptive defense capabilities.</p>
-            <div class="pillar-actions" style="margin-top:auto;">
-              <a href="security/adcs-en.html" class="cta" style="width:100%">Discover ADCS</a>
-            </div>
-          </div>
-
-          <!-- STRATUM -->
-          <div class="product-card">
-            <h4>STRATUM</h4>
-            <p>Next-gen OSINT Threat Intelligence. Monitoring social media and dark web for potential risk signals.</p>
-            <div class="pillar-actions" style="margin-top:auto;">
-              <a href="security/stratum-en.html" class="btn" style="width:100%">Learn More</a>
-            </div>
-          </div>
-
-          <!-- NEXUS -->
-          <div class="product-card">
-            <h4>NEXUS</h4>
-            <p>Attack Surface Visualization. Continuous monitoring and visualization of organizational vulnerabilities.
+          <!-- 1. Vessel Trading Platform -->
+          <div class="product-card" style="border: 2px solid rgba(126, 240, 212, 0.3);">
+            <div style="display: inline-block; background: linear-gradient(135deg, #6AA6FF, #7EF0D4); padding: 4px 12px; border-radius: 4px; font-size: 0.75rem; font-weight: 700; color: #0a0f1a; margin-bottom: 16px;">Maritime Business</div>
+            <h4 style="font-size: 1.4rem; margin-bottom: 12px;">Vessel Trading Platform</h4>
+            <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.7; margin-bottom: 16px;">
+              <strong style="color: var(--accent-teal);">Problem Solved:</strong> Overseas buyers struggle to find reliable Japanese quality vessels in real-time and lack trusted transaction support
             </p>
+            <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; margin-bottom: 20px;">
+              AI-powered platform providing real-time inventory from Japan, Korea, and Eastern Europe. Complete coverage from drone surveys to escrow payments and security support.
+            </p>
+            <div style="background: rgba(126, 240, 212, 0.05); padding: 12px; border-radius: 8px; border-left: 3px solid var(--accent-teal); margin-bottom: 20px;">
+              <p style="font-size: 0.85rem; color: var(--text-secondary); margin: 0;"><strong>Pricing:</strong> Success-based fees only (no upfront costs)</p>
+            </div>
             <div class="pillar-actions" style="margin-top:auto;">
-              <a href="#contact" class="btn" style="width:100%">Contact Us</a>
+              <a href="maritime/vessel-trading-en.html" class="cta" style="width:100%;">View Platform</a>
             </div>
           </div>
 
-          <!-- Vessel Trading -->
-          <div class="product-card">
-            <h4>Vessel Inventory</h4>
-            <p>AI-driven vessel matching system. Access global inventory from commercial ships to luxury yachts.</p>
+          <!-- 2. Maritime Cyber Accountability -->
+          <div class="product-card" style="border: 2px solid rgba(126, 240, 212, 0.3);">
+            <div style="display: inline-block; background: linear-gradient(135deg, #6AA6FF, #7EF0D4); padding: 4px 12px; border-radius: 4px; font-size: 0.75rem; font-weight: 700; color: #0a0f1a; margin-bottom: 16px;">Maritime Business</div>
+            <h4 style="font-size: 1.4rem; margin-bottom: 12px;">Vessel Security Management</h4>
+            <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.7; margin-bottom: 16px;">
+              <strong style="color: var(--accent-teal);">Problem Solved:</strong> Unable to prove compliance during ISM/SMS audits. High business suspension risk due to accountability gaps during incidents
+            </p>
+            <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; margin-bottom: 20px;">
+              Vessel Cyber SMS management platform specialized for audits, incidents, and insurance. From evidence management to automated deliverable generation, maintaining continuous accountability.
+            </p>
+            <div style="background: rgba(126, 240, 212, 0.05); padding: 12px; border-radius: 8px; border-left: 3px solid var(--accent-teal); margin-bottom: 20px;">
+              <p style="font-size: 0.85rem; color: var(--text-secondary); margin: 0;"><strong>Pricing:</strong> From $700/month (varies by fleet size)</p>
+            </div>
             <div class="pillar-actions" style="margin-top:auto;">
-              <a href="https://avisail-vessel-trading.vercel.app/" class="cta" target="_blank" rel="noopener noreferrer" style="width:100%">View
-                Inventory</a>
+              <a href="maritime/cyber-accountability-en.html" class="cta" style="width:100%;">Learn More</a>
             </div>
           </div>
+
+          <!-- 3. Trust Infrastructure -->
+          <div class="product-card" style="border: 2px solid rgba(126, 240, 212, 0.3);">
+            <div style="display: inline-block; background: linear-gradient(135deg, #6AA6FF, #7EF0D4); padding: 4px 12px; border-radius: 4px; font-size: 0.75rem; font-weight: 700; color: #0a0f1a; margin-bottom: 16px;">Maritime Business</div>
+            <h4 style="font-size: 1.4rem; margin-bottom: 12px;">Trust Infrastructure</h4>
+            <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.7; margin-bottom: 16px;">
+              <strong style="color: var(--accent-teal);">Problem Solved:</strong> Document tampering risks, difficulty proving authenticity, and siloed sanctions/compliance handling undermine transaction trust
+            </p>
+            <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; margin-bottom: 20px;">
+              Infrastructure technology for portable "trust, evidence, and accountability" in vessel transactions. From document authenticity management to Evidence Pack generation, automating accountability.
+            </p>
+            <div style="background: rgba(126, 240, 212, 0.05); padding: 12px; border-radius: 8px; border-left: 3px solid var(--accent-teal); margin-bottom: 20px;">
+              <p style="font-size: 0.85rem; color: var(--text-secondary); margin: 0;"><strong>Pricing:</strong> From $350/month + $200/transaction</p>
+            </div>
+            <div class="pillar-actions" style="margin-top:auto;">
+              <a href="maritime/trust-infrastructure-en.html" class="cta" style="width:100%;">Learn More</a>
+            </div>
+          </div>
+
+          <!-- 4. ADCS -->
+          <div class="product-card" style="border: 2px solid rgba(106, 166, 255, 0.3);">
+            <div style="display: inline-block; background: linear-gradient(135deg, #6AA6FF, #5A8FD6); padding: 4px 12px; border-radius: 4px; font-size: 0.75rem; font-weight: 700; color: #fff; margin-bottom: 16px;">Security Business</div>
+            <h4 style="font-size: 1.4rem; margin-bottom: 12px;">ADCS</h4>
+            <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.7; margin-bottom: 16px;">
+              <strong style="color: var(--accent-blue);">Problem Solved:</strong> Traditional security services are expensive, leaving SMBs and municipalities defenseless against threats
+            </p>
+            <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; margin-bottom: 20px;">
+              Low-cost security service rebuilt with Active Defense philosophy. Fully automated diagnostics, report generation, and improvement recommendations. 1/10th the cost through global partnerships.
+            </p>
+            <div style="background: rgba(106, 166, 255, 0.05); padding: 12px; border-radius: 8px; border-left: 3px solid var(--accent-blue); margin-bottom: 20px;">
+              <p style="font-size: 0.85rem; color: var(--text-secondary); margin: 0;"><strong>Pricing:</strong> Free assessment / Monthly monitoring subscription / Custom services</p>
+            </div>
+            <div class="pillar-actions" style="margin-top:auto;">
+              <a href="security/adcs-en.html" class="cta" style="width:100%; background: linear-gradient(135deg, #6AA6FF, #5A8FD6);">Get Free Assessment</a>
+            </div>
+          </div>
+
         </div>
 
 
@@ -366,23 +414,50 @@
         <div class="stat-item">
           <div class="stat-number">24/7</div>
           <div class="stat-label">System Operation</div>
+          <p style="font-size:0.8rem; color:var(--text-muted); margin-top:8px;">Zero downtime since launch</p>
         </div>
 
         <div class="stat-item">
-          <div class="stat-number">Multilingual</div>
-          <div class="stat-label">All Languages</div>
+          <div class="stat-number"><span class="count-up" data-target="99">0</span>%</div>
+          <div class="stat-label">Threat Detection</div>
+          <p style="font-size:0.8rem; color:var(--text-muted); margin-top:8px;">AI-powered accuracy</p>
         </div>
 
         <div class="stat-item">
-          <div class="stat-number"><span class="count-up" data-target="10">0</span>+</div>
-          <div class="stat-label">Security Checks</div>
+          <div class="stat-number">&lt;<span class="count-up" data-target="24">0</span>h</div>
+          <div class="stat-label">Response Time</div>
+          <p style="font-size:0.8rem; color:var(--text-muted); margin-top:8px;">From assessment to report</p>
         </div>
 
         <div class="stat-item">
-          <div class="stat-number">Global</div>
-          <div class="stat-label">Asia · Middle East · Europe</div>
+          <div class="stat-number"><span class="count-up" data-target="3">0</span></div>
+          <div class="stat-label">Global Regions</div>
+          <p style="font-size:0.8rem; color:var(--text-muted); margin-top:8px;">Asia · Middle East · Europe</p>
         </div>
 
+      </div>
+
+      <!-- Trust Badges -->
+      <div style="margin-top:48px; padding:24px; background:rgba(255,255,255,0.02); border-radius:16px; border:1px solid var(--line);">
+        <p style="text-align:center; color:var(--text-muted); font-size:0.85rem; margin-bottom:16px;">Security & Compliance</p>
+        <div style="display:flex; justify-content:center; gap:32px; flex-wrap:wrap; align-items:center;">
+          <div style="text-align:center; padding:12px 20px;">
+            <span style="font-size:1.5rem;">🔒</span>
+            <p style="font-size:0.8rem; color:var(--text-secondary); margin-top:4px;">End-to-End<br>Encryption</p>
+          </div>
+          <div style="text-align:center; padding:12px 20px;">
+            <span style="font-size:1.5rem;">🛡️</span>
+            <p style="font-size:0.8rem; color:var(--text-secondary); margin-top:4px;">Security by<br>Design</p>
+          </div>
+          <div style="text-align:center; padding:12px 20px;">
+            <span style="font-size:1.5rem;">🌐</span>
+            <p style="font-size:0.8rem; color:var(--text-secondary); margin-top:4px;">GDPR<br>Compliant</p>
+          </div>
+          <div style="text-align:center; padding:12px 20px;">
+            <span style="font-size:1.5rem;">⚡</span>
+            <p style="font-size:0.8rem; color:var(--text-secondary); margin-top:4px;">99.9%<br>Uptime</p>
+          </div>
+        </div>
       </div>
 
     </div>
@@ -431,6 +506,22 @@
           </div>
         </div>
 
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================
+     MID-PAGE CTA BANNER
+======================================== -->
+  <section class="cta-banner" style="padding:60px 0; background:linear-gradient(135deg, rgba(106,166,255,0.1) 0%, rgba(126,240,212,0.1) 100%); border-top:1px solid rgba(126,240,212,0.2); border-bottom:1px solid rgba(126,240,212,0.2);">
+    <div class="wrap" style="text-align:center;">
+      <h3 style="font-size:1.6rem; margin-bottom:12px; color:#fff;">Ready to Secure Your Business?</h3>
+      <p style="color:var(--text-secondary); margin-bottom:24px; max-width:600px; margin-left:auto; margin-right:auto;">
+        Start with a free security assessment. No commitment required.
+      </p>
+      <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
+        <a href="security/adcs-en.html" class="cta" style="padding:14px 32px;">Get Free Assessment</a>
+        <a href="#contact" class="btn" style="padding:14px 32px;">Talk to an Expert</a>
       </div>
     </div>
   </section>
@@ -539,6 +630,14 @@
 
   <!-- Shared Footer -->
   <div id="site-footer"></div>
+
+  <!-- Mobile Fixed CTA Bar -->
+  <div class="mobile-cta-bar" id="mobileCta">
+    <a href="security/adcs-en.html" class="mobile-cta-btn">
+      <span>Free Security Assessment</span>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+  </div>
 
   <!-- Shared Components Loader -->
   <script src="includes/components.js"></script>
@@ -653,88 +752,170 @@
     });
 
     // Global Background Animation (Digital Ocean Style)
+    // Performance optimized with reduced-motion support
     (function () {
       const canvas = document.getElementById('global-bg');
       if (!canvas) return;
+
+      // Respect user's motion preferences
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (prefersReducedMotion) {
+        // Static gradient background for reduced motion
+        canvas.style.display = 'none';
+        document.body.style.background = 'linear-gradient(135deg, #0a0f1a 0%, #05080f 100%)';
+        return;
+      }
+
       const ctx = canvas.getContext('2d');
       let width, height;
       let particles = [];
-      let zOff = 0; // Time dimension
+      let zOff = 0;
+      let animationId;
+      let isVisible = true;
+
+      // Pause animation when tab is not visible (save CPU/battery)
+      document.addEventListener('visibilitychange', () => {
+        isVisible = !document.hidden;
+        if (isVisible && !animationId) {
+          animationId = requestAnimationFrame(loop);
+        }
+      });
 
       function resize() {
         width = canvas.width = window.innerWidth;
         height = canvas.height = window.innerHeight;
         initParticles();
       }
-      window.addEventListener('resize', resize);
+
+      // Debounced resize for performance
+      let resizeTimeout;
+      window.addEventListener('resize', () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(resize, 150);
+      });
 
       function initParticles() {
         particles = [];
-        // Increase density for flow field
-        const count = Math.floor(width * height / 2000);
+        // Reduced density for better performance (was /2000, now /4000)
+        const count = Math.min(Math.floor(width * height / 4000), 300);
         for (let i = 0; i < count; i++) {
           particles.push({
             x: Math.random() * width,
             y: Math.random() * height,
             vx: 0,
             vy: 0,
-            maxSpeed: Math.random() * 0.8 + 0.2, // Slower speed
-            size: Math.random() > 0.9 ? 1.5 : 0.8, // Occasional larger particles
-            color: Math.random() > 0.5 ? '#2E64BA' : '#4DB899' // Slightly Darker Blue / Teal
+            maxSpeed: Math.random() * 0.6 + 0.2,
+            size: Math.random() > 0.9 ? 1.5 : 0.8,
+            color: Math.random() > 0.5 ? '#2E64BA' : '#4DB899'
           });
         }
       }
 
       function update() {
-        zOff += 0.0005; // Slower time evolution
-
-        particles.forEach(p => {
-          // Calculate flow angle based on position using pseudo-noise (sine/cos)
-          // Creating a "current" effect without external Perlin noise library
+        zOff += 0.0005;
+        for (let i = 0; i < particles.length; i++) {
+          const p = particles[i];
           const angle = (Math.cos(p.x * 0.002 + zOff) + Math.sin(p.y * 0.002 + zOff)) * Math.PI;
-
-          // Add velocity vector based on angle
-          p.vx += Math.cos(angle) * 0.02; // Reduced acceleration
+          p.vx += Math.cos(angle) * 0.02;
           p.vy += Math.sin(angle) * 0.02;
-
-          // Limit speed
           const speed = Math.sqrt(p.vx * p.vx + p.vy * p.vy);
           if (speed > p.maxSpeed) {
             p.vx = (p.vx / speed) * p.maxSpeed;
             p.vy = (p.vy / speed) * p.maxSpeed;
           }
-
           p.x += p.vx;
           p.y += p.vy;
-
-          // Wrap around edges smoothly
           if (p.x < 0) { p.x = width; p.vx = 0; p.vy = 0; }
           if (p.x > width) { p.x = 0; p.vx = 0; p.vy = 0; }
           if (p.y < 0) { p.y = height; p.vx = 0; p.vy = 0; }
           if (p.y > height) { p.y = 0; p.vx = 0; p.vy = 0; }
-        });
+        }
       }
 
       function draw() {
-        // Use a slight fade effect for trails instead of clearRect
-        ctx.fillStyle = 'rgba(5, 8, 15, 0.2)'; // Dark background with transparency for trails
+        ctx.fillStyle = 'rgba(5, 8, 15, 0.2)';
         ctx.fillRect(0, 0, width, height);
-
-        particles.forEach(p => {
+        for (let i = 0; i < particles.length; i++) {
+          const p = particles[i];
           ctx.fillStyle = p.color;
           ctx.beginPath();
           ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
           ctx.fill();
-        });
+        }
+      }
 
-        requestAnimationFrame(function () {
-          update();
-          draw();
-        });
+      function loop() {
+        if (!isVisible) {
+          animationId = null;
+          return;
+        }
+        update();
+        draw();
+        animationId = requestAnimationFrame(loop);
       }
 
       resize();
-      draw();
+      animationId = requestAnimationFrame(loop);
+    })();
+
+    // Scroll Animations
+    (function() {
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (prefersReducedMotion) return;
+
+      const scrollElements = document.querySelectorAll('.scroll-fade, .scroll-fade-left, .scroll-fade-right, .scroll-scale');
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+      scrollElements.forEach(el => observer.observe(el));
+
+      // Auto-add scroll-fade to section h2 and key elements
+      document.querySelectorAll('section:not(.hero) h2').forEach((el, i) => {
+        if (!el.classList.contains('scroll-fade')) {
+          el.classList.add('scroll-fade');
+          observer.observe(el);
+        }
+      });
+
+      document.querySelectorAll('.stat-item, .why-card, .product-card, .faq-item').forEach((el, i) => {
+        if (!el.classList.contains('scroll-fade')) {
+          el.classList.add('scroll-fade');
+          el.classList.add('scroll-delay-' + Math.min((i % 5) + 1, 5));
+          observer.observe(el);
+        }
+      });
+    })();
+
+    // Mobile CTA Bar - show after scrolling past hero
+    (function() {
+      const mobileCta = document.getElementById('mobileCta');
+      const hero = document.querySelector('.hero');
+      if (!mobileCta || !hero) return;
+
+      let ticking = false;
+      function checkScroll() {
+        const heroBottom = hero.offsetTop + hero.offsetHeight;
+        if (window.scrollY > heroBottom - 100) {
+          mobileCta.classList.add('visible');
+        } else {
+          mobileCta.classList.remove('visible');
+        }
+        ticking = false;
+      }
+
+      window.addEventListener('scroll', function() {
+        if (!ticking) {
+          requestAnimationFrame(checkScroll);
+          ticking = true;
+        }
+      }, { passive: true });
     })();
 
   </script>

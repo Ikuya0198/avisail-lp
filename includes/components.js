@@ -42,7 +42,13 @@
 
   // Get language switcher URLs
   function getLanguageUrls() {
-    const path = window.location.pathname;
+    let path = window.location.pathname;
+
+    // Handle root path or directory without filename
+    if (path === '/' || path.endsWith('/')) {
+      path = path + 'index.html';
+    }
+
     const filename = path.split('/').pop();
     const dir = path.substring(0, path.lastIndexOf('/') + 1);
 
