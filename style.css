@@ -17,7 +17,12 @@
   padding: 0;
 }
 
-html,
+html {
+  margin: 0;
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+}
+
 body {
   margin: 0;
   background: transparent;
@@ -27,11 +32,6 @@ body {
   line-height: 1.7;
   overflow-x: hidden;
   width: 100%;
-}
-
-html {
-  scroll-behavior: smooth;
-  scroll-snap-type: y mandatory;
 }
 
 a {
