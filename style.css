@@ -2150,8 +2150,9 @@ footer {
   padding-bottom: 60px;
 }
 
-/* Footer visible after scroll snap sections */
-footer, #site-footer {
+/* Footer visible after scroll snap sections (only inside fullpage-container) */
+.fullpage-container > footer,
+.fullpage-container > #site-footer {
   scroll-snap-align: end;
 }
 
