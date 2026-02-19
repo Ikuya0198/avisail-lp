@@ -18,6 +18,10 @@
   --line:rgba(148,163,184,0.12);
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{
+  scroll-snap-type:y mandatory;
+  scroll-behavior:smooth;
+}
 body{
   background:transparent;
   color:#fff;
@@ -41,8 +45,14 @@ a{color:inherit;text-decoration:none;}
 /* ── Section base ── */
 section{
   position:relative;z-index:1;
+  min-height:100vh;
+  scroll-snap-align:start;
+  scroll-snap-stop:always;
+  display:flex;
+  align-items:center;
   padding:80px 0;
 }
+section > .wrap{width:100%;}
 
 /* ── Animate on scroll ── */
 .aos{opacity:0;transform:translateY(32px);transition:opacity .7s ease,transform .7s ease;}
@@ -76,6 +86,9 @@ section{
 
 /* ── Hero ── */
 .page-hero{
+  min-height:100vh;
+  scroll-snap-align:start;
+  scroll-snap-stop:always;
   padding:50px 0 30px;
   background:
     linear-gradient(rgba(10,15,26,0.88),rgba(10,15,26,0.95)),
@@ -243,9 +256,42 @@ section{
   margin-bottom:14px;text-transform:uppercase;letter-spacing:0.05em;
 }
 
+/* ── Scroll nav dots ── */
+.scroll-nav{
+  position:fixed;
+  right:20px;
+  top:50%;
+  transform:translateY(-50%);
+  z-index:100;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+.scroll-nav-dot{
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  background:rgba(255,255,255,0.2);
+  border:1px solid rgba(255,255,255,0.3);
+  cursor:pointer;
+  transition:all 0.3s ease;
+}
+.scroll-nav-dot:hover{
+  background:rgba(106,166,255,0.4);
+  border-color:rgba(106,166,255,0.6);
+}
+.scroll-nav-dot.active{
+  background:#6AA6FF;
+  border-color:#6AA6FF;
+  box-shadow:0 0 8px rgba(106,166,255,0.5);
+}
+
 /* ── Responsive ── */
 @media(max-width:768px){
-  section{padding:48px 0;}
+  html{scroll-snap-type:none;}
+  section{scroll-snap-align:none;min-height:auto;display:block;padding:48px 0;}
+  .page-hero{scroll-snap-align:none;min-height:auto;}
+  .scroll-nav{display:none;}
   .ad-comparison{grid-template-columns:1fr;}
   .features-grid,.problem-grid,.pricing-grid,.flow-steps{grid-template-columns:1fr;}
 }
@@ -281,6 +327,22 @@ section{
 
 <!-- Shared Header -->
 <div id="site-header"></div>
+
+<nav class="scroll-nav" aria-label="Page navigation">
+  <div class="scroll-nav-dot active" data-index="0"></div>
+  <div class="scroll-nav-dot" data-index="1"></div>
+  <div class="scroll-nav-dot" data-index="2"></div>
+  <div class="scroll-nav-dot" data-index="3"></div>
+  <div class="scroll-nav-dot" data-index="4"></div>
+  <div class="scroll-nav-dot" data-index="5"></div>
+  <div class="scroll-nav-dot" data-index="6"></div>
+  <div class="scroll-nav-dot" data-index="7"></div>
+  <div class="scroll-nav-dot" data-index="8"></div>
+  <div class="scroll-nav-dot" data-index="9"></div>
+  <div class="scroll-nav-dot" data-index="10"></div>
+  <div class="scroll-nav-dot" data-index="11"></div>
+  <div class="scroll-nav-dot" data-index="12"></div>
+</nav>
 
 <!-- ════════════════════════════════════════════
      1. HERO
@@ -1306,6 +1368,28 @@ Clearly visualize your organization's vulnerabilities and areas for improvement.
     requestAnimationFrame(draw);
   }
   draw();
+})();
+</script>
+
+<!-- ── Scroll nav dots logic ── -->
+<script>
+(function() {
+  var dots = document.querySelectorAll('.scroll-nav-dot');
+  var sections = document.querySelectorAll('section');
+  dots.forEach(function(dot, i) {
+    dot.addEventListener('click', function() {
+      if (sections[i]) sections[i].scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+  var navObs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        var idx = Array.from(sections).indexOf(entry.target);
+        dots.forEach(function(d, i) { d.classList.toggle('active', i === idx); });
+      }
+    });
+  }, { threshold: 0.3 });
+  sections.forEach(function(s) { navObs.observe(s); });
 })();
 </script>
 
