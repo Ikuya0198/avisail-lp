@@ -29,6 +29,7 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 html {
+  scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
   font-size: 16px;
 }
@@ -42,10 +43,6 @@ body {
 }
 
 /* ========== FULLPAGE SCROLL SNAP ========== */
-.fullpage-container {
-  scroll-snap-type: y mandatory;
-  scroll-behavior: smooth;
-}
 
 .fullpage-section {
   min-height: 100vh;
@@ -647,8 +644,6 @@ section {
   <div class="scroll-nav-dot" data-section="6" title="Contact"></div>
 </nav>
 
-<div class="fullpage-container">
-
 <!-- Hero -->
 <section class="hero fullpage-section hero-section">
   <div class="hero-content">
@@ -858,8 +853,6 @@ section {
     <a href="../ja/contact.html" class="cta-btn animate-on-scroll">お問い合わせ</a>
   </div>
 </section>
-
-</div><!-- End fullpage-container -->
 
 <!-- Shared Footer -->
 <div id="site-footer"></div>
