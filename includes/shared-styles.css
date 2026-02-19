@@ -6,10 +6,16 @@
 /* ============================================
    HEADER STYLES
    ============================================ */
-header {
-  position: sticky;
+#site-header {
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   z-index: 1000;
+}
+
+header {
+  position: relative;
   background: transparent;
   border-bottom: 1px solid transparent;
   backdrop-filter: none;
