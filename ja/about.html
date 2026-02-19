@@ -41,6 +41,71 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* ========== FULLPAGE SCROLL SNAP ========== */
+.fullpage-container {
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+}
+
+.fullpage-section {
+  min-height: 100vh;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  display: flex;
+  align-items: flex-start;
+  padding-top: 80px;
+  position: relative;
+}
+
+.fullpage-section.hero-section {
+  align-items: center;
+  padding-top: 0;
+}
+
+/* Navigation dots */
+.scroll-nav {
+  position: fixed;
+  right: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.scroll-nav-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.scroll-nav-dot:hover {
+  background: rgba(255, 255, 255, 0.4);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.scroll-nav-dot.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  box-shadow: 0 0 12px rgba(126, 240, 212, 0.5);
+}
+
+@media (max-width: 768px) {
+  .scroll-nav {
+    right: 12px;
+    gap: 8px;
+  }
+  .scroll-nav-dot {
+    width: 8px;
+    height: 8px;
+  }
+}
+
 a { color: inherit; text-decoration: none; }
 
 .wrap {
@@ -143,8 +208,9 @@ a { color: inherit; text-decoration: none; }
 
 /* Section Styles */
 section {
-  padding: 140px 0;
+  padding: 80px 0;
   position: relative;
+  width: 100%;
 }
 
 .section-label {
@@ -287,6 +353,8 @@ section {
 .stats {
   background: var(--bg-secondary);
   text-align: center;
+  justify-content: center;
+  align-items: center;
 }
 
 .stats-grid {
@@ -443,7 +511,8 @@ section {
 /* CTA Section */
 .cta-section {
   text-align: center;
-  padding: 160px 0;
+  justify-content: center;
+  align-items: center;
 }
 
 .cta-section h2 {
@@ -520,12 +589,18 @@ section {
 
 @media (max-width: 768px) {
   section {
-    padding: 80px 0;
+    padding: 60px 0;
+  }
+
+  .fullpage-section {
+    min-height: auto;
+    padding-top: 60px;
+    padding-bottom: 60px;
   }
 
   .hero {
     padding: 100px 24px;
-    min-height: auto;
+    min-height: 100vh;
   }
 
   .philosophy-number {
@@ -561,8 +636,21 @@ section {
 <!-- Shared Header -->
 <div id="site-header"></div>
 
+<!-- Navigation Dots -->
+<nav class="scroll-nav">
+  <div class="scroll-nav-dot active" data-section="0" title="Hero"></div>
+  <div class="scroll-nav-dot" data-section="1" title="Philosophy"></div>
+  <div class="scroll-nav-dot" data-section="2" title="Business"></div>
+  <div class="scroll-nav-dot" data-section="3" title="Stats"></div>
+  <div class="scroll-nav-dot" data-section="4" title="Why Avisail"></div>
+  <div class="scroll-nav-dot" data-section="5" title="Technology"></div>
+  <div class="scroll-nav-dot" data-section="6" title="Contact"></div>
+</nav>
+
+<div class="fullpage-container">
+
 <!-- Hero -->
-<section class="hero">
+<section class="hero fullpage-section hero-section">
   <div class="hero-content">
     <span class="hero-label">About Avisail Technologies</span>
     <h1>産業を前進させる<br><span>テクノロジーを創る</span></h1>
@@ -574,7 +662,7 @@ section {
 </section>
 
 <!-- Philosophy -->
-<section class="philosophy">
+<section class="philosophy fullpage-section">
   <div class="wrap">
     <span class="section-label animate-on-scroll">Our Philosophy</span>
     <h2 class="section-title animate-on-scroll">すべての行動を導く<br>私たちの理念</h2>
@@ -603,7 +691,7 @@ section {
 </section>
 
 <!-- Business -->
-<section>
+<section class="fullpage-section">
   <div class="wrap">
     <span class="section-label animate-on-scroll">Our Business</span>
     <h2 class="section-title animate-on-scroll">3つの事業領域、<br>1つの統合されたビジョン</h2>
@@ -632,7 +720,7 @@ section {
 </section>
 
 <!-- Stats -->
-<section class="stats">
+<section class="stats fullpage-section">
   <div class="wrap">
     <span class="section-label animate-on-scroll">By The Numbers</span>
     <h2 class="section-title animate-on-scroll">実証された成果、<br>測定可能なインパクト</h2>
@@ -659,7 +747,7 @@ section {
 </section>
 
 <!-- Why Avisail -->
-<section>
+<section class="fullpage-section">
   <div class="wrap">
     <span class="section-label animate-on-scroll">Why Avisail</span>
     <h2 class="section-title animate-on-scroll">Avisailを選ぶ理由</h2>
@@ -689,7 +777,7 @@ section {
 </section>
 
 <!-- Technology Stack -->
-<section class="philosophy">
+<section class="philosophy fullpage-section">
   <div class="wrap">
     <span class="section-label animate-on-scroll">Technology Stack</span>
     <h2 class="section-title animate-on-scroll">エンタープライズグレードの<br>技術基盤</h2>
@@ -763,13 +851,15 @@ section {
 </section>
 
 <!-- CTA -->
-<section class="cta-section">
+<section class="cta-section fullpage-section">
   <div class="wrap">
     <h2 class="animate-on-scroll">一緒に働きませんか？</h2>
     <p class="animate-on-scroll">Avisailがあなたのビジネスをどのように変革できるか、ご相談ください。</p>
     <a href="../ja/contact.html" class="cta-btn animate-on-scroll">お問い合わせ</a>
   </div>
 </section>
+
+</div><!-- End fullpage-container -->
 
 <!-- Shared Footer -->
 <div id="site-footer"></div>
@@ -796,6 +886,33 @@ document.addEventListener('DOMContentLoaded', function() {
 
   document.querySelectorAll('.animate-on-scroll').forEach(el => {
     observer.observe(el);
+  });
+
+  // Fullpage Navigation
+  const sections = document.querySelectorAll('.fullpage-section');
+  const navDots = document.querySelectorAll('.scroll-nav-dot');
+
+  // Click on nav dots
+  navDots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+      sections[index].scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+
+  // Update active dot on scroll
+  const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const index = Array.from(sections).indexOf(entry.target);
+        navDots.forEach((dot, i) => {
+          dot.classList.toggle('active', i === index);
+        });
+      }
+    });
+  }, { threshold: 0.5 });
+
+  sections.forEach(section => {
+    sectionObserver.observe(section);
   });
 });
 </script>
