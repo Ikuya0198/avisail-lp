@@ -24,652 +24,838 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
-:root{
-  --line: rgba(255,255,255,.08);
-  --primary-gradient: linear-gradient(135deg,#6aa6ff,#7ef0d4);
-  --accent-teal: #7ef0d4;
+:root {
+  --bg-primary: #0a0f1a;
+  --bg-secondary: #060910;
+  --text-primary: #ffffff;
+  --text-secondary: #b8c5d6;
+  --text-muted: #6b7a8f;
+  --accent: #7ef0d4;
   --accent-blue: #6aa6ff;
-  --bg-dark: #0a0f1a;
-  --bg-darker: #05080f;
-  --text-primary: #e9f0ff;
-  --text-secondary: #cfe2ff;
-  --text-muted: #9fb0cc;
+  --line: rgba(255,255,255,0.08);
 }
 
-*{ box-sizing: border-box; margin:0; padding:0; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
-html,body{
-  margin:0;
-  background:transparent;
-  color:var(--text-primary);
-  font-family: 'Inter', 'Noto Sans JP', sans-serif;
-  line-height:1.7;
-  overflow-x:hidden;
-  width:100%;
+html {
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  font-size: 16px;
 }
 
-html{ scroll-behavior: smooth; }
-
-a{
-  color:var(--text-secondary);
-  text-decoration:none;
-  transition: color 0.3s;
+body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: 'Inter', 'Noto Sans JP', -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
 }
-a:hover{ color:var(--accent-teal); }
 
-.wrap{
-  max-width:1200px;
-  margin:0 auto;
-  padding:0 20px;
-  width:100%;
+a { color: inherit; text-decoration: none; }
+
+.wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ========== FULLPAGE SCROLL SNAP ========== */
+
+.fullpage-section {
+  min-height: 100vh;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  display: flex;
+  align-items: flex-start;
+  padding-top: 80px;
+  position: relative;
+  width: 100%;
+}
+
+.fullpage-section.hero-section {
+  align-items: center;
+  padding-top: 0;
+}
+
+.fullpage-section.center-section {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* Navigation dots */
+.scroll-nav {
+  position: fixed;
+  right: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.scroll-nav-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.scroll-nav-dot:hover {
+  background: rgba(255, 255, 255, 0.4);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.scroll-nav-dot.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  box-shadow: 0 0 12px rgba(126, 240, 212, 0.5);
+}
+
+@media (max-width: 768px) {
+  .scroll-nav {
+    right: 12px;
+    gap: 8px;
+  }
+  .scroll-nav-dot {
+    width: 8px;
+    height: 8px;
+  }
 }
 
 /* ========== HERO ========== */
-.page-hero{
-  padding:140px 0 80px;
-  text-align:center;
-  background: radial-gradient(circle at center, rgba(106, 166, 255, 0.08) 0%, rgba(5, 8, 15, 0) 70%),
-              linear-gradient(180deg, rgba(5,8,15,0.3) 0%, rgba(5,8,15,1) 100%);
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  padding: 120px 24px;
 }
 
-.page-hero h1{
-  font-size: clamp(2rem, 5vw, 3rem);
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(106, 166, 255, 0.15), transparent),
+    radial-gradient(ellipse 60% 40% at 50% 120%, rgba(126, 240, 212, 0.1), transparent);
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 900px;
+}
+
+.hero-label {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 32px;
+  opacity: 0;
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+.hero h1 {
+  font-size: clamp(2.2rem, 5vw, 4rem);
   font-weight: 700;
-  margin-bottom: 20px;
-  background: linear-gradient(to right, #fff, var(--text-muted));
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin-bottom: 32px;
+  opacity: 0;
+  animation: fadeInUp 0.8s ease 0.1s forwards;
+}
+
+.hero h1 span {
+  background: linear-gradient(135deg, var(--accent-blue), var(--accent));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-.page-hero .lead{
-  font-size:1.1rem;
-  color:var(--text-secondary);
-  max-width:700px;
-  margin:0 auto 16px;
-  line-height:1.8;
+.hero-lead {
+  font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+  color: var(--text-secondary);
+  line-height: 1.8;
+  max-width: 700px;
+  margin: 0 auto;
+  opacity: 0;
+  animation: fadeInUp 0.8s ease 0.2s forwards;
 }
 
-.page-hero .muted{
-  color:var(--text-muted);
-  font-size:0.95rem;
+.scroll-indicator {
+  position: absolute;
+  bottom: 48px;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  animation: fadeInUp 0.8s ease 0.4s forwards;
 }
 
-/* ========== SECTIONS ========== */
-section{
-  padding:70px 0;
-  border-bottom:1px solid var(--line);
+.scroll-indicator span {
+  display: block;
+  width: 1px;
+  height: 60px;
+  background: linear-gradient(to bottom, var(--accent), transparent);
+  animation: scrollPulse 2s ease-in-out infinite;
 }
 
-h2{
-  font-size:1.8rem;
-  margin-bottom:32px;
-  display:flex;
-  align-items:center;
-  gap:16px;
-  color:#fff;
+@keyframes scrollPulse {
+  0%, 100% { transform: scaleY(1); opacity: 1; }
+  50% { transform: scaleY(0.6); opacity: 0.5; }
 }
 
-h2::before{
-  content:'';
-  width:4px;
-  height:28px;
-  background:var(--primary-gradient);
-  display:block;
-  border-radius:2px;
+/* ========== SECTION STYLES ========== */
+
+.section-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 16px;
 }
 
-h3{
-  color:#fff;
-  font-size:1.3rem;
+.section-title {
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 24px;
+  line-height: 1.3;
 }
 
-/* ========== FORM ========== */
-.form-container{
-  max-width:800px;
-  margin:0 auto;
+.section-lead {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  max-width: 600px;
+  line-height: 1.9;
 }
 
-.form-card{
-  background:rgba(255,255,255,0.02);
-  backdrop-filter:blur(10px);
-  border:1px solid var(--line);
-  border-radius:24px;
-  padding:48px;
+/* ========== FORM SECTION ========== */
+
+.form-section {
+  background: var(--bg-secondary);
 }
 
-.form-intro{
-  margin-bottom:40px;
-  padding:24px;
-  background:rgba(126,240,212,0.03);
-  border-radius:16px;
-  border:1px solid rgba(126,240,212,0.15);
+.form-section .wrap {
+  width: 100%;
 }
 
-.form-intro-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:20px;
-  text-align:center;
+.form-meta {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  margin-bottom: 48px;
+  padding-bottom: 48px;
+  border-bottom: 1px solid var(--line);
 }
 
-.form-intro-item h4{
-  color:var(--accent-teal);
-  font-size:0.9rem;
-  margin-bottom:6px;
-  font-weight:600;
+.form-meta-item h4 {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 8px;
 }
 
-.form-intro-item p{
-  color:var(--text-muted);
-  font-size:0.85rem;
-  margin:0;
+.form-meta-item p {
+  font-size: 1rem;
+  color: var(--text-primary);
+  font-weight: 500;
 }
 
-.form-row{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:20px;
+.form-container {
+  max-width: 800px;
+  margin: 0 auto;
 }
 
-.form-group{
-  margin-bottom:24px;
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
 }
 
-.form-group.full-width{
-  grid-column:1/-1;
+.form-group {
+  margin-bottom: 24px;
 }
 
-.form-group label{
-  display:block;
-  font-size:0.9rem;
-  color:var(--text-secondary);
-  margin-bottom:8px;
-  font-weight:500;
+.form-group.full-width {
+  grid-column: 1 / -1;
 }
 
-.form-group label .required{
-  color:#fb7185;
-  margin-left:4px;
+.form-group label {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
 }
 
-.form-group label .optional{
-  color:var(--text-muted);
-  font-size:0.8rem;
-  font-weight:400;
-  margin-left:6px;
+.form-group label .required {
+  color: #fb7185;
+  margin-left: 4px;
+}
+
+.form-group label .optional {
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  font-weight: 400;
+  margin-left: 6px;
 }
 
 .form-group input,
 .form-group select,
-.form-group textarea{
-  width:100%;
-  padding:14px 18px;
-  border-radius:12px;
-  background:rgba(255,255,255,0.04);
-  border:1px solid rgba(255,255,255,0.1);
-  color:var(--text-primary);
-  font-family:inherit;
-  font-size:0.95rem;
-  transition:all 0.3s;
-  outline:none;
+.form-group textarea {
+  width: 100%;
+  padding: 14px 18px;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--line);
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: 0.95rem;
+  transition: all 0.3s;
+  outline: none;
 }
 
 .form-group input:focus,
 .form-group select:focus,
-.form-group textarea:focus{
-  border-color:var(--accent-blue);
-  background:rgba(255,255,255,0.06);
-  box-shadow:0 0 0 3px rgba(106,166,255,0.1);
+.form-group textarea:focus {
+  border-color: var(--accent-blue);
+  background: rgba(255,255,255,0.06);
+  box-shadow: 0 0 0 3px rgba(106,166,255,0.1);
 }
 
 .form-group input::placeholder,
-.form-group textarea::placeholder{
-  color:var(--text-muted);
-  opacity:0.7;
+.form-group textarea::placeholder {
+  color: var(--text-muted);
+  opacity: 0.7;
 }
 
-.form-group select{
-  cursor:pointer;
-  appearance:none;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%239fb0cc' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
-  background-repeat:no-repeat;
-  background-position:right 16px center;
-  padding-right:40px;
+.form-group select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236b7a8f' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  padding-right: 40px;
 }
 
-.form-group select option{
-  background:var(--bg-dark);
-  color:var(--text-primary);
+.form-group select option {
+  background: var(--bg-primary);
+  color: var(--text-primary);
 }
 
-.form-group textarea{
-  resize:vertical;
-  min-height:140px;
+.form-group textarea {
+  resize: vertical;
+  min-height: 140px;
 }
 
-.privacy-note{
-  font-size:0.85rem;
-  color:var(--text-muted);
-  margin-bottom:28px;
-  line-height:1.7;
+.privacy-note {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 28px;
+  line-height: 1.7;
 }
 
-.privacy-note a{
-  color:var(--accent-teal);
+.btn-submit {
+  display: inline-block;
+  padding: 18px 48px;
+  border-radius: 50px;
+  background: linear-gradient(135deg, var(--accent-blue), var(--accent));
+  color: var(--bg-primary);
+  font-weight: 700;
+  font-size: 1rem;
+  border: none;
+  transition: all 0.3s;
+  cursor: pointer;
+  width: 100%;
 }
 
-.btn-submit{
-  display:inline-block;
-  padding:16px 48px;
-  border-radius:50px;
-  background:var(--primary-gradient);
-  color:#06101a;
-  font-weight:700;
-  font-size:1rem;
-  box-shadow:0 10px 20px rgba(106,166,255,.2);
-  border:none;
-  transition:all 0.3s;
-  cursor:pointer;
-  width:100%;
+.btn-submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 20px 40px rgba(106,166,255,0.3);
 }
 
-.btn-submit:hover{
-  transform:translateY(-2px);
-  box-shadow:0 15px 30px rgba(106,166,255,.3);
+.btn-submit:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
 }
 
-.btn-submit:disabled{
-  opacity:0.7;
-  cursor:not-allowed;
-  transform:none;
+#form-status {
+  margin-top: 20px;
+  padding: 16px;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 0.95rem;
 }
 
-#form-status{
-  margin-top:20px;
-  padding:16px;
-  border-radius:12px;
-  text-align:center;
-  font-size:0.95rem;
+#form-status.success {
+  background: rgba(126,240,212,0.1);
+  border: 1px solid rgba(126,240,212,0.3);
+  color: var(--accent);
 }
 
-#form-status.success{
-  background:rgba(126,240,212,0.1);
-  border:1px solid rgba(126,240,212,0.3);
-  color:var(--accent-teal);
+#form-status.error {
+  background: rgba(251,113,133,0.1);
+  border: 1px solid rgba(251,113,133,0.3);
+  color: #fb7185;
 }
 
-#form-status.error{
-  background:rgba(251,113,133,0.1);
-  border:1px solid rgba(251,113,133,0.3);
-  color:#fb7185;
+/* ========== GUARANTEE SECTION ========== */
+
+.guarantee-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 48px;
+  margin-top: 80px;
+  text-align: center;
 }
 
-/* ========== INFO SECTION ========== */
-.info-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:28px;
-  margin-top:40px;
+.guarantee-item {
+  padding: 32px;
 }
 
-.info-card{
-  background:rgba(255,255,255,0.02);
-  border:1px solid var(--line);
-  border-radius:20px;
-  padding:28px;
-  transition:all 0.3s;
+.guarantee-number {
+  font-size: 4.5rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  background: linear-gradient(135deg, #fff, var(--text-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+  margin-bottom: 8px;
 }
 
-.info-card:hover{
-  border-color:rgba(106,166,255,0.3);
-  transform:translateY(-3px);
+.guarantee-unit {
+  font-size: 1rem;
+  color: var(--accent);
+  font-weight: 600;
+  margin-bottom: 12px;
+  letter-spacing: 0.05em;
 }
 
-.info-card h3{
-  font-size:1.1rem;
-  margin-bottom:16px;
+.guarantee-desc {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
 }
 
-.info-card p{
-  color:var(--text-muted);
-  font-size:0.9rem;
-  line-height:1.8;
-  margin-bottom:12px;
+/* ========== OFFICE SECTION ========== */
+
+.office-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  margin-top: 80px;
 }
 
-.info-card a{
-  color:var(--accent-teal);
-  font-size:0.95rem;
+.office-card {
+  padding: 48px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  transition: all 0.4s ease;
+}
+
+.office-card:hover {
+  border-color: rgba(106, 166, 255, 0.2);
+  background: rgba(255,255,255,0.03);
+}
+
+.office-card h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  letter-spacing: -0.01em;
+}
+
+.office-card p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.9;
+  margin-bottom: 8px;
+}
+
+.office-card p:last-child {
+  margin-bottom: 0;
+}
+
+.office-card a {
+  color: var(--accent);
+  transition: opacity 0.3s;
+}
+
+.office-card a:hover {
+  opacity: 0.8;
+}
+
+/* ========== CTA SECTION ========== */
+
+.cta-section {
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.cta-section h2 {
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 24px;
+}
+
+.cta-section p {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  margin-bottom: 40px;
+}
+
+.cta-btn {
+  display: inline-block;
+  padding: 18px 48px;
+  background: linear-gradient(135deg, var(--accent-blue), var(--accent));
+  color: var(--bg-primary);
+  font-weight: 700;
+  font-size: 1rem;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+}
+
+.cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 20px 40px rgba(106, 166, 255, 0.3);
+}
+
+/* ========== ANIMATIONS ========== */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* ========== RESPONSIVE ========== */
-@media(max-width:980px){
-  .form-row{
-    grid-template-columns:1fr;
+
+@media (max-width: 1024px) {
+  .guarantee-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
   }
-  .form-intro-grid{
-    grid-template-columns:1fr;
-    gap:16px;
-  }
-  .info-grid{
-    grid-template-columns:1fr;
-    gap:20px;
-  }
-  .form-card{
-    padding:32px 24px;
+
+  .office-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
   }
 }
 
-@media(max-width:640px){
-  .page-hero{
-    padding:100px 0 60px;
+@media (max-width: 768px) {
+  .fullpage-section {
+    min-height: auto;
+    padding-top: 60px;
+    padding-bottom: 60px;
   }
-  .page-hero h1{
-    font-size:1.75rem;
+
+  .hero {
+    padding: 100px 24px;
+    min-height: 100vh;
   }
-  section{
-    padding:50px 0;
+
+  .form-meta {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    text-align: center;
   }
-  h2{
-    font-size:1.4rem;
+
+  .form-row {
+    grid-template-columns: 1fr;
   }
-  .form-card{
-    padding:24px 20px;
+
+  .guarantee-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
   }
-  .btn-submit{
-    padding:14px 32px;
+
+  .guarantee-number {
+    font-size: 3rem;
+  }
+
+  .office-card {
+    padding: 32px 24px;
   }
 }
 
-/* Global Background Animation */
-#global-bg{
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  z-index:-1;
-  pointer-events:none;
-  background:radial-gradient(circle at 50% 50%, #0d1424 0%, #05080f 100%);
+@media (max-width: 480px) {
+  .guarantee-grid {
+    grid-template-columns: 1fr;
+  }
 }
 </style>
 </head>
 <body>
 
-<canvas id="global-bg"></canvas>
-
 <!-- Shared Header -->
 <div id="site-header"></div>
 
-<!-- Hero Section -->
-<section class="page-hero">
-  <div class="wrap">
-    <h1>お問い合わせ</h1>
-    <p class="lead">
-      サービスに関するご質問、パートナーシップ、ビジネス提案を歓迎いたします。<br>
-      下記フォームよりお気軽にご連絡ください
-    </p>
-    <p class="muted">担当者が1営業日以内にご返信いたします</p>
+<!-- Navigation Dots -->
+<nav class="scroll-nav">
+  <div class="scroll-nav-dot active" data-section="0" title="Hero"></div>
+  <div class="scroll-nav-dot" data-section="1" title="Form"></div>
+  <div class="scroll-nav-dot" data-section="2" title="Guarantee"></div>
+  <div class="scroll-nav-dot" data-section="3" title="Office"></div>
+  <div class="scroll-nav-dot" data-section="4" title="CTA"></div>
+</nav>
+
+<!-- Section 1: Hero -->
+<section class="hero fullpage-section hero-section">
+  <div class="hero-content">
+    <span class="hero-label">Contact Us</span>
+    <h1>お気軽に、<br><span>ご連絡ください</span></h1>
+    <p class="hero-lead">サービスに関するご質問、パートナーシップ、ビジネス提案を歓迎いたします。担当者が丁寧にご対応いたします。</p>
+  </div>
+  <div class="scroll-indicator">
+    <span></span>
   </div>
 </section>
 
-<!-- Contact Form Section -->
-<section id="form-section">
+<!-- Section 2: Contact Form -->
+<section class="form-section fullpage-section" id="form-section">
   <div class="wrap">
-    <div class="form-container">
-      <div class="form-card">
+    <span class="section-label animate-on-scroll">Contact Form</span>
+    <h2 class="section-title animate-on-scroll">お問い合わせフォーム</h2>
 
-        <div class="form-intro">
-          <div class="form-intro-grid">
-            <div class="form-intro-item">
-              <h4>メール</h4>
-              <p>info@avisail.com</p>
-            </div>
-            <div class="form-intro-item">
-              <h4>対応言語</h4>
-              <p>日本語 / English / Italiano</p>
-            </div>
-            <div class="form-intro-item">
-              <h4>返信</h4>
-              <p>1営業日以内</p>
-            </div>
+    <div class="form-meta animate-on-scroll">
+      <div class="form-meta-item">
+        <h4>Email</h4>
+        <p>info@avisail.com</p>
+      </div>
+      <div class="form-meta-item">
+        <h4>Languages</h4>
+        <p>日本語 / English / Italiano</p>
+      </div>
+      <div class="form-meta-item">
+        <h4>Response</h4>
+        <p>1営業日以内に返信</p>
+      </div>
+    </div>
+
+    <div class="form-container">
+      <form id="contact-form" action="https://formspree.io/f/mykzwlze" method="POST">
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="company">会社名<span class="optional">（任意）</span></label>
+            <input type="text" id="company" name="company" placeholder="株式会社サンプル">
+          </div>
+          <div class="form-group">
+            <label for="department">部署名<span class="optional">（任意）</span></label>
+            <input type="text" id="department" name="department" placeholder="営業部">
           </div>
         </div>
 
-        <form id="contact-form" action="https://formspree.io/f/mykzwlze" method="POST">
-
-          <div class="form-row">
-            <div class="form-group">
-              <label for="company">会社名<span class="optional">（任意）</span></label>
-              <input type="text" id="company" name="company" placeholder="株式会社サンプル">
-            </div>
-            <div class="form-group">
-              <label for="department">部署名<span class="optional">（任意）</span></label>
-              <input type="text" id="department" name="department" placeholder="営業部">
-            </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">お名前<span class="required">*</span></label>
+            <input type="text" id="name" name="name" placeholder="山田 太郎" required>
           </div>
-
-          <div class="form-row">
-            <div class="form-group">
-              <label for="name">お名前<span class="required">*</span></label>
-              <input type="text" id="name" name="name" placeholder="山田 太郎" required>
-            </div>
-            <div class="form-group">
-              <label for="name_kana">フリガナ<span class="optional">（任意）</span></label>
-              <input type="text" id="name_kana" name="name_kana" placeholder="ヤマダ タロウ">
-            </div>
+          <div class="form-group">
+            <label for="name_kana">フリガナ<span class="optional">（任意）</span></label>
+            <input type="text" id="name_kana" name="name_kana" placeholder="ヤマダ タロウ">
           </div>
+        </div>
 
-          <div class="form-row">
-            <div class="form-group">
-              <label for="email">メールアドレス<span class="required">*</span></label>
-              <input type="email" id="email" name="email" placeholder="your@email.com" required>
-            </div>
-            <div class="form-group">
-              <label for="phone">電話番号<span class="optional">（任意）</span></label>
-              <input type="tel" id="phone" name="phone" placeholder="03-1234-5678">
-            </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="email">メールアドレス<span class="required">*</span></label>
+            <input type="email" id="email" name="email" placeholder="your@email.com" required>
           </div>
-
-          <div class="form-row">
-            <div class="form-group">
-              <label for="service">ご関心のあるサービス<span class="required">*</span></label>
-              <select id="service" name="service" required>
-                <option value="">選択してください</option>
-                <optgroup label="海事事業">
-                  <option value="vessel-trading">船舶売買（Vessel Trading）</option>
-                  <option value="maritime-security">海事セキュリティ（Maritime Security）</option>
-                </optgroup>
-                <optgroup label="セキュリティ事業">
-                  <option value="adcs">ADCS - セキュリティ診断</option>
-                  <option value="stratum">STRATUM - OSINT脅威インテリジェンス</option>
-                  <option value="nexus">NEXUS - 攻撃面分析</option>
-                </optgroup>
-                <optgroup label="その他">
-                  <option value="ai-development">AI・システム開発</option>
-                  <option value="partnership">パートナーシップ・協業</option>
-                  <option value="media">取材・メディア掲載</option>
-                  <option value="recruitment">採用・キャリア</option>
-                  <option value="other">その他</option>
-                </optgroup>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="inquiry_type">お問い合わせ種別<span class="required">*</span></label>
-              <select id="inquiry_type" name="inquiry_type" required>
-                <option value="">選択してください</option>
-                <option value="new-inquiry">新規お問い合わせ</option>
-                <option value="quote-request">見積もり依頼</option>
-                <option value="demo-request">デモ・資料請求</option>
-                <option value="technical-support">技術的なご質問</option>
-                <option value="partnership">協業・パートナーシップ</option>
-                <option value="other">その他</option>
-              </select>
-            </div>
+          <div class="form-group">
+            <label for="phone">電話番号<span class="optional">（任意）</span></label>
+            <input type="tel" id="phone" name="phone" placeholder="03-1234-5678">
           </div>
+        </div>
 
-          <div class="form-group full-width">
-            <label for="how_found">弊社をお知りになったきっかけ<span class="optional">（任意）</span></label>
-            <select id="how_found" name="how_found">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="service">ご関心のあるサービス<span class="required">*</span></label>
+            <select id="service" name="service" required>
               <option value="">選択してください</option>
-              <option value="search">検索エンジン（Google等）</option>
-              <option value="social">SNS（Twitter/X, LinkedIn等）</option>
-              <option value="referral">知人・取引先からの紹介</option>
-              <option value="event">展示会・セミナー</option>
-              <option value="media">メディア記事</option>
+              <optgroup label="海事事業">
+                <option value="vessel-trading">船舶売買（Vessel Trading）</option>
+                <option value="maritime-security">海事セキュリティ（Maritime Security）</option>
+              </optgroup>
+              <optgroup label="セキュリティ事業">
+                <option value="adcs">ADCS - セキュリティ診断</option>
+                <option value="stratum">STRATUM - OSINT脅威インテリジェンス</option>
+                <option value="nexus">NEXUS - 攻撃面分析</option>
+              </optgroup>
+              <optgroup label="その他">
+                <option value="ai-development">AI・システム開発</option>
+                <option value="partnership">パートナーシップ・協業</option>
+                <option value="media">取材・メディア掲載</option>
+                <option value="recruitment">採用・キャリア</option>
+                <option value="other">その他</option>
+              </optgroup>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="inquiry_type">お問い合わせ種別<span class="required">*</span></label>
+            <select id="inquiry_type" name="inquiry_type" required>
+              <option value="">選択してください</option>
+              <option value="new-inquiry">新規お問い合わせ</option>
+              <option value="quote-request">見積もり依頼</option>
+              <option value="demo-request">デモ・資料請求</option>
+              <option value="technical-support">技術的なご質問</option>
+              <option value="partnership">協業・パートナーシップ</option>
               <option value="other">その他</option>
             </select>
           </div>
+        </div>
 
-          <div class="form-group full-width">
-            <label for="message">お問い合わせ内容<span class="required">*</span></label>
-            <textarea id="message" name="message" placeholder="ご相談内容、ご質問等をご記入ください" required></textarea>
-          </div>
+        <div class="form-group full-width">
+          <label for="how_found">弊社をお知りになったきっかけ<span class="optional">（任意）</span></label>
+          <select id="how_found" name="how_found">
+            <option value="">選択してください</option>
+            <option value="search">検索エンジン（Google等）</option>
+            <option value="social">SNS（Twitter/X, LinkedIn等）</option>
+            <option value="referral">知人・取引先からの紹介</option>
+            <option value="event">展示会・セミナー</option>
+            <option value="media">メディア記事</option>
+            <option value="other">その他</option>
+          </select>
+        </div>
 
-          <p class="privacy-note">
-            送信いただいた情報は、お問い合わせへの対応およびサービス向上のために利用いたします。
-          </p>
+        <div class="form-group full-width">
+          <label for="message">お問い合わせ内容<span class="required">*</span></label>
+          <textarea id="message" name="message" placeholder="ご相談内容、ご質問等をご記入ください" required></textarea>
+        </div>
 
-          <button type="submit" class="btn-submit" id="submit-btn">送信する</button>
-          <div id="form-status" style="display:none;"></div>
+        <p class="privacy-note">
+          送信いただいた情報は、お問い合わせへの対応およびサービス向上のために利用いたします。
+        </p>
 
-        </form>
+        <button type="submit" class="btn-submit" id="submit-btn">送信する</button>
+        <div id="form-status" style="display:none;"></div>
+
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- Section 3: Service Guarantee -->
+<section class="fullpage-section center-section">
+  <div class="wrap">
+    <span class="section-label animate-on-scroll">Our Promise</span>
+    <h2 class="section-title animate-on-scroll">サービス保証</h2>
+    <p class="section-lead animate-on-scroll" style="margin: 0 auto;">お客様に明確なコミットメントを持って、優れたサービスを提供いたします。</p>
+
+    <div class="guarantee-grid">
+      <div class="guarantee-item animate-on-scroll">
+        <div class="guarantee-number">24h</div>
+        <div class="guarantee-unit">以内に返信</div>
+        <p class="guarantee-desc">全てのお問い合わせに1営業日以内に返信。緊急案件は優先対応。</p>
+      </div>
+      <div class="guarantee-item animate-on-scroll">
+        <div class="guarantee-number">3</div>
+        <div class="guarantee-unit">ヶ国語サポート</div>
+        <p class="guarantee-desc">日本語・英語・イタリア語で完全サポート。お好みの言語で対応。</p>
+      </div>
+      <div class="guarantee-item animate-on-scroll">
+        <div class="guarantee-number">無料</div>
+        <div class="guarantee-unit">初回相談</div>
+        <p class="guarantee-desc">30分の相談を無料で提供。リスクなしでソリューションを探ります。</p>
+      </div>
+      <div class="guarantee-item animate-on-scroll">
+        <div class="guarantee-number">100%</div>
+        <div class="guarantee-unit">プライバシー保証</div>
+        <p class="guarantee-desc">お客様の情報は暗号化され保護。第三者とデータを共有しません。</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===== サービス保証 ===== -->
-<section style="padding: 80px 0;">
+<!-- Section 4: Office Info -->
+<section class="fullpage-section" style="background: var(--bg-secondary);">
   <div class="wrap">
-    <div style="text-align: center; margin-bottom: 48px;">
-      <h2 style="font-size: 2rem; margin-bottom: 16px;">サービス保証</h2>
-      <p style="color: var(--text-secondary); font-size: 1.1rem; max-width: 700px; margin: 0 auto;">
-        お客様に明確なコミットメントを持って、優れたサービスを提供することを誇りとしています。
-      </p>
-    </div>
+    <span class="section-label animate-on-scroll">Office</span>
+    <h2 class="section-title animate-on-scroll">オフィス情報</h2>
 
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px;">
-
-      <!-- 24時間以内返信 -->
-      <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(126, 240, 212, 0.2); border-radius: 16px; padding: 36px 28px; text-align: center; transition: all 0.3s;" onmouseover="this.style.borderColor='rgba(126, 240, 212, 0.4)'; this.style.transform='translateY(-4px)'" onmouseout="this.style.borderColor='rgba(126, 240, 212, 0.2)'; this.style.transform='translateY(0)'">
-        <div style="width: 64px; height: 64px; margin: 0 auto 20px; background: linear-gradient(135deg, rgba(126, 240, 212, 0.2), rgba(106, 166, 255, 0.2)); border-radius: 16px; display: flex; align-items: center; justify-content: center;">
-          <svg width="32" height="32" fill="none" stroke="#7ef0d4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-            <circle cx="12" cy="12" r="10"></circle>
-            <polyline points="12 6 12 12 16 14"></polyline>
-          </svg>
-        </div>
-        <h3 style="font-size: 1.3rem; margin-bottom: 12px; color: #fff;">24時間以内に返信</h3>
-        <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.7;">
-          全てのお問い合わせに1営業日以内に返信。緊急のセキュリティ案件は優先対応します。
-        </p>
-      </div>
-
-      <!-- 多言語サポート -->
-      <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(106, 166, 255, 0.2); border-radius: 16px; padding: 36px 28px; text-align: center; transition: all 0.3s;" onmouseover="this.style.borderColor='rgba(106, 166, 255, 0.4)'; this.style.transform='translateY(-4px)'" onmouseout="this.style.borderColor='rgba(106, 166, 255, 0.2)'; this.style.transform='translateY(0)'">
-        <div style="width: 64px; height: 64px; margin: 0 auto 20px; background: linear-gradient(135deg, rgba(106, 166, 255, 0.2), rgba(126, 240, 212, 0.2)); border-radius: 16px; display: flex; align-items: center; justify-content: center;">
-          <svg width="32" height="32" fill="none" stroke="#6AA6FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-            <circle cx="12" cy="12" r="10"></circle>
-            <line x1="2" y1="12" x2="22" y2="12"></line>
-            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-          </svg>
-        </div>
-        <h3 style="font-size: 1.3rem; margin-bottom: 12px; color: #fff;">多言語サポート</h3>
-        <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.7;">
-          日本語、英語、イタリア語で完全サポート。お好みの言語でコミュニケーション可能。
-        </p>
-      </div>
-
-      <!-- 無料相談 -->
-      <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(16, 185, 129, 0.2); border-radius: 16px; padding: 36px 28px; text-align: center; transition: all 0.3s;" onmouseover="this.style.borderColor='rgba(16, 185, 129, 0.4)'; this.style.transform='translateY(-4px)'" onmouseout="this.style.borderColor='rgba(16, 185, 129, 0.2)'; this.style.transform='translateY(0)'">
-        <div style="width: 64px; height: 64px; margin: 0 auto 20px; background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(126, 240, 212, 0.2)); border-radius: 16px; display: flex; align-items: center; justify-content: center;">
-          <svg width="32" height="32" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-          </svg>
-        </div>
-        <h3 style="font-size: 1.3rem; margin-bottom: 12px; color: #fff;">初回相談無料</h3>
-        <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.7;">
-          30分の相談を無料で提供。ニーズを伺い、リスクなしでソリューションを探ります。
-        </p>
-      </div>
-
-      <!-- データセキュリティ -->
-      <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(126, 240, 212, 0.2); border-radius: 16px; padding: 36px 28px; text-align: center; transition: all 0.3s;" onmouseover="this.style.borderColor='rgba(126, 240, 212, 0.4)'; this.style.transform='translateY(-4px)'" onmouseout="this.style.borderColor='rgba(126, 240, 212, 0.2)'; this.style.transform='translateY(0)'">
-        <div style="width: 64px; height: 64px; margin: 0 auto 20px; background: linear-gradient(135deg, rgba(126, 240, 212, 0.2), rgba(106, 166, 255, 0.2)); border-radius: 16px; display: flex; align-items: center; justify-content: center;">
-          <svg width="32" height="32" fill="none" stroke="#7ef0d4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-          </svg>
-        </div>
-        <h3 style="font-size: 1.3rem; margin-bottom: 12px; color: #fff;">プライバシー保証</h3>
-        <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.7;">
-          お客様の情報は暗号化され保護されます。第三者とデータを共有することはありません。
-        </p>
-      </div>
-
-      <!-- 契約義務なし -->
-      <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(106, 166, 255, 0.2); border-radius: 16px; padding: 36px 28px; text-align: center; transition: all 0.3s;" onmouseover="this.style.borderColor='rgba(106, 166, 255, 0.4)'; this.style.transform='translateY(-4px)'" onmouseout="this.style.borderColor='rgba(106, 166, 255, 0.2)'; this.style.transform='translateY(0)'">
-        <div style="width: 64px; height: 64px; margin: 0 auto 20px; background: linear-gradient(135deg, rgba(106, 166, 255, 0.2), rgba(126, 240, 212, 0.2)); border-radius: 16px; display: flex; align-items: center; justify-content: center;">
-          <svg width="32" height="32" fill="none" stroke="#6AA6FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-            <polyline points="20 6 9 17 4 12"></polyline>
-          </svg>
-        </div>
-        <h3 style="font-size: 1.3rem; margin-bottom: 12px; color: #fff;">強制なし、義務なし</h3>
-        <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.7;">
-          無料診断・相談に一切の義務はありません。準備ができてから進めてください。
-        </p>
-      </div>
-
-      <!-- 専門チーム -->
-      <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(16, 185, 129, 0.2); border-radius: 16px; padding: 36px 28px; text-align: center; transition: all 0.3s;" onmouseover="this.style.borderColor='rgba(16, 185, 129, 0.4)'; this.style.transform='translateY(-4px)'" onmouseout="this.style.borderColor='rgba(16, 185, 129, 0.2)'; this.style.transform='translateY(0)'">
-        <div style="width: 64px; height: 64px; margin: 0 auto 20px; background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(126, 240, 212, 0.2)); border-radius: 16px; display: flex; align-items: center; justify-content: center;">
-          <svg width="32" height="32" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-            <circle cx="9" cy="7" r="4"></circle>
-            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-          </svg>
-        </div>
-        <h3 style="font-size: 1.3rem; margin-bottom: 12px; color: #fff;">専門家チーム</h3>
-        <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.7;">
-          海事オペレーション、サイバーセキュリティ、AI開発の経験豊富な専門家。
-        </p>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- Office Information -->
-<section id="office-info" style="background:rgba(5,8,15,0.3);">
-  <div class="wrap">
-    <h2>オフィス情報</h2>
-
-    <div class="info-grid">
-      <div class="info-card">
+    <div class="office-grid">
+      <div class="office-card animate-on-scroll">
         <h3>日本オフィス（主要拠点）</h3>
-        <p><strong>所在地：</strong>東京</p>
-        <p><strong>営業時間：</strong>午前9時 - 午後6時（日本時間）<br>月曜日 - 金曜日</p>
-        <a href="mailto:info@avisail.com">info@avisail.com</a>
+        <p>所在地：東京</p>
+        <p>営業時間：午前9時 - 午後6時（日本時間）</p>
+        <p>月曜日 - 金曜日</p>
+        <p><a href="mailto:info@avisail.com">info@avisail.com</a></p>
       </div>
 
-      <div class="info-card">
+      <div class="office-card animate-on-scroll">
         <h3>グローバル対応</h3>
         <p>アジア・中東・欧州に対応。</p>
         <p>日本語・英語・イタリア語でのサポートが可能です。</p>
         <p>24時間体制でグローバルなお客様をサポートします。</p>
       </div>
 
-      <div class="info-card">
+      <div class="office-card animate-on-scroll">
         <h3>対応時間</h3>
-        <p><strong>メール：</strong>1営業日以内に返信</p>
-        <p><strong>緊急案件：</strong>既存のお客様は当日対応</p>
+        <p>メール：1営業日以内に返信</p>
+        <p>緊急案件：既存のお客様は当日対応</p>
         <p>複数のタイムゾーンで迅速に対応いたします。</p>
       </div>
-    </div>
 
+      <div class="office-card animate-on-scroll">
+        <h3>お問い合わせ方法</h3>
+        <p>フォーム：本ページ上部のフォームから</p>
+        <p>メール：info@avisail.com</p>
+        <p>初回のご相談は無料です。お気軽にどうぞ。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section 5: CTA -->
+<section class="cta-section fullpage-section">
+  <div class="wrap">
+    <h2 class="animate-on-scroll">一緒に始めませんか？</h2>
+    <p class="animate-on-scroll">まずはお気軽にご相談ください。最適なソリューションをご提案いたします。</p>
+    <a href="#form-section" class="cta-btn animate-on-scroll">フォームへ移動</a>
   </div>
 </section>
 
@@ -678,6 +864,7 @@ h3{
 <script src="../includes/components.js"></script>
 
 <script>
+// Form submission
 document.addEventListener('DOMContentLoaded', function() {
   const contactForm = document.getElementById('contact-form');
   const submitBtn = document.getElementById('submit-btn');
@@ -718,85 +905,53 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   }
-});
 
-// Global Background Animation (Digital Ocean Style)
-(function () {
-  const canvas = document.getElementById('global-bg');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-  let width, height;
-  let particles = [];
-  let zOff = 0; // Time dimension
+  // Scroll Animation
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
 
-  function resize() {
-    width = canvas.width = window.innerWidth;
-    height = canvas.height = window.innerHeight;
-    initParticles();
-  }
-  window.addEventListener('resize', resize);
-
-  function initParticles() {
-    particles = [];
-    const count = Math.floor(width * height / 2000);
-    for (let i = 0; i < count; i++) {
-      particles.push({
-        x: Math.random() * width,
-        y: Math.random() * height,
-        vx: 0,
-        vy: 0,
-        maxSpeed: Math.random() * 0.8 + 0.2,
-        size: Math.random() > 0.9 ? 1.5 : 0.8,
-        color: Math.random() > 0.5 ? '#2E64BA' : '#4DB899'
-      });
-    }
-  }
-
-  function update() {
-    zOff += 0.0005;
-
-    particles.forEach(p => {
-      const angle = (Math.cos(p.x * 0.002 + zOff) + Math.sin(p.y * 0.002 + zOff)) * Math.PI;
-
-      p.vx += Math.cos(angle) * 0.02;
-      p.vy += Math.sin(angle) * 0.02;
-
-      const speed = Math.sqrt(p.vx * p.vx + p.vy * p.vy);
-      if (speed > p.maxSpeed) {
-        p.vx = (p.vx / speed) * p.maxSpeed;
-        p.vy = (p.vy / speed) * p.maxSpeed;
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, index) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, index * 100);
+        observer.unobserve(entry.target);
       }
-
-      p.x += p.vx;
-      p.y += p.vy;
-
-      if (p.x < 0) { p.x = width; p.vx = 0; p.vy = 0; }
-      if (p.x > width) { p.x = 0; p.vx = 0; p.vy = 0; }
-      if (p.y < 0) { p.y = height; p.vx = 0; p.vy = 0; }
-      if (p.y > height) { p.y = 0; p.vx = 0; p.vy = 0; }
     });
-  }
+  }, observerOptions);
 
-  function draw() {
-    ctx.fillStyle = 'rgba(5, 8, 15, 0.2)';
-    ctx.fillRect(0, 0, width, height);
+  document.querySelectorAll('.animate-on-scroll').forEach(el => {
+    observer.observe(el);
+  });
 
-    particles.forEach(p => {
-      ctx.fillStyle = p.color;
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-      ctx.fill();
+  // Fullpage Navigation
+  const sections = document.querySelectorAll('.fullpage-section');
+  const navDots = document.querySelectorAll('.scroll-nav-dot');
+
+  navDots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+      sections[index].scrollIntoView({ behavior: 'smooth' });
     });
+  });
 
-    requestAnimationFrame(function () {
-      update();
-      draw();
+  const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const index = Array.from(sections).indexOf(entry.target);
+        navDots.forEach((dot, i) => {
+          dot.classList.toggle('active', i === index);
+        });
+      }
     });
-  }
+  }, { threshold: 0.5 });
 
-  resize();
-  draw();
-})();
+  sections.forEach(section => {
+    sectionObserver.observe(section);
+  });
+});
 </script>
 
 </body>
