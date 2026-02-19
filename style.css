@@ -57,12 +57,16 @@ img {
 }
 
 /* ========== HEADER ========== */
-header {
+#site-header {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 1000;
+}
+
+header {
+  position: relative;
   background: rgba(10, 15, 26, 0.95);
   border-bottom: 1px solid var(--line);
   backdrop-filter: blur(12px);
