@@ -65,7 +65,7 @@ img {
   z-index: 1000;
 }
 
-header {
+#site-header header {
   position: relative;
   background: transparent;
   border-bottom: 1px solid transparent;
