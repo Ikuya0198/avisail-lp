@@ -2118,8 +2118,6 @@ footer {
 
 /* ========== FULLPAGE SCROLL SNAP ========== */
 .fullpage-container {
-  height: 100vh;
-  overflow-y: auto;
   scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
 }
@@ -2130,8 +2128,14 @@ footer {
   scroll-snap-stop: always;
   display: flex;
   align-items: flex-start;
-  padding-top: 100px;
+  padding-top: 80px;
   position: relative;
+}
+
+/* Hero section keeps centered alignment */
+.fullpage-section.hero {
+  align-items: center;
+  padding-top: 0;
 }
 
 /* Content blocks for sections (no background) */
@@ -2139,7 +2143,7 @@ footer {
   background: transparent;
   border: none;
   border-radius: 0;
-  padding: 64px 20px;
+  padding: 0 20px;
   position: relative;
   max-width: 1200px;
   margin: 0 auto;
@@ -2150,7 +2154,7 @@ footer {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 40px 20px;
+  padding: 20px 20px 60px;
 }
 
 /* Hero quote - clean white text, no italic */

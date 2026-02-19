@@ -652,278 +652,310 @@
   <!-- Shared Header -->
   <div id="site-header"></div>
 
-  <!-- HERO (unchanged) -->
-  <section class="hero" id="top">
-    <div class="wrap">
-      <span class="slogan animate-in">Navigating the Future. DRIVEN BY DISCOVERY.</span>
+  <!-- Navigation Dots -->
+  <nav class="scroll-nav" id="scrollNav">
+    <div class="scroll-nav-dot active" data-section="top" title="Home"></div>
+    <div class="scroll-nav-dot" data-section="about" title="Philosophy"></div>
+    <div class="scroll-nav-dot" data-section="business" title="Business"></div>
+    <div class="scroll-nav-dot" data-section="products" title="Products"></div>
+    <div class="scroll-nav-dot" data-section="why-avisail" title="Why Avisail"></div>
+    <div class="scroll-nav-dot" data-section="contact" title="Contact"></div>
+  </nav>
 
-      <p class="hero-quote animate-in delay-1">
-        A ship is a symbol of progress. We carry frontier technologies and sail toward horizons yet unseen.
-      </p>
+  <!-- Fullpage Container -->
+  <div class="fullpage-container" id="fullpageContainer">
 
-      <h1 class="animate-in delay-2">
-        Navigating the Future.
-        <span class="gradient-text">Maritime × Security × AI Development</span>
-      </h1>
+    <!-- HERO -->
+    <section class="fullpage-section hero" id="top">
+      <div class="wrap">
+        <span class="slogan animate-in">Navigating the Future. DRIVEN BY DISCOVERY.</span>
 
-      <p class="lead animate-in delay-3" style="max-width: 900px;">
-        Avisail Technologies is a next-generation technology trading company redefining existing business structures and
-        systems through the power of AI and technological exploration.<br class="pc-only">
-        AI-driven automation, analysis, and decision support contribute to every business domain, from international
-        vessel trading to cyber security.
-      </p>
+        <p class="hero-quote-clean animate-in delay-1">
+          A ship is a symbol of progress. We carry frontier technologies and sail toward horizons yet unseen.
+        </p>
 
-      <div style="margin-top:36px; display:flex; gap:14px; flex-wrap:wrap; align-items:center;" class="animate-in delay-4">
-        <a href="security/adcs-en.html" class="cta cta-pulse" style="padding:16px 32px; font-size:1.05rem;">
-          <span style="display:block; font-size:0.75rem; opacity:0.9; margin-bottom:2px;">Free Security Assessment</span>
-          Get Started Now
-        </a>
-        <a href="#business" class="btn" style="padding:14px 28px;">Explore Our Business</a>
-        <a href="#contact" class="btn btn-text" style="padding:14px 20px; background:transparent; border:none;">Contact Us →</a>
+        <h1 class="animate-in delay-2">
+          Navigating the Future.
+          <span class="gradient-text">Maritime × Security × AI Development</span>
+        </h1>
+
+        <p class="lead animate-in delay-3" style="max-width: 900px;">
+          Avisail Technologies is a next-generation technology trading company redefining existing business structures and
+          systems through the power of AI and technological exploration.<br class="pc-only">
+          AI-driven automation, analysis, and decision support contribute to every business domain, from international
+          vessel trading to cyber security.
+        </p>
+
+        <div style="margin-top:36px; display:flex; gap:14px; flex-wrap:wrap; align-items:center;" class="animate-in delay-4">
+          <a href="security/adcs-en.html" class="cta cta-pulse" style="padding:16px 32px; font-size:1.05rem;">
+            <span style="display:block; font-size:0.75rem; opacity:0.9; margin-bottom:2px;">Free Security Assessment</span>
+            Get Started Now
+          </a>
+          <a href="#business" class="btn" style="padding:14px 28px;">Explore Our Business</a>
+          <a href="#contact" class="btn btn-text" style="padding:14px 20px; background:transparent; border:none;">Contact Us →</a>
+        </div>
+        <p style="margin-top:16px; font-size:0.85rem; color:var(--text-muted);" class="animate-in delay-4">
+          <span style="color:var(--accent-teal);">✓</span> No credit card required
+          <span style="margin:0 12px; opacity:0.3;">|</span>
+          <span style="color:var(--accent-teal);">✓</span> Results in 24 hours
+        </p>
       </div>
-      <p style="margin-top:16px; font-size:0.85rem; color:var(--text-muted);" class="animate-in delay-4">
-        <span style="color:var(--accent-teal);">✓</span> No credit card required
-        <span style="margin:0 12px; opacity:0.3;">|</span>
-        <span style="color:var(--accent-teal);">✓</span> Results in 24 hours
-      </p>
-    </div>
-  </section>
 
-  <!-- PHILOSOPHY -->
-  <section class="home-section alt-bg" id="about">
-    <div class="wrap">
-      <span class="section-label animate-on-scroll">Our Philosophy</span>
-      <h2 class="section-title animate-on-scroll">The principles that<br>guide everything we do</h2>
-
-      <div class="philosophy-grid">
-        <div class="philosophy-item animate-on-scroll">
-          <span class="philosophy-number">01</span>
-          <div class="philosophy-content">
-            <h3>Passion</h3>
-            <p>We believe that the notion of "distance" no longer exists in our world. Cultures and markets stand side by side, and new technologies appear before us every day.</p>
-            <p>When a vast vessel — a metaphor for emerging technology — arrives before us, we do not retreat. We move forward and guide that technology toward a truly meaningful and valuable purpose.</p>
-            <p>Courage is the spark of innovation. Delivering that value to people is where our passion lives.</p>
-          </div>
-        </div>
-
-        <div class="philosophy-item animate-on-scroll">
-          <span class="philosophy-number">02</span>
-          <div class="philosophy-content">
-            <h3>Purpose</h3>
-            <p>We devote ourselves to refining technologies that directly enhance human well-being, expanding the new forms of access that transformation makes possible.</p>
-            <p>To never halt progress, and to continually elevate the value we create — that is the purpose that drives our work.</p>
-          </div>
-        </div>
+      <!-- Scroll Indicator -->
+      <div class="scroll-indicator" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">
+        <span>Scroll</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 5v14M5 12l7 7 7-7"/>
+        </svg>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- BUSINESS -->
-  <section class="home-section" id="business">
-    <div class="wrap">
-      <span class="section-label animate-on-scroll">Our Business</span>
-      <h2 class="section-title animate-on-scroll">Two core divisions,<br>one unified vision</h2>
-      <p class="section-lead animate-on-scroll">We operate at the intersection of maritime trade and cybersecurity — creating synergies that single-domain companies cannot achieve.</p>
+    <!-- PHILOSOPHY -->
+    <section class="fullpage-section" id="about">
+      <div class="fullpage-content">
+        <div class="glass-block">
+          <span class="section-label animate-on-scroll">Our Philosophy</span>
+          <h2 class="section-title animate-on-scroll">The principles that<br>guide everything we do</h2>
 
-      <div class="business-grid">
-        <!-- Maritime Business -->
-        <div class="business-card animate-on-scroll">
-          <span class="card-label maritime">Maritime Business</span>
-          <h3>Vessel Trading Platform</h3>
-          <p>AI-powered vessel trading platform delivering premium Japanese vessels worldwide with comprehensive broker services.</p>
-          <p>Real-time high-quality inventory from Japan, Korea, and Eastern Europe. Full brokerage ensuring secure and transparent transactions.</p>
-          <div class="card-image">
-            <img src="images/vessel-trading-platform-preview.png" alt="Vessel Trading Platform" loading="lazy" width="1402" height="776">
-          </div>
-        </div>
+          <div class="philosophy-grid">
+            <div class="philosophy-item animate-on-scroll">
+              <span class="philosophy-number">01</span>
+              <div class="philosophy-content">
+                <h3>Passion</h3>
+                <p>We believe that the notion of "distance" no longer exists in our world. Cultures and markets stand side by side, and new technologies appear before us every day.</p>
+                <p>When a vast vessel — a metaphor for emerging technology — arrives before us, we do not retreat. We move forward and guide that technology toward a truly meaningful and valuable purpose.</p>
+                <p>Courage is the spark of innovation. Delivering that value to people is where our passion lives.</p>
+              </div>
+            </div>
 
-        <!-- Security Business -->
-        <div class="business-card animate-on-scroll">
-          <span class="card-label security">Security Business</span>
-          <h3>Cybersecurity Solutions</h3>
-          <p>Nation-state level offensive security capabilities protecting organizations from advanced digital threats.</p>
-          <p>Predictive threat detection, next-gen OSINT intelligence, and continuous attack surface monitoring at 1/10th the traditional cost.</p>
-          <div class="card-image">
-            <img src="images/security-dashboard-preview.png" alt="Security Dashboard" loading="lazy" width="2238" height="1548">
+            <div class="philosophy-item animate-on-scroll">
+              <span class="philosophy-number">02</span>
+              <div class="philosophy-content">
+                <h3>Purpose</h3>
+                <p>We devote ourselves to refining technologies that directly enhance human well-being, expanding the new forms of access that transformation makes possible.</p>
+                <p>To never halt progress, and to continually elevate the value we create — that is the purpose that drives our work.</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- PRODUCTS -->
-  <section class="home-section alt-bg" id="products">
-    <div class="wrap">
-      <span class="section-label animate-on-scroll">Products & Services</span>
-      <h2 class="section-title animate-on-scroll">Ready to deploy.<br>Full support included.</h2>
+    <!-- BUSINESS -->
+    <section class="fullpage-section" id="business">
+      <div class="fullpage-content">
+        <div class="glass-block">
+          <span class="section-label animate-on-scroll">Our Business</span>
+          <h2 class="section-title animate-on-scroll">Two core divisions,<br>one unified vision</h2>
+          <p class="section-lead animate-on-scroll">We operate at the intersection of maritime trade and cybersecurity — creating synergies that single-domain companies cannot achieve.</p>
 
-      <div class="products-grid">
-        <!-- Vessel Trading -->
-        <div class="product-card animate-on-scroll">
-          <span class="product-label maritime">Maritime</span>
-          <h4>Vessel Trading Platform</h4>
-          <p class="problem">Overseas buyers struggle to find reliable Japanese quality vessels in real-time and lack trusted transaction support.</p>
-          <div class="pricing"><strong>Pricing:</strong> Success-based fees only</div>
-          <a href="maritime/vessel-trading-en.html" class="cta-link">View Platform</a>
-        </div>
+          <div class="business-grid">
+            <!-- Maritime Business -->
+            <div class="business-card animate-on-scroll">
+              <span class="card-label maritime">Maritime Business</span>
+              <h3>Vessel Trading Platform</h3>
+              <p>AI-powered vessel trading platform delivering premium Japanese vessels worldwide with comprehensive broker services.</p>
+              <p>Real-time high-quality inventory from Japan, Korea, and Eastern Europe. Full brokerage ensuring secure and transparent transactions.</p>
+              <div class="card-image">
+                <img src="images/vessel-trading-platform-preview.png" alt="Vessel Trading Platform" loading="lazy" width="1402" height="776">
+              </div>
+            </div>
 
-        <!-- Maritime Security -->
-        <div class="product-card animate-on-scroll">
-          <span class="product-label maritime">Maritime</span>
-          <h4>Vessel Security Management</h4>
-          <p class="problem">Unable to prove compliance during ISM/SMS audits. High business suspension risk due to accountability gaps.</p>
-          <div class="pricing"><strong>Pricing:</strong> From $700/month</div>
-          <a href="maritime/cyber-accountability-en.html" class="cta-link">Learn More</a>
-        </div>
-
-        <!-- Trust Infrastructure -->
-        <div class="product-card animate-on-scroll">
-          <span class="product-label maritime">Maritime</span>
-          <h4>Trust Infrastructure</h4>
-          <p class="problem">Document tampering risks and siloed sanctions/compliance handling undermine transaction trust.</p>
-          <div class="pricing"><strong>Pricing:</strong> From $350/month</div>
-          <a href="maritime/trust-infrastructure-en.html" class="cta-link">Learn More</a>
-        </div>
-
-        <!-- ADCS -->
-        <div class="product-card animate-on-scroll">
-          <span class="product-label security">Security</span>
-          <h4>ADCS</h4>
-          <p class="problem">Traditional security services are expensive, leaving SMBs and municipalities defenseless against threats.</p>
-          <div class="pricing"><strong>Pricing:</strong> Free assessment available</div>
-          <a href="security/adcs-en.html" class="cta-link" style="background: linear-gradient(135deg, var(--accent-blue), #5A8FD6);">Get Free Assessment</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- STATS -->
-  <section class="stats-section">
-    <div class="wrap">
-      <span class="section-label animate-on-scroll">By The Numbers</span>
-      <h2 class="section-title animate-on-scroll">Proven results,<br>measured impact</h2>
-
-      <div class="stats-grid-new">
-        <div class="stat-card animate-on-scroll">
-          <div class="number">24/7</div>
-          <div class="label">System Uptime</div>
-        </div>
-        <div class="stat-card animate-on-scroll">
-          <div class="number">99%</div>
-          <div class="label">Threat Detection</div>
-        </div>
-        <div class="stat-card animate-on-scroll">
-          <div class="number">3</div>
-          <div class="label">Global Regions</div>
-        </div>
-        <div class="stat-card animate-on-scroll">
-          <div class="number">&lt;24h</div>
-          <div class="label">Response Time</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- WHY AVISAIL -->
-  <section class="home-section" id="why-avisail">
-    <div class="wrap">
-      <span class="section-label animate-on-scroll">Why Avisail</span>
-      <h2 class="section-title animate-on-scroll">What sets us apart</h2>
-
-      <div class="why-grid-new">
-        <div class="why-card-new animate-on-scroll">
-          <h3>Implementation-First Philosophy</h3>
-          <p>We deliver systems that actually work from day one, not just theories and plans. All solutions are built on technology we operate in-house.</p>
-        </div>
-
-        <div class="why-card-new animate-on-scroll">
-          <h3>AI-Driven Efficiency</h3>
-          <p>AI-driven automation achieves 24/7 operation, enabling enterprise-grade services at one-tenth the traditional cost.</p>
-        </div>
-
-        <div class="why-card-new animate-on-scroll">
-          <h3>Global Perspective</h3>
-          <p>Business expansion across Asia, the Middle East, and Europe with multilingual support and understanding of local business customs.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA BANNER -->
-  <section class="cta-banner-new">
-    <div class="wrap">
-      <h3 class="animate-on-scroll">Ready to Secure Your Business?</h3>
-      <p class="animate-on-scroll">Start with a free security assessment. No commitment required.</p>
-      <div class="cta-buttons animate-on-scroll">
-        <a href="security/adcs-en.html" class="cta-btn-primary">Get Free Assessment</a>
-        <a href="#contact" class="cta-btn-secondary">Talk to an Expert</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section class="home-section" id="contact">
-    <div class="wrap">
-      <span class="section-label animate-on-scroll">Contact</span>
-      <h2 class="section-title animate-on-scroll">Get in touch</h2>
-
-      <div class="contact-card animate-on-scroll">
-        <h3>Let's Start a Conversation</h3>
-        <p>Feel free to contact us with questions, service inquiries, or partnership proposals.<br>Our team will respond within 1 business day.</p>
-        <a href="en/contact.html" class="cta-btn-primary">Contact Form</a>
-
-        <div class="contact-info">
-          <div class="contact-info-item">
-            <span>Email</span>
-            <p>info@avisail.com</p>
-          </div>
-          <div class="contact-info-item">
-            <span>Languages</span>
-            <p>English / Japanese / Italian</p>
-          </div>
-          <div class="contact-info-item">
-            <span>Response</span>
-            <p>Within 1 business day</p>
+            <!-- Security Business -->
+            <div class="business-card animate-on-scroll">
+              <span class="card-label security">Security Business</span>
+              <h3>Cybersecurity Solutions</h3>
+              <p>Nation-state level offensive security capabilities protecting organizations from advanced digital threats.</p>
+              <p>Predictive threat detection, next-gen OSINT intelligence, and continuous attack surface monitoring at 1/10th the traditional cost.</p>
+              <div class="card-image">
+                <img src="images/security-dashboard-preview.png" alt="Security Dashboard" loading="lazy" width="2238" height="1548">
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- FAQ -->
-  <section class="home-section alt-bg" id="faq">
-    <div class="wrap">
-      <span class="section-label animate-on-scroll">FAQ</span>
-      <h2 class="section-title animate-on-scroll">Frequently asked questions</h2>
+    <!-- PRODUCTS -->
+    <section class="fullpage-section" id="products">
+      <div class="fullpage-content">
+        <div class="glass-block">
+          <span class="section-label animate-on-scroll">Products & Services</span>
+          <h2 class="section-title animate-on-scroll">Ready to deploy.<br>Full support included.</h2>
 
-      <div class="faq-grid">
-        <div class="faq-item-new animate-on-scroll">
-          <div class="question">What kind of company is Avisail Technologies?</div>
-          <div class="answer">Avisail is a technology company operating in three domains: maritime business, security business, and AI development, all based on AI technology. With an implementation-first approach, we achieve both high speed and quality even with a small team.</div>
-        </div>
+          <div class="products-grid">
+            <!-- Vessel Trading -->
+            <div class="product-card animate-on-scroll">
+              <span class="product-label maritime">Maritime</span>
+              <h4>Vessel Trading Platform</h4>
+              <p class="problem">Overseas buyers struggle to find reliable Japanese quality vessels in real-time and lack trusted transaction support.</p>
+              <div class="pricing"><strong>Pricing:</strong> Success-based fees only</div>
+              <a href="maritime/vessel-trading-en.html" class="cta-link">View Platform</a>
+            </div>
 
-        <div class="faq-item-new animate-on-scroll">
-          <div class="question">Can both corporations and individuals use your services?</div>
-          <div class="answer">Yes. Vessel trading and cybersecurity primarily target corporations, while some system development services are also available to individuals.</div>
-        </div>
+            <!-- Maritime Security -->
+            <div class="product-card animate-on-scroll">
+              <span class="product-label maritime">Maritime</span>
+              <h4>Vessel Security Management</h4>
+              <p class="problem">Unable to prove compliance during ISM/SMS audits. High business suspension risk due to accountability gaps.</p>
+              <div class="pricing"><strong>Pricing:</strong> From $700/month</div>
+              <a href="maritime/cyber-accountability-en.html" class="cta-link">Learn More</a>
+            </div>
 
-        <div class="faq-item-new animate-on-scroll">
-          <div class="question">Do you support global operations?</div>
-          <div class="answer">Yes. Avisail is designed for transactions across Asia, the Middle East, and Europe, enabling multilingual, multi-currency, and internationally compliant support.</div>
-        </div>
+            <!-- Trust Infrastructure -->
+            <div class="product-card animate-on-scroll">
+              <span class="product-label maritime">Maritime</span>
+              <h4>Trust Infrastructure</h4>
+              <p class="problem">Document tampering risks and siloed sanctions/compliance handling undermine transaction trust.</p>
+              <div class="pricing"><strong>Pricing:</strong> From $350/month</div>
+              <a href="maritime/trust-infrastructure-en.html" class="cta-link">Learn More</a>
+            </div>
 
-        <div class="faq-item-new animate-on-scroll">
-          <div class="question">How do you approach security and privacy?</div>
-          <div class="answer">Data protection and privacy are our top priorities. We implement communication encryption, access management, and regular vulnerability assessments.</div>
-        </div>
-
-        <div class="faq-item-new animate-on-scroll">
-          <div class="question">Can we discuss partnerships or collaborations?</div>
-          <div class="answer">Yes, we actively welcome such discussions. Please select "Partnership" in the contact form. We welcome technical partnerships, sales agencies, and joint development.</div>
+            <!-- ADCS -->
+            <div class="product-card animate-on-scroll">
+              <span class="product-label security">Security</span>
+              <h4>ADCS</h4>
+              <p class="problem">Traditional security services are expensive, leaving SMBs and municipalities defenseless against threats.</p>
+              <div class="pricing"><strong>Pricing:</strong> Free assessment available</div>
+              <a href="security/adcs-en.html" class="cta-link" style="background: linear-gradient(135deg, var(--accent-blue), #5A8FD6);">Get Free Assessment</a>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+
+    <!-- STATS -->
+    <section class="fullpage-section" id="stats">
+      <div class="fullpage-content">
+        <div class="glass-block" style="text-align: center;">
+          <span class="section-label animate-on-scroll">By The Numbers</span>
+          <h2 class="section-title animate-on-scroll">Proven results,<br>measured impact</h2>
+
+          <div class="stats-grid-new">
+            <div class="stat-card animate-on-scroll">
+              <div class="number">24/7</div>
+              <div class="label">System Uptime</div>
+            </div>
+            <div class="stat-card animate-on-scroll">
+              <div class="number">99%</div>
+              <div class="label">Threat Detection</div>
+            </div>
+            <div class="stat-card animate-on-scroll">
+              <div class="number">3</div>
+              <div class="label">Global Regions</div>
+            </div>
+            <div class="stat-card animate-on-scroll">
+              <div class="number">&lt;24h</div>
+              <div class="label">Response Time</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHY AVISAIL -->
+    <section class="fullpage-section" id="why-avisail">
+      <div class="fullpage-content">
+        <div class="glass-block">
+          <span class="section-label animate-on-scroll">Why Avisail</span>
+          <h2 class="section-title animate-on-scroll">What sets us apart</h2>
+
+          <div class="why-grid-new">
+            <div class="why-card-new animate-on-scroll">
+              <h3>Implementation-First Philosophy</h3>
+              <p>We deliver systems that actually work from day one, not just theories and plans. All solutions are built on technology we operate in-house.</p>
+            </div>
+
+            <div class="why-card-new animate-on-scroll">
+              <h3>AI-Driven Efficiency</h3>
+              <p>AI-driven automation achieves 24/7 operation, enabling enterprise-grade services at one-tenth the traditional cost.</p>
+            </div>
+
+            <div class="why-card-new animate-on-scroll">
+              <h3>Global Perspective</h3>
+              <p>Business expansion across Asia, the Middle East, and Europe with multilingual support and understanding of local business customs.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT (with CTA) -->
+    <section class="fullpage-section" id="contact">
+      <div class="fullpage-content">
+        <div class="glass-block" style="text-align: center;">
+          <h3 class="section-title animate-on-scroll">Ready to Secure Your Business?</h3>
+          <p class="section-lead animate-on-scroll" style="max-width: 600px; margin: 0 auto 32px;">Start with a free security assessment. No commitment required.</p>
+          <div class="cta-buttons animate-on-scroll" style="margin-bottom: 64px;">
+            <a href="security/adcs-en.html" class="cta-btn-primary">Get Free Assessment</a>
+            <a href="en/contact.html" class="cta-btn-secondary">Talk to an Expert</a>
+          </div>
+
+          <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 48px;">
+            <span class="section-label animate-on-scroll">Contact</span>
+            <h2 class="section-title animate-on-scroll" style="font-size: 1.5rem;">Get in touch</h2>
+
+            <p class="animate-on-scroll" style="color: var(--text-secondary); margin-bottom: 32px;">
+              Feel free to contact us with questions, service inquiries, or partnership proposals.<br>Our team will respond within 1 business day.
+            </p>
+
+            <div class="contact-info animate-on-scroll" style="max-width: 600px; margin: 0 auto;">
+              <div class="contact-info-item">
+                <span>Email</span>
+                <p>info@avisail.com</p>
+              </div>
+              <div class="contact-info-item">
+                <span>Languages</span>
+                <p>English / Japanese / Italian</p>
+              </div>
+              <div class="contact-info-item">
+                <span>Response</span>
+                <p>Within 1 business day</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="fullpage-section" id="faq">
+      <div class="fullpage-content">
+        <div class="glass-block">
+          <span class="section-label animate-on-scroll">FAQ</span>
+          <h2 class="section-title animate-on-scroll">Frequently asked questions</h2>
+
+          <div class="faq-grid">
+            <div class="faq-item-new animate-on-scroll">
+              <div class="question">What kind of company is Avisail Technologies?</div>
+              <div class="answer">Avisail is a technology company operating in three domains: maritime business, security business, and AI development, all based on AI technology. With an implementation-first approach, we achieve both high speed and quality even with a small team.</div>
+            </div>
+
+            <div class="faq-item-new animate-on-scroll">
+              <div class="question">Can both corporations and individuals use your services?</div>
+              <div class="answer">Yes. Vessel trading and cybersecurity primarily target corporations, while some system development services are also available to individuals.</div>
+            </div>
+
+            <div class="faq-item-new animate-on-scroll">
+              <div class="question">Do you support global operations?</div>
+              <div class="answer">Yes. Avisail is designed for transactions across Asia, the Middle East, and Europe, enabling multilingual, multi-currency, and internationally compliant support.</div>
+            </div>
+
+            <div class="faq-item-new animate-on-scroll">
+              <div class="question">How do you approach security and privacy?</div>
+              <div class="answer">Data protection and privacy are our top priorities. We implement communication encryption, access management, and regular vulnerability assessments.</div>
+            </div>
+
+            <div class="faq-item-new animate-on-scroll">
+              <div class="question">Can we discuss partnerships or collaborations?</div>
+              <div class="answer">Yes, we actively welcome such discussions. Please select "Partnership" in the contact form. We welcome technical partnerships, sales agencies, and joint development.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- End Fullpage Container -->
 
   <!-- Shared Footer -->
   <div id="site-footer"></div>
@@ -976,6 +1008,44 @@
 
   <script>
     document.addEventListener("DOMContentLoaded", function () {
+      const container = document.getElementById('fullpageContainer');
+      const scrollNav = document.getElementById('scrollNav');
+      const dots = scrollNav ? scrollNav.querySelectorAll('.scroll-nav-dot') : [];
+      const sections = document.querySelectorAll('.fullpage-section');
+
+      // Scroll Navigation - Click to navigate
+      dots.forEach(dot => {
+        dot.addEventListener('click', () => {
+          const sectionId = dot.getAttribute('data-section');
+          const section = document.getElementById(sectionId);
+          if (section) {
+            section.scrollIntoView({ behavior: 'smooth' });
+          }
+        });
+      });
+
+      // Update active dot on scroll
+      if (dots.length > 0) {
+        const updateActiveDot = () => {
+          let currentSection = '';
+          sections.forEach(section => {
+            const rect = section.getBoundingClientRect();
+            if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
+              currentSection = section.id;
+            }
+          });
+
+          dots.forEach(dot => {
+            dot.classList.remove('active');
+            if (dot.getAttribute('data-section') === currentSection) {
+              dot.classList.add('active');
+            }
+          });
+        };
+
+        window.addEventListener('scroll', updateActiveDot, { passive: true });
+      }
+
       // Scroll Animation Observer
       const observerOptions = {
         threshold: 0.1,
