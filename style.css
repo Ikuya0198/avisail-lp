@@ -2129,9 +2129,9 @@ footer {
   scroll-snap-align: start;
   scroll-snap-stop: always;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
+  padding-top: 100px;
   position: relative;
-  padding: 0;
 }
 
 /* Content blocks for sections (no background) */
