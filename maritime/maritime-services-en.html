@@ -9,218 +9,9 @@
 <link rel="alternate" hreflang="ja" href="https://avisail.com/maritime/maritime-services-ja.html">
 <link rel="alternate" hreflang="en" href="https://avisail.com/maritime/maritime-services-en.html">
 <link rel="icon" type="image/svg+xml" href="../favicon.svg">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../style.css">
-<style>
-.page-hero{
-  padding:80px 0 40px;
-  background:
-    linear-gradient(rgba(10,15,26,0.85),rgba(10,15,26,0.92)),
-    radial-gradient(ellipse at 30% 20%,rgba(59,130,246,0.15),transparent 50%),
-    radial-gradient(ellipse at 70% 80%,rgba(16,185,129,0.12),transparent 50%),
-    url('../images/hero-bg.jpg') center/cover,
-    var(--bg-dark);
-  position:relative;
-  overflow:hidden;
-}
-.page-hero .wrap{position:relative;z-index:2;}
-.hero-badge{
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  padding:8px 16px;
-  background:rgba(59,130,246,0.15);
-  border:2px solid rgba(59,130,246,0.35);
-  border-radius:20px;
-  color:#3b82f6;
-  font-size:0.8rem;
-  font-weight:700;
-  margin-bottom:16px;
-  letter-spacing:0.05em;
-}
-.page-hero h1{
-  font-size:clamp(2rem,5vw,3rem);
-  margin-bottom:16px;
-  color:#fff;
-  font-weight:800;
-  line-height:1.2;
-}
-.page-hero h1 span{
-  background:linear-gradient(135deg,#3b82f6,#10b981);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-  background-clip:text;
-}
-.page-hero .lead{
-  color:var(--text-secondary);
-  max-width:950px;
-  font-size:1.05rem;
-  line-height:1.6;
-  margin-bottom:20px;
-}
-
-.services-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(500px,1fr));
-  gap:24px;
-  margin-top:30px;
-}
-@media(max-width:1100px){
-  .services-grid{
-    grid-template-columns:1fr;
-  }
-}
-.service-card{
-  background:linear-gradient(135deg,rgba(59,130,246,0.08),rgba(16,185,129,0.05));
-  border:2px solid rgba(59,130,246,0.3);
-  border-radius:12px;
-  padding:24px 28px;
-  position:relative;
-  overflow:hidden;
-  transition:all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  cursor:pointer;
-}
-.service-card:hover{
-  border-color:rgba(59,130,246,0.6);
-  transform:translateY(-4px);
-  box-shadow:0 12px 40px rgba(59,130,246,0.2);
-}
-.service-card > *{
-  position:relative;
-  z-index:2;
-}
-.service-icon{
-  width:50px;
-  height:50px;
-  background:linear-gradient(135deg,#3b82f6,#10b981);
-  border-radius:10px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:1.5rem;
-  margin-bottom:12px;
-  box-shadow:0 4px 16px rgba(59,130,246,0.3);
-}
-.service-number{
-  display:inline-block;
-  background:rgba(59,130,246,0.2);
-  border:1px solid rgba(59,130,246,0.4);
-  padding:4px 10px;
-  border-radius:12px;
-  font-size:0.7rem;
-  font-weight:800;
-  color:#3b82f6;
-  margin-bottom:10px;
-  letter-spacing:0.05em;
-}
-.service-card h3{
-  font-size:1.5rem;
-  margin-bottom:8px;
-  color:#fff;
-  font-weight:800;
-}
-.service-card .subtitle{
-  color:#3b82f6;
-  font-size:0.9rem;
-  font-weight:700;
-  margin-bottom:12px;
-  letter-spacing:0.02em;
-}
-.service-card p{
-  color:var(--text-secondary);
-  font-size:0.95rem;
-  line-height:1.6;
-  margin-bottom:16px;
-}
-.feature-list{
-  list-style:none;
-  padding:0;
-  margin:0 0 20px 0;
-}
-.feature-list li{
-  padding:8px 0;
-  color:var(--text-secondary);
-  font-size:0.9rem;
-  display:flex;
-  align-items:flex-start;
-  gap:10px;
-  line-height:1.5;
-  border-bottom:1px solid rgba(59,130,246,0.15);
-}
-.feature-list li:last-child{
-  border-bottom:none;
-}
-.feature-list li::before{
-  content:'✓';
-  color:#10b981;
-  font-weight:700;
-  flex-shrink:0;
-  margin-top:2px;
-  font-size:1rem;
-}
-.service-card .cta{
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  padding:12px 28px;
-  font-size:0.95rem;
-  background:linear-gradient(135deg,#3b82f6,#10b981);
-  color:#fff;
-  text-decoration:none;
-  border-radius:8px;
-  font-weight:700;
-  transition:all 0.3s ease;
-  box-shadow:0 4px 16px rgba(59,130,246,0.3);
-}
-.service-card .cta:hover{
-  transform:translateX(4px);
-  box-shadow:0 6px 24px rgba(59,130,246,0.4);
-}
-.service-card .cta svg{
-  width:16px;
-  height:16px;
-  transition:transform 0.3s ease;
-}
-.service-card:hover .cta svg{
-  transform:translateX(4px);
-}
-
-.stats-section{
-  background:rgba(5,8,15,0.6);
-  border-radius:12px;
-  padding:32px 28px;
-  margin-top:30px;
-  border:2px solid rgba(59,130,246,0.2);
-}
-.stats-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
-  gap:24px;
-  margin-top:20px;
-}
-.stat-item{
-  text-align:center;
-}
-.stat-number{
-  font-size:2rem;
-  font-weight:800;
-  background:linear-gradient(135deg,#3b82f6,#10b981);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-  background-clip:text;
-  margin-bottom:6px;
-}
-.stat-label{
-  color:var(--text-secondary);
-  font-size:0.9rem;
-}
-
-@media(max-width:768px){
-  .page-hero{padding:60px 0 30px;}
-  .service-card{padding:24px 20px;}
-  .services-grid{gap:20px;}
-}
-</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
 
 <!-- JSON-LD Structured Data -->
 <script type="application/ld+json">
@@ -233,105 +24,639 @@
   "serviceType": ["Maritime Trading", "Maritime Cybersecurity"]
 }
 </script>
+
+<style>
+:root {
+  --bg-primary: #0a0f1a;
+  --bg-secondary: #060910;
+  --text-primary: #ffffff;
+  --text-secondary: #b8c5d6;
+  --text-muted: #6b7a8f;
+  --accent: #7ef0d4;
+  --accent-blue: #6aa6ff;
+  --line: rgba(255,255,255,0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; text-decoration: none; }
+
+.wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ========== CANVAS BACKGROUND ========== */
+#particle-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ========== FULLPAGE SCROLL SNAP ========== */
+.fullpage-section {
+  min-height: 100vh;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  display: flex;
+  align-items: flex-start;
+  padding-top: 80px;
+  position: relative;
+  z-index: 1;
+}
+
+.fullpage-section.hero-section {
+  align-items: center;
+  padding-top: 0;
+}
+
+.fullpage-section.cta-section {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+/* ========== NAVIGATION DOTS ========== */
+.scroll-nav {
+  position: fixed;
+  right: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.scroll-nav-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+  border: 1px solid rgba(255,255,255,0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.scroll-nav-dot:hover {
+  background: rgba(255,255,255,0.4);
+  border-color: rgba(255,255,255,0.5);
+}
+
+.scroll-nav-dot.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  box-shadow: 0 0 12px rgba(126,240,212,0.5);
+}
+
+@media (max-width: 768px) {
+  .scroll-nav {
+    right: 12px;
+    gap: 8px;
+  }
+  .scroll-nav-dot {
+    width: 8px;
+    height: 8px;
+  }
+}
+
+/* ========== HERO SECTION ========== */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  padding: 120px 24px;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(106,166,255,0.15), transparent),
+    radial-gradient(ellipse 60% 40% at 50% 120%, rgba(126,240,212,0.1), transparent);
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 900px;
+}
+
+.hero-label {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 32px;
+  opacity: 0;
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+.hero h1 {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin-bottom: 32px;
+  opacity: 0;
+  animation: fadeInUp 0.8s ease 0.1s forwards;
+}
+
+.hero h1 span {
+  background: linear-gradient(135deg, var(--accent-blue), var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-lead {
+  font-size: clamp(1rem, 1.8vw, 1.25rem);
+  color: var(--text-secondary);
+  line-height: 1.8;
+  max-width: 720px;
+  margin: 0 auto 40px;
+  opacity: 0;
+  animation: fadeInUp 0.8s ease 0.2s forwards;
+}
+
+.hero-accent {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 24px;
+  background: linear-gradient(135deg, rgba(106,166,255,0.08), rgba(126,240,212,0.04));
+  border: 1px solid rgba(126,240,212,0.2);
+  border-radius: 50px;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  opacity: 0;
+  animation: fadeInUp 0.8s ease 0.3s forwards;
+}
+
+.hero-accent strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 48px;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  animation: fadeInUp 0.8s ease 0.4s forwards;
+}
+
+.scroll-indicator span {
+  display: block;
+  width: 1px;
+  height: 60px;
+  background: linear-gradient(to bottom, var(--accent), transparent);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+
+@keyframes scrollPulse {
+  0%, 100% { transform: scaleY(1); opacity: 1; }
+  50% { transform: scaleY(0.6); opacity: 0.5; }
+}
+
+/* ========== SECTION STYLES ========== */
+.section-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+
+.section-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+  line-height: 1.2;
+}
+
+.section-subtitle {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--accent);
+  margin-bottom: 32px;
+  letter-spacing: 0.02em;
+}
+
+/* ========== BUSINESS CARD (Service Sections) ========== */
+.service-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: start;
+}
+
+.service-text p {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  line-height: 1.9;
+  margin-bottom: 32px;
+}
+
+.service-features {
+  padding: 40px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  position: relative;
+  overflow: hidden;
+}
+
+.service-features::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-blue), var(--accent));
+}
+
+.tech-list {
+  list-style: none;
+}
+
+.tech-list li {
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.tech-list li:last-child {
+  border-bottom: none;
+}
+
+.tech-list li::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+}
+
+.cta-btn {
+  display: inline-block;
+  padding: 18px 48px;
+  background: linear-gradient(135deg, var(--accent-blue), var(--accent));
+  color: var(--bg-primary);
+  font-weight: 700;
+  font-size: 1rem;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  margin-top: 8px;
+}
+
+.cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 20px 40px rgba(106,166,255,0.3);
+}
+
+/* ========== CTA SECTION ========== */
+.cta-section h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 24px;
+}
+
+.cta-section p {
+  font-size: 1.15rem;
+  color: var(--text-secondary);
+  margin-bottom: 40px;
+}
+
+/* ========== ANIMATIONS ========== */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 1024px) {
+  .service-layout {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .fullpage-section {
+    min-height: auto;
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+
+  .hero {
+    padding: 100px 24px;
+    min-height: 100vh;
+  }
+
+  .service-features {
+    padding: 28px 20px;
+  }
+
+  .cta-btn {
+    padding: 16px 36px;
+    font-size: 0.95rem;
+  }
+}
+</style>
 </head>
-<body style="background:#0a0f1a;">
+<body>
+
+<!-- Canvas Particle Background -->
+<canvas id="particle-canvas"></canvas>
 
 <!-- Shared Header -->
 <div id="site-header"></div>
 
-<!-- Hero Section -->
-<section class="page-hero">
-<div class="wrap">
-<div class="hero-badge">
-⚓ MARITIME BUSINESS
-</div>
-<h1>
-<span>Vessel Trading × Security</span><br>
-Digital Revolution in Maritime Industry
-</h1>
-<p class="lead">
-Avisail solves two critical challenges in the maritime industry with cutting-edge technology.<br>
-Transparency and efficiency in used vessel trading, and cybersecurity measures specific to maritime operations.<br>
-Driving DX in the maritime industry with global perspective and specialized expertise.
-</p>
+<!-- Navigation Dots -->
+<nav class="scroll-nav">
+  <div class="scroll-nav-dot active" data-section="0" title="Hero"></div>
+  <div class="scroll-nav-dot" data-section="1" title="Vessel Trading"></div>
+  <div class="scroll-nav-dot" data-section="2" title="Maritime Security"></div>
+  <div class="scroll-nav-dot" data-section="3" title="Contact"></div>
+</nav>
 
-<div style="display:inline-flex;align-items:center;gap:12px;padding:12px 20px;background:rgba(59,130,246,0.12);border:2px solid rgba(59,130,246,0.3);border-radius:8px;">
-<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2">
-<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-</svg>
-<span style="color:var(--text-secondary);font-size:0.95rem;">
-<strong style="color:#fff;">Two specialized solutions</strong> for comprehensive maritime support
-</span>
-</div>
-</div>
+<!-- Section 1: Hero -->
+<section class="hero fullpage-section hero-section">
+  <div class="hero-content">
+    <span class="hero-label">MARITIME BUSINESS</span>
+    <h1><span>Vessel Trading × Security</span><br>Digital Revolution in Maritime Industry</h1>
+    <p class="hero-lead">Avisail solves two critical challenges in the maritime industry with cutting-edge technology. Transparency and efficiency in used vessel trading, and cybersecurity measures specific to maritime operations. Driving DX in the maritime industry with global perspective and specialized expertise.</p>
+    <div class="hero-accent">
+      <span><strong>Two specialized solutions</strong> for comprehensive maritime support</span>
+    </div>
+  </div>
+  <div class="scroll-indicator">
+    <span></span>
+  </div>
 </section>
 
-<!-- Services Grid -->
-<section style="padding:40px 0 60px;">
-<div class="wrap">
-<div class="services-grid">
-<!-- Used Vessel Brokerage -->
-<a href="vessel-trading-en.html" class="service-card" style="text-decoration:none;">
-<div class="service-number">SOLUTION 01</div>
-<div class="service-icon">🚢</div>
-<h3>Used Vessel Brokerage</h3>
-<div class="subtitle">Vessel Trading Platform</div>
-<p>
-A brokerage platform managing used vessels worldwide. Utilizing a database of 340+ vessels to enable transparent trading. AI-powered valuation instantly calculates vessel market value, shipping costs, and total post-purchase costs. Multi-language support in Japanese, English, and Arabic facilitates seamless global transactions. Covering shipping routes across 9 countries, we provide optimal logistics solutions. Digitizing traditional brokerage operations, we significantly enhance transaction efficiency and price fairness.
-</p>
+<!-- Section 2: Vessel Trading -->
+<section class="fullpage-section">
+  <div class="wrap">
+    <span class="section-label animate-on-scroll">Service 01</span>
+    <h2 class="section-title animate-on-scroll">Used Vessel Brokerage</h2>
+    <div class="section-subtitle animate-on-scroll">Vessel Trading Platform</div>
 
-<ul class="feature-list">
-<li>340+ vessel database</li>
-<li>AI-powered market valuation</li>
-<li>Automated shipping cost calculation</li>
-<li>Multi-language support (Japanese, English, Arabic)</li>
-<li>Total Cost Calculator integrated</li>
-<li>9-country shipping route coverage</li>
-</ul>
+    <div class="service-layout">
+      <div class="service-text animate-on-scroll">
+        <p>A brokerage platform managing used vessels worldwide. Utilizing a database of 340+ vessels to enable transparent trading. AI-powered valuation instantly calculates vessel market value, shipping costs, and total post-purchase costs. Multi-language support in Japanese, English, and Arabic facilitates seamless global transactions. Covering shipping routes across 9 countries, we provide optimal logistics solutions. Digitizing traditional brokerage operations, we significantly enhance transaction efficiency and price fairness.</p>
+        <a href="vessel-trading-en.html" class="cta-btn">Learn More</a>
+      </div>
 
-<div class="cta">
-Learn More
-<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-<path d="M5 12h14M12 5l7 7-7 7"/>
-</svg>
-</div>
-</a>
+      <div class="service-features animate-on-scroll">
+        <ul class="tech-list">
+          <li>340+ vessel database</li>
+          <li>AI-powered market valuation</li>
+          <li>Automated shipping cost calculation</li>
+          <li>Multi-language support (Japanese, English, Arabic)</li>
+          <li>Total Cost Calculator integrated</li>
+          <li>9-country shipping route coverage</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
 
-<!-- Maritime Cybersecurity -->
-<a href="maritime-security-en.html" class="service-card" style="text-decoration:none;">
-<div class="service-number">SOLUTION 02</div>
-<div class="service-icon">🔐</div>
-<h3>Maritime Cybersecurity System</h3>
-<div class="subtitle">Maritime Cybersecurity Solution</div>
-<p>
-A cybersecurity platform specialized for the maritime industry. Fully compliant with IMO regulations, NIS2 Directive, and GDPR, meeting international compliance requirements. Unified protection for vessel OT (Operational Technology) and IT (Information Technology), with 24/7 monitoring of navigation data, port systems, and entire supply chains. Real-time threat detection prevents cyber attacks, data breaches, and system intrusions. Addressing maritime-specific security risks, we ensure vessel operational safety and business continuity.
-</p>
+<!-- Section 3: Maritime Security -->
+<section class="fullpage-section" style="background: var(--bg-secondary);">
+  <div class="wrap">
+    <span class="section-label animate-on-scroll">Service 02</span>
+    <h2 class="section-title animate-on-scroll">Maritime Cybersecurity System</h2>
+    <div class="section-subtitle animate-on-scroll">Maritime Cybersecurity Solution</div>
 
-<ul class="feature-list">
-<li>Full IMO and NIS2 Directive compliance</li>
-<li>Unified vessel OT/IT security</li>
-<li>Real-time threat detection</li>
-<li>GDPR-compliant navigation data protection</li>
-<li>Supply chain visibility</li>
-<li>World-class security standards</li>
-</ul>
+    <div class="service-layout">
+      <div class="service-text animate-on-scroll">
+        <p>A cybersecurity platform specialized for the maritime industry. Fully compliant with IMO regulations, NIS2 Directive, and GDPR, meeting international compliance requirements. Unified protection for vessel OT (Operational Technology) and IT (Information Technology), with 24/7 monitoring of navigation data, port systems, and entire supply chains. Real-time threat detection prevents cyber attacks, data breaches, and system intrusions. Addressing maritime-specific security risks, we ensure vessel operational safety and business continuity.</p>
+        <a href="maritime-security-en.html" class="cta-btn">Learn More</a>
+      </div>
 
-<div class="cta">
-Learn More
-<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-<path d="M5 12h14M12 5l7 7-7 7"/>
-</svg>
-</div>
-</a>
-</div>
-</div>
+      <div class="service-features animate-on-scroll">
+        <ul class="tech-list">
+          <li>Full IMO and NIS2 Directive compliance</li>
+          <li>Unified vessel OT/IT security</li>
+          <li>Real-time threat detection</li>
+          <li>GDPR-compliant navigation data protection</li>
+          <li>Supply chain visibility</li>
+          <li>World-class security standards</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section 4: CTA -->
+<section class="fullpage-section cta-section">
+  <div class="wrap">
+    <h2 class="animate-on-scroll">Discuss Maritime Business Solutions</h2>
+    <p class="animate-on-scroll">Contact us for vessel trading and security consultations.</p>
+    <a href="../en/contact.html" class="cta-btn animate-on-scroll">Contact Us</a>
+  </div>
 </section>
 
 <!-- Shared Footer -->
 <div id="site-footer"></div>
-
-<!-- Shared Components Loader -->
 <script src="../includes/components.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+
+  // ========== Scroll Animation (IntersectionObserver) ==========
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+
+  const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry, index) {
+      if (entry.isIntersecting) {
+        setTimeout(function() {
+          entry.target.classList.add('visible');
+        }, index * 100);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll('.animate-on-scroll').forEach(function(el) {
+    observer.observe(el);
+  });
+
+  // ========== Fullpage Navigation Dots ==========
+  var sections = document.querySelectorAll('.fullpage-section');
+  var navDots = document.querySelectorAll('.scroll-nav-dot');
+
+  navDots.forEach(function(dot, index) {
+    dot.addEventListener('click', function() {
+      sections[index].scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+
+  var sectionObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        var index = Array.from(sections).indexOf(entry.target);
+        navDots.forEach(function(dot, i) {
+          dot.classList.toggle('active', i === index);
+        });
+      }
+    });
+  }, { threshold: 0.5 });
+
+  sections.forEach(function(section) {
+    sectionObserver.observe(section);
+  });
+
+  // ========== Canvas Particle Background ==========
+  var canvas = document.getElementById('particle-canvas');
+  if (!canvas) return;
+  var ctx = canvas.getContext('2d');
+  var particles = [];
+  var particleCount = 60;
+  var mouse = { x: null, y: null };
+
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  window.addEventListener('mousemove', function(e) {
+    mouse.x = e.clientX;
+    mouse.y = e.clientY;
+  });
+
+  function Particle() {
+    this.x = Math.random() * canvas.width;
+    this.y = Math.random() * canvas.height;
+    this.vx = (Math.random() - 0.5) * 0.4;
+    this.vy = (Math.random() - 0.5) * 0.4;
+    this.radius = Math.random() * 1.5 + 0.5;
+    this.opacity = Math.random() * 0.5 + 0.1;
+  }
+
+  for (var i = 0; i < particleCount; i++) {
+    particles.push(new Particle());
+  }
+
+  function drawParticles() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    for (var i = 0; i < particles.length; i++) {
+      var p = particles[i];
+      p.x += p.vx;
+      p.y += p.vy;
+
+      if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+      if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(126, 240, 212, ' + p.opacity + ')';
+      ctx.fill();
+
+      // Draw connections between nearby particles
+      for (var j = i + 1; j < particles.length; j++) {
+        var p2 = particles[j];
+        var dx = p.x - p2.x;
+        var dy = p.y - p2.y;
+        var dist = Math.sqrt(dx * dx + dy * dy);
+
+        if (dist < 150) {
+          ctx.beginPath();
+          ctx.moveTo(p.x, p.y);
+          ctx.lineTo(p2.x, p2.y);
+          ctx.strokeStyle = 'rgba(106, 166, 255, ' + (0.08 * (1 - dist / 150)) + ')';
+          ctx.lineWidth = 0.5;
+          ctx.stroke();
+        }
+      }
+
+      // Mouse interaction
+      if (mouse.x !== null && mouse.y !== null) {
+        var mdx = p.x - mouse.x;
+        var mdy = p.y - mouse.y;
+        var mdist = Math.sqrt(mdx * mdx + mdy * mdy);
+        if (mdist < 120) {
+          ctx.beginPath();
+          ctx.moveTo(p.x, p.y);
+          ctx.lineTo(mouse.x, mouse.y);
+          ctx.strokeStyle = 'rgba(126, 240, 212, ' + (0.15 * (1 - mdist / 120)) + ')';
+          ctx.lineWidth = 0.5;
+          ctx.stroke();
+        }
+      }
+    }
+
+    requestAnimationFrame(drawParticles);
+  }
+
+  drawParticles();
+});
+</script>
 
 </body>
 </html>
