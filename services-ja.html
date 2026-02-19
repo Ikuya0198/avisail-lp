@@ -4,143 +4,280 @@
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>サービス選択 | Avisail Technologies</title>
-<meta name="description" content="Avisail Technologiesのサービスにアクセス - Maritime SecurityとADCS法人セキュリティプラットフォーム">
+<meta name="description" content="Avisail Technologiesのサービスにアクセス - Maritime Security、ADCS法人セキュリティ、船舶売買プラットフォーム">
 <link rel="canonical" href="https://avisail.com/services-ja.html">
 <link rel="alternate" hreflang="en" href="https://avisail.com/services-en.html">
 <link rel="alternate" hreflang="ja" href="https://avisail.com/services-ja.html">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
-:root{
-  --line: rgba(255,255,255,.08);
-  --primary-gradient: linear-gradient(135deg,#6aa6ff,#7ef0d4);
-  --accent-teal: #7ef0d4;
+:root {
+  --bg-primary: #0a0f1a;
+  --bg-secondary: #060910;
+  --text-primary: #ffffff;
+  --text-secondary: #b8c5d6;
+  --text-muted: #6b7a8f;
+  --accent: #7ef0d4;
   --accent-blue: #6aa6ff;
-  --bg-dark: #0a0f1a;
-  --bg-darker: #05080f;
-  --text-primary: #e9f0ff;
-  --text-secondary: #cfe2ff;
-  --text-muted: #9fb0cc;
+  --line: rgba(255,255,255,0.08);
 }
-*{box-sizing:border-box;margin:0;padding:0;}
-html,body{background:var(--bg-dark);color:var(--text-primary);font-family:'Noto Sans JP','Inter',sans-serif;line-height:1.7;min-height:100vh;}
-a{color:var(--text-secondary);text-decoration:none;transition:all 0.3s;}
-a:hover{color:var(--accent-teal);}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: 'Noto Sans JP', 'Inter', sans-serif;
+  line-height: 1.7;
+  min-height: 100vh;
+}
+
+a { color: var(--text-secondary); text-decoration: none; transition: color 0.3s; }
+a:hover { color: var(--accent); }
 
 /* Header */
-header{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(10,15,26,.95);border-bottom:1px solid var(--line);backdrop-filter:blur(10px);}
-.nav{max-width:1200px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:70px;}
-.brand{display:flex;align-items:center;gap:12px;font-weight:600;color:#fff;}
-.logo{width:32px;height:32px;border-radius:8px;background:conic-gradient(from 210deg,var(--accent-blue),var(--accent-teal));}
-.lang-btn{padding:8px 16px;border:1px solid var(--line);border-radius:8px;background:transparent;color:var(--text-muted);font-size:0.85rem;cursor:pointer;transition:all 0.3s;}
-.lang-btn:hover{border-color:var(--accent-teal);color:var(--accent-teal);}
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  background: rgba(10,15,26,0.95);
+  border-bottom: 1px solid var(--line);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.nav {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 70px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.logo {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: conic-gradient(from 210deg, var(--accent-blue), var(--accent));
+}
+
+.lang-btn {
+  padding: 8px 16px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.lang-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
 
 /* Main */
-.container{max-width:900px;margin:0 auto;padding:140px 20px 80px;min-height:100vh;display:flex;flex-direction:column;}
-.header-section{text-align:center;margin-bottom:60px;}
-.header-section h1{font-size:2.5rem;margin-bottom:16px;color:#fff;}
-.header-section h1 span{background:var(--primary-gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-.header-section p{color:var(--text-muted);font-size:1.1rem;}
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 140px 20px 80px;
+  min-height: 100vh;
+}
+
+/* Header Section */
+.header-section {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.section-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+  display: block;
+}
+
+.header-section h1 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+  color: var(--text-primary);
+}
+
+.header-section p {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  max-width: 500px;
+  margin: 0 auto;
+}
 
 /* Service Cards */
-.services-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;flex:1;}
-.service-card{
-  background:rgba(255,255,255,0.02);
-  border:1px solid var(--line);
-  border-radius:20px;
-  padding:40px;
-  display:flex;
-  flex-direction:column;
-  transition:all 0.3s;
-  position:relative;
-  overflow:hidden;
-}
-.service-card:hover{
-  transform:translateY(-5px);
-  border-color:rgba(106,166,255,0.4);
-  box-shadow:0 20px 40px rgba(0,0,0,0.3);
-}
-.service-card::before{
-  content:'';
-  position:absolute;
-  top:0;
-  left:0;
-  right:0;
-  height:4px;
-  background:var(--primary-gradient);
-  opacity:0;
-  transition:opacity 0.3s;
-}
-.service-card:hover::before{opacity:1;}
-
-.service-icon{
-  width:64px;
-  height:64px;
-  border-radius:16px;
-  background:linear-gradient(135deg,rgba(106,166,255,0.15),rgba(126,240,212,0.1));
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  margin-bottom:24px;
-}
-.service-icon svg{width:32px;height:32px;stroke:var(--accent-teal);}
-
-.service-card h2{font-size:1.5rem;color:#fff;margin-bottom:12px;}
-.service-card p{color:var(--text-muted);font-size:0.95rem;line-height:1.8;margin-bottom:24px;flex:1;}
-
-.service-features{margin-bottom:24px;}
-.service-features li{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  color:var(--text-secondary);
-  font-size:0.9rem;
-  padding:8px 0;
-  border-bottom:1px solid rgba(255,255,255,0.03);
-}
-.service-features li:last-child{border-bottom:none;}
-.service-features li::before{
-  content:'';
-  width:6px;
-  height:6px;
-  border-radius:50%;
-  background:var(--accent-teal);
-  flex-shrink:0;
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
 }
 
-.access-btn{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:10px;
-  padding:16px 24px;
-  border-radius:12px;
-  background:var(--primary-gradient);
-  color:#06101a;
-  font-weight:600;
-  font-size:1rem;
-  border:none;
-  cursor:pointer;
-  transition:all 0.3s;
-  text-decoration:none;
+.service-card {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 48px 36px;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
 }
-.access-btn:hover{
-  transform:translateY(-2px);
-  box-shadow:0 10px 30px rgba(106,166,255,0.3);
-  color:#06101a;
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-blue), var(--accent));
+  transform: scaleX(0);
+  transition: transform 0.4s ease;
 }
-.access-btn svg{width:20px;height:20px;}
+
+.service-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(126, 240, 212, 0.2);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+}
+
+.service-card:hover::before {
+  transform: scaleX(1);
+}
+
+.service-label {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 6px 12px;
+  border-radius: 4px;
+  margin-bottom: 24px;
+  display: inline-block;
+  width: fit-content;
+}
+
+.service-label.maritime {
+  background: linear-gradient(135deg, rgba(126,240,212,0.2), rgba(126,240,212,0.05));
+  color: var(--accent);
+}
+
+.service-label.security {
+  background: linear-gradient(135deg, rgba(106,166,255,0.2), rgba(106,166,255,0.05));
+  color: var(--accent-blue);
+}
+
+.service-card h2 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 16px;
+  letter-spacing: -0.01em;
+}
+
+.service-card .description {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.8;
+  margin-bottom: 32px;
+  flex: 1;
+}
+
+.service-features {
+  list-style: none;
+  margin-bottom: 32px;
+  padding: 24px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.service-features li {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  padding: 8px 0;
+  padding-left: 16px;
+  position: relative;
+}
+
+.service-features li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.access-btn {
+  display: block;
+  text-align: center;
+  padding: 16px 24px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--accent-blue), var(--accent));
+  color: var(--bg-primary);
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+
+.access-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 30px rgba(106, 166, 255, 0.3);
+  color: var(--bg-primary);
+}
 
 /* Footer */
-footer{text-align:center;padding:40px 20px;border-top:1px solid var(--line);color:var(--text-muted);font-size:0.85rem;}
-footer a{color:var(--text-muted);}
-footer a:hover{color:var(--accent-teal);}
+footer {
+  text-align: center;
+  padding: 48px 20px;
+  border-top: 1px solid var(--line);
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+footer a { color: var(--text-muted); }
+footer a:hover { color: var(--accent); }
 
 /* Responsive */
-@media(max-width:700px){
-  .services-grid{grid-template-columns:1fr;}
-  .header-section h1{font-size:1.8rem;}
-  .service-card{padding:28px;}
+@media (max-width: 900px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .header-section h1 { font-size: 1.75rem; }
+  .service-card { padding: 32px 24px; }
+  .service-card h2 { font-size: 1.5rem; }
 }
 </style>
 </head>
@@ -158,91 +295,59 @@ footer a:hover{color:var(--accent-teal);}
 
 <main class="container">
   <div class="header-section">
-    <h1>サービス<span>選択</span></h1>
+    <span class="section-label">Service Hub</span>
+    <h1>サービスを選択</h1>
     <p>ご利用になるプラットフォームを選択してください</p>
   </div>
 
   <div class="services-grid">
     <!-- Maritime Security -->
     <div class="service-card">
-      <div class="service-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/>
-          <path d="M12 2v1"/>
-          <path d="M4.22 4.22l.71.71"/>
-          <path d="M19.78 4.22l-.71.71"/>
-        </svg>
-      </div>
+      <span class="service-label maritime">海事</span>
       <h2>Maritime Security</h2>
-      <p>フリートサイバーセキュリティ管理プラットフォーム。船主向けのIMO/IACSコンプライアンス、リアルタイム監視、脅威検知。</p>
+      <p class="description">フリートサイバーセキュリティ管理プラットフォーム。船主向けのIMO/IACSコンプライアンス、リアルタイム監視、脅威検知。</p>
       <ul class="service-features">
         <li>フリートセキュリティダッシュボード</li>
         <li>脆弱性スキャン</li>
         <li>コンプライアンスレポート</li>
         <li>24時間脅威監視</li>
       </ul>
-      <a href="https://maritime.avisail.com/login" class="access-btn">
-        プラットフォームにアクセス
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
-        </svg>
-      </a>
+      <a href="https://maritime.avisail.com/login" class="access-btn">プラットフォームにアクセス</a>
     </div>
 
     <!-- ADCS -->
     <div class="service-card">
-      <div class="service-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-          <path d="m9 12 2 2 4-4"/>
-        </svg>
-      </div>
+      <span class="service-label security">セキュリティ</span>
       <h2>ADCS</h2>
-      <p>法人向けドメインセキュリティ診断プラットフォーム。デジタル資産の自動脆弱性スキャンとセキュリティレポート。</p>
+      <p class="description">法人向けドメインセキュリティ診断プラットフォーム。デジタル資産の自動脆弱性スキャンとセキュリティレポート。</p>
       <ul class="service-features">
         <li>ドメインセキュリティスキャン</li>
         <li>脆弱性レポート</li>
         <li>SSL/TLS監視</li>
         <li>セキュリティ推奨事項</li>
       </ul>
-      <a href="https://adcs.avisail.com/login" class="access-btn">
-        プラットフォームにアクセス
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
-        </svg>
-      </a>
+      <a href="security/adcs-ja.html" class="access-btn">詳細を見る</a>
     </div>
 
     <!-- Vessel Trading -->
     <div class="service-card">
-      <div class="service-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M2 21c.6-.6 1.5-1 2.5-1 1.5 0 2.5 1 4 1s2.5-1 4-1 2.5 1 4 1 2.5-1 4-1c1 0 1.9.4 2.5 1"/>
-          <path d="M19.38 20A11.6 11.6 0 0 0 21 14l-9-4-9 4c0 2.9.94 5.34 2.81 7.76"/>
-          <path d="M12 2v8"/>
-        </svg>
-      </div>
+      <span class="service-label maritime">海事</span>
       <h2>Vessel Trading</h2>
-      <p>AI搭載の船舶売買プラットフォーム。日本の高品質な船舶を世界市場へ。多言語対応と包括的ブローカーサービス。</p>
+      <p class="description">AI搭載の船舶売買プラットフォーム。日本の高品質な船舶を世界市場へ。多言語対応と包括的ブローカーサービス。</p>
       <ul class="service-features">
         <li>船舶マーケットプレイス</li>
         <li>AI翻訳・マッチング</li>
         <li>取引サポート</li>
         <li>市場分析レポート</li>
       </ul>
-      <a href="https://trading.avisail.com" class="access-btn">
-        プラットフォームにアクセス
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
-        </svg>
-      </a>
+      <a href="maritime/vessel-trading-ja.html" class="access-btn">詳細を見る</a>
     </div>
   </div>
 </main>
 
 <footer>
   <p>&copy; 2026 Avisail Technologies Inc. All rights reserved.</p>
-  <p style="margin-top:8px;"><a href="index.ja.html">ホームページに戻る</a></p>
+  <p style="margin-top:12px;"><a href="index.ja.html">ホームページに戻る</a></p>
 </footer>
 
 </body>
