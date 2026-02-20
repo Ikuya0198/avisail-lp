@@ -508,8 +508,15 @@ section {
 /* CTA Section */
 .cta-section {
   text-align: center;
-  justify-content: center;
+  flex-direction: column;
+}
+
+.cta-section > .wrap {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 
 .cta-section h2 {
@@ -852,10 +859,9 @@ section {
     <p class="animate-on-scroll">Avisailがあなたのビジネスをどのように変革できるか、ご相談ください。</p>
     <a href="../ja/contact.html" class="cta-btn animate-on-scroll">お問い合わせ</a>
   </div>
+  <!-- Shared Footer -->
+  <div id="site-footer" style="width: 100%;"></div>
 </section>
-
-<!-- Shared Footer -->
-<div id="site-footer"></div>
 
 <script src="../includes/components.js"></script>
 <script>
