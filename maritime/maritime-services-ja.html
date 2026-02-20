@@ -259,36 +259,27 @@ a { color: inherit; text-decoration: none; }
   margin-bottom: 48px;
 }
 
-/* ========== SERVICE LAYOUT (2 columns) ========== */
-.service-layout {
+/* ========== SERVICES GRID (2 cards side by side) ========== */
+.services-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  align-items: start;
+  gap: 32px;
+  margin-top: 40px;
 }
 
-.service-text {
-  padding-top: 8px;
-}
-
-.service-text p {
-  color: var(--text-secondary);
-  font-size: 1rem;
-  line-height: 2;
-  margin-bottom: 32px;
-}
-
-.service-sidebar {
-  padding: 48px 40px;
+.service-card {
+  padding: 40px 32px;
   background: rgba(255,255,255,0.02);
   border: 1px solid var(--line);
   border-radius: 16px;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
-.service-sidebar::before {
+.service-card::before {
   content: '';
   position: absolute;
   top: 0;
@@ -300,27 +291,60 @@ a { color: inherit; text-decoration: none; }
   transition: transform 0.4s ease;
 }
 
-.service-sidebar:hover {
-  transform: translateY(-8px);
+.service-card:hover {
+  transform: translateY(-4px);
   border-color: rgba(126, 240, 212, 0.2);
-  box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
 }
 
-.service-sidebar:hover::before {
+.service-card:hover::before {
   transform: scaleX(1);
+}
+
+.service-card-label {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+}
+
+.service-card h3 {
+  font-size: clamp(1.3rem, 2.5vw, 1.6rem);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin-bottom: 4px;
+  line-height: 1.3;
+}
+
+.service-card-subtitle {
+  font-size: 0.85rem;
+  color: var(--accent);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  margin-bottom: 16px;
+}
+
+.service-card-desc {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  margin-bottom: 20px;
 }
 
 /* ========== TECH LIST ========== */
 .tech-list {
   list-style: none;
-  margin-bottom: 32px;
+  margin-bottom: 24px;
+  flex: 1;
 }
 
 .tech-list li {
-  padding: 12px 0;
+  padding: 8px 0;
   border-bottom: 1px solid var(--line);
   color: var(--text-secondary);
-  font-size: 0.95rem;
+  font-size: 0.85rem;
 }
 
 .tech-list li:last-child {
@@ -419,9 +443,9 @@ a { color: inherit; text-decoration: none; }
 
 /* ========== RESPONSIVE ========== */
 @media (max-width: 1024px) {
-  .service-layout {
+  .services-grid {
     grid-template-columns: 1fr;
-    gap: 48px;
+    gap: 24px;
   }
 }
 
@@ -447,13 +471,13 @@ a { color: inherit; text-decoration: none; }
     height: 8px;
   }
 
-  .service-sidebar {
-    padding: 32px 24px;
+  .service-card {
+    padding: 28px 20px;
   }
 
-  .service-layout {
+  .services-grid {
     grid-template-columns: 1fr;
-    gap: 32px;
+    gap: 20px;
   }
 }
 </style>
@@ -469,9 +493,8 @@ a { color: inherit; text-decoration: none; }
 <!-- Navigation Dots -->
 <nav class="scroll-nav">
   <div class="scroll-nav-dot active" data-section="0" title="Hero"></div>
-  <div class="scroll-nav-dot" data-section="1" title="Vessel Trading"></div>
-  <div class="scroll-nav-dot" data-section="2" title="Maritime Security"></div>
-  <div class="scroll-nav-dot" data-section="3" title="Contact"></div>
+  <div class="scroll-nav-dot" data-section="1" title="Services"></div>
+  <div class="scroll-nav-dot" data-section="2" title="Contact"></div>
 </nav>
 
 <!-- Section 1: Hero -->
@@ -491,55 +514,43 @@ a { color: inherit; text-decoration: none; }
   </div>
 </section>
 
-<!-- Section 2: Vessel Trading -->
-<section class="fullpage-section">
+<!-- Section 2: Services -->
+<section class="fullpage-section center-section">
   <div class="wrap">
-    <span class="section-label animate-on-scroll">Service 01</span>
-    <h2 class="section-title animate-on-scroll">中古船舶ブローカー</h2>
-    <p class="section-subtitle animate-on-scroll">Vessel Trading Platform</p>
+    <span class="section-label animate-on-scroll">OUR SERVICES</span>
+    <h2 class="section-title animate-on-scroll">2つの専門サービス</h2>
 
-    <div class="service-layout">
-      <div class="service-text animate-on-scroll">
-        <p>世界中の中古船舶を一元管理するブローカープラットフォーム。340隻以上の船舶データベースを活用し、透明性の高い取引を実現。AI査定機能により船舶の市場価値、配送コスト、購入後の総コストを即座に算出します。日本語・英語・アラビア語の多言語対応により、グローバルな取引を円滑化。9カ国の配送ルートに対応し、最適な物流ソリューションを提供します。従来のブローカー業務をデジタル化し、取引の効率性と価格の公正性を大幅に向上させます。</p>
-        <a href="vessel-trading-ja.html" class="cta-btn-outline">詳細を見る</a>
-      </div>
-
-      <div class="service-sidebar animate-on-scroll">
+    <div class="services-grid">
+      <!-- Service 01: Vessel Trading -->
+      <div class="service-card animate-on-scroll">
+        <span class="service-card-label">Service 01</span>
+        <h3>中古船舶ブローカー</h3>
+        <p class="service-card-subtitle">Vessel Trading Platform</p>
+        <p class="service-card-desc">340隻以上の船舶データベースとAI査定機能で、透明性の高いグローバル取引を実現。9カ国の配送ルートに対応し、従来のブローカー業務をデジタル化します。</p>
         <ul class="tech-list">
           <li>340隻以上の船舶データベース</li>
           <li>AI搭載の市場価格査定</li>
           <li>配送コスト自動計算</li>
-          <li>多言語対応（日本語・英語・アラビア語）</li>
-          <li>Total Cost Calculator搭載</li>
+          <li>多言語対応（日・英・アラビア語）</li>
           <li>9カ国の配送ルート対応</li>
         </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Section 3: Maritime Security -->
-<section class="fullpage-section">
-  <div class="wrap">
-    <span class="section-label animate-on-scroll">Service 02</span>
-    <h2 class="section-title animate-on-scroll">海事専門セキュリティシステム</h2>
-    <p class="section-subtitle animate-on-scroll">Maritime Cybersecurity Solution</p>
-
-    <div class="service-layout">
-      <div class="service-text animate-on-scroll">
-        <p>海運業界に特化したサイバーセキュリティプラットフォーム。IMO規制・NIS2指令・GDPRに完全準拠し、国際的なコンプライアンス要件を満たします。船舶のOT（運用技術）とIT（情報技術）を統合的に保護し、航海データ、港湾システム、サプライチェーン全体を24時間365日監視。リアルタイムの脅威検知により、サイバー攻撃、データ漏洩、システム侵害を未然に防ぎます。海運業界特有のセキュリティリスクに対応し、船舶運航の安全性と事業継続性を確保します。</p>
-        <a href="maritime-security-ja.html" class="cta-btn-outline">詳細を見る</a>
+        <a href="vessel-trading-ja.html" class="cta-btn-outline">詳細を見る</a>
       </div>
 
-      <div class="service-sidebar animate-on-scroll">
+      <!-- Service 02: Maritime Security -->
+      <div class="service-card animate-on-scroll">
+        <span class="service-card-label">Service 02</span>
+        <h3>海事専門セキュリティ</h3>
+        <p class="service-card-subtitle">Maritime Cybersecurity Solution</p>
+        <p class="service-card-desc">IMO規制・NIS2指令・GDPRに完全準拠。船舶のOTとITを統合的に保護し、24時間365日のリアルタイム脅威検知で安全性と事業継続性を確保します。</p>
         <ul class="tech-list">
           <li>IMO規制・NIS2指令完全準拠</li>
           <li>船舶OT/IT統合セキュリティ</li>
           <li>リアルタイム脅威検知</li>
           <li>GDPR対応の航海データ保護</li>
           <li>サプライチェーン可視化</li>
-          <li>世界トップクラスのセキュリティ水準</li>
         </ul>
+        <a href="maritime-security-ja.html" class="cta-btn-outline">詳細を見る</a>
       </div>
     </div>
   </div>

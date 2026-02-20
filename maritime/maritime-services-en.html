@@ -70,6 +70,7 @@ a { color: inherit; text-decoration: none; }
   height: 100%;
   z-index: 0;
   pointer-events: none;
+  background: radial-gradient(circle at 50% 50%, #0d1424 0%, #05080f 100%);
 }
 
 /* ========== FULLPAGE SCROLL SNAP ========== */
@@ -283,31 +284,27 @@ a { color: inherit; text-decoration: none; }
   letter-spacing: 0.02em;
 }
 
-/* ========== BUSINESS CARD (Service Sections) ========== */
-.service-layout {
+/* ========== SERVICES GRID (2 cards side by side) ========== */
+.services-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 64px;
-  align-items: start;
+  gap: 32px;
+  margin-top: 40px;
 }
 
-.service-text p {
-  font-size: 1.05rem;
-  color: var(--text-secondary);
-  line-height: 1.9;
-  margin-bottom: 32px;
-}
-
-.service-features {
-  padding: 40px;
+.service-card {
+  padding: 40px 32px;
   background: rgba(255,255,255,0.02);
   border: 1px solid var(--line);
   border-radius: 16px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
-.service-features::before {
+.service-card::before {
   content: '';
   position: absolute;
   top: 0;
@@ -315,20 +312,66 @@ a { color: inherit; text-decoration: none; }
   right: 0;
   height: 2px;
   background: linear-gradient(90deg, var(--accent-blue), var(--accent));
+  transform: scaleX(0);
+  transition: transform 0.4s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(126, 240, 212, 0.2);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+
+.service-card:hover::before {
+  transform: scaleX(1);
+}
+
+.service-card-label {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+}
+
+.service-card h3 {
+  font-size: clamp(1.3rem, 2.5vw, 1.6rem);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin-bottom: 4px;
+  line-height: 1.3;
+}
+
+.service-card-subtitle {
+  font-size: 0.85rem;
+  color: var(--accent);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  margin-bottom: 16px;
+}
+
+.service-card-desc {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  margin-bottom: 20px;
 }
 
 .tech-list {
   list-style: none;
+  margin-bottom: 24px;
+  flex: 1;
 }
 
 .tech-list li {
-  padding: 14px 0;
+  padding: 8px 0;
   border-bottom: 1px solid var(--line);
   color: var(--text-secondary);
-  font-size: 0.95rem;
+  font-size: 0.85rem;
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
 }
 
 .tech-list li:last-child {
@@ -337,8 +380,8 @@ a { color: inherit; text-decoration: none; }
 
 .tech-list li::before {
   content: '';
-  width: 6px;
-  height: 6px;
+  width: 5px;
+  height: 5px;
   border-radius: 50%;
   background: var(--accent);
   flex-shrink: 0;
@@ -400,9 +443,9 @@ a { color: inherit; text-decoration: none; }
 
 /* ========== RESPONSIVE ========== */
 @media (max-width: 1024px) {
-  .service-layout {
+  .services-grid {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 24px;
   }
 }
 
@@ -418,8 +461,13 @@ a { color: inherit; text-decoration: none; }
     min-height: 100vh;
   }
 
-  .service-features {
+  .service-card {
     padding: 28px 20px;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
   }
 
   .cta-btn {
@@ -440,9 +488,8 @@ a { color: inherit; text-decoration: none; }
 <!-- Navigation Dots -->
 <nav class="scroll-nav">
   <div class="scroll-nav-dot active" data-section="0" title="Hero"></div>
-  <div class="scroll-nav-dot" data-section="1" title="Vessel Trading"></div>
-  <div class="scroll-nav-dot" data-section="2" title="Maritime Security"></div>
-  <div class="scroll-nav-dot" data-section="3" title="Contact"></div>
+  <div class="scroll-nav-dot" data-section="1" title="Services"></div>
+  <div class="scroll-nav-dot" data-section="2" title="Contact"></div>
 </nav>
 
 <!-- Section 1: Hero -->
@@ -460,55 +507,43 @@ a { color: inherit; text-decoration: none; }
   </div>
 </section>
 
-<!-- Section 2: Vessel Trading -->
-<section class="fullpage-section">
+<!-- Section 2: Services -->
+<section class="fullpage-section" style="display:flex;align-items:center;justify-content:center;text-align:center;">
   <div class="wrap">
-    <span class="section-label animate-on-scroll">Service 01</span>
-    <h2 class="section-title animate-on-scroll">Used Vessel Brokerage</h2>
-    <div class="section-subtitle animate-on-scroll">Vessel Trading Platform</div>
+    <span class="section-label animate-on-scroll">OUR SERVICES</span>
+    <h2 class="section-title animate-on-scroll">Two Specialized Solutions</h2>
 
-    <div class="service-layout">
-      <div class="service-text animate-on-scroll">
-        <p>A brokerage platform managing used vessels worldwide. Utilizing a database of 340+ vessels to enable transparent trading. AI-powered valuation instantly calculates vessel market value, shipping costs, and total post-purchase costs. Multi-language support in Japanese, English, and Arabic facilitates seamless global transactions. Covering shipping routes across 9 countries, we provide optimal logistics solutions. Digitizing traditional brokerage operations, we significantly enhance transaction efficiency and price fairness.</p>
-        <a href="vessel-trading-en.html" class="cta-btn">Learn More</a>
-      </div>
-
-      <div class="service-features animate-on-scroll">
+    <div class="services-grid">
+      <!-- Service 01: Vessel Trading -->
+      <div class="service-card animate-on-scroll">
+        <span class="service-card-label">Service 01</span>
+        <h3>Used Vessel Brokerage</h3>
+        <p class="service-card-subtitle">Vessel Trading Platform</p>
+        <p class="service-card-desc">A 340+ vessel database with AI-powered valuation enables transparent global trading. Covering 9-country shipping routes, we digitize traditional brokerage operations.</p>
         <ul class="tech-list">
           <li>340+ vessel database</li>
           <li>AI-powered market valuation</li>
           <li>Automated shipping cost calculation</li>
-          <li>Multi-language support (Japanese, English, Arabic)</li>
-          <li>Total Cost Calculator integrated</li>
+          <li>Multi-language (JP, EN, Arabic)</li>
           <li>9-country shipping route coverage</li>
         </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Section 3: Maritime Security -->
-<section class="fullpage-section" style="background: var(--bg-secondary);">
-  <div class="wrap">
-    <span class="section-label animate-on-scroll">Service 02</span>
-    <h2 class="section-title animate-on-scroll">Maritime Cybersecurity System</h2>
-    <div class="section-subtitle animate-on-scroll">Maritime Cybersecurity Solution</div>
-
-    <div class="service-layout">
-      <div class="service-text animate-on-scroll">
-        <p>A cybersecurity platform specialized for the maritime industry. Fully compliant with IMO regulations, NIS2 Directive, and GDPR, meeting international compliance requirements. Unified protection for vessel OT (Operational Technology) and IT (Information Technology), with 24/7 monitoring of navigation data, port systems, and entire supply chains. Real-time threat detection prevents cyber attacks, data breaches, and system intrusions. Addressing maritime-specific security risks, we ensure vessel operational safety and business continuity.</p>
-        <a href="maritime-security-en.html" class="cta-btn">Learn More</a>
+        <a href="vessel-trading-en.html" class="cta-btn">Learn More</a>
       </div>
 
-      <div class="service-features animate-on-scroll">
+      <!-- Service 02: Maritime Security -->
+      <div class="service-card animate-on-scroll">
+        <span class="service-card-label">Service 02</span>
+        <h3>Maritime Cybersecurity</h3>
+        <p class="service-card-subtitle">Maritime Cybersecurity Solution</p>
+        <p class="service-card-desc">Fully compliant with IMO, NIS2, and GDPR. Unified OT/IT protection with 24/7 real-time threat detection ensures vessel safety and business continuity.</p>
         <ul class="tech-list">
-          <li>Full IMO and NIS2 Directive compliance</li>
+          <li>Full IMO &amp; NIS2 compliance</li>
           <li>Unified vessel OT/IT security</li>
           <li>Real-time threat detection</li>
-          <li>GDPR-compliant navigation data protection</li>
+          <li>GDPR-compliant data protection</li>
           <li>Supply chain visibility</li>
-          <li>World-class security standards</li>
         </ul>
+        <a href="maritime-security-en.html" class="cta-btn">Learn More</a>
       </div>
     </div>
   </div>
@@ -575,92 +610,69 @@ document.addEventListener('DOMContentLoaded', function() {
     sectionObserver.observe(section);
   });
 
-  // ========== Canvas Particle Background ==========
+  // ========== Canvas Particle Background (Flow Field) ==========
   var canvas = document.getElementById('particle-canvas');
   if (!canvas) return;
   var ctx = canvas.getContext('2d');
+  var width, height;
   var particles = [];
-  var particleCount = 60;
-  var mouse = { x: null, y: null };
+  var zOff = 0;
 
   function resize() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = window.innerHeight;
+    initParticles();
   }
-  resize();
   window.addEventListener('resize', resize);
 
-  window.addEventListener('mousemove', function(e) {
-    mouse.x = e.clientX;
-    mouse.y = e.clientY;
-  });
-
-  function Particle() {
-    this.x = Math.random() * canvas.width;
-    this.y = Math.random() * canvas.height;
-    this.vx = (Math.random() - 0.5) * 0.4;
-    this.vy = (Math.random() - 0.5) * 0.4;
-    this.radius = Math.random() * 1.5 + 0.5;
-    this.opacity = Math.random() * 0.5 + 0.1;
-  }
-
-  for (var i = 0; i < particleCount; i++) {
-    particles.push(new Particle());
-  }
-
-  function drawParticles() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    for (var i = 0; i < particles.length; i++) {
-      var p = particles[i];
-      p.x += p.vx;
-      p.y += p.vy;
-
-      if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
-      if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
-
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-      ctx.fillStyle = 'rgba(126, 240, 212, ' + p.opacity + ')';
-      ctx.fill();
-
-      // Draw connections between nearby particles
-      for (var j = i + 1; j < particles.length; j++) {
-        var p2 = particles[j];
-        var dx = p.x - p2.x;
-        var dy = p.y - p2.y;
-        var dist = Math.sqrt(dx * dx + dy * dy);
-
-        if (dist < 150) {
-          ctx.beginPath();
-          ctx.moveTo(p.x, p.y);
-          ctx.lineTo(p2.x, p2.y);
-          ctx.strokeStyle = 'rgba(106, 166, 255, ' + (0.08 * (1 - dist / 150)) + ')';
-          ctx.lineWidth = 0.5;
-          ctx.stroke();
-        }
-      }
-
-      // Mouse interaction
-      if (mouse.x !== null && mouse.y !== null) {
-        var mdx = p.x - mouse.x;
-        var mdy = p.y - mouse.y;
-        var mdist = Math.sqrt(mdx * mdx + mdy * mdy);
-        if (mdist < 120) {
-          ctx.beginPath();
-          ctx.moveTo(p.x, p.y);
-          ctx.lineTo(mouse.x, mouse.y);
-          ctx.strokeStyle = 'rgba(126, 240, 212, ' + (0.15 * (1 - mdist / 120)) + ')';
-          ctx.lineWidth = 0.5;
-          ctx.stroke();
-        }
-      }
+  function initParticles() {
+    particles = [];
+    var count = Math.floor(width * height / 2000);
+    for (var i = 0; i < count; i++) {
+      particles.push({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        vx: 0, vy: 0,
+        maxSpeed: Math.random() * 0.8 + 0.2,
+        size: Math.random() > 0.9 ? 1.5 : 0.8,
+        color: Math.random() > 0.5 ? '#2E64BA' : '#4DB899'
+      });
     }
-
-    requestAnimationFrame(drawParticles);
   }
 
-  drawParticles();
+  function update() {
+    zOff += 0.0005;
+    particles.forEach(function(p) {
+      var angle = (Math.cos(p.x * 0.002 + zOff) + Math.sin(p.y * 0.002 + zOff)) * Math.PI;
+      p.vx += Math.cos(angle) * 0.02;
+      p.vy += Math.sin(angle) * 0.02;
+      var speed = Math.sqrt(p.vx * p.vx + p.vy * p.vy);
+      if (speed > p.maxSpeed) {
+        p.vx = (p.vx / speed) * p.maxSpeed;
+        p.vy = (p.vy / speed) * p.maxSpeed;
+      }
+      p.x += p.vx; p.y += p.vy;
+      if (p.x < 0) { p.x = width; p.vx = 0; p.vy = 0; }
+      if (p.x > width) { p.x = 0; p.vx = 0; p.vy = 0; }
+      if (p.y < 0) { p.y = height; p.vx = 0; p.vy = 0; }
+      if (p.y > height) { p.y = 0; p.vx = 0; p.vy = 0; }
+    });
+  }
+
+  function draw() {
+    ctx.fillStyle = 'rgba(5, 8, 15, 0.2)';
+    ctx.fillRect(0, 0, width, height);
+    particles.forEach(function(p) {
+      ctx.fillStyle = p.color;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+      ctx.fill();
+    });
+    requestAnimationFrame(function() { update(); draw(); });
+  }
+
+  resize();
+  draw();
 });
 </script>
 
