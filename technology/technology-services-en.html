@@ -640,7 +640,7 @@ a{color:inherit;text-decoration:none;}
   height:100%;
   pointer-events:none;
   z-index:-1;
-  background:var(--bg-dark);
+  background:radial-gradient(circle at 50% 50%, #0d1424 0%, #05080f 100%);
 }
 
 /* ===== Section Reveal ===== */
@@ -978,92 +978,69 @@ a{color:inherit;text-decoration:none;}
     sections.forEach(function(s){navObserver.observe(s.el);});
   }
 
-  /* ===== Canvas Particles ===== */
+  /* ===== Canvas Particles (Flow Field) ===== */
   var canvas = document.getElementById('particle-canvas');
   if(!canvas) return;
   var ctx = canvas.getContext('2d');
+  var width,height;
   var particles = [];
-  var particleCount = 50;
-  var mouse = {x:null,y:null};
+  var zOff = 0;
 
   function resize(){
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = window.innerHeight;
+    initParticles();
   }
-  resize();
   window.addEventListener('resize',resize);
 
-  document.addEventListener('mousemove',function(e){
-    mouse.x = e.clientX;
-    mouse.y = e.clientY;
-  });
-
-  function Particle(){
-    this.x = Math.random() * canvas.width;
-    this.y = Math.random() * canvas.height;
-    this.vx = (Math.random() - 0.5) * 0.3;
-    this.vy = (Math.random() - 0.5) * 0.3;
-    this.radius = Math.random() * 1.5 + 0.5;
-    this.alpha = Math.random() * 0.3 + 0.1;
-  }
-
-  for(var i = 0; i < particleCount; i++){
-    particles.push(new Particle());
-  }
-
-  function drawParticles(){
-    ctx.clearRect(0,0,canvas.width,canvas.height);
-
-    for(var i = 0; i < particles.length; i++){
-      var p = particles[i];
-      p.x += p.vx;
-      p.y += p.vy;
-
-      if(p.x < 0) p.x = canvas.width;
-      if(p.x > canvas.width) p.x = 0;
-      if(p.y < 0) p.y = canvas.height;
-      if(p.y > canvas.height) p.y = 0;
-
-      ctx.beginPath();
-      ctx.arc(p.x,p.y,p.radius,0,Math.PI*2);
-      ctx.fillStyle = 'rgba(126,240,212,' + p.alpha + ')';
-      ctx.fill();
-
-      /* Connect nearby particles */
-      for(var j = i + 1; j < particles.length; j++){
-        var p2 = particles[j];
-        var dx = p.x - p2.x;
-        var dy = p.y - p2.y;
-        var dist = Math.sqrt(dx*dx + dy*dy);
-        if(dist < 150){
-          ctx.beginPath();
-          ctx.moveTo(p.x,p.y);
-          ctx.lineTo(p2.x,p2.y);
-          ctx.strokeStyle = 'rgba(126,240,212,' + (0.08 * (1 - dist/150)) + ')';
-          ctx.lineWidth = 0.5;
-          ctx.stroke();
-        }
-      }
-
-      /* Mouse interaction */
-      if(mouse.x !== null){
-        var mdx = p.x - mouse.x;
-        var mdy = p.y - mouse.y;
-        var mdist = Math.sqrt(mdx*mdx + mdy*mdy);
-        if(mdist < 200){
-          ctx.beginPath();
-          ctx.moveTo(p.x,p.y);
-          ctx.lineTo(mouse.x,mouse.y);
-          ctx.strokeStyle = 'rgba(126,240,212,' + (0.12 * (1 - mdist/200)) + ')';
-          ctx.lineWidth = 0.5;
-          ctx.stroke();
-        }
-      }
+  function initParticles(){
+    particles = [];
+    var count = Math.floor(width * height / 2000);
+    for(var i = 0; i < count; i++){
+      particles.push({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        vx: 0, vy: 0,
+        maxSpeed: Math.random() * 0.8 + 0.2,
+        size: Math.random() > 0.9 ? 1.5 : 0.8,
+        color: Math.random() > 0.5 ? '#2E64BA' : '#4DB899'
+      });
     }
-
-    requestAnimationFrame(drawParticles);
   }
-  drawParticles();
+
+  function update(){
+    zOff += 0.0005;
+    particles.forEach(function(p){
+      var angle = (Math.cos(p.x * 0.002 + zOff) + Math.sin(p.y * 0.002 + zOff)) * Math.PI;
+      p.vx += Math.cos(angle) * 0.02;
+      p.vy += Math.sin(angle) * 0.02;
+      var speed = Math.sqrt(p.vx * p.vx + p.vy * p.vy);
+      if(speed > p.maxSpeed){
+        p.vx = (p.vx / speed) * p.maxSpeed;
+        p.vy = (p.vy / speed) * p.maxSpeed;
+      }
+      p.x += p.vx; p.y += p.vy;
+      if(p.x < 0){ p.x = width; p.vx = 0; p.vy = 0; }
+      if(p.x > width){ p.x = 0; p.vx = 0; p.vy = 0; }
+      if(p.y < 0){ p.y = height; p.vx = 0; p.vy = 0; }
+      if(p.y > height){ p.y = 0; p.vx = 0; p.vy = 0; }
+    });
+  }
+
+  function draw(){
+    ctx.fillStyle = 'rgba(5, 8, 15, 0.2)';
+    ctx.fillRect(0, 0, width, height);
+    particles.forEach(function(p){
+      ctx.fillStyle = p.color;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+      ctx.fill();
+    });
+    requestAnimationFrame(function(){ update(); draw(); });
+  }
+
+  resize();
+  draw();
 
 })();
 </script>
