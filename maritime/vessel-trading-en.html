@@ -1,370 +1,729 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Vessel Trading | Avisail Technologies</title>
-    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../style.css">
-    <style>
-        /* Page Specific Overrides */
-        .page-hero {
-            padding: 60px 0 40px;
-            min-height: auto;
-            display: flex;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-            /* Dotted world map background effect reused */
-            background: radial-gradient(circle at 50% 50%, rgba(126, 240, 212, 0.05) 0%, transparent 50%),
-                var(--bg-dark);
-        }
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Vessel Trading Platform - Japanese Quality Vessels Delivered Worldwide | Avisail Technologies</title>
+<meta name="description" content="AI-powered vessel trading platform. Real-time inventory of 340+ quality used vessels from Japan, Korea, Eastern Europe. Drone inspection, escrow payment, security screening for safe transactions.">
+<link rel="canonical" href="https://avisail.com/maritime/vessel-trading-en.html">
+<link rel="alternate" hreflang="en" href="https://avisail.com/maritime/vessel-trading-en.html">
+<link rel="alternate" hreflang="ja" href="https://avisail.com/maritime/vessel-trading-ja.html">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-        .hero-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 32px;
-            align-items: center;
-        }
+<!-- JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Vessel Trading Service",
+  "description": "AI-powered vessel trading platform connecting buyers and sellers globally. Specializing in Coasters, Tugboats, and Landing Craft with comprehensive inspection, shipping, and documentation support.",
+  "brand": {
+    "@type": "Organization",
+    "name": "Avisail Technologies"
+  },
+  "offers": {
+    "@type": "AggregateOffer",
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock"
+  },
+  "provider": {
+    "@type": "Organization",
+    "name": "Avisail Technologies",
+    "url": "https://avisail.com"
+  }
+}
+</script>
 
-        .hero-visual {
-            position: relative;
-            perspective: 1000px;
-        }
+<style>
+:root {
+  --bg-primary: #0a0f1a;
+  --bg-secondary: #060910;
+  --text-primary: #ffffff;
+  --text-secondary: #b8c5d6;
+  --text-muted: #6b7a8f;
+  --accent: #7ef0d4;
+  --accent-blue: #6aa6ff;
+  --line: rgba(255,255,255,0.08);
+}
 
-        .platform-preview {
-            width: 100%;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.1);
-            transform: rotateY(-5deg) rotateX(5deg);
-            transition: transform 0.5s ease;
-        }
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
-        .platform-preview:hover {
-            transform: rotateY(0) rotateX(0) scale(1.02);
-        }
+html {
+  scroll-snap-type: y proximity;
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
 
-        /* Section Spacing */
-        section {
-            padding: 24px 0;
-            position: relative;
-        }
+body {
+  background: transparent;
+  color: var(--text-primary);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
 
-        /* Highlight Box Redesign */
-        .highlight-box {
-            background: linear-gradient(135deg, rgba(126, 240, 212, 0.05), rgba(106, 166, 255, 0.05));
-            border: 1px solid rgba(126, 240, 212, 0.2);
-            border-radius: 12px;
-            padding: 28px;
-            margin: 32px 0;
-            position: relative;
-            overflow: hidden;
-        }
+a { color: inherit; text-decoration: none; }
 
-        .highlight-box::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(126, 240, 212, 0.5), transparent);
-        }
+.wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  width: 100%;
+}
 
-        .stat-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 16px;
-            margin-top: 24px;
-        }
+#global-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(circle at 50% 50%, #0d1424 0%, #05080f 100%);
+}
 
-        .stat-card {
-            background: rgba(255, 255, 255, 0.03);
-            padding: 14px;
-            border-radius: 10px;
-            text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
+.fullpage-section {
+  min-height: 100vh;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  display: flex;
+  align-items: flex-start;
+  padding-top: 80px;
+  position: relative;
+  width: 100%;
+}
 
-        .stat-number {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: var(--accent-cyan);
-            margin-bottom: 4px;
-        }
+.fullpage-section.hero-section {
+  align-items: center;
+  padding-top: 0;
+}
 
-        .stat-label {
-            font-size: 0.75rem;
-            color: var(--text-secondary);
-        }
+.fullpage-section.center-section {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
 
-        @media (max-width: 980px) {
-            .hero-grid {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
+.scroll-nav {
+  position: fixed;
+  right: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
 
-            .platform-preview {
-                transform: none;
-                margin-top: 40px;
-            }
+.scroll-nav-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
 
-            .highlight-box {
-                padding: 30px;
-            }
-        }
+.scroll-nav-dot:hover {
+  background: rgba(255, 255, 255, 0.4);
+  border-color: rgba(255, 255, 255, 0.5);
+}
 
-        body {
-            background-color: #0a0f1a;
-            color: var(--text-primary);
-        }
-    </style>
+.scroll-nav-dot.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  box-shadow: 0 0 12px rgba(126, 240, 212, 0.5);
+}
 
-    <!-- JSON-LD Structured Data -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Product",
-      "name": "Vessel Trading Service",
-      "description": "AI-powered vessel trading platform connecting buyers and sellers globally. Specializing in Coasters, Tugboats, and Landing Craft with comprehensive inspection, shipping, and documentation support.",
-      "brand": {
-        "@type": "Organization",
-        "name": "Avisail Technologies"
-      },
-      "offers": {
-        "@type": "AggregateOffer",
-        "priceCurrency": "USD",
-        "availability": "https://schema.org/InStock"
-      },
-      "provider": {
-        "@type": "Organization",
-        "name": "Avisail Technologies",
-        "url": "https://avisail.com"
-      }
-    }
-    </script>
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  padding: 120px 24px;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(106, 166, 255, 0.15), transparent),
+    radial-gradient(ellipse 60% 40% at 50% 120%, rgba(126, 240, 212, 0.1), transparent);
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 900px;
+}
+
+.hero-label {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 32px;
+  opacity: 0;
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+.hero h1 {
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin-bottom: 32px;
+  opacity: 0;
+  animation: fadeInUp 0.8s ease 0.1s forwards;
+}
+
+.hero h1 span {
+  background: linear-gradient(135deg, var(--accent-blue), var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-lead {
+  font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+  color: var(--text-secondary);
+  line-height: 1.8;
+  max-width: 700px;
+  margin: 0 auto;
+  opacity: 0;
+  animation: fadeInUp 0.8s ease 0.2s forwards;
+}
+
+.hero-sub {
+  margin-top: 40px;
+  font-size: 1rem;
+  color: var(--accent);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  opacity: 0;
+  animation: fadeInUp 0.8s ease 0.3s forwards;
+}
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 48px;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  animation: fadeInUp 0.8s ease 0.4s forwards;
+}
+
+.scroll-indicator span {
+  display: block;
+  width: 1px;
+  height: 60px;
+  background: linear-gradient(to bottom, var(--accent), transparent);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+
+.section-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+
+.section-title {
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 24px;
+  line-height: 1.3;
+}
+
+.section-subtitle {
+  font-size: 1rem;
+  color: var(--accent);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  margin-bottom: 32px;
+}
+
+.section-lead {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  max-width: 600px;
+  line-height: 1.9;
+  margin-bottom: 48px;
+}
+
+.service-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.service-text {
+  padding-top: 8px;
+}
+
+.service-text p {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 2;
+  margin-bottom: 32px;
+}
+
+.service-sidebar {
+  padding: 48px 40px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.service-sidebar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-blue), var(--accent));
+  transform: scaleX(0);
+  transition: transform 0.4s ease;
+}
+
+.service-sidebar:hover {
+  transform: translateY(-8px);
+  border-color: rgba(126, 240, 212, 0.2);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+}
+
+.service-sidebar:hover::before {
+  transform: scaleX(1);
+}
+
+.tech-list {
+  list-style: none;
+  margin-bottom: 32px;
+}
+
+.tech-list li {
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line);
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+.tech-list li:last-child {
+  border-bottom: none;
+}
+
+.cta-btn {
+  display: inline-block;
+  padding: 18px 48px;
+  background: linear-gradient(135deg, var(--accent-blue), var(--accent));
+  color: var(--bg-primary);
+  font-weight: 700;
+  font-size: 1rem;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+}
+
+.cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 20px 40px rgba(106, 166, 255, 0.3);
+}
+
+.cta-btn-outline {
+  display: inline-block;
+  padding: 14px 36px;
+  background: transparent;
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 0.95rem;
+  border-radius: 50px;
+  border: 1px solid rgba(126, 240, 212, 0.4);
+  transition: all 0.3s ease;
+}
+
+.cta-btn-outline:hover {
+  background: rgba(126, 240, 212, 0.08);
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.cta-section {
+  text-align: center;
+  flex-direction: column;
+}
+
+.cta-section > .wrap {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.cta-section h2 {
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 24px;
+}
+
+.cta-section p {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  margin-bottom: 40px;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scrollPulse {
+  0%, 100% { transform: scaleY(1); opacity: 1; }
+  50% { transform: scaleY(0.6); opacity: 0.5; }
+}
+
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 1024px) {
+  .service-layout {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+}
+
+@media (max-width: 768px) {
+  .fullpage-section {
+    min-height: auto;
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+
+  .hero {
+    padding: 100px 24px;
+    min-height: 100vh;
+  }
+
+  .scroll-nav {
+    right: 12px;
+    gap: 8px;
+  }
+
+  .scroll-nav-dot {
+    width: 8px;
+    height: 8px;
+  }
+
+  .service-sidebar {
+    padding: 32px 24px;
+  }
+
+  .service-layout {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+</style>
 </head>
+<body>
 
-<body style="background:#0a0f1a;">
-    <!-- Shared Header -->
-    <div id="site-header"></div>
+<!-- Canvas Background -->
+<canvas id="global-bg"></canvas>
 
-    <!-- Back Navigation -->
-    <div style="padding:16px 0;background:var(--bg-dark);">
-        <div class="wrap">
-            <a href="maritime-services-en.html" style="display:inline-flex;align-items:center;gap:8px;padding:10px 20px;font-size:0.85rem;border:1px solid rgba(59,130,246,0.4);border-radius:8px;color:#3b82f6;background:rgba(59,130,246,0.08);text-decoration:none;transition:all 0.3s ease;">
-                <span>←</span>
-                <span>Back to Maritime Business</span>
-            </a>
-        </div>
+<!-- Shared Header -->
+<div id="site-header"></div>
+
+<!-- Navigation Dots -->
+<nav class="scroll-nav">
+  <div class="scroll-nav-dot active" data-section="0" title="Hero"></div>
+  <div class="scroll-nav-dot" data-section="1" title="Platform"></div>
+  <div class="scroll-nav-dot" data-section="2" title="Quality"></div>
+  <div class="scroll-nav-dot" data-section="3" title="Process"></div>
+  <div class="scroll-nav-dot" data-section="4" title="Pricing"></div>
+  <div class="scroll-nav-dot" data-section="5" title="Contact"></div>
+</nav>
+
+<!-- Section 1: Hero -->
+<section class="hero fullpage-section hero-section">
+  <div class="hero-content">
+    <span class="hero-label">Vessel Trading Platform</span>
+    <h1><span>Japanese Quality Vessels</span><br>Delivered Worldwide</h1>
+    <p class="hero-lead">
+      AI-powered vessel trading platform with real-time inventory of 340+ quality used vessels from Japan, Korea, and Eastern Europe. Machine learning-based valuation, 4K drone inspection, blockchain escrow payment, and automated security screening for transparent, efficient transactions.
+    </p>
+    <p class="hero-sub">340+ Vessels / 9 Countries / Success-Based Fees Only</p>
+  </div>
+  <div class="scroll-indicator">
+    <span></span>
+  </div>
+</section>
+
+<!-- Section 2: Platform -->
+<section class="fullpage-section">
+  <div class="wrap">
+    <span class="section-label animate-on-scroll">Service 01</span>
+    <h2 class="section-title animate-on-scroll">AI-Powered Inventory System</h2>
+
+    <div class="service-layout">
+      <div class="service-text animate-on-scroll">
+        <p>A unified broker platform managing used vessels worldwide. Our proprietary machine learning algorithms crawl 50+ sources across Japan, Korea, and Eastern Europe daily, providing real-time access to 340+ vessel listings. Predictive pricing analytics trained on 5,000+ historical transactions ensure fair market pricing with accuracy within ±5%. Advanced filtering by vessel type, DWT, build year, and price range, with AI-powered smart matching that reduces search time by 90%.</p>
+        <a href="https://avisail-vessel-trading.vercel.app/" target="_blank" rel="noopener noreferrer" class="cta-btn-outline">Browse Inventory</a>
+      </div>
+
+      <div class="service-sidebar animate-on-scroll">
+        <ul class="tech-list">
+          <li>340+ real-time vessel listings</li>
+          <li>AI market valuation (±5% accuracy)</li>
+          <li>Daily automated crawling (50+ sources)</li>
+          <li>Multilingual (English, Japanese, Arabic)</li>
+          <li>Total Cost Calculator included</li>
+          <li>9-country shipping route coverage</li>
+          <li>Smart matching recommendation engine</li>
+        </ul>
+      </div>
     </div>
+  </div>
+</section>
 
-    <!-- Hero Section -->
-    <main class="page-hero">
-        <!-- Animated particles canvas (optional, reused from index if script included) -->
+<!-- Section 3: Quality -->
+<section class="fullpage-section">
+  <div class="wrap">
+    <span class="section-label animate-on-scroll">Service 02</span>
+    <h2 class="section-title animate-on-scroll">Quality Assurance & Security</h2>
 
-        <div class="wrap hero-grid">
-            <div class="hero-content">
-                <div class="accent-label"
-                    style="margin-bottom: 10px; display: inline-block; padding: 4px 12px; background: rgba(126,240,212,0.1); border-radius: 16px; color: var(--accent-cyan); font-size: 0.7rem; border: 1px solid rgba(126,240,212,0.2);">
-                    Maritime Business</div>
-                <h1 class="gradient-title-text" style="font-size: 2.2rem; line-height: 1.15; margin-bottom: 14px;">
-                    Japanese Used Vessels<br>
-                    <span class="gradient-text">Delivered Worldwide</span>
-                </h1>
-                <p class="lead"
-                    style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 18px; max-width: 500px; line-height: 1.5;">
-                    AI-powered vessel trading platform with real-time inventory (340+ vessels from Japan, Korea, Eastern Europe), machine learning-based valuation (±5% accuracy), 4K drone + ROV inspection, blockchain-based escrow payment, automated security screening (sanctions/AIS), and end-to-end support (inspection to post-delivery). Average transaction time: 30 days (50% faster than traditional brokers).
-                </p>
-                <div class="cta-group">
-                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSeWDc3FqugN4Xn-1gO-aXJ9Jp3Q1n5Q5Q/viewform"
-                        class="btn-outline" target="_blank" rel="noopener noreferrer" style="padding: 10px 24px; font-size: 0.85rem;">Contact Sales</a>
-                </div>
-            </div>
+    <div class="service-layout">
+      <div class="service-text animate-on-scroll">
+        <p>Remote vessel inspection via 4K HD drones and underwater ROV eliminates the need for travel, reducing inspection costs by 70%. Panama-licensed third-party escrow service with blockchain-based payment records ensures tamper-proof transparency. Automated due diligence includes counterparty verification, international sanctions list screening (OFAC/EU/UN), AIS history analysis for anomalous navigation detection, and automatic risk scoring to completely eliminate fraud risk.</p>
+      </div>
 
-            <div class="hero-visual" style="text-align: center;">
-                <!-- Platform Preview Image -->
-                <img src="../images/platform-hero-en.png" alt="Avisail Trading Platform" class="platform-preview"
-                    style="transform: scale(1.1) rotateY(-5deg) rotateX(5deg); margin-bottom: 16px; transition: transform 0.5s ease;">
+      <div class="service-sidebar animate-on-scroll">
+        <ul class="tech-list">
+          <li>4K drone + underwater ROV survey</li>
+          <li>IACS-certified surveyor reports</li>
+          <li>Blockchain-recorded escrow payment</li>
+          <li>International sanctions auto-screening</li>
+          <li>AIS history anomaly detection</li>
+          <li>Multi-currency support (USD/EUR/JPY/CNY)</li>
+          <li>Flexible milestone payment settings</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
 
-                <!-- New Big Button Below Image as requested -->
-                <a href="https://avisail-vessel-trading.vercel.app" class="btn-glow"
-                    style="padding: 12px 32px; font-size: 0.9rem; width: 100%; max-width: 280px;" target="_blank" rel="noopener noreferrer">
-                    Check Sales Platform
-                </a>
+<!-- Section 4: Process -->
+<section class="fullpage-section">
+  <div class="wrap">
+    <span class="section-label animate-on-scroll">Process</span>
+    <h2 class="section-title animate-on-scroll">Seamless Transaction Flow</h2>
 
-                <!-- Floating Stat Badge -->
-                <div
-                    style="position: absolute; bottom: 60px; left: -20px; background: rgba(10,15,26,0.95); border: 1px solid var(--accent-cyan); padding: 16px; border-radius: 12px; backdrop-filter: blur(10px); box-shadow: 0 10px 25px rgba(0,0,0,0.6); z-index: 10;">
-                    <div style="font-size: 0.7rem; color: var(--text-secondary); margin-bottom: 3px;">Available Vessels
-                    </div>
-                    <div style="font-size: 1.6rem; font-weight: 700; color: #fff; line-height: 1;">340+</div>
-                </div>
-            </div>
-        </div>
-    </main>
+    <div class="service-layout">
+      <div class="service-text animate-on-scroll">
+        <p>From platform registration to delivery, average transaction completes in 30 days — 50% faster than traditional brokers. After free account creation, browse 340+ vessels instantly. AI recommends optimal matches, and drone inspections are arranged with one click. E-contracts and escrow payments are all completed within the platform. A dedicated project manager handles everything from flag registration to post-delivery aftercare.</p>
+      </div>
 
-    <!-- Detailed Strengths Section (Restoring Information Density) -->
-    <section class="wrap" style="padding-bottom: 0;">
-        <h2 class="section-title center-text" style="font-size: 1.4rem;">Why Choose Avisail</h2>
-        <div class="grid-3" style="margin-top: 28px;">
-            <div style="text-align: center;">
-                <div
-                    style="width: 2rem; height: 2rem; background: rgba(126,240,212,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; border: 1px solid var(--accent-cyan);">
-                    <span style="font-size: 1.2rem; color: var(--accent-cyan);">🇯🇵</span>
-                </div>
-                <h3 style="margin-bottom: 10px; font-size: 0.95rem;">Japanese Quality</h3>
-                <p style="color: var(--text-secondary); font-size: 0.8rem; line-height: 1.5;">
-                    Japanese vessels are world-renowned for pristine condition due to rigorous maintenance standards (mandatory dry-dock every 2-3 years, strict safety inspections). We curate only the best assets (avg. condition score 8.5/10) from Japan, Korea, and Eastern Europe. All vessels undergo pre-listing quality checks by IACS-certified surveyors.
-                </p>
-            </div>
-            <div style="text-align: center;">
-                <div
-                    style="width: 2rem; height: 2rem; background: rgba(106,166,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; border: 1px solid var(--accent-blue);">
-                    <span style="font-size: 1.2rem; color: var(--accent-blue);">⚖️</span>
-                </div>
-                <h3 style="margin-bottom: 10px; font-size: 0.95rem;">Fair & Transparent</h3>
-                <p style="color: var(--text-secondary); font-size: 0.8rem; line-height: 1.5;">
-                    AI valuation models trained on 5,000+ historical transactions ensure fair market pricing (±5% accuracy). Machine learning analyzes vessel specs, age, condition, market trends to calculate optimal price. Blockchain-based escrow guarantees transaction security for both buyers and sellers. All fees disclosed upfront with no hidden charges.
-                </p>
-            </div>
-            <div style="text-align: center;">
-                <div
-                    style="width: 2rem; height: 2rem; background: rgba(126,240,212,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; border: 1px solid var(--accent-cyan);">
-                    <span style="font-size: 1.2rem; color: var(--accent-cyan);">🚢</span>
-                </div>
-                <h3 style="margin-bottom: 10px; font-size: 0.95rem;">Global Logistics</h3>
-                <p style="color: var(--text-secondary); font-size: 0.8rem; line-height: 1.5;">
-                    With partners in 100+ countries (Asia, Europe, Africa, Americas), we handle complex export clearance (customs, permits, inspections) and delivery logistics. Vessel delivered directly to your designated port with full insurance coverage. Support for multiple flag registrations (Panama, Marshall Islands, Liberia, etc.) with expedited processing.
-                </p>
-            </div>
-        </div>
-    </section>
+      <div class="service-sidebar animate-on-scroll">
+        <ul class="tech-list">
+          <li>Step 1 - Platform registration (3 min)</li>
+          <li>Step 2 - AI inventory search & selection (instant)</li>
+          <li>Step 3 - Inquiry & detail confirmation (1 day)</li>
+          <li>Step 4 - Negotiation & drone inspection (1-3 days)</li>
+          <li>Step 5 - E-contract & escrow payment (auto)</li>
+          <li>Step 6 - Flag registration, delivery & aftercare</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- Feature Section: AI Core -->
-    <section class="wrap">
-        <div class="highlight-box">
-            <div class="grid-2" style="align-items: center; gap: 32px;">
-                <div>
-                    <h2 style="font-size: 1.4rem; margin-bottom: 14px; color: #fff; line-height: 1.2;">Intelligent Inventory<br><span
-                            style="color: var(--accent-cyan);">Management System</span></h2>
-                    <p style="color: var(--text-secondary); margin-bottom: 20px; font-size: 0.8rem; line-height: 1.5;">
-                        Our proprietary AI platform (machine learning + NLP + web scraping) continuously monitors vessel markets across Japan, Korea, and Eastern Europe. Unlike traditional brokers relying on static listings (weekly/monthly updates), we dynamically aggregate data from 50+ sources to surface optimal matches instantly. Automated data normalization ensures consistent specs across all listings.
-                    </p>
-                    <ul class="feature-list" style="list-style: none; padding: 0; color: #fff;">
-                        <li style="margin-bottom: 8px; display: flex; align-items: center; gap: 8px; font-size: 0.8rem;">
-                            <span style="color: var(--accent-cyan);">✓</span> Real-time inventory updates (daily automated crawling from 50+ sources)
-                        </li>
-                        <li style="margin-bottom: 8px; display: flex; align-items: center; gap: 8px; font-size: 0.8rem;">
-                            <span style="color: var(--accent-cyan);">✓</span> Automated due diligence (sanctions check, AIS history, ownership verification)
-                        </li>
-                        <li style="margin-bottom: 8px; display: flex; align-items: center; gap: 8px; font-size: 0.8rem;">
-                            <span style="color: var(--accent-cyan);">✓</span> Predictive pricing analytics (ML trained on 5,000+ transactions, ±5% accuracy)
-                        </li>
-                        <li style="margin-bottom: 8px; display: flex; align-items: center; gap: 8px; font-size: 0.8rem;">
-                            <span style="color: var(--accent-cyan);">✓</span> Smart matching algorithm (auto-recommends vessels based on user preferences)
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-visual">
-                    <!-- Embedded Stats View -->
-                    <div class="stat-grid">
-                        <div class="stat-card">
-                            <div class="stat-number">24/7</div>
-                            <div class="stat-label">Support</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-number">100+</div>
-                            <div class="stat-label">Countries</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-number">340+</div>
-                            <div class="stat-label">Vessels</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-number">50+</div>
-                            <div class="stat-label">Data Sources</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- Section 5: Pricing -->
+<section class="fullpage-section">
+  <div class="wrap">
+    <span class="section-label animate-on-scroll">Pricing</span>
+    <h2 class="section-title animate-on-scroll">Success-Based Pricing</h2>
 
-    <!-- Vessel Types -->
-    <section class="wrap" id="vessel-types">
-        <h2 class="section-title center-text" style="font-size: 1.4rem;">Vessel Specializations</h2>
-        <p class="section-subtitle center-text" style="margin-bottom: 28px; font-size: 0.8rem;">We specialize in high-demand categories for
-            global trade, island logistics, and port operations.</p>
+    <div class="service-layout">
+      <div class="service-text animate-on-scroll">
+        <p>Zero upfront costs. Registration, inventory browsing, inquiries, AI recommendations, valuations, and drone inspection arrangements are completely free. Commission is only charged upon successful transaction completion, with rates averaging 30% below industry standard. Volume discounts available for multiple vessel purchases. If no deal closes, you pay nothing. The only comprehensive platform where everything from search to payment to registration is completed in one system.</p>
+      </div>
 
-        <div class="grid-3">
-            <div class="glass-card" style="padding: 18px;">
-                <h3 class="card-title" style="font-size: 0.95rem;">Coasters</h3>
-                <p class="muted-text" style="font-size: 0.75rem;">500 - 5,000 DWT</p>
-                <div style="height: 1px; background: rgba(255,255,255,0.1); margin: 10px 0;"></div>
-                <p style="color: var(--text-secondary); font-size: 0.75rem; line-height: 1.4;">
-                    Short-sea shipping vessels ideal for coastal and inter-island trade routes (Southeast Asia, Mediterranean, Caribbean). Sourced primarily from Japan's rigorous maintenance fleets (avg. age 15-20 years, well-maintained). Suitable for bulk cargo, containers, general cargo. Typical features: single/double deck, geared/gearless options, fuel-efficient engines.
-                </p>
-            </div>
+      <div class="service-sidebar animate-on-scroll">
+        <ul class="tech-list">
+          <li>Zero initial and monthly fees</li>
+          <li>Success-based commission only</li>
+          <li>30% below industry-standard rates</li>
+          <li>Volume discount for multiple vessels</li>
+          <li>Escrow-protected fund security</li>
+          <li>50% faster average transaction time</li>
+          <li>One-stop platform for all processes</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
 
-            <div class="glass-card" style="padding: 18px;">
-                <h3 class="card-title" style="font-size: 0.95rem;">Tugboats</h3>
-                <p class="muted-text" style="font-size: 0.75rem;">1,000 - 5,000 HP</p>
-                <div style="height: 1px; background: rgba(255,255,255,0.1); margin: 10px 0;"></div>
-                <p style="color: var(--text-secondary); font-size: 0.75rem; line-height: 1.4;">
-                    Essential for port operations (harbor towing, berthing assistance), offshore support (platform supply, anchor handling), and salvage. High-quality Japanese engineering ensures reliability and fuel efficiency. Azimuth stern drive (ASD) models available. Strong bollard pull (30-80 tons typical). FiFi (fire-fighting) systems equipped on select models.
-                </p>
-            </div>
+<!-- Section 6: CTA -->
+<section class="cta-section fullpage-section center-section">
+  <div class="wrap">
+    <h2 class="animate-on-scroll">Browse Inventory Now</h2>
+    <p class="animate-on-scroll">340+ quality used vessels available in real-time. Free registration, zero risk to get started.</p>
+    <div class="animate-on-scroll" style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+      <a href="https://avisail-vessel-trading.vercel.app/" target="_blank" rel="noopener noreferrer" class="cta-btn">Browse Inventory</a>
+      <a href="../en/contact.html" class="cta-btn-outline">Contact Us</a>
+    </div>
+  </div>
+  <!-- Shared Footer -->
+  <div id="site-footer" style="width: 100%;"></div>
+</section>
 
-            <div class="glass-card" style="padding: 18px;">
-                <h3 class="card-title" style="font-size: 0.95rem;">Landing Craft</h3>
-                <p class="muted-text" style="font-size: 0.75rem;">LCT / LCM</p>
-                <div style="height: 1px; background: rgba(255,255,255,0.1); margin: 10px 0;"></div>
-                <p style="color: var(--text-secondary); font-size: 0.75rem; line-height: 1.4;">
-                    Specialized for shallow-water logistics (beach landing, remote island supply) and infrastructure development. Critical for emerging markets lacking deep-water ports. Bow ramp design for direct cargo loading/unloading. Typical payload: 100-500 tons. Suitable for transporting heavy equipment, construction materials, vehicles. Japanese LCTs known for durability in harsh conditions.
-                </p>
-            </div>
-        </div>
-    </section>
+<!-- Shared Components Loader -->
+<script src="../includes/components.js"></script>
 
-    <!-- Service Process -->
-    <section class="wrap" id="service-process" style="background: rgba(10,15,26,0.3);">
-        <h2 class="section-title" style="font-size: 1.4rem;">Seamless Process</h2>
-        <div class="grid-4" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 24px;">
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
 
-            <div class="glass-card" style="border-top: 2px solid var(--accent-blue); padding: 16px;">
-                <div style="font-size: 2rem; color: rgba(106,166,255,0.2); font-weight: 700;">01</div>
-                <h3 style="color: #fff; font-size: 0.9rem; margin-bottom: 8px;">Discovery</h3>
-                <p style="font-size: 0.75rem; color: var(--text-secondary); line-height: 1.4;">AI-driven matching against client
-                    requirements (vessel type, DWT, price, location) and global inventory (340+ vessels). Smart recommendation engine suggests optimal vessels based on past transactions and market trends.</p>
-            </div>
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry, index) {
+      if (entry.isIntersecting) {
+        setTimeout(function() {
+          entry.target.classList.add('visible');
+        }, index * 100);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
 
-            <div class="glass-card" style="border-top: 2px solid var(--accent-cyan); padding: 16px;">
-                <div style="font-size: 2rem; color: rgba(126,240,212,0.2); font-weight: 700;">02</div>
-                <h3 style="color: #fff; font-size: 0.9rem; margin-bottom: 8px;">Inspection</h3>
-                <p style="font-size: 0.75rem; color: var(--text-secondary); line-height: 1.4;">4K drone + ROV + thermal imaging survey. IACS-certified independent surveyors conduct physical inspection (hull, machinery, electrical). Detailed condition report with photos/videos delivered within 48 hours.</p>
-            </div>
+  document.querySelectorAll('.animate-on-scroll').forEach(function(el) {
+    observer.observe(el);
+  });
 
-            <div class="glass-card" style="border-top: 2px solid var(--accent-blue); padding: 16px;">
-                <div style="font-size: 2rem; color: rgba(106,166,255,0.2); font-weight: 700;">03</div>
-                <h3 style="color: #fff; font-size: 0.9rem; margin-bottom: 8px;">Execution</h3>
-                <p style="font-size: 0.75rem; color: var(--text-secondary); line-height: 1.4;">Blockchain-based escrow payment (Panama licensed). Electronic contract signing with digital signatures. Flag registration support (Panama, Marshall Islands, Liberia) with expedited processing. Multi-currency support (USD/EUR/JPY/CNY).</p>
-            </div>
+  var sections = document.querySelectorAll('.fullpage-section');
+  var navDots = document.querySelectorAll('.scroll-nav-dot');
 
-            <div class="glass-card" style="border-top: 2px solid var(--accent-cyan); padding: 16px;">
-                <div style="font-size: 2rem; color: rgba(126,240,212,0.2); font-weight: 700;">04</div>
-                <h3 style="color: #fff; font-size: 0.9rem; margin-bottom: 8px;">Delivery</h3>
-                <p style="font-size: 0.75rem; color: var(--text-secondary); line-height: 1.4;">Safe transport to designated port with full insurance coverage. Post-delivery operational support (crew recruitment, maintenance planning, spare parts sourcing). Unlimited troubleshooting hotline.</p>
-            </div>
+  navDots.forEach(function(dot, index) {
+    dot.addEventListener('click', function() {
+      sections[index].scrollIntoView({ behavior: 'smooth' });
+    });
+  });
 
-        </div>
-    </section>
+  var sectionObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        var index = Array.from(sections).indexOf(entry.target);
+        navDots.forEach(function(dot, i) {
+          dot.classList.toggle('active', i === index);
+        });
+      }
+    });
+  }, { threshold: 0.5 });
 
-    <!-- Shared Footer -->
-    <div id="site-footer"></div>
-    <script src="../includes/components.js"></script>
+  sections.forEach(function(section) {
+    sectionObserver.observe(section);
+  });
+});
+
+(function () {
+  var canvas = document.getElementById('global-bg');
+  if (!canvas) return;
+  var ctx = canvas.getContext('2d');
+  var width, height;
+  var particles = [];
+  var zOff = 0;
+
+  function resize() {
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = window.innerHeight;
+    initParticles();
+  }
+  window.addEventListener('resize', resize);
+
+  function initParticles() {
+    particles = [];
+    var count = Math.floor(width * height / 2000);
+    for (var i = 0; i < count; i++) {
+      particles.push({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        vx: 0,
+        vy: 0,
+        maxSpeed: Math.random() * 0.8 + 0.2,
+        size: Math.random() > 0.9 ? 1.5 : 0.8,
+        color: Math.random() > 0.5 ? '#2E64BA' : '#4DB899'
+      });
+    }
+  }
+
+  function update() {
+    zOff += 0.0005;
+    particles.forEach(function(p) {
+      var angle = (Math.cos(p.x * 0.002 + zOff) + Math.sin(p.y * 0.002 + zOff)) * Math.PI;
+      p.vx += Math.cos(angle) * 0.02;
+      p.vy += Math.sin(angle) * 0.02;
+      var speed = Math.sqrt(p.vx * p.vx + p.vy * p.vy);
+      if (speed > p.maxSpeed) {
+        p.vx = (p.vx / speed) * p.maxSpeed;
+        p.vy = (p.vy / speed) * p.maxSpeed;
+      }
+      p.x += p.vx;
+      p.y += p.vy;
+      if (p.x < 0) { p.x = width; p.vx = 0; p.vy = 0; }
+      if (p.x > width) { p.x = 0; p.vx = 0; p.vy = 0; }
+      if (p.y < 0) { p.y = height; p.vx = 0; p.vy = 0; }
+      if (p.y > height) { p.y = 0; p.vx = 0; p.vy = 0; }
+    });
+  }
+
+  function draw() {
+    ctx.fillStyle = 'rgba(5, 8, 15, 0.2)';
+    ctx.fillRect(0, 0, width, height);
+    particles.forEach(function(p) {
+      ctx.fillStyle = p.color;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+      ctx.fill();
+    });
+    requestAnimationFrame(function () {
+      update();
+      draw();
+    });
+  }
+
+  resize();
+  draw();
+})();
+</script>
+
 </body>
-
 </html>

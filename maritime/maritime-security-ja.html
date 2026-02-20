@@ -9,150 +9,9 @@
 <link rel="alternate" hreflang="ja" href="https://avisail.com/maritime/maritime-security-ja.html">
 <link rel="alternate" hreflang="en" href="https://avisail.com/maritime/maritime-security-en.html">
 <link rel="icon" type="image/svg+xml" href="../favicon.svg">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../style.css">
-<style>
-.page-hero{
-  padding:80px 0 50px;
-  background:
-    linear-gradient(rgba(10,15,26,0.88),rgba(10,15,26,0.95)),
-    radial-gradient(ellipse at 35% 25%,rgba(59,130,246,0.12),transparent 50%),
-    radial-gradient(ellipse at 65% 75%,rgba(16,185,129,0.08),transparent 50%),
-    var(--bg-dark);
-  position:relative;
-  overflow:hidden;
-}
-.page-hero::before{
-  content:'';
-  position:absolute;
-  bottom:0;
-  left:0;
-  right:0;
-  height:120px;
-  background:linear-gradient(to top, var(--bg-dark), transparent);
-}
-.page-hero .wrap{position:relative;z-index:2;}
-.hero-badge{
-  display:inline-flex;
-  align-items:center;
-  gap:6px;
-  padding:6px 16px;
-  background:rgba(59,130,246,0.15);
-  border:2px solid rgba(59,130,246,0.35);
-  border-radius:20px;
-  color:#3b82f6;
-  font-size:0.75rem;
-  font-weight:700;
-  margin-bottom:14px;
-  letter-spacing:0.04em;
-}
-.page-hero h1{
-  font-size:clamp(1.9rem,5vw,3rem);
-  margin-bottom:16px;
-  color:#fff;
-  font-weight:800;
-  line-height:1.15;
-}
-.page-hero h1 span{
-  background:linear-gradient(135deg,#3b82f6,#10b981);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-  background-clip:text;
-}
-.page-hero .lead{
-  color:var(--text-secondary);
-  max-width:950px;
-  font-size:0.95rem;
-  line-height:1.6;
-  margin-bottom:20px;
-}
-.hero-stats{
-  display:flex;
-  gap:24px;
-  flex-wrap:wrap;
-  margin-top:24px;
-}
-.hero-stat{
-  text-align:left;
-}
-.hero-stat-number{
-  font-size:1.7rem;
-  font-weight:800;
-  background:linear-gradient(135deg,#3b82f6,#10b981);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-  background-clip:text;
-  margin-bottom:4px;
-}
-.hero-stat-label{
-  font-size:0.8rem;
-  color:var(--text-muted);
-}
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
 
-.problem-section{
-  background:rgba(239,68,68,0.06);
-  border:2px solid rgba(239,68,68,0.25);
-  border-radius:12px;
-  padding:24px;
-  margin:28px 0;
-}
-.problem-section h2{
-  color:#ef4444;
-  font-size:1.6rem;
-  margin-bottom:12px;
-  text-align:center;
-  font-weight:800;
-}
-.solution-section{
-  background:linear-gradient(135deg,rgba(59,130,246,0.1),rgba(16,185,129,0.08));
-  border:2px solid rgba(16,185,129,0.3);
-  border-radius:12px;
-  padding:28px;
-  margin:28px 0;
-  text-align:center;
-}
-.features-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:20px;
-  margin-top:24px;
-}
-.feature-box{
-  background:rgba(10,15,26,0.7);
-  border:1px solid rgba(59,130,246,0.25);
-  border-radius:10px;
-  padding:18px;
-  text-align:left;
-}
-.feature-icon{
-  width:36px;
-  height:36px;
-  background:linear-gradient(135deg,#3b82f6,#10b981);
-  border-radius:8px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:1.1rem;
-  margin-bottom:10px;
-}
-.feature-box h4{
-  color:#fff;
-  font-size:1rem;
-  margin-bottom:8px;
-  font-weight:700;
-}
-.feature-box p{
-  color:var(--text-secondary);
-  line-height:1.6;
-  font-size:0.85rem;
-}
-
-@media(max-width:768px){
-  .page-hero{padding:60px 0 40px;}
-}
-</style>
-
-<!-- JSON-LD 構造化データ -->
+<!-- JSON-LD -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -169,567 +28,693 @@
   }
 }
 </script>
+
+<style>
+:root {
+  --bg-primary: #0a0f1a;
+  --bg-secondary: #060910;
+  --text-primary: #ffffff;
+  --text-secondary: #b8c5d6;
+  --text-muted: #6b7a8f;
+  --accent: #7ef0d4;
+  --accent-blue: #6aa6ff;
+  --line: rgba(255,255,255,0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  scroll-snap-type: y proximity;
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  background: transparent;
+  color: var(--text-primary);
+  font-family: 'Inter', 'Noto Sans JP', -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; text-decoration: none; }
+
+.wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  width: 100%;
+}
+
+#global-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(circle at 50% 50%, #0d1424 0%, #05080f 100%);
+}
+
+.fullpage-section {
+  min-height: 100vh;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  display: flex;
+  align-items: flex-start;
+  padding-top: 80px;
+  position: relative;
+  width: 100%;
+}
+
+.fullpage-section.hero-section {
+  align-items: center;
+  padding-top: 0;
+}
+
+.fullpage-section.center-section {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.scroll-nav {
+  position: fixed;
+  right: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.scroll-nav-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.scroll-nav-dot:hover {
+  background: rgba(255, 255, 255, 0.4);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.scroll-nav-dot.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  box-shadow: 0 0 12px rgba(126, 240, 212, 0.5);
+}
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  padding: 120px 24px;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(106, 166, 255, 0.15), transparent),
+    radial-gradient(ellipse 60% 40% at 50% 120%, rgba(126, 240, 212, 0.1), transparent);
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 900px;
+}
+
+.hero-label {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 32px;
+  opacity: 0;
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+.hero h1 {
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin-bottom: 32px;
+  opacity: 0;
+  animation: fadeInUp 0.8s ease 0.1s forwards;
+}
+
+.hero h1 span {
+  background: linear-gradient(135deg, var(--accent-blue), var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-lead {
+  font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+  color: var(--text-secondary);
+  line-height: 1.8;
+  max-width: 700px;
+  margin: 0 auto;
+  opacity: 0;
+  animation: fadeInUp 0.8s ease 0.2s forwards;
+}
+
+.hero-sub {
+  margin-top: 40px;
+  font-size: 1rem;
+  color: var(--accent);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  opacity: 0;
+  animation: fadeInUp 0.8s ease 0.3s forwards;
+}
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 48px;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  animation: fadeInUp 0.8s ease 0.4s forwards;
+}
+
+.scroll-indicator span {
+  display: block;
+  width: 1px;
+  height: 60px;
+  background: linear-gradient(to bottom, var(--accent), transparent);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+
+.section-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+
+.section-title {
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 24px;
+  line-height: 1.3;
+}
+
+.section-subtitle {
+  font-size: 1rem;
+  color: var(--accent);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  margin-bottom: 32px;
+}
+
+.section-lead {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  max-width: 600px;
+  line-height: 1.9;
+  margin-bottom: 48px;
+}
+
+.service-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.service-text {
+  padding-top: 8px;
+}
+
+.service-text p {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 2;
+  margin-bottom: 32px;
+}
+
+.service-sidebar {
+  padding: 48px 40px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.service-sidebar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-blue), var(--accent));
+  transform: scaleX(0);
+  transition: transform 0.4s ease;
+}
+
+.service-sidebar:hover {
+  transform: translateY(-8px);
+  border-color: rgba(126, 240, 212, 0.2);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+}
+
+.service-sidebar:hover::before {
+  transform: scaleX(1);
+}
+
+.tech-list {
+  list-style: none;
+  margin-bottom: 32px;
+}
+
+.tech-list li {
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line);
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+.tech-list li:last-child {
+  border-bottom: none;
+}
+
+.cta-btn {
+  display: inline-block;
+  padding: 18px 48px;
+  background: linear-gradient(135deg, var(--accent-blue), var(--accent));
+  color: var(--bg-primary);
+  font-weight: 700;
+  font-size: 1rem;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+}
+
+.cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 20px 40px rgba(106, 166, 255, 0.3);
+}
+
+.cta-btn-outline {
+  display: inline-block;
+  padding: 14px 36px;
+  background: transparent;
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 0.95rem;
+  border-radius: 50px;
+  border: 1px solid rgba(126, 240, 212, 0.4);
+  transition: all 0.3s ease;
+}
+
+.cta-btn-outline:hover {
+  background: rgba(126, 240, 212, 0.08);
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.cta-section {
+  text-align: center;
+  flex-direction: column;
+}
+
+.cta-section > .wrap {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.cta-section h2 {
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 24px;
+}
+
+.cta-section p {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  margin-bottom: 40px;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scrollPulse {
+  0%, 100% { transform: scaleY(1); opacity: 1; }
+  50% { transform: scaleY(0.6); opacity: 0.5; }
+}
+
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 1024px) {
+  .service-layout {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+}
+
+@media (max-width: 768px) {
+  .fullpage-section {
+    min-height: auto;
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+
+  .hero {
+    padding: 100px 24px;
+    min-height: 100vh;
+  }
+
+  .scroll-nav {
+    right: 12px;
+    gap: 8px;
+  }
+
+  .scroll-nav-dot {
+    width: 8px;
+    height: 8px;
+  }
+
+  .service-sidebar {
+    padding: 32px 24px;
+  }
+
+  .service-layout {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+</style>
 </head>
-<body style="background:#0a0f1a;">
+<body>
+
+<!-- Canvas Background -->
+<canvas id="global-bg"></canvas>
 
 <!-- Shared Header -->
 <div id="site-header"></div>
 
-<!-- Back Navigation -->
-<div style="padding:16px 0;background:var(--bg-dark);">
-<div class="wrap">
-<a href="maritime-services-ja.html" style="display:inline-flex;align-items:center;gap:8px;padding:10px 20px;font-size:0.85rem;border:1px solid rgba(59,130,246,0.4);border-radius:8px;color:#3b82f6;background:rgba(59,130,246,0.08);text-decoration:none;transition:all 0.3s ease;">
-<span>←</span>
-<span>海事事業に戻る</span>
-</a>
-</div>
-</div>
+<!-- Navigation Dots -->
+<nav class="scroll-nav">
+  <div class="scroll-nav-dot active" data-section="0" title="Hero"></div>
+  <div class="scroll-nav-dot" data-section="1" title="Capabilities"></div>
+  <div class="scroll-nav-dot" data-section="2" title="Protection"></div>
+  <div class="scroll-nav-dot" data-section="3" title="Pricing"></div>
+  <div class="scroll-nav-dot" data-section="4" title="Comparison"></div>
+  <div class="scroll-nav-dot" data-section="5" title="Contact"></div>
+</nav>
 
-<!-- Hero Section -->
-<section class="page-hero">
-<div class="wrap">
-<div class="hero-badge">
-🔐 海事専門セキュリティ
-</div>
-<h1>
-<span>海運業界のための</span><br>
-世界トップクラスの<br>
-サイバーセキュリティ
-</h1>
-<p class="lead">
-IMO規制・NIS2指令に完全準拠した海事専門セキュリティプラットフォーム。<br>
-船舶OT/ITシステム、港湾インフラ、サプライチェーン全体を包括的に保護。<br>
-もはや「贅沢品」ではなく、海運業界で生き残るための「必須品」です。
-</p>
-
-<div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:20px;">
-<a href="#free-assessment" class="cta" style="font-size:0.9rem;padding:10px 24px;">無料セキュリティ診断</a>
-<a href="#contact" class="btn" style="font-size:0.9rem;padding:10px 24px;">詳細を見る</a>
-</div>
-
-<div class="hero-stats">
-<div class="hero-stat">
-<div class="hero-stat-number">100%</div>
-<div class="hero-stat-label">IMO規制準拠</div>
-</div>
-<div class="hero-stat">
-<div class="hero-stat-number">24/7</div>
-<div class="hero-stat-label">リアルタイム監視</div>
-</div>
-<div class="hero-stat">
-<div class="hero-stat-number">世界Top</div>
-<div class="hero-stat-label">セキュリティ水準</div>
-</div>
-</div>
-</div>
+<!-- Section 1: Hero -->
+<section class="hero fullpage-section hero-section">
+  <div class="hero-content">
+    <span class="hero-label">Maritime Cybersecurity</span>
+    <h1><span>海運業界のための</span><br>世界トップクラスのセキュリティ</h1>
+    <p class="hero-lead">
+      IMO規制・NIS2指令に完全準拠した海事専門セキュリティプラットフォーム。船舶OT/ITシステム、港湾インフラ、サプライチェーン全体を包括的に保護。AIによるリアルタイム脅威検知で、サイバー攻撃を0.3秒以内に検知・遮断します。
+    </p>
+    <p class="hero-sub">IMO 100%準拠 / 24/7監視 / 0.3秒検知</p>
+  </div>
+  <div class="scroll-indicator">
+    <span></span>
+  </div>
 </section>
 
-<!-- なぜ今、海事セキュリティが必須か -->
-<section style="padding:40px 0;background:linear-gradient(135deg,rgba(239,68,68,0.08),rgba(10,15,26,0.95));">
-<div class="wrap">
-<div style="text-align:center;margin-bottom:28px;">
-<div style="display:inline-block;background:rgba(239,68,68,0.2);border:2px solid rgba(239,68,68,0.4);padding:6px 16px;border-radius:20px;margin-bottom:12px;">
-<span style="color:#ef4444;font-weight:800;font-size:0.75rem;letter-spacing:0.04em;">⚠️ 贅沢品から必須品へ</span>
-</div>
-<h2 style="font-size:1.9rem;margin-bottom:12px;color:#fff;font-weight:800;">
-なぜ今、海事業界で<br>
-<span style="background:linear-gradient(135deg,#ef4444,#f59e0b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">セキュリティが必須</span>なのか？
-</h2>
-<p style="color:var(--text-secondary);font-size:0.9rem;line-height:1.5;max-width:900px;margin:0 auto;">
-2026年、海運業界を取り巻くセキュリティ環境は劇的に変化。法規制の強化、サイバー攻撃の激化により、対策なしでは事業継続が困難に。IMO（国際海事機関）とEUのNIS2指令が同時施行され、最大1,000万ユーロの罰金リスクが現実化。また、ランサムウェア攻撃は前年比400%増加し、マースクやコスコなどの大手企業も被害を受け、平均被害額は5億円を超える状況です。
-</p>
-</div>
+<!-- Section 2: Capabilities -->
+<section class="fullpage-section">
+  <div class="wrap">
+    <span class="section-label animate-on-scroll">Capabilities</span>
+    <h2 class="section-title animate-on-scroll">包括的セキュリティプラットフォーム</h2>
 
-<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:20px;margin-bottom:32px;">
-<!-- 統計1 -->
-<div style="background:rgba(10,15,26,0.7);border:2px solid rgba(239,68,68,0.3);border-radius:10px;padding:20px;text-align:center;">
-<div style="font-size:2.2rem;margin-bottom:8px;">⚖️</div>
-<div style="font-size:2rem;font-weight:800;color:#ef4444;margin-bottom:6px;">2026年施行</div>
-<h4 style="color:#fff;font-size:1rem;margin-bottom:8px;font-weight:700;">IMO規制・NIS2指令</h4>
-<p style="color:var(--text-secondary);font-size:0.82rem;line-height:1.5;">
-国際海事機関（IMO）の新規制Resolution MSC.428(98)とEUのNIS2指令(Directive 2022/2555)により、海運企業のサイバーセキュリティ対策が法的義務化。違反時の罰金は最大1,000万ユーロまたは全世界売上高の2%のいずれか高い方。船舶管理会社、港湾運営者、海運会社は24ヶ月以内の完全準拠が必須。対象企業は従業員50名以上または年間売上1,000万ユーロ以上。
-</p>
-</div>
+    <div class="service-layout">
+      <div class="service-text animate-on-scroll">
+        <p>航海システム（GPS・AIS・ECDIS・VDR）、機関制御システム、通信システム（VSAT・Inmarsat）を統合的に保護。OTとITの境界を越えた包括的セキュリティを実現します。IEC 62443準拠のセグメンテーション、ホワイトリスト型アクセス制御、異常通信検知により不正侵入を0.3秒以内に検知・遮断。24/7グローバルSOCがAIと機械学習で脅威を監視し、50カ国以上の脅威インテリジェンスをリアルタイム統合します。</p>
+        <a href="../ja/contact.html?type=maritime-security" class="cta-btn-outline">無料診断を申し込む</a>
+      </div>
 
-<!-- 統計2 -->
-<div style="background:rgba(10,15,26,0.7);border:2px solid rgba(239,68,68,0.3);border-radius:10px;padding:20px;text-align:center;">
-<div style="font-size:2.2rem;margin-bottom:8px;">🎯</div>
-<div style="font-size:2rem;font-weight:800;color:#ef4444;margin-bottom:6px;">400%増加</div>
-<h4 style="color:#fff;font-size:1rem;margin-bottom:8px;font-weight:700;">海運業界への攻撃</h4>
-<p style="color:var(--text-secondary);font-size:0.82rem;line-height:1.5;">
-2025年比で海運業界へのランサムウェア攻撃が4倍に激増。2024年のマースクA.P.へのNotPetya攻撃（被害額300億円）、2023年のコスコへのランサムウェア攻撃（被害額200億円）など大手企業も被害。平均被害額は5億円以上で、身代金要求額は平均8,000万円。攻撃の82%が船舶OTシステムを標的とし、GPS偽装やECDIS改ざんによる航海安全への直接的脅威が増加。
-</p>
-</div>
-
-<!-- 統計3 -->
-<div style="background:rgba(10,15,26,0.7);border:2px solid rgba(239,68,68,0.3);border-radius:10px;padding:20px;text-align:center;">
-<div style="font-size:2.2rem;margin-bottom:8px;">⛴️</div>
-<div style="font-size:2rem;font-weight:800;color:#ef4444;margin-bottom:6px;">船舶運航停止</div>
-<h4 style="color:#fff;font-size:1rem;margin-bottom:8px;font-weight:700;">事業継続の危機</h4>
-<p style="color:var(--text-secondary);font-size:0.82rem;line-height:1.5;">
-サイバー攻撃により船舶運航システムが完全停止するケースが急増。平均復旧期間は18日間で、1日あたりの損失は平均2億5,000万円。船舶管理システム、予約システム、貨物追跡システムの同時停止により、サプライチェーン全体が麻痺。さらに、サイバー攻撃を原因とする事故は海上保険の適用外となるケースが78%に達し、全損失を自社負担する企業が急増中。
-</p>
-</div>
-</div>
-
-<!-- 2026年の主要脅威（海事特化） -->
-<div style="background:rgba(5,8,15,0.8);border:2px solid rgba(239,68,68,0.3);border-radius:10px;padding:24px;margin-bottom:32px;">
-<h3 style="text-align:center;font-size:1.5rem;margin-bottom:20px;color:#fff;font-weight:800;">2026年 海運業界の主要セキュリティ脅威</h3>
-
-<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;">
-<div style="background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.25);border-radius:8px;padding:16px;">
-<h4 style="color:#ef4444;font-size:0.95rem;margin-bottom:8px;font-weight:700;">🏴‍☠️ 船舶OTシステムへの攻撃</h4>
-<p style="color:var(--text-secondary);font-size:0.8rem;line-height:1.5;">
-GPS・AIS（自動船舶識別装置）・ECDIS（電子海図表示装置）等の航海システムへの侵入が急増。GPSスプーフィング攻撃により偽装位置情報が送信され、船舶が意図しない航路へ誘導される事例が2025年比で320%増加。ARPA（自動衝突予防援助装置）の無効化により衝突リスクが直接的に上昇。VDR（航海データ記録装置）の改ざんにより事故調査が困難化。機関制御システム（ECS）への侵入により、エンジン出力の遠隔操作や燃料システムの制御不能も報告されています。
-</p>
-</div>
-
-<div style="background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.25);border-radius:8px;padding:16px;">
-<h4 style="color:#ef4444;font-size:0.95rem;margin-bottom:8px;font-weight:700;">🔗 サプライチェーン攻撃</h4>
-<p style="color:var(--text-secondary);font-size:0.8rem;line-height:1.5;">
-港湾ターミナルオペレーティングシステム（TOS）、コンテナ管理システム（CMS）、物流管理システム（WMS）、EDI（電子データ交換）システム、通関システムへの多段階侵入攻撃。一つのシステムへの侵入から連鎖的にサプライチェーン全体へ拡大。2024年のロッテルダム港攻撃では、48時間の港湾機能停止により欧州物流全体で2,500億円の経済損失。船社・港湾・倉庫・運送会社間の接続点が攻撃対象となり、防御が最も脆弱なパートナー経由で侵入されるケースが85%を占めます。
-</p>
-</div>
-
-<div style="background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.25);border-radius:8px;padding:16px;">
-<h4 style="color:#ef4444;font-size:0.95rem;margin-bottom:8px;font-weight:700;">💰 ランサムウェア攻撃</h4>
-<p style="color:var(--text-secondary);font-size:0.8rem;line-height:1.5;">
-船舶管理システム、予約システム（Booking System）、顧客データベース、貨物追跡システム、運賃計算システムを同時暗号化する二重・三重恐喝型ランサムウェアが主流化。暗号化に加えて窃取データの公開脅迫、顧客への直接脅迫を併用。身代金平均額は8,000万円で、支払っても復号鍵が提供されない確率は42%。さらに、サイバー保険の78%がランサムウェアを免責対象とし、全損失を自社負担する必要があります。復旧には平均18日を要し、その間の売上損失は平均45億円に達します。
-</p>
-</div>
-
-<div style="background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.25);border-radius:8px;padding:16px;">
-<h4 style="color:#ef4444;font-size:0.95rem;margin-bottom:8px;font-weight:700;">📡 衛星通信の脆弱性</h4>
-<p style="color:var(--text-secondary);font-size:0.8rem;line-height:1.5;">
-VSAT（超小型衛星地球局）、Inmarsat、Iridiumなどの船舶衛星通信システムへの侵入。暗号化されていない通信の傍受により、航路情報・貨物情報・乗組員個人情報が窃取されます。衛星通信経由で船内ネットワークへ侵入し、OTシステムへの遠隔アクセスを確立。公海上の船舶は陸上からのセキュリティ支援が困難で特に無防備。2025年には船舶衛星通信経由の攻撃が前年比560%増加し、海賊組織が通信傍受で貨物情報を入手し襲撃する事例も報告されています。
-</p>
-</div>
-</div>
-</div>
-
-<!-- 自社チェックシート CTA -->
-<div style="background:linear-gradient(135deg,rgba(16,185,129,0.15),rgba(59,130,246,0.12));border:2px solid rgba(16,185,129,0.4);border-radius:10px;padding:24px;text-align:center;">
-<div style="display:inline-block;background:linear-gradient(135deg,#10b981,#7ef0d4);padding:5px 12px;border-radius:6px;margin-bottom:12px;">
-<span style="color:#0a0f1a;font-weight:800;font-size:0.7rem;letter-spacing:0.04em;">📋 無料チェックシート配布中</span>
-</div>
-<h3 style="font-size:1.4rem;margin-bottom:10px;color:#fff;font-weight:800;">
-貴社の海事セキュリティリスクを今すぐ診断
-</h3>
-<p style="color:var(--text-secondary);font-size:0.85rem;line-height:1.5;margin-bottom:18px;max-width:750px;margin-left:auto;margin-right:auto;">
-<strong style="color:#10b981;">3分で完了する自己診断シート</strong>を無料でダウンロード。IMO規制・NIS2指令への準拠状況を今すぐ確認できます。チェックシートには、船舶OT/ITシステムのセキュリティ評価（GPS・AIS・ECDIS・機関制御システムの脆弱性診断）、IMO Resolution MSC.428(98)とNIS2指令(Directive 2022/2555)の全66項目準拠チェックリスト、サプライチェーンパートナーのセキュリティ状況評価、インシデント対応体制（24時間以内報告義務への対応準備）の整備状況、航海データ・乗組員情報・顧客データのGDPR準拠保護状況を含みます。
-</p>
-
-<div style="background:rgba(10,15,26,0.6);border:1px solid rgba(59,130,246,0.3);border-radius:8px;padding:16px;max-width:700px;margin:0 auto 16px;">
-<h4 style="color:#fff;font-size:0.9rem;margin-bottom:10px;font-weight:700;">チェックシートの内容（全66項目）</h4>
-<ul style="list-style:none;padding:0;margin:0;text-align:left;font-size:0.8rem;">
-<li style="padding:6px 0;color:var(--text-secondary);display:flex;align-items:flex-start;gap:8px;border-bottom:1px solid var(--line);">
-<span style="color:#10b981;font-weight:700;flex-shrink:0;">✓</span>
-船舶OT/ITシステムのセキュリティ状況（GPS・AIS・ECDIS・VDR・ARPA・機関制御・VSAT通信の脆弱性評価、ファイアウォール設定、アクセス制御、パッチ管理状況）
-</li>
-<li style="padding:6px 0;color:var(--text-secondary);display:flex;align-items:flex-start;gap:8px;border-bottom:1px solid var(--line);">
-<span style="color:#10b981;font-weight:700;flex-shrink:0;">✓</span>
-IMO規制・NIS2指令への準拠度チェック（全66項目の詳細評価、リスク管理体制、サイバーセキュリティポリシー文書化、24時間以内のインシデント報告体制、年次監査対応準備）
-</li>
-<li style="padding:6px 0;color:var(--text-secondary);display:flex;align-items:flex-start;gap:8px;border-bottom:1px solid var(--line);">
-<span style="color:#10b981;font-weight:700;flex-shrink:0;">✓</span>
-サプライチェーンセキュリティの評価（港湾システム・物流パートナー・通関業者・船舶代理店・燃料供給業者のセキュリティ水準評価、契約書のサイバーセキュリティ条項確認）
-</li>
-<li style="padding:6px 0;color:var(--text-secondary);display:flex;align-items:flex-start;gap:8px;border-bottom:1px solid var(--line);">
-<span style="color:#10b981;font-weight:700;flex-shrink:0;">✓</span>
-インシデント対応体制の整備状況（CSIRT（サイバーセキュリティインシデント対応チーム）設置、インシデント対応手順書、バックアップ・復旧計画、サイバー保険加入状況）
-</li>
-<li style="padding:6px 0;color:var(--text-secondary);display:flex;align-items:flex-start;gap:8px;">
-<span style="color:#10b981;font-weight:700;flex-shrink:0;">✓</span>
-航海データ・顧客情報の保護状況（GDPR準拠データ管理、データ暗号化、アクセスログ記録、データ保持期間管理、乗組員・顧客への個人情報保護方針通知）
-</li>
-</ul>
-</div>
-
-<a href="../ja/contact.html?type=maritime-checklist" class="cta" style="display:inline-block;padding:12px 28px;font-size:0.95rem;background:linear-gradient(135deg,#10b981,#7ef0d4);text-decoration:none;border-radius:6px;color:#0a0f1a;font-weight:700;">
-📥 無料チェックシートをダウンロード
-</a>
-<p style="color:var(--text-muted);font-size:0.75rem;margin-top:10px;">
-メールアドレスの入力のみ • 即時ダウンロード • 営業連絡なし
-</p>
-</div>
-</div>
+      <div class="service-sidebar animate-on-scroll">
+        <ul class="tech-list">
+          <li>船舶OT/IT統合セキュリティ</li>
+          <li>24/7グローバルSOC監視</li>
+          <li>AI/MLリアルタイム脅威検知（0.3秒）</li>
+          <li>IEC 62443準拠セグメンテーション</li>
+          <li>50カ国以上の脅威インテリジェンス</li>
+          <li>MITRE ATT&CK for ICS対応</li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- 商材紹介 -->
-<section style="padding:40px 0;">
-<div class="wrap">
-<h2 style="text-align:center;font-size:1.9rem;margin-bottom:12px;color:#fff;font-weight:800;">海事専門セキュリティシステム</h2>
-<p style="text-align:center;color:var(--text-secondary);font-size:0.9rem;line-height:1.5;max-width:900px;margin:0 auto 28px;">
-海運業界に特化した包括的なサイバーセキュリティプラットフォーム。船舶OT/IT、港湾システム、サプライチェーン全体を一元管理・保護します。IMO Resolution MSC.428(98)、NIS2指令(Directive 2022/2555)、GDPR、ISPSコード（国際船舶・港湾施設保安コード）に完全準拠。SIEM（セキュリティ情報イベント管理）、EDR（エンドポイント検知・対応）、NDR（ネットワーク検知・対応）を統合した次世代型セキュリティオペレーションセンター（SOC）を提供します。
-</p>
+<!-- Section 3: Protection -->
+<section class="fullpage-section">
+  <div class="wrap">
+    <span class="section-label animate-on-scroll">Protection</span>
+    <h2 class="section-title animate-on-scroll">多層防御と可視化</h2>
 
-<div class="features-grid">
-<div class="feature-box">
-<div class="feature-icon">⛴️</div>
-<h4>船舶OT/IT統合セキュリティ</h4>
-<p>
-航海システム（GPS・AIS・ECDIS・VDR・ARPA）、機関制御システム（ECS・BMS・HVAC）、通信システム（VSAT・Inmarsat・Iridium）を統合的に保護。OTとITの境界を越えた包括的なセキュリティ。IEC 62443（産業用制御システムセキュリティ標準）準拠のセグメンテーション、ホワイトリスト型アクセス制御、異常通信検知により、船舶システムへの不正侵入を0.3秒以内に検知・遮断。船陸間通信の暗号化、OTネットワークのエアギャップ維持、リモートアクセスの多要素認証を標準実装。
-</p>
-</div>
+    <div class="service-layout">
+      <div class="service-text animate-on-scroll">
+        <p>港湾ターミナルシステム、物流パートナー、通関システムのセキュリティ状況を一元管理し、サプライチェーン全体のリスクスコアを可視化。Third-Party Risk Managementにより取引先のセキュリティ評価を自動化します。航海データ・乗組員情報・顧客データをGDPR基準で完全保護し、AES-256暗号化、データ匿名化、アクセスログ記録を自動化。経営層向けダッシュボードでリスク評価スコア、コンプライアンス達成率、インシデント履歴を一目で把握できます。</p>
+      </div>
 
-<div class="feature-box">
-<div class="feature-icon">🚨</div>
-<h4>リアルタイム脅威検知</h4>
-<p>
-24/7でサイバー脅威を監視するグローバルSOC（セキュリティオペレーションセンター）。AIと機械学習による異常検知で、ゼロデイ攻撃・APT攻撃・ランサムウェアを事前に察知し自動ブロック。平均検知時間0.3秒、誤検知率0.8%以下。50カ国以上の脅威インテリジェンスフィードをリアルタイム統合し、海運業界特有の攻撃パターンを99.7%の精度で識別。MITRE ATT&CK for ICS（産業用制御システム攻撃フレームワーク）に基づく脅威ハンティング、振る舞い分析、サンドボックス解析を実施。
-</p>
-</div>
-
-<div class="feature-box">
-<div class="feature-icon">⚖️</div>
-<h4>IMO・NIS2完全準拠</h4>
-<p>
-国際海事機関（IMO）Resolution MSC.428(98)の全要件とEUのNIS2指令(Directive 2022/2555)の66項目すべてに完全準拠。コンプライアンスレポートを自動生成し、年次監査・抜き打ち検査に即座に対応可能。24時間以内のインシデント報告義務に対応した自動通知システム、リスク管理文書の自動作成、CSIRT（サイバーセキュリティインシデント対応チーム）設置支援、ISMコード（国際安全管理コード）との統合管理を提供。監査証跡の自動記録により、罰金リスクを完全排除。
-</p>
-</div>
-
-<div class="feature-box">
-<div class="feature-icon">🔗</div>
-<h4>サプライチェーン可視化</h4>
-<p>
-港湾ターミナルシステム（TOS）、物流パートナー、通関システム、船舶代理店、燃料供給業者のセキュリティ状況を一元管理。サプライチェーン全体のリスクスコアを可視化し、脆弱なパートナー経由の侵入を防止。Third-Party Risk Management（TPRM）により、取引先のセキュリティ評価を自動化。EDI（電子データ交換）通信の暗号化、API接続の認証強化、データ共有の最小権限原則を実装。サプライチェーン全体で統一されたセキュリティポリシーを適用し、最も脆弱な接続点を強化します。
-</p>
-</div>
-
-<div class="feature-box">
-<div class="feature-icon">🛡️</div>
-<h4>GDPR対応データ保護</h4>
-<p>
-航海データ（VDR記録・航路情報・気象データ）、乗組員情報（個人データ・健康情報・給与データ）、顧客データ（予約情報・貨物詳細・決済情報）をGDPR（EU一般データ保護規則）基準で完全保護。AES-256暗号化、データ匿名化、アクセスログ記録、データ保持期間管理、削除権（Right to be Forgotten）対応を自動化。EU域内での事業にも完全対応し、データ保護影響評価（DPIA）レポート自動生成、個人情報漏洩時の72時間以内通知義務に対応した自動通知システムを実装。
-</p>
-</div>
-
-<div class="feature-box">
-<div class="feature-icon">📊</div>
-<h4>経営層向けダッシュボード</h4>
-<p>
-セキュリティ状況を経営層向けに可視化する直感的ダッシュボード。リスク評価スコア（CVSS v3.1準拠）、コンプライアンス達成率、インシデント履歴、平均対応時間（MTTD/MTTR）、セキュリティ投資ROIを一目で把握。役員会・取締役会向けレポート自動生成、業界ベンチマーク比較、サイバーリスク定量化（金額換算）を提供。モバイルアプリにより、経営層が移動中・船上からでもリアルタイムでセキュリティ状況を確認可能。緊急インシデント発生時の自動アラート通知。
-</p>
-</div>
-</div>
-
-<!-- UIプレビュー（プレースホルダー） -->
-<div style="margin-top:80px;">
-<h3 style="text-align:center;font-size:2rem;margin-bottom:48px;color:#fff;font-weight:800;">プラットフォームUI</h3>
-
-<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(350px,1fr));gap:32px;">
-<!-- プレースホルダー1 -->
-<div style="background:rgba(10,15,26,0.7);border:2px solid rgba(59,130,246,0.3);border-radius:14px;padding:24px;">
-<div style="background:linear-gradient(135deg,rgba(59,130,246,0.08),rgba(16,185,129,0.05));border:2px dashed rgba(59,130,246,0.3);border-radius:8px;aspect-ratio:16/10;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;margin-bottom:16px;">
-<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="1.5">
-<rect x="3" y="3" width="18" height="18" rx="2"></rect>
-<path d="M3 9h18M9 21V9"></path>
-</svg>
-<p style="color:#3b82f6;font-weight:600;font-size:0.9rem;">ダッシュボード画面</p>
-</div>
-<p style="color:var(--text-secondary);font-size:0.9rem;text-align:center;">
-リアルタイムセキュリティ状況、脅威アラート、コンプライアンススコア表示
-</p>
-</div>
-
-<!-- プレースホルダー2 -->
-<div style="background:rgba(10,15,26,0.7);border:2px solid rgba(59,130,246,0.3);border-radius:14px;padding:24px;">
-<div style="background:linear-gradient(135deg,rgba(59,130,246,0.08),rgba(16,185,129,0.05));border:2px dashed rgba(59,130,246,0.3);border-radius:8px;aspect-ratio:16/10;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;margin-bottom:16px;">
-<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="1.5">
-<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-</svg>
-<p style="color:#10b981;font-weight:600;font-size:0.9rem;">脅威検知画面</p>
-</div>
-<p style="color:var(--text-secondary);font-size:0.9rem;text-align:center;">
-検知された脅威の詳細、影響範囲、推奨対処法をリアルタイム表示
-</p>
-</div>
-
-<!-- プレースホルダー3 -->
-<div style="background:rgba(10,15,26,0.7);border:2px solid rgba(59,130,246,0.3);border-radius:14px;padding:24px;">
-<div style="background:linear-gradient(135deg,rgba(59,130,246,0.08),rgba(16,185,129,0.05));border:2px dashed rgba(59,130,246,0.3);border-radius:8px;aspect-ratio:16/10;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;margin-bottom:16px;">
-<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#7ef0d4" stroke-width="1.5">
-<line x1="18" y1="20" x2="18" y2="10"></line>
-<line x1="12" y1="20" x2="12" y2="4"></line>
-<line x1="6" y1="20" x2="6" y2="14"></line>
-</svg>
-<p style="color:#7ef0d4;font-weight:600;font-size:0.9rem;">コンプライアンス画面</p>
-</div>
-<p style="color:var(--text-secondary);font-size:0.9rem;text-align:center;">
-IMO規制・NIS2指令への準拠状況、監査レポート自動生成
-</p>
-</div>
-</div>
-
-<div style="text-align:center;margin-top:32px;padding:20px;background:rgba(59,130,246,0.08);border:2px dashed rgba(59,130,246,0.3);border-radius:12px;">
-<p style="color:#3b82f6;font-weight:600;margin-bottom:8px;font-size:0.9rem;">📸 UIスクリーンショット追加予定</p>
-<p style="color:var(--text-muted);font-size:0.85rem;margin:0;line-height:1.5;">
-実際のプラットフォーム画面のスクリーンショットをここに表示
-</p>
-</div>
-</div>
-</div>
+      <div class="service-sidebar animate-on-scroll">
+        <ul class="tech-list">
+          <li>サプライチェーン全体の可視化</li>
+          <li>Third-Party Risk Management</li>
+          <li>GDPR準拠データ保護（AES-256）</li>
+          <li>経営層向けリアルタイムダッシュボード</li>
+          <li>コンプライアンスレポート自動生成</li>
+          <li>セキュリティ投資ROI可視化</li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- ご使用の流れ -->
-<section style="padding:40px 0;background:rgba(5,8,15,0.5);">
-<div class="wrap">
-<h2 style="text-align:center;font-size:1.7rem;margin-bottom:28px;color:#fff;font-weight:800;">ご使用の流れ</h2>
+<!-- Section 4: Pricing -->
+<section class="fullpage-section">
+  <div class="wrap">
+    <span class="section-label animate-on-scroll">Pricing</span>
+    <h2 class="section-title animate-on-scroll">料金プラン</h2>
 
-<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;max-width:1100px;margin:0 auto;">
-<div style="text-align:center;background:rgba(59,130,246,0.05);border:1px solid rgba(59,130,246,0.2);border-radius:8px;padding:16px 12px;">
-<div style="width:40px;height:40px;background:linear-gradient(135deg,#3b82f6,#10b981);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.2rem;font-weight:800;color:#fff;margin:0 auto 10px;">1</div>
-<h5 style="color:#fff;font-size:0.95rem;margin-bottom:6px;font-weight:700;">無料診断申込</h5>
-<p style="color:var(--text-secondary);font-size:0.8rem;line-height:1.5;">
-フォームから申込。基本情報のみで診断開始。
-</p>
-<span style="display:inline-block;background:rgba(16,185,129,0.15);border:1px solid rgba(16,185,129,0.3);padding:4px 10px;border-radius:14px;font-size:0.7rem;color:#10b981;font-weight:700;margin-top:8px;">⏱ 3分</span>
-</div>
+    <div class="service-layout">
+      <div class="service-text animate-on-scroll">
+        <p>企業規模・船舶数に応じた柔軟な料金体系。まずは無料診断で現状を把握してください。無料診断では、セキュリティ状況の可視化、脆弱性の自動検出、詳細PDFレポート、改善提案を提供します。ビジネスプランは月額50万円から、船舶5隻までの24/7リアルタイム監視とIMO・NIS2準拠レポート自動生成を含みます。エンタープライズプランは無制限の船舶・拠点対応で、専任セキュリティチーム配置とカスタム開発に対応します。</p>
+      </div>
 
-<div style="text-align:center;background:rgba(59,130,246,0.05);border:1px solid rgba(59,130,246,0.2);border-radius:8px;padding:16px 12px;">
-<div style="width:40px;height:40px;background:linear-gradient(135deg,#3b82f6,#10b981);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.2rem;font-weight:800;color:#fff;margin:0 auto 10px;">2</div>
-<h5 style="color:#fff;font-size:0.95rem;margin-bottom:6px;font-weight:700;">自動セキュリティスキャン</h5>
-<p style="color:var(--text-secondary);font-size:0.8rem;line-height:1.5;">
-AIが自動的にセキュリティ診断を実施。
-</p>
-<span style="display:inline-block;background:rgba(16,185,129,0.15);border:1px solid rgba(16,185,129,0.3);padding:4px 10px;border-radius:14px;font-size:0.7rem;color:#10b981;font-weight:700;margin-top:8px;">⏱ 48時間以内</span>
-</div>
-
-<div style="text-align:center;background:rgba(59,130,246,0.05);border:1px solid rgba(59,130,246,0.2);border-radius:8px;padding:16px 12px;">
-<div style="width:40px;height:40px;background:linear-gradient(135deg,#3b82f6,#10b981);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.2rem;font-weight:800;color:#fff;margin:0 auto 10px;">3</div>
-<h5 style="color:#fff;font-size:0.95rem;margin-bottom:6px;font-weight:700;">詳細レポート配信</h5>
-<p style="color:var(--text-secondary);font-size:0.8rem;line-height:1.5;">
-脆弱性、リスク評価、改善提案を含む詳細レポート。
-</p>
-<span style="display:inline-block;background:rgba(16,185,129,0.15);border:1px solid rgba(16,185,129,0.3);padding:4px 10px;border-radius:14px;font-size:0.7rem;color:#10b981;font-weight:700;margin-top:8px;">⏱ 自動送信</span>
-</div>
-
-<div style="text-align:center;background:rgba(59,130,246,0.05);border:1px solid rgba(59,130,246,0.2);border-radius:8px;padding:16px 12px;">
-<div style="width:40px;height:40px;background:linear-gradient(135deg,#3b82f6,#10b981);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.2rem;font-weight:800;color:#fff;margin:0 auto 10px;">4</div>
-<h5 style="color:#fff;font-size:0.95rem;margin-bottom:6px;font-weight:700;">プラン選択・契約</h5>
-<p style="color:var(--text-secondary);font-size:0.8rem;line-height:1.5;">
-貴社に最適なプランを選択。オンライン契約で即日開始。
-</p>
-<span style="display:inline-block;background:rgba(16,185,129,0.15);border:1px solid rgba(16,185,129,0.3);padding:4px 10px;border-radius:14px;font-size:0.7rem;color:#10b981;font-weight:700;margin-top:8px;">⏱ 即日</span>
-</div>
-
-<div style="text-align:center;background:rgba(59,130,246,0.05);border:1px solid rgba(59,130,246,0.2);border-radius:8px;padding:16px 12px;">
-<div style="width:40px;height:40px;background:linear-gradient(135deg,#3b82f6,#10b981);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.2rem;font-weight:800;color:#fff;margin:0 auto 10px;">5</div>
-<h5 style="color:#fff;font-size:0.95rem;margin-bottom:6px;font-weight:700;">システム統合・稼働開始</h5>
-<p style="color:var(--text-secondary);font-size:0.8rem;line-height:1.5;">
-既存システムと統合。24/7監視を開始。
-</p>
-<span style="display:inline-block;background:rgba(16,185,129,0.15);border:1px solid rgba(16,185,129,0.3);padding:4px 10px;border-radius:14px;font-size:0.7rem;color:#10b981;font-weight:700;margin-top:8px;">⏱ 1週間</span>
-</div>
-</div>
-</div>
+      <div class="service-sidebar animate-on-scroll">
+        <ul class="tech-list">
+          <li>無料診断 - セキュリティ可視化・脆弱性検出</li>
+          <li>ビジネス（月額50万円〜）- 24/7監視・5隻</li>
+          <li>エンタープライズ（要見積）- 無制限対応</li>
+          <li>初期費用無料・最低契約期間なし</li>
+          <li>導入1週間で24/7監視開始</li>
+          <li>専任セキュリティアナリスト配置</li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- 料金プラン -->
-<section style="padding:40px 0;">
-<div class="wrap">
-<h2 style="text-align:center;font-size:1.7rem;margin-bottom:10px;color:#fff;font-weight:800;">料金プラン</h2>
-<p style="text-align:center;color:var(--text-secondary);font-size:0.85rem;max-width:750px;margin:0 auto 28px;line-height:1.5;">
-企業規模・船舶数に応じた柔軟な料金体系。まずは無料診断で現状を把握してください。初期費用無料、月額課金のサブスクリプションモデル。最低契約期間なし、いつでも解約可能。
-</p>
+<!-- Section 5: Comparison -->
+<section class="fullpage-section">
+  <div class="wrap">
+    <span class="section-label animate-on-scroll">Comparison</span>
+    <h2 class="section-title animate-on-scroll">競合との差別化</h2>
 
-<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;max-width:1200px;margin:0 auto;">
-<!-- スタータープラン -->
-<div style="background:rgba(10,15,26,0.7);border:2px solid rgba(59,130,246,0.3);border-radius:14px;padding:40px;text-align:center;">
-<div style="display:inline-block;background:rgba(59,130,246,0.15);color:#3b82f6;padding:6px 14px;border-radius:20px;font-size:0.8rem;font-weight:700;margin-bottom:20px;">スタート</div>
-<h4 style="color:#fff;font-size:1.6rem;margin-bottom:16px;font-weight:800;">無料診断</h4>
-<div style="font-size:2.5rem;font-weight:800;background:linear-gradient(135deg,#3b82f6,#10b981);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:12px;">¥0</div>
-<div style="color:var(--text-muted);font-size:0.9rem;margin-bottom:28px;">完全無料</div>
-<ul style="list-style:none;padding:0;margin:0 0 32px 0;text-align:left;">
-<li style="padding:10px 0;color:var(--text-secondary);font-size:0.95rem;display:flex;align-items:flex-start;gap:12px;line-height:1.7;">
-<span style="color:#10b981;font-weight:700;flex-shrink:0;margin-top:2px;">✓</span>
-セキュリティ状況の可視化
-</li>
-<li style="padding:10px 0;color:var(--text-secondary);font-size:0.95rem;display:flex;align-items:flex-start;gap:12px;line-height:1.7;">
-<span style="color:#10b981;font-weight:700;flex-shrink:0;margin-top:2px;">✓</span>
-脆弱性の自動検出
-</li>
-<li style="padding:10px 0;color:var(--text-secondary);font-size:0.95rem;display:flex;align-items:flex-start;gap:12px;line-height:1.7;">
-<span style="color:#10b981;font-weight:700;flex-shrink:0;margin-top:2px;">✓</span>
-詳細PDFレポート
-</li>
-<li style="padding:10px 0;color:var(--text-secondary);font-size:0.95rem;display:flex;align-items:flex-start;gap:12px;line-height:1.7;">
-<span style="color:#10b981;font-weight:700;flex-shrink:0;margin-top:2px;">✓</span>
-改善提案
-</li>
-</ul>
-<a href="#free-assessment" class="cta" style="width:100%;text-align:center;display:inline-block;padding:16px;text-decoration:none;border-radius:8px;">無料診断を申し込む</a>
-</div>
+    <div class="service-layout">
+      <div class="service-text animate-on-scroll">
+        <p>海運業界に特化した唯一の包括的セキュリティプラットフォーム。一般的なITセキュリティでは対応できない船舶OT/IT統合管理、IMO・NIS2自動準拠レポート、サプライチェーン全体の一元可視化を実現します。海外大手ソリューションと比較して約4倍のコストパフォーマンス。導入期間は1週間（大手は2-6ヶ月）、24/7日本語サポートを標準提供。海事業界特有の攻撃パターンを99.7%の精度で識別する専門性が最大の強みです。</p>
+      </div>
 
-<!-- ビジネスプラン -->
-<div style="background:linear-gradient(135deg,rgba(59,130,246,0.1),rgba(16,185,129,0.08));border:2px solid rgba(16,185,129,0.4);border-radius:14px;padding:40px;text-align:center;">
-<div style="display:inline-block;background:linear-gradient(135deg,#3b82f6,#10b981);color:#fff;padding:6px 14px;border-radius:20px;font-size:0.8rem;font-weight:700;margin-bottom:20px;">おすすめ</div>
-<h4 style="color:#fff;font-size:1.6rem;margin-bottom:16px;font-weight:800;">ビジネスプラン</h4>
-<div style="font-size:2.5rem;font-weight:800;background:linear-gradient(135deg,#3b82f6,#10b981);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:12px;">¥500,000〜</div>
-<div style="color:var(--text-muted);font-size:0.9rem;margin-bottom:28px;">月額 / 船舶5隻まで</div>
-<ul style="list-style:none;padding:0;margin:0 0 32px 0;text-align:left;">
-<li style="padding:10px 0;color:var(--text-secondary);font-size:0.95rem;display:flex;align-items:flex-start;gap:12px;line-height:1.7;">
-<span style="color:#10b981;font-weight:700;flex-shrink:0;margin-top:2px;">✓</span>
-24/7リアルタイム監視
-</li>
-<li style="padding:10px 0;color:var(--text-secondary);font-size:0.95rem;display:flex;align-items:flex-start;gap:12px;line-height:1.7;">
-<span style="color:#10b981;font-weight:700;flex-shrink:0;margin-top:2px;">✓</span>
-船舶OT/IT統合セキュリティ
-</li>
-<li style="padding:10px 0;color:var(--text-secondary);font-size:0.95rem;display:flex;align-items:flex-start;gap:12px;line-height:1.7;">
-<span style="color:#10b981;font-weight:700;flex-shrink:0;margin-top:2px;">✓</span>
-IMO・NIS2準拠レポート自動生成
-</li>
-<li style="padding:10px 0;color:var(--text-secondary);font-size:0.95rem;display:flex;align-items:flex-start;gap:12px;line-height:1.7;">
-<span style="color:#10b981;font-weight:700;flex-shrink:0;margin-top:2px;">✓</span>
-インシデント対応サポート
-</li>
-<li style="padding:10px 0;color:var(--text-secondary);font-size:0.95rem;display:flex;align-items:flex-start;gap:12px;line-height:1.7;">
-<span style="color:#10b981;font-weight:700;flex-shrink:0;margin-top:2px;">✓</span>
-専任セキュリティアナリスト
-</li>
-</ul>
-<a href="#contact" class="cta" style="width:100%;text-align:center;display:inline-block;padding:16px;text-decoration:none;border-radius:8px;background:linear-gradient(135deg,#3b82f6,#10b981);">お問い合わせ</a>
-</div>
-
-<!-- エンタープライズプラン -->
-<div style="background:rgba(10,15,26,0.7);border:2px solid rgba(59,130,246,0.3);border-radius:14px;padding:40px;text-align:center;">
-<div style="display:inline-block;background:rgba(59,130,246,0.15);color:#3b82f6;padding:6px 14px;border-radius:20px;font-size:0.8rem;font-weight:700;margin-bottom:20px;">大規模企業向け</div>
-<h4 style="color:#fff;font-size:1.6rem;margin-bottom:16px;font-weight:800;">エンタープライズ</h4>
-<div style="font-size:2.5rem;font-weight:800;background:linear-gradient(135deg,#3b82f6,#10b981);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:12px;">要見積</div>
-<div style="color:var(--text-muted);font-size:0.9rem;margin-bottom:28px;">カスタマイズ対応</div>
-<ul style="list-style:none;padding:0;margin:0 0 32px 0;text-align:left;">
-<li style="padding:10px 0;color:var(--text-secondary);font-size:0.95rem;display:flex;align-items:flex-start;gap:12px;line-height:1.7;">
-<span style="color:#10b981;font-weight:700;flex-shrink:0;margin-top:2px;">✓</span>
-無制限の船舶・拠点対応
-</li>
-<li style="padding:10px 0;color:var(--text-secondary);font-size:0.95rem;display:flex;align-items:flex-start;gap:12px;line-height:1.7;">
-<span style="color:#10b981;font-weight:700;flex-shrink:0;margin-top:2px;">✓</span>
-サプライチェーン全体の統合管理
-</li>
-<li style="padding:10px 0;color:var(--text-secondary);font-size:0.95rem;display:flex;align-items:flex-start;gap:12px;line-height:1.7;">
-<span style="color:#10b981;font-weight:700;flex-shrink:0;margin-top:2px;">✓</span>
-専任セキュリティチーム配置
-</li>
-<li style="padding:10px 0;color:var(--text-secondary);font-size:0.95rem;display:flex;align-items:flex-start;gap:12px;line-height:1.7;">
-<span style="color:#10b981;font-weight:700;flex-shrink:0;margin-top:2px;">✓</span>
-カスタム開発対応
-</li>
-<li style="padding:10px 0;color:var(--text-secondary);font-size:0.95rem;display:flex;align-items:flex-start;gap:12px;line-height:1.7;">
-<span style="color:#10b981;font-weight:700;flex-shrink:0;margin-top:2px;">✓</span>
-24/7電話サポート
-</li>
-</ul>
-<a href="#contact" class="btn" style="width:100%;text-align:center;display:inline-block;padding:16px;text-decoration:none;border-radius:8px;">相談する</a>
-</div>
-</div>
-</div>
+      <div class="service-sidebar animate-on-scroll">
+        <ul class="tech-list">
+          <li>海事業界完全特化（汎用ITとは一線を画す）</li>
+          <li>海外大手比 約4倍のコストパフォーマンス</li>
+          <li>導入1週間（大手は2-6ヶ月）</li>
+          <li>船舶OT/IT統合管理（他社は別システム）</li>
+          <li>IMO・NIS2自動レポート（他社は手動）</li>
+          <li>24/7日本語サポート標準提供</li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- 競合比較 -->
-<section style="padding:40px 0;background:rgba(5,8,15,0.5);">
-<div class="wrap">
-<h2 style="text-align:center;font-size:1.7rem;margin-bottom:12px;color:#fff;font-weight:800;">世界トップクラスのセキュリティ水準</h2>
-<p style="text-align:center;color:var(--text-secondary);font-size:0.85rem;margin-bottom:24px;max-width:850px;margin-left:auto;margin-right:auto;">
-海運業界に特化した唯一の包括的セキュリティプラットフォーム。一般的なITセキュリティとは一線を画す専門性。IMO・NIS2完全準拠、船舶OT/IT統合セキュリティ、サプライチェーン全体の可視化を実現。
-</p>
-
-<div style="overflow-x:auto;">
-<table style="width:100%;max-width:1100px;margin:0 auto;border-collapse:collapse;background:rgba(10,15,26,0.6);border-radius:10px;overflow:hidden;">
-<thead>
-<tr style="background:linear-gradient(135deg,rgba(59,130,246,0.15),rgba(16,185,129,0.12));">
-<th style="padding:12px 14px;text-align:left;color:#fff;font-size:0.85rem;font-weight:700;border-bottom:2px solid rgba(59,130,246,0.3);">比較項目</th>
-<th style="padding:12px 14px;text-align:center;color:#10b981;font-size:0.85rem;font-weight:700;border-bottom:2px solid rgba(59,130,246,0.3);">Avisail Maritime Security</th>
-<th style="padding:12px 14px;text-align:center;color:var(--text-muted);font-size:0.85rem;font-weight:700;border-bottom:2px solid rgba(59,130,246,0.3);">一般的ITセキュリティ</th>
-<th style="padding:12px 14px;text-align:center;color:var(--text-muted);font-size:0.85rem;font-weight:700;border-bottom:2px solid rgba(59,130,246,0.3);">海外大手ソリューション</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="padding:10px 14px;color:var(--text-secondary);font-size:0.8rem;border-bottom:1px solid var(--line);">海事業界特化</td>
-<td style="padding:10px 14px;text-align:center;color:#10b981;font-weight:700;font-size:0.9rem;border-bottom:1px solid var(--line);">✓ 完全特化</td>
-<td style="padding:10px 14px;text-align:center;color:var(--text-muted);font-size:0.8rem;border-bottom:1px solid var(--line);">✕ 汎用</td>
-<td style="padding:10px 14px;text-align:center;color:var(--text-muted);font-size:0.8rem;border-bottom:1px solid var(--line);">△ 一部対応</td>
-</tr>
-<tr>
-<td style="padding:10px 14px;color:var(--text-secondary);font-size:0.8rem;border-bottom:1px solid var(--line);">船舶OT/IT統合</td>
-<td style="padding:10px 14px;text-align:center;color:#10b981;font-weight:700;font-size:0.8rem;border-bottom:1px solid var(--line);">✓ 統合管理</td>
-<td style="padding:10px 14px;text-align:center;color:var(--text-muted);font-size:0.8rem;border-bottom:1px solid var(--line);">✕ IT のみ</td>
-<td style="padding:10px 14px;text-align:center;color:var(--text-muted);font-size:0.8rem;border-bottom:1px solid var(--line);">△ 別システム</td>
-</tr>
-<tr>
-<td style="padding:10px 14px;color:var(--text-secondary);font-size:0.8rem;border-bottom:1px solid var(--line);">IMO・NIS2準拠</td>
-<td style="padding:10px 14px;text-align:center;color:#10b981;font-weight:700;font-size:0.8rem;border-bottom:1px solid var(--line);">✓ 自動レポート</td>
-<td style="padding:10px 14px;text-align:center;color:var(--text-muted);font-size:0.8rem;border-bottom:1px solid var(--line);">✕ 非対応</td>
-<td style="padding:10px 14px;text-align:center;color:var(--text-muted);font-size:0.8rem;border-bottom:1px solid var(--line);">△ 手動対応</td>
-</tr>
-<tr>
-<td style="padding:10px 14px;color:var(--text-secondary);font-size:0.8rem;border-bottom:1px solid var(--line);">サプライチェーン可視化</td>
-<td style="padding:10px 14px;text-align:center;color:#10b981;font-weight:700;font-size:0.8rem;border-bottom:1px solid var(--line);">✓ 一元管理</td>
-<td style="padding:10px 14px;text-align:center;color:var(--text-muted);font-size:0.8rem;border-bottom:1px solid var(--line);">✕ なし</td>
-<td style="padding:10px 14px;text-align:center;color:var(--text-muted);font-size:0.8rem;border-bottom:1px solid var(--line);">△ 限定的</td>
-</tr>
-<tr>
-<td style="padding:10px 14px;color:var(--text-secondary);font-size:0.8rem;border-bottom:1px solid var(--line);">価格（月額・5隻）</td>
-<td style="padding:10px 14px;text-align:center;color:#10b981;font-weight:700;font-size:0.9rem;border-bottom:1px solid var(--line);">¥500,000〜</td>
-<td style="padding:10px 14px;text-align:center;color:var(--text-muted);font-size:0.75rem;border-bottom:1px solid var(--line);">¥300,000〜<br><span style="font-size:0.7rem;">(機能不足)</span></td>
-<td style="padding:10px 14px;text-align:center;color:var(--text-muted);font-size:0.8rem;border-bottom:1px solid var(--line);">¥2,000,000〜</td>
-</tr>
-<tr>
-<td style="padding:10px 14px;color:var(--text-secondary);font-size:0.8rem;border-bottom:1px solid var(--line);">導入期間</td>
-<td style="padding:10px 14px;text-align:center;color:#10b981;font-weight:700;font-size:0.8rem;border-bottom:1px solid var(--line);">1週間</td>
-<td style="padding:10px 14px;text-align:center;color:var(--text-muted);font-size:0.8rem;border-bottom:1px solid var(--line);">2〜4週間</td>
-<td style="padding:10px 14px;text-align:center;color:var(--text-muted);font-size:0.8rem;border-bottom:1px solid var(--line);">2〜6ヶ月</td>
-</tr>
-<tr>
-<td style="padding:10px 14px;color:var(--text-secondary);font-size:0.8rem;">日本語サポート</td>
-<td style="padding:10px 14px;text-align:center;color:#10b981;font-weight:700;font-size:0.8rem;">✓ 24/7</td>
-<td style="padding:10px 14px;text-align:center;color:var(--text-muted);font-size:0.8rem;">△ 営業時間のみ</td>
-<td style="padding:10px 14px;text-align:center;color:var(--text-muted);font-size:0.8rem;">✕ 英語のみ</td>
-</tr>
-</tbody>
-</table>
-</div>
-
-<div style="text-align:center;margin-top:24px;padding:16px;background:rgba(16,185,129,0.08);border:2px solid rgba(16,185,129,0.3);border-radius:8px;max-width:850px;margin-left:auto;margin-right:auto;">
-<h4 style="color:#10b981;font-size:1.1rem;margin-bottom:8px;font-weight:800;">コストパフォーマンス比較</h4>
-<p style="color:var(--text-secondary);font-size:0.85rem;line-height:1.5;">
-海外大手ソリューションと比較して<strong style="color:#fff;font-size:1.05rem;">約4倍</strong>のコストパフォーマンス。海事業界に特化した機能（IMO・NIS2完全準拠、船舶OT/IT統合セキュリティ、24/7 SOC監視、サプライチェーン可視化）を圧倒的な低価格で提供。初期費用無料、最低契約期間なし、導入1週間で24/7監視開始。
-</p>
-</div>
-</div>
+<!-- Section 6: CTA -->
+<section class="cta-section fullpage-section center-section">
+  <div class="wrap">
+    <h2 class="animate-on-scroll">まずは無料診断から</h2>
+    <p class="animate-on-scroll">3分の申込で48時間以内に詳細レポートを配信。貴社の脆弱性と改善点を明確に可視化します。</p>
+    <div class="animate-on-scroll" style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+      <a href="../ja/contact.html?type=maritime-security" class="cta-btn">無料診断を申し込む</a>
+      <a href="../ja/contact.html" class="cta-btn-outline">まずは相談する</a>
+    </div>
+  </div>
+  <!-- Shared Footer -->
+  <div id="site-footer" style="width: 100%;"></div>
 </section>
-
-<!-- Free Assessment CTA -->
-<section id="free-assessment" style="padding:40px 0;">
-<div class="wrap">
-<div style="background:linear-gradient(135deg,rgba(59,130,246,0.15),rgba(16,185,129,0.12));border:2px solid rgba(59,130,246,0.4);border-radius:10px;padding:32px 24px;text-align:center;">
-<div style="display:inline-block;background:linear-gradient(135deg,#10b981,#7ef0d4);padding:6px 14px;border-radius:6px;margin-bottom:12px;color:#0a0f1a;font-weight:800;font-size:0.75rem;letter-spacing:0.04em;">無料診断実施中</div>
-<h2 style="font-size:1.9rem;margin-bottom:12px;color:#fff;font-weight:800;">
-まずは無料診断で現状を確認しませんか
-</h2>
-<p style="color:var(--text-secondary);font-size:0.9rem;line-height:1.5;max-width:750px;margin:0 auto 20px;">
-わずか3分の申込で、48時間以内に詳細なセキュリティレポートを配信。貴社の脆弱性と改善点を明確に可視化します。レポートにはCVSS v3.1準拠のリスクスコア、IMO・NIS2準拠状況評価、具体的な改善ロードマップ、投資ROI試算を含みます。
-</p>
-<div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
-<a href="../ja/contact.html?type=maritime-security" class="cta" style="font-size:0.95rem;padding:12px 32px;background:linear-gradient(135deg,#3b82f6,#10b981);text-decoration:none;border-radius:6px;">無料診断を申し込む</a>
-<a href="../ja/contact.html" class="btn" style="font-size:0.9rem;padding:12px 28px;text-decoration:none;border-radius:6px;">まずは相談する</a>
-</div>
-
-<div style="margin-top:28px;padding-top:20px;border-top:1px solid rgba(59,130,246,0.3);">
-<p style="color:var(--text-muted);font-size:0.8rem;margin-bottom:6px;">お問い合わせ</p>
-<p style="color:var(--text-secondary);font-size:0.9rem;"><strong>info@avisail.com</strong></p>
-<p style="color:var(--text-muted);font-size:0.75rem;margin-top:6px;">対応言語：日本語 / English / Italiano • 返信：1営業日以内</p>
-</div>
-</div>
-</div>
-</section>
-
-<!-- Shared Footer -->
-<div id="site-footer"></div>
 
 <!-- Shared Components Loader -->
 <script src="../includes/components.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry, index) {
+      if (entry.isIntersecting) {
+        setTimeout(function() {
+          entry.target.classList.add('visible');
+        }, index * 100);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll('.animate-on-scroll').forEach(function(el) {
+    observer.observe(el);
+  });
+
+  var sections = document.querySelectorAll('.fullpage-section');
+  var navDots = document.querySelectorAll('.scroll-nav-dot');
+
+  navDots.forEach(function(dot, index) {
+    dot.addEventListener('click', function() {
+      sections[index].scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+
+  var sectionObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        var index = Array.from(sections).indexOf(entry.target);
+        navDots.forEach(function(dot, i) {
+          dot.classList.toggle('active', i === index);
+        });
+      }
+    });
+  }, { threshold: 0.5 });
+
+  sections.forEach(function(section) {
+    sectionObserver.observe(section);
+  });
+});
+
+(function () {
+  var canvas = document.getElementById('global-bg');
+  if (!canvas) return;
+  var ctx = canvas.getContext('2d');
+  var width, height;
+  var particles = [];
+  var zOff = 0;
+
+  function resize() {
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = window.innerHeight;
+    initParticles();
+  }
+  window.addEventListener('resize', resize);
+
+  function initParticles() {
+    particles = [];
+    var count = Math.floor(width * height / 2000);
+    for (var i = 0; i < count; i++) {
+      particles.push({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        vx: 0,
+        vy: 0,
+        maxSpeed: Math.random() * 0.8 + 0.2,
+        size: Math.random() > 0.9 ? 1.5 : 0.8,
+        color: Math.random() > 0.5 ? '#2E64BA' : '#4DB899'
+      });
+    }
+  }
+
+  function update() {
+    zOff += 0.0005;
+    particles.forEach(function(p) {
+      var angle = (Math.cos(p.x * 0.002 + zOff) + Math.sin(p.y * 0.002 + zOff)) * Math.PI;
+      p.vx += Math.cos(angle) * 0.02;
+      p.vy += Math.sin(angle) * 0.02;
+      var speed = Math.sqrt(p.vx * p.vx + p.vy * p.vy);
+      if (speed > p.maxSpeed) {
+        p.vx = (p.vx / speed) * p.maxSpeed;
+        p.vy = (p.vy / speed) * p.maxSpeed;
+      }
+      p.x += p.vx;
+      p.y += p.vy;
+      if (p.x < 0) { p.x = width; p.vx = 0; p.vy = 0; }
+      if (p.x > width) { p.x = 0; p.vx = 0; p.vy = 0; }
+      if (p.y < 0) { p.y = height; p.vx = 0; p.vy = 0; }
+      if (p.y > height) { p.y = 0; p.vx = 0; p.vy = 0; }
+    });
+  }
+
+  function draw() {
+    ctx.fillStyle = 'rgba(5, 8, 15, 0.2)';
+    ctx.fillRect(0, 0, width, height);
+    particles.forEach(function(p) {
+      ctx.fillStyle = p.color;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+      ctx.fill();
+    });
+    requestAnimationFrame(function () {
+      update();
+      draw();
+    });
+  }
+
+  resize();
+  draw();
+})();
+</script>
 
 </body>
 </html>
