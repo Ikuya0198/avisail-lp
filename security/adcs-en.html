@@ -19,9 +19,11 @@
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{
-  scroll-snap-type:y mandatory;
+  scroll-snap-type:y proximity;
   scroll-behavior:smooth;
 }
+#free-diagnosis{flex-direction:column;}
+#free-diagnosis>.wrap{flex:1;display:flex;align-items:center;width:100%;}
 body{
   background:transparent;
   color:#fff;
@@ -1290,10 +1292,9 @@ Clearly visualize your organization's vulnerabilities and areas for improvement.
 </div>
 </div>
 </div>
+  <!-- Shared Footer -->
+  <div id="site-footer" style="width: 100%;"></div>
 </section>
-
-<!-- Shared Footer -->
-<div id="site-footer"></div>
 
 <!-- Shared Components Loader -->
 <script src="../includes/components.js"></script>

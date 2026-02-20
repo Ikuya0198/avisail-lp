@@ -49,9 +49,20 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 html {
-  scroll-snap-type: y mandatory;
+  scroll-snap-type: y proximity;
   scroll-behavior: smooth;
   font-size: 16px;
+}
+
+#free-diagnosis {
+  flex-direction: column;
+}
+
+#free-diagnosis > .wrap {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  width: 100%;
 }
 
 body {
@@ -1808,10 +1819,9 @@ section > .wrap {
     </div>
   </div>
 </div>
+  <!-- Shared Footer -->
+  <div id="site-footer" style="width: 100%;"></div>
 </section>
-
-<!-- Shared Footer -->
-<div id="site-footer"></div>
 <script src="../includes/components.js"></script>
 
 <script>

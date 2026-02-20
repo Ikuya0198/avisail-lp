@@ -13,22 +13,22 @@
 <style>
 /* ===== CSS Variables ===== */
 :root{
-  --accent:#a78bfa;
-  --accent-blue:#3b82f6;
-  --accent-glow:rgba(167,139,250,0.35);
+  --accent:#7ef0d4;
+  --accent-blue:#6aa6ff;
+  --accent-glow:rgba(126,240,212,0.35);
   --bg-dark:#0a0f1a;
   --card-bg:rgba(10,15,26,0.7);
-  --card-border:rgba(167,139,250,0.3);
-  --card-border-hover:rgba(167,139,250,0.6);
-  --gradient-accent:linear-gradient(135deg,#a78bfa,#3b82f6);
-  --gradient-card:linear-gradient(135deg,rgba(167,139,250,0.08),rgba(59,130,246,0.05));
-  --gradient-cta:linear-gradient(135deg,rgba(167,139,250,0.15),rgba(59,130,246,0.12));
+  --card-border:rgba(126,240,212,0.3);
+  --card-border-hover:rgba(126,240,212,0.6);
+  --gradient-accent:linear-gradient(135deg,#6aa6ff,#7ef0d4);
+  --gradient-card:linear-gradient(135deg,rgba(106,166,255,0.08),rgba(126,240,212,0.05));
+  --gradient-cta:linear-gradient(135deg,rgba(106,166,255,0.15),rgba(126,240,212,0.12));
 }
 
 /* ===== Reset & Base ===== */
 *{box-sizing:border-box;margin:0;padding:0;}
 html{
-  scroll-snap-type:y mandatory;
+  scroll-snap-type:y proximity;
   scroll-behavior:smooth;
   font-size:16px;
 }
@@ -68,8 +68,8 @@ a{color:inherit;text-decoration:none;}
   align-items:center;
   gap:8px;
   padding:6px 16px;
-  background:rgba(167,139,250,0.1);
-  border:1px solid rgba(167,139,250,0.3);
+  background:rgba(126,240,212,0.1);
+  border:1px solid rgba(126,240,212,0.3);
   border-radius:20px;
   color:var(--accent);
   font-family:'Inter',sans-serif;
@@ -133,8 +133,8 @@ a{color:inherit;text-decoration:none;}
   align-items:center;
   gap:8px;
   padding:8px 18px;
-  background:rgba(167,139,250,0.12);
-  border:1px solid rgba(167,139,250,0.3);
+  background:rgba(126,240,212,0.12);
+  border:1px solid rgba(126,240,212,0.3);
   border-radius:24px;
   color:var(--accent);
   font-family:'Inter',sans-serif;
@@ -187,11 +187,11 @@ a{color:inherit;text-decoration:none;}
   border-radius:8px;
   text-decoration:none;
   transition:all 0.3s ease;
-  box-shadow:0 4px 20px rgba(167,139,250,0.3);
+  box-shadow:0 4px 20px rgba(126,240,212,0.3);
 }
 .hero-cta:hover{
   transform:translateY(-2px);
-  box-shadow:0 8px 30px rgba(167,139,250,0.45);
+  box-shadow:0 8px 30px rgba(126,240,212,0.45);
 }
 
 /* ===== Scroll Indicator ===== */
@@ -215,7 +215,7 @@ a{color:inherit;text-decoration:none;}
 .scroll-line{
   width:1px;
   height:40px;
-  background:linear-gradient(to bottom,rgba(167,139,250,0.6),transparent);
+  background:linear-gradient(to bottom,rgba(126,240,212,0.6),transparent);
 }
 @keyframes float-scroll{
   0%,100%{transform:translateX(-50%) translateY(0);}
@@ -252,7 +252,7 @@ a{color:inherit;text-decoration:none;}
 .business-card:hover{
   border-color:var(--card-border-hover);
   transform:translateY(-4px);
-  box-shadow:0 12px 40px rgba(167,139,250,0.2);
+  box-shadow:0 12px 40px rgba(126,240,212,0.2);
 }
 .business-card:hover::before{opacity:1;}
 .business-card h3{
@@ -282,7 +282,7 @@ a{color:inherit;text-decoration:none;}
   display:flex;
   align-items:flex-start;
   gap:10px;
-  border-bottom:1px solid rgba(167,139,250,0.1);
+  border-bottom:1px solid rgba(126,240,212,0.1);
 }
 .tech-list li:last-child{border-bottom:none;}
 .tech-list li::before{
@@ -366,18 +366,18 @@ a{color:inherit;text-decoration:none;}
   right:-50%;
   width:100%;
   height:100%;
-  background:radial-gradient(circle,rgba(167,139,250,0.06) 0%,transparent 70%);
+  background:radial-gradient(circle,rgba(126,240,212,0.06) 0%,transparent 70%);
   pointer-events:none;
 }
 .system-card:hover{
   border-color:var(--card-border-hover);
   transform:translateY(-4px);
-  box-shadow:0 16px 48px rgba(167,139,250,0.2);
+  box-shadow:0 16px 48px rgba(126,240,212,0.2);
 }
 .system-badge{
   display:inline-block;
-  background:rgba(167,139,250,0.15);
-  border:1px solid rgba(167,139,250,0.35);
+  background:rgba(126,240,212,0.15);
+  border:1px solid rgba(126,240,212,0.35);
   padding:4px 12px;
   border-radius:16px;
   font-family:'Inter',sans-serif;
@@ -423,13 +423,13 @@ a{color:inherit;text-decoration:none;}
 }
 .system-card:hover .learn-more{
   gap:10px;
-  color:#c4b5fd;
+  color:#a8f7e4;
 }
 .customization-note{
   margin-top:40px;
   text-align:center;
   padding:28px;
-  background:rgba(167,139,250,0.06);
+  background:rgba(126,240,212,0.06);
   border:1px solid var(--card-border);
   border-radius:16px;
 }
@@ -466,7 +466,7 @@ a{color:inherit;text-decoration:none;}
 .strength-card:hover{
   border-color:var(--card-border-hover);
   transform:translateY(-4px);
-  box-shadow:0 12px 40px rgba(167,139,250,0.2);
+  box-shadow:0 12px 40px rgba(126,240,212,0.2);
 }
 .strength-icon{
   font-size:2.2rem;
@@ -491,14 +491,14 @@ a{color:inherit;text-decoration:none;}
   scroll-snap-align:start;
   scroll-snap-stop:always;
   display:flex;
-  align-items:center;
+  flex-direction:column;
   padding:80px 0;
   background:rgba(5,8,15,0.5);
 }
-.cta-section > .wrap{width:100%;}
+.cta-section > .wrap{width:100%;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;}
 .cta-box{
   background:var(--gradient-cta);
-  border:2px solid rgba(167,139,250,0.4);
+  border:2px solid rgba(126,240,212,0.4);
   border-radius:20px;
   padding:56px 32px;
   text-align:center;
@@ -513,7 +513,7 @@ a{color:inherit;text-decoration:none;}
   transform:translateX(-50%);
   width:600px;
   height:600px;
-  background:radial-gradient(circle,rgba(167,139,250,0.08) 0%,transparent 60%);
+  background:radial-gradient(circle,rgba(126,240,212,0.08) 0%,transparent 60%);
   pointer-events:none;
 }
 .cta-box h2{
@@ -546,17 +546,17 @@ a{color:inherit;text-decoration:none;}
   border-radius:10px;
   text-decoration:none;
   transition:all 0.3s ease;
-  box-shadow:0 4px 24px rgba(167,139,250,0.35);
+  box-shadow:0 4px 24px rgba(126,240,212,0.35);
   position:relative;
 }
 .cta-button:hover{
   transform:translateY(-2px);
-  box-shadow:0 8px 36px rgba(167,139,250,0.5);
+  box-shadow:0 8px 36px rgba(126,240,212,0.5);
 }
 .cta-contact{
   margin-top:36px;
   padding-top:24px;
-  border-top:1px solid rgba(167,139,250,0.25);
+  border-top:1px solid rgba(126,240,212,0.25);
   position:relative;
 }
 .cta-contact .label{
@@ -601,13 +601,13 @@ a{color:inherit;text-decoration:none;}
   position:relative;
 }
 .nav-dot:hover{
-  background:rgba(167,139,250,0.4);
+  background:rgba(126,240,212,0.4);
   border-color:var(--accent);
 }
 .nav-dot.active{
   background:var(--accent);
   border-color:var(--accent);
-  box-shadow:0 0 12px rgba(167,139,250,0.5);
+  box-shadow:0 0 12px rgba(126,240,212,0.5);
 }
 .nav-dot::before{
   content:attr(data-label);
@@ -616,7 +616,7 @@ a{color:inherit;text-decoration:none;}
   top:50%;
   transform:translateY(-50%);
   background:rgba(10,15,26,0.9);
-  border:1px solid rgba(167,139,250,0.3);
+  border:1px solid rgba(126,240,212,0.3);
   padding:4px 10px;
   border-radius:6px;
   color:#fff;
@@ -920,10 +920,9 @@ a{color:inherit;text-decoration:none;}
     </div>
   </div>
 </div>
+  <!-- Shared Footer -->
+  <div id="site-footer" style="width: 100%;"></div>
 </section>
-
-<!-- Shared Footer -->
-<div id="site-footer"></div>
 
 <!-- Shared Components Loader -->
 <script src="../includes/components.js"></script>
@@ -1027,7 +1026,7 @@ a{color:inherit;text-decoration:none;}
 
       ctx.beginPath();
       ctx.arc(p.x,p.y,p.radius,0,Math.PI*2);
-      ctx.fillStyle = 'rgba(167,139,250,' + p.alpha + ')';
+      ctx.fillStyle = 'rgba(126,240,212,' + p.alpha + ')';
       ctx.fill();
 
       /* Connect nearby particles */
@@ -1040,7 +1039,7 @@ a{color:inherit;text-decoration:none;}
           ctx.beginPath();
           ctx.moveTo(p.x,p.y);
           ctx.lineTo(p2.x,p2.y);
-          ctx.strokeStyle = 'rgba(167,139,250,' + (0.08 * (1 - dist/150)) + ')';
+          ctx.strokeStyle = 'rgba(126,240,212,' + (0.08 * (1 - dist/150)) + ')';
           ctx.lineWidth = 0.5;
           ctx.stroke();
         }
@@ -1055,7 +1054,7 @@ a{color:inherit;text-decoration:none;}
           ctx.beginPath();
           ctx.moveTo(p.x,p.y);
           ctx.lineTo(mouse.x,mouse.y);
-          ctx.strokeStyle = 'rgba(167,139,250,' + (0.12 * (1 - mdist/200)) + ')';
+          ctx.strokeStyle = 'rgba(126,240,212,' + (0.12 * (1 - mdist/200)) + ')';
           ctx.lineWidth = 0.5;
           ctx.stroke();
         }

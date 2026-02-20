@@ -80,7 +80,7 @@
   <style>
     /* ========== SCROLL SNAP ========== */
     html {
-      scroll-snap-type: y mandatory !important;
+      scroll-snap-type: y proximity !important;
       scroll-behavior: smooth !important;
     }
 
@@ -102,6 +102,14 @@
     }
     #site-footer {
       scroll-snap-align: end;
+      width: 100%;
+    }
+    #faq {
+      flex-direction: column;
+    }
+    #faq > .wrap {
+      flex: 1;
+      width: 100%;
     }
 
     /* ========== SCROLL NAV DOTS ========== */
@@ -1010,10 +1018,9 @@
           </div>
         </div>
       </div>
+      <!-- Shared Footer -->
+      <div id="site-footer"></div>
     </section>
-
-  <!-- Shared Footer -->
-  <div id="site-footer"></div>
 
   <!-- Mobile Fixed CTA Bar -->
   <div class="mobile-cta-bar" id="mobileCta">

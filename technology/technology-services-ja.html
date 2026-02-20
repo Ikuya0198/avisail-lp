@@ -38,7 +38,7 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 html {
-  scroll-snap-type: y mandatory;
+  scroll-snap-type: y proximity;
   scroll-behavior: smooth;
   font-size: 16px;
 }
@@ -558,6 +558,15 @@ a { color: inherit; text-decoration: none; }
 
 .cta-section {
   text-align: center;
+  flex-direction: column;
+}
+
+.cta-section > .wrap {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .cta-section h2 {
@@ -911,10 +920,9 @@ a { color: inherit; text-decoration: none; }
       <p class="contact-meta">対応言語：日本語 / English / Italiano | 返信：1営業日以内 | リモート・オンサイト両対応</p>
     </div>
   </div>
+  <!-- Shared Footer -->
+  <div id="site-footer" style="width: 100%;"></div>
 </section>
-
-<!-- Shared Footer -->
-<div id="site-footer"></div>
 
 <!-- Shared Components Loader -->
 <script src="../includes/components.js"></script>

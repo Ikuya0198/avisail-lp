@@ -38,7 +38,7 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 html {
-  scroll-snap-type: y mandatory;
+  scroll-snap-type: y proximity;
   scroll-behavior: smooth;
   font-size: 16px;
 }
@@ -365,8 +365,15 @@ a { color: inherit; text-decoration: none; }
 /* ========== CTA SECTION ========== */
 .cta-section {
   text-align: center;
-  justify-content: center;
+  flex-direction: column;
+}
+
+.cta-section > .wrap {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 
 .cta-section h2 {
@@ -545,10 +552,9 @@ a { color: inherit; text-decoration: none; }
     <p class="animate-on-scroll">船舶取引やセキュリティに関するご相談を承ります。</p>
     <a href="../ja/contact.html" class="cta-btn animate-on-scroll">お問い合わせ</a>
   </div>
+  <!-- Shared Footer -->
+  <div id="site-footer" style="width: 100%;"></div>
 </section>
-
-<!-- Shared Footer -->
-<div id="site-footer"></div>
 
 <!-- Shared Components Loader -->
 <script src="../includes/components.js"></script>
