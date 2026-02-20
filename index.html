@@ -100,20 +100,8 @@
     .fullpage-section.hero {
       padding-top: 0;
     }
-    .fullpage-section.last-snap {
-      align-items: flex-start;
-      flex-direction: column;
-      min-height: auto;
-    }
-    .fullpage-section.last-snap > .fullpage-content {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      width: 100%;
-    }
-    .fullpage-section.last-snap > #site-footer {
-      width: 100%;
-      scroll-snap-align: end;
+    #site-footer {
+      scroll-snap-align: start;
     }
 
     /* ========== SCROLL NAV DOTS ========== */
@@ -988,7 +976,7 @@
     </section>
 
     <!-- FAQ -->
-    <section class="fullpage-section last-snap" id="faq">
+    <section class="fullpage-section" id="faq">
       <div class="fullpage-content">
         <div class="glass-block">
           <span class="section-label animate-on-scroll">FAQ</span>
@@ -1022,9 +1010,10 @@
           </div>
         </div>
       </div>
-    <!-- Shared Footer -->
-    <div id="site-footer"></div>
     </section>
+
+  <!-- Shared Footer -->
+  <div id="site-footer"></div>
 
   <!-- Mobile Fixed CTA Bar -->
   <div class="mobile-cta-bar" id="mobileCta">
