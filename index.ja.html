@@ -75,10 +75,18 @@
   <script src="includes/cookie-consent.js"></script>
 
   <style>
-    /* ========== SCROLL SNAP ========== */
-    html {
+    /* ========== SCROLL SNAP CONTAINER ========== */
+    .fullpage-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      overflow-y: auto;
+      overflow-x: hidden;
       scroll-snap-type: y mandatory;
       scroll-behavior: smooth;
+      z-index: 1;
     }
 
     /* ========== FULLPAGE SECTIONS ========== */
@@ -656,7 +664,12 @@
     }
 
     @media (max-width: 768px) {
-      html { scroll-snap-type: none; }
+      .fullpage-container {
+        position: static;
+        height: auto;
+        overflow: visible;
+        scroll-snap-type: none;
+      }
       .fullpage-section { scroll-snap-align: none; min-height: auto; }
       .scroll-nav { display: none; }
 
@@ -716,6 +729,7 @@
     <div class="scroll-nav-dot" data-section="contact" title="お問い合わせ"></div>
   </nav>
 
+  <div class="fullpage-container" id="fullpageContainer">
     <!-- HERO -->
     <section class="fullpage-section hero" id="top">
       <div class="wrap">
@@ -1003,6 +1017,7 @@
         </div>
       </div>
     </section>
+  </div><!-- /.fullpage-container -->
 
   <!-- Shared Footer -->
   <div id="site-footer"></div>
@@ -1055,6 +1070,7 @@
 
   <script>
     document.addEventListener("DOMContentLoaded", function () {
+      const container = document.getElementById('fullpageContainer');
       const scrollNav = document.getElementById('scrollNav');
       const dots = scrollNav ? scrollNav.querySelectorAll('.scroll-nav-dot') : [];
       const sections = document.querySelectorAll('.fullpage-section');
@@ -1064,14 +1080,17 @@
         dot.addEventListener('click', () => {
           const sectionId = dot.getAttribute('data-section');
           const section = document.getElementById(sectionId);
-          if (section) {
-            section.scrollIntoView({ behavior: 'smooth' });
+          if (section && container) {
+            container.scrollTo({
+              top: section.offsetTop,
+              behavior: 'smooth'
+            });
           }
         });
       });
 
       // Update active dot on scroll using IntersectionObserver
-      if (dots.length > 0) {
+      if (dots.length > 0 && container) {
         const navObserver = new IntersectionObserver((entries) => {
           entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -1081,13 +1100,14 @@
               });
             }
           });
-        }, { threshold: 0.3 });
+        }, { root: container, threshold: 0.3 });
 
         sections.forEach(section => navObserver.observe(section));
       }
 
       // Scroll Animation Observer
       const observerOptions = {
+        root: container,
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
       };
