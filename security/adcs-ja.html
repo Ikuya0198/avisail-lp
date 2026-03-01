@@ -29,7 +29,7 @@
   --card: rgba(255,255,255,0.025);
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;font-size:16px}
+html{scroll-behavior:smooth;font-size:16px;scroll-snap-type:y proximity}
 body{background:var(--bg);color:var(--text);font-family:'Inter','Noto Sans JP',-apple-system,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}
 img{max-width:100%;height:auto;display:block}
@@ -38,18 +38,17 @@ img{max-width:100%;height:auto;display:block}
 .wrap-sm{max-width:860px;margin:0 auto;padding:0 24px}
 .wrap-xs{max-width:700px;margin:0 auto;padding:0 24px}
 
-section{padding:96px 0;position:relative}
+section{padding:96px 0;position:relative;scroll-snap-align:start}
 section.dark{background:var(--bg2)}
 .section-label{font-size:.7rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
 .section-title{font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:800;letter-spacing:-.02em;line-height:1.2;margin-bottom:20px}
 .section-lead{font-size:1.05rem;color:var(--text2);line-height:1.9;max-width:720px}
 
-/* ===== STICKY CTA ===== */
-#sticky-cta{position:fixed;top:0;left:0;right:0;z-index:500;background:rgba(5,8,15,.93);backdrop-filter:blur(16px);border-bottom:1px solid rgba(126,240,212,.12);padding:10px 0;transform:translateY(-100%);transition:transform .3s ease}
-#sticky-cta.show{transform:translateY(0)}
-#sticky-cta .inner{display:flex;align-items:center;justify-content:space-between;gap:16px}
-#sticky-cta .slabel{font-size:.88rem;font-weight:600;color:var(--text2)}
-#sticky-cta .slabel span{color:var(--accent)}
+/* ===== FLOATING CTA BUTTON (bottom-right) ===== */
+#fab-cta{position:fixed;bottom:32px;right:32px;z-index:500;background:linear-gradient(135deg,var(--blue),var(--accent));color:#050810;font-weight:700;font-size:.9rem;padding:14px 26px;border-radius:50px;box-shadow:0 8px 32px rgba(106,166,255,.35);opacity:0;transform:translateY(16px);transition:opacity .35s ease,transform .35s ease;pointer-events:none;white-space:nowrap}
+#fab-cta.show{opacity:1;transform:translateY(0);pointer-events:all}
+#fab-cta:hover{transform:translateY(-2px);box-shadow:0 14px 40px rgba(106,166,255,.5)}
+@media(max-width:768px){#fab-cta{bottom:20px;right:16px;font-size:.82rem;padding:12px 20px}}
 
 /* ===== BUTTONS ===== */
 .btn{display:inline-block;padding:14px 36px;border-radius:50px;font-weight:700;font-size:.95rem;transition:all .25s ease;cursor:pointer;border:none}
@@ -198,15 +197,18 @@ section.dark{background:var(--bg2)}
 /* ===== SCROLL PROGRESS BAR ===== */
 #scroll-progress{position:fixed;top:0;left:0;height:2px;width:0;background:linear-gradient(90deg,var(--blue),var(--accent));z-index:9999;transition:width .08s linear;pointer-events:none}
 
-/* ===== SIDE NAV DOTS ===== */
-#side-nav{position:fixed;right:22px;top:50%;transform:translateY(-50%);z-index:400;display:flex;flex-direction:column;gap:13px;pointer-events:none}
-.snav-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.12);cursor:pointer;transition:all .35s cubic-bezier(.4,0,.2,1);position:relative;pointer-events:all}
-.snav-dot::before{content:attr(data-label);position:absolute;right:18px;top:50%;transform:translateY(-50%);white-space:nowrap;font-size:.72rem;font-weight:600;color:var(--text2);background:rgba(5,8,15,.92);border:1px solid var(--line);padding:4px 10px;border-radius:6px;pointer-events:none;opacity:0;transition:opacity .2s ease}
-.snav-dot:hover::before{opacity:1}
-.snav-dot.active{background:var(--accent);box-shadow:0 0 10px rgba(126,240,212,.55);transform:scale(1.45);border-color:rgba(126,240,212,.4)}
-.snav-dot.active::before{opacity:1}
-.snav-dot.visited{background:rgba(126,240,212,.3)}
-@media(max-width:1100px){#side-nav{display:none}}
+/* ===== SIDE NAV — 目次型 ===== */
+#side-nav{position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:400;display:flex;flex-direction:column;background:rgba(5,8,15,.82);backdrop-filter:blur(14px);border:1px solid var(--line);border-right:none;border-radius:12px 0 0 12px;padding:10px 0;pointer-events:all}
+.snav-item{display:flex;align-items:center;gap:10px;padding:7px 18px 7px 14px;cursor:pointer;transition:all .22s ease;border-left:2px solid transparent;text-decoration:none}
+.snav-item:hover{background:rgba(255,255,255,.04)}
+.snav-item.active{border-left-color:var(--accent);background:rgba(126,240,212,.06)}
+.snav-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.2);flex-shrink:0;transition:all .22s ease}
+.snav-item.active .snav-dot,.snav-item.visited .snav-dot{background:var(--accent);box-shadow:0 0 7px rgba(126,240,212,.55)}
+.snav-item:not(.active) .snav-dot{background:rgba(255,255,255,.18)}
+.snav-label{font-size:.72rem;font-weight:600;color:var(--muted);transition:color .22s ease;white-space:nowrap}
+.snav-item:hover .snav-label{color:var(--text2)}
+.snav-item.active .snav-label{color:var(--accent);font-weight:700}
+@media(max-width:1200px){#side-nav{display:none}}
 
 /* ===== SECTION TRANSITION FLASH ===== */
 section{overflow:hidden}
@@ -235,7 +237,6 @@ section.section-entered::after{animation:sec-flash .7s cubic-bezier(.4,0,.2,1) f
   .ctem-features{grid-template-columns:1fr}
   .hero-kpi{grid-template-columns:repeat(2,1fr)}
   .dl-banner{padding:36px 24px}
-  #sticky-cta .slabel{display:none}
 }
 </style>
 </head>
@@ -247,15 +248,8 @@ section.section-entered::after{animation:sec-flash .7s cubic-bezier(.4,0,.2,1) f
 <!-- Side nav dots -->
 <div id="side-nav"></div>
 
-<!-- Sticky CTA -->
-<div id="sticky-cta">
-  <div class="wrap">
-    <div class="inner">
-      <div class="slabel">ADCS — <span>「直すまで導く」</span>セキュリティプラットフォーム</div>
-      <a href="#pricing" class="btn btn-primary" style="padding:10px 28px;font-size:.88rem;">料金・申込を見る</a>
-    </div>
-  </div>
-</div>
+<!-- Floating CTA Button (bottom-right) -->
+<a id="fab-cta" href="#pricing">料金・申込を見る →</a>
 
 <!-- Header -->
 <div id="site-header"></div>
@@ -986,13 +980,13 @@ section.section-entered::after{animation:sec-flash .7s cubic-bezier(.4,0,.2,1) f
 <script src="../includes/components.js"></script>
 
 <script>
-// ── Sticky CTA ──────────────────────────────────────
+// ── Floating CTA Button ──────────────────────────────
 (function(){
-  var el = document.getElementById('sticky-cta');
+  var fab = document.getElementById('fab-cta');
   var hero = document.querySelector('.hero');
-  if(!el||!hero) return;
+  if(!fab||!hero) return;
   window.addEventListener('scroll', function(){
-    el.classList.toggle('show', hero.getBoundingClientRect().bottom < 0);
+    fab.classList.toggle('show', hero.getBoundingClientRect().bottom < 0);
   }, {passive:true});
 })();
 
@@ -1017,7 +1011,7 @@ document.addEventListener('DOMContentLoaded', function(){
   upd();
 })();
 
-// ── Side Nav Dots + Section Flash ────────────────────
+// ── Side Nav (目次型) + Section Flash ────────────────
 document.addEventListener('DOMContentLoaded', function(){
   var SECTIONS = [
     {id:'hero-section', label:'TOP'},
@@ -1034,43 +1028,42 @@ document.addEventListener('DOMContentLoaded', function(){
   var nav = document.getElementById('side-nav');
   if(!nav) return;
 
-  // Build dots
-  var dots = [];
+  // Build table-of-contents items
+  var items = [];
   SECTIONS.forEach(function(s){
-    var d = document.createElement('div');
-    d.className = 'snav-dot';
-    d.setAttribute('data-label', s.label);
-    d.addEventListener('click', function(){
+    var a = document.createElement('a');
+    a.className = 'snav-item';
+    a.href = '#' + s.id;
+    a.innerHTML = '<span class="snav-dot"></span><span class="snav-label">' + s.label + '</span>';
+    a.addEventListener('click', function(ev){
+      ev.preventDefault();
       var el = document.getElementById(s.id);
       if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
     });
-    nav.appendChild(d);
-    dots.push({dot:d, id:s.id});
+    nav.appendChild(a);
+    items.push({item:a, id:s.id});
   });
 
-  // Section flash + active dot via IntersectionObserver
+  // Section flash + active item via IntersectionObserver
   var secObs = new IntersectionObserver(function(entries){
     entries.forEach(function(e){
       if(!e.isIntersecting) return;
       var el = e.target;
 
-      // Flash line (only first time per section)
-      if(!el.dataset.flashed){
-        el.dataset.flashed = '1';
-        el.classList.remove('section-entered');
-        void el.offsetWidth; // reflow to re-trigger
-        el.classList.add('section-entered');
-      }
+      // Flash line (re-triggers on each revisit)
+      el.classList.remove('section-entered');
+      void el.offsetWidth;
+      el.classList.add('section-entered');
 
-      // Activate matching dot
+      // Update active + visited state
       var id = el.id;
-      dots.forEach(function(item){
-        var match = item.id === id;
-        item.dot.classList.toggle('active', match);
-        if(match) item.dot.classList.add('visited');
+      items.forEach(function(it){
+        var match = it.id === id;
+        it.item.classList.toggle('active', match);
+        if(match) it.item.classList.add('visited');
       });
     });
-  }, {threshold: 0.35});
+  }, {threshold: 0.3});
 
   SECTIONS.forEach(function(s){
     var el = document.getElementById(s.id);
