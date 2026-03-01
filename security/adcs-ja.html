@@ -195,6 +195,25 @@ section.dark{background:var(--bg2)}
 .fade-in{opacity:0;transform:translateY(32px);transition:all .75s cubic-bezier(.4,0,.2,1)}
 .fade-in.visible{opacity:1;transform:translateY(0)}
 
+/* ===== SCROLL PROGRESS BAR ===== */
+#scroll-progress{position:fixed;top:0;left:0;height:2px;width:0;background:linear-gradient(90deg,var(--blue),var(--accent));z-index:9999;transition:width .08s linear;pointer-events:none}
+
+/* ===== SIDE NAV DOTS ===== */
+#side-nav{position:fixed;right:22px;top:50%;transform:translateY(-50%);z-index:400;display:flex;flex-direction:column;gap:13px;pointer-events:none}
+.snav-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.12);cursor:pointer;transition:all .35s cubic-bezier(.4,0,.2,1);position:relative;pointer-events:all}
+.snav-dot::before{content:attr(data-label);position:absolute;right:18px;top:50%;transform:translateY(-50%);white-space:nowrap;font-size:.72rem;font-weight:600;color:var(--text2);background:rgba(5,8,15,.92);border:1px solid var(--line);padding:4px 10px;border-radius:6px;pointer-events:none;opacity:0;transition:opacity .2s ease}
+.snav-dot:hover::before{opacity:1}
+.snav-dot.active{background:var(--accent);box-shadow:0 0 10px rgba(126,240,212,.55);transform:scale(1.45);border-color:rgba(126,240,212,.4)}
+.snav-dot.active::before{opacity:1}
+.snav-dot.visited{background:rgba(126,240,212,.3)}
+@media(max-width:1100px){#side-nav{display:none}}
+
+/* ===== SECTION TRANSITION FLASH ===== */
+section{overflow:hidden}
+section::after{content:'';position:absolute;top:0;left:-100%;right:-100%;height:1px;background:linear-gradient(90deg,transparent 0%,rgba(106,166,255,.6) 30%,rgba(126,240,212,.8) 50%,rgba(106,166,255,.6) 70%,transparent 100%);opacity:0;pointer-events:none;z-index:2}
+section.section-entered::after{animation:sec-flash .7s cubic-bezier(.4,0,.2,1) forwards}
+@keyframes sec-flash{0%{left:-100%;right:100%;opacity:0}40%{opacity:1}100%{left:100%;right:-100%;opacity:0}}
+
 /* ===== RESPONSIVE ===== */
 @media(max-width:1024px){
   .plan-grid{grid-template-columns:1fr 1fr;gap:16px}
@@ -222,6 +241,12 @@ section.dark{background:var(--bg2)}
 </head>
 <body>
 
+<!-- Scroll progress bar -->
+<div id="scroll-progress"></div>
+
+<!-- Side nav dots -->
+<div id="side-nav"></div>
+
 <!-- Sticky CTA -->
 <div id="sticky-cta">
   <div class="wrap">
@@ -238,7 +263,7 @@ section.dark{background:var(--bg2)}
 <!-- ================================================ -->
 <!-- 1. HERO                                          -->
 <!-- ================================================ -->
-<section class="hero">
+<section class="hero" id="hero-section">
 <div class="wrap">
   <div class="hero-eyebrow">Security Maturity Automation Platform</div>
   <h1>
@@ -466,7 +491,7 @@ section.dark{background:var(--bg2)}
 <!-- ================================================ -->
 <!-- 4. SYSTEM FLOW: ADCS → CTEM → COMPLIANCE        -->
 <!-- ================================================ -->
-<section class="dark">
+<section class="dark" id="system">
 <div class="wrap">
   <div class="fade-in" style="text-align:center">
     <p class="section-label">Service Architecture</p>
@@ -702,7 +727,7 @@ section.dark{background:var(--bg2)}
 <!-- ================================================ -->
 <!-- 7. COMPETITOR COMPARISON                         -->
 <!-- ================================================ -->
-<section>
+<section id="comparison">
 <div class="wrap">
   <div class="fade-in" style="text-align:center">
     <p class="section-label">Comparison</p>
@@ -961,7 +986,7 @@ section.dark{background:var(--bg2)}
 <script src="../includes/components.js"></script>
 
 <script>
-// Sticky CTA
+// ── Sticky CTA ──────────────────────────────────────
 (function(){
   var el = document.getElementById('sticky-cta');
   var hero = document.querySelector('.hero');
@@ -971,7 +996,7 @@ section.dark{background:var(--bg2)}
   }, {passive:true});
 })();
 
-// Fade-in observer
+// ── Fade-in observer ─────────────────────────────────
 document.addEventListener('DOMContentLoaded', function(){
   var obs = new IntersectionObserver(function(entries){
     entries.forEach(function(e){ if(e.isIntersecting) e.target.classList.add('visible'); });
@@ -979,11 +1004,79 @@ document.addEventListener('DOMContentLoaded', function(){
   document.querySelectorAll('.fade-in').forEach(function(el){ obs.observe(el); });
 });
 
-// Canvas BG
+// ── Scroll Progress Bar ──────────────────────────────
 (function(){
-  var c = document.getElementById('global-bg');
-  // No canvas in this version — bg is CSS only
+  var bar = document.getElementById('scroll-progress');
+  if(!bar) return;
+  function upd(){
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    if(h<=0) return;
+    bar.style.width = Math.min(100, window.scrollY / h * 100) + '%';
+  }
+  window.addEventListener('scroll', upd, {passive:true});
+  upd();
 })();
+
+// ── Side Nav Dots + Section Flash ────────────────────
+document.addEventListener('DOMContentLoaded', function(){
+  var SECTIONS = [
+    {id:'hero-section', label:'TOP'},
+    {id:'pricing',      label:'料金'},
+    {id:'overview',     label:'概要'},
+    {id:'system',       label:'仕組み'},
+    {id:'specs',        label:'スキャン'},
+    {id:'ctem',         label:'CTEM'},
+    {id:'comparison',   label:'比較'},
+    {id:'free-check',   label:'診断'},
+    {id:'trust',        label:'信頼'}
+  ];
+
+  var nav = document.getElementById('side-nav');
+  if(!nav) return;
+
+  // Build dots
+  var dots = [];
+  SECTIONS.forEach(function(s){
+    var d = document.createElement('div');
+    d.className = 'snav-dot';
+    d.setAttribute('data-label', s.label);
+    d.addEventListener('click', function(){
+      var el = document.getElementById(s.id);
+      if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+    });
+    nav.appendChild(d);
+    dots.push({dot:d, id:s.id});
+  });
+
+  // Section flash + active dot via IntersectionObserver
+  var secObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(!e.isIntersecting) return;
+      var el = e.target;
+
+      // Flash line (only first time per section)
+      if(!el.dataset.flashed){
+        el.dataset.flashed = '1';
+        el.classList.remove('section-entered');
+        void el.offsetWidth; // reflow to re-trigger
+        el.classList.add('section-entered');
+      }
+
+      // Activate matching dot
+      var id = el.id;
+      dots.forEach(function(item){
+        var match = item.id === id;
+        item.dot.classList.toggle('active', match);
+        if(match) item.dot.classList.add('visited');
+      });
+    });
+  }, {threshold: 0.35});
+
+  SECTIONS.forEach(function(s){
+    var el = document.getElementById(s.id);
+    if(el) secObs.observe(el);
+  });
+});
 </script>
 
 <!-- Particle BG canvas removed for performance — using CSS radial gradient -->
