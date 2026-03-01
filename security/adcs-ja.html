@@ -3,1947 +3,993 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>ADCS - 2026年のサイバー脅威から企業を守る自動化セキュリティ | Avisail</title>
-<meta name="description" content="2026年、サイバー攻撃は激化。中小企業こそが標的に。従来の1/10のコストで、AI完全自動化によるエンタープライズ級セキュリティを実現。無料診断・チェックシートあり。">
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAADCklEQVRYCe2Uu2tUQRTGv5n73pvsxo1xfSxGCwUhIooggoKFglrpfyBiIaJYKQgiiNpY2omFpVrYKlgYFXzh+w0qRrMmcU12s9nXfc4c52Kd7KPRYg/33OLOzPl+fGfuAXrRc6DnwD92gHWrT4WtDgqPs+BgcDDLNqDRTS3ezSECWP3rj6tkOx+kyd4HPrv5/DKMbmp1daZxN73Xv2vI8NUgRR840RdO4VvtQDfFOnaAHm11iHvnNSdicRSCDFclA3f1M1RAtlOIjgGa0buDKVdsFKYS1VTbKQXBstAyy1aHctWJTgE6uoS1h7klPJ55YfXJ/PQ0RypDcNI2WGYtuGErbVHjQmxhy19+ahekIwcYr55MLZJ5wRluXyc8HdVg6E2QV4NkNrhl9Avhn2tXPNnXNkDwJjdi9kWHydXxc0xDaVzi5T0hZotaE9WCgqhCNKuqLXP7o7H07nYh2gQgRqJy1sgYbkQD+PYMWDEEaLG8oTMclbUQ3riCiCtgNMcRexdoDElPWkZbAP6TgV26Ge+TsDD9mUMPIizOoZxbgdPp7eLq3G888L6X0Jz0IXwfui42RXP8UEt1taElwNjoKjsOmhc0LnlQlah8rSC3DDBtPFmZR75wDTukw+9LU0NtKoSMNEiPlBt0qj6Kpa0g9FYbFjV/H7DceHPY4Cirvhs8QKB8/zFOe0bWY6+h5p81pLzp59DUNCZfIo4VIGF5FOGUqn98IY0Ff8PSrWwa9cpb25XDHnNQ/BKiPyPws2ghCE2sXsPRN8Rhqd/RUIoQEhQKdQVi1QoBvyqDoE6bhg/i43wQCzqQLZS9KRuvLZ0PFyckEAswxrBuJEZqsQR3GJipuqi0pU+IVIu8WUJjRqJWIkxN0YT0MTOfePJ9QQeSDZNXsK7ma3d+jcv+gUFCWg1bNwtmDyibXVVAjeEEgEJCUIMCABolUL0MOT2DIzsv4XpSZ75oCZAcvHUMQ1YEczCvxNNgWQXhJOmoxSST8NSTZBkoTwDFEuS2i5j8u9h79xzoOdBz4D924A90007VB3a2QQAAAABJRU5ErkJggg==">
-  <link rel="icon" type="image/x-icon" href="../favicon.ico">
-  <link rel="icon" type="image/png" sizes="32x32" href="../favicon.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="../favicon.png">
+<title>ADCS — Security Maturity Automation Platform | Avisail</title>
+<meta name="description" content="中小企業のデフォルトセキュリティ基盤。54種のスキャナーで脆弱性を自動発見・優先順位化し、修復手順まで提供。月額¥29,800〜。無料診断あり。">
+<link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAADCklEQVRYCe2Uu2tUQRTGv5n73pvsxo1xfSxGCwUhIooggoKFglrpfyBiIaJYKQgiiNpY2omFpVrYKlgYFXzh+w0qRrMmcU12s9nXfc4c52Kd7KPRYg/33OLOzPl+fGfuAXrRc6DnwD92gHWrT4WtDgqPs+BgcDDLNqDRTS3ezSECWP3rj6tkOx+kyd4HPrv5/DKMbmp1daZxN73Xv2vI8NUgRR840RdO4VvtQDfFOnaAHm11iHvnNSdicRSCDFclA3f1M1RAtlOIjgGa0buDKVdsFKYS1VTbKQXBstAyy1aHctWJTgE6uoS1h7klPJ55YfXJ/PQ0RypDcNI2WGYtuGErbVHjQmxhy19+ahekIwcYr55MLZJ5wRluXyc8HdVg6E2QV4NkNrhl9Avhn2tXPNnXNkDwJjdi9kWHydXxc0xDaVzi5T0hZotaE9WCgqhCNKuqLXP7o7H07nYh2gQgRqJy1sgYbkQD+PYMWDEEaLG8oTMclbUQ3riCiCtgNMcRexdoDElPWkZbAP6TgV26Ge+TsDD9mUMPIizOoZxbgdPp7eLq3G888L6X0Jz0IXwfui42RXP8UEt1taElwNjoKjsOmhc0LnlQlah8rSC3DDBtPFmZR75wDTukw+9LU0NtKoSMNEiPlBt0qj6Kpa0g9FYbFjV/H7DceHPY4Cirvhs8QKB8/zFOe0bWY6+h5p81pLzp59DUNCZfIo4VIGF5FOGUqn98IY0Ff8PSrWwa9cpb25XDHnNQ/BKiPyPws2ghCE2sXsPRN8Rhqd/RUIoQEhQKdQVi1QoBvyqDoE6bhg/i43wQCzqQLZS9KRuvLZ0PFyckEAswxrBuJEZqsQR3GJipuqi0pU+IVIu8WUJjRqJWIkxN0YT0MTOfePJ9QQeSDZNXsK7ma3d+jcv+gUFCWg1bNwtmDyibXVVAjeEEgEJCUIMCABolUL0MOT2DIzsv4XpSZ75oCZAcvHUMQ1YEczCvxNNgWQXhJOmoxSST8NSTZBkoTwDFEuS2i5j8u9h79xzoOdBz4D924A90007VB3a2QQAAAABJRU5ErkJggg==">
+<link rel="icon" type="image/x-icon" href="../favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="../favicon.png">
 <link rel="canonical" href="https://avisail.com/security/adcs-ja.html">
 <link rel="alternate" hreflang="ja" href="https://avisail.com/security/adcs-ja.html">
 <link rel="alternate" hreflang="en" href="https://avisail.com/security/adcs-en.html">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
-
-<!-- JSON-LD -->
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Product",
-  "name": "ADCS - アクティブディフェンスサイバーセキュリティ",
-  "description": "国家レベルの攻撃的セキュリティ能力で組織を高度なデジタル脅威から保護。予測的脅威検知、先制防御、継続的な攻撃面監視を提供します。",
-  "brand": {
-    "@type": "Organization",
-    "name": "Avisail Technology"
-  },
-  "offers": {
-    "@type": "Offer",
-    "availability": "https://schema.org/InStock"
-  },
-  "provider": {
-    "@type": "Organization",
-    "name": "Avisail Technology",
-    "url": "https://avisail.com"
-  }
-}
+{"@context":"https://schema.org","@type":"Product","name":"ADCS - Security Maturity Automation Platform","description":"中小企業向けセキュリティ自動化プラットフォーム。54種のスキャナーで脆弱性を自動発見・優先順位化し、修復手順まで提供。","brand":{"@type":"Organization","name":"Avisail Technology"},"offers":{"@type":"AggregateOffer","lowPrice":"29800","highPrice":"98000","priceCurrency":"JPY"},"provider":{"@type":"Organization","name":"Avisail Technology","url":"https://avisail.com"}}
 </script>
-
 <style>
 :root {
-  --bg-primary: #0a0f1a;
-  --bg-secondary: #060910;
+  --bg: #05080f;
+  --bg2: #080d18;
   --accent: #7ef0d4;
-  --accent-blue: #6aa6ff;
-  --text-primary: #fff;
-  --text-secondary: #b8c5d6;
-  --text-muted: #6b7a8f;
+  --blue: #6aa6ff;
+  --danger: #ef4444;
+  --text: #fff;
+  --text2: #b8c5d6;
+  --muted: #6b7a8f;
   --line: rgba(255,255,255,0.08);
-}
-
-* { box-sizing: border-box; margin: 0; padding: 0; }
-
-html {
-  scroll-snap-type: y proximity;
-  scroll-behavior: smooth;
-  font-size: 16px;
-}
-
-#free-diagnosis {
-  flex-direction: column;
-}
-
-#free-diagnosis > .wrap {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  width: 100%;
-}
-
-body {
-  background: transparent;
-  color: var(--text-primary);
-  font-family: 'Inter', 'Noto Sans JP', -apple-system, BlinkMacSystemFont, sans-serif;
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-}
-
-a { color: inherit; text-decoration: none; }
-
-.wrap {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 24px;
-}
-
-/* ========== GLOBAL BG ========== */
-#global-bg {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  pointer-events: none;
-  background: radial-gradient(circle at 50% 50%, #0d1424 0%, #05080f 100%);
-}
-
-/* ========== ANIMATIONS ========== */
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.animate-on-scroll {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.animate-on-scroll.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* ========== SECTIONS ========== */
-section {
-  min-height: 100vh;
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
-  padding: 80px 0;
-  position: relative;
-  width: 100%;
-  display: flex;
-  align-items: center;
-}
-section > .wrap {
-  width: 100%;
-}
-
-.section-label {
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  margin-bottom: 16px;
-}
-
-.section-title {
-  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  margin-bottom: 24px;
-  line-height: 1.3;
-}
-
-.section-lead {
-  font-size: 1.1rem;
-  color: var(--text-secondary);
-  max-width: 700px;
-  line-height: 1.9;
-}
-
-/* ========== HERO ========== */
-.hero {
-  min-height: 100vh;
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
-  display: flex;
-  align-items: center;
-  position: relative;
-  overflow: hidden;
-  padding: 120px 0 80px;
-}
-
-.hero::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background:
-    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(106,166,255,0.15), transparent),
-    radial-gradient(ellipse 60% 40% at 50% 120%, rgba(126,240,212,0.1), transparent);
-  pointer-events: none;
-}
-
-.hero .wrap { position: relative; z-index: 1; }
-
-.hero-label {
-  display: inline-block;
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 32px;
-  opacity: 0;
-  animation: fadeInUp 0.8s ease forwards;
-}
-
-.hero h1 {
-  font-size: clamp(2rem, 5vw, 3.5rem);
-  font-weight: 800;
-  line-height: 1.2;
-  letter-spacing: -0.02em;
-  margin-bottom: 24px;
-  opacity: 0;
-  animation: fadeInUp 0.8s ease 0.1s forwards;
-}
-
-.hero h1 span {
-  background: linear-gradient(135deg, var(--accent-blue), var(--accent));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.hero-lead {
-  font-size: clamp(1rem, 1.8vw, 1.2rem);
-  color: var(--text-secondary);
-  line-height: 1.8;
-  max-width: 800px;
-  opacity: 0;
-  animation: fadeInUp 0.8s ease 0.2s forwards;
-}
-
-.hero-highlight {
-  margin-top: 32px;
-  padding: 24px 32px;
-  background: linear-gradient(135deg, rgba(106,166,255,0.08), rgba(126,240,212,0.04));
-  border: 1px solid rgba(126,240,212,0.15);
-  border-radius: 16px;
-  max-width: 800px;
-  opacity: 0;
-  animation: fadeInUp 0.8s ease 0.3s forwards;
-}
-
-.hero-highlight p {
-  color: var(--text-secondary);
-  font-size: 0.95rem;
-  line-height: 1.7;
-  margin: 0;
-}
-
-.hero-highlight strong {
-  color: var(--accent);
-  font-size: 1.05rem;
-}
-
-.hero-buttons {
-  display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
-  margin-top: 40px;
-  opacity: 0;
-  animation: fadeInUp 0.8s ease 0.4s forwards;
-}
-
-.cta-btn {
-  display: inline-block;
-  padding: 18px 48px;
-  background: linear-gradient(135deg, var(--accent-blue), var(--accent));
-  color: var(--bg-primary);
-  font-weight: 700;
-  font-size: 1rem;
-  border-radius: 50px;
-  transition: all 0.3s ease;
-}
-
-.cta-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 20px 40px rgba(106,166,255,0.3);
-}
-
-.cta-btn-secondary {
-  display: inline-block;
-  padding: 18px 48px;
-  color: var(--text-secondary);
-  font-weight: 600;
-  font-size: 1rem;
-  border-radius: 50px;
-  border: 1px solid var(--line);
-  transition: all 0.3s ease;
-}
-
-.cta-btn-secondary:hover {
-  border-color: rgba(255,255,255,0.25);
-  color: var(--text-primary);
-}
-
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 32px;
-  margin-top: 48px;
-}
-
-.stat-item {
-  padding: 24px;
-}
-
-.stat-number {
-  font-size: 2.8rem;
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  background: linear-gradient(135deg, #fff, var(--text-secondary));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  line-height: 1;
-  margin-bottom: 8px;
-}
-
-.stat-label {
-  font-size: 0.85rem;
-  color: var(--text-muted);
-  letter-spacing: 0.05em;
-  font-weight: 500;
-}
-
-/* ========== THREAT SECTION ========== */
-.threat-stats-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 32px;
-  margin-bottom: 48px;
-}
-
-.threat-stat-card {
-  background: rgba(255,255,255,0.02);
-  border: 1px solid rgba(239,68,68,0.2);
-  border-radius: 16px;
-  padding: 40px;
-  text-align: center;
-}
-
-.threat-stat-number {
-  font-size: 3rem;
-  font-weight: 800;
-  color: #ef4444;
-  line-height: 1;
-  margin-bottom: 12px;
-}
-
-.threat-stat-card h4 {
-  color: var(--text-primary);
-  font-size: 1rem;
-  margin-bottom: 12px;
-  font-weight: 700;
-}
-
-.threat-stat-card p {
-  color: var(--text-secondary);
-  font-size: 0.9rem;
-  line-height: 1.7;
-}
-
-.threat-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  margin-bottom: 48px;
-}
-
-.threat-card {
-  background: rgba(239,68,68,0.04);
-  border: 1px solid rgba(239,68,68,0.15);
-  border-radius: 16px;
-  padding: 32px;
-}
-
-.threat-card h4 {
-  color: #ef4444;
-  font-size: 1rem;
-  margin-bottom: 12px;
-  font-weight: 700;
-}
-
-.threat-card p {
-  color: var(--text-secondary);
-  font-size: 0.9rem;
-  line-height: 1.7;
-}
-
-/* ========== BUSINESS CARD ========== */
-.business-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 32px;
-  margin-top: 48px;
-}
-
-.business-card {
-  padding: 48px 40px;
-  background: rgba(255,255,255,0.02);
-  border: 1px solid var(--line);
-  border-radius: 16px;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
-  overflow: hidden;
-}
-
-.business-card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, var(--accent-blue), var(--accent));
-  transform: scaleX(0);
-  transition: transform 0.4s ease;
-}
-
-.business-card:hover {
-  transform: translateY(-8px);
-  border-color: rgba(126,240,212,0.2);
-  box-shadow: 0 30px 60px rgba(0,0,0,0.3);
-}
-
-.business-card:hover::before {
-  transform: scaleX(1);
-}
-
-.business-card h3 {
-  font-size: 1.3rem;
-  font-weight: 700;
-  margin-bottom: 16px;
-  letter-spacing: -0.01em;
-}
-
-.business-card p {
-  color: var(--text-secondary);
-  font-size: 0.95rem;
-  line-height: 1.9;
-}
-
-/* ========== WHY CARD ========== */
-.why-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  margin-top: 48px;
-}
-
-.why-card {
-  padding: 40px;
-  background: rgba(255,255,255,0.02);
-  border: 1px solid var(--line);
-  border-radius: 16px;
-  transition: all 0.4s ease;
-}
-
-.why-card:hover {
-  border-color: rgba(106,166,255,0.2);
-  background: rgba(255,255,255,0.03);
-}
-
-.why-card h3 {
-  font-size: 1.15rem;
-  font-weight: 700;
-  margin-bottom: 16px;
-  letter-spacing: -0.01em;
-}
-
-.why-card p {
-  color: var(--text-secondary);
-  font-size: 0.9rem;
-  line-height: 1.8;
-}
-
-/* ========== PHILOSOPHY / COST ========== */
-.philosophy-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 48px;
-  margin-top: 64px;
-}
-
-.philosophy-item {
-  position: relative;
-  padding-top: 48px;
-}
-
-.philosophy-number {
-  font-size: 6rem;
-  font-weight: 800;
-  line-height: 1;
-  background: linear-gradient(135deg, rgba(106,166,255,0.15), rgba(126,240,212,0.05));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  position: absolute;
-  top: -10px;
-  left: 0;
-  z-index: 0;
-  user-select: none;
-}
-
-.philosophy-content {
-  position: relative;
-  z-index: 1;
-}
-
-.philosophy-content h3 {
-  font-size: 1.4rem;
-  font-weight: 700;
-  margin-bottom: 16px;
-}
-
-.philosophy-content p {
-  color: var(--text-secondary);
-  font-size: 0.95rem;
-  line-height: 1.9;
-  margin-bottom: 16px;
-}
-
-.cost-tag {
-  display: inline-block;
-  padding: 8px 20px;
-  background: rgba(126,240,212,0.1);
-  border: 1px solid rgba(126,240,212,0.2);
-  border-radius: 24px;
-  color: var(--accent);
-  font-weight: 700;
-  font-size: 0.9rem;
-}
-
-/* ========== SECURITY BANNER ========== */
-.security-banner {
-  padding: 64px;
-  background: linear-gradient(135deg, rgba(106,166,255,0.08), rgba(126,240,212,0.04));
-  border: 1px solid rgba(126,240,212,0.15);
-  border-radius: 24px;
-  text-align: center;
-}
-
-.security-banner h3 {
-  font-size: 1.8rem;
-  font-weight: 700;
-  margin-bottom: 16px;
-}
-
-.security-banner p {
-  color: var(--text-secondary);
-  font-size: 1.05rem;
-  max-width: 700px;
-  margin: 0 auto 24px;
-  line-height: 1.9;
-}
-
-/* ========== TECH LIST ========== */
-.tech-list {
-  list-style: none;
-}
-
-.tech-list li {
-  padding: 12px 0;
-  border-bottom: 1px solid var(--line);
-  color: var(--text-secondary);
-  font-size: 0.9rem;
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  line-height: 1.6;
-}
-
-.tech-list li:last-child {
-  border-bottom: none;
-}
-
-.tech-list .check {
-  color: var(--accent);
-  font-weight: 700;
-  flex-shrink: 0;
-}
-
-/* ========== COMPARISON TABLE ========== */
-.table-wrapper { overflow-x: auto; }
-
-.comparison-table {
-  width: 100%;
-  border-collapse: collapse;
-  background: rgba(10,15,26,0.6);
-  border-radius: 14px;
-  overflow: hidden;
-}
-
-.comparison-table th {
-  padding: 20px;
-  text-align: left;
-  color: #fff;
-  font-weight: 700;
-  border-bottom: 2px solid rgba(106,166,255,0.3);
-}
-
-.comparison-table th.center,
-.comparison-table td.center { text-align: center; }
-
-.comparison-table th.right,
-.comparison-table td.right { text-align: right; }
-
-.comparison-table thead tr {
-  background: linear-gradient(135deg, rgba(106,166,255,0.15), rgba(126,240,212,0.08));
-}
-
-.comparison-table td {
-  padding: 18px 20px;
-  color: var(--text-secondary);
-  border-bottom: 1px solid var(--line);
-}
-
-.comparison-table .highlight {
-  color: var(--accent);
-  font-weight: 700;
-}
-
-.comparison-table .muted {
-  color: var(--text-muted);
-}
-
-.comparison-table .adcs-row {
-  background: rgba(126,240,212,0.06);
-}
-
-/* ========== REPORT CARDS ========== */
-.report-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
-}
-
-.report-card {
-  padding: 28px;
-  background: rgba(255,255,255,0.02);
-  border: 1px solid var(--line);
-  border-radius: 16px;
-  position: relative;
-  overflow: hidden;
-}
-
-.report-card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, var(--accent-blue), var(--accent));
-  transform: scaleX(0);
-  transition: transform 0.4s ease;
-}
-
-.report-card:hover::before {
-  transform: scaleX(1);
-}
-
-.report-badge {
-  display: inline-block;
-  padding: 5px 12px;
-  border-radius: 14px;
-  font-size: 0.7rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-bottom: 16px;
-}
-
-.report-badge.red { background: rgba(239,68,68,0.15); color: #ef4444; }
-.report-badge.blue { background: rgba(106,166,255,0.15); color: #6aa6ff; }
-.report-badge.teal { background: rgba(126,240,212,0.15); color: #7ef0d4; }
-.report-badge.green { background: rgba(16,185,129,0.15); color: #10b981; }
-
-.report-placeholder {
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  border: 2px dashed var(--line);
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 16px;
-  color: var(--text-muted);
-  font-size: 0.8rem;
-  font-weight: 600;
-}
-
-.report-card p {
-  color: var(--text-secondary);
-  font-size: 0.85rem;
-  line-height: 1.6;
-}
-
-/* ========== COMPARISON CARDS (Active Defense) ========== */
-.comparison-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 32px;
-  margin-top: 48px;
-}
-
-.compare-card {
-  padding: 40px;
-  border-radius: 16px;
-}
-
-.compare-card.traditional {
-  background: rgba(239,68,68,0.06);
-  border: 1px solid rgba(239,68,68,0.2);
-}
-
-.compare-card.active {
-  background: rgba(126,240,212,0.04);
-  border: 1px solid rgba(126,240,212,0.15);
-}
-
-.compare-card h3 {
-  font-size: 1.3rem;
-  font-weight: 800;
-  margin-bottom: 24px;
-}
-
-.compare-card.traditional h3 { color: #ef4444; }
-.compare-card.active h3 { color: var(--accent); }
-
-.compare-list {
-  list-style: none;
-}
-
-.compare-list li {
-  padding: 10px 0;
-  color: var(--text-secondary);
-  font-size: 0.95rem;
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  line-height: 1.6;
-}
-
-.compare-list .icon-x { color: #ef4444; font-weight: 700; flex-shrink: 0; }
-.compare-list .icon-check { color: var(--accent); font-weight: 700; flex-shrink: 0; }
-
-/* ========== FLOW STEPS ========== */
-.flow-grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 24px;
-  margin-top: 48px;
-}
-
-.flow-card {
-  text-align: center;
-  padding: 32px 16px;
-  background: rgba(255,255,255,0.02);
-  border: 1px solid var(--line);
-  border-radius: 16px;
-}
-
-.flow-number {
-  font-size: 3rem;
-  font-weight: 800;
-  background: linear-gradient(135deg, rgba(106,166,255,0.15), rgba(126,240,212,0.05));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  line-height: 1;
-  margin-bottom: 16px;
-}
-
-.flow-card h4 {
-  font-size: 1rem;
-  font-weight: 700;
-  margin-bottom: 10px;
-}
-
-.flow-card p {
-  color: var(--text-secondary);
-  font-size: 0.85rem;
-  line-height: 1.6;
-  margin-bottom: 12px;
-}
-
-.flow-time {
-  display: inline-block;
-  background: rgba(126,240,212,0.1);
-  border: 1px solid rgba(126,240,212,0.2);
-  padding: 4px 14px;
-  border-radius: 20px;
-  font-size: 0.75rem;
-  color: var(--accent);
-  font-weight: 700;
-}
-
-/* ========== PRICING CARDS ========== */
-.pricing-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 32px;
-  margin-top: 48px;
-}
-
-.pricing-card {
-  background: rgba(255,255,255,0.02);
-  border: 1px solid var(--line);
-  border-radius: 16px;
-  padding: 40px;
-  text-align: center;
-}
-
-.pricing-card.featured {
-  border-color: var(--accent);
-  background: linear-gradient(135deg, rgba(106,166,255,0.05), rgba(126,240,212,0.03));
-}
-
-.pricing-label {
-  display: inline-block;
-  background: rgba(106,166,255,0.15);
-  color: var(--accent-blue);
-  padding: 5px 14px;
-  border-radius: 20px;
-  font-size: 0.75rem;
-  font-weight: 700;
-  margin-bottom: 16px;
-}
-
-.pricing-card.featured .pricing-label {
-  background: linear-gradient(135deg, var(--accent-blue), var(--accent));
-  color: var(--bg-primary);
-}
-
-.pricing-card h3 {
-  color: #fff;
-  font-size: 1.2rem;
-  margin-bottom: 16px;
-  font-weight: 700;
-}
-
-.price-amount {
-  font-size: 2.5rem;
-  font-weight: 800;
-  background: linear-gradient(135deg, var(--accent-blue), var(--accent));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  margin-bottom: 8px;
-}
-
-.price-detail {
-  color: var(--text-muted);
-  font-size: 0.85rem;
-  margin-bottom: 24px;
-}
-
-.pricing-features {
-  list-style: none;
-  text-align: left;
-  margin-bottom: 24px;
-}
-
-.pricing-features li {
-  padding: 8px 0;
-  color: var(--text-secondary);
-  font-size: 0.9rem;
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  line-height: 1.6;
-}
-
-.pricing-features .check {
-  color: var(--accent);
-  font-weight: 700;
-  flex-shrink: 0;
-}
-
-/* ========== CTA SECTION ========== */
-.cta-section {
-  text-align: center;
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
-  min-height: 100vh;
-}
-
-.cta-section h2 {
-  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  margin-bottom: 24px;
-}
-
-.cta-section p {
-  font-size: 1.1rem;
-  color: var(--text-secondary);
-  max-width: 700px;
-  margin: 0 auto 32px;
-  line-height: 1.8;
-}
-
-.cta-badge {
-  display: inline-block;
-  padding: 10px 24px;
-  background: linear-gradient(135deg, var(--accent-blue), var(--accent));
-  color: var(--bg-primary);
-  font-weight: 700;
-  font-size: 0.85rem;
-  border-radius: 24px;
-  margin-bottom: 24px;
-  letter-spacing: 0.05em;
-}
-
-.result-banner {
-  text-align: center;
-  padding: 48px;
-  background: linear-gradient(135deg, rgba(106,166,255,0.1), rgba(126,240,212,0.06));
-  border: 1px solid rgba(126,240,212,0.15);
-  border-radius: 20px;
-  margin-top: 48px;
-}
-
-.result-big {
-  font-size: clamp(2.5rem, 5vw, 4rem);
-  font-weight: 800;
-  background: linear-gradient(135deg, var(--accent-blue), var(--accent));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  line-height: 1.2;
-  margin-bottom: 16px;
-}
-
-.cost-banner {
-  text-align: center;
-  margin-top: 48px;
-  padding: 40px;
-  background: rgba(126,240,212,0.06);
-  border: 1px solid rgba(126,240,212,0.15);
-  border-radius: 16px;
-}
-
-.cost-banner h4 {
-  color: var(--accent);
-  font-size: 1.5rem;
-  font-weight: 800;
-  margin-bottom: 12px;
-}
-
-.cost-banner p {
-  color: var(--text-secondary);
-  font-size: 1rem;
-  line-height: 1.8;
-}
-
-/* ========== SERVICES TABLE ========== */
-.services-table {
-  width: 100%;
-  border-collapse: collapse;
-  background: rgba(10,15,26,0.6);
-  border-radius: 14px;
-  overflow: hidden;
-  margin-bottom: 48px;
-}
-
-.services-table th {
-  padding: 20px 24px;
-  text-align: left;
-  color: #fff;
-  font-weight: 700;
-  border-bottom: 2px solid rgba(106,166,255,0.3);
-}
-
-.services-table thead tr {
-  background: linear-gradient(135deg, rgba(106,166,255,0.15), rgba(126,240,212,0.08));
-}
-
-.services-table td {
-  padding: 20px 24px;
-  color: var(--text-secondary);
-  border-bottom: 1px solid var(--line);
-  line-height: 1.7;
-}
-
-.services-table td.name {
-  color: #fff;
-  font-weight: 700;
-}
-
-.services-table .recommended {
-  font-size: 0.7rem;
-  color: var(--accent);
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  display: block;
-  margin-top: 4px;
-}
-
-.services-table .adcs-row { background: rgba(126,240,212,0.06); }
-.services-table .price-highlight { color: var(--accent); font-weight: 700; }
-.services-table .price-muted { color: var(--text-muted); font-weight: 600; }
-
-/* ========== SCROLL NAV DOTS ========== */
-.scroll-nav {
-  position: fixed;
-  right: 20px;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 100;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-.scroll-nav-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.2);
-  border: 1px solid rgba(255,255,255,0.3);
-  cursor: pointer;
-  transition: all 0.3s ease;
-  position: relative;
-}
-.scroll-nav-dot:hover {
-  background: rgba(126,240,212,0.4);
-  border-color: rgba(126,240,212,0.6);
-}
-.scroll-nav-dot.active {
-  background: #7ef0d4;
-  border-color: #7ef0d4;
-  box-shadow: 0 0 8px rgba(126,240,212,0.5);
-}
-
-/* ========== RESPONSIVE ========== */
-@media (max-width: 1024px) {
-  .stats-grid,
-  .threat-stats-grid,
-  .threat-grid,
-  .why-grid,
-  .philosophy-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .business-grid,
-  .pricing-grid {
-    grid-template-columns: 1fr;
-    gap: 24px;
-  }
-
-  .flow-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .report-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .comparison-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 768px) {
-  html { scroll-snap-type: none; }
-  section { scroll-snap-align: none; min-height: auto; }
-  .scroll-nav { display: none; }
-
-  section {
-    padding: 60px 0;
-  }
-
-  .hero {
-    padding: 100px 0 60px;
-  }
-
-  .stats-grid,
-  .threat-stats-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .threat-grid,
-  .why-grid,
-  .philosophy-grid,
-  .report-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .flow-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .hero-highlight,
-  .security-banner {
-    padding: 24px;
-  }
-
-  .security-banner {
-    padding: 32px 24px;
-  }
-
-  .why-card,
-  .business-card {
-    padding: 32px 24px;
-  }
-
-  .compare-card {
-    padding: 28px;
-  }
-
-  .stat-number {
-    font-size: 2.2rem;
-  }
-
-  .result-big {
-    font-size: 2.5rem;
-  }
-
-  .philosophy-number {
-    font-size: 4rem;
-  }
-
-  .checklist-grid {
-    grid-template-columns: 1fr !important;
-  }
+  --card: rgba(255,255,255,0.025);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{background:var(--bg);color:var(--text);font-family:'Inter','Noto Sans JP',-apple-system,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;height:auto;display:block}
+
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+.wrap-sm{max-width:860px;margin:0 auto;padding:0 24px}
+.wrap-xs{max-width:700px;margin:0 auto;padding:0 24px}
+
+section{padding:96px 0;position:relative}
+section.dark{background:var(--bg2)}
+.section-label{font-size:.7rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+.section-title{font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:800;letter-spacing:-.02em;line-height:1.2;margin-bottom:20px}
+.section-lead{font-size:1.05rem;color:var(--text2);line-height:1.9;max-width:720px}
+
+/* ===== STICKY CTA ===== */
+#sticky-cta{position:fixed;top:0;left:0;right:0;z-index:500;background:rgba(5,8,15,.93);backdrop-filter:blur(16px);border-bottom:1px solid rgba(126,240,212,.12);padding:10px 0;transform:translateY(-100%);transition:transform .3s ease}
+#sticky-cta.show{transform:translateY(0)}
+#sticky-cta .inner{display:flex;align-items:center;justify-content:space-between;gap:16px}
+#sticky-cta .slabel{font-size:.88rem;font-weight:600;color:var(--text2)}
+#sticky-cta .slabel span{color:var(--accent)}
+
+/* ===== BUTTONS ===== */
+.btn{display:inline-block;padding:14px 36px;border-radius:50px;font-weight:700;font-size:.95rem;transition:all .25s ease;cursor:pointer;border:none}
+.btn-primary{background:linear-gradient(135deg,var(--blue),var(--accent));color:#050810}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 36px rgba(106,166,255,.3)}
+.btn-lg{padding:18px 52px;font-size:1.05rem}
+.btn-ghost{border:1px solid var(--line);color:var(--text2)}
+.btn-ghost:hover{border-color:rgba(255,255,255,.25);color:var(--text)}
+.btn-danger{background:linear-gradient(135deg,#ef4444,#dc2626);color:#fff}
+.btn-danger:hover{transform:translateY(-2px);box-shadow:0 16px 36px rgba(239,68,68,.3)}
+
+/* ===== HERO ===== */
+.hero{min-height:100vh;display:flex;align-items:center;padding:120px 0 80px;background:radial-gradient(ellipse 80% 60% at 50% -10%,rgba(106,166,255,.1),transparent)}
+.hero-eyebrow{display:inline-block;background:rgba(126,240,212,.1);border:1px solid rgba(126,240,212,.25);color:var(--accent);font-size:.8rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;padding:6px 18px;border-radius:24px;margin-bottom:28px}
+.hero h1{font-size:clamp(2.2rem,5.5vw,4rem);font-weight:800;letter-spacing:-.03em;line-height:1.15;margin-bottom:12px}
+.hero h1 .sub{display:block;font-size:clamp(1.2rem,2.5vw,1.8rem);font-weight:600;color:var(--text2);letter-spacing:-.01em;margin-top:8px}
+.hero-tagline{font-size:clamp(1rem,1.8vw,1.2rem);color:var(--text2);line-height:1.8;max-width:680px;margin:24px 0 40px}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:64px}
+.hero-kpi{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.hero-kpi-item{background:var(--card);padding:24px 20px;text-align:center}
+.hero-kpi-num{font-size:1.8rem;font-weight:800;background:linear-gradient(135deg,var(--blue),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;margin-bottom:6px}
+.hero-kpi-label{font-size:.78rem;color:var(--muted);font-weight:500;line-height:1.4}
+
+/* ===== PRICING ===== */
+.plan-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:48px}
+.plan-card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:36px 28px;position:relative;display:flex;flex-direction:column}
+.plan-card.recommended{border-color:var(--accent);background:linear-gradient(160deg,rgba(106,166,255,.06),rgba(126,240,212,.03))}
+.plan-badge{display:inline-block;font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:4px 12px;border-radius:12px;margin-bottom:16px}
+.plan-badge.free-badge{background:rgba(126,240,212,.15);color:var(--accent)}
+.plan-badge.starter-badge{background:rgba(106,166,255,.15);color:var(--blue)}
+.plan-badge.std-badge{background:linear-gradient(135deg,rgba(106,166,255,.2),rgba(126,240,212,.15));color:var(--accent)}
+.plan-badge.prem-badge{background:rgba(255,215,0,.15);color:#ffd700}
+.plan-name{font-size:1.15rem;font-weight:800;margin-bottom:8px}
+.plan-price{font-size:2.2rem;font-weight:800;background:linear-gradient(135deg,var(--blue),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;margin-bottom:4px}
+.plan-price-note{font-size:.8rem;color:var(--muted);margin-bottom:20px}
+.plan-desc{font-size:.85rem;color:var(--text2);line-height:1.7;margin-bottom:20px;flex:1}
+.plan-features{list-style:none;margin-bottom:24px}
+.plan-features li{display:flex;gap:8px;align-items:flex-start;font-size:.82rem;color:var(--text2);padding:5px 0;border-bottom:1px solid var(--line);line-height:1.5}
+.plan-features li:last-child{border-bottom:none}
+.plan-features .ck{color:var(--accent);font-weight:700;flex-shrink:0;margin-top:1px}
+.plan-cta{margin-top:auto}
+
+.addon-table{width:100%;border-collapse:collapse;margin-top:40px}
+.addon-table th{padding:14px 20px;text-align:left;font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--line)}
+.addon-table td{padding:14px 20px;font-size:.88rem;color:var(--text2);border-bottom:1px solid rgba(255,255,255,.04)}
+.addon-table td:last-child{font-weight:700;color:var(--accent);text-align:right}
+.addon-table tr:hover td{background:rgba(255,255,255,.02)}
+
+/* ===== PAYMENT METHODS ===== */
+.pay-methods{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px;align-items:center}
+.pay-chip{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:8px;font-size:.8rem;color:var(--text2);font-weight:600}
+
+/* ===== OVERVIEW ===== */
+.overview-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;margin-top:48px}
+.overview-text .lead{font-size:1.1rem;color:var(--text2);line-height:1.9;margin-bottom:24px}
+.overview-text .highlight-box{background:rgba(126,240,212,.06);border:1px solid rgba(126,240,212,.15);border-radius:14px;padding:24px;margin-top:24px}
+.overview-text .highlight-box p{font-size:.9rem;color:var(--text2);line-height:1.8}
+.overview-text .highlight-box strong{color:var(--accent)}
+
+/* ===== UI MOCKUP ===== */
+.ui-mockup{background:#0d1424;border:1px solid rgba(106,166,255,.2);border-radius:16px;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.5)}
+.mockup-bar{background:#0a1020;padding:12px 16px;display:flex;align-items:center;gap:8px;border-bottom:1px solid rgba(255,255,255,.06)}
+.mockup-dot{width:10px;height:10px;border-radius:50%}
+.mockup-bar .url-bar{flex:1;background:rgba(255,255,255,.05);border-radius:6px;padding:5px 12px;font-size:.75rem;color:var(--muted);margin-left:8px}
+.mockup-body{padding:20px}
+.score-ring-wrap{display:flex;align-items:center;gap:24px;margin-bottom:16px}
+.score-ring{width:80px;height:80px;border-radius:50%;border:6px solid rgba(126,240,212,.2);border-top-color:var(--accent);display:flex;align-items:center;justify-content:center;position:relative}
+.score-ring-num{font-size:1.3rem;font-weight:800;color:var(--accent)}
+.score-info h4{font-size:.9rem;font-weight:700;color:var(--text);margin-bottom:4px}
+.score-info p{font-size:.75rem;color:var(--muted)}
+.mockup-table{width:100%;border-collapse:collapse}
+.mockup-table td{padding:8px 10px;font-size:.75rem;color:var(--text2);border-bottom:1px solid rgba(255,255,255,.05)}
+.mockup-table td:first-child{color:var(--text)}
+.sev-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px}
+.sev-critical{background:#ef4444}
+.sev-high{background:#f97316}
+.sev-medium{background:#eab308}
+.sev-low{background:#22c55e}
+
+/* ===== SYSTEM FLOW ===== */
+.flow-wrapper{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:0;align-items:stretch;margin-top:56px}
+.flow-step{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:36px 28px}
+.flow-step.active{border-color:rgba(126,240,212,.3);background:rgba(126,240,212,.04)}
+.flow-step.future{opacity:.65}
+.flow-num{font-size:.7rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+.flow-step h3{font-size:1.15rem;font-weight:800;margin-bottom:12px}
+.flow-step p{font-size:.85rem;color:var(--text2);line-height:1.8}
+.flow-step ul{list-style:none;margin-top:12px}
+.flow-step ul li{font-size:.82rem;color:var(--text2);padding:4px 0;display:flex;align-items:flex-start;gap:8px;line-height:1.5}
+.flow-step ul li::before{content:'›';color:var(--accent);font-weight:700;flex-shrink:0}
+.flow-arrow{display:flex;align-items:center;justify-content:center;padding:0 12px;color:var(--accent);font-size:1.6rem;flex-shrink:0}
+.current-badge{display:inline-block;background:rgba(126,240,212,.15);color:var(--accent);font-size:.7rem;font-weight:700;padding:3px 10px;border-radius:10px;margin-bottom:12px}
+
+/* ===== SCANNER SPECS ===== */
+.scanner-cats{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:48px}
+.scanner-cat{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:28px 24px}
+.scanner-cat h4{font-size:.95rem;font-weight:700;margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.scanner-cat h4 .cat-count{font-size:.7rem;background:rgba(126,240,212,.15);color:var(--accent);padding:2px 8px;border-radius:8px;font-weight:700}
+.scanner-list{list-style:none}
+.scanner-list li{font-size:.78rem;color:var(--text2);padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04);display:flex;align-items:center;gap:8px;line-height:1.4}
+.scanner-list li:last-child{border-bottom:none}
+.scanner-list li::before{content:'◉';font-size:.5rem;color:var(--accent);flex-shrink:0}
+.osint-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:32px}
+.osint-chip{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;text-align:center}
+.osint-chip .name{font-size:.85rem;font-weight:700;margin-bottom:4px}
+.osint-chip .desc{font-size:.72rem;color:var(--muted);line-height:1.4}
+
+/* ===== CTEM ===== */
+.ctem-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;margin-top:48px}
+.ctem-features{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:24px}
+.ctem-feat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px}
+.ctem-feat h4{font-size:.9rem;font-weight:700;margin-bottom:6px;color:var(--accent)}
+.ctem-feat p{font-size:.8rem;color:var(--text2);line-height:1.6}
+
+/* ===== COMPARISON ===== */
+.comp-table{width:100%;border-collapse:collapse;background:rgba(5,8,15,.8);border-radius:16px;overflow:hidden;margin-top:48px}
+.comp-table th{padding:18px 20px;text-align:left;font-size:.8rem;font-weight:700;letter-spacing:.05em;border-bottom:2px solid rgba(106,166,255,.2);color:var(--text)}
+.comp-table th:first-child{width:26%}
+.comp-table thead tr{background:linear-gradient(135deg,rgba(106,166,255,.12),rgba(126,240,212,.06))}
+.comp-table td{padding:16px 20px;color:var(--text2);border-bottom:1px solid var(--line);font-size:.88rem}
+.comp-table td.adcs{color:var(--accent);font-weight:700}
+.comp-table .comp-our{background:rgba(126,240,212,.04)}
+.comp-table .x{color:var(--muted)}
+.comp-win{color:var(--accent)!important;font-weight:700!important}
+
+/* ===== FREE DOWNLOAD ===== */
+.dl-banner{background:linear-gradient(135deg,rgba(106,166,255,.08),rgba(126,240,212,.04));border:1px solid rgba(126,240,212,.15);border-radius:24px;padding:56px 48px;text-align:center}
+.dl-badge{display:inline-block;background:linear-gradient(135deg,var(--blue),var(--accent));color:#050810;font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:6px 18px;border-radius:20px;margin-bottom:20px}
+
+/* ===== TRUST ===== */
+.trust-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px}
+.trust-card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:28px}
+.trust-card h4{font-size:.95rem;font-weight:700;margin-bottom:10px;color:var(--text)}
+.trust-card p{font-size:.83rem;color:var(--text2);line-height:1.7}
+.reg-marks{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-top:40px}
+.reg-mark{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 10px;text-align:center}
+.reg-mark .icon{font-size:1.6rem;margin-bottom:6px}
+.reg-mark .name{font-size:.7rem;font-weight:700;color:var(--text);line-height:1.3;margin-bottom:2px}
+.reg-mark .sub{font-size:.65rem;color:var(--muted)}
+.ipa-highlight{grid-column:span 2;background:rgba(126,240,212,.05);border-color:rgba(126,240,212,.2)}
+
+/* ===== ANIMATIONS ===== */
+.fade-in{opacity:0;transform:translateY(32px);transition:all .75s cubic-bezier(.4,0,.2,1)}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:1024px){
+  .plan-grid{grid-template-columns:1fr 1fr;gap:16px}
+  .scanner-cats{grid-template-columns:1fr 1fr}
+  .overview-grid,.ctem-grid{grid-template-columns:1fr}
+  .flow-wrapper{grid-template-columns:1fr;gap:16px}
+  .flow-arrow{transform:rotate(90deg);padding:4px 0}
+  .hero-kpi{grid-template-columns:repeat(2,1fr)}
+  .reg-marks{grid-template-columns:repeat(3,1fr)}
+  .ipa-highlight{grid-column:span 1}
+}
+@media(max-width:768px){
+  section{padding:64px 0}
+  .plan-grid{grid-template-columns:1fr}
+  .scanner-cats{grid-template-columns:1fr}
+  .osint-grid{grid-template-columns:repeat(2,1fr)}
+  .trust-grid{grid-template-columns:1fr}
+  .reg-marks{grid-template-columns:repeat(2,1fr)}
+  .ctem-features{grid-template-columns:1fr}
+  .hero-kpi{grid-template-columns:repeat(2,1fr)}
+  .dl-banner{padding:36px 24px}
+  #sticky-cta .slabel{display:none}
 }
 </style>
 </head>
 <body>
 
-<canvas id="global-bg"></canvas>
+<!-- Sticky CTA -->
+<div id="sticky-cta">
+  <div class="wrap">
+    <div class="inner">
+      <div class="slabel">ADCS — <span>「直すまで導く」</span>セキュリティプラットフォーム</div>
+      <a href="#pricing" class="btn btn-primary" style="padding:10px 28px;font-size:.88rem;">料金・申込を見る</a>
+    </div>
+  </div>
+</div>
 
-<!-- Shared Header -->
+<!-- Header -->
 <div id="site-header"></div>
 
-<nav class="scroll-nav" aria-label="Page navigation">
-  <div class="scroll-nav-dot active" data-index="0"></div>
-  <div class="scroll-nav-dot" data-index="1"></div>
-  <div class="scroll-nav-dot" data-index="2"></div>
-  <div class="scroll-nav-dot" data-index="3"></div>
-  <div class="scroll-nav-dot" data-index="4"></div>
-  <div class="scroll-nav-dot" data-index="5"></div>
-  <div class="scroll-nav-dot" data-index="6"></div>
-  <div class="scroll-nav-dot" data-index="7"></div>
-  <div class="scroll-nav-dot" data-index="8"></div>
-  <div class="scroll-nav-dot" data-index="9"></div>
-  <div class="scroll-nav-dot" data-index="10"></div>
-  <div class="scroll-nav-dot" data-index="11"></div>
-  <div class="scroll-nav-dot" data-index="12"></div>
-</nav>
-
-<!-- ========================================== -->
-<!-- 1. HERO                                     -->
-<!-- ========================================== -->
+<!-- ================================================ -->
+<!-- 1. HERO                                          -->
+<!-- ================================================ -->
 <section class="hero">
 <div class="wrap">
-  <span class="hero-label">Cybersecurity</span>
+  <div class="hero-eyebrow">Security Maturity Automation Platform</div>
   <h1>
-    <span>従来の1/10のコストで</span><br>
-    エンタープライズ級の<br>
-    セキュリティを実現
+    ADCS
+    <span class="sub">中小企業のデフォルトセキュリティ基盤</span>
   </h1>
-  <p class="hero-lead">
-    Active Defense思想で再構築した完全自動化セキュリティサービス。高額で手が出なかったセキュリティ対策を、中小企業・地方自治体でも導入可能な価格で提供。
+  <p class="hero-tagline">
+    情報システム担当者がいない中小企業でも、プロレベルのセキュリティを実現。<br>
+    54種のスキャナーが自動で脆弱性を発見し、<strong style="color:#fff;">「今週やること3つ」</strong>に変換して届けます。
   </p>
-
-  <div class="hero-highlight">
-    <p>
-      <strong>従来：年間数百万円〜数千万円</strong><br>
-      通常のセキュリティサービスは高額で、中小企業・自治体は導入できず、脅威に無防備な状態。
-    </p>
+  <div class="hero-ctas">
+    <a href="#pricing" class="btn btn-primary btn-lg">料金・プランを見る</a>
+    <a href="#free-check" class="btn btn-ghost btn-lg">無料自己チェックを試す</a>
   </div>
-
-  <div class="hero-buttons">
-    <a href="#free-diagnosis" class="cta-btn">今すぐ無料診断</a>
-    <a href="#solution" class="cta-btn-secondary">詳細を見る</a>
-  </div>
-
-  <div class="stats-grid" style="margin-top:48px;">
-    <div class="stat-item">
-      <div class="stat-number">&yen;0</div>
-      <div class="stat-label">無料診断あり</div>
+  <div class="hero-kpi">
+    <div class="hero-kpi-item">
+      <div class="hero-kpi-num">54</div>
+      <div class="hero-kpi-label">スキャナー数<br>業界最高水準</div>
     </div>
-    <div class="stat-item">
-      <div class="stat-number">24時間</div>
-      <div class="stat-label">自動スキャン</div>
+    <div class="hero-kpi-item">
+      <div class="hero-kpi-num">11</div>
+      <div class="hero-kpi-label">対応国際規制<br>GDPR/ISO/NIS2 等</div>
     </div>
-    <div class="stat-item">
-      <div class="stat-number">完全自動</div>
-      <div class="stat-label">人手不要</div>
+    <div class="hero-kpi-item">
+      <div class="hero-kpi-num">¥29,800</div>
+      <div class="hero-kpi-label">月額スタート<br>手動診断の1/10</div>
+    </div>
+    <div class="hero-kpi-item">
+      <div class="hero-kpi-num">24h</div>
+      <div class="hero-kpi-label">レポート完成<br>完全自動</div>
     </div>
   </div>
 </div>
 </section>
 
-<!-- ========================================== -->
-<!-- 2. 2026年セキュリティ脅威                    -->
-<!-- ========================================== -->
-<section style="background:var(--bg-secondary);">
+<!-- ================================================ -->
+<!-- 2. PRICING                                       -->
+<!-- ================================================ -->
+<section class="dark" id="pricing">
 <div class="wrap">
-  <div class="animate-on-scroll">
-    <p class="section-label">Threat Landscape</p>
-    <h2 class="section-title">今、企業を取り巻くセキュリティ環境は激変している</h2>
-    <p class="section-lead" style="margin-bottom:48px;">
-      2026年、サイバー攻撃は質・量ともに激増。AI駆動型攻撃、サプライチェーン侵害、ランサムウェア2.0、ゼロデイ脆弱性の自動悪用が常態化。大企業の強固な防御を避け、セキュリティ投資が不足する中小企業・自治体・医療機関が主要標的に。従来の境界防御型セキュリティは完全に無効化され、被害企業の67%が事業継続不能に陥る深刻な状況です。
-    </p>
-  </div>
-
-  <div class="threat-stats-grid animate-on-scroll">
-    <div class="threat-stat-card">
-      <div class="threat-stat-number">145%</div>
-      <h4>ランサムウェア攻撃の増加</h4>
-      <p>2025年比で中小企業への攻撃が急増。二重恐喝(データ暗号化+情報公開脅迫)が主流化。身代金要求平均額500万円超、支払後も3割が復号失敗。攻撃者はRaaS(Ransomware as a Service)で組織化・自動化され、標的選定から侵入まで完全AI化。</p>
-    </div>
-    <div class="threat-stat-card">
-      <div class="threat-stat-number">82%</div>
-      <h4>対策なしの中小企業</h4>
-      <p>予算不足により8割以上が適切な対策未実施。専任セキュリティ担当者不在、脆弱性管理なし、バックアップ未整備、インシデント対応計画なし。攻撃者は公開情報から脆弱な企業を自動スキャンで特定し優先攻撃。サプライチェーン経由で大企業侵入の踏み台に。</p>
-    </div>
-    <div class="threat-stat-card">
-      <div class="threat-stat-number">3,200万円</div>
-      <h4>平均被害額</h4>
-      <p>情報漏洩・システム停止による直接損失に加え、事業機会損失、顧客信頼喪失、法的責任、コンプライアンス違反罰金が複合。復旧期間平均21日、その間の完全事業停止。被害企業の43%が1年以内に廃業、67%が深刻な経営危機に直面。</p>
-    </div>
-  </div>
-
-  <div class="threat-grid animate-on-scroll">
-    <div class="threat-card">
-      <h4>AI駆動型攻撃</h4>
-      <p>GPT-4/Claude等の大規模言語モデルを悪用した高精度スピアフィッシング(成功率78%)、DeepFake音声・映像による経営者なりすまし、機械学習による脆弱性自動発見・悪用(0-day攻撃の産業化)、AIボットによる24時間連続攻撃試行。従来のシグネチャベース検知は完全無効化。行動分析・異常検知型防御が必須に。</p>
-    </div>
-    <div class="threat-card">
-      <h4>サプライチェーン攻撃</h4>
-      <p>大企業直接攻撃は困難なため、セキュリティ投資不足の取引先・協力会社経由で侵入。SolarWinds型の信頼された更新経路悪用、オープンソースライブラリへのバックドア混入(Log4Shell等)、VPN/EDR等セキュリティツール自体の脆弱性悪用。被害は連鎖的に拡大、サプライチェーン全体が停止。中小企業は取引先から契約解除のリスク。</p>
-    </div>
-    <div class="threat-card">
-      <h4>ハイブリッドワーク攻撃面拡大</h4>
-      <p>境界防御崩壊により攻撃面が指数関数的拡大。VPN脆弱性(CVE-2023-XXXX系)、誤設定されたクラウドストレージ(S3バケット等)からの大規模情報漏洩、Shadow IT(未承認SaaS利用)経由の侵入、BYOD端末のマルウェア感染、公共WiFi経由の中間者攻撃。ゼロトラストアーキテクチャ未実装組織は全面的に脆弱。</p>
-    </div>
-    <div class="threat-card">
-      <h4>コンプライアンス・法規制強化</h4>
-      <p>改正個人情報保護法(漏洩時の報告義務・罰金最大1億円)、EU NIS2指令(重要インフラ企業への厳格要件)、GDPR違反罰金(全世界売上の4%または2000万ユーロ)、米国CMMC(国防総省サプライチェーン認証必須化)。対策未実施は法的責任・取引資格喪失・株主代表訴訟リスク。経営者個人の刑事責任も。</p>
-    </div>
-    <div class="threat-card">
-      <h4>IoT/OT環境への侵入</h4>
-      <p>産業制御システム(SCADA/PLC)、医療機器、ビル管理システム等のIoT/OT機器は設計段階でセキュリティ未考慮。Mirai型ボットネット、Stuxnet類似のマルウェアによる物理設備破壊、製造ライン停止。パッチ適用困難、可視化不足、IT/OT境界防御の欠如が致命的。</p>
-    </div>
-    <div class="threat-card">
-      <h4>ソーシャルエンジニアリング高度化</h4>
-      <p>OSINTツール(Maltego/Shodan/TheHarvester)で標的の詳細情報を自動収集し、AI生成の完璧に個人化されたフィッシングメール作成。LinkedIn/SNS情報から組織構造・人間関係を把握、BEC(ビジネスメール詐欺)で平均被害額1,200万円。MFA(多要素認証)突破手法も確立。人的脆弱性が最大の攻撃ベクトルに。</p>
-    </div>
-  </div>
-
-  <!-- Checklist CTA -->
-  <div class="security-banner animate-on-scroll">
-    <div class="cta-badge">無料チェックシート配布中</div>
-    <h3>貴社のセキュリティリスクを今すぐ診断</h3>
-    <p>
-      <strong style="color:var(--accent);">3分で完了する自己診断シート</strong>を無料提供。アタックサーフェス可視化、脆弱性優先順位付け、NIST CSF/ISO27001準拠度確認、コンプライアンスギャップ分析、インシデント対応成熟度評価を網羅。即座に改善アクションプランを取得できます。
-    </p>
-
-    <div style="background:rgba(10,15,26,0.6);border:1px solid rgba(106,166,255,0.2);border-radius:14px;padding:24px;max-width:800px;margin:0 auto 24px;text-align:left;">
-      <h4 style="color:#fff;font-size:1rem;margin-bottom:16px;font-weight:700;text-align:center;">チェックシートの詳細内容（65項目）</h4>
-      <ul class="tech-list checklist-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:4px 24px;">
-        <li><span class="check">&#10003;</span><span>外部公開資産の完全把握(ドメイン・サブドメイン・IP・ポート・サービス・SSL証明書・DNSレコード)</span></li>
-        <li><span class="check">&#10003;</span><span>ネットワークセグメンテーション・ファイアウォールルール・VPN構成・DMZ設計の適切性評価</span></li>
-        <li><span class="check">&#10003;</span><span>IAM(ID管理)・MFA実装状況・特権アカウント管理・パスワードポリシー・最小権限原則遵守</span></li>
-        <li><span class="check">&#10003;</span><span>脆弱性管理プロセス・パッチ適用サイクル・EOL製品使用状況・ゼロデイ対応体制</span></li>
-        <li><span class="check">&#10003;</span><span>エンドポイント保護(EDR/XDR)・アンチウイルス・ホストベースファイアウォール・USB制御</span></li>
-        <li><span class="check">&#10003;</span><span>セキュリティ監視(SIEM/SOC)・ログ収集分析・異常検知・脅威インテリジェンス活用</span></li>
-        <li><span class="check">&#10003;</span><span>バックアップ戦略(3-2-1ルール)・オフライン保管・復元テスト・RPO/RTO定義</span></li>
-        <li><span class="check">&#10003;</span><span>従業員セキュリティ意識・フィッシング訓練・インシデント報告手順・BYOD/Shadow ITポリシー</span></li>
-        <li><span class="check">&#10003;</span><span>インシデント対応計画・CSIRT体制・プレイブック・演習実施・事後分析プロセス</span></li>
-        <li style="border-bottom:none;"><span class="check">&#10003;</span><span>クラウドセキュリティ(CASB・CSPM)・SaaS設定監査・データ暗号化・アクセス制御</span></li>
-      </ul>
-    </div>
-
-    <a href="../ja/contact.html?type=checklist" class="cta-btn">無料チェックシートをダウンロード</a>
-    <p style="color:var(--text-muted);font-size:0.8rem;margin-top:16px;">
-      メールアドレスの入力のみ &bull; 即時ダウンロード &bull; 営業連絡なし &bull; NIST CSF/CIS Controls/ISO27001対応
-    </p>
-  </div>
-</div>
-</section>
-
-<!-- ========================================== -->
-<!-- 3. 課題セクション                            -->
-<!-- ========================================== -->
-<section>
-<div class="wrap">
-  <div class="animate-on-scroll">
-    <p class="section-label">The Problem</p>
-    <h2 class="section-title">中小企業・自治体が直面する現実</h2>
-    <p class="section-lead" style="margin-bottom:48px;">セキュリティ対策が必要なのは分かっている。しかし、高額すぎて導入できない。</p>
-  </div>
-
-  <div class="business-grid animate-on-scroll">
-    <div class="business-card">
-      <h3>高額すぎる従来サービス</h3>
-      <p>年間数百万円〜数千万円のコストで、中小企業・自治体には手が出ない。予算がないため、セキュリティ対策を諦めている。</p>
-    </div>
-    <div class="business-card">
-      <h3>無防備な状態</h3>
-      <p>対策がないまま運用を続けるしかなく、いつ攻撃されてもおかしくない。事故が起きてから気づくのでは遅い。</p>
-    </div>
-    <div class="business-card">
-      <h3>現状把握すらできない</h3>
-      <p>自社のセキュリティ状況がどうなっているのか、どこに穴があるのか全く分からない。何から手をつければいいのか不明。</p>
-    </div>
-  </div>
-</div>
-</section>
-
-<!-- ========================================== -->
-<!-- 4. ソリューション                            -->
-<!-- ========================================== -->
-<section id="solution" style="background:var(--bg-secondary);">
-<div class="wrap">
-  <div class="animate-on-scroll" style="text-align:center;">
-    <p class="section-label">Solution</p>
-    <h2 class="section-title">ADCSが全てを解決</h2>
-    <p class="section-lead" style="max-width:800px;margin:0 auto 48px;">
-      Active Defense思想で再構築し、AIと自動化、海外パートナー活用により従来の1/10のコストを実現
-    </p>
-  </div>
-
-  <div class="why-grid animate-on-scroll">
-    <div class="why-card">
-      <h3>AI完全自動化（人件費90%削減）</h3>
-      <p>機械学習エンジンによる自動脆弱性スキャン(Nmap/Nessus/OpenVAS統合)、GPT-4ベースのレポート自動生成、CVSSスコアリング・MITRE ATT&CK分類・修復優先順位付けを完全自動化。24時間365日連続監視、新規CVE公開後1時間以内に影響度自動評価。人的介入不要で運用コスト90%削減、専任セキュリティ担当者不要に。</p>
-    </div>
-    <div class="why-card">
-      <h3>グローバルSOC活用（専門家費用80%削減）</h3>
-      <p>東欧・インド・東南アジアの世界トップクラスCEH/OSCP/GIAC保有セキュリティエンジニアを時差活用し24時間カバレッジ。国内人件費の1/5でCISSP/CISM級の高度専門性を提供。言語障壁はAI翻訳で完全解消、技術コミュニケーションは国際標準(CVSS/CWE/OWASP)準拠で齟齬なし。</p>
-    </div>
-    <div class="why-card">
-      <h3>先制的脅威ハンティング（攻撃前検知）</h3>
-      <p>受動的防御ではなくActive Defense思想で攻撃者視点の事前脅威検知。OSINT(Shodan/Censys/VirusTotal/Pastebin)で漏洩情報自動監視、ダークウェブ監視(Tor/I2P)で自社データ売買を検出、アタックサーフェスマッピングで攻撃経路を先回り。侵害の痕跡(IoC)を脅威インテリジェンスと照合し、攻撃準備段階で阻止。</p>
-    </div>
-    <div class="why-card">
-      <h3>実行可能な改善ロードマップ生成</h3>
-      <p>NIST CSF/CIS Controls/ISO27001との現状ギャップを定量評価(成熟度レベル0-5)、費用対効果・実装難易度・リスク低減効果をマトリクス分析し最適な改善順序を自動提案。Quick Wins(低コスト高効果)から優先実装、段階的成熟度向上計画を3ヶ月/6ヶ月/12ヶ月で提示。経営層向けROI試算付き。</p>
-    </div>
-    <div class="why-card">
-      <h3>自動修復スクリプト・プレイブック提供</h3>
-      <p>発見された脆弱性に対し、Ansible/Terraform/PowerShellの即実行可能な修復スクリプトを自動生成。Linux/Windows/Cloud(AWS/Azure/GCP)環境別に最適化、ロールバック手順も含む安全設計。非技術者でもワンクリック実行可能なGUI提供、変更前後の自動検証で安全性保証。CVE修正パッチの自動適用、誤設定の一括修正に対応。</p>
-    </div>
-    <div class="why-card">
-      <h3>マネージドセキュリティサービス(MSS)対応</h3>
-      <p>自社リソース不足時は海外パートナーSOCによるフルマネージド対応可能。24/7 SOC監視、インシデントレスポンス、フォレンジック調査、脅威ハンティング、コンプライアンス監査対応を国内の1/3コストで提供。SLA保証(MTTD[Mean Time To Detect] 15分、MTTR 2時間)、日本語レポート完備。</p>
-    </div>
-    <div class="why-card">
-      <h3>継続的コンプライアンス監視</h3>
-      <p>個人情報保護法・GDPR・HIPAA・PCI DSS・SOC2等の規制要件を自動マッピング、設定変更・新規資産追加を即座に検知しコンプライアンス違反を未然防止。監査証跡を自動収集・保管(改ざん検知付き)、監査対応工数を95%削減。法改正時は自動で新要件を反映、常に最新規制に準拠。</p>
-    </div>
-    <div class="why-card">
-      <h3>攻撃シミュレーション・侵入テスト</h3>
-      <p>MITRE ATT&CKフレームワークに基づく自動侵入テスト(BAS: Breach and Attack Simulation)を定期実行。実際の攻撃手法(フィッシング・権限昇格・横展開・データ窃取)を安全に再現し防御能力を検証。レッドチーム演習をAI自動化、検出ルールの有効性を継続評価。攻撃者の視点で真の脆弱性を発見。</p>
-    </div>
-    <div class="why-card">
-      <h3>脅威インテリジェンス統合</h3>
-      <p>グローバル脅威インテリジェンス(AlienVault OTX/MISP/Anomali)をリアルタイム統合、新規IoC(侵害の痕跡)を即座に自社環境で検索。APT(持続的標的型攻撃)グループの戦術・ツール・標的情報を先行入手、業界特化型脅威(医療・金融・製造)に特化した早期警戒。ゼロデイ脆弱性公開時に自動影響度評価。</p>
-    </div>
-  </div>
-</div>
-</section>
-
-<!-- ========================================== -->
-<!-- 5. Active Defense 比較                      -->
-<!-- ========================================== -->
-<section>
-<div class="wrap">
-  <div class="animate-on-scroll" style="text-align:center;">
-    <p class="section-label">Philosophy</p>
-    <h2 class="section-title">Active Defenseとは</h2>
-  </div>
-
-  <div class="comparison-grid animate-on-scroll">
-    <div class="compare-card traditional">
-      <h3>従来のセキュリティ</h3>
-      <ul class="compare-list">
-        <li><span class="icon-x">&#10005;</span><span>攻撃を受けてから対応</span></li>
-        <li><span class="icon-x">&#10005;</span><span>リアルタイム監視に高額な人件費</span></li>
-        <li><span class="icon-x">&#10005;</span><span>複雑なツールで現場が使いこなせない</span></li>
-        <li><span class="icon-x">&#10005;</span><span>中小企業には手が出ない価格</span></li>
-        <li><span class="icon-x">&#10005;</span><span>導入後のサポートコストが高額</span></li>
-      </ul>
-    </div>
-    <div class="compare-card active">
-      <h3>Active Defense (ADCS)</h3>
-      <ul class="compare-list">
-        <li><span class="icon-check">&#10003;</span><span>攻撃が来る前に脅威を検知</span></li>
-        <li><span class="icon-check">&#10003;</span><span>完全自動化で人件費ゼロ</span></li>
-        <li><span class="icon-check">&#10003;</span><span>シンプルで誰でも理解できるレポート</span></li>
-        <li><span class="icon-check">&#10003;</span><span>従来の1/10のコスト</span></li>
-        <li><span class="icon-check">&#10003;</span><span>継続的な自動監視で安心</span></li>
-      </ul>
-    </div>
-  </div>
-</div>
-</section>
-
-<!-- ========================================== -->
-<!-- 6. 競合比較テーブル                          -->
-<!-- ========================================== -->
-<section style="background:var(--bg-secondary);">
-<div class="wrap">
-  <div class="animate-on-scroll" style="text-align:center;">
-    <p class="section-label">Comparison</p>
-    <h2 class="section-title">競合比較</h2>
-    <p class="section-lead" style="max-width:750px;margin:0 auto 48px;">客観的なデータで、Avisail ADCSの優位性をご確認ください</p>
-  </div>
-
-  <div class="table-wrapper animate-on-scroll">
-    <table class="comparison-table">
-      <thead>
-        <tr>
-          <th>比較項目</th>
-          <th class="center" style="color:var(--accent);">Avisail ADCS</th>
-          <th class="center muted">大手A社</th>
-          <th class="center muted">中堅B社</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>月額料金</td>
-          <td class="center highlight">&yen;30,000〜</td>
-          <td class="center muted">&yen;500,000〜</td>
-          <td class="center muted">&yen;200,000〜</td>
-        </tr>
-        <tr>
-          <td>自動化レベル</td>
-          <td class="center highlight">完全自動</td>
-          <td class="center muted">一部手動</td>
-          <td class="center muted">手動主体</td>
-        </tr>
-        <tr>
-          <td>導入期間</td>
-          <td class="center highlight">即日</td>
-          <td class="center muted">2〜4週間</td>
-          <td class="center muted">1〜2週間</td>
-        </tr>
-        <tr>
-          <td>無料診断</td>
-          <td class="center highlight">&#10003; あり</td>
-          <td class="center muted">&#10005; なし</td>
-          <td class="center muted">&#10005; なし</td>
-        </tr>
-        <tr>
-          <td>レポート生成</td>
-          <td class="center highlight">自動・即時</td>
-          <td class="center muted">手動・1週間</td>
-          <td class="center muted">半自動・3日</td>
-        </tr>
-        <tr>
-          <td>サポート体制</td>
-          <td class="center highlight">24/7自動</td>
-          <td class="center muted">平日9-18時</td>
-          <td class="center muted">平日9-18時</td>
-        </tr>
-        <tr>
-          <td style="border-bottom:none;">自動修復機能</td>
-          <td class="center highlight" style="border-bottom:none;">&#10003; あり</td>
-          <td class="center muted" style="border-bottom:none;">&#10005; なし</td>
-          <td class="center muted" style="border-bottom:none;">&#9651; 有料</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div class="cost-banner animate-on-scroll" style="max-width:800px;margin:48px auto 0;">
-    <h4>コストパフォーマンス比較</h4>
-    <p>
-      大手A社と比較して <strong style="color:#fff;font-size:1.2rem;">約17倍</strong>、中堅B社と比較して <strong style="color:#fff;font-size:1.2rem;">約7倍</strong> のコストパフォーマンス。<br>
-      同等以上の機能を、圧倒的な低価格で提供します。
-    </p>
-  </div>
-</div>
-</section>
-
-<!-- ========================================== -->
-<!-- 7. レポートサンプル                          -->
-<!-- ========================================== -->
-<section>
-<div class="wrap">
-  <div class="animate-on-scroll" style="text-align:center;">
-    <p class="section-label">Report Samples</p>
-    <h2 class="section-title">ADCS評価レポートのサンプル</h2>
-    <p class="section-lead" style="max-width:700px;margin:0 auto 48px;">実際に受け取れるレポート例：可視化されたレポートと実用的な洞察</p>
-  </div>
-
-  <div class="report-grid animate-on-scroll">
-    <div class="report-card">
-      <span class="report-badge red">アタックサーフェス</span>
-      <div class="report-placeholder">スクリーンショット追加が必要</div>
-      <p>外部から発見されたすべての公開サーバー、ポート、サービスを示すビジュアルマップ。</p>
-    </div>
-    <div class="report-card">
-      <span class="report-badge blue">OSINT分析</span>
-      <div class="report-placeholder">スクリーンショット追加が必要</div>
-      <p>漏洩した情報、認証情報、潜在的な攻撃ベクトルを含むオープンソースインテリジェンスの調査結果。</p>
-    </div>
-    <div class="report-card">
-      <span class="report-badge teal">リスクスコアリング</span>
-      <div class="report-placeholder">スクリーンショット追加が必要</div>
-      <p>深刻度レベル、影響評価、推奨される修復手順を含む優先順位付きリスクスコアリング。</p>
-    </div>
-    <div class="report-card">
-      <span class="report-badge green">対応計画</span>
-      <div class="report-placeholder">スクリーンショット追加が必要</div>
-      <p>貴社のアタックサーフェスとリスクプロファイルに合わせてカスタマイズされたインシデント対応ガイドライン。</p>
-    </div>
-  </div>
-
-  <div class="animate-on-scroll" style="margin-top:32px;padding:24px;background:rgba(106,166,255,0.06);border:1px dashed rgba(106,166,255,0.2);border-radius:14px;text-align:center;">
-    <p style="color:var(--accent-blue);font-weight:600;margin-bottom:8px;font-size:0.9rem;">スクリーンショット要件</p>
-    <p style="color:var(--text-muted);font-size:0.8rem;line-height:1.6;">
-      <strong>推奨サイズ:</strong> すべてのレポートスクリーンショットは1280x960px<br>
-      <strong>フォーマット:</strong> PNGまたは高品質JPG<br>
-      <strong>内容:</strong> アタックサーフェスマップ、OSINT調査結果、リスクスコアリングダッシュボード、インシデント対応テンプレートを示す実際のADCSレポートからの匿名化された例
-    </p>
-  </div>
-</div>
-</section>
-
-<!-- ========================================== -->
-<!-- 8. コスト優位性                              -->
-<!-- ========================================== -->
-<section style="background:var(--bg-secondary);">
-<div class="wrap">
-  <div class="animate-on-scroll" style="text-align:center;">
-    <p class="section-label">Cost Advantage</p>
-    <h2 class="section-title">なぜ従来の1/10のコストを実現できるのか</h2>
-    <p class="section-lead" style="max-width:750px;margin:0 auto 0;">技術的な優位性により、高品質・低価格を両立</p>
-  </div>
-
-  <div class="philosophy-grid animate-on-scroll">
-    <div class="philosophy-item">
-      <div class="philosophy-number">01</div>
-      <div class="philosophy-content">
-        <h3>AI完全自動化</h3>
-        <p>診断・分析・レポート生成を全自動化。人件費ゼロで24/7稼働。</p>
-        <span class="cost-tag">人件費 90%削減</span>
-      </div>
-    </div>
-    <div class="philosophy-item">
-      <div class="philosophy-number">02</div>
-      <div class="philosophy-content">
-        <h3>グローバルネットワーク</h3>
-        <p>海外パートナー活用で専門家コストを大幅削減。国内の1/5の人件費。</p>
-        <span class="cost-tag">専門家費用 80%削減</span>
-      </div>
-    </div>
-    <div class="philosophy-item">
-      <div class="philosophy-number">03</div>
-      <div class="philosophy-content">
-        <h3>クラウドネイティブ</h3>
-        <p>オンプレミス不要。インフラコスト最小化と即座のスケーラビリティ。</p>
-        <span class="cost-tag">インフラ費用 85%削減</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="result-banner animate-on-scroll">
-    <div class="result-big">従来の1/10</div>
-    <p style="color:var(--text-secondary);font-size:1.1rem;line-height:1.8;margin:0;">
-      同等以上の品質を、圧倒的な低価格で実現。<br>
-      <strong style="color:#fff;">中小企業・自治体でも導入可能な価格帯</strong>
-    </p>
-  </div>
-</div>
-</section>
-
-<!-- ========================================== -->
-<!-- 9. 導入フロー                                -->
-<!-- ========================================== -->
-<section>
-<div class="wrap">
-  <div class="animate-on-scroll" style="text-align:center;">
-    <p class="section-label">Getting Started</p>
-    <h2 class="section-title">導入の流れ</h2>
-    <p class="section-lead" style="max-width:700px;margin:0 auto 0;">
-      <strong style="color:#fff;">完全自動化・フォロー不要</strong><br>
-      技術的な知識がなくても安心して始められます
-    </p>
-  </div>
-
-  <div class="flow-grid animate-on-scroll">
-    <div class="flow-card">
-      <div class="flow-number">1</div>
-      <h4>無料診断申込</h4>
-      <p>フォームから申込。メールアドレスとドメイン名のみで診断開始。</p>
-      <span class="flow-time">1分</span>
-    </div>
-    <div class="flow-card">
-      <div class="flow-number">2</div>
-      <h4>自動スキャン実施</h4>
-      <p>AIが自動的にセキュリティ診断を実施。完全自動で人手不要。</p>
-      <span class="flow-time">24時間以内</span>
-    </div>
-    <div class="flow-card">
-      <div class="flow-number">3</div>
-      <h4>レポート配信</h4>
-      <p>詳細なセキュリティレポートをPDFで自動生成し、メールで配信。</p>
-      <span class="flow-time">自動送信</span>
-    </div>
-    <div class="flow-card">
-      <div class="flow-number">4</div>
-      <h4>オプション選択</h4>
-      <p>月次監視サブスクまたは個別改善サービスを選択。不要なら終了でOK。</p>
-      <span class="flow-time">任意</span>
-    </div>
-    <div class="flow-card">
-      <div class="flow-number">5</div>
-      <h4>支払い・開始</h4>
-      <p>Stripe自動決済でサービス開始。継続的な監視と改善提案を受けられます。</p>
-      <span class="flow-time">即時</span>
-    </div>
-  </div>
-</div>
-</section>
-
-<!-- ========================================== -->
-<!-- 10. 無料診断 CTA バナー                      -->
-<!-- ========================================== -->
-<section style="background:linear-gradient(135deg,rgba(106,166,255,0.08),rgba(126,240,212,0.04));">
-<div class="wrap" style="max-width:900px;">
-  <div class="security-banner animate-on-scroll">
-    <div class="cta-badge">期間限定オファー</div>
-    <h3>貴社のセキュリティ診断を無料で実施</h3>
-    <p>通常5万円相当の包括的なセキュリティ診断を完全無料で提供。攻撃者より先に脆弱性を発見しましょう。</p>
-    <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
-      <a href="../ja/contact.html" class="cta-btn">無料診断を申し込む</a>
-      <a href="#pricing" class="cta-btn-secondary">料金を見る</a>
-    </div>
-    <p style="color:var(--text-muted);font-size:0.85rem;margin-top:20px;">
-      クレジットカード不要 &bull; 48時間以内に結果 &bull; 契約義務なし
-    </p>
-  </div>
-</div>
-</section>
-
-<!-- ========================================== -->
-<!-- 11. 料金プラン                               -->
-<!-- ========================================== -->
-<section id="pricing" style="background:var(--bg-secondary);">
-<div class="wrap">
-  <div class="animate-on-scroll" style="text-align:center;">
+  <div class="fade-in">
     <p class="section-label">Pricing</p>
-    <h2 class="section-title">料金プラン</h2>
-    <p class="section-lead" style="max-width:700px;margin:0 auto 0;">従来の1/10のコスト。中小企業・自治体でも導入可能な価格設計。</p>
+    <h2 class="section-title">料金・コース体系</h2>
+    <p class="section-lead">リスクゼロで始められます。単発診断から始めて、必要に応じて継続プランへ。</p>
   </div>
 
-  <div class="pricing-grid animate-on-scroll">
-    <div class="pricing-card">
-      <span class="pricing-label">スタート</span>
-      <h3>無料診断</h3>
-      <div class="price-amount">&yen;0</div>
-      <div class="price-detail">完全無料</div>
-      <ul class="pricing-features">
-        <li><span class="check">&#10003;</span><span>セキュリティ状況の可視化</span></li>
-        <li><span class="check">&#10003;</span><span>脆弱性の自動検出</span></li>
-        <li><span class="check">&#10003;</span><span>詳細PDFレポート</span></li>
-        <li><span class="check">&#10003;</span><span>改善提案</span></li>
-        <li><span class="check">&#10003;</span><span>リスクレベル評価</span></li>
+  <div class="plan-grid fade-in">
+
+    <!-- 単発 -->
+    <div class="plan-card">
+      <span class="plan-badge free-badge">単発</span>
+      <div class="plan-name">スポット診断</div>
+      <div class="plan-price">¥50,000</div>
+      <div class="plan-price-note">一回限り・税込</div>
+      <p class="plan-desc">まず現状を把握したい方へ。一度だけの完全診断レポートを提供します。</p>
+      <ul class="plan-features">
+        <li><span class="ck">✓</span><span>全54スキャナーによる診断</span></li>
+        <li><span class="ck">✓</span><span>脆弱性レポートPDF</span></li>
+        <li><span class="ck">✓</span><span>優先順位付き改善提案</span></li>
+        <li><span class="ck">✓</span><span>修復手順テンプレート</span></li>
+        <li style="color:var(--muted)"><span>—</span><span>継続監視なし</span></li>
       </ul>
-      <a href="#free-diagnosis" class="cta-btn" style="width:100%;text-align:center;">今すぐ無料診断</a>
+      <div class="plan-cta">
+        <a href="#stripe-spot" class="btn btn-ghost" style="width:100%;text-align:center;display:block;">今すぐ申し込む</a>
+      </div>
     </div>
 
-    <div class="pricing-card featured">
-      <span class="pricing-label">おすすめ</span>
-      <h3>月次監視サブスク</h3>
-      <div class="price-amount">&yen;30,000〜</div>
-      <div class="price-detail">月額</div>
-      <ul class="pricing-features">
-        <li><span class="check">&#10003;</span><span>月次自動セキュリティスキャン</span></li>
-        <li><span class="check">&#10003;</span><span>継続的な脅威監視</span></li>
-        <li><span class="check">&#10003;</span><span>毎月のレポート配信</span></li>
-        <li><span class="check">&#10003;</span><span>改善提案の更新</span></li>
-        <li><span class="check">&#10003;</span><span>自動修復スクリプト提供</span></li>
-        <li><span class="check">&#10003;</span><span>優先サポート</span></li>
+    <!-- Starter -->
+    <div class="plan-card">
+      <span class="plan-badge starter-badge">Starter</span>
+      <div class="plan-name">月次スキャン</div>
+      <div class="plan-price">¥29,800</div>
+      <div class="plan-price-note">月額・税込 / いつでも解約可</div>
+      <p class="plan-desc">毎月自動でスキャン。レポート作成費用込みで、スポット診断より圧倒的にお得。</p>
+      <ul class="plan-features">
+        <li><span class="ck">✓</span><span>月次自動スキャン（全54種）</span></li>
+        <li><span class="ck">✓</span><span>レポート作成費用 <strong style="color:var(--accent)">無料</strong></span></li>
+        <li><span class="ck">✓</span><span>修復手順・担当者アサイン</span></li>
+        <li><span class="ck">✓</span><span>外注業者共有リンク</span></li>
+        <li><span class="ck">✓</span><span>修正後自動再スキャン</span></li>
+        <li style="color:var(--muted)"><span>—</span><span>CTEM・継続脅威管理なし</span></li>
       </ul>
-      <a href="../ja/contact.html" class="cta-btn" style="width:100%;text-align:center;">お問い合わせ</a>
+      <div class="plan-cta">
+        <a href="#stripe-starter" class="btn btn-ghost" style="width:100%;text-align:center;display:block;">Starterで始める</a>
+      </div>
     </div>
 
-    <div class="pricing-card">
-      <span class="pricing-label">フルサポート</span>
-      <h3>個別改善サービス</h3>
-      <div class="price-amount">要見積</div>
-      <div class="price-detail">案件ごと</div>
-      <ul class="pricing-features">
-        <li><span class="check">&#10003;</span><span>海外パートナーによる改善代行</span></li>
-        <li><span class="check">&#10003;</span><span>脆弱性の完全修復</span></li>
-        <li><span class="check">&#10003;</span><span>セキュリティ体制の構築支援</span></li>
-        <li><span class="check">&#10003;</span><span>カスタム対応</span></li>
-        <li><span class="check">&#10003;</span><span>専任担当者配置</span></li>
-        <li><span class="check">&#10003;</span><span>24時間サポート</span></li>
+    <!-- Standard -->
+    <div class="plan-card recommended">
+      <span class="plan-badge std-badge">Standard ★ おすすめ</span>
+      <div class="plan-name">ADCS + CTEM</div>
+      <div class="plan-price">¥59,800</div>
+      <div class="plan-price-note">月額・税込 / いつでも解約可</div>
+      <p class="plan-desc">Starterの全機能＋CTEM（継続的脅威暴露管理）。「今どこが狙われているか」を継続的に把握。</p>
+      <ul class="plan-features">
+        <li><span class="ck">✓</span><span>Starterの全機能</span></li>
+        <li><span class="ck">✓</span><span>CTEM（攻撃経路継続分析）</span></li>
+        <li><span class="ck">✓</span><span>リスクスコア推移グラフ</span></li>
+        <li><span class="ck">✓</span><span>コンプライアンス自己診断</span></li>
+        <li><span class="ck">✓</span><span>規制対応レポート自動生成</span></li>
+        <li><span class="ck">✓</span><span>経営者向けダッシュボード</span></li>
       </ul>
-      <a href="../ja/contact.html" class="cta-btn-secondary" style="width:100%;text-align:center;">相談する</a>
+      <div class="plan-cta">
+        <a href="#stripe-standard" class="btn btn-primary" style="width:100%;text-align:center;display:block;">Standardで始める</a>
+      </div>
+    </div>
+
+    <!-- Premium -->
+    <div class="plan-card">
+      <span class="plan-badge prem-badge">Premium</span>
+      <div class="plan-name">規制対応サポート込み</div>
+      <div class="plan-price">¥98,000</div>
+      <div class="plan-price-note">月額・税込 / いつでも解約可</div>
+      <p class="plan-desc">Standardの全機能＋全規制取得サポートが使い放題。IPA認定・ISO・GDPR対応を一括依頼可。</p>
+      <ul class="plan-features">
+        <li><span class="ck">✓</span><span>Standardの全機能</span></li>
+        <li><span class="ck">✓</span><span>規制取得サポート <strong style="color:#ffd700">使い放題</strong></span></li>
+        <li><span class="ck">✓</span><span>IPA SECURITY ACTION 申請ガイド</span></li>
+        <li><span class="ck">✓</span><span>ISO/GDPR/PCI DSS等 全対応</span></li>
+        <li><span class="ck">✓</span><span>監査証跡PDF自動生成</span></li>
+        <li><span class="ck">✓</span><span>専任サポート担当</span></li>
+      </ul>
+      <div class="plan-cta">
+        <a href="#stripe-premium" class="btn btn-ghost" style="width:100%;text-align:center;display:block;">Premiumを申し込む</a>
+      </div>
     </div>
   </div>
 
-  <div class="cost-banner animate-on-scroll" style="max-width:800px;margin:48px auto 0;">
-    <h4>従来の1/10のコスト</h4>
-    <p>
-      大手セキュリティサービスの年間数百万円に対し、<br>
-      ADCSは月額3万円〜でエンタープライズ級の対策を実現。<br>
-      <strong style="color:#fff;">AIと自動化、海外パートナー活用で圧倒的なコストパフォーマンス。</strong>
-    </p>
-  </div>
-</div>
-</section>
-
-<!-- ========================================== -->
-<!-- 12. その他サービステーブル                    -->
-<!-- ========================================== -->
-<section>
-<div class="wrap">
-  <div class="animate-on-scroll" style="text-align:center;">
-    <p class="section-label">Additional Services</p>
-    <h2 class="section-title">包括的なセキュリティサービス</h2>
-    <p class="section-lead" style="max-width:800px;margin:0 auto 48px;">
-      ADCSに加えて、海外パートナーを活用した様々なセキュリティサービスを提供。<strong style="color:var(--accent);">基本的なセキュリティニーズを全て網羅</strong>し、ワンストップで対応可能です。
-    </p>
-  </div>
-
-  <div class="table-wrapper animate-on-scroll">
-    <table class="services-table">
+  <!-- 規制アドオン -->
+  <div class="fade-in" style="margin-top:56px;">
+    <h3 style="font-size:1.1rem;font-weight:700;margin-bottom:8px;">規制取得サポート — アドオン単品価格</h3>
+    <p style="font-size:.85rem;color:var(--muted);margin-bottom:0;">Starter・Standardプランで個別追加可能。Premiumプランは全て込み。</p>
+    <table class="addon-table">
       <thead>
         <tr>
-          <th>サービス名</th>
+          <th>規制・認証</th>
           <th>内容</th>
-          <th class="center">納期目安</th>
-          <th class="right">参考価格</th>
+          <th style="text-align:right;">単品価格（税込）</th>
         </tr>
       </thead>
       <tbody>
-        <tr class="adcs-row">
-          <td class="name">ADCS評価<span class="recommended">おすすめ</span></td>
-          <td>AIによる完全自動化セキュリティ評価。攻撃面の可視化、脅威検知、改善提案を含む包括的なレポート。</td>
-          <td class="center">24時間</td>
-          <td class="right price-highlight">無料〜&yen;30,000/月</td>
-        </tr>
-        <tr>
-          <td class="name">ペネトレーションテスト</td>
-          <td>実際の攻撃者の視点から、システムに侵入を試みる実践的なセキュリティテスト。Web・ネットワーク・アプリケーション対応。</td>
-          <td class="center">2〜4週間</td>
-          <td class="right price-muted">&yen;300,000〜</td>
-        </tr>
-        <tr>
-          <td class="name">脆弱性診断</td>
-          <td>Webアプリケーション、ネットワーク、サーバーの既知の脆弱性を網羅的にスキャン。OWASP Top 10対応。</td>
-          <td class="center">1〜2週間</td>
-          <td class="right price-muted">&yen;150,000〜</td>
-        </tr>
-        <tr>
-          <td class="name">セキュリティ監査</td>
-          <td>ISMSやPCI DSS等の規格準拠状況を確認。ポリシー・体制・技術的対策の包括的な監査とギャップ分析。</td>
-          <td class="center">2〜3週間</td>
-          <td class="right price-muted">&yen;400,000〜</td>
-        </tr>
-        <tr>
-          <td class="name">インシデント対応支援</td>
-          <td>セキュリティインシデント発生時の緊急対応。フォレンジック調査、影響範囲特定、復旧支援、再発防止策の策定。</td>
-          <td class="center">即時〜</td>
-          <td class="right price-muted">&yen;500,000〜</td>
-        </tr>
-        <tr>
-          <td class="name">CSIRT構築支援</td>
-          <td>社内セキュリティ体制（CSIRT）の立ち上げ支援。体制設計、プロセス策定、ツール導入、運用トレーニング。</td>
-          <td class="center">3〜6ヶ月</td>
-          <td class="right price-muted">&yen;1,500,000〜</td>
-        </tr>
-        <tr>
-          <td class="name">セキュリティ教育</td>
-          <td>従業員向けセキュリティ意識向上トレーニング。フィッシング対策、パスワード管理、インシデント報告など実践的な内容。</td>
-          <td class="center">1日〜</td>
-          <td class="right price-muted">&yen;100,000〜</td>
-        </tr>
-        <tr>
-          <td class="name">ダークウェブモニタリング</td>
-          <td>ダークウェブ上で自社の情報漏洩や不正売買がないかを24/7監視。漏洩検知時は即時アラート。</td>
-          <td class="center">継続</td>
-          <td class="right price-muted">&yen;50,000/月〜</td>
-        </tr>
-        <tr>
-          <td class="name" style="border-bottom:none;">クラウドセキュリティ評価</td>
-          <td style="border-bottom:none;">AWS・Azure・GCPなどのクラウド環境のセキュリティ設定を評価。IAM設定、ストレージ公開状態、ログ監視設定など。</td>
-          <td class="center" style="border-bottom:none;">1〜2週間</td>
-          <td class="right price-muted" style="border-bottom:none;">&yen;200,000〜</td>
-        </tr>
+        <tr><td><strong>IPA SECURITY ACTION ★</strong></td><td>申請ガイド・書類テンプレート</td><td>¥30,000</td></tr>
+        <tr><td><strong>IPA SECURITY ACTION ★★</strong></td><td>申請ガイド・自己宣言確認支援</td><td>¥50,000</td></tr>
+        <tr><td>個人情報保護法 対応ガイダンス</td><td>ギャップ分析・改善手順</td><td>¥30,000</td></tr>
+        <tr><td>GDPR コンプライアンス</td><td>ギャップ分析・DPA/プライバシー対応</td><td>¥50,000</td></tr>
+        <tr><td>NIST CSF / SOC 2</td><td>自己診断レポート・改善ロードマップ</td><td>各 ¥50,000</td></tr>
+        <tr><td>ISO 27001 ギャップ分析</td><td>現状評価・改善計画・証跡整理</td><td>¥80,000</td></tr>
+        <tr><td>PCI DSS / CMMC / NIS2</td><td>要件マッピング・対応ガイダンス</td><td>各 ¥80,000</td></tr>
       </tbody>
     </table>
+    <p style="font-size:.78rem;color:var(--muted);margin-top:12px;">※ 相場：国内コンサルティング会社では同等作業に¥300,000〜¥2,000,000かかります</p>
   </div>
 
-  <div class="why-grid animate-on-scroll" style="grid-template-columns:repeat(3,1fr);">
-    <div class="why-card" style="text-align:center;">
-      <h3 style="color:var(--accent);">海外パートナー活用</h3>
-      <p>グローバルなセキュリティ専門家ネットワークを活用し、国内大手の<strong style="color:#fff;">1/3〜1/5の価格</strong>で高品質なサービスを提供。</p>
+  <!-- 支払い方法 -->
+  <div class="fade-in" style="margin-top:48px;padding:32px;background:var(--card);border:1px solid var(--line);border-radius:16px;">
+    <h3 style="font-size:1rem;font-weight:700;margin-bottom:16px;">申込・支払い方法</h3>
+    <div class="pay-methods">
+      <div class="pay-chip">💳 クレジットカード（Visa/Mastercard/Amex）</div>
+      <div class="pay-chip">🏦 銀行振込</div>
+      <div class="pay-chip">🔒 Stripe決済（PCI DSS準拠）</div>
     </div>
-    <div class="why-card" style="text-align:center;">
-      <h3 style="color:var(--accent);">ワンストップ対応</h3>
-      <p>複数のベンダーとやり取りする必要なし。<strong style="color:#fff;">Avisail一社</strong>で基本的なセキュリティニーズを全て網羅。</p>
-    </div>
-    <div class="why-card" style="text-align:center;">
-      <h3 style="color:var(--accent);">柔軟なカスタマイズ</h3>
-      <p>貴社のニーズに合わせて<strong style="color:#fff;">最適なサービスを組み合わせ</strong>。無駄のない効率的なセキュリティ体制を構築。</p>
-    </div>
-  </div>
-
-  <div class="security-banner animate-on-scroll" style="margin-top:48px;">
-    <h3>どのサービスが最適か分からない？</h3>
-    <p>セキュリティ専門家が貴社の状況をヒアリングし、最適なサービスの組み合わせを無料でご提案します。</p>
-    <a href="../ja/contact.html?type=service-consultation" class="cta-btn">無料相談を申し込む</a>
-  </div>
-</div>
-</section>
-
-<!-- ========================================== -->
-<!-- 13. 最終CTA                                 -->
-<!-- ========================================== -->
-<section id="free-diagnosis" class="cta-section" style="background:linear-gradient(135deg,rgba(106,166,255,0.1),rgba(126,240,212,0.06));">
-<div class="wrap" style="max-width:900px;">
-  <div class="security-banner animate-on-scroll" style="padding:64px 48px;">
-    <div class="cta-badge">無料診断実施中</div>
-    <h2 class="section-title" style="margin-bottom:16px;">まずは無料診断で現状を確認しませんか</h2>
-    <p style="color:var(--text-secondary);font-size:1.1rem;line-height:1.8;max-width:700px;margin:0 auto 32px;">
-      わずか1分の申込で、24時間以内に詳細なセキュリティレポートを配信。あなたの組織の脆弱性と改善点を明確に可視化します。
+    <p style="font-size:.8rem;color:var(--muted);margin-top:16px;">
+      各プランのボタンを押すと Stripe の決済ページへ遷移します。銀行振込をご希望の場合は <strong style="color:var(--text2)">info@avisail.com</strong> までご連絡ください。
     </p>
-    <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
-      <a href="../ja/contact.html" class="cta-btn" style="font-size:1.1rem;padding:20px 56px;">無料診断を申し込む</a>
-      <a href="../ja/contact.html" class="cta-btn-secondary" style="font-size:1.05rem;padding:20px 48px;">まずは相談する</a>
+  </div>
+</div>
+</section>
+
+<!-- ================================================ -->
+<!-- 3. SERVICE OVERVIEW                              -->
+<!-- ================================================ -->
+<section id="overview">
+<div class="wrap">
+  <div class="fade-in">
+    <p class="section-label">What is ADCS</p>
+    <h2 class="section-title">「直すまで導く」唯一のサービス</h2>
+  </div>
+
+  <div class="overview-grid fade-in">
+    <div class="overview-text">
+      <p class="lead">
+        一般的なセキュリティ診断は「脆弱性を見つけます」で終わります。<br>
+        ADCSは違います。発見した脆弱性を<strong style="color:#fff;">「今週やること3つ」</strong>に変換し、修復手順・担当者アサイン・修正確認まで一貫して自動化します。
+      </p>
+      <p class="lead">
+        担当者不在の中小企業でも使えるように設計。技術用語なしで、経営者がダッシュボードを見るだけで今の安全度がわかります。
+      </p>
+      <div class="highlight-box">
+        <p><strong>競合との根本的な違い：</strong><br>
+        競合：「脆弱性を発見→レポートを渡す→終わり」<br>
+        ADCS：「発見 → 修復手順生成 → 担当者アサイン → 修正確認 → 証明書発行」まで完結</p>
+      </div>
     </div>
 
-    <div style="margin-top:48px;padding-top:32px;border-top:1px solid var(--line);">
-      <p style="color:var(--text-muted);font-size:0.9rem;margin-bottom:8px;">お問い合わせ</p>
-      <p style="color:var(--text-secondary);font-size:1.05rem;"><strong>info@avisail.com</strong></p>
-      <p style="color:var(--text-muted);font-size:0.9rem;margin-top:12px;">対応言語：日本語 / English / Italiano<br>返信：1営業日以内</p>
+    <!-- UI Mockup -->
+    <div class="ui-mockup">
+      <div class="mockup-bar">
+        <div class="mockup-dot" style="background:#ef4444"></div>
+        <div class="mockup-dot" style="background:#f59e0b;margin-left:4px"></div>
+        <div class="mockup-dot" style="background:#22c55e;margin-left:4px"></div>
+        <div class="url-bar">adcs.avisail.com/dashboard</div>
+      </div>
+      <div class="mockup-body">
+        <div class="score-ring-wrap">
+          <div class="score-ring"><span class="score-ring-num">72</span></div>
+          <div class="score-info">
+            <h4>セキュリティスコア</h4>
+            <p style="color:var(--muted);font-size:.72rem;">先月比 +8 ▲ / 業界平均 64</p>
+            <p style="color:var(--accent);font-size:.72rem;font-weight:700;margin-top:4px;">今週のアクション: 3件</p>
+          </div>
+        </div>
+        <table class="mockup-table">
+          <tr><td><span class="sev-dot sev-critical"></span>SQLインジェクション脆弱性</td><td style="color:#ef4444;font-size:.7rem;font-weight:700">緊急</td></tr>
+          <tr><td><span class="sev-dot sev-high"></span>TLS 1.0 有効（廃止推奨）</td><td style="color:#f97316;font-size:.7rem;font-weight:700">高</td></tr>
+          <tr><td><span class="sev-dot sev-high"></span>Cookieに Secure 属性なし</td><td style="color:#f97316;font-size:.7rem;font-weight:700">高</td></tr>
+          <tr><td><span class="sev-dot sev-medium"></span>CSP ヘッダー未設定</td><td style="color:#eab308;font-size:.7rem;font-weight:700">中</td></tr>
+          <tr><td><span class="sev-dot sev-low"></span>security.txt 未設置</td><td style="color:#22c55e;font-size:.7rem;font-weight:700">低</td></tr>
+        </table>
+      </div>
     </div>
   </div>
 </div>
-  <!-- Shared Footer -->
-  <div id="site-footer" style="width: 100%;"></div>
 </section>
+
+<!-- ================================================ -->
+<!-- 4. SYSTEM FLOW: ADCS → CTEM → COMPLIANCE        -->
+<!-- ================================================ -->
+<section class="dark">
+<div class="wrap">
+  <div class="fade-in" style="text-align:center">
+    <p class="section-label">Service Architecture</p>
+    <h2 class="section-title">3層のセキュリティ成熟度ロードマップ</h2>
+    <p class="section-lead" style="margin:0 auto;text-align:center">
+      ADCSは単発ツールではありません。企業のセキュリティが段階的に成熟していくプラットフォームです。
+    </p>
+  </div>
+
+  <div class="flow-wrapper fade-in">
+    <div class="flow-step active">
+      <div class="current-badge">現在提供中</div>
+      <div class="flow-num">Layer 1</div>
+      <h3>ADCS<br><span style="color:var(--accent)">可視化 + 修復</span></h3>
+      <p>攻撃者の目線で外部から自社を診断。脆弱性を発見し、優先順位・修復手順まで提供。</p>
+      <ul>
+        <li>54種のスキャナーによる全方位診断</li>
+        <li>CVSSスコア × 事業影響で優先順位化</li>
+        <li>「今週やること3つ」に変換</li>
+        <li>修復後の自動再スキャン・証明レポート</li>
+      </ul>
+    </div>
+
+    <div class="flow-arrow">→</div>
+
+    <div class="flow-step active">
+      <div class="current-badge">Standard以上で提供</div>
+      <div class="flow-num">Layer 2</div>
+      <h3>CTEM<br><span style="color:var(--accent)">継続的脅威管理</span></h3>
+      <p>Continuous Threat Exposure Management。攻撃経路を継続的に分析し、リスクが悪化する前に対処。</p>
+      <ul>
+        <li>攻撃経路シミュレーション（毎月更新）</li>
+        <li>リスクスコア推移グラフ</li>
+        <li>新規CVE公開時の即時影響評価</li>
+        <li>業界平均との比較ベンチマーク</li>
+      </ul>
+    </div>
+
+    <div class="flow-arrow">→</div>
+
+    <div class="flow-step future">
+      <div class="flow-num">Layer 3</div>
+      <h3>規制対応<br><span style="color:var(--blue)">監査・取得サポート</span></h3>
+      <p>スキャン結果から規制対応を自動判定。IPA認定・ISO・GDPRの取得をAIがナビゲート。</p>
+      <ul>
+        <li>11規制フレームワーク自動マッピング</li>
+        <li>IPA SECURITY ACTION 申請ガイド</li>
+        <li>監査提出用PDF自動生成</li>
+        <li>取引先・金融機関への証跡提出対応</li>
+      </ul>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ================================================ -->
+<!-- 5. ADCS SPECS — SCANNER DETAILS                  -->
+<!-- ================================================ -->
+<section id="specs">
+<div class="wrap">
+  <div class="fade-in">
+    <p class="section-label">Scan Engine Specs</p>
+    <h2 class="section-title">54種のスキャナー — 診断項目仕様</h2>
+    <p class="section-lead">
+      国際標準（OWASP Top 10・CVSS・MITRE ATT&CK）に準拠した業界最高水準の自動診断エンジン。
+    </p>
+  </div>
+
+  <div class="scanner-cats fade-in">
+
+    <div class="scanner-cat">
+      <h4>🔍 外部アセット・インフラ探索 <span class="cat-count">8本</span></h4>
+      <ul class="scanner-list">
+        <li>ポートスキャン（外部公開サービス全検出）</li>
+        <li>サブドメイン深層探索（DNS Brute Force）</li>
+        <li>サブドメインテイクオーバー検出</li>
+        <li>DNS設定評価（SPF / DKIM / DMARC）</li>
+        <li>DNSゾーン転送テスト</li>
+        <li>WHOIS・ASN・地理情報取得</li>
+        <li>MXプロバイダー評価</li>
+        <li>技術スタック・バージョン特定</li>
+      </ul>
+    </div>
+
+    <div class="scanner-cat">
+      <h4>🔒 SSL/TLS・証明書 <span class="cat-count">4本</span></h4>
+      <ul class="scanner-list">
+        <li>SSL/TLS設定総合評価（グレーディング）</li>
+        <li>TLSダウングレード攻撃耐性テスト</li>
+        <li>証明書管理・有効期限監視</li>
+        <li>HSTS・HSTSプリロード設定確認</li>
+      </ul>
+    </div>
+
+    <div class="scanner-cat">
+      <h4>🌐 Webアプリ脆弱性 <span class="cat-count">15本</span></h4>
+      <ul class="scanner-list">
+        <li>SQLインジェクション（SQLi）</li>
+        <li>XSS（クロスサイトスクリプティング）</li>
+        <li>SSRF（サーバーサイドリクエストフォージェリ）</li>
+        <li>パストラバーサル・ディレクトリ探索</li>
+        <li>オープンリダイレクト</li>
+        <li>クリックジャッキング</li>
+        <li>混合コンテンツ（Mixed Content）</li>
+        <li>CORS設定ミス検出</li>
+        <li>HTTP危険メソッド確認</li>
+        <li>CSP（コンテンツセキュリティポリシー）分析</li>
+        <li>SRI（サブリソース完全性）確認</li>
+        <li>Cookieセキュリティ属性評価</li>
+        <li>フォームセキュリティ評価</li>
+        <li>ログイン・認証セキュリティ</li>
+        <li>WebSocketセキュリティ評価</li>
+      </ul>
+    </div>
+
+    <div class="scanner-cat">
+      <h4>🔑 情報漏洩・シークレット検出 <span class="cat-count">8本</span></h4>
+      <ul class="scanner-list">
+        <li>JSファイル内シークレット検出（APIキー・トークン）</li>
+        <li>ソースマップ公開検出</li>
+        <li>エラーメッセージ情報開示</li>
+        <li>HTMLコメント情報漏洩</li>
+        <li>robots.txt 隠しパス探索</li>
+        <li>公開ファイル・ディレクトリ検出</li>
+        <li>security.txt 設定確認</li>
+        <li>HTTPメタ情報・サーバー情報開示</li>
+      </ul>
+    </div>
+
+    <div class="scanner-cat">
+      <h4>☁️ クラウド・API・サプライチェーン <span class="cat-count">7本</span></h4>
+      <ul class="scanner-list">
+        <li>クラウドストレージ設定ミス（S3/GCS公開）</li>
+        <li>API エンドポイント自動発見</li>
+        <li>API セキュリティ評価</li>
+        <li>サードパーティリスク評価</li>
+        <li>サプライチェーンリスク検出</li>
+        <li>CMS脆弱性（WordPress・Drupal等）</li>
+        <li>WordPress 深層スキャン</li>
+      </ul>
+    </div>
+
+    <div class="scanner-cat">
+      <h4>🛡️ 高度診断・総合評価 <span class="cat-count">12本</span></h4>
+      <ul class="scanner-list">
+        <li>Nuclei スキャン（1,000+ テンプレート）</li>
+        <li>フィッシングリスク評価</li>
+        <li>フィッシングシミュレーション</li>
+        <li>SMTPセキュリティ評価</li>
+        <li>インシデント対応準備度スコアリング</li>
+        <li>コンプライアンスマッピング自動診断</li>
+        <li>分離ヘッダー設定評価</li>
+        <li>HTTPヘッダー総合評価</li>
+        <li>SMTP セキュリティ診断</li>
+        <li>証明書透明性（CT）ログ監視</li>
+        <li>フォーム送信セキュリティ</li>
+        <li>Webアプリ総合セキュリティスコア</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- OSINT Sources -->
+  <div class="fade-in" style="margin-top:48px;">
+    <h3 style="font-size:1rem;font-weight:700;margin-bottom:8px;color:var(--text2);">OSINT 外部インテリジェンス連携（9ソース）</h3>
+    <div class="osint-grid">
+      <div class="osint-chip"><div class="name">Shodan</div><div class="desc">公開サービス・機器の全網羅検索</div></div>
+      <div class="osint-chip"><div class="name">Censys</div><div class="desc">インターネット上の資産調査</div></div>
+      <div class="osint-chip"><div class="name">VirusTotal</div><div class="desc">マルウェア・URL評価</div></div>
+      <div class="osint-chip"><div class="name">AbuseIPDB</div><div class="desc">IPレピュテーション確認</div></div>
+      <div class="osint-chip"><div class="name">LeakCheck</div><div class="desc">漏洩認証情報検索</div></div>
+      <div class="osint-chip"><div class="name">SecurityTrails</div><div class="desc">DNS履歴・変更追跡</div></div>
+      <div class="osint-chip"><div class="name">FOFA</div><div class="desc">グローバル資産検索エンジン</div></div>
+      <div class="osint-chip"><div class="name">crt.sh</div><div class="desc">証明書透明性ログ</div></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ================================================ -->
+<!-- 6. CTEM                                          -->
+<!-- ================================================ -->
+<section class="dark" id="ctem">
+<div class="wrap">
+  <div class="fade-in">
+    <p class="section-label">CTEM — Continuous Threat Exposure Management</p>
+    <h2 class="section-title">CTEMとは何か</h2>
+    <p class="section-lead">Standardプラン以上で提供。スポット診断を超えた「継続的な脅威状態の管理」</p>
+  </div>
+
+  <div class="ctem-grid fade-in">
+    <div>
+      <p style="font-size:1rem;color:var(--text2);line-height:1.9;margin-bottom:20px;">
+        従来のセキュリティ診断は「実施した時点のスナップショット」です。しかし攻撃者は毎日新しい手法を試み、新しい脆弱性（CVE）は毎週公開されます。
+      </p>
+      <p style="font-size:1rem;color:var(--text2);line-height:1.9;margin-bottom:20px;">
+        CTEMは「今この瞬間、攻撃者にどれだけ暴露しているか」を継続的に計測し、リスクが悪化する前に警告を出します。GartnerがTop 10戦略技術として選定した次世代セキュリティフレームワークです。
+      </p>
+      <div style="background:rgba(126,240,212,.06);border:1px solid rgba(126,240,212,.15);border-radius:14px;padding:20px;">
+        <p style="font-size:.88rem;color:var(--text2);line-height:1.8;"><strong style="color:var(--accent)">ADCSのCTEMは：</strong><br>
+        スキャン結果のデータを蓄積し、月ごとのリスクスコア推移・業界平均比較・攻撃経路シミュレーションを自動更新。「直しているのに安全度が下がっている」「この部分が急激に危険になっている」を即座に把握できます。</p>
+      </div>
+    </div>
+
+    <div>
+      <div class="ctem-features">
+        <div class="ctem-feat">
+          <h4>攻撃経路シミュレーション</h4>
+          <p>攻撃者が実際にどのルートで侵入するかを月次で自動シミュレーション</p>
+        </div>
+        <div class="ctem-feat">
+          <h4>リスクスコア推移</h4>
+          <p>月ごとのセキュリティスコア変化を可視化。改善の効果を数値で確認</p>
+        </div>
+        <div class="ctem-feat">
+          <h4>新規CVE即時評価</h4>
+          <p>新しい脆弱性が公開されたとき、自社への影響を即時に自動評価</p>
+        </div>
+        <div class="ctem-feat">
+          <h4>業界ベンチマーク</h4>
+          <p>同業他社・業界平均との比較で、自社の立ち位置を客観的に把握</p>
+        </div>
+      </div>
+      <div style="margin-top:20px;padding:20px;background:rgba(106,166,255,.06);border:1px solid rgba(106,166,255,.15);border-radius:14px;text-align:center;">
+        <p style="font-size:.82rem;color:var(--text2);margin-bottom:12px;">CTEMはStandardプラン（¥59,800/月）から</p>
+        <a href="#stripe-standard" class="btn btn-primary" style="font-size:.88rem;padding:12px 28px;">Standardプランで始める</a>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ================================================ -->
+<!-- 7. COMPETITOR COMPARISON                         -->
+<!-- ================================================ -->
+<section>
+<div class="wrap">
+  <div class="fade-in" style="text-align:center">
+    <p class="section-label">Comparison</p>
+    <h2 class="section-title">他社との比較</h2>
+    <p class="section-lead" style="margin:0 auto;text-align:center">客観的なデータで確認してください</p>
+  </div>
+
+  <p style="font-size:.82rem;color:var(--muted);margin:16px 0 0;text-align:center;">※ 各社公式サイト・公開資料をもとに2026年3月時点で調査。競合各社は匿名表示。</p>
+
+  <table class="comp-table fade-in">
+    <thead>
+      <tr>
+        <th>比較項目</th>
+        <th style="color:var(--accent)">ADCS (Avisail)</th>
+        <th>自動診断 A社<br><span style="font-weight:400;color:var(--muted)">Webアプリ特化型</span></th>
+        <th>自動診断 B社<br><span style="font-weight:400;color:var(--muted)">ASM特化型</span></th>
+        <th>自動診断 C社<br><span style="font-weight:400;color:var(--muted)">統合プラットフォーム型</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>主なターゲット</td>
+        <td class="adcs comp-win">中小企業・IT担当なし</td>
+        <td>開発チーム・スタートアップ</td>
+        <td>中小〜中堅企業全般</td>
+        <td>SaaS・中堅〜エンタープライズ</td>
+      </tr>
+      <tr class="comp-our">
+        <td>月額最低料金</td>
+        <td class="adcs comp-win">¥29,800〜（明示）</td>
+        <td>¥20,000前後〜</td>
+        <td>¥40,000〜</td>
+        <td>¥50,000〜</td>
+      </tr>
+      <tr>
+        <td>診断対象範囲</td>
+        <td class="adcs comp-win">Webアプリ＋ネットワーク<br>＋クラウド＋OSINT 全方位</td>
+        <td>Webアプリのみ</td>
+        <td>ネットワーク・ASM中心</td>
+        <td>ASM＋Webアプリ＋クラウド</td>
+      </tr>
+      <tr class="comp-our">
+        <td>スキャン方式</td>
+        <td class="adcs comp-win">完全自動（54種スキャナー）</td>
+        <td>自動スキャン</td>
+        <td>自動スキャン</td>
+        <td>自動スキャン</td>
+      </tr>
+      <tr>
+        <td>修復手順の自動提供</td>
+        <td class="adcs comp-win">✓ 自動生成＋再検証</td>
+        <td class="x">✗ なし</td>
+        <td class="x">✗ なし</td>
+        <td class="x">✗ なし</td>
+      </tr>
+      <tr class="comp-our">
+        <td>修正後の自動再スキャン</td>
+        <td class="adcs comp-win">✓ あり</td>
+        <td class="x">✗</td>
+        <td class="x">✗</td>
+        <td class="x">✗</td>
+      </tr>
+      <tr>
+        <td>外注業者共有リンク</td>
+        <td class="adcs comp-win">✓ あり</td>
+        <td class="x">✗</td>
+        <td class="x">✗</td>
+        <td class="x">✗</td>
+      </tr>
+      <tr class="comp-our">
+        <td>規制対応（GDPR/IPA/ISO等）</td>
+        <td class="adcs comp-win">✓ 11フレームワーク自動対応</td>
+        <td class="x">✗</td>
+        <td class="x">✗</td>
+        <td class="x">✗ OWASPのみ</td>
+      </tr>
+      <tr>
+        <td>IPA SECURITY ACTION対応</td>
+        <td class="adcs comp-win">✓ 申請ガイド付き</td>
+        <td class="x">✗</td>
+        <td class="x">✗</td>
+        <td class="x">✗</td>
+      </tr>
+      <tr class="comp-our">
+        <td>CTEM（継続的脅威管理）</td>
+        <td class="adcs comp-win">✓ Standard以上で提供</td>
+        <td class="x">✗</td>
+        <td class="x">✗</td>
+        <td class="x">✗ 部分的</td>
+      </tr>
+      <tr>
+        <td>経営者向けダッシュボード</td>
+        <td class="adcs comp-win">✓ セキュリティスコア表示</td>
+        <td class="x">✗</td>
+        <td class="x">✗</td>
+        <td class="x">✗</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="fade-in" style="margin-top:16px;padding:16px 24px;background:rgba(255,255,255,.02);border:1px solid var(--line);border-radius:12px;">
+    <p style="font-size:.8rem;color:var(--muted);line-height:1.7;">
+      ※ 比較対象は国内主要セキュリティ自動診断SaaSサービス。各社公式サイト・公開資料に基づく調査（2026年3月）。
+      <strong style="color:var(--text2)">修復手順の自動提供・規制対応・IPA申請サポートは、調査した競合各社いずれも非対応。</strong>
+    </p>
+  </div>
+
+  <div class="fade-in" style="margin-top:32px;padding:24px 32px;background:rgba(126,240,212,.06);border:1px solid rgba(126,240,212,.15);border-radius:16px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;">
+    <div>
+      <p style="font-size:1rem;font-weight:700;margin-bottom:6px;">ADCSだけが「直すまで導く」</p>
+      <p style="font-size:.85rem;color:var(--text2);">他社は「見つける」止まり。ADCSは修復・再検証・証明書発行まで完結します。</p>
+    </div>
+    <a href="#pricing" class="btn btn-primary">料金を確認する</a>
+  </div>
+</div>
+</section>
+
+<!-- ================================================ -->
+<!-- 8. FREE SELF-CHECK DOWNLOAD                      -->
+<!-- ================================================ -->
+<section class="dark" id="free-check">
+<div class="wrap-sm">
+  <div class="dl-banner fade-in">
+    <div class="dl-badge">無料ダウンロード</div>
+    <h2 class="section-title" style="margin-bottom:16px;">自己チェックレポートを<br>無料でダウンロード</h2>
+    <p style="font-size:1rem;color:var(--text2);max-width:600px;margin:0 auto 32px;line-height:1.9;">
+      自社のセキュリティ状況を3分で自己診断。65項目・9フレームワーク対応のチェックシートをPDFで提供します。IPAや取引先への提出資料としても活用可能。
+    </p>
+    <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
+      <a href="../ja/contact.html?type=checklist" class="btn btn-primary btn-lg">無料レポートをダウンロード</a>
+    </div>
+    <p style="font-size:.78rem;color:var(--muted);margin-top:16px;">メールアドレスのみ &bull; 即時ダウンロード &bull; 強引な営業なし</p>
+  </div>
+</div>
+</section>
+
+<!-- ================================================ -->
+<!-- 9. TRUST & COMPLIANCE                            -->
+<!-- ================================================ -->
+<section id="trust">
+<div class="wrap">
+  <div class="fade-in">
+    <p class="section-label">Trust & Compliance</p>
+    <h2 class="section-title">安心して使っていただくために</h2>
+  </div>
+
+  <div class="trust-grid fade-in">
+    <div class="trust-card">
+      <h4>🔒 データセキュリティ</h4>
+      <p>スキャン対象ドメインのみ診断。取得したデータはAES-256で暗号化保存。日本国内サーバー（Railway・Supabase）を使用。第三者への情報提供は一切しません。</p>
+    </div>
+    <div class="trust-card">
+      <h4>📋 個人情報保護法・GDPR準拠</h4>
+      <p>ADCSサービス自体が個人情報保護法・GDPRに準拠した設計。データエクスポート・削除・同意管理機能を標準装備。自社サービスで実践しているからこそ、対応のガイダンスができます。</p>
+    </div>
+    <div class="trust-card">
+      <h4>⚡ Stripe決済（PCI DSS準拠）</h4>
+      <p>決済はStripe（PCI DSS Level 1認定）を使用。カード番号はAvisailのサーバーには一切保存されません。銀行振込も対応。</p>
+    </div>
+    <div class="trust-card">
+      <h4>🎯 IPA SECURITY ACTION 取得サポートに最適</h4>
+      <p>経済産業省認定の「IPA SECURITY ACTION」★・★★の取得を支援。ADCSの診断レポートと申請ガイドを使って、IT業界の取引先・発注元からの信頼を得られます。</p>
+    </div>
+    <div class="trust-card">
+      <h4>📊 監査・取引先提出に対応</h4>
+      <p>金融機関・大企業からのセキュリティ調査票対応、ISO/PCI DSS/GDPR監査への証跡提出、M&Aデューデリジェンス対応など、企業間取引に必要な書類を自動生成します。</p>
+    </div>
+    <div class="trust-card">
+      <h4>🌐 国際規制 11フレームワーク対応</h4>
+      <p>IPA・個人情報保護法・GDPR・ISO 27001・PCI DSS・SOC 2・NIST CSF・NIS2・Cyber Essentials・CMMC・CSA STARに対応。グローバル取引にも対応できます。</p>
+    </div>
+  </div>
+
+  <!-- Regulation Marks -->
+  <div class="fade-in" style="margin-top:56px;">
+    <h3 style="font-size:.9rem;font-weight:700;color:var(--muted);margin-bottom:20px;letter-spacing:.1em;text-transform:uppercase;">対応規制・フレームワーク</h3>
+    <div class="reg-marks">
+      <div class="reg-mark ipa-highlight">
+        <div class="icon">🏆</div>
+        <div class="name">IPA SECURITY ACTION</div>
+        <div class="sub">★ / ★★ 取得サポート付き</div>
+      </div>
+      <div class="reg-mark">
+        <div class="icon">🇯🇵</div>
+        <div class="name">個人情報保護法</div>
+        <div class="sub">日本</div>
+      </div>
+      <div class="reg-mark">
+        <div class="icon">🇪🇺</div>
+        <div class="name">GDPR</div>
+        <div class="sub">EU</div>
+      </div>
+      <div class="reg-mark">
+        <div class="icon">🌐</div>
+        <div class="name">ISO 27001</div>
+        <div class="sub">国際</div>
+      </div>
+      <div class="reg-mark">
+        <div class="icon">💳</div>
+        <div class="name">PCI DSS</div>
+        <div class="sub">カード業界</div>
+      </div>
+      <div class="reg-mark">
+        <div class="icon">🇺🇸</div>
+        <div class="name">NIST CSF</div>
+        <div class="sub">米国</div>
+      </div>
+      <div class="reg-mark">
+        <div class="icon">🔐</div>
+        <div class="name">SOC 2</div>
+        <div class="sub">米国</div>
+      </div>
+      <div class="reg-mark">
+        <div class="icon">🇬🇧</div>
+        <div class="name">Cyber Essentials</div>
+        <div class="sub">英国</div>
+      </div>
+      <div class="reg-mark">
+        <div class="icon">🇪🇺</div>
+        <div class="name">NIS2</div>
+        <div class="sub">EU指令</div>
+      </div>
+      <div class="reg-mark">
+        <div class="icon">🏭</div>
+        <div class="name">CMMC</div>
+        <div class="sub">米国国防調達</div>
+      </div>
+      <div class="reg-mark">
+        <div class="icon">☁️</div>
+        <div class="name">CSA STAR</div>
+        <div class="sub">クラウド</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Final CTA -->
+  <div class="fade-in" style="margin-top:72px;text-align:center;padding:64px 48px;background:linear-gradient(135deg,rgba(106,166,255,.08),rgba(126,240,212,.04));border:1px solid rgba(126,240,212,.15);border-radius:24px;" id="free-diagnosis">
+    <span style="display:inline-block;background:linear-gradient(135deg,var(--blue),var(--accent));color:#050810;font-size:.78rem;font-weight:700;padding:6px 18px;border-radius:20px;margin-bottom:20px;letter-spacing:.1em;text-transform:uppercase;">今すぐ始める</span>
+    <h2 style="font-size:clamp(1.6rem,3vw,2.4rem);font-weight:800;letter-spacing:-.02em;margin-bottom:16px;">まず無料で現状を確認する</h2>
+    <p style="font-size:1rem;color:var(--text2);max-width:600px;margin:0 auto 32px;line-height:1.9;">
+      自己チェックレポートで現状把握 → スポット診断¥50,000で全容把握 → Starterで継続監視へ。<br>最初の一歩はリスクゼロです。
+    </p>
+    <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:24px;">
+      <a href="#free-check" class="btn btn-ghost btn-lg">無料チェックレポート</a>
+      <a href="#pricing" class="btn btn-primary btn-lg">料金・プランを見る</a>
+    </div>
+    <p style="font-size:.82rem;color:var(--muted);">
+      お問い合わせ: <strong style="color:var(--text2)">info@avisail.com</strong> &nbsp;|&nbsp; 返信: 1営業日以内 &nbsp;|&nbsp; 対応言語: 日本語 / English / Italiano
+    </p>
+  </div>
+</div>
+</section>
+
+<!-- Footer -->
+<div id="site-footer" style="width:100%;"></div>
 <script src="../includes/components.js"></script>
 
 <script>
-// IntersectionObserver for animate-on-scroll
-document.addEventListener('DOMContentLoaded', function () {
-  var observer = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  }, { threshold: 0.1 });
+// Sticky CTA
+(function(){
+  var el = document.getElementById('sticky-cta');
+  var hero = document.querySelector('.hero');
+  if(!el||!hero) return;
+  window.addEventListener('scroll', function(){
+    el.classList.toggle('show', hero.getBoundingClientRect().bottom < 0);
+  }, {passive:true});
+})();
 
-  document.querySelectorAll('.animate-on-scroll').forEach(function (el) {
-    observer.observe(el);
-  });
+// Fade-in observer
+document.addEventListener('DOMContentLoaded', function(){
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting) e.target.classList.add('visible'); });
+  }, {threshold:.08});
+  document.querySelectorAll('.fade-in').forEach(function(el){ obs.observe(el); });
 });
 
-// Nav dots
-(function() {
-  var dots = document.querySelectorAll('.scroll-nav-dot');
-  var sections = document.querySelectorAll('section');
-
-  // Click to scroll
-  dots.forEach(function(dot, i) {
-    dot.addEventListener('click', function() {
-      if (sections[i]) {
-        sections[i].scrollIntoView({ behavior: 'smooth' });
-      }
-    });
-  });
-
-  // Active tracking
-  var observer = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) {
-      if (entry.isIntersecting) {
-        var idx = Array.from(sections).indexOf(entry.target);
-        dots.forEach(function(d, i) {
-          d.classList.toggle('active', i === idx);
-        });
-      }
-    });
-  }, { threshold: 0.3 });
-
-  sections.forEach(function(s) { observer.observe(s); });
-})();
-
-// Canvas particle background
-(function () {
-  var canvas = document.getElementById('global-bg');
-  if (!canvas) return;
-  var ctx = canvas.getContext('2d');
-  var width, height;
-  var particles = [];
-  var zOff = 0;
-
-  function resize() {
-    width = canvas.width = window.innerWidth;
-    height = canvas.height = window.innerHeight;
-    initParticles();
-  }
-  window.addEventListener('resize', resize);
-
-  function initParticles() {
-    particles = [];
-    var count = Math.floor(width * height / 2000);
-    for (var i = 0; i < count; i++) {
-      particles.push({
-        x: Math.random() * width,
-        y: Math.random() * height,
-        vx: 0,
-        vy: 0,
-        maxSpeed: Math.random() * 0.8 + 0.2,
-        size: Math.random() > 0.9 ? 1.5 : 0.8,
-        color: Math.random() > 0.5 ? '#2E64BA' : '#4DB899'
-      });
-    }
-  }
-
-  function update() {
-    zOff += 0.0005;
-    particles.forEach(function (p) {
-      var angle = (Math.cos(p.x * 0.002 + zOff) + Math.sin(p.y * 0.002 + zOff)) * Math.PI;
-      p.vx += Math.cos(angle) * 0.02;
-      p.vy += Math.sin(angle) * 0.02;
-      var speed = Math.sqrt(p.vx * p.vx + p.vy * p.vy);
-      if (speed > p.maxSpeed) {
-        p.vx = (p.vx / speed) * p.maxSpeed;
-        p.vy = (p.vy / speed) * p.maxSpeed;
-      }
-      p.x += p.vx;
-      p.y += p.vy;
-      if (p.x < 0) { p.x = width; p.vx = 0; p.vy = 0; }
-      if (p.x > width) { p.x = 0; p.vx = 0; p.vy = 0; }
-      if (p.y < 0) { p.y = height; p.vx = 0; p.vy = 0; }
-      if (p.y > height) { p.y = 0; p.vx = 0; p.vy = 0; }
-    });
-  }
-
-  function draw() {
-    ctx.fillStyle = 'rgba(5, 8, 15, 0.2)';
-    ctx.fillRect(0, 0, width, height);
-    particles.forEach(function (p) {
-      ctx.fillStyle = p.color;
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-      ctx.fill();
-    });
-    requestAnimationFrame(function () {
-      update();
-      draw();
-    });
-  }
-
-  resize();
-  draw();
+// Canvas BG
+(function(){
+  var c = document.getElementById('global-bg');
+  // No canvas in this version — bg is CSS only
 })();
 </script>
+
+<!-- Particle BG canvas removed for performance — using CSS radial gradient -->
+<style>
+body::before{content:'';position:fixed;top:0;left:0;right:0;bottom:0;z-index:-1;background:radial-gradient(ellipse 100% 60% at 50% 0%,rgba(106,166,255,.06),transparent 60%),radial-gradient(ellipse 80% 40% at 80% 100%,rgba(126,240,212,.04),transparent 60%),var(--bg)}
+</style>
 
 </body>
 </html>
