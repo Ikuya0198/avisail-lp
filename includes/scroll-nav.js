@@ -72,6 +72,12 @@
     return sec.id || '●';
   }
 
+  // ── Hide legacy .scroll-nav if present ───────────────
+  document.addEventListener('DOMContentLoaded', function () {
+    var legacyNav = document.querySelector('.scroll-nav');
+    if (legacyNav) legacyNav.style.display = 'none';
+  });
+
   // ── Build nav + observers ─────────────────────────────
   document.addEventListener('DOMContentLoaded', function () {
     var sections = Array.from(document.querySelectorAll('section')).filter(function (s) {
