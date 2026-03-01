@@ -6,9 +6,10 @@
  *   2. サイドナビ 目次型（右端・常時表示・アクティブ強調）
  *   3. セクション入場フラッシュライン
  *
- * 使い方:
- *   <script src="../includes/scroll-nav.js"></script>
- *   セクションに data-nav-label="ラベル" を付けると任意ラベルを指定可能
+ * ラベル検出:
+ *   - lang="ja" のページ: h2（日本語）を優先
+ *   - lang="en" のページ: section-kicker / section-label を優先
+ *   - data-nav-label 属性で個別上書き可能
  */
 (function () {
   'use strict';
@@ -18,16 +19,15 @@
     /* Progress bar */
     #av-bar{position:fixed;top:0;left:0;height:2px;width:0;background:linear-gradient(90deg,#6aa6ff,#7ef0d4);z-index:9999;transition:width .08s linear;pointer-events:none}
 
-    /* Side nav panel */
-    #av-nav{position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:400;display:flex;flex-direction:column;background:rgba(5,8,15,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.08);border-right:none;border-radius:12px 0 0 12px;padding:10px 0;pointer-events:all}
-    .av-item{display:flex;align-items:center;gap:10px;padding:7px 18px 7px 14px;cursor:pointer;border-left:2px solid transparent;text-decoration:none;color:inherit;transition:background .2s,border-color .2s}
-    .av-item:hover{background:rgba(255,255,255,.04)}
-    .av-item.av-active{border-left-color:#7ef0d4;background:rgba(126,240,212,.06)}
-    .av-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.18);flex-shrink:0;transition:background .2s,box-shadow .2s}
-    .av-item.av-active .av-dot,.av-item.av-visited .av-dot{background:#7ef0d4;box-shadow:0 0 7px rgba(126,240,212,.55)}
-    .av-lbl{font-size:.72rem;font-weight:600;color:rgba(107,122,143,1);white-space:nowrap;transition:color .2s;font-family:'Inter','Noto Sans JP',-apple-system,sans-serif;letter-spacing:.02em}
-    .av-item:hover .av-lbl{color:rgba(184,197,214,1)}
-    .av-item.av-active .av-lbl{color:#7ef0d4;font-weight:700}
+    /* Side nav — 枠なし・背景透明 */
+    #av-nav{position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:400;display:flex;flex-direction:column;padding:10px 0;pointer-events:all}
+    .av-item{display:flex;align-items:center;gap:10px;padding:7px 16px 7px 12px;cursor:pointer;border-left:2px solid transparent;text-decoration:none;color:inherit;transition:border-color .2s;background:none}
+    .av-item.av-active{border-left-color:#7ef0d4}
+    .av-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.25);flex-shrink:0;transition:background .2s,box-shadow .2s}
+    .av-item.av-active .av-dot,.av-item.av-visited .av-dot{background:#7ef0d4;box-shadow:0 0 7px rgba(126,240,212,.6)}
+    .av-lbl{font-size:.72rem;font-weight:600;color:rgba(180,195,210,.75);white-space:nowrap;transition:color .2s;font-family:'Inter','Noto Sans JP',-apple-system,sans-serif;letter-spacing:.02em;text-shadow:0 1px 6px rgba(0,0,0,.9),0 0 12px rgba(0,0,0,.7)}
+    .av-item:hover .av-lbl{color:rgba(220,230,240,1)}
+    .av-item.av-active .av-lbl{color:#7ef0d4;font-weight:700;text-shadow:0 0 10px rgba(126,240,212,.4),0 1px 6px rgba(0,0,0,.9)}
 
     /* Section flash */
     section{position:relative}
@@ -35,7 +35,7 @@
     section.av-flash::after{animation:av-line .65s cubic-bezier(.4,0,.2,1) forwards}
     @keyframes av-line{0%{left:-100%;right:100%;opacity:0}40%{opacity:1}100%{left:100%;right:-100%;opacity:0}}
 
-    /* Hide nav on narrow screens */
+    /* Hide on narrow screens */
     @media(max-width:1200px){#av-nav{display:none}}
   `;
   var styleEl = document.createElement('style');
@@ -55,19 +55,29 @@
   window.addEventListener('scroll', updateBar, { passive: true });
   updateBar();
 
-  // ── Label detection ───────────────────────────────────
+  // ── Language-aware label detection ───────────────────
+  var isJa = (document.documentElement.lang || '').toLowerCase().startsWith('ja');
+
   function getLabel(sec) {
+    // 1. explicit override always wins
     var dl = sec.getAttribute('data-nav-label');
     if (dl) return dl;
 
     var kicker = sec.querySelector('.section-kicker,.section-label');
-    if (kicker) return kicker.textContent.trim().slice(0, 10);
-
     var h2 = sec.querySelector('h2');
-    if (h2) return h2.textContent.trim().slice(0, 8);
+
+    if (isJa) {
+      // Japanese page: h2 first (Japanese text), kicker is usually English
+      if (h2) return h2.textContent.trim().slice(0, 9);
+      if (kicker) return kicker.textContent.trim().slice(0, 10);
+    } else {
+      // English page: kicker/label first (concise), then h2
+      if (kicker) return kicker.textContent.trim().slice(0, 10);
+      if (h2) return h2.textContent.trim().slice(0, 9);
+    }
 
     var h1 = sec.querySelector('h1');
-    if (h1) return h1.textContent.trim().slice(0, 8);
+    if (h1) return h1.textContent.trim().slice(0, 9);
 
     return sec.id || '●';
   }
@@ -84,7 +94,6 @@
       return s.offsetHeight > 80;
     });
 
-    // Need at least 2 sections to show nav
     if (sections.length < 2) return;
 
     var nav = document.createElement('div');
@@ -94,7 +103,6 @@
     var items = [];
 
     sections.forEach(function (sec, i) {
-      // Ensure section has an id for scroll target
       if (!sec.id) sec.id = 'av-sec-' + i;
 
       var a = document.createElement('a');
@@ -115,18 +123,15 @@
       items.push({ el: a, sec: sec });
     });
 
-    // IntersectionObserver: active state + flash
     var obs = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
         if (!e.isIntersecting) return;
         var sec = e.target;
 
-        // Flash line
         sec.classList.remove('av-flash');
-        void sec.offsetWidth; // reflow
+        void sec.offsetWidth;
         sec.classList.add('av-flash');
 
-        // Update active state
         items.forEach(function (it) {
           var match = it.sec === sec;
           it.el.classList.toggle('av-active', match);

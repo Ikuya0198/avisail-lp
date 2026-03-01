@@ -198,16 +198,16 @@ section.dark{background:var(--bg2)}
 #scroll-progress{position:fixed;top:0;left:0;height:2px;width:0;background:linear-gradient(90deg,var(--blue),var(--accent));z-index:9999;transition:width .08s linear;pointer-events:none}
 
 /* ===== SIDE NAV — 目次型 ===== */
-#side-nav{position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:400;display:flex;flex-direction:column;background:rgba(5,8,15,.82);backdrop-filter:blur(14px);border:1px solid var(--line);border-right:none;border-radius:12px 0 0 12px;padding:10px 0;pointer-events:all}
+#side-nav{position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:400;display:flex;flex-direction:column;background:none;padding:10px 0;pointer-events:all}
 .snav-item{display:flex;align-items:center;gap:10px;padding:7px 18px 7px 14px;cursor:pointer;transition:all .22s ease;border-left:2px solid transparent;text-decoration:none}
 .snav-item:hover{background:rgba(255,255,255,.04)}
 .snav-item.active{border-left-color:var(--accent);background:rgba(126,240,212,.06)}
 .snav-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.2);flex-shrink:0;transition:all .22s ease}
 .snav-item.active .snav-dot,.snav-item.visited .snav-dot{background:var(--accent);box-shadow:0 0 7px rgba(126,240,212,.55)}
 .snav-item:not(.active) .snav-dot{background:rgba(255,255,255,.18)}
-.snav-label{font-size:.72rem;font-weight:600;color:var(--muted);transition:color .22s ease;white-space:nowrap}
-.snav-item:hover .snav-label{color:var(--text2)}
-.snav-item.active .snav-label{color:var(--accent);font-weight:700}
+.snav-label{font-size:.72rem;font-weight:600;color:rgba(180,195,210,.75);transition:color .22s ease;white-space:nowrap;text-shadow:0 1px 6px rgba(0,0,0,.9),0 0 12px rgba(0,0,0,.7)}
+.snav-item:hover .snav-label{color:rgba(220,230,240,1)}
+.snav-item.active .snav-label{color:var(--accent);font-weight:700;text-shadow:0 0 10px rgba(126,240,212,.4),0 1px 6px rgba(0,0,0,.9)}
 @media(max-width:1200px){#side-nav{display:none}}
 
 /* ===== SECTION TRANSITION FLASH ===== */
