@@ -301,6 +301,12 @@ section > .wrap{width:100%;}
   .ad-comparison{grid-template-columns:1fr;}
   .features-grid,.problem-grid,.pricing-grid,.flow-steps{grid-template-columns:1fr;}
 }
+
+/* ── Floating CTA Button ── */
+#fab-cta{position:fixed;bottom:32px;right:32px;z-index:500;background:linear-gradient(135deg,#6aa6ff,#7ef0d4);color:#050810;font-weight:700;font-size:.9rem;padding:14px 26px;border-radius:50px;box-shadow:0 8px 32px rgba(106,166,255,.35);opacity:0;transform:translateY(16px);transition:opacity .35s ease,transform .35s ease;pointer-events:none;white-space:nowrap;text-decoration:none}
+#fab-cta.show{opacity:1;transform:translateY(0);pointer-events:all}
+#fab-cta:hover{transform:translateY(-2px);box-shadow:0 14px 40px rgba(106,166,255,.5)}
+@media(max-width:768px){#fab-cta{bottom:20px;right:16px;font-size:.82rem;padding:12px 20px}}
 </style>
 
 <!-- JSON-LD Structured Data -->
@@ -330,6 +336,9 @@ section > .wrap{width:100%;}
 
 <!-- Canvas Background -->
 <canvas id="bg-canvas"></canvas>
+
+<!-- Floating CTA Button (bottom-right) -->
+<a id="fab-cta" href="#pricing">View Pricing →</a>
 
 <!-- Shared Header -->
 <div id="site-header"></div>
@@ -1304,6 +1313,18 @@ Clearly visualize your organization's vulnerabilities and areas for improvement.
 <!-- Shared Components Loader -->
 <script src="../includes/components.js"></script>
 <script src="../includes/scroll-nav.js"></script>
+
+<!-- ── Floating CTA Button ── -->
+<script>
+(function(){
+  var fab=document.getElementById('fab-cta');
+  var hero=document.querySelector('.page-hero');
+  if(!fab||!hero)return;
+  window.addEventListener('scroll',function(){
+    fab.classList.toggle('show',hero.getBoundingClientRect().bottom<0);
+  },{passive:true});
+})();
+</script>
 
 <!-- ── Animate on Scroll (IntersectionObserver) ── -->
 <script>

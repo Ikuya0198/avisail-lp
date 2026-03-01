@@ -7,9 +7,9 @@
  *   3. セクション入場フラッシュライン
  *
  * ラベル検出:
- *   - lang="ja" のページ: h2（日本語）を優先
- *   - lang="en" のページ: section-kicker / section-label を優先
- *   - data-nav-label 属性で個別上書き可能
+ *   lang="ja": h2 を優先（<br>で分割し短い方）→ section-label → h1
+ *   lang="en": section-kicker/label を優先（短い）→ h2
+ *   data-nav-label 属性で任意ラベルを個別指定可能
  */
 (function () {
   'use strict';
@@ -20,7 +20,7 @@
     #av-bar{position:fixed;top:0;left:0;height:2px;width:0;background:linear-gradient(90deg,#6aa6ff,#7ef0d4);z-index:9999;transition:width .08s linear;pointer-events:none}
 
     /* Side nav — 枠なし・背景透明 */
-    #av-nav{position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:400;display:flex;flex-direction:column;padding:10px 0;pointer-events:all}
+    #av-nav{position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:400;display:flex;flex-direction:column;padding:10px 0;pointer-events:all;background:none}
     .av-item{display:flex;align-items:center;gap:10px;padding:7px 16px 7px 12px;cursor:pointer;border-left:2px solid transparent;text-decoration:none;color:inherit;transition:border-color .2s;background:none}
     .av-item.av-active{border-left-color:#7ef0d4}
     .av-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.25);flex-shrink:0;transition:background .2s,box-shadow .2s}
@@ -55,29 +55,65 @@
   window.addEventListener('scroll', updateBar, { passive: true });
   updateBar();
 
-  // ── Language-aware label detection ───────────────────
+  // ── Language detection ────────────────────────────────
   var isJa = (document.documentElement.lang || '').toLowerCase().startsWith('ja');
 
+  // ── Smart label extraction ────────────────────────────
+
+  // Extract shortest meaningful text from an element, splitting on <br>
+  function extractShortText(el) {
+    var html = el.innerHTML;
+    var parts = html.split(/<br\s*\/?>/i)
+      .map(function (p) { return p.replace(/<[^>]+>/g, '').trim(); })
+      .filter(function (p) { return p.length > 0; });
+    if (parts.length === 0) return el.textContent.trim();
+    // Sort by length ascending and return the shortest non-empty part
+    parts.sort(function (a, b) { return a.length - b.length; });
+    return parts[0];
+  }
+
+  // Trim label at a natural break point (punctuation / space)
+  function trimLabel(text, max) {
+    // Remove trailing Japanese punctuation
+    text = text.replace(/[。、]\s*$/, '').trim();
+    if (text.length <= max) return text;
+    // Find a natural break working backwards from max
+    for (var i = max; i >= Math.max(4, max - 4); i--) {
+      var c = text[i];
+      if (c === '、' || c === '。' || c === ' ' || c === '-' || c === '/' || c === '&') {
+        return text.slice(0, i).replace(/[、。]$/, '').trim();
+      }
+    }
+    return text.slice(0, max);
+  }
+
   function getLabel(sec) {
-    // 1. explicit override always wins
+    // 1. Explicit data attribute always wins
     var dl = sec.getAttribute('data-nav-label');
     if (dl) return dl;
 
     var kicker = sec.querySelector('.section-kicker,.section-label');
     var h2 = sec.querySelector('h2');
+    var h1 = sec.querySelector('h1');
+
+    var kickerText = kicker ? kicker.textContent.trim() : '';
 
     if (isJa) {
-      // Japanese page: h2 first (Japanese text), kicker is usually English
-      if (h2) return h2.textContent.trim().slice(0, 9);
-      if (kicker) return kicker.textContent.trim().slice(0, 10);
+      // Japanese page: use h2 (Japanese), split on <br> to get shortest phrase
+      if (h2) {
+        var t = extractShortText(h2).replace(/[。、]\s*$/, '').trim();
+        return trimLabel(t, 9);
+      }
+      // Fall back to kicker if no h2
+      if (kickerText) return trimLabel(kickerText, 10);
+      if (h1) return trimLabel(extractShortText(h1), 9);
     } else {
-      // English page: kicker/label first (concise), then h2
-      if (kicker) return kicker.textContent.trim().slice(0, 10);
-      if (h2) return h2.textContent.trim().slice(0, 9);
+      // English page: prefer kicker (concise), then h2
+      if (kickerText && kickerText.length <= 16) return kickerText;
+      if (h2) return trimLabel(extractShortText(h2), 12);
+      if (kickerText) return trimLabel(kickerText, 12);
+      if (h1) return trimLabel(extractShortText(h1), 12);
     }
-
-    var h1 = sec.querySelector('h1');
-    if (h1) return h1.textContent.trim().slice(0, 9);
 
     return sec.id || '●';
   }
