@@ -238,6 +238,12 @@ header .mobile-menu-btn {
   min-height: 44px;
   justify-content: center;
   align-items: center;
+  /* Browser default reset */
+  background: none;
+  border: none;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 
 header .mobile-menu-btn span {
@@ -386,6 +392,8 @@ footer .footer-bottom a:hover {
     display: block;
     padding: 18px 8px;
     font-size: 1.05rem;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
   }
 
   header .menu-item {

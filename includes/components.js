@@ -148,14 +148,29 @@
 
     function openMobileMenu() {
       mobileMenuBtn.classList.add('active');
+      mobileMenuBtn.setAttribute('aria-expanded', 'true');
       navMenu.classList.add('mobile-menu-open');
+      // iOS Safari compatible scroll lock
+      const scrollY = window.scrollY;
+      body.style.position = 'fixed';
+      body.style.top = `-${scrollY}px`;
+      body.style.width = '100%';
       body.style.overflow = 'hidden';
+      body.dataset.scrollY = scrollY;
     }
 
     function closeMobileMenu() {
       mobileMenuBtn.classList.remove('active');
+      mobileMenuBtn.setAttribute('aria-expanded', 'false');
       navMenu.classList.remove('mobile-menu-open');
+      // Restore scroll position after iOS scroll lock
+      const scrollY = parseInt(body.dataset.scrollY || '0');
+      body.style.position = '';
+      body.style.top = '';
+      body.style.width = '';
       body.style.overflow = '';
+      delete body.dataset.scrollY;
+      window.scrollTo(0, scrollY);
       document.querySelectorAll('header .menu-item.menu-open, header .lang-selector.menu-open').forEach(item => {
         item.classList.remove('menu-open');
       });
