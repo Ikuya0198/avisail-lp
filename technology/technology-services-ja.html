@@ -716,15 +716,6 @@ a { color: inherit; text-decoration: none; }
 <!-- Shared Header -->
 <div id="site-header"></div>
 
-<!-- Navigation Dots -->
-<nav class="scroll-nav">
-  <div class="scroll-nav-dot active" data-section="0" title="Hero"></div>
-  <div class="scroll-nav-dot" data-section="1" title="Consulting"></div>
-  <div class="scroll-nav-dot" data-section="2" title="Support"></div>
-  <div class="scroll-nav-dot" data-section="3" title="Systems"></div>
-  <div class="scroll-nav-dot" data-section="4" title="Strengths"></div>
-  <div class="scroll-nav-dot" data-section="5" title="Contact"></div>
-</nav>
 
 <!-- Section 1: Hero -->
 <section class="hero fullpage-section hero-section">
@@ -1025,31 +1016,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
   document.querySelectorAll('.animate-on-scroll').forEach(function(el) {
     scrollObserver.observe(el);
-  });
-
-  // ========== Fullpage Navigation Dots ==========
-  var sections = document.querySelectorAll('.fullpage-section');
-  var navDots = document.querySelectorAll('.scroll-nav-dot');
-
-  navDots.forEach(function(dot, index) {
-    dot.addEventListener('click', function() {
-      sections[index].scrollIntoView({ behavior: 'smooth' });
-    });
-  });
-
-  var sectionObserver = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) {
-      if (entry.isIntersecting) {
-        var index = Array.from(sections).indexOf(entry.target);
-        navDots.forEach(function(dot, i) {
-          dot.classList.toggle('active', i === index);
-        });
-      }
-    });
-  }, { threshold: 0.5 });
-
-  sections.forEach(function(section) {
-    sectionObserver.observe(section);
   });
 
 });

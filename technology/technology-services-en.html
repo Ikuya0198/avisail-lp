@@ -701,15 +701,6 @@ a{color:inherit;text-decoration:none;}
 <!-- Shared Header -->
 <div id="site-header"></div>
 
-<!-- Nav Dots -->
-<nav class="nav-dots" aria-label="Page navigation">
-  <div class="nav-dot active" data-target="hero" data-label="Hero"></div>
-  <div class="nav-dot" data-target="consulting" data-label="Consulting"></div>
-  <div class="nav-dot" data-target="support" data-label="Support"></div>
-  <div class="nav-dot" data-target="systems" data-label="Our Systems"></div>
-  <div class="nav-dot" data-target="strengths" data-label="Strengths"></div>
-  <div class="nav-dot" data-target="contact" data-label="Contact"></div>
-</nav>
 
 <!-- ========== Section 1: Hero ========== -->
 <section id="hero" class="hero-section">
@@ -951,36 +942,6 @@ a{color:inherit;text-decoration:none;}
     reveals.forEach(function(el){revealObserver.observe(el);});
   }else{
     reveals.forEach(function(el){el.classList.add('visible');});
-  }
-
-  /* ===== Nav Dots ===== */
-  var dots = document.querySelectorAll('.nav-dot');
-  var sections = [];
-  dots.forEach(function(dot){
-    var id = dot.getAttribute('data-target');
-    var sec = document.getElementById(id);
-    if(sec) sections.push({el:sec,dot:dot});
-
-    dot.addEventListener('click',function(){
-      var target = document.getElementById(id);
-      if(target){
-        target.scrollIntoView({behavior:'smooth',block:'start'});
-      }
-    });
-  });
-
-  if('IntersectionObserver' in window && sections.length){
-    var navObserver = new IntersectionObserver(function(entries){
-      entries.forEach(function(entry){
-        if(entry.isIntersecting){
-          dots.forEach(function(d){d.classList.remove('active');});
-          sections.forEach(function(s){
-            if(s.el === entry.target) s.dot.classList.add('active');
-          });
-        }
-      });
-    },{threshold:0.3,rootMargin:'-10% 0px -10% 0px'});
-    sections.forEach(function(s){navObserver.observe(s.el);});
   }
 
   /* ===== Canvas Particles (Flow Field) ===== */
