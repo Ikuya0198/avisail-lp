@@ -288,8 +288,26 @@
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
         initMobileMenu();
+        initScrolledHeader();
       });
     });
+  }
+
+  // Add scrolled background to header on scroll
+  function initScrolledHeader() {
+    const header = document.querySelector('header');
+    if (!header) return;
+
+    function updateHeader() {
+      if (window.scrollY > 60) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    }
+
+    window.addEventListener('scroll', updateHeader, { passive: true });
+    updateHeader();
   }
 
   // Run when DOM is ready
