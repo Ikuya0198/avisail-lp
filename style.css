@@ -55,21 +55,6 @@ img {
   height: auto;
 }
 
-/* ========== HEADER ========== */
-#site-header {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-}
-
-#site-header header {
-  position: relative;
-  background: transparent;
-  border-bottom: none;
-}
-
 .nav {
   display: flex;
   align-items: center;
@@ -1651,17 +1636,6 @@ footer {
 
 /* ========== RESPONSIVE ========== */
 @media (max-width: 980px) {
-
-  #site-header {
-    position: relative;
-  }
-
-  #site-header header {
-    background: rgba(5, 8, 15, 0.92);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-  }
 
   .grid-2,
   .grid-3 {
