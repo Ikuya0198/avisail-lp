@@ -1014,13 +1014,6 @@
       <div id="site-footer"></div>
     </section>
 
-  <!-- Mobile Fixed CTA Bar -->
-  <div class="mobile-cta-bar" id="mobileCta">
-    <a href="security/adcs-en.html" class="mobile-cta-btn">
-      <span>Free Security Assessment</span>
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-    </a>
-  </div>
 
   <!-- Shared Components Loader -->
   <script src="includes/components.js"></script>
@@ -1210,30 +1203,6 @@
         animationId = requestAnimationFrame(loop);
       })();
 
-      // Mobile CTA Bar
-      (function() {
-        const mobileCta = document.getElementById('mobileCta');
-        const hero = document.querySelector('.hero');
-        if (!mobileCta || !hero) return;
-
-        let ticking = false;
-        function checkScroll() {
-          const heroBottom = hero.offsetTop + hero.offsetHeight;
-          if (window.scrollY > heroBottom - 100) {
-            mobileCta.classList.add('visible');
-          } else {
-            mobileCta.classList.remove('visible');
-          }
-          ticking = false;
-        }
-
-        window.addEventListener('scroll', function() {
-          if (!ticking) {
-            requestAnimationFrame(checkScroll);
-            ticking = true;
-          }
-        }, { passive: true });
-      })();
     });
   </script>
 </body>
