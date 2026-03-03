@@ -355,6 +355,14 @@ footer .footer-bottom a:hover {
    RESPONSIVE - MOBILE
    ============================================ */
 @media (max-width: 980px) {
+  /* Always show header background on mobile */
+  header {
+    background: rgba(5, 8, 15, 0.92);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
   header .mobile-menu-btn {
     display: flex;
   }
