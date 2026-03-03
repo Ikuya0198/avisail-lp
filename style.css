@@ -1656,6 +1656,13 @@ footer {
     position: relative;
   }
 
+  #site-header header {
+    background: rgba(5, 8, 15, 0.92);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
   .grid-2,
   .grid-3 {
     grid-template-columns: 1fr;
