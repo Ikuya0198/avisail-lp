@@ -57,13 +57,17 @@ img {
 
 /* ========== HEADER ========== */
 #site-header {
-  position: static;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
 }
 
 #site-header header {
   position: relative;
-  background: rgba(5, 8, 15, 0.95);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: transparent;
+  border-bottom: none;
 }
 
 .nav {
