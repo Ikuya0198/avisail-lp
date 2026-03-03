@@ -120,37 +120,17 @@
     }
   }
 
-  // Initialize mobile menu
+  // Mobile menu — event delegation (works regardless of when header is injected)
   function initMobileMenu() {
-    const mobileMenuBtn = document.querySelector('header .mobile-menu-btn');
-    const navMenu = document.querySelector('header nav ul');
     const body = document.body;
 
-    if (!mobileMenuBtn || !navMenu) {
-      console.error('[Avisail] Mobile menu elements not found:', {
-        button: !!mobileMenuBtn,
-        menu: !!navMenu
-      });
-      return;
-    }
-
-    mobileMenuBtn.addEventListener('click', function (e) {
-      e.preventDefault();
-      e.stopPropagation();
-
-      const isOpen = this.classList.contains('active');
-      if (isOpen) {
-        closeMobileMenu();
-      } else {
-        openMobileMenu();
-      }
-    });
-
     function openMobileMenu() {
-      mobileMenuBtn.classList.add('active');
-      mobileMenuBtn.setAttribute('aria-expanded', 'true');
+      const btn = document.querySelector('header .mobile-menu-btn');
+      const navMenu = document.querySelector('header nav ul');
+      if (!btn || !navMenu) return;
+      btn.classList.add('active');
+      btn.setAttribute('aria-expanded', 'true');
       navMenu.classList.add('mobile-menu-open');
-      // iOS Safari compatible scroll lock
       const scrollY = window.scrollY;
       body.style.position = 'fixed';
       body.style.top = `-${scrollY}px`;
@@ -160,10 +140,10 @@
     }
 
     function closeMobileMenu() {
-      mobileMenuBtn.classList.remove('active');
-      mobileMenuBtn.setAttribute('aria-expanded', 'false');
-      navMenu.classList.remove('mobile-menu-open');
-      // Restore scroll position after iOS scroll lock
+      const btn = document.querySelector('header .mobile-menu-btn');
+      const navMenu = document.querySelector('header nav ul');
+      if (btn) { btn.classList.remove('active'); btn.setAttribute('aria-expanded', 'false'); }
+      if (navMenu) navMenu.classList.remove('mobile-menu-open');
       const scrollY = parseInt(body.dataset.scrollY || '0');
       body.style.position = '';
       body.style.top = '';
@@ -171,79 +151,83 @@
       body.style.overflow = '';
       delete body.dataset.scrollY;
       window.scrollTo(0, scrollY);
-      document.querySelectorAll('header .menu-item.menu-open, header .lang-selector.menu-open').forEach(item => {
-        item.classList.remove('menu-open');
-      });
+      document.querySelectorAll('header .menu-item.menu-open, header .lang-selector.menu-open')
+        .forEach(el => el.classList.remove('menu-open'));
     }
 
-    // Close menu when clicking outside
+    // Single delegated listener — handles all header interactions
     document.addEventListener('click', function (e) {
-      if (window.innerWidth <= 980) {
-        const isClickInsideMenu = navMenu.contains(e.target);
-        const isClickOnMenuBtn = mobileMenuBtn.contains(e.target);
-        if (!isClickInsideMenu && !isClickOnMenuBtn && navMenu.classList.contains('mobile-menu-open')) {
-          closeMobileMenu();
-        }
+      // 1. Hamburger button
+      if (e.target.closest('header .mobile-menu-btn')) {
+        e.preventDefault();
+        e.stopPropagation();
+        const btn = document.querySelector('header .mobile-menu-btn');
+        btn && btn.classList.contains('active') ? closeMobileMenu() : openMobileMenu();
+        return;
       }
-    });
 
-    // Close menu when clicking nav links
-    navMenu.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', function () {
-        const parentMenuItem = this.closest('.menu-item');
-        const isDropdownToggle = parentMenuItem && parentMenuItem.querySelector('.dropdown');
-        if (!isDropdownToggle || !this.closest('.menu-item > a')) {
-          closeMobileMenu();
-        }
-      });
-    });
-
-    // Toggle dropdowns on mobile
-    document.querySelectorAll('header .menu-item').forEach(item => {
-      const link = item.querySelector(':scope > a');
-      if (link && item.querySelector('.dropdown')) {
-        link.addEventListener('click', function (e) {
-          if (window.innerWidth <= 980) {
+      // 2. Mobile: dropdown toggle
+      if (window.innerWidth <= 980) {
+        const topLink = e.target.closest('header .menu-item > a');
+        if (topLink) {
+          const item = topLink.closest('.menu-item');
+          if (item && item.querySelector('.dropdown')) {
             e.preventDefault();
             e.stopPropagation();
-            document.querySelectorAll('header .menu-item').forEach(otherItem => {
-              if (otherItem !== item) otherItem.classList.remove('menu-open');
-            });
+            document.querySelectorAll('header .menu-item')
+              .forEach(i => { if (i !== item) i.classList.remove('menu-open'); });
             item.classList.toggle('menu-open');
+            return;
           }
-        });
+        }
+      }
+
+      // 3. Mobile: close menu when tapping a nav link
+      if (window.innerWidth <= 980) {
+        const navLink = e.target.closest('header nav ul a');
+        if (navLink) {
+          const item = navLink.closest('.menu-item');
+          if (!(item && item.querySelector('.dropdown') && navLink.matches('.menu-item > a'))) {
+            closeMobileMenu();
+          }
+          return;
+        }
+      }
+
+      // 4. Language selector toggle
+      if (e.target.closest('header .lang-selector') && !e.target.closest('header .lang-selector a')) {
+        e.preventDefault();
+        e.stopPropagation();
+        const lang = document.querySelector('header .lang-selector');
+        if (lang) lang.classList.toggle('menu-open');
+        return;
+      }
+
+      // 5. Close menu when tapping outside header (mobile)
+      if (window.innerWidth <= 980) {
+        const navMenu = document.querySelector('header nav ul');
+        if (navMenu && navMenu.classList.contains('mobile-menu-open') && !e.target.closest('header')) {
+          closeMobileMenu();
+        }
       }
     });
 
-    // Toggle language dropdown (Desktop & Mobile)
-    const langSelector = document.querySelector('header .lang-selector');
-    if (langSelector) {
-      langSelector.addEventListener('click', function (e) {
-        // Prevent default only if clicking the selector itself to toggle
-        // If clicking a link inside, let it navigate
-        if (!e.target.closest('a')) {
-          e.preventDefault();
-          e.stopPropagation();
-          this.classList.toggle('menu-open');
+    // Desktop: close lang dropdown on mouse leave
+    document.addEventListener('mouseover', function (e) {
+      if (window.innerWidth > 980) {
+        const lang = document.querySelector('header .lang-selector');
+        if (lang && lang.classList.contains('menu-open') && !lang.contains(e.target)) {
+          lang.classList.remove('menu-open');
         }
-      });
+      }
+    });
 
-      // Close on mouse leave for desktop (improves hover feel)
-      langSelector.addEventListener('mouseleave', function () {
-        if (window.innerWidth > 980) {
-          this.classList.remove('menu-open');
-        }
-      });
-    }
-
-    // Handle window resize
+    // Window resize
     let resizeTimer;
     window.addEventListener('resize', function () {
       clearTimeout(resizeTimer);
       resizeTimer = setTimeout(function () {
-        if (window.innerWidth > 980) {
-          closeMobileMenu();
-        }
+        if (window.innerWidth > 980) closeMobileMenu();
       }, 250);
     });
   }
@@ -283,14 +267,9 @@
       footerContainer.innerHTML = footerHtml;
     }
 
-    // Initialize mobile menu after header is loaded and DOM is updated
-    // Use double requestAnimationFrame to ensure DOM is fully rendered and painted
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        initMobileMenu();
-        initScrolledHeader();
-      });
-    });
+    // Initialize interactions (delegation-based, timing-independent)
+    initMobileMenu();
+    initScrolledHeader();
   }
 
   // Add scrolled background to header on scroll
