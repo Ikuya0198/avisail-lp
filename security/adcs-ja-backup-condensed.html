@@ -1,0 +1,1468 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>ADCS - 2026年のサイバー脅威から企業を守る自動化セキュリティ | Avisail</title>
+<meta name="description" content="2026年、サイバー攻撃は激化。中小企業こそが標的に。従来の1/10のコストで、AI完全自動化によるエンタープライズ級セキュリティを実現。無料診断・チェックシートあり。">
+<link rel="canonical" href="https://avisail.com/security/adcs-ja.html">
+<link rel="alternate" hreflang="ja" href="https://avisail.com/security/adcs-ja.html">
+<link rel="alternate" hreflang="en" href="https://avisail.com/security/adcs-en.html">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<style>
+.page-hero{
+  padding:50px 0 30px;
+  background:
+    linear-gradient(rgba(10,15,26,0.88),rgba(10,15,26,0.95)),
+    radial-gradient(ellipse at 35% 25%,rgba(106,166,255,0.12),transparent 50%),
+    radial-gradient(ellipse at 65% 75%,rgba(16,185,129,0.08),transparent 50%),
+    var(--bg-dark);
+  position:relative;
+  overflow:hidden;
+}
+.page-hero .wrap{position:relative;z-index:2;}
+.hero-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:5px 14px;
+  background:rgba(106,166,255,0.12);
+  border:1px solid rgba(106,166,255,0.3);
+  border-radius:20px;
+  color:#6AA6FF;
+  font-size:0.7rem;
+  font-weight:700;
+  margin-bottom:12px;
+  letter-spacing:0.05em;
+}
+.page-hero h1{
+  font-size:clamp(1.8rem,5vw,3rem);
+  margin-bottom:14px;
+  color:#fff;
+  font-weight:800;
+  line-height:1.15;
+}
+.page-hero h1 span{
+  background:linear-gradient(135deg,#6AA6FF,#10b981);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.page-hero .lead{
+  color:var(--text-secondary);
+  max-width:900px;
+  font-size:0.9rem;
+  line-height:1.5;
+  margin-bottom:14px;
+}
+.hero-highlight{
+  background:rgba(16,185,129,0.1);
+  border:2px solid rgba(16,185,129,0.3);
+  padding:12px;
+  border-radius:8px;
+  max-width:850px;
+  margin-top:14px;
+}
+.hero-highlight p{
+  color:var(--text-secondary);
+  font-size:0.85rem;
+  line-height:1.5;
+  margin:0;
+}
+.hero-highlight strong{
+  color:#10b981;
+  font-size:0.95rem;
+}
+.hero-stats{
+  display:flex;
+  gap:24px;
+  flex-wrap:wrap;
+  margin-top:20px;
+}
+.hero-stat{
+  text-align:left;
+}
+.hero-stat-number{
+  font-size:1.6rem;
+  font-weight:800;
+  background:linear-gradient(135deg,#6AA6FF,#10b981);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  margin-bottom:4px;
+}
+.hero-stat-label{
+  font-size:0.75rem;
+  color:var(--text-muted);
+}
+.problem-section{
+  background:rgba(239,68,68,0.06);
+  border:2px solid rgba(239,68,68,0.25);
+  border-radius:12px;
+  padding:24px;
+  margin:24px 0;
+}
+.problem-section h2{
+  color:#ef4444;
+  font-size:1.6rem;
+  margin-bottom:10px;
+  text-align:center;
+  font-weight:800;
+}
+.problem-section .subtitle{
+  text-align:center;
+  color:var(--text-secondary);
+  font-size:0.85rem;
+  margin-bottom:20px;
+  max-width:750px;
+  margin-left:auto;
+  margin-right:auto;
+  line-height:1.5;
+}
+.problem-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:20px;
+  margin-top:20px;
+}
+.problem-card{
+  background:rgba(10,15,26,0.6);
+  border:1px solid rgba(239,68,68,0.3);
+  border-radius:10px;
+  padding:16px;
+  text-align:center;
+}
+.problem-icon{
+  font-size:1.8rem;
+  margin-bottom:8px;
+}
+.problem-card h4{
+  color:#fff;
+  font-size:0.95rem;
+  margin-bottom:8px;
+  font-weight:700;
+}
+.problem-card p{
+  color:var(--text-secondary);
+  line-height:1.5;
+  font-size:0.8rem;
+}
+.solution-section{
+  background:linear-gradient(135deg,rgba(106,166,255,0.1),rgba(16,185,129,0.08));
+  border:2px solid rgba(16,185,129,0.3);
+  border-radius:12px;
+  padding:24px;
+  margin:24px 0;
+  text-align:center;
+}
+.solution-section h2{
+  font-size:1.8rem;
+  margin-bottom:12px;
+  background:linear-gradient(135deg,#6AA6FF,#10b981);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  font-weight:800;
+}
+.solution-section .lead-text{
+  color:var(--text-secondary);
+  font-size:0.85rem;
+  line-height:1.5;
+  max-width:850px;
+  margin:0 auto 20px;
+}
+.features-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:20px;
+  margin-top:20px;
+}
+.feature-box{
+  background:rgba(10,15,26,0.7);
+  border:1px solid rgba(106,166,255,0.25);
+  border-radius:10px;
+  padding:16px;
+  text-align:left;
+}
+.feature-icon{
+  width:32px;
+  height:32px;
+  background:linear-gradient(135deg,#6AA6FF,#10b981);
+  border-radius:8px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:1.1rem;
+  margin-bottom:10px;
+}
+.feature-box h4{
+  color:#fff;
+  font-size:0.95rem;
+  margin-bottom:8px;
+  font-weight:700;
+}
+.feature-box p{
+  color:var(--text-secondary);
+  line-height:1.5;
+  font-size:0.8rem;
+}
+.ad-philosophy{
+  background:rgba(5,8,15,0.5);
+  border-radius:10px;
+  padding:24px;
+  margin:24px 0;
+}
+.ad-philosophy h2{
+  text-align:center;
+  font-size:1.6rem;
+  margin-bottom:20px;
+  color:#fff;
+  font-weight:800;
+}
+.ad-comparison{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+  max-width:1000px;
+  margin:0 auto;
+}
+@media (max-width:768px){
+  .ad-comparison{grid-template-columns:1fr;}
+}
+.comparison-card{
+  border-radius:10px;
+  padding:16px;
+}
+.comparison-card.traditional{
+  background:rgba(239,68,68,0.08);
+  border:2px solid rgba(239,68,68,0.25);
+}
+.comparison-card.active-defense{
+  background:rgba(16,185,129,0.08);
+  border:2px solid rgba(16,185,129,0.3);
+}
+.comparison-card h4{
+  font-size:1.1rem;
+  margin-bottom:12px;
+  font-weight:800;
+}
+.comparison-card.traditional h4{color:#ef4444;}
+.comparison-card.active-defense h4{color:#10b981;}
+.comparison-card ul{
+  list-style:none;
+  padding:0;
+  margin:0;
+}
+.comparison-card ul li{
+  padding:6px 0;
+  color:var(--text-secondary);
+  font-size:0.8rem;
+  display:flex;
+  align-items:flex-start;
+  gap:8px;
+  line-height:1.5;
+}
+.comparison-card.traditional ul li::before{
+  content:'✕';
+  color:#ef4444;
+  font-weight:700;
+  flex-shrink:0;
+  font-size:1rem;
+}
+.comparison-card.active-defense ul li::before{
+  content:'✓';
+  color:#10b981;
+  font-weight:700;
+  flex-shrink:0;
+  font-size:1rem;
+}
+.flow-section{
+  max-width:1000px;
+  margin:24px auto;
+}
+.flow-steps{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:20px;
+  margin-top:20px;
+}
+.flow-step{
+  text-align:center;
+  background:rgba(106,166,255,0.05);
+  border:1px solid rgba(106,166,255,0.2);
+  border-radius:10px;
+  padding:16px 12px;
+}
+.flow-step-number{
+  width:36px;
+  height:36px;
+  background:linear-gradient(135deg,#6AA6FF,#10b981);
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:1.1rem;
+  font-weight:800;
+  color:#fff;
+  margin:0 auto 10px;
+}
+.flow-step h5{
+  color:#fff;
+  font-size:0.9rem;
+  margin-bottom:6px;
+  font-weight:700;
+}
+.flow-step p{
+  color:var(--text-secondary);
+  font-size:0.75rem;
+  line-height:1.5;
+}
+.flow-time{
+  display:inline-block;
+  background:rgba(16,185,129,0.15);
+  border:1px solid rgba(16,185,129,0.3);
+  padding:4px 10px;
+  border-radius:16px;
+  font-size:0.7rem;
+  color:#10b981;
+  font-weight:700;
+  margin-top:8px;
+}
+.pricing-section{
+  background:rgba(5,8,15,0.5);
+  border-radius:10px;
+  padding:24px;
+}
+.pricing-section h2{
+  text-align:center;
+  font-size:1.6rem;
+  margin-bottom:20px;
+  color:#fff;
+  font-weight:800;
+}
+.pricing-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:20px;
+  margin-top:20px;
+}
+.pricing-card{
+  background:rgba(10,15,26,0.7);
+  border:2px solid rgba(106,166,255,0.3);
+  border-radius:10px;
+  padding:20px;
+  text-align:center;
+}
+.pricing-card.featured{
+  border-color:rgba(16,185,129,0.5);
+  background:linear-gradient(135deg,rgba(106,166,255,0.08),rgba(16,185,129,0.08));
+}
+.pricing-label{
+  display:inline-block;
+  background:rgba(106,166,255,0.15);
+  color:#6AA6FF;
+  padding:4px 10px;
+  border-radius:16px;
+  font-size:0.7rem;
+  font-weight:700;
+  margin-bottom:10px;
+}
+.pricing-card.featured .pricing-label{
+  background:linear-gradient(135deg,#6AA6FF,#10b981);
+  color:#fff;
+}
+.pricing-card h4{
+  color:#fff;
+  font-size:1.1rem;
+  margin-bottom:10px;
+  font-weight:800;
+}
+.pricing-card .price{
+  font-size:1.6rem;
+  font-weight:800;
+  background:linear-gradient(135deg,#6AA6FF,#10b981);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  margin-bottom:8px;
+}
+.pricing-card .price-detail{
+  color:var(--text-muted);
+  font-size:0.75rem;
+  margin-bottom:14px;
+}
+.pricing-card ul{
+  list-style:none;
+  padding:0;
+  margin:0 0 14px 0;
+  text-align:left;
+}
+.pricing-card ul li{
+  padding:5px 0;
+  color:var(--text-secondary);
+  font-size:0.8rem;
+  display:flex;
+  align-items:flex-start;
+  gap:8px;
+  line-height:1.5;
+}
+.pricing-card ul li::before{
+  content:'✓';
+  color:#10b981;
+  font-weight:700;
+  flex-shrink:0;
+  margin-top:2px;
+}
+.cta-section{
+  background:
+    linear-gradient(135deg,rgba(106,166,255,0.15),rgba(16,185,129,0.12)),
+    rgba(5,8,15,0.8);
+  border:2px solid rgba(16,185,129,0.4);
+  border-radius:12px;
+  padding:28px 24px;
+  text-align:center;
+  margin-top:32px;
+}
+.cta-section h2{
+  font-size:1.8rem;
+  margin-bottom:12px;
+  color:#fff;
+  font-weight:800;
+  line-height:1.2;
+}
+.cta-section .lead{
+  color:var(--text-secondary);
+  font-size:0.85rem;
+  max-width:750px;
+  margin:0 auto 20px;
+  line-height:1.5;
+}
+.free-badge{
+  display:inline-block;
+  background:linear-gradient(135deg,#6AA6FF,#10b981);
+  color:#fff;
+  padding:6px 14px;
+  border-radius:20px;
+  font-size:0.8rem;
+  font-weight:800;
+  margin-bottom:14px;
+  text-transform:uppercase;
+  letter-spacing:0.05em;
+}
+
+@media(max-width:768px){
+  section[style*="padding: 60px 0"]{ padding:40px 0 !important; }
+  div[style*="padding: 20px"]{ padding:16px !important; }
+  div[style*="gap: 20px"]{ gap:16px !important; }
+  div[style*="minmax(300px"]{ grid-template-columns:1fr !important; }
+}
+</style>
+
+<!-- JSON-LD 構造化データ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "ADCS - アクティブディフェンスサイバーセキュリティ",
+  "description": "国家レベルの攻撃的セキュリティ能力で組織を高度なデジタル脅威から保護。予測的脅威検知、先制防御、継続的な攻撃面監視を提供します。",
+  "brand": {
+    "@type": "Organization",
+    "name": "Avisail Technologies"
+  },
+  "offers": {
+    "@type": "Offer",
+    "availability": "https://schema.org/InStock"
+  },
+  "provider": {
+    "@type": "Organization",
+    "name": "Avisail Technologies",
+    "url": "https://avisail.com"
+  }
+}
+</script>
+</head>
+<body style="background:#0a0f1a;">
+
+<!-- Shared Header -->
+<div id="site-header"></div>
+
+<!-- Hero Section -->
+<section class="page-hero">
+<div class="wrap">
+<div class="hero-badge">
+🛡️ 中小企業・自治体向けセキュリティ
+</div>
+<h1>
+<span>従来の1/10のコストで</span><br>
+エンタープライズ級の<br>
+セキュリティを実現
+</h1>
+<p class="lead">
+Active Defense思想で再構築した完全自動化セキュリティサービス。<br>
+高額で手が出なかったセキュリティ対策を、中小企業・地方自治体でも導入可能な価格で提供。
+</p>
+
+<div class="hero-highlight">
+<p>
+<strong>従来：年間数百万円〜数千万円</strong><br>
+通常のセキュリティサービスは高額で、中小企業・自治体は導入できず、脅威に無防備な状態。
+</p>
+</div>
+
+<div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:40px;">
+<a href="#free-diagnosis" class="cta" style="font-size:1.2rem;padding:20px 52px;background:linear-gradient(135deg,#6AA6FF,#10b981);">今すぐ無料診断</a>
+<a href="#solution" class="btn" style="font-size:1.1rem;padding:20px 44px;">詳細を見る</a>
+</div>
+
+<div class="hero-stats">
+<div class="hero-stat">
+<div class="hero-stat-number">¥0</div>
+<div class="hero-stat-label">無料診断あり</div>
+</div>
+<div class="hero-stat">
+<div class="hero-stat-number">24時間</div>
+<div class="hero-stat-label">自動スキャン</div>
+</div>
+<div class="hero-stat">
+<div class="hero-stat-number">完全自動</div>
+<div class="hero-stat-label">人手不要</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- 2026年のセキュリティ状況 -->
+<section style="padding: 32px 0; background: linear-gradient(135deg, rgba(239, 68, 68, 0.08), rgba(10, 15, 26, 0.95));">
+  <div class="wrap">
+    <div style="text-align: center; margin-bottom: 24px;">
+      <div style="display: inline-block; background: rgba(239, 68, 68, 0.2); border: 2px solid rgba(239, 68, 68, 0.4); padding: 6px 14px; border-radius: 20px; margin-bottom: 12px;">
+        <span style="color: #ef4444; font-weight: 800; font-size: 0.75rem; letter-spacing: 0.05em;">⚠️ 2026年のセキュリティ脅威</span>
+      </div>
+      <h2 style="font-size: 1.8rem; margin-bottom: 12px; color: #fff; font-weight: 800; line-height: 1.15;">
+        今、企業を取り巻く<br>
+        <span style="background: linear-gradient(135deg, #ef4444, #f59e0b); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">セキュリティ環境は激変している</span>
+      </h2>
+      <p style="color: var(--text-secondary); font-size: 0.85rem; line-height: 1.5; max-width: 900px; margin: 0 auto;">
+        2026年、サイバー攻撃は質・量ともに激増。AI駆動型攻撃、サプライチェーン侵害、ランサムウェア2.0、ゼロデイ脆弱性の自動悪用が常態化。大企業の強固な防御を避け、セキュリティ投資が不足する中小企業・自治体・医療機関が主要標的に。従来の境界防御型セキュリティは完全に無効化され、被害企業の67%が事業継続不能に陥る深刻な状況です。
+      </p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-bottom: 24px;">
+      <!-- 統計1 -->
+      <div style="background: rgba(10, 15, 26, 0.7); border: 2px solid rgba(239, 68, 68, 0.3); border-radius: 10px; padding: 16px; text-align: center;">
+        <div style="font-size: 2rem; margin-bottom: 8px;">📈</div>
+        <div style="font-size: 2rem; font-weight: 800; color: #ef4444; margin-bottom: 6px;">145%</div>
+        <h4 style="color: #fff; font-size: 0.95rem; margin-bottom: 8px; font-weight: 700;">ランサムウェア攻撃の増加</h4>
+        <p style="color: var(--text-secondary); font-size: 0.8rem; line-height: 1.5;">
+          2025年比で中小企業への攻撃が急増。二重恐喝(データ暗号化+情報公開脅迫)が主流化。身代金要求平均額500万円超、支払後も3割が復号失敗。攻撃者はRaaS(Ransomware as a Service)で組織化・自動化され、標的選定から侵入まで完全AI化。
+        </p>
+      </div>
+
+      <!-- 統計2 -->
+      <div style="background: rgba(10, 15, 26, 0.7); border: 2px solid rgba(239, 68, 68, 0.3); border-radius: 10px; padding: 16px; text-align: center;">
+        <div style="font-size: 2rem; margin-bottom: 8px;">🎯</div>
+        <div style="font-size: 2rem; font-weight: 800; color: #ef4444; margin-bottom: 6px;">82%</div>
+        <h4 style="color: #fff; font-size: 0.95rem; margin-bottom: 8px; font-weight: 700;">対策なしの中小企業</h4>
+        <p style="color: var(--text-secondary); font-size: 0.8rem; line-height: 1.5;">
+          予算不足により8割以上が適切な対策未実施。専任セキュリティ担当者不在、脆弱性管理なし、バックアップ未整備、インシデント対応計画なし。攻撃者は公開情報から脆弱な企業を自動スキャンで特定し優先攻撃。サプライチェーン経由で大企業侵入の踏み台に。
+        </p>
+      </div>
+
+      <!-- 統計3 -->
+      <div style="background: rgba(10, 15, 26, 0.7); border: 2px solid rgba(239, 68, 68, 0.3); border-radius: 10px; padding: 16px; text-align: center;">
+        <div style="font-size: 2rem; margin-bottom: 8px;">💰</div>
+        <div style="font-size: 2rem; font-weight: 800; color: #ef4444; margin-bottom: 6px;">3,200万円</div>
+        <h4 style="color: #fff; font-size: 0.95rem; margin-bottom: 8px; font-weight: 700;">平均被害額</h4>
+        <p style="color: var(--text-secondary); font-size: 0.8rem; line-height: 1.5;">
+          情報漏洩・システム停止による直接損失に加え、事業機会損失、顧客信頼喪失、法的責任、コンプライアンス違反罰金が複合。復旧期間平均21日、その間の完全事業停止。被害企業の43%が1年以内に廃業、67%が深刻な経営危機に直面。
+        </p>
+      </div>
+    </div>
+
+    <!-- 2026年の主要脅威 -->
+    <div style="background: rgba(5, 8, 15, 0.8); border: 2px solid rgba(239, 68, 68, 0.3); border-radius: 10px; padding: 24px; margin-bottom: 24px;">
+      <h3 style="text-align: center; font-size: 1.5rem; margin-bottom: 20px; color: #fff; font-weight: 800;">2026年の主要セキュリティ脅威（技術詳細）</h3>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px;">
+        <div style="background: rgba(239, 68, 68, 0.08); border: 1px solid rgba(239, 68, 68, 0.25); border-radius: 8px; padding: 16px;">
+          <h4 style="color: #ef4444; font-size: 0.95rem; margin-bottom: 8px; font-weight: 700;">🤖 AI駆動型攻撃</h4>
+          <p style="color: var(--text-secondary); font-size: 0.8rem; line-height: 1.5;">
+            GPT-4/Claude等の大規模言語モデルを悪用した高精度スピアフィッシング(成功率78%)、DeepFake音声・映像による経営者なりすまし、機械学習による脆弱性自動発見・悪用(0-day攻撃の産業化)、AIボットによる24時間連続攻撃試行。従来のシグネチャベース検知は完全無効化。行動分析・異常検知型防御が必須に。
+          </p>
+        </div>
+
+        <div style="background: rgba(239, 68, 68, 0.08); border: 1px solid rgba(239, 68, 68, 0.25); border-radius: 8px; padding: 16px;">
+          <h4 style="color: #ef4444; font-size: 0.95rem; margin-bottom: 8px; font-weight: 700;">🔗 サプライチェーン攻撃</h4>
+          <p style="color: var(--text-secondary); font-size: 0.8rem; line-height: 1.5;">
+            大企業直接攻撃は困難なため、セキュリティ投資不足の取引先・協力会社経由で侵入。SolarWinds型の信頼された更新経路悪用、オープンソースライブラリへのバックドア混入(Log4Shell等)、VPN/EDR等セキュリティツール自体の脆弱性悪用。被害は連鎖的に拡大、サプライチェーン全体が停止。中小企業は取引先から契約解除のリスク。
+          </p>
+        </div>
+
+        <div style="background: rgba(239, 68, 68, 0.08); border: 1px solid rgba(239, 68, 68, 0.25); border-radius: 8px; padding: 16px;">
+          <h4 style="color: #ef4444; font-size: 0.95rem; margin-bottom: 8px; font-weight: 700;">📱 ハイブリッドワーク攻撃面拡大</h4>
+          <p style="color: var(--text-secondary); font-size: 0.8rem; line-height: 1.5;">
+            境界防御崩壊により攻撃面が指数関数的拡大。VPN脆弱性(CVE-2023-XXXX系)、誤設定されたクラウドストレージ(S3バケット等)からの大規模情報漏洩、Shadow IT(未承認SaaS利用)経由の侵入、BYOD端末のマルウェア感染、公共WiFi経由の中間者攻撃。ゼロトラストアーキテクチャ未実装組織は全面的に脆弱。
+          </p>
+        </div>
+
+        <div style="background: rgba(239, 68, 68, 0.08); border: 1px solid rgba(239, 68, 68, 0.25); border-radius: 8px; padding: 16px;">
+          <h4 style="color: #ef4444; font-size: 0.95rem; margin-bottom: 8px; font-weight: 700;">⚖️ コンプライアンス・法規制強化</h4>
+          <p style="color: var(--text-secondary); font-size: 0.8rem; line-height: 1.5;">
+            改正個人情報保護法(漏洩時の報告義務・罰金最大1億円)、EU NIS2指令(重要インフラ企業への厳格要件)、GDPR違反罰金(全世界売上の4%または2000万ユーロ)、米国CMMC(国防総省サプライチェーン認証必須化)。対策未実施は法的責任・取引資格喪失・株主代表訴訟リスク。経営者個人の刑事責任も。
+          </p>
+        </div>
+
+        <div style="background: rgba(239, 68, 68, 0.08); border: 1px solid rgba(239, 68, 68, 0.25); border-radius: 8px; padding: 16px;">
+          <h4 style="color: #ef4444; font-size: 0.95rem; margin-bottom: 8px; font-weight: 700;">🌐 IoT/OT環境への侵入</h4>
+          <p style="color: var(--text-secondary); font-size: 0.8rem; line-height: 1.5;">
+            産業制御システム(SCADA/PLC)、医療機器、ビル管理システム等のIoT/OT機器は設計段階でセキュリティ未考慮。Mirai型ボットネット、Stuxnet類似のマルウェアによる物理設備破壊、製造ライン停止。パッチ適用困難、可視化不足、IT/OT境界防御の欠如が致命的。
+          </p>
+        </div>
+
+        <div style="background: rgba(239, 68, 68, 0.08); border: 1px solid rgba(239, 68, 68, 0.25); border-radius: 8px; padding: 16px;">
+          <h4 style="color: #ef4444; font-size: 0.95rem; margin-bottom: 8px; font-weight: 700;">💉 ソーシャルエンジニアリング高度化</h4>
+          <p style="color: var(--text-secondary); font-size: 0.8rem; line-height: 1.5;">
+            OSINTツール(Maltego/Shodan/TheHarvester)で標的の詳細情報を自動収集し、AI生成の完璧に個人化されたフィッシングメール作成。LinkedIn/SNS情報から組織構造・人間関係を把握、BEC(ビジネスメール詐欺)で平均被害額1,200万円。MFA(多要素認証)突破手法も確立。人的脆弱性が最大の攻撃ベクトルに。
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 自社チェックシート CTA -->
+    <div style="background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(106, 166, 255, 0.12)); border: 3px solid rgba(16, 185, 129, 0.4); border-radius: 10px; padding: 24px; text-align: center;">
+      <div style="display: inline-block; background: linear-gradient(135deg, #10b981, #7ef0d4); padding: 5px 12px; border-radius: 6px; margin-bottom: 12px;">
+        <span style="color: #0a0f1a; font-weight: 800; font-size: 0.75rem; letter-spacing: 0.05em;">📋 無料チェックシート配布中</span>
+      </div>
+      <h3 style="font-size: 1.5rem; margin-bottom: 10px; color: #fff; font-weight: 800;">
+        貴社のセキュリティリスクを今すぐ診断
+      </h3>
+      <p style="color: var(--text-secondary); font-size: 0.85rem; line-height: 1.5; margin-bottom: 16px; max-width: 850px; margin-left: auto; margin-right: auto;">
+        <strong style="color: #10b981;">3分で完了する自己診断シート</strong>を無料提供。アタックサーフェス可視化、脆弱性優先順位付け、NIST CSF/ISO27001準拠度確認、コンプライアンスギャップ分析、インシデント対応成熟度評価を網羅。即座に改善アクションプランを取得できます。
+      </p>
+
+      <div style="background: rgba(10, 15, 26, 0.6); border: 1px solid rgba(106, 166, 255, 0.3); border-radius: 10px; padding: 16px; max-width: 750px; margin: 0 auto 16px;">
+        <h4 style="color: #fff; font-size: 0.95rem; margin-bottom: 12px; font-weight: 700;">チェックシートの詳細内容（65項目）</h4>
+        <ul style="list-style: none; padding: 0; margin: 0; text-align: left; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 8px;">
+          <li style="padding: 6px 0; color: var(--text-secondary); font-size: 0.8rem; display: flex; align-items: flex-start; gap: 8px; border-bottom: 1px solid var(--line);">
+            <span style="color: #10b981; font-weight: 700; flex-shrink: 0;">✓</span>
+            <span>外部公開資産の完全把握(ドメイン・サブドメイン・IP・ポート・サービス・SSL証明書・DNSレコード)</span>
+          </li>
+          <li style="padding: 6px 0; color: var(--text-secondary); font-size: 0.8rem; display: flex; align-items: flex-start; gap: 8px; border-bottom: 1px solid var(--line);">
+            <span style="color: #10b981; font-weight: 700; flex-shrink: 0;">✓</span>
+            <span>ネットワークセグメンテーション・ファイアウォールルール・VPN構成・DMZ設計の適切性評価</span>
+          </li>
+          <li style="padding: 6px 0; color: var(--text-secondary); font-size: 0.8rem; display: flex; align-items: flex-start; gap: 8px; border-bottom: 1px solid var(--line);">
+            <span style="color: #10b981; font-weight: 700; flex-shrink: 0;">✓</span>
+            <span>IAM(ID管理)・MFA実装状況・特権アカウント管理・パスワードポリシー・最小権限原則遵守</span>
+          </li>
+          <li style="padding: 6px 0; color: var(--text-secondary); font-size: 0.8rem; display: flex; align-items: flex-start; gap: 8px; border-bottom: 1px solid var(--line);">
+            <span style="color: #10b981; font-weight: 700; flex-shrink: 0;">✓</span>
+            <span>脆弱性管理プロセス・パッチ適用サイクル・EOL製品使用状況・ゼロデイ対応体制</span>
+          </li>
+          <li style="padding: 6px 0; color: var(--text-secondary); font-size: 0.8rem; display: flex; align-items: flex-start; gap: 8px; border-bottom: 1px solid var(--line);">
+            <span style="color: #10b981; font-weight: 700; flex-shrink: 0;">✓</span>
+            <span>エンドポイント保護(EDR/XDR)・アンチウイルス・ホストベースファイアウォール・USB制御</span>
+          </li>
+          <li style="padding: 6px 0; color: var(--text-secondary); font-size: 0.8rem; display: flex; align-items: flex-start; gap: 8px; border-bottom: 1px solid var(--line);">
+            <span style="color: #10b981; font-weight: 700; flex-shrink: 0;">✓</span>
+            <span>セキュリティ監視(SIEM/SOC)・ログ収集分析・異常検知・脅威インテリジェンス活用</span>
+          </li>
+          <li style="padding: 6px 0; color: var(--text-secondary); font-size: 0.8rem; display: flex; align-items: flex-start; gap: 8px; border-bottom: 1px solid var(--line);">
+            <span style="color: #10b981; font-weight: 700; flex-shrink: 0;">✓</span>
+            <span>バックアップ戦略(3-2-1ルール)・オフライン保管・復元テスト・RPO/RTO定義</span>
+          </li>
+          <li style="padding: 6px 0; color: var(--text-secondary); font-size: 0.8rem; display: flex; align-items: flex-start; gap: 8px; border-bottom: 1px solid var(--line);">
+            <span style="color: #10b981; font-weight: 700; flex-shrink: 0;">✓</span>
+            <span>従業員セキュリティ意識・フィッシング訓練・インシデント報告手順・BYOD/Shadow ITポリシー</span>
+          </li>
+          <li style="padding: 6px 0; color: var(--text-secondary); font-size: 0.8rem; display: flex; align-items: flex-start; gap: 8px; border-bottom: 1px solid var(--line);">
+            <span style="color: #10b981; font-weight: 700; flex-shrink: 0;">✓</span>
+            <span>インシデント対応計画・CSIRT体制・プレイブック・演習実施・事後分析プロセス</span>
+          </li>
+          <li style="padding: 6px 0; color: var(--text-secondary); font-size: 0.8rem; display: flex; align-items: flex-start; gap: 8px;">
+            <span style="color: #10b981; font-weight: 700; flex-shrink: 0;">✓</span>
+            <span>クラウドセキュリティ(CASB・CSPM)・SaaS設定監査・データ暗号化・アクセス制御</span>
+          </li>
+        </ul>
+      </div>
+
+      <a href="../ja/contact.html?type=checklist" class="cta" style="display: inline-block; padding: 12px 32px; font-size: 0.95rem; background: linear-gradient(135deg, #10b981, #7ef0d4); text-decoration: none; border-radius: 6px; color: #0a0f1a; font-weight: 700;">
+        📥 無料チェックシートをダウンロード
+      </a>
+      <p style="color: var(--text-muted); font-size: 0.75rem; margin-top: 10px;">
+        メールアドレスの入力のみ • 即時ダウンロード • 営業連絡なし • NIST CSF/CIS Controls/ISO27001対応
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Problem Section -->
+<section>
+<div class="wrap">
+<div class="problem-section">
+<h2>中小企業・自治体が直面する現実</h2>
+<p class="subtitle">
+セキュリティ対策が必要なのは分かっている。<br>
+しかし、高額すぎて導入できない。
+</p>
+
+<div class="problem-grid">
+<div class="problem-card">
+<div class="problem-icon">💰</div>
+<h4>高額すぎる従来サービス</h4>
+<p>
+年間数百万円〜数千万円のコストで、中小企業・自治体には手が出ない。予算がないため、セキュリティ対策を諦めている。
+</p>
+</div>
+
+<div class="problem-card">
+<div class="problem-icon">⚠️</div>
+<h4>無防備な状態</h4>
+<p>
+対策がないまま運用を続けるしかなく、いつ攻撃されてもおかしくない。事故が起きてから気づくのでは遅い。
+</p>
+</div>
+
+<div class="problem-card">
+<div class="problem-icon">🔍</div>
+<h4>現状把握すらできない</h4>
+<p>
+自社のセキュリティ状況がどうなっているのか、どこに穴があるのか全く分からない。何から手をつければいいのか不明。
+</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Solution -->
+<section id="solution">
+<div class="wrap">
+<div class="solution-section">
+<h2>ADCSが全てを解決</h2>
+<p class="lead-text">
+Active Defense思想で再構築し、AIと自動化、海外パートナー活用により<br>
+<strong style="color:#fff;font-size:1.3rem;">従来の1/10のコストを実現</strong>
+</p>
+
+<div class="features-grid">
+<div class="feature-box">
+<div class="feature-icon">🤖</div>
+<h4>AI完全自動化（人件費90%削減）</h4>
+<p>
+機械学習エンジンによる自動脆弱性スキャン(Nmap/Nessus/OpenVAS統合)、GPT-4ベースのレポート自動生成、CVSSスコアリング・MITRE ATT&CK分類・修復優先順位付けを完全自動化。24時間365日連続監視、新規CVE公開後1時間以内に影響度自動評価。人的介入不要で運用コスト90%削減、専任セキュリティ担当者不要に。
+</p>
+</div>
+
+<div class="feature-box">
+<div class="feature-icon">🌏</div>
+<h4>グローバルSOC活用（専門家費用80%削減）</h4>
+<p>
+東欧・インド・東南アジアの世界トップクラスCEH/OSCP/GIAC保有セキュリティエンジニアを時差活用し24時間カバレッジ。国内人件費の1/5でCISSP/CISM級の高度専門性を提供。言語障壁はAI翻訳で完全解消、技術コミュニケーションは国際標準(CVSS/CWE/OWASP)準拠で齟齬なし。
+</p>
+</div>
+
+<div class="feature-box">
+<div class="feature-icon">🔍</div>
+<h4>先制的脅威ハンティング（攻撃前検知）</h4>
+<p>
+受動的防御ではなくActive Defense思想で攻撃者視点の事前脅威検知。OSINT(Shodan/Censys/VirusTotal/Pastebin)で漏洩情報自動監視、ダークウェブ監視(Tor/I2P)で自社データ売買を検出、アタックサーフェスマッピングで攻撃経路を先回り。侵害の痕跡(IoC)を脅威インテリジェンスと照合し、攻撃準備段階で阻止。
+</p>
+</div>
+
+<div class="feature-box">
+<parameter name="new_string"><div class="feature-icon">📊</div>
+<h4>実行可能な改善ロードマップ生成</h4>
+<p>
+NIST CSF/CIS Controls/ISO27001との現状ギャップを定量評価(成熟度レベル0-5)、費用対効果・実装難易度・リスク低減効果をマトリクス分析し最適な改善順序を自動提案。Quick Wins(低コスト高効果)から優先実装、段階的成熟度向上計画を3ヶ月/6ヶ月/12ヶ月で提示。経営層向けROI試算付き。
+</p>
+</div>
+
+<div class="feature-box">
+<div class="feature-icon">🔧</div>
+<h4>自動修復スクリプト・プレイブック提供</h4>
+<p>
+発見された脆弱性に対し、Ansible/Terraform/PowerShellの即実行可能な修復スクリプトを自動生成。Linux/Windows/Cloud(AWS/Azure/GCP)環境別に最適化、ロールバック手順も含む安全設計。非技術者でもワンクリック実行可能なGUI提供、変更前後の自動検証で安全性保証。CVE修正パッチの自動適用、誤設定の一括修正に対応。
+</p>
+</div>
+
+<div class="feature-box">
+<div class="feature-icon">🤝</div>
+<h4>マネージドセキュリティサービス(MSS)対応</h4>
+<p>
+自社リソース不足時は海外パートナーSOCによるフルマネージド対応可能。24/7 SOC監視、インシデントレスポンス、フォレンジック調査、脅威ハンティング、コンプライアンス監査対応を国内の1/3コストで提供。SLA保証(MTTDMean Time To Detect] 15分、MTTR 2時間)、日本語レポート完備。
+</p>
+</div>
+
+<div class="feature-box">
+<div class="feature-icon">🛡️</div>
+<h4>継続的コンプライアンス監視</h4>
+<p>
+個人情報保護法・GDPR・HIPAA・PCI DSS・SOC2等の規制要件を自動マッピング、設定変更・新規資産追加を即座に検知しコンプライアンス違反を未然防止。監査証跡を自動収集・保管(改ざん検知付き)、監査対応工数を95%削減。法改正時は自動で新要件を反映、常に最新規制に準拠。
+</p>
+</div>
+
+<div class="feature-box">
+<div class="feature-icon">🎯</div>
+<h4>攻撃シミュレーション・侵入テスト</h4>
+<p>
+MITRE ATT&CKフレームワークに基づく自動侵入テスト(BAS: Breach and Attack Simulation)を定期実行。実際の攻撃手法(フィッシング・権限昇格・横展開・データ窃取)を安全に再現し防御能力を検証。レッドチーム演習をAI自動化、検出ルールの有効性を継続評価。攻撃者の視点で真の脆弱性を発見。
+</p>
+</div>
+
+<div class="feature-box">
+<div class="feature-icon">📡</div>
+<h4>脅威インテリジェンス統合</h4>
+<p>
+グローバル脅威インテリジェンス(AlienVault OTX/MISP/Anomali)をリアルタイム統合、新規IoC(侵害の痕跡)を即座に自社環境で検索。APT(持続的標的型攻撃)グループの戦術・ツール・標的情報を先行入手、業界特化型脅威(医療・金融・製造)に特化した早期警戒。ゼロデイ脆弱性公開時に自動影響度評価。
+</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Active Defense Philosophy -->
+<section style="background:rgba(5,8,15,0.3);">
+<div class="wrap">
+<div class="ad-philosophy">
+<h2>Active Defenseとは</h2>
+
+<div class="ad-comparison">
+<div class="comparison-card traditional">
+<h4>従来のセキュリティ</h4>
+<ul>
+<li>攻撃を受けてから対応</li>
+<li>リアルタイム監視に高額な人件費</li>
+<li>複雑なツールで現場が使いこなせない</li>
+<li>中小企業には手が出ない価格</li>
+<li>導入後のサポートコストが高額</li>
+</ul>
+</div>
+
+<div class="comparison-card active-defense">
+<h4>Active Defense (ADCS)</h4>
+<ul>
+<li>攻撃が来る前に脅威を検知</li>
+<li>完全自動化で人件費ゼロ</li>
+<li>シンプルで誰でも理解できるレポート</li>
+<li>従来の1/10のコスト</li>
+<li>継続的な自動監視で安心</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Competitive Comparison -->
+<section>
+<div class="wrap">
+<h2 style="text-align:center;">競合比較</h2>
+<p style="text-align:center;color:var(--text-muted);font-size:1.1rem;margin-bottom:48px;max-width:750px;margin-left:auto;margin-right:auto;">
+客観的なデータで、Avisail ADCSの優位性をご確認ください
+</p>
+
+<div style="overflow-x:auto;">
+<table style="width:100%;max-width:1000px;margin:0 auto;border-collapse:collapse;background:rgba(10,15,26,0.6);border-radius:14px;overflow:hidden;">
+<thead>
+<tr style="background:linear-gradient(135deg,rgba(106,166,255,0.15),rgba(16,185,129,0.12));">
+<th style="padding:20px;text-align:left;color:#fff;font-size:1.05rem;font-weight:700;border-bottom:2px solid rgba(106,166,255,0.3);">比較項目</th>
+<th style="padding:20px;text-align:center;color:#10b981;font-size:1.05rem;font-weight:700;border-bottom:2px solid rgba(106,166,255,0.3);">Avisail ADCS</th>
+<th style="padding:20px;text-align:center;color:var(--text-muted);font-size:1.05rem;font-weight:700;border-bottom:2px solid rgba(106,166,255,0.3);">大手A社</th>
+<th style="padding:20px;text-align:center;color:var(--text-muted);font-size:1.05rem;font-weight:700;border-bottom:2px solid rgba(106,166,255,0.3);">中堅B社</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="padding:18px 20px;color:var(--text-secondary);border-bottom:1px solid var(--line);">月額料金</td>
+<td style="padding:18px 20px;text-align:center;color:#10b981;font-weight:700;font-size:1.1rem;border-bottom:1px solid var(--line);">¥30,000〜</td>
+<td style="padding:18px 20px;text-align:center;color:var(--text-muted);border-bottom:1px solid var(--line);">¥500,000〜</td>
+<td style="padding:18px 20px;text-align:center;color:var(--text-muted);border-bottom:1px solid var(--line);">¥200,000〜</td>
+</tr>
+<tr>
+<td style="padding:18px 20px;color:var(--text-secondary);border-bottom:1px solid var(--line);">自動化レベル</td>
+<td style="padding:18px 20px;text-align:center;color:#10b981;font-weight:700;border-bottom:1px solid var(--line);">完全自動</td>
+<td style="padding:18px 20px;text-align:center;color:var(--text-muted);border-bottom:1px solid var(--line);">一部手動</td>
+<td style="padding:18px 20px;text-align:center;color:var(--text-muted);border-bottom:1px solid var(--line);">手動主体</td>
+</tr>
+<tr>
+<td style="padding:18px 20px;color:var(--text-secondary);border-bottom:1px solid var(--line);">導入期間</td>
+<td style="padding:18px 20px;text-align:center;color:#10b981;font-weight:700;border-bottom:1px solid var(--line);">即日</td>
+<td style="padding:18px 20px;text-align:center;color:var(--text-muted);border-bottom:1px solid var(--line);">2〜4週間</td>
+<td style="padding:18px 20px;text-align:center;color:var(--text-muted);border-bottom:1px solid var(--line);">1〜2週間</td>
+</tr>
+<tr>
+<td style="padding:18px 20px;color:var(--text-secondary);border-bottom:1px solid var(--line);">無料診断</td>
+<td style="padding:18px 20px;text-align:center;color:#10b981;font-weight:700;border-bottom:1px solid var(--line);">✓ あり</td>
+<td style="padding:18px 20px;text-align:center;color:var(--text-muted);border-bottom:1px solid var(--line);">✕ なし</td>
+<td style="padding:18px 20px;text-align:center;color:var(--text-muted);border-bottom:1px solid var(--line);">✕ なし</td>
+</tr>
+<tr>
+<td style="padding:18px 20px;color:var(--text-secondary);border-bottom:1px solid var(--line);">レポート生成</td>
+<td style="padding:18px 20px;text-align:center;color:#10b981;font-weight:700;border-bottom:1px solid var(--line);">自動・即時</td>
+<td style="padding:18px 20px;text-align:center;color:var(--text-muted);border-bottom:1px solid var(--line);">手動・1週間</td>
+<td style="padding:18px 20px;text-align:center;color:var(--text-muted);border-bottom:1px solid var(--line);">半自動・3日</td>
+</tr>
+<tr>
+<td style="padding:18px 20px;color:var(--text-secondary);border-bottom:1px solid var(--line);">サポート体制</td>
+<td style="padding:18px 20px;text-align:center;color:#10b981;font-weight:700;border-bottom:1px solid var(--line);">24/7自動</td>
+<td style="padding:18px 20px;text-align:center;color:var(--text-muted);border-bottom:1px solid var(--line);">平日9-18時</td>
+<td style="padding:18px 20px;text-align:center;color:var(--text-muted);border-bottom:1px solid var(--line);">平日9-18時</td>
+</tr>
+<tr>
+<td style="padding:18px 20px;color:var(--text-secondary);">自動修復機能</td>
+<td style="padding:18px 20px;text-align:center;color:#10b981;font-weight:700;">✓ あり</td>
+<td style="padding:18px 20px;text-align:center;color:var(--text-muted);">✕ なし</td>
+<td style="padding:18px 20px;text-align:center;color:var(--text-muted);">△ 有料</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div style="text-align:center;margin-top:48px;padding:32px;background:rgba(16,185,129,0.08);border:2px solid rgba(16,185,129,0.3);border-radius:14px;max-width:750px;margin-left:auto;margin-right:auto;">
+<h4 style="color:#10b981;font-size:1.4rem;margin-bottom:12px;font-weight:800;">コストパフォーマンス比較</h4>
+<p style="color:var(--text-secondary);font-size:1.05rem;line-height:1.8;">
+大手A社と比較して <strong style="color:#fff;font-size:1.3rem;">約17倍</strong>、中堅B社と比較して <strong style="color:#fff;font-size:1.3rem;">約7倍</strong> のコストパフォーマンス。<br>
+同等以上の機能を、圧倒的な低価格で提供します。
+</p>
+</div>
+</div>
+</section>
+
+<!-- ADCS評価レポートのサンプル画像 -->
+<section style="padding: 60px 0; background: linear-gradient(135deg, rgba(10, 15, 26, 0.95), rgba(5, 8, 15, 1));">
+  <div class="wrap">
+    <h2 style="text-align: center; margin-bottom: 12px;">ADCS評価レポートのサンプル</h2>
+    <p style="text-align: center; color: var(--text-secondary); font-size: 0.95rem; max-width: 650px; margin: 0 auto 40px; line-height: 1.6;">
+      実際に受け取れるレポート例：可視化されたレポートと実用的な洞察
+    </p>
+
+    <!-- レポートスクリーンショットグリッド -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+
+      <!-- アタックサーフェス可視化 -->
+      <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(126, 240, 212, 0.2); border-radius: 10px; padding: 20px;">
+        <div style="margin-bottom: 16px;">
+          <span style="background: rgba(239, 68, 68, 0.15); padding: 5px 12px; border-radius: 14px; font-size: 0.7rem; font-weight: 700; color: #ef4444; text-transform: uppercase; letter-spacing: 0.05em;">
+            アタックサーフェス
+          </span>
+        </div>
+
+        <div style="position: relative; width: 100%; aspect-ratio: 4 / 3; background: linear-gradient(135deg, rgba(239, 68, 68, 0.08), rgba(126, 240, 212, 0.03)); border: 2px dashed rgba(239, 68, 68, 0.3); border-radius: 6px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; margin-bottom: 12px;">
+          <svg width="36" height="36" fill="none" stroke="#ef4444" stroke-width="1.5" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="2" y1="12" x2="22" y2="12"></line>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+          </svg>
+          <p style="color: #ef4444; font-weight: 600; font-size: 0.8rem; margin: 0;">スクリーンショット追加が必要</p>
+        </div>
+
+        <p style="color: var(--text-secondary); font-size: 0.8rem; line-height: 1.5; margin: 0;">
+          外部から発見されたすべての公開サーバー、ポート、サービスを示すビジュアルマップ。
+        </p>
+      </div>
+
+      <!-- OSINT分析結果 -->
+      <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(126, 240, 212, 0.2); border-radius: 12px; padding: 28px;">
+        <div style="margin-bottom: 20px;">
+          <span style="background: rgba(106, 166, 255, 0.15); padding: 6px 14px; border-radius: 16px; font-size: 0.75rem; font-weight: 700; color: #6AA6FF; text-transform: uppercase; letter-spacing: 0.05em;">
+            OSINT分析
+          </span>
+        </div>
+
+        <div style="position: relative; width: 100%; aspect-ratio: 4 / 3; background: linear-gradient(135deg, rgba(106, 166, 255, 0.08), rgba(126, 240, 212, 0.03)); border: 2px dashed rgba(106, 166, 255, 0.3); border-radius: 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; margin-bottom: 20px;">
+          <svg width="48" height="48" fill="none" stroke="#6AA6FF" stroke-width="1.5" viewBox="0 0 24 24">
+            <circle cx="11" cy="11" r="8"></circle>
+            <path d="m21 21-4.35-4.35"></path>
+          </svg>
+          <p style="color: #6AA6FF; font-weight: 600; font-size: 0.9rem; margin: 0;">スクリーンショット追加が必要</p>
+        </div>
+
+        <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6; margin: 0;">
+          漏洩した情報、認証情報、潜在的な攻撃ベクトルを含むオープンソースインテリジェンスの調査結果。
+        </p>
+      </div>
+
+      <!-- リスク評価ダッシュボード -->
+      <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(126, 240, 212, 0.2); border-radius: 12px; padding: 28px;">
+        <div style="margin-bottom: 20px;">
+          <span style="background: rgba(126, 240, 212, 0.15); padding: 6px 14px; border-radius: 16px; font-size: 0.75rem; font-weight: 700; color: #7ef0d4; text-transform: uppercase; letter-spacing: 0.05em;">
+            リスクスコアリング
+          </span>
+        </div>
+
+        <div style="position: relative; width: 100%; aspect-ratio: 4 / 3; background: linear-gradient(135deg, rgba(126, 240, 212, 0.08), rgba(106, 166, 255, 0.03)); border: 2px dashed rgba(126, 240, 212, 0.3); border-radius: 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; margin-bottom: 20px;">
+          <svg width="48" height="48" fill="none" stroke="#7ef0d4" stroke-width="1.5" viewBox="0 0 24 24">
+            <line x1="18" y1="20" x2="18" y2="10"></line>
+            <line x1="12" y1="20" x2="12" y2="4"></line>
+            <line x1="6" y1="20" x2="6" y2="14"></line>
+          </svg>
+          <p style="color: #7ef0d4; font-weight: 600; font-size: 0.9rem; margin: 0;">スクリーンショット追加が必要</p>
+        </div>
+
+        <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6; margin: 0;">
+          深刻度レベル、影響評価、推奨される修復手順を含む優先順位付きリスクスコアリング。
+        </p>
+      </div>
+
+      <!-- インシデント対応プレイブック -->
+      <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(126, 240, 212, 0.2); border-radius: 12px; padding: 28px;">
+        <div style="margin-bottom: 20px;">
+          <span style="background: rgba(16, 185, 129, 0.15); padding: 6px 14px; border-radius: 16px; font-size: 0.75rem; font-weight: 700; color: #10b981; text-transform: uppercase; letter-spacing: 0.05em;">
+            対応計画
+          </span>
+        </div>
+
+        <div style="position: relative; width: 100%; aspect-ratio: 4 / 3; background: linear-gradient(135deg, rgba(16, 185, 129, 0.08), rgba(126, 240, 212, 0.03)); border: 2px dashed rgba(16, 185, 129, 0.3); border-radius: 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; margin-bottom: 20px;">
+          <svg width="48" height="48" fill="none" stroke="#10b981" stroke-width="1.5" viewBox="0 0 24 24">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+            <polyline points="14 2 14 8 20 8"></polyline>
+            <line x1="16" y1="13" x2="8" y2="13"></line>
+            <line x1="16" y1="17" x2="8" y2="17"></line>
+          </svg>
+          <p style="color: #10b981; font-weight: 600; font-size: 0.9rem; margin: 0;">スクリーンショット追加が必要</p>
+        </div>
+
+        <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6; margin: 0;">
+          貴社のアタックサーフェスとリスクプロファイルに合わせてカスタマイズされたインシデント対応ガイドライン。
+        </p>
+      </div>
+
+    </div>
+
+    <!-- スクリーンショット要件メモ -->
+    <div style="margin-top: 32px; padding: 20px; background: rgba(106, 166, 255, 0.08); border: 2px dashed rgba(106, 166, 255, 0.3); border-radius: 12px; text-align: center;">
+      <p style="color: #6AA6FF; font-weight: 600; margin-bottom: 8px; font-size: 0.9rem;">📸 スクリーンショット要件</p>
+      <p style="color: var(--text-muted); font-size: 0.8rem; margin: 0; line-height: 1.5;">
+        <strong>推奨サイズ:</strong> すべてのレポートスクリーンショットは1280x960px<br>
+        <strong>フォーマット:</strong> PNGまたは高品質JPG<br>
+        <strong>内容:</strong> アタックサーフェスマップ、OSINT調査結果、リスクスコアリングダッシュボード、インシデント対応テンプレートを示す実際のADCSレポートからの匿名化された例
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- Technical Advantage Infographic -->
+<section style="background:rgba(5,8,15,0.3);">
+<div class="wrap">
+<h2 style="text-align:center;">なぜ従来の1/10のコストを実現できるのか</h2>
+<p style="text-align:center;color:var(--text-muted);font-size:1.1rem;margin-bottom:56px;max-width:800px;margin-left:auto;margin-right:auto;">
+技術的な優位性により、高品質・低価格を両立
+</p>
+
+<div style="max-width:1000px;margin:0 auto;">
+<!-- Flow Diagram -->
+<div style="position:relative;background:rgba(10,15,26,0.6);border:2px solid rgba(106,166,255,0.25);border-radius:16px;padding:48px;margin-bottom:48px;">
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:32px;position:relative;">
+<!-- Step 1 -->
+<div style="text-align:center;">
+<div style="width:80px;height:80px;background:linear-gradient(135deg,#6AA6FF,#10b981);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:2.5rem;margin:0 auto 20px;">🤖</div>
+<h4 style="color:#fff;font-size:1.1rem;margin-bottom:12px;font-weight:700;">AI完全自動化</h4>
+<p style="color:var(--text-secondary);font-size:0.9rem;line-height:1.7;">診断・分析・レポート生成を全自動化。人件費ゼロで24/7稼働。</p>
+<div style="margin-top:16px;padding:8px 16px;background:rgba(16,185,129,0.15);border-radius:20px;display:inline-block;">
+<span style="color:#10b981;font-weight:700;font-size:0.85rem;">人件費 90%削減</span>
+</div>
+</div>
+
+<!-- Step 2 -->
+<div style="text-align:center;">
+<div style="width:80px;height:80px;background:linear-gradient(135deg,#6AA6FF,#10b981);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:2.5rem;margin:0 auto 20px;">🌏</div>
+<h4 style="color:#fff;font-size:1.1rem;margin-bottom:12px;font-weight:700;">グローバルネットワーク</h4>
+<p style="color:var(--text-secondary);font-size:0.9rem;line-height:1.7;">海外パートナー活用で専門家コストを大幅削減。国内の1/5の人件費。</p>
+<div style="margin-top:16px;padding:8px 16px;background:rgba(16,185,129,0.15);border-radius:20px;display:inline-block;">
+<span style="color:#10b981;font-weight:700;font-size:0.85rem;">専門家費用 80%削減</span>
+</div>
+</div>
+
+<!-- Step 3 -->
+<div style="text-align:center;">
+<div style="width:80px;height:80px;background:linear-gradient(135deg,#6AA6FF,#10b981);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:2.5rem;margin:0 auto 20px;">☁️</div>
+<h4 style="color:#fff;font-size:1.1rem;margin-bottom:12px;font-weight:700;">クラウドネイティブ</h4>
+<p style="color:var(--text-secondary);font-size:0.9rem;line-height:1.7;">オンプレミス不要。インフラコスト最小化と即座のスケーラビリティ。</p>
+<div style="margin-top:16px;padding:8px 16px;background:rgba(16,185,129,0.15);border-radius:20px;display:inline-block;">
+<span style="color:#10b981;font-weight:700;font-size:0.85rem;">インフラ費用 85%削減</span>
+</div>
+</div>
+</div>
+
+<!-- Arrow to Result -->
+<div style="text-align:center;margin:32px 0;">
+<svg width="60" height="60" viewBox="0 0 60 60" style="opacity:0.3;">
+<path d="M30 10 L30 50 M20 40 L30 50 L40 40" stroke="#10b981" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</div>
+
+<!-- Result -->
+<div style="text-align:center;padding:32px;background:linear-gradient(135deg,rgba(16,185,129,0.15),rgba(106,166,255,0.12));border-radius:14px;">
+<h3 style="color:#fff;font-size:2rem;margin-bottom:12px;font-weight:800;">結果</h3>
+<div style="font-size:3.5rem;font-weight:800;background:linear-gradient(135deg,#6AA6FF,#10b981);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:16px;">
+従来の1/10
+</div>
+<p style="color:var(--text-secondary);font-size:1.15rem;line-height:1.7;">
+同等以上の品質を、圧倒的な低価格で実現。<br>
+<strong style="color:#fff;">中小企業・自治体でも導入可能な価格帯</strong>
+</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Flow -->
+<section>
+<div class="wrap">
+<div class="flow-section">
+<h2 style="text-align:center;">導入の流れ</h2>
+<p style="text-align:center;color:var(--text-muted);font-size:1.1rem;margin-bottom:48px;max-width:700px;margin-left:auto;margin-right:auto;">
+<strong style="color:#fff;">完全自動化・フォロー不要</strong><br>
+技術的な知識がなくても安心して始められます
+</p>
+
+<div class="flow-steps">
+<div class="flow-step">
+<div class="flow-step-number">1</div>
+<h5>無料診断申込</h5>
+<p>
+フォームから申込。メールアドレスとドメイン名のみで診断開始。
+</p>
+<span class="flow-time">⏱ 1分</span>
+</div>
+
+<div class="flow-step">
+<div class="flow-step-number">2</div>
+<h5>自動スキャン実施</h5>
+<p>
+AIが自動的にセキュリティ診断を実施。完全自動で人手不要。
+</p>
+<span class="flow-time">⏱ 24時間以内</span>
+</div>
+
+<div class="flow-step">
+<div class="flow-step-number">3</div>
+<h5>レポート配信</h5>
+<p>
+詳細なセキュリティレポートをPDFで自動生成し、メールで配信。
+</p>
+<span class="flow-time">⏱ 自動送信</span>
+</div>
+
+<div class="flow-step">
+<div class="flow-step-number">4</div>
+<h5>オプション選択</h5>
+<p>
+月次監視サブスクまたは個別改善サービスを選択。不要なら終了でOK。
+</p>
+<span class="flow-time">⏱ 任意</span>
+</div>
+
+<div class="flow-step">
+<div class="flow-step-number">5</div>
+<h5>支払い・開始</h5>
+<p>
+Stripe自動決済でサービス開始。継続的な監視と改善提案を受けられます。
+</p>
+<span class="flow-time">⏱ 即時</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- CTA Banner: 無料診断 -->
+<section style="padding: 80px 0; background: linear-gradient(135deg, rgba(106, 166, 255, 0.12), rgba(16, 185, 129, 0.08));">
+  <div class="wrap" style="max-width: 900px;">
+    <div style="text-align: center; padding: 60px 48px; background: rgba(10, 15, 26, 0.7); border: 2px solid rgba(16, 185, 129, 0.4); border-radius: 16px; backdrop-filter: blur(10px);">
+      <div style="display: inline-block; background: linear-gradient(135deg, #10b981, #7ef0d4); padding: 14px 24px; border-radius: 8px; margin-bottom: 24px; color: #0a0f1a; font-weight: 700; font-size: 0.9rem; letter-spacing: 0.05em;">
+        期間限定オファー
+      </div>
+      <h3 style="font-size: 2rem; margin-bottom: 16px; color: #fff;">
+        貴社のセキュリティ診断を無料で実施
+      </h3>
+      <p style="color: var(--text-secondary); font-size: 1.15rem; line-height: 1.7; margin-bottom: 32px; max-width: 700px; margin-left: auto; margin-right: auto;">
+        通常5万円相当の包括的なセキュリティ診断を完全無料で提供。攻撃者より先に脆弱性を発見しましょう。
+      </p>
+      <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+        <a href="../ja/contact.html" class="cta" style="padding: 20px 48px; font-size: 1.15rem; background: linear-gradient(135deg, #10b981, #7ef0d4);">
+          無料診断を申し込む
+        </a>
+        <a href="#pricing" class="btn" style="padding: 20px 48px; font-size: 1.15rem;">
+          料金を見る
+        </a>
+      </div>
+      <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 20px;">
+        クレジットカード不要 • 48時間以内に結果 • 契約義務なし
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Pricing -->
+<section style="background:rgba(5,8,15,0.3);">
+<div class="wrap">
+<div class="pricing-section">
+<h2>料金プラン</h2>
+<p style="text-align:center;color:var(--text-secondary);font-size:1.1rem;max-width:700px;margin:0 auto 48px;line-height:1.8;">
+従来の1/10のコスト。中小企業・自治体でも導入可能な価格設計。
+</p>
+
+<div class="pricing-grid">
+<div class="pricing-card">
+<div class="pricing-label">スタート</div>
+<h4>無料診断</h4>
+<div class="price">¥0</div>
+<div class="price-detail">完全無料</div>
+<ul>
+<li>セキュリティ状況の可視化</li>
+<li>脆弱性の自動検出</li>
+<li>詳細PDFレポート</li>
+<li>改善提案</li>
+<li>リスクレベル評価</li>
+</ul>
+<a href="#free-diagnosis" class="cta" style="width:100%;text-align:center;display:inline-block;">今すぐ無料診断</a>
+</div>
+
+<div class="pricing-card featured">
+<div class="pricing-label">おすすめ</div>
+<h4>月次監視サブスク</h4>
+<div class="price">¥30,000〜</div>
+<div class="price-detail">月額</div>
+<ul>
+<li>月次自動セキュリティスキャン</li>
+<li>継続的な脅威監視</li>
+<li>毎月のレポート配信</li>
+<li>改善提案の更新</li>
+<li>自動修復スクリプト提供</li>
+<li>優先サポート</li>
+</ul>
+<a href="#contact" class="cta" style="width:100%;text-align:center;display:inline-block;background:linear-gradient(135deg,#6AA6FF,#10b981);">お問い合わせ</a>
+</div>
+
+<div class="pricing-card">
+<div class="pricing-label">フルサポート</div>
+<h4>個別改善サービス</h4>
+<div class="price">要見積</div>
+<div class="price-detail">案件ごと</div>
+<ul>
+<li>海外パートナーによる改善代行</li>
+<li>脆弱性の完全修復</li>
+<li>セキュリティ体制の構築支援</li>
+<li>カスタム対応</li>
+<li>専任担当者配置</li>
+<li>24時間サポート</li>
+</ul>
+<a href="#contact" class="btn" style="width:100%;text-align:center;display:inline-block;">相談する</a>
+</div>
+</div>
+
+<div style="text-align:center;margin-top:56px;padding:40px;background:rgba(16,185,129,0.08);border:2px solid rgba(16,185,129,0.3);border-radius:14px;max-width:800px;margin-left:auto;margin-right:auto;">
+<h4 style="color:#10b981;font-size:1.5rem;margin-bottom:16px;font-weight:800;">従来の1/10のコスト</h4>
+<p style="color:var(--text-secondary);font-size:1.1rem;line-height:1.8;margin:0;">
+大手セキュリティサービスの年間数百万円に対し、<br>
+ADCSは月額3万円〜でエンタープライズ級の対策を実現。<br>
+<strong style="color:#fff;">AIと自動化、海外パートナー活用で圧倒的なコストパフォーマンス。</strong>
+</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- その他のセキュリティサービス -->
+<section style="padding: 80px 0; background: rgba(5, 8, 15, 0.5);">
+  <div class="wrap">
+    <div style="text-align: center; margin-bottom: 60px;">
+      <h2 style="font-size: 2.5rem; margin-bottom: 20px; color: #fff; font-weight: 800;">
+        包括的なセキュリティサービス
+      </h2>
+      <p style="color: var(--text-secondary); font-size: 1.15rem; line-height: 1.8; max-width: 800px; margin: 0 auto;">
+        ADCSに加えて、海外パートナーを活用した様々なセキュリティサービスを提供。<br>
+        <strong style="color: #10b981;">基本的なセキュリティニーズを全て網羅</strong>し、ワンストップで対応可能です。
+      </p>
+    </div>
+
+    <!-- サービス一覧テーブル -->
+    <div style="overflow-x: auto; margin-bottom: 48px;">
+      <table style="width: 100%; max-width: 1200px; margin: 0 auto; border-collapse: collapse; background: rgba(10, 15, 26, 0.7); border-radius: 14px; overflow: hidden;">
+        <thead>
+          <tr style="background: linear-gradient(135deg, rgba(106, 166, 255, 0.15), rgba(16, 185, 129, 0.12));">
+            <th style="padding: 24px; text-align: left; color: #fff; font-size: 1.05rem; font-weight: 700; border-bottom: 2px solid rgba(106, 166, 255, 0.3);">サービス名</th>
+            <th style="padding: 24px; text-align: left; color: #fff; font-size: 1.05rem; font-weight: 700; border-bottom: 2px solid rgba(106, 166, 255, 0.3);">内容</th>
+            <th style="padding: 24px; text-align: center; color: #fff; font-size: 1.05rem; font-weight: 700; border-bottom: 2px solid rgba(106, 166, 255, 0.3);">納期目安</th>
+            <th style="padding: 24px; text-align: right; color: #fff; font-size: 1.05rem; font-weight: 700; border-bottom: 2px solid rgba(106, 166, 255, 0.3);">参考価格</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- ADCS基本サービス（再掲） -->
+          <tr style="background: rgba(16, 185, 129, 0.08);">
+            <td style="padding: 24px; color: #fff; font-weight: 700; border-bottom: 1px solid var(--line);">
+              ADCS評価<br>
+              <span style="font-size: 0.75rem; color: #10b981; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;">おすすめ</span>
+            </td>
+            <td style="padding: 24px; color: var(--text-secondary); border-bottom: 1px solid var(--line); line-height: 1.7;">
+              AIによる完全自動化セキュリティ評価。攻撃面の可視化、脅威検知、改善提案を含む包括的なレポート。
+            </td>
+            <td style="padding: 24px; text-align: center; color: var(--text-secondary); border-bottom: 1px solid var(--line);">24時間</td>
+            <td style="padding: 24px; text-align: right; color: #10b981; font-weight: 700; font-size: 1.15rem; border-bottom: 1px solid var(--line);">無料〜¥30,000/月</td>
+          </tr>
+
+          <!-- ペネトレーションテスト -->
+          <tr>
+            <td style="padding: 24px; color: #fff; font-weight: 700; border-bottom: 1px solid var(--line);">ペネトレーションテスト</td>
+            <td style="padding: 24px; color: var(--text-secondary); border-bottom: 1px solid var(--line); line-height: 1.7;">
+              実際の攻撃者の視点から、システムに侵入を試みる実践的なセキュリティテスト。Web・ネットワーク・アプリケーション対応。
+            </td>
+            <td style="padding: 24px; text-align: center; color: var(--text-secondary); border-bottom: 1px solid var(--line);">2〜4週間</td>
+            <td style="padding: 24px; text-align: right; color: var(--text-muted); font-weight: 600; border-bottom: 1px solid var(--line);">¥300,000〜</td>
+          </tr>
+
+          <!-- 脆弱性診断 -->
+          <tr>
+            <td style="padding: 24px; color: #fff; font-weight: 700; border-bottom: 1px solid var(--line);">脆弱性診断</td>
+            <td style="padding: 24px; color: var(--text-secondary); border-bottom: 1px solid var(--line); line-height: 1.7;">
+              Webアプリケーション、ネットワーク、サーバーの既知の脆弱性を網羅的にスキャン。OWASP Top 10対応。
+            </td>
+            <td style="padding: 24px; text-align: center; color: var(--text-secondary); border-bottom: 1px solid var(--line);">1〜2週間</td>
+            <td style="padding: 24px; text-align: right; color: var(--text-muted); font-weight: 600; border-bottom: 1px solid var(--line);">¥150,000〜</td>
+          </tr>
+
+          <!-- セキュリティ監査 -->
+          <tr>
+            <td style="padding: 24px; color: #fff; font-weight: 700; border-bottom: 1px solid var(--line);">セキュリティ監査</td>
+            <td style="padding: 24px; color: var(--text-secondary); border-bottom: 1px solid var(--line); line-height: 1.7;">
+              ISMSやPCI DSS等の規格準拠状況を確認。ポリシー・体制・技術的対策の包括的な監査とギャップ分析。
+            </td>
+            <td style="padding: 24px; text-align: center; color: var(--text-secondary); border-bottom: 1px solid var(--line);">2〜3週間</td>
+            <td style="padding: 24px; text-align: right; color: var(--text-muted); font-weight: 600; border-bottom: 1px solid var(--line);">¥400,000〜</td>
+          </tr>
+
+          <!-- インシデント対応支援 -->
+          <tr>
+            <td style="padding: 24px; color: #fff; font-weight: 700; border-bottom: 1px solid var(--line);">インシデント対応支援</td>
+            <td style="padding: 24px; color: var(--text-secondary); border-bottom: 1px solid var(--line); line-height: 1.7;">
+              セキュリティインシデント発生時の緊急対応。フォレンジック調査、影響範囲特定、復旧支援、再発防止策の策定。
+            </td>
+            <td style="padding: 24px; text-align: center; color: var(--text-secondary); border-bottom: 1px solid var(--line);">即時〜</td>
+            <td style="padding: 24px; text-align: right; color: var(--text-muted); font-weight: 600; border-bottom: 1px solid var(--line);">¥500,000〜</td>
+          </tr>
+
+          <!-- CSIRT構築支援 -->
+          <tr>
+            <td style="padding: 24px; color: #fff; font-weight: 700; border-bottom: 1px solid var(--line);">CSIRT構築支援</td>
+            <td style="padding: 24px; color: var(--text-secondary); border-bottom: 1px solid var(--line); line-height: 1.7;">
+              社内セキュリティ体制（CSIRT）の立ち上げ支援。体制設計、プロセス策定、ツール導入、運用トレーニング。
+            </td>
+            <td style="padding: 24px; text-align: center; color: var(--text-secondary); border-bottom: 1px solid var(--line);">3〜6ヶ月</td>
+            <td style="padding: 24px; text-align: right; color: var(--text-muted); font-weight: 600; border-bottom: 1px solid var(--line);">¥1,500,000〜</td>
+          </tr>
+
+          <!-- セキュリティ教育・トレーニング -->
+          <tr>
+            <td style="padding: 24px; color: #fff; font-weight: 700; border-bottom: 1px solid var(--line);">セキュリティ教育</td>
+            <td style="padding: 24px; color: var(--text-secondary); border-bottom: 1px solid var(--line); line-height: 1.7;">
+              従業員向けセキュリティ意識向上トレーニング。フィッシング対策、パスワード管理、インシデント報告など実践的な内容。
+            </td>
+            <td style="padding: 24px; text-align: center; color: var(--text-secondary); border-bottom: 1px solid var(--line);">1日〜</td>
+            <td style="padding: 24px; text-align: right; color: var(--text-muted); font-weight: 600; border-bottom: 1px solid var(--line);">¥100,000〜</td>
+          </tr>
+
+          <!-- ダークウェブモニタリング -->
+          <tr>
+            <td style="padding: 24px; color: #fff; font-weight: 700; border-bottom: 1px solid var(--line);">ダークウェブモニタリング</td>
+            <td style="padding: 24px; color: var(--text-secondary); border-bottom: 1px solid var(--line); line-height: 1.7;">
+              ダークウェブ上で自社の情報漏洩や不正売買がないかを24/7監視。漏洩検知時は即時アラート。
+            </td>
+            <td style="padding: 24px; text-align: center; color: var(--text-secondary); border-bottom: 1px solid var(--line);">継続</td>
+            <td style="padding: 24px; text-align: right; color: var(--text-muted); font-weight: 600; border-bottom: 1px solid var(--line);">¥50,000/月〜</td>
+          </tr>
+
+          <!-- クラウドセキュリティ評価 -->
+          <tr>
+            <td style="padding: 24px; color: #fff; font-weight: 700;">クラウドセキュリティ評価</td>
+            <td style="padding: 24px; color: var(--text-secondary); line-height: 1.7;">
+              AWS・Azure・GCPなどのクラウド環境のセキュリティ設定を評価。IAM設定、ストレージ公開状態、ログ監視設定など。
+            </td>
+            <td style="padding: 24px; text-align: center; color: var(--text-secondary);">1〜2週間</td>
+            <td style="padding: 24px; text-align: right; color: var(--text-muted); font-weight: 600;">¥200,000〜</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 強調ポイント -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 28px; margin-bottom: 56px;">
+      <div style="background: linear-gradient(135deg, rgba(106, 166, 255, 0.1), rgba(16, 185, 129, 0.08)); border: 2px solid rgba(16, 185, 129, 0.3); border-radius: 12px; padding: 32px; text-align: center;">
+        <div style="font-size: 3rem; margin-bottom: 16px;">🌏</div>
+        <h4 style="color: #10b981; font-size: 1.2rem; margin-bottom: 12px; font-weight: 700;">海外パートナー活用</h4>
+        <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.7;">
+          グローバルなセキュリティ専門家ネットワークを活用し、国内大手の<strong style="color: #fff;">1/3〜1/5の価格</strong>で高品質なサービスを提供。
+        </p>
+      </div>
+
+      <div style="background: linear-gradient(135deg, rgba(106, 166, 255, 0.1), rgba(16, 185, 129, 0.08)); border: 2px solid rgba(16, 185, 129, 0.3); border-radius: 12px; padding: 32px; text-align: center;">
+        <div style="font-size: 3rem; margin-bottom: 16px;">📦</div>
+        <h4 style="color: #10b981; font-size: 1.2rem; margin-bottom: 12px; font-weight: 700;">ワンストップ対応</h4>
+        <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.7;">
+          複数のベンダーとやり取りする必要なし。<strong style="color: #fff;">Avisail一社</strong>で基本的なセキュリティニーズを全て網羅。
+        </p>
+      </div>
+
+      <div style="background: linear-gradient(135deg, rgba(106, 166, 255, 0.1), rgba(16, 185, 129, 0.08)); border: 2px solid rgba(16, 185, 129, 0.3); border-radius: 12px; padding: 32px; text-align: center;">
+        <div style="font-size: 3rem; margin-bottom: 16px;">🎯</div>
+        <h4 style="color: #10b981; font-size: 1.2rem; margin-bottom: 12px; font-weight: 700;">柔軟なカスタマイズ</h4>
+        <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.7;">
+          貴社のニーズに合わせて<strong style="color: #fff;">最適なサービスを組み合わせ</strong>。無駄のない効率的なセキュリティ体制を構築。
+        </p>
+      </div>
+    </div>
+
+    <!-- サービス相談CTA -->
+    <div style="text-align: center; padding: 48px; background: rgba(10, 15, 26, 0.7); border: 2px solid rgba(106, 166, 255, 0.3); border-radius: 16px;">
+      <h3 style="font-size: 1.8rem; margin-bottom: 20px; color: #fff; font-weight: 800;">
+        どのサービスが最適か分からない？
+      </h3>
+      <p style="color: var(--text-secondary); font-size: 1.05rem; line-height: 1.8; margin-bottom: 32px; max-width: 650px; margin-left: auto; margin-right: auto;">
+        セキュリティ専門家が貴社の状況をヒアリングし、<br>
+        最適なサービスの組み合わせを無料でご提案します。
+      </p>
+      <a href="../ja/contact.html?type=service-consultation" class="cta" style="display: inline-block; padding: 18px 48px; font-size: 1.1rem; text-decoration: none; border-radius: 8px;">
+        無料相談を申し込む
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Free Diagnosis CTA -->
+<section id="free-diagnosis">
+<div class="wrap">
+<div class="cta-section">
+<div class="free-badge">無料診断実施中</div>
+<h2>まずは無料診断で<br>現状を確認しませんか</h2>
+<p class="lead">
+わずか1分の申込で、24時間以内に詳細なセキュリティレポートを配信。<br>
+あなたの組織の脆弱性と改善点を明確に可視化します。
+</p>
+<div style="display:flex;gap:20px;justify-content:center;flex-wrap:wrap;">
+<a href="../ja/contact.html" class="cta" style="font-size:1.2rem;padding:22px 60px;background:linear-gradient(135deg,#6AA6FF,#10b981);">無料診断を申し込む</a>
+<a href="../ja/contact.html" class="btn" style="font-size:1.1rem;padding:22px 52px;">まずは相談する</a>
+</div>
+
+<div style="margin-top:60px;padding-top:40px;border-top:1px solid rgba(16,185,129,0.3);">
+<p style="color:var(--text-muted);font-size:0.95rem;margin-bottom:12px;">お問い合わせ</p>
+<p style="color:var(--text-secondary);font-size:1.1rem;"><strong>info@avisail.com</strong></p>
+<p style="color:var(--text-muted);font-size:0.95rem;margin-top:12px;">対応言語：日本語 / English / Italiano<br>返信：1営業日以内</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Shared Footer -->
+<div id="site-footer"></div>
+
+<!-- Shared Components Loader -->
+<script src="../includes/components.js"></script>
+
+</body>
+</html>

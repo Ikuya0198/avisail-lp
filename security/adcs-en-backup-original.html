@@ -1,0 +1,1412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>ADCS - Automated Security Protecting Enterprises from 2026 Cyber Threats | Avisail</title>
+<meta name="description" content="In 2026, cyberattacks are intensifying. SMBs are becoming primary targets. Enterprise-grade security through complete AI automation at 1/10 the traditional cost. Free assessment and checklist available.">
+<link rel="canonical" href="https://avisail.com/security/adcs-en.html">
+<link rel="alternate" hreflang="en" href="https://avisail.com/security/adcs-en.html">
+<link rel="alternate" hreflang="ja" href="https://avisail.com/security/adcs-ja.html">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<style>
+.page-hero{
+  padding:50px 0 30px;
+  background:
+    linear-gradient(rgba(10,15,26,0.88),rgba(10,15,26,0.95)),
+    radial-gradient(ellipse at 35% 25%,rgba(106,166,255,0.12),transparent 50%),
+    radial-gradient(ellipse at 65% 75%,rgba(16,185,129,0.08),transparent 50%),
+    var(--bg-dark);
+  position:relative;
+  overflow:hidden;
+}
+.page-hero .wrap{position:relative;z-index:2;}
+.hero-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:10px 20px;
+  background:rgba(106,166,255,0.12);
+  border:1px solid rgba(106,166,255,0.3);
+  border-radius:30px;
+  color:#6AA6FF;
+  font-size:0.8rem;
+  font-weight:700;
+  margin-bottom:24px;
+  letter-spacing:0.05em;
+}
+.page-hero h1{
+  font-size:clamp(2.5rem,6vw,4.2rem);
+  margin-bottom:28px;
+  color:#fff;
+  font-weight:800;
+  line-height:1.2;
+}
+.page-hero h1 span{
+  background:linear-gradient(135deg,#6AA6FF,#10b981);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.page-hero .lead{
+  color:var(--text-secondary);
+  max-width:900px;
+  font-size:1.2rem;
+  line-height:1.8;
+  margin-bottom:28px;
+}
+.hero-highlight{
+  background:rgba(16,185,129,0.1);
+  border:2px solid rgba(16,185,129,0.3);
+  padding:24px;
+  border-radius:12px;
+  max-width:850px;
+  margin-top:32px;
+}
+.hero-highlight p{
+  color:var(--text-secondary);
+  font-size:1.15rem;
+  line-height:1.8;
+  margin:0;
+}
+.hero-highlight strong{
+  color:#10b981;
+  font-size:1.3rem;
+}
+.hero-stats{
+  display:flex;
+  gap:48px;
+  flex-wrap:wrap;
+  margin-top:48px;
+}
+.hero-stat{
+  text-align:left;
+}
+.hero-stat-number{
+  font-size:2.5rem;
+  font-weight:800;
+  background:linear-gradient(135deg,#6AA6FF,#10b981);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  margin-bottom:8px;
+}
+.hero-stat-label{
+  font-size:0.95rem;
+  color:var(--text-muted);
+}
+.problem-section{
+  background:rgba(239,68,68,0.06);
+  border:2px solid rgba(239,68,68,0.25);
+  border-radius:16px;
+  padding:56px;
+  margin:60px 0;
+}
+.problem-section h2{
+  color:#ef4444;
+  font-size:2.3rem;
+  margin-bottom:20px;
+  text-align:center;
+  font-weight:800;
+}
+.problem-section .subtitle{
+  text-align:center;
+  color:var(--text-secondary);
+  font-size:1.15rem;
+  margin-bottom:48px;
+  max-width:750px;
+  margin-left:auto;
+  margin-right:auto;
+  line-height:1.8;
+}
+.problem-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:28px;
+  margin-top:40px;
+}
+.problem-card{
+  background:rgba(10,15,26,0.6);
+  border:1px solid rgba(239,68,68,0.3);
+  border-radius:12px;
+  padding:32px;
+  text-align:center;
+}
+.problem-icon{
+  font-size:3rem;
+  margin-bottom:20px;
+}
+.problem-card h4{
+  color:#fff;
+  font-size:1.2rem;
+  margin-bottom:12px;
+  font-weight:700;
+}
+.problem-card p{
+  color:var(--text-secondary);
+  line-height:1.7;
+  font-size:0.95rem;
+}
+.solution-section{
+  background:linear-gradient(135deg,rgba(106,166,255,0.1),rgba(16,185,129,0.08));
+  border:2px solid rgba(16,185,129,0.3);
+  border-radius:16px;
+  padding:64px;
+  margin:60px 0;
+  text-align:center;
+}
+.solution-section h2{
+  font-size:2.8rem;
+  margin-bottom:24px;
+  background:linear-gradient(135deg,#6AA6FF,#10b981);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  font-weight:800;
+}
+.solution-section .lead-text{
+  color:var(--text-secondary);
+  font-size:1.2rem;
+  line-height:1.9;
+  max-width:850px;
+  margin:0 auto 48px;
+}
+.features-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:32px;
+  margin-top:48px;
+}
+.feature-box{
+  background:rgba(10,15,26,0.7);
+  border:1px solid rgba(106,166,255,0.25);
+  border-radius:14px;
+  padding:36px;
+  text-align:left;
+}
+.feature-icon{
+  width:56px;
+  height:56px;
+  background:linear-gradient(135deg,#6AA6FF,#10b981);
+  border-radius:12px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:1.8rem;
+  margin-bottom:20px;
+}
+.feature-box h4{
+  color:#fff;
+  font-size:1.25rem;
+  margin-bottom:12px;
+  font-weight:700;
+}
+.feature-box p{
+  color:var(--text-secondary);
+  line-height:1.75;
+  font-size:0.95rem;
+}
+.ad-philosophy{
+  background:rgba(5,8,15,0.5);
+  border-radius:14px;
+  padding:56px;
+  margin:60px 0;
+}
+.ad-philosophy h2{
+  text-align:center;
+  font-size:2.3rem;
+  margin-bottom:48px;
+  color:#fff;
+  font-weight:800;
+}
+.ad-comparison{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:32px;
+  max-width:1000px;
+  margin:0 auto;
+}
+@media (max-width:768px){
+  .ad-comparison{grid-template-columns:1fr;}
+}
+.comparison-card{
+  border-radius:12px;
+  padding:36px;
+}
+.comparison-card.traditional{
+  background:rgba(239,68,68,0.08);
+  border:2px solid rgba(239,68,68,0.25);
+}
+.comparison-card.active-defense{
+  background:rgba(16,185,129,0.08);
+  border:2px solid rgba(16,185,129,0.3);
+}
+.comparison-card h4{
+  font-size:1.4rem;
+  margin-bottom:20px;
+  font-weight:800;
+}
+.comparison-card.traditional h4{color:#ef4444;}
+.comparison-card.active-defense h4{color:#10b981;}
+.comparison-card ul{
+  list-style:none;
+  padding:0;
+  margin:0;
+}
+.comparison-card ul li{
+  padding:12px 0;
+  color:var(--text-secondary);
+  font-size:0.95rem;
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+  line-height:1.7;
+}
+.comparison-card.traditional ul li::before{
+  content:'✕';
+  color:#ef4444;
+  font-weight:700;
+  flex-shrink:0;
+  font-size:1.2rem;
+}
+.comparison-card.active-defense ul li::before{
+  content:'✓';
+  color:#10b981;
+  font-weight:700;
+  flex-shrink:0;
+  font-size:1.2rem;
+}
+.flow-section{
+  max-width:1000px;
+  margin:60px auto;
+}
+.flow-steps{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:24px;
+  margin-top:48px;
+}
+.flow-step{
+  text-align:center;
+  background:rgba(106,166,255,0.05);
+  border:1px solid rgba(106,166,255,0.2);
+  border-radius:12px;
+  padding:32px 24px;
+}
+.flow-step-number{
+  width:56px;
+  height:56px;
+  background:linear-gradient(135deg,#6AA6FF,#10b981);
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:1.5rem;
+  font-weight:800;
+  color:#fff;
+  margin:0 auto 20px;
+}
+.flow-step h5{
+  color:#fff;
+  font-size:1.1rem;
+  margin-bottom:10px;
+  font-weight:700;
+}
+.flow-step p{
+  color:var(--text-secondary);
+  font-size:0.9rem;
+  line-height:1.7;
+}
+.flow-time{
+  display:inline-block;
+  background:rgba(16,185,129,0.15);
+  border:1px solid rgba(16,185,129,0.3);
+  padding:6px 14px;
+  border-radius:20px;
+  font-size:0.8rem;
+  color:#10b981;
+  font-weight:700;
+  margin-top:12px;
+}
+.pricing-section{
+  background:rgba(5,8,15,0.5);
+  border-radius:14px;
+  padding:56px;
+}
+.pricing-section h2{
+  text-align:center;
+  font-size:2.5rem;
+  margin-bottom:48px;
+  color:#fff;
+  font-weight:800;
+}
+.pricing-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:32px;
+  margin-top:48px;
+}
+.pricing-card{
+  background:rgba(10,15,26,0.7);
+  border:2px solid rgba(106,166,255,0.3);
+  border-radius:14px;
+  padding:40px;
+  text-align:center;
+}
+.pricing-card.featured{
+  border-color:rgba(16,185,129,0.5);
+  background:linear-gradient(135deg,rgba(106,166,255,0.08),rgba(16,185,129,0.08));
+}
+.pricing-label{
+  display:inline-block;
+  background:rgba(106,166,255,0.15);
+  color:#6AA6FF;
+  padding:6px 14px;
+  border-radius:20px;
+  font-size:0.8rem;
+  font-weight:700;
+  margin-bottom:20px;
+}
+.pricing-card.featured .pricing-label{
+  background:linear-gradient(135deg,#6AA6FF,#10b981);
+  color:#fff;
+}
+.pricing-card h4{
+  color:#fff;
+  font-size:1.6rem;
+  margin-bottom:16px;
+  font-weight:800;
+}
+.pricing-card .price{
+  font-size:2.5rem;
+  font-weight:800;
+  background:linear-gradient(135deg,#6AA6FF,#10b981);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  margin-bottom:12px;
+}
+.pricing-card .price-detail{
+  color:var(--text-muted);
+  font-size:0.9rem;
+  margin-bottom:28px;
+}
+.pricing-card ul{
+  list-style:none;
+  padding:0;
+  margin:0 0 32px 0;
+  text-align:left;
+}
+.pricing-card ul li{
+  padding:10px 0;
+  color:var(--text-secondary);
+  font-size:0.95rem;
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+  line-height:1.7;
+}
+.pricing-card ul li::before{
+  content:'✓';
+  color:#10b981;
+  font-weight:700;
+  flex-shrink:0;
+  margin-top:2px;
+}
+.cta-section{
+  background:
+    linear-gradient(135deg,rgba(106,166,255,0.15),rgba(16,185,129,0.12)),
+    rgba(5,8,15,0.8);
+  border:2px solid rgba(16,185,129,0.4);
+  border-radius:16px;
+  padding:72px 48px;
+  text-align:center;
+  margin-top:80px;
+}
+.cta-section h2{
+  font-size:3rem;
+  margin-bottom:24px;
+  color:#fff;
+  font-weight:800;
+  line-height:1.3;
+}
+.cta-section .lead{
+  color:var(--text-secondary);
+  font-size:1.2rem;
+  max-width:750px;
+  margin:0 auto 40px;
+  line-height:1.8;
+}
+.free-badge{
+  display:inline-block;
+  background:linear-gradient(135deg,#6AA6FF,#10b981);
+  color:#fff;
+  padding:12px 24px;
+  border-radius:30px;
+  font-size:1.1rem;
+  font-weight:800;
+  margin-bottom:32px;
+  text-transform:uppercase;
+  letter-spacing:0.05em;
+}
+
+@media(max-width:768px){
+  section[style*="padding: 60px 0"]{ padding:40px 0 !important; }
+  div[style*="padding: 20px"]{ padding:16px !important; }
+  div[style*="gap: 20px"]{ gap:16px !important; }
+  div[style*="minmax(300px"]{ grid-template-columns:1fr !important; }
+}
+</style>
+
+<!-- JSON-LD Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "ADCS - Active Defense Cyber Security",
+  "description": "Protecting organizations from advanced digital threats with nation-state level offensive security capabilities. Provides predictive threat detection, proactive defense, and continuous attack surface monitoring.",
+  "brand": {
+    "@type": "Organization",
+    "name": "Avisail Technologies"
+  },
+  "offers": {
+    "@type": "Offer",
+    "availability": "https://schema.org/InStock"
+  },
+  "provider": {
+    "@type": "Organization",
+    "name": "Avisail Technologies",
+    "url": "https://avisail.com"
+  }
+}
+</script>
+</head>
+<body style="background:#0a0f1a;">
+
+<!-- Shared Header -->
+<div id="site-header"></div>
+
+<!-- Hero Section -->
+<section class="page-hero">
+<div class="wrap">
+<div class="hero-badge">
+🛡️ Security for SMBs & Government
+</div>
+<h1>
+<span>Enterprise-Grade Security</span><br>
+at 1/10 the<br>
+Traditional Cost
+</h1>
+<p class="lead">
+Fully automated security service rebuilt with Active Defense philosophy.<br>
+Bringing high-cost security measures within reach of SMBs and local governments.
+</p>
+
+<div class="hero-highlight">
+<p>
+<strong>Traditional: ¥3-30 million per year</strong><br>
+Conventional security services are prohibitively expensive, leaving SMBs and governments defenseless against threats.
+</p>
+</div>
+
+<div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:40px;">
+<a href="#free-diagnosis" class="cta" style="font-size:1.2rem;padding:20px 52px;background:linear-gradient(135deg,#6AA6FF,#10b981);">Get Free Assessment</a>
+<a href="#solution" class="btn" style="font-size:1.1rem;padding:20px 44px;">Learn More</a>
+</div>
+
+<div class="hero-stats">
+<div class="hero-stat">
+<div class="hero-stat-number">¥0</div>
+<div class="hero-stat-label">Free Assessment Available</div>
+</div>
+<div class="hero-stat">
+<div class="hero-stat-number">24/7</div>
+<div class="hero-stat-label">Automated Scanning</div>
+</div>
+<div class="hero-stat">
+<div class="hero-stat-number">Fully Automated</div>
+<div class="hero-stat-label">No Manual Work</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- 2026 Security Landscape -->
+<section style="padding: 80px 0; background: linear-gradient(135deg, rgba(239, 68, 68, 0.08), rgba(10, 15, 26, 0.95));">
+  <div class="wrap">
+    <div style="text-align: center; margin-bottom: 60px;">
+      <div style="display: inline-block; background: rgba(239, 68, 68, 0.2); border: 2px solid rgba(239, 68, 68, 0.4); padding: 12px 24px; border-radius: 30px; margin-bottom: 24px;">
+        <span style="color: #ef4444; font-weight: 800; font-size: 0.9rem; letter-spacing: 0.05em;">⚠️ 2026 Security Threats</span>
+      </div>
+      <h2 style="font-size: 2.8rem; margin-bottom: 24px; color: #fff; font-weight: 800;">
+        The Security Environment<br>
+        <span style="background: linear-gradient(135deg, #ef4444, #f59e0b); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Facing Businesses is Rapidly Changing</span>
+      </h2>
+      <p style="color: var(--text-secondary); font-size: 1.15rem; line-height: 1.8; max-width: 850px; margin: 0 auto;">
+        Cyberattacks are becoming increasingly sophisticated each year, no longer just a concern for large enterprises.<br>
+        SMBs and local governments have become the most vulnerable targets.
+      </p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 32px; margin-bottom: 64px;">
+      <!-- Statistic 1 -->
+      <div style="background: rgba(10, 15, 26, 0.7); border: 2px solid rgba(239, 68, 68, 0.3); border-radius: 14px; padding: 40px; text-align: center;">
+        <div style="font-size: 4rem; margin-bottom: 16px;">📈</div>
+        <div style="font-size: 3rem; font-weight: 800; color: #ef4444; margin-bottom: 12px;">145%</div>
+        <h4 style="color: #fff; font-size: 1.2rem; margin-bottom: 12px; font-weight: 700;">Increase in Ransomware Attacks</h4>
+        <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.7;">
+          Sharp rise in attacks targeting SMBs compared to 2025. Average ransom demand exceeds $35,000.
+        </p>
+      </div>
+
+      <!-- Statistic 2 -->
+      <div style="background: rgba(10, 15, 26, 0.7); border: 2px solid rgba(239, 68, 68, 0.3); border-radius: 14px; padding: 40px; text-align: center;">
+        <div style="font-size: 4rem; margin-bottom: 16px;">🎯</div>
+        <div style="font-size: 3rem; font-weight: 800; color: #ef4444; margin-bottom: 12px;">82%</div>
+        <h4 style="color: #fff; font-size: 1.2rem; margin-bottom: 12px; font-weight: 700;">Unprotected SMBs</h4>
+        <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.7;">
+          Due to budget constraints, over 80% of SMBs lack adequate security measures.
+        </p>
+      </div>
+
+      <!-- Statistic 3 -->
+      <div style="background: rgba(10, 15, 26, 0.7); border: 2px solid rgba(239, 68, 68, 0.3); border-radius: 14px; padding: 40px; text-align: center;">
+        <div style="font-size: 4rem; margin-bottom: 16px;">💰</div>
+        <div style="font-size: 3rem; font-weight: 800; color: #ef4444; margin-bottom: 12px;">$220K</div>
+        <h4 style="color: #fff; font-size: 1.2rem; margin-bottom: 12px; font-weight: 700;">Average Damage Cost</h4>
+        <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.7;">
+          Losses from data breaches and system downtime. Many businesses face existential threats.
+        </p>
+      </div>
+    </div>
+
+    <!-- Major 2026 Threats -->
+    <div style="background: rgba(5, 8, 15, 0.8); border: 2px solid rgba(239, 68, 68, 0.3); border-radius: 16px; padding: 56px; margin-bottom: 64px;">
+      <h3 style="text-align: center; font-size: 2.2rem; margin-bottom: 48px; color: #fff; font-weight: 800;">Major Security Threats in 2026</h3>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 28px;">
+        <div style="background: rgba(239, 68, 68, 0.08); border: 1px solid rgba(239, 68, 68, 0.25); border-radius: 12px; padding: 32px;">
+          <h4 style="color: #ef4444; font-size: 1.15rem; margin-bottom: 12px; font-weight: 700;">🤖 AI-Driven Attacks</h4>
+          <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.7;">
+            Sophisticated phishing using generative AI and automated zero-day attacks are surging. Traditional defenses are ineffective.
+          </p>
+        </div>
+
+        <div style="background: rgba(239, 68, 68, 0.08); border: 1px solid rgba(239, 68, 68, 0.25); border-radius: 12px; padding: 32px;">
+          <h4 style="color: #ef4444; font-size: 1.15rem; margin-bottom: 12px; font-weight: 700;">🔗 Supply Chain Attacks</h4>
+          <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.7;">
+            Instead of targeting large corporations, attackers infiltrate through vulnerable business partners. SMBs are prime targets.
+          </p>
+        </div>
+
+        <div style="background: rgba(239, 68, 68, 0.08); border: 1px solid rgba(239, 68, 68, 0.25); border-radius: 12px; padding: 32px;">
+          <h4 style="color: #ef4444; font-size: 1.15rem; margin-bottom: 12px; font-weight: 700;">📱 Remote Work Vulnerabilities</h4>
+          <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.7;">
+            Distributed work environments expand the attack surface. VPN and cloud service misconfigurations become critical.
+          </p>
+        </div>
+
+        <div style="background: rgba(239, 68, 68, 0.08); border: 1px solid rgba(239, 68, 68, 0.25); border-radius: 12px; padding: 32px;">
+          <h4 style="color: #ef4444; font-size: 1.15rem; margin-bottom: 12px; font-weight: 700;">⚖️ Regulatory Tightening</h4>
+          <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.7;">
+            Privacy laws and NIS2 Directive significantly increase penalties and liability for breaches. Compliance is mandatory.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Self-Assessment Checklist CTA -->
+    <div style="background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(106, 166, 255, 0.12)); border: 3px solid rgba(16, 185, 129, 0.4); border-radius: 16px; padding: 56px; text-align: center;">
+      <div style="display: inline-block; background: linear-gradient(135deg, #10b981, #7ef0d4); padding: 10px 20px; border-radius: 8px; margin-bottom: 24px;">
+        <span style="color: #0a0f1a; font-weight: 800; font-size: 0.85rem; letter-spacing: 0.05em;">📋 Free Checklist Available</span>
+      </div>
+      <h3 style="font-size: 2.2rem; margin-bottom: 20px; color: #fff; font-weight: 800;">
+        Assess Your Organization's<br>Security Risks Now
+      </h3>
+      <p style="color: var(--text-secondary); font-size: 1.1rem; line-height: 1.8; margin-bottom: 36px; max-width: 700px; margin-left: auto; margin-right: auto;">
+        Download our <strong style="color: #10b981;">3-minute self-assessment checklist</strong> for free.<br>
+        Immediately identify your security status and prioritize critical action items.
+      </p>
+
+      <div style="background: rgba(10, 15, 26, 0.6); border: 1px solid rgba(106, 166, 255, 0.3); border-radius: 12px; padding: 32px; max-width: 600px; margin: 0 auto 32px;">
+        <h4 style="color: #fff; font-size: 1.1rem; margin-bottom: 20px; font-weight: 700;">Checklist Contents</h4>
+        <ul style="list-style: none; padding: 0; margin: 0; text-align: left;">
+          <li style="padding: 10px 0; color: var(--text-secondary); display: flex; align-items: center; gap: 12px; border-bottom: 1px solid var(--line);">
+            <span style="color: #10b981; font-weight: 700; flex-shrink: 0;">✓</span>
+            Inventory of publicly exposed servers and services
+          </li>
+          <li style="padding: 10px 0; color: var(--text-secondary); display: flex; align-items: center; gap: 12px; border-bottom: 1px solid var(--line);">
+            <span style="color: #10b981; font-weight: 700; flex-shrink: 0;">✓</span>
+            Internal network security configuration review
+          </li>
+          <li style="padding: 10px 0; color: var(--text-secondary); display: flex; align-items: center; gap: 12px; border-bottom: 1px solid var(--line);">
+            <span style="color: #10b981; font-weight: 700; flex-shrink: 0;">✓</span>
+            Employee security awareness level assessment
+          </li>
+          <li style="padding: 10px 0; color: var(--text-secondary); display: flex; align-items: center; gap: 12px; border-bottom: 1px solid var(--line);">
+            <span style="color: #10b981; font-weight: 700; flex-shrink: 0;">✓</span>
+            Incident response readiness evaluation
+          </li>
+          <li style="padding: 10px 0; color: var(--text-secondary); display: flex; align-items: center; gap: 12px;">
+            <span style="color: #10b981; font-weight: 700; flex-shrink: 0;">✓</span>
+            Cloud services and SaaS security management
+          </li>
+        </ul>
+      </div>
+
+      <a href="../ja/contact.html?type=checklist" class="cta" style="display: inline-block; padding: 20px 52px; font-size: 1.2rem; background: linear-gradient(135deg, #10b981, #7ef0d4); text-decoration: none; border-radius: 8px; color: #0a0f1a; font-weight: 700;">
+        📥 Download Free Checklist
+      </a>
+      <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 16px;">
+        Email only • Instant download • No sales calls
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Problem Section -->
+<section>
+<div class="wrap">
+<div class="problem-section">
+<h2>The Reality Facing SMBs and Governments</h2>
+<p class="subtitle">
+Everyone knows security is necessary.<br>
+But it's too expensive to implement.
+</p>
+
+<div class="problem-grid">
+<div class="problem-card">
+<div class="problem-icon">💰</div>
+<h4>Prohibitively Expensive Services</h4>
+<p>
+Annual costs of ¥3-30 million are unaffordable for SMBs and governments. Budget constraints force them to forgo security.
+</p>
+</div>
+
+<div class="problem-card">
+<div class="problem-icon">⚠️</div>
+<h4>Defenseless State</h4>
+<p>
+Organizations continue operating unprotected, vulnerable to attacks at any moment. Discovering breaches too late is devastating.
+</p>
+</div>
+
+<div class="problem-card">
+<div class="problem-icon">🔍</div>
+<h4>No Visibility</h4>
+<p>
+Organizations don't understand their security posture or where vulnerabilities exist. They don't know where to begin.
+</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Solution -->
+<section id="solution">
+<div class="wrap">
+<div class="solution-section">
+<h2>ADCS Solves Everything</h2>
+<p class="lead-text">
+Rebuilt with Active Defense philosophy, leveraging AI automation and global partnerships<br>
+<strong style="color:#fff;font-size:1.3rem;">to achieve 1/10 traditional costs</strong>
+</p>
+
+<div class="features-grid">
+<div class="feature-box">
+<div class="feature-icon">🤖</div>
+<h4>Fully Automated</h4>
+<p>
+AI-powered automated assessment, report generation, and improvement recommendations. No manual work required, operating 24/7/365. Dramatically reduces costs.
+</p>
+</div>
+
+<div class="feature-box">
+<div class="feature-icon">🌏</div>
+<h4>Global Partner Network</h4>
+<p>
+Leveraging worldwide security expert networks. Delivers services at far lower costs than building domestically.
+</p>
+</div>
+
+<div class="feature-box">
+<div class="feature-icon">🔍</div>
+<h4>Proactive Threat Detection</h4>
+<p>
+Active Defense philosophy detects threats before attacks occur. Clearly visualizes your security posture and vulnerabilities.
+</p>
+</div>
+
+<div class="feature-box">
+<div class="feature-icon">📊</div>
+<h4>Clear Improvement Recommendations</h4>
+<p>
+Explicitly presents gaps between ideal and current state. Provides understandable improvement points and specific remediation methods.
+</p>
+</div>
+
+<div class="feature-box">
+<div class="feature-icon">🔧</div>
+<h4>Automated Remediation Scripts</h4>
+<p>
+Provides scripts to automatically fix discovered vulnerabilities. Enables safe remediation even without technical expertise.
+</p>
+</div>
+
+<div class="feature-box">
+<div class="feature-icon">🤝</div>
+<h4>Outsourcing Support</h4>
+<p>
+For organizations unable to self-remediate, global partners provide individual improvement services. Full support at affordable prices.
+</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Active Defense Philosophy -->
+<section style="background:rgba(5,8,15,0.3);">
+<div class="wrap">
+<div class="ad-philosophy">
+<h2>What is Active Defense?</h2>
+
+<div class="ad-comparison">
+<div class="comparison-card traditional">
+<h4>Traditional Security</h4>
+<ul>
+<li>Responds after being attacked</li>
+<li>High personnel costs for real-time monitoring</li>
+<li>Complex tools too difficult for staff to use</li>
+<li>Pricing beyond SMB reach</li>
+<li>High post-deployment support costs</li>
+</ul>
+</div>
+
+<div class="comparison-card active-defense">
+<h4>Active Defense (ADCS)</h4>
+<ul>
+<li>Detects threats before attacks occur</li>
+<li>Zero personnel costs through full automation</li>
+<li>Simple reports anyone can understand</li>
+<li>1/10 traditional costs</li>
+<li>Peace of mind with continuous automated monitoring</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Competitive Comparison -->
+<section>
+<div class="wrap">
+<h2 style="text-align:center;">Competitive Comparison</h2>
+<p style="text-align:center;color:var(--text-muted);font-size:1.1rem;margin-bottom:48px;max-width:750px;margin-left:auto;margin-right:auto;">
+Verify Avisail ADCS advantages with objective data
+</p>
+
+<div style="overflow-x:auto;">
+<table style="width:100%;max-width:1000px;margin:0 auto;border-collapse:collapse;background:rgba(10,15,26,0.6);border-radius:14px;overflow:hidden;">
+<thead>
+<tr style="background:linear-gradient(135deg,rgba(106,166,255,0.15),rgba(16,185,129,0.12));">
+<th style="padding:20px;text-align:left;color:#fff;font-size:1.05rem;font-weight:700;border-bottom:2px solid rgba(106,166,255,0.3);">Comparison</th>
+<th style="padding:20px;text-align:center;color:#10b981;font-size:1.05rem;font-weight:700;border-bottom:2px solid rgba(106,166,255,0.3);">Avisail ADCS</th>
+<th style="padding:20px;text-align:center;color:var(--text-muted);font-size:1.05rem;font-weight:700;border-bottom:2px solid rgba(106,166,255,0.3);">Major Provider A</th>
+<th style="padding:20px;text-align:center;color:var(--text-muted);font-size:1.05rem;font-weight:700;border-bottom:2px solid rgba(106,166,255,0.3);">Mid-tier Provider B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="padding:18px 20px;color:var(--text-secondary);border-bottom:1px solid var(--line);">Monthly Fee</td>
+<td style="padding:18px 20px;text-align:center;color:#10b981;font-weight:700;font-size:1.1rem;border-bottom:1px solid var(--line);">¥30,000~</td>
+<td style="padding:18px 20px;text-align:center;color:var(--text-muted);border-bottom:1px solid var(--line);">¥500,000~</td>
+<td style="padding:18px 20px;text-align:center;color:var(--text-muted);border-bottom:1px solid var(--line);">¥200,000~</td>
+</tr>
+<tr>
+<td style="padding:18px 20px;color:var(--text-secondary);border-bottom:1px solid var(--line);">Automation Level</td>
+<td style="padding:18px 20px;text-align:center;color:#10b981;font-weight:700;border-bottom:1px solid var(--line);">Fully Automated</td>
+<td style="padding:18px 20px;text-align:center;color:var(--text-muted);border-bottom:1px solid var(--line);">Partially Manual</td>
+<td style="padding:18px 20px;text-align:center;color:var(--text-muted);border-bottom:1px solid var(--line);">Mostly Manual</td>
+</tr>
+<tr>
+<td style="padding:18px 20px;color:var(--text-secondary);border-bottom:1px solid var(--line);">Deployment Time</td>
+<td style="padding:18px 20px;text-align:center;color:#10b981;font-weight:700;border-bottom:1px solid var(--line);">Same Day</td>
+<td style="padding:18px 20px;text-align:center;color:var(--text-muted);border-bottom:1px solid var(--line);">2-4 Weeks</td>
+<td style="padding:18px 20px;text-align:center;color:var(--text-muted);border-bottom:1px solid var(--line);">1-2 Weeks</td>
+</tr>
+<tr>
+<td style="padding:18px 20px;color:var(--text-secondary);border-bottom:1px solid var(--line);">Free Assessment</td>
+<td style="padding:18px 20px;text-align:center;color:#10b981;font-weight:700;border-bottom:1px solid var(--line);">✓ Available</td>
+<td style="padding:18px 20px;text-align:center;color:var(--text-muted);border-bottom:1px solid var(--line);">✕ None</td>
+<td style="padding:18px 20px;text-align:center;color:var(--text-muted);border-bottom:1px solid var(--line);">✕ None</td>
+</tr>
+<tr>
+<td style="padding:18px 20px;color:var(--text-secondary);border-bottom:1px solid var(--line);">Report Generation</td>
+<td style="padding:18px 20px;text-align:center;color:#10b981;font-weight:700;border-bottom:1px solid var(--line);">Automated・Instant</td>
+<td style="padding:18px 20px;text-align:center;color:var(--text-muted);border-bottom:1px solid var(--line);">Manual・1 Week</td>
+<td style="padding:18px 20px;text-align:center;color:var(--text-muted);border-bottom:1px solid var(--line);">Semi-auto・3 Days</td>
+</tr>
+<tr>
+<td style="padding:18px 20px;color:var(--text-secondary);border-bottom:1px solid var(--line);">Support Coverage</td>
+<td style="padding:18px 20px;text-align:center;color:#10b981;font-weight:700;border-bottom:1px solid var(--line);">24/7 Automated</td>
+<td style="padding:18px 20px;text-align:center;color:var(--text-muted);border-bottom:1px solid var(--line);">Weekdays 9-18</td>
+<td style="padding:18px 20px;text-align:center;color:var(--text-muted);border-bottom:1px solid var(--line);">Weekdays 9-18</td>
+</tr>
+<tr>
+<td style="padding:18px 20px;color:var(--text-secondary);">Auto-Remediation</td>
+<td style="padding:18px 20px;text-align:center;color:#10b981;font-weight:700;">✓ Included</td>
+<td style="padding:18px 20px;text-align:center;color:var(--text-muted);">✕ None</td>
+<td style="padding:18px 20px;text-align:center;color:var(--text-muted);">△ Paid</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div style="text-align:center;margin-top:48px;padding:32px;background:rgba(16,185,129,0.08);border:2px solid rgba(16,185,129,0.3);border-radius:14px;max-width:750px;margin-left:auto;margin-right:auto;">
+<h4 style="color:#10b981;font-size:1.4rem;margin-bottom:12px;font-weight:800;">Cost Performance Comparison</h4>
+<p style="color:var(--text-secondary);font-size:1.05rem;line-height:1.8;">
+Compared to Major Provider A: <strong style="color:#fff;font-size:1.3rem;">17x better value</strong>, Mid-tier Provider B: <strong style="color:#fff;font-size:1.3rem;">7x better value</strong>.<br>
+Equal or superior functionality at dramatically lower prices.
+</p>
+</div>
+</div>
+</section>
+
+<!-- ADCS Assessment Report Samples -->
+<section style="padding: 60px 0; background: linear-gradient(135deg, rgba(10, 15, 26, 0.95), rgba(5, 8, 15, 1));">
+  <div class="wrap">
+    <h2 style="text-align: center; margin-bottom: 12px;">ADCS Assessment Report Samples</h2>
+    <p style="text-align: center; color: var(--text-secondary); font-size: 0.95rem; max-width: 650px; margin: 0 auto 40px; line-height: 1.6;">
+      Examples of actual reports you'll receive: visualized reports with actionable insights
+    </p>
+
+    <!-- Report Screenshot Grid -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+
+      <!-- Attack Surface Visualization -->
+      <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(126, 240, 212, 0.2); border-radius: 10px; padding: 20px;">
+        <div style="margin-bottom: 16px;">
+          <span style="background: rgba(239, 68, 68, 0.15); padding: 5px 12px; border-radius: 14px; font-size: 0.7rem; font-weight: 700; color: #ef4444; text-transform: uppercase; letter-spacing: 0.05em;">
+            Attack Surface
+          </span>
+        </div>
+
+        <div style="position: relative; width: 100%; aspect-ratio: 4 / 3; background: linear-gradient(135deg, rgba(239, 68, 68, 0.08), rgba(126, 240, 212, 0.03)); border: 2px dashed rgba(239, 68, 68, 0.3); border-radius: 6px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; margin-bottom: 12px;">
+          <svg width="36" height="36" fill="none" stroke="#ef4444" stroke-width="1.5" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="2" y1="12" x2="22" y2="12"></line>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+          </svg>
+          <p style="color: #ef4444; font-weight: 600; font-size: 0.8rem; margin: 0;">Screenshot needed</p>
+        </div>
+
+        <p style="color: var(--text-secondary); font-size: 0.8rem; line-height: 1.5; margin: 0;">
+          Visual map showing all publicly exposed servers, ports, and services discovered externally.
+        </p>
+      </div>
+
+      <!-- OSINT Analysis Results -->
+      <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(126, 240, 212, 0.2); border-radius: 12px; padding: 28px;">
+        <div style="margin-bottom: 20px;">
+          <span style="background: rgba(106, 166, 255, 0.15); padding: 6px 14px; border-radius: 16px; font-size: 0.75rem; font-weight: 700; color: #6AA6FF; text-transform: uppercase; letter-spacing: 0.05em;">
+            OSINT Analysis
+          </span>
+        </div>
+
+        <div style="position: relative; width: 100%; aspect-ratio: 4 / 3; background: linear-gradient(135deg, rgba(106, 166, 255, 0.08), rgba(126, 240, 212, 0.03)); border: 2px dashed rgba(106, 166, 255, 0.3); border-radius: 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; margin-bottom: 20px;">
+          <svg width="48" height="48" fill="none" stroke="#6AA6FF" stroke-width="1.5" viewBox="0 0 24 24">
+            <circle cx="11" cy="11" r="8"></circle>
+            <path d="m21 21-4.35-4.35"></path>
+          </svg>
+          <p style="color: #6AA6FF; font-weight: 600; font-size: 0.9rem; margin: 0;">Screenshot needed</p>
+        </div>
+
+        <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6; margin: 0;">
+          Open-source intelligence findings including leaked information, credentials, and potential attack vectors.
+        </p>
+      </div>
+
+      <!-- Risk Assessment Dashboard -->
+      <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(126, 240, 212, 0.2); border-radius: 12px; padding: 28px;">
+        <div style="margin-bottom: 20px;">
+          <span style="background: rgba(126, 240, 212, 0.15); padding: 6px 14px; border-radius: 16px; font-size: 0.75rem; font-weight: 700; color: #7ef0d4; text-transform: uppercase; letter-spacing: 0.05em;">
+            Risk Scoring
+          </span>
+        </div>
+
+        <div style="position: relative; width: 100%; aspect-ratio: 4 / 3; background: linear-gradient(135deg, rgba(126, 240, 212, 0.08), rgba(106, 166, 255, 0.03)); border: 2px dashed rgba(126, 240, 212, 0.3); border-radius: 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; margin-bottom: 20px;">
+          <svg width="48" height="48" fill="none" stroke="#7ef0d4" stroke-width="1.5" viewBox="0 0 24 24">
+            <line x1="18" y1="20" x2="18" y2="10"></line>
+            <line x1="12" y1="20" x2="12" y2="4"></line>
+            <line x1="6" y1="20" x2="6" y2="14"></line>
+          </svg>
+          <p style="color: #7ef0d4; font-weight: 600; font-size: 0.9rem; margin: 0;">Screenshot needed</p>
+        </div>
+
+        <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6; margin: 0;">
+          Prioritized risk scoring with severity levels, impact assessments, and recommended remediation steps.
+        </p>
+      </div>
+
+      <!-- Incident Response Playbook -->
+      <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(126, 240, 212, 0.2); border-radius: 12px; padding: 28px;">
+        <div style="margin-bottom: 20px;">
+          <span style="background: rgba(16, 185, 129, 0.15); padding: 6px 14px; border-radius: 16px; font-size: 0.75rem; font-weight: 700; color: #10b981; text-transform: uppercase; letter-spacing: 0.05em;">
+            Response Plan
+          </span>
+        </div>
+
+        <div style="position: relative; width: 100%; aspect-ratio: 4 / 3; background: linear-gradient(135deg, rgba(16, 185, 129, 0.08), rgba(126, 240, 212, 0.03)); border: 2px dashed rgba(16, 185, 129, 0.3); border-radius: 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; margin-bottom: 20px;">
+          <svg width="48" height="48" fill="none" stroke="#10b981" stroke-width="1.5" viewBox="0 0 24 24">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+            <polyline points="14 2 14 8 20 8"></polyline>
+            <line x1="16" y1="13" x2="8" y2="13"></line>
+            <line x1="16" y1="17" x2="8" y2="17"></line>
+          </svg>
+          <p style="color: #10b981; font-weight: 600; font-size: 0.9rem; margin: 0;">Screenshot needed</p>
+        </div>
+
+        <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6; margin: 0;">
+          Incident response guidelines customized to your organization's attack surface and risk profile.
+        </p>
+      </div>
+
+    </div>
+
+    <!-- Screenshot Requirements Note -->
+    <div style="margin-top: 32px; padding: 20px; background: rgba(106, 166, 255, 0.08); border: 2px dashed rgba(106, 166, 255, 0.3); border-radius: 12px; text-align: center;">
+      <p style="color: #6AA6FF; font-weight: 600; margin-bottom: 8px; font-size: 0.9rem;">📸 Screenshot Requirements</p>
+      <p style="color: var(--text-muted); font-size: 0.8rem; margin: 0; line-height: 1.5;">
+        <strong>Recommended Size:</strong> 1280x960px for all report screenshots<br>
+        <strong>Format:</strong> PNG or high-quality JPG<br>
+        <strong>Content:</strong> Anonymized examples from actual ADCS reports showing attack surface maps, OSINT findings, risk scoring dashboards, and incident response templates
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- Technical Advantage Infographic -->
+<section style="background:rgba(5,8,15,0.3);">
+<div class="wrap">
+<h2 style="text-align:center;">Why We Achieve 1/10 Traditional Costs</h2>
+<p style="text-align:center;color:var(--text-muted);font-size:1.1rem;margin-bottom:56px;max-width:800px;margin-left:auto;margin-right:auto;">
+Technical advantages enable high quality and low prices
+</p>
+
+<div style="max-width:1000px;margin:0 auto;">
+<!-- Flow Diagram -->
+<div style="position:relative;background:rgba(10,15,26,0.6);border:2px solid rgba(106,166,255,0.25);border-radius:16px;padding:48px;margin-bottom:48px;">
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:32px;position:relative;">
+<!-- Step 1 -->
+<div style="text-align:center;">
+<div style="width:80px;height:80px;background:linear-gradient(135deg,#6AA6FF,#10b981);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:2.5rem;margin:0 auto 20px;">🤖</div>
+<h4 style="color:#fff;font-size:1.1rem;margin-bottom:12px;font-weight:700;">Complete AI Automation</h4>
+<p style="color:var(--text-secondary);font-size:0.9rem;line-height:1.7;">Fully automate assessment, analysis, and report generation. Zero personnel costs with 24/7 operation.</p>
+<div style="margin-top:16px;padding:8px 16px;background:rgba(16,185,129,0.15);border-radius:20px;display:inline-block;">
+<span style="color:#10b981;font-weight:700;font-size:0.85rem;">90% personnel reduction</span>
+</div>
+</div>
+
+<!-- Step 2 -->
+<div style="text-align:center;">
+<div style="width:80px;height:80px;background:linear-gradient(135deg,#6AA6FF,#10b981);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:2.5rem;margin:0 auto 20px;">🌏</div>
+<h4 style="color:#fff;font-size:1.1rem;margin-bottom:12px;font-weight:700;">Global Network</h4>
+<p style="color:var(--text-secondary);font-size:0.9rem;line-height:1.7;">Leverage global partners to dramatically reduce expert costs. 1/5 domestic personnel costs.</p>
+<div style="margin-top:16px;padding:8px 16px;background:rgba(16,185,129,0.15);border-radius:20px;display:inline-block;">
+<span style="color:#10b981;font-weight:700;font-size:0.85rem;">80% expert cost reduction</span>
+</div>
+</div>
+
+<!-- Step 3 -->
+<div style="text-align:center;">
+<div style="width:80px;height:80px;background:linear-gradient(135deg,#6AA6FF,#10b981);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:2.5rem;margin:0 auto 20px;">☁️</div>
+<h4 style="color:#fff;font-size:1.1rem;margin-bottom:12px;font-weight:700;">Cloud Native</h4>
+<p style="color:var(--text-secondary);font-size:0.9rem;line-height:1.7;">No on-premises required. Minimized infrastructure costs with instant scalability.</p>
+<div style="margin-top:16px;padding:8px 16px;background:rgba(16,185,129,0.15);border-radius:20px;display:inline-block;">
+<span style="color:#10b981;font-weight:700;font-size:0.85rem;">85% infrastructure reduction</span>
+</div>
+</div>
+</div>
+
+<!-- Arrow to Result -->
+<div style="text-align:center;margin:32px 0;">
+<svg width="60" height="60" viewBox="0 0 60 60" style="opacity:0.3;">
+<path d="M30 10 L30 50 M20 40 L30 50 L40 40" stroke="#10b981" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</div>
+
+<!-- Result -->
+<div style="text-align:center;padding:32px;background:linear-gradient(135deg,rgba(16,185,129,0.15),rgba(106,166,255,0.12));border-radius:14px;">
+<h3 style="color:#fff;font-size:2rem;margin-bottom:12px;font-weight:800;">Result</h3>
+<div style="font-size:3.5rem;font-weight:800;background:linear-gradient(135deg,#6AA6FF,#10b981);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:16px;">
+1/10 Traditional
+</div>
+<p style="color:var(--text-secondary);font-size:1.15rem;line-height:1.7;">
+Equal or superior quality at dramatically lower prices.<br>
+<strong style="color:#fff;">Affordable pricing for SMBs and governments</strong>
+</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Flow -->
+<section>
+<div class="wrap">
+<div class="flow-section">
+<h2 style="text-align:center;">Implementation Process</h2>
+<p style="text-align:center;color:var(--text-muted);font-size:1.1rem;margin-bottom:48px;max-width:700px;margin-left:auto;margin-right:auto;">
+<strong style="color:#fff;">Fully automated・no follow-up required</strong><br>
+Start with confidence even without technical knowledge
+</p>
+
+<div class="flow-steps">
+<div class="flow-step">
+<div class="flow-step-number">1</div>
+<h5>Free Assessment Request</h5>
+<p>
+Submit form. Assessment begins with just email and domain name.
+</p>
+<span class="flow-time">⏱ 1 minute</span>
+</div>
+
+<div class="flow-step">
+<div class="flow-step-number">2</div>
+<h5>Automated Scanning</h5>
+<p>
+AI automatically conducts security assessment. Fully automated, no manual work required.
+</p>
+<span class="flow-time">⏱ Within 24 hours</span>
+</div>
+
+<div class="flow-step">
+<div class="flow-step-number">3</div>
+<h5>Report Delivery</h5>
+<p>
+Detailed security report automatically generated as PDF and delivered via email.
+</p>
+<span class="flow-time">⏱ Automatic delivery</span>
+</div>
+
+<div class="flow-step">
+<div class="flow-step-number">4</div>
+<h5>Optional Selection</h5>
+<p>
+Choose monthly monitoring subscription or individual improvement services. Can decline if unnecessary.
+</p>
+<span class="flow-time">⏱ Optional</span>
+</div>
+
+<div class="flow-step">
+<div class="flow-step-number">5</div>
+<h5>Payment & Start</h5>
+<p>
+Service begins with Stripe automatic billing. Receive continuous monitoring and improvement recommendations.
+</p>
+<span class="flow-time">⏱ Immediate</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- CTA Banner: Free Assessment -->
+<section style="padding: 80px 0; background: linear-gradient(135deg, rgba(106, 166, 255, 0.12), rgba(16, 185, 129, 0.08));">
+  <div class="wrap" style="max-width: 900px;">
+    <div style="text-align: center; padding: 60px 48px; background: rgba(10, 15, 26, 0.7); border: 2px solid rgba(16, 185, 129, 0.4); border-radius: 16px; backdrop-filter: blur(10px);">
+      <div style="display: inline-block; background: linear-gradient(135deg, #10b981, #7ef0d4); padding: 14px 24px; border-radius: 8px; margin-bottom: 24px; color: #0a0f1a; font-weight: 700; font-size: 0.9rem; letter-spacing: 0.05em;">
+        Limited Time Offer
+      </div>
+      <h3 style="font-size: 2rem; margin-bottom: 16px; color: #fff;">
+        Free Comprehensive Security Assessment<br>for Your Organization
+      </h3>
+      <p style="color: var(--text-secondary); font-size: 1.15rem; line-height: 1.7; margin-bottom: 32px; max-width: 700px; margin-left: auto; margin-right: auto;">
+        Comprehensive security assessment normally valued at $350 provided completely free. Discover vulnerabilities before attackers do.
+      </p>
+      <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+        <a href="../ja/contact.html" class="cta" style="padding: 20px 48px; font-size: 1.15rem; background: linear-gradient(135deg, #10b981, #7ef0d4);">
+          Request Free Assessment
+        </a>
+        <a href="#pricing" class="btn" style="padding: 20px 48px; font-size: 1.15rem;">
+          View Pricing
+        </a>
+      </div>
+      <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 20px;">
+        No credit card required • Results within 48 hours • No contractual obligations
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Pricing -->
+<section style="background:rgba(5,8,15,0.3);">
+<div class="wrap">
+<div class="pricing-section">
+<h2>Pricing Plans</h2>
+<p style="text-align:center;color:var(--text-secondary);font-size:1.1rem;max-width:700px;margin:0 auto 48px;line-height:1.8;">
+1/10 traditional costs. Pricing designed for SMBs and governments.
+</p>
+
+<div class="pricing-grid">
+<div class="pricing-card">
+<div class="pricing-label">Starter</div>
+<h4>Free Assessment</h4>
+<div class="price">¥0</div>
+<div class="price-detail">Completely Free</div>
+<ul>
+<li>Security posture visualization</li>
+<li>Automated vulnerability detection</li>
+<li>Detailed PDF report</li>
+<li>Improvement recommendations</li>
+<li>Risk level assessment</li>
+</ul>
+<a href="#free-diagnosis" class="cta" style="width:100%;text-align:center;display:inline-block;">Get Free Assessment</a>
+</div>
+
+<div class="pricing-card featured">
+<div class="pricing-label">Recommended</div>
+<h4>Monthly Monitoring</h4>
+<div class="price">¥30,000~</div>
+<div class="price-detail">Monthly</div>
+<ul>
+<li>Monthly automated security scans</li>
+<li>Continuous threat monitoring</li>
+<li>Monthly report delivery</li>
+<li>Updated improvement recommendations</li>
+<li>Automated remediation scripts provided</li>
+<li>Priority support</li>
+</ul>
+<a href="#contact" class="cta" style="width:100%;text-align:center;display:inline-block;background:linear-gradient(135deg,#6AA6FF,#10b981);">Contact Us</a>
+</div>
+
+<div class="pricing-card">
+<div class="pricing-label">Full Support</div>
+<h4>Individual Improvement</h4>
+<div class="price">Custom Quote</div>
+<div class="price-detail">Per Project</div>
+<ul>
+<li>Improvement services by global partners</li>
+<li>Complete vulnerability remediation</li>
+<li>Security posture establishment support</li>
+<li>Custom responses</li>
+<li>Dedicated account manager</li>
+<li>24-hour support</li>
+</ul>
+<a href="#contact" class="btn" style="width:100%;text-align:center;display:inline-block;">Consult</a>
+</div>
+</div>
+
+<div style="text-align:center;margin-top:56px;padding:40px;background:rgba(16,185,129,0.08);border:2px solid rgba(16,185,129,0.3);border-radius:14px;max-width:800px;margin-left:auto;margin-right:auto;">
+<h4 style="color:#10b981;font-size:1.5rem;margin-bottom:16px;font-weight:800;">1/10 Traditional Costs</h4>
+<p style="color:var(--text-secondary);font-size:1.1rem;line-height:1.8;margin:0;">
+Compared to major security services costing millions annually,<br>
+ADCS delivers enterprise-grade protection starting at ¥30,000/month.<br>
+<strong style="color:#fff;">Exceptional cost performance through AI automation and global partnerships.</strong>
+</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Additional Security Services -->
+<section style="padding: 80px 0; background: rgba(5, 8, 15, 0.5);">
+  <div class="wrap">
+    <div style="text-align: center; margin-bottom: 60px;">
+      <h2 style="font-size: 2.5rem; margin-bottom: 20px; color: #fff; font-weight: 800;">
+        Comprehensive Security Services
+      </h2>
+      <p style="color: var(--text-secondary); font-size: 1.15rem; line-height: 1.8; max-width: 800px; margin: 0 auto;">
+        In addition to ADCS, various security services leveraging global partners.<br>
+        <strong style="color: #10b981;">Covers all basic security needs</strong> with one-stop support.
+      </p>
+    </div>
+
+    <!-- Service List Table -->
+    <div style="overflow-x: auto; margin-bottom: 48px;">
+      <table style="width: 100%; max-width: 1200px; margin: 0 auto; border-collapse: collapse; background: rgba(10, 15, 26, 0.7); border-radius: 14px; overflow: hidden;">
+        <thead>
+          <tr style="background: linear-gradient(135deg, rgba(106, 166, 255, 0.15), rgba(16, 185, 129, 0.12));">
+            <th style="padding: 24px; text-align: left; color: #fff; font-size: 1.05rem; font-weight: 700; border-bottom: 2px solid rgba(106, 166, 255, 0.3);">Service Name</th>
+            <th style="padding: 24px; text-align: left; color: #fff; font-size: 1.05rem; font-weight: 700; border-bottom: 2px solid rgba(106, 166, 255, 0.3);">Description</th>
+            <th style="padding: 24px; text-align: center; color: #fff; font-size: 1.05rem; font-weight: 700; border-bottom: 2px solid rgba(106, 166, 255, 0.3);">Timeline</th>
+            <th style="padding: 24px; text-align: right; color: #fff; font-size: 1.05rem; font-weight: 700; border-bottom: 2px solid rgba(106, 166, 255, 0.3);">Reference Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- ADCS Core Service (Repeated) -->
+          <tr style="background: rgba(16, 185, 129, 0.08);">
+            <td style="padding: 24px; color: #fff; font-weight: 700; border-bottom: 1px solid var(--line);">
+              ADCS Assessment<br>
+              <span style="font-size: 0.75rem; color: #10b981; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;">Recommended</span>
+            </td>
+            <td style="padding: 24px; color: var(--text-secondary); border-bottom: 1px solid var(--line); line-height: 1.7;">
+              Fully automated AI security assessment. Comprehensive report including attack surface visualization, threat detection, and improvement recommendations.
+            </td>
+            <td style="padding: 24px; text-align: center; color: var(--text-secondary); border-bottom: 1px solid var(--line);">24 hours</td>
+            <td style="padding: 24px; text-align: right; color: #10b981; font-weight: 700; font-size: 1.15rem; border-bottom: 1px solid var(--line);">Free~¥30,000/mo</td>
+          </tr>
+
+          <!-- Penetration Testing -->
+          <tr>
+            <td style="padding: 24px; color: #fff; font-weight: 700; border-bottom: 1px solid var(--line);">Penetration Testing</td>
+            <td style="padding: 24px; color: var(--text-secondary); border-bottom: 1px solid var(--line); line-height: 1.7;">
+              Practical security testing attempting system infiltration from an actual attacker's perspective. Covers web, network, and application testing.
+            </td>
+            <td style="padding: 24px; text-align: center; color: var(--text-secondary); border-bottom: 1px solid var(--line);">2-4 weeks</td>
+            <td style="padding: 24px; text-align: right; color: var(--text-muted); font-weight: 600; border-bottom: 1px solid var(--line);">¥300,000~</td>
+          </tr>
+
+          <!-- Vulnerability Assessment -->
+          <tr>
+            <td style="padding: 24px; color: #fff; font-weight: 700; border-bottom: 1px solid var(--line);">Vulnerability Assessment</td>
+            <td style="padding: 24px; color: var(--text-secondary); border-bottom: 1px solid var(--line); line-height: 1.7;">
+              Comprehensive scanning of known vulnerabilities in web applications, networks, and servers. OWASP Top 10 compliant.
+            </td>
+            <td style="padding: 24px; text-align: center; color: var(--text-secondary); border-bottom: 1px solid var(--line);">1-2 weeks</td>
+            <td style="padding: 24px; text-align: right; color: var(--text-muted); font-weight: 600; border-bottom: 1px solid var(--line);">¥150,000~</td>
+          </tr>
+
+          <!-- Security Audit -->
+          <tr>
+            <td style="padding: 24px; color: #fff; font-weight: 700; border-bottom: 1px solid var(--line);">Security Audit</td>
+            <td style="padding: 24px; color: var(--text-secondary); border-bottom: 1px solid var(--line); line-height: 1.7;">
+              Verification of ISMS, PCI DSS, and other standard compliance. Comprehensive audit and gap analysis of policies, structures, and technical measures.
+            </td>
+            <td style="padding: 24px; text-align: center; color: var(--text-secondary); border-bottom: 1px solid var(--line);">2-3 weeks</td>
+            <td style="padding: 24px; text-align: right; color: var(--text-muted); font-weight: 600; border-bottom: 1px solid var(--line);">¥400,000~</td>
+          </tr>
+
+          <!-- Incident Response Support -->
+          <tr>
+            <td style="padding: 24px; color: #fff; font-weight: 700; border-bottom: 1px solid var(--line);">Incident Response</td>
+            <td style="padding: 24px; color: var(--text-secondary); border-bottom: 1px solid var(--line); line-height: 1.7;">
+              Emergency response to security incidents. Forensic investigation, impact scope identification, recovery support, and recurrence prevention.
+            </td>
+            <td style="padding: 24px; text-align: center; color: var(--text-secondary); border-bottom: 1px solid var(--line);">Immediate~</td>
+            <td style="padding: 24px; text-align: right; color: var(--text-muted); font-weight: 600; border-bottom: 1px solid var(--line);">¥500,000~</td>
+          </tr>
+
+          <!-- CSIRT Establishment -->
+          <tr>
+            <td style="padding: 24px; color: #fff; font-weight: 700; border-bottom: 1px solid var(--line);">CSIRT Establishment</td>
+            <td style="padding: 24px; color: var(--text-secondary); border-bottom: 1px solid var(--line); line-height: 1.7;">
+              Support for launching internal security team (CSIRT). Structure design, process development, tool implementation, and operational training.
+            </td>
+            <td style="padding: 24px; text-align: center; color: var(--text-secondary); border-bottom: 1px solid var(--line);">3-6 months</td>
+            <td style="padding: 24px; text-align: right; color: var(--text-muted); font-weight: 600; border-bottom: 1px solid var(--line);">¥1,500,000~</td>
+          </tr>
+
+          <!-- Security Training -->
+          <tr>
+            <td style="padding: 24px; color: #fff; font-weight: 700; border-bottom: 1px solid var(--line);">Security Training</td>
+            <td style="padding: 24px; color: var(--text-secondary); border-bottom: 1px solid var(--line); line-height: 1.7;">
+              Security awareness training for employees. Practical content including phishing defense, password management, and incident reporting.
+            </td>
+            <td style="padding: 24px; text-align: center; color: var(--text-secondary); border-bottom: 1px solid var(--line);">1 day~</td>
+            <td style="padding: 24px; text-align: right; color: var(--text-muted); font-weight: 600; border-bottom: 1px solid var(--line);">¥100,000~</td>
+          </tr>
+
+          <!-- Dark Web Monitoring -->
+          <tr>
+            <td style="padding: 24px; color: #fff; font-weight: 700; border-bottom: 1px solid var(--line);">Dark Web Monitoring</td>
+            <td style="padding: 24px; color: var(--text-secondary); border-bottom: 1px solid var(--line); line-height: 1.7;">
+              24/7 monitoring for organizational information leaks or illicit trading on the dark web. Immediate alerts upon breach detection.
+            </td>
+            <td style="padding: 24px; text-align: center; color: var(--text-secondary); border-bottom: 1px solid var(--line);">Continuous</td>
+            <td style="padding: 24px; text-align: right; color: var(--text-muted); font-weight: 600; border-bottom: 1px solid var(--line);">¥50,000/mo~</td>
+          </tr>
+
+          <!-- Cloud Security Assessment -->
+          <tr>
+            <td style="padding: 24px; color: #fff; font-weight: 700;">Cloud Security Assessment</td>
+            <td style="padding: 24px; color: var(--text-secondary); line-height: 1.7;">
+              Assessment of cloud environment security configurations for AWS, Azure, GCP, etc. IAM settings, storage exposure, log monitoring configurations.
+            </td>
+            <td style="padding: 24px; text-align: center; color: var(--text-secondary);">1-2 weeks</td>
+            <td style="padding: 24px; text-align: right; color: var(--text-muted); font-weight: 600;">¥200,000~</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Key Points -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 28px; margin-bottom: 56px;">
+      <div style="background: linear-gradient(135deg, rgba(106, 166, 255, 0.1), rgba(16, 185, 129, 0.08)); border: 2px solid rgba(16, 185, 129, 0.3); border-radius: 12px; padding: 32px; text-align: center;">
+        <div style="font-size: 3rem; margin-bottom: 16px;">🌏</div>
+        <h4 style="color: #10b981; font-size: 1.2rem; margin-bottom: 12px; font-weight: 700;">Global Partners</h4>
+        <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.7;">
+          Leveraging global security expert networks to deliver high-quality services at <strong style="color: #fff;">1/3~1/5</strong> domestic provider prices.
+        </p>
+      </div>
+
+      <div style="background: linear-gradient(135deg, rgba(106, 166, 255, 0.1), rgba(16, 185, 129, 0.08)); border: 2px solid rgba(16, 185, 129, 0.3); border-radius: 12px; padding: 32px; text-align: center;">
+        <div style="font-size: 3rem; margin-bottom: 16px;">📦</div>
+        <h4 style="color: #10b981; font-size: 1.2rem; margin-bottom: 12px; font-weight: 700;">One-Stop Solution</h4>
+        <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.7;">
+          No need for multiple vendor coordination. <strong style="color: #fff;">Avisail alone</strong> covers all basic security needs.
+        </p>
+      </div>
+
+      <div style="background: linear-gradient(135deg, rgba(106, 166, 255, 0.1), rgba(16, 185, 129, 0.08)); border: 2px solid rgba(16, 185, 129, 0.3); border-radius: 12px; padding: 32px; text-align: center;">
+        <div style="font-size: 3rem; margin-bottom: 16px;">🎯</div>
+        <h4 style="color: #10b981; font-size: 1.2rem; margin-bottom: 12px; font-weight: 700;">Flexible Customization</h4>
+        <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.7;">
+          <strong style="color: #fff;">Optimally combine services</strong> tailored to your needs. Build efficient security posture without waste.
+        </p>
+      </div>
+    </div>
+
+    <!-- Service Consultation CTA -->
+    <div style="text-align: center; padding: 48px; background: rgba(10, 15, 26, 0.7); border: 2px solid rgba(106, 166, 255, 0.3); border-radius: 16px;">
+      <h3 style="font-size: 1.8rem; margin-bottom: 20px; color: #fff; font-weight: 800;">
+        Not Sure Which Service is Right for You?
+      </h3>
+      <p style="color: var(--text-secondary); font-size: 1.05rem; line-height: 1.8; margin-bottom: 32px; max-width: 650px; margin-left: auto; margin-right: auto;">
+        Security experts will assess your situation and<br>
+        recommend optimal service combinations free of charge.
+      </p>
+      <a href="../ja/contact.html?type=service-consultation" class="cta" style="display: inline-block; padding: 18px 48px; font-size: 1.1rem; text-decoration: none; border-radius: 8px;">
+        Request Free Consultation
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Free Diagnosis CTA -->
+<section id="free-diagnosis">
+<div class="wrap">
+<div class="cta-section">
+<div class="free-badge">Free Assessment Available</div>
+<h2>Start with a Free Assessment<br>to Understand Your Current State</h2>
+<p class="lead">
+Apply in just 1 minute and receive a detailed security report within 24 hours.<br>
+Clearly visualize your organization's vulnerabilities and improvement areas.
+</p>
+<div style="display:flex;gap:20px;justify-content:center;flex-wrap:wrap;">
+<a href="../ja/contact.html" class="cta" style="font-size:1.2rem;padding:22px 60px;background:linear-gradient(135deg,#6AA6FF,#10b981);">Request Free Assessment</a>
+<a href="../ja/contact.html" class="btn" style="font-size:1.1rem;padding:22px 52px;">Start with Consultation</a>
+</div>
+
+<div style="margin-top:60px;padding-top:40px;border-top:1px solid rgba(16,185,129,0.3);">
+<p style="color:var(--text-muted);font-size:0.95rem;margin-bottom:12px;">Contact</p>
+<p style="color:var(--text-secondary);font-size:1.1rem;"><strong>info@avisail.com</strong></p>
+<p style="color:var(--text-muted);font-size:0.95rem;margin-top:12px;">Languages: Japanese / English / Italiano<br>Response: Within 1 business day</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Shared Footer -->
+<div id="site-footer"></div>
+
+<!-- Shared Components Loader -->
+<script src="../includes/components.js"></script>
+
+</body>
+</html>
