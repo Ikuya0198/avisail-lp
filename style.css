@@ -1652,6 +1652,10 @@ footer {
 /* ========== RESPONSIVE ========== */
 @media (max-width: 980px) {
 
+  #site-header {
+    position: relative;
+  }
+
   .grid-2,
   .grid-3 {
     grid-template-columns: 1fr;
