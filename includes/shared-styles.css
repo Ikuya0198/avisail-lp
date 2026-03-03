@@ -7,7 +7,8 @@
    HEADER STYLES
    ============================================ */
 #site-header {
-  position: static;
+  position: relative;
+  z-index: 1000;
 }
 
 header {
