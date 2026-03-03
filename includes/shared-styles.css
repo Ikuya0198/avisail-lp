@@ -346,7 +346,10 @@ footer .footer-bottom a:hover {
    ============================================ */
 @media (max-width: 980px) {
   #site-header {
-    position: relative;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
     z-index: 9999;
   }
 
