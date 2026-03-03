@@ -7,27 +7,13 @@
    HEADER STYLES
    ============================================ */
 #site-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
+  position: static;
 }
 
 header {
   position: relative;
-  background: transparent;
-  border-bottom: 1px solid transparent;
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
-  transition: background 0.3s ease, border-color 0.3s ease, backdrop-filter 0.3s ease;
-}
-
-header.scrolled {
-  background: rgba(5, 8, 15, 0.85);
+  background: rgba(5, 8, 15, 0.95);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
 }
 
 header .wrap.nav {
