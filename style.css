@@ -2115,16 +2115,13 @@ footer {
   }
 }
 
-/* ========== FULLPAGE SCROLL SNAP ========== */
+/* ========== FULLPAGE SECTIONS ========== */
 .fullpage-container {
-  scroll-snap-type: y proximity;
   scroll-behavior: smooth;
 }
 
 .fullpage-section {
   min-height: 100vh;
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
   display: flex;
   align-items: flex-start;
   padding-top: 80px;
@@ -2143,11 +2140,6 @@ footer {
   padding-bottom: 60px;
 }
 
-/* Footer visible after scroll snap sections (only inside fullpage-container) */
-.fullpage-container > footer,
-.fullpage-container > #site-footer {
-  scroll-snap-align: end;
-}
 
 /* Content blocks for sections (no background) */
 .glass-block {
@@ -2280,10 +2272,6 @@ footer {
 }
 
 @media (max-width: 768px) {
-  .fullpage-container {
-    scroll-snap-type: y proximity;
-  }
-
   .fullpage-section {
     min-height: auto;
     padding: 80px 0;

@@ -77,15 +77,12 @@
   <style>
     /* ========== SCROLL SNAP ========== */
     html {
-      scroll-snap-type: y proximity !important;
       scroll-behavior: smooth !important;
     }
 
     /* ========== FULLPAGE SECTIONS ========== */
     .fullpage-section {
       min-height: 100vh;
-      scroll-snap-align: start;
-      scroll-snap-stop: always;
       display: flex;
       align-items: center;
       position: relative;
@@ -98,7 +95,6 @@
       padding-top: 0;
     }
     #site-footer {
-      scroll-snap-align: end;
       width: 100%;
     }
     #faq {
@@ -667,8 +663,8 @@
     }
 
     @media (max-width: 768px) {
-      html { scroll-snap-type: none !important; }
-      .fullpage-section { scroll-snap-align: none; min-height: auto; }
+      html { }
+      .fullpage-section { min-height: auto; }
       .scroll-nav { display: none; }
 
       .home-section {
