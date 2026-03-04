@@ -6,6 +6,7 @@
 /* ============================================
    HEADER STYLES
    ============================================ */
+/* Desktop: header floats over hero with transparent background */
 #site-header {
   position: absolute;
   top: 0;
@@ -345,12 +346,13 @@ footer .footer-bottom a:hover {
    RESPONSIVE - MOBILE
    ============================================ */
 @media (max-width: 980px) {
+  /* Mobile: header in normal document flow (not absolute/fixed) */
   #site-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 9999;
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    z-index: 1000;
   }
 
   /* Always show header background on mobile */

@@ -235,7 +235,7 @@
   // Load shared CSS
   function loadSharedStyles() {
     const basePath = getBasePath();
-    const cssUrl = `${basePath}includes/shared-styles.css?v=20260304b`;
+    const cssUrl = `${basePath}includes/shared-styles.css?v=20260304c`;
 
     // Check if already loaded
     if (document.querySelector('link[href*="shared-styles.css"]')) return;
