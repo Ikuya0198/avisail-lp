@@ -75,6 +75,26 @@
   <script src="includes/cookie-consent.js"></script>
 
   <style>
+    /* ========== HEADER (critical - must load before JS) ========== */
+    #site-header {
+      position: relative;
+      z-index: 100;
+    }
+    #site-header header {
+      background: rgba(5, 8, 15, 0.95);
+    }
+    @media (min-width: 981px) {
+      #site-header {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+      }
+      #site-header header {
+        background: transparent;
+      }
+    }
+
     /* ========== SCROLL SNAP ========== */
     html {
       scroll-behavior: smooth !important;
