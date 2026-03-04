@@ -53,8 +53,8 @@
   </noscript>
 
   <!-- Preload critical CSS -->
-  <link rel="preload" href="style.css" as="style">
-  <link rel="stylesheet" href="style.css">
+  <link rel="preload" href="style.css?v=20260304" as="style">
+  <link rel="stylesheet" href="style.css?v=20260304">
 
   <!-- Preload LCP image -->
   <link rel="preload" href="images/hero-bg.webp" as="image" type="image/webp" fetchpriority="high">
@@ -710,7 +710,7 @@
   <div class="noise-overlay"></div>
 
   <!-- Shared Header -->
-  <div id="site-header"></div>
+  <div id="site-header" style="z-index:100;"></div>
 
   <!-- Navigation Dots -->
   <nav class="scroll-nav" id="scrollNav">
@@ -723,7 +723,7 @@
   </nav>
 
     <!-- HERO -->
-    <section class="fullpage-section hero" id="top" style="align-items:flex-start; padding-top:18vh;">
+    <section class="fullpage-section hero" id="top" style="align-items:flex-start; padding-top:18vh; z-index:1;">
       <div class="wrap">
         <h1 class="animate-in delay-2">
           Navigating the Future.<br>
