@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>無料セキュリティ自己診断 | ADCS - Avisail</title>
+<meta name="description" content="10問の質問に回答するだけで、貴社のセキュリティ対策状況を即座に診断。IPA SECURITY ACTIONに準拠した無料セルフチェック。">
+<link rel="icon" href="../images/favicon.ico">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#05080f;--bg2:#080d18;
+  --accent:#7ef0d4;--blue:#6aa6ff;
+  --danger:#ef4444;--warning:#f97316;--caution:#eab308;--safe:#22c55e;
+  --text:#fff;--text2:#b8c5d6;--muted:#6b7a8f;
+  --line:rgba(255,255,255,.08);--card:rgba(255,255,255,.025);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter','Noto Sans JP',-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased}
+body::before{content:'';position:fixed;inset:0;z-index:-1;background:radial-gradient(ellipse 100% 60% at 50% 0%,rgba(106,166,255,.06),transparent 60%),radial-gradient(ellipse 80% 40% at 80% 100%,rgba(126,240,212,.04),transparent 60%),#05080f}
+a{color:var(--accent);text-decoration:none}
+
+.wrap{max-width:860px;margin:0 auto;padding:0 24px}
+
+/* Header bar */
+.sc-header{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(5,8,15,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);padding:14px 24px;display:flex;align-items:center;justify-content:space-between}
+.sc-header .logo{font-size:1.1rem;font-weight:700;background:linear-gradient(135deg,var(--blue),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.sc-header .lang-switch{font-size:.82rem;color:var(--text2);border:1px solid var(--line);padding:5px 14px;border-radius:20px;transition:all .2s}
+.sc-header .lang-switch:hover{border-color:var(--accent);color:var(--accent)}
+
+/* Progress */
+.progress-wrap{margin-top:72px;padding:32px 0 0}
+.progress-bar{height:3px;background:rgba(255,255,255,.06);border-radius:3px;overflow:hidden;margin-bottom:8px}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--blue),var(--accent));border-radius:3px;transition:width .5s cubic-bezier(.4,0,.2,1)}
+.progress-label{font-size:.72rem;color:var(--muted);text-align:right}
+
+.steps{display:flex;gap:0;margin:24px 0 32px;justify-content:center}
+.step-dot{width:36px;height:36px;border-radius:50%;border:2px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:.78rem;font-weight:700;color:var(--muted);position:relative;transition:all .3s}
+.step-dot.active{border-color:var(--accent);color:var(--accent);box-shadow:0 0 20px rgba(126,240,212,.15)}
+.step-dot.done{border-color:var(--safe);background:var(--safe);color:#050810}
+.step-line{width:80px;height:2px;background:var(--line);align-self:center;margin:0 4px;transition:background .3s}
+.step-line.done{background:var(--safe)}
+
+/* Panels */
+.panel{display:none;animation:fadeUp .5s ease}
+.panel.active{display:block}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+
+/* Section title */
+.sec-badge{display:inline-block;background:rgba(126,240,212,.1);border:1px solid rgba(126,240,212,.25);color:var(--accent);font-size:.72rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;padding:5px 16px;border-radius:20px;margin-bottom:16px}
+.sec-title{font-size:clamp(1.4rem,3vw,2rem);font-weight:800;letter-spacing:-.02em;margin-bottom:8px}
+.sec-sub{font-size:.92rem;color:var(--text2);margin-bottom:32px;line-height:1.8}
+
+/* Form */
+.form-group{margin-bottom:20px}
+.form-label{display:block;font-size:.82rem;font-weight:600;color:var(--text2);margin-bottom:6px}
+.form-label .req{color:var(--danger);margin-left:4px}
+.form-input{width:100%;padding:14px 18px;border-radius:10px;background:rgba(255,255,255,.04);border:1px solid var(--line);color:var(--text);font-family:inherit;font-size:.95rem;transition:all .2s}
+.form-input:focus{outline:none;border-color:var(--blue);background:rgba(255,255,255,.06);box-shadow:0 0 0 3px rgba(106,166,255,.1)}
+.form-input::placeholder{color:var(--muted)}
+
+/* Questions */
+.q-card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:28px;margin-bottom:16px;transition:border-color .2s}
+.q-card:hover{border-color:rgba(255,255,255,.12)}
+.q-card.answered{border-color:rgba(126,240,212,.2)}
+.q-num{font-size:.72rem;font-weight:700;color:var(--accent);letter-spacing:.1em;margin-bottom:6px}
+.q-cat{font-size:.68rem;color:var(--muted);margin-left:8px;letter-spacing:.05em}
+.q-text{font-size:1rem;font-weight:600;margin-bottom:16px;line-height:1.6}
+.q-hint{font-size:.78rem;color:var(--muted);margin-bottom:14px;padding-left:14px;border-left:2px solid var(--line)}
+.q-options{display:flex;gap:10px;flex-wrap:wrap}
+.q-opt{flex:1;min-width:100px;padding:12px 16px;border-radius:10px;border:1px solid var(--line);background:rgba(255,255,255,.02);text-align:center;cursor:pointer;font-size:.85rem;font-weight:600;color:var(--text2);transition:all .2s;user-select:none}
+.q-opt:hover{border-color:rgba(255,255,255,.2);background:rgba(255,255,255,.04)}
+.q-opt.selected-yes{border-color:var(--safe);background:rgba(34,197,94,.1);color:var(--safe)}
+.q-opt.selected-partial{border-color:var(--caution);background:rgba(234,179,8,.08);color:var(--caution)}
+.q-opt.selected-no{border-color:var(--danger);background:rgba(239,68,68,.08);color:var(--danger)}
+
+/* Buttons */
+.btn{display:inline-block;padding:16px 40px;border-radius:50px;font-weight:700;font-size:.95rem;cursor:pointer;border:none;font-family:inherit;transition:all .25s}
+.btn-primary{background:linear-gradient(135deg,var(--blue),var(--accent));color:#050810}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 36px rgba(106,166,255,.3)}
+.btn-primary:disabled{opacity:.4;cursor:not-allowed;transform:none;box-shadow:none}
+.btn-ghost{border:1px solid var(--line);color:var(--text2);background:transparent}
+.btn-ghost:hover{border-color:rgba(255,255,255,.25);color:var(--text)}
+.btn-lg{padding:18px 52px;font-size:1.05rem}
+.btn-row{display:flex;gap:12px;justify-content:center;margin-top:36px;flex-wrap:wrap}
+
+/* Results */
+.result-hero{text-align:center;padding:48px 0 32px}
+.score-ring{width:180px;height:180px;margin:0 auto 24px;position:relative}
+.score-ring svg{transform:rotate(-90deg)}
+.score-ring .value{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.score-ring .value .num{font-size:3.2rem;font-weight:800;line-height:1}
+.score-ring .value .of{font-size:.85rem;color:var(--muted)}
+.grade-badge{display:inline-block;font-size:1.2rem;font-weight:800;width:48px;height:48px;line-height:48px;text-align:center;border-radius:12px;margin-bottom:12px}
+.grade-a{background:rgba(34,197,94,.15);color:var(--safe);border:2px solid var(--safe)}
+.grade-b{background:rgba(106,166,255,.15);color:var(--blue);border:2px solid var(--blue)}
+.grade-c{background:rgba(234,179,8,.12);color:var(--caution);border:2px solid var(--caution)}
+.grade-d{background:rgba(239,68,68,.12);color:var(--danger);border:2px solid var(--danger)}
+.result-grade-text{font-size:1.4rem;font-weight:700;margin-bottom:4px}
+.result-summary{font-size:.92rem;color:var(--text2);max-width:600px;margin:0 auto;line-height:1.8}
+
+/* Radar chart */
+.radar-section{margin:40px 0}
+.radar-wrap{display:flex;gap:32px;align-items:center;flex-wrap:wrap;justify-content:center}
+.radar-chart{flex-shrink:0}
+.radar-legend{display:flex;flex-direction:column;gap:12px}
+.radar-item{display:flex;align-items:center;gap:12px}
+.radar-bar-wrap{width:140px;height:8px;background:rgba(255,255,255,.06);border-radius:8px;overflow:hidden}
+.radar-bar{height:100%;border-radius:8px;transition:width 1s cubic-bezier(.4,0,.2,1)}
+.radar-label{font-size:.82rem;font-weight:600;width:140px;flex-shrink:0}
+.radar-score{font-size:.82rem;font-weight:700;color:var(--accent);width:40px;text-align:right}
+
+/* Detail cards */
+.detail-grid{display:grid;grid-template-columns:1fr;gap:16px;margin:32px 0}
+.detail-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:24px}
+.detail-card h4{font-size:.88rem;font-weight:700;margin-bottom:12px}
+.detail-status{display:inline-block;font-size:.72rem;font-weight:700;padding:3px 10px;border-radius:8px;margin-bottom:8px}
+.status-good{background:rgba(34,197,94,.12);color:var(--safe)}
+.status-partial{background:rgba(234,179,8,.1);color:var(--caution)}
+.status-bad{background:rgba(239,68,68,.1);color:var(--danger)}
+.detail-text{font-size:.82rem;color:var(--text2);line-height:1.7}
+
+/* Recommendations */
+.reco-card{background:rgba(126,240,212,.04);border:1px solid rgba(126,240,212,.12);border-radius:14px;padding:24px;margin-bottom:12px}
+.reco-priority{font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px}
+.reco-priority.high{color:var(--danger)}
+.reco-priority.medium{color:var(--caution)}
+.reco-priority.low{color:var(--safe)}
+.reco-text{font-size:.88rem;line-height:1.7}
+
+/* CTA banner */
+.cta-banner{text-align:center;background:linear-gradient(160deg,rgba(106,166,255,.06),rgba(126,240,212,.04));border:1px solid rgba(126,240,212,.12);border-radius:20px;padding:48px 32px;margin:48px 0}
+.cta-banner h3{font-size:1.4rem;font-weight:800;margin-bottom:8px}
+.cta-banner p{font-size:.88rem;color:var(--text2);margin-bottom:24px}
+.cta-features{display:flex;gap:24px;justify-content:center;flex-wrap:wrap;margin-bottom:28px}
+.cta-feat{font-size:.78rem;color:var(--text2)}
+.cta-feat::before{content:'';display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--accent);margin-right:8px;vertical-align:middle}
+
+/* Footer */
+.sc-footer{text-align:center;padding:32px 24px;border-top:1px solid var(--line);margin-top:48px}
+.sc-footer p{font-size:.72rem;color:var(--muted)}
+
+/* Print */
+@media print{
+  *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;color-adjust:exact!important}
+  body{background:#fff!important;color:#1a1a1a!important}
+  body::before{display:none!important}
+  .sc-header,.progress-wrap,.steps,.btn-row,.cta-banner,.sc-footer,.lang-switch,.no-print{display:none!important}
+  .panel{display:block!important;animation:none!important}
+  .panel:not(.panel-results){display:none!important}
+  .panel-results{display:block!important}
+  .wrap{max-width:100%;padding:0 20px}
+
+  .print-header{display:flex!important;align-items:center;justify-content:space-between;border-bottom:3px solid #1a1a1a;padding-bottom:16px;margin-bottom:24px}
+  .print-header .print-logo{font-size:1.4rem;font-weight:800;color:#1a1a1a}
+  .print-header .print-meta{font-size:.78rem;color:#666;text-align:right}
+  .print-company{font-size:1.2rem;font-weight:700;color:#1a1a1a;margin-bottom:4px}
+
+  .result-hero{padding:24px 0 16px}
+  .score-ring .value .num{color:#1a1a1a}
+  .sec-title,.result-grade-text,.detail-card h4,.reco-text{color:#1a1a1a}
+  .sec-sub,.result-summary,.detail-text,.sec-badge{color:#444}
+  .q-num{color:#0a7a5a}
+
+  .radar-label{color:#1a1a1a}
+  .radar-score{color:#0a7a5a}
+  .detail-card{border:1px solid #ddd;background:#f8f8f8;break-inside:avoid}
+  .reco-card{border:1px solid #cde;background:#f0f8ff;break-inside:avoid}
+  .grade-badge{border-width:3px}
+
+  .print-footer{display:block!important;text-align:center;margin-top:32px;padding-top:16px;border-top:2px solid #ddd;font-size:.72rem;color:#999}
+
+  @page{margin:15mm 12mm}
+}
+.print-header,.print-footer{display:none}
+
+/* Mobile */
+@media(max-width:640px){
+  .q-options{flex-direction:column}
+  .q-opt{min-width:auto}
+  .radar-wrap{flex-direction:column}
+  .btn-row{flex-direction:column;align-items:stretch}
+  .btn{text-align:center}
+  .cta-features{flex-direction:column;align-items:center;gap:8px}
+}
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<div class="sc-header">
+  <a href="adcs-ja.html" class="logo">ADCS Self-Check</a>
+  <a href="self-check-en.html" class="lang-switch">English</a>
+</div>
+
+<div class="wrap">
+
+<!-- Progress -->
+<div class="progress-wrap">
+  <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+  <div class="progress-label" id="progressLabel">0 / 10</div>
+</div>
+
+<div class="steps" id="stepDots">
+  <div class="step-dot active" data-step="0">1</div>
+  <div class="step-line"></div>
+  <div class="step-dot" data-step="1">2</div>
+  <div class="step-line"></div>
+  <div class="step-dot" data-step="2">3</div>
+</div>
+
+<!-- ========== STEP 1: INFO ========== -->
+<div class="panel active" id="panel0">
+  <div class="sec-badge">STEP 1 / 3</div>
+  <h1 class="sec-title">無料セキュリティ自己診断</h1>
+  <p class="sec-sub">10問の質問に回答するだけで、貴社のセキュリティ対策状況を即座に診断します。<br>IPA SECURITY ACTIONの評価基準に準拠した無料セルフチェックです。</p>
+
+  <div class="form-group">
+    <label class="form-label">会社名<span class="req">*</span></label>
+    <input class="form-input" id="companyName" placeholder="例: 株式会社サンプル" required>
+  </div>
+  <div class="form-group">
+    <label class="form-label">ご担当者名<span class="req">*</span></label>
+    <input class="form-input" id="personName" placeholder="例: 山田 太郎">
+  </div>
+  <div class="form-group">
+    <label class="form-label">メールアドレス<span class="req">*</span></label>
+    <input class="form-input" type="email" id="email" placeholder="例: info@example.co.jp">
+  </div>
+  <div class="form-group">
+    <label class="form-label">ウェブサイトドメイン</label>
+    <input class="form-input" id="domain" placeholder="例: example.co.jp">
+  </div>
+
+  <div class="btn-row">
+    <button class="btn btn-primary btn-lg" onclick="goStep(1)" id="btnStart">診断を開始する</button>
+  </div>
+</div>
+
+<!-- ========== STEP 2: QUESTIONS ========== -->
+<div class="panel" id="panel1">
+  <div class="sec-badge">STEP 2 / 3</div>
+  <h2 class="sec-title">セキュリティ対策チェック</h2>
+  <p class="sec-sub">各項目について、貴社の現在の対応状況に最も近いものを選択してください。</p>
+
+  <div id="questionsContainer"></div>
+
+  <div class="btn-row">
+    <button class="btn btn-ghost" onclick="goStep(0)">戻る</button>
+    <button class="btn btn-primary btn-lg" onclick="showResults()" id="btnResult" disabled>診断結果を表示</button>
+  </div>
+</div>
+
+<!-- ========== STEP 3: RESULTS ========== -->
+<div class="panel panel-results" id="panel2">
+
+  <!-- Print header -->
+  <div class="print-header">
+    <div>
+      <div class="print-logo">ADCS Security Self-Check Report</div>
+      <div style="font-size:.82rem;color:#666;margin-top:2px">Avisail Autonomous Defensive Cybersecurity System</div>
+    </div>
+    <div class="print-meta">
+      <div class="print-company" id="printCompany"></div>
+      <div id="printDate"></div>
+    </div>
+  </div>
+
+  <div class="sec-badge">DIAGNOSTIC RESULT</div>
+  <div class="result-hero">
+    <div class="score-ring" id="scoreRing">
+      <svg width="180" height="180" viewBox="0 0 180 180">
+        <circle cx="90" cy="90" r="78" fill="none" stroke="rgba(255,255,255,.06)" stroke-width="8"/>
+        <circle cx="90" cy="90" r="78" fill="none" stroke-width="8" stroke-linecap="round"
+          id="scoreArc" stroke="url(#scoreGrad)" stroke-dasharray="0 490"/>
+        <defs><linearGradient id="scoreGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#6aa6ff"/><stop offset="100%" stop-color="#7ef0d4"/></linearGradient></defs>
+      </svg>
+      <div class="value">
+        <div class="num" id="scoreNum">0</div>
+        <div class="of">/ 30</div>
+      </div>
+    </div>
+    <div id="gradeDisplay"></div>
+    <div class="result-grade-text" id="gradeText"></div>
+    <div class="result-summary" id="gradeSummary"></div>
+  </div>
+
+  <!-- Radar -->
+  <div class="radar-section">
+    <h3 class="sec-title" style="font-size:1.2rem;text-align:center;margin-bottom:24px">カテゴリ別評価</h3>
+    <div class="radar-wrap">
+      <canvas class="radar-chart" id="radarCanvas" width="280" height="280"></canvas>
+      <div class="radar-legend" id="radarLegend"></div>
+    </div>
+  </div>
+
+  <!-- Detail -->
+  <h3 class="sec-title" style="font-size:1.2rem;margin-bottom:16px">項目別結果</h3>
+  <div class="detail-grid" id="detailGrid"></div>
+
+  <!-- Recommendations -->
+  <h3 class="sec-title" style="font-size:1.2rem;margin:32px 0 16px">改善提案</h3>
+  <div id="recoContainer"></div>
+
+  <!-- Print / CTA -->
+  <div class="btn-row no-print">
+    <button class="btn btn-ghost" onclick="window.print()">このページを印刷する</button>
+    <a class="btn btn-primary btn-lg" href="https://adcs.avisail.com/subscribe">本格診断を申し込む</a>
+  </div>
+
+  <!-- CTA Banner -->
+  <div class="cta-banner no-print">
+    <h3>ADCSで本格的なセキュリティ診断を</h3>
+    <p>セルフチェックでは測れない技術的な脆弱性を、24種類の自動スキャナーが検出します。</p>
+    <div class="cta-features">
+      <span class="cta-feat">外部攻撃面の自動検出</span>
+      <span class="cta-feat">SSL/TLS・DNS・メール設定評価</span>
+      <span class="cta-feat">ダークウェブ漏洩チェック</span>
+      <span class="cta-feat">11規制フレームワーク対応</span>
+    </div>
+    <a class="btn btn-primary btn-lg" href="https://adcs.avisail.com/subscribe">月額 ¥29,800 から開始</a>
+    <div style="margin-top:12px">
+      <a href="adcs-ja.html" style="font-size:.82rem;color:var(--text2)">ADCSの詳細を見る &rarr;</a>
+    </div>
+  </div>
+
+  <div class="print-footer">
+    <p>本レポートは Avisail ADCS セキュリティ自己診断ツールにより自動生成されました。</p>
+    <p>より詳細な技術診断は https://adcs.avisail.com をご覧ください。</p>
+    <p style="margin-top:8px">&copy; 2026 Avisail Inc. All rights reserved.</p>
+  </div>
+</div>
+
+</div><!-- /wrap -->
+
+<div class="sc-footer no-print">
+  <p>&copy; 2026 Avisail Inc. &nbsp;|&nbsp; <a href="../legal/privacy-ja.html">プライバシーポリシー</a> &nbsp;|&nbsp; <a href="adcs-ja.html">ADCS詳細</a></p>
+</div>
+
+<script>
+const QUESTIONS = [
+  {
+    id:1, cat:"アクセス管理",
+    text:"パスワードは8文字以上かつ英数記号混在のルールを設けていますか？",
+    hint:"推測されやすいパスワード（123456、会社名等）を禁止するルールを含みます。",
+    recoNo:"パスワードポリシーの策定が最優先です。8文字以上・英数記号混在・90日更新を最低基準として導入してください。",
+    recoPartial:"ルールはあるが徹底されていない場合、パスワードマネージャーの導入と定期的な教育が効果的です。"
+  },
+  {
+    id:2, cat:"アクセス管理",
+    text:"多要素認証（MFA）を主要システムに導入していますか？",
+    hint:"メール、クラウドサービス、VPN等の重要システムへのログイン時に、パスワード以外の認証を要求する仕組みです。",
+    recoNo:"MFAはサイバー攻撃の99.9%を防止できる最も効果的な対策です。Google AuthenticatorやMicrosoft Authenticatorを無料で導入できます。",
+    recoPartial:"一部のシステムにのみ導入している場合、メール・VPN・クラウドストレージを優先的にMFA対応してください。"
+  },
+  {
+    id:3, cat:"インフラ防御",
+    text:"OS・ソフトウェアの自動更新を有効にしていますか？",
+    hint:"Windows Update、macOSアップデート、ブラウザ、業務アプリ等の更新プログラムが自動適用される設定です。",
+    recoNo:"脆弱性の放置は攻撃の最大の入口です。Windows Updateの自動適用を即時有効化し、月次でアプリケーション更新を確認してください。",
+    recoPartial:"自動更新が一部のみの場合、すべてのエンドポイントで更新ポリシーを統一してください。"
+  },
+  {
+    id:4, cat:"インフラ防御",
+    text:"ウイルス対策ソフトを全端末に導入し、定義ファイルを最新に保っていますか？",
+    hint:"PC・サーバーだけでなく、業務で使用するモバイル端末も含みます。",
+    recoNo:"全端末にウイルス対策ソフトを導入してください。Windows Defenderは無料で利用でき、中小企業には十分な保護を提供します。",
+    recoPartial:"未導入の端末を特定し、BYOD端末も含めて保護範囲を拡大してください。"
+  },
+  {
+    id:5, cat:"データ保護",
+    text:"重要データの定期バックアップを実施し、復元テストを行っていますか？",
+    hint:"ランサムウェア対策として、オフライン or クラウドバックアップと、定期的な復元確認が含まれます。",
+    recoNo:"3-2-1ルール（3つのコピー、2種類のメディア、1つはオフサイト）でバックアップ体制を構築してください。クラウドバックアップが最も手軽です。",
+    recoPartial:"バックアップは取っているが復元テストをしていない場合、四半期に1回の復元テストを実施してください。"
+  },
+  {
+    id:6, cat:"データ保護",
+    text:"USBメモリやクラウドストレージの利用ルールを定めていますか？",
+    hint:"個人USBの使用禁止、許可されたクラウドサービスのリスト、機密データの持ち出し制限等のルールです。",
+    recoNo:"情報持ち出しルールの策定が必要です。個人USB禁止、会社承認済みクラウドサービスのみ使用可とするポリシーを導入してください。",
+    recoPartial:"ルールはあるが運用が曖昧な場合、DLP（データ損失防止）ツールの導入を検討してください。"
+  },
+  {
+    id:7, cat:"運用体制",
+    text:"不審なメールへの対応手順を従業員に周知していますか？",
+    hint:"フィッシングメールの見分け方、報告先、添付ファイルを開かないルール等が含まれます。",
+    recoNo:"フィッシングメール対応マニュアルを作成し、全従業員に配布してください。年2回の訓練メール送信も効果的です。",
+    recoPartial:"周知はしているが定期的な訓練を行っていない場合、フィッシングシミュレーション訓練の導入を推奨します。"
+  },
+  {
+    id:8, cat:"運用体制",
+    text:"Wi-Fiネットワークに適切な暗号化（WPA3/WPA2）とゲスト分離を設定していますか？",
+    hint:"社内Wi-FiのWPA2/WPA3暗号化、来客用ネットワークの分離、デフォルトパスワードの変更等です。",
+    recoNo:"Wi-Fiルーターの暗号化をWPA2以上に設定し、管理パスワードをデフォルトから変更してください。来客用SSIDの分離も必須です。",
+    recoPartial:"暗号化は設定済みだがゲスト分離がない場合、来客用ネットワークを社内ネットワークから分離してください。"
+  },
+  {
+    id:9, cat:"ガバナンス",
+    text:"セキュリティインシデント発生時の連絡体制・対応手順を定めていますか？",
+    hint:"緊急連絡先リスト、初動対応フロー、社外への報告基準（個人情報保護委員会等）が含まれます。",
+    recoNo:"インシデント対応計画を策定してください。最低限、緊急連絡先リスト・初動対応チェックリスト・社外報告基準の3点を整備します。",
+    recoPartial:"体制はあるが訓練を行っていない場合、年1回のインシデント対応訓練（机上演習）を実施してください。"
+  },
+  {
+    id:10, cat:"ガバナンス",
+    text:"従業員向けのセキュリティ教育・研修を定期的に実施していますか？",
+    hint:"入社時研修だけでなく、年1回以上の継続的なセキュリティ意識向上プログラムです。",
+    recoNo:"年1回以上のセキュリティ研修を義務化してください。IPA提供の無料教材やオンライン学習プラットフォームを活用できます。",
+    recoPartial:"研修はあるが不定期の場合、年間スケジュールを策定し、受講記録を管理してください。"
+  }
+];
+
+const CATEGORIES = [
+  {name:"アクセス管理", ids:[1,2], color:"#6aa6ff"},
+  {name:"インフラ防御", ids:[3,4], color:"#7ef0d4"},
+  {name:"データ保護",   ids:[5,6], color:"#a78bfa"},
+  {name:"運用体制",     ids:[7,8], color:"#f97316"},
+  {name:"ガバナンス",   ids:[9,10],color:"#ec4899"}
+];
+
+const GRADES = {
+  A:{min:25,label:"優良",cls:"grade-a",color:"#22c55e",
+    summary:"貴社のセキュリティ対策は高い水準にあります。現在の取り組みを維持しつつ、技術的な脆弱性診断でさらなる強化を図ることを推奨します。"},
+  B:{min:18,label:"良好",cls:"grade-b",color:"#6aa6ff",
+    summary:"基本的なセキュリティ対策は概ね実施されていますが、一部に改善の余地があります。特に「一部対応」の項目を完全対応に引き上げることで、大幅なリスク低減が期待できます。"},
+  C:{min:10,label:"要改善",cls:"grade-c",color:"#eab308",
+    summary:"セキュリティ対策にいくつかの重要な課題が見受けられます。改善提案の優先度「高」の項目から順に対応することで、効率的にセキュリティレベルを向上できます。"},
+  D:{min:0,label:"要対応",cls:"grade-d",color:"#ef4444",
+    summary:"セキュリティ対策が不十分な状態です。サイバー攻撃のリスクが高く、早急な対応が必要です。まずは改善提案の優先度「高」の項目に取り組んでください。"}
+};
+
+let answers = {};
+let currentStep = 0;
+
+// Render questions
+function renderQuestions(){
+  const c = document.getElementById('questionsContainer');
+  let html = '';
+  QUESTIONS.forEach((q,i) => {
+    html += `
+    <div class="q-card" id="qcard${q.id}">
+      <div class="q-num">Q${q.id}<span class="q-cat"> / ${q.cat}</span></div>
+      <div class="q-text">${q.text}</div>
+      <div class="q-hint">${q.hint}</div>
+      <div class="q-options">
+        <div class="q-opt" onclick="answer(${q.id},3,this,'yes')">はい</div>
+        <div class="q-opt" onclick="answer(${q.id},1,this,'partial')">一部対応</div>
+        <div class="q-opt" onclick="answer(${q.id},0,this,'no')">いいえ</div>
+      </div>
+    </div>`;
+  });
+  c.innerHTML = html;
+}
+
+function answer(id,val,el,type){
+  answers[id] = val;
+  const card = document.getElementById('qcard'+id);
+  card.querySelectorAll('.q-opt').forEach(o => o.className='q-opt');
+  el.classList.add('selected-'+type);
+  card.classList.add('answered');
+  updateProgress();
+}
+
+function updateProgress(){
+  const n = Object.keys(answers).length;
+  document.getElementById('progressFill').style.width = (n/10*100)+'%';
+  document.getElementById('progressLabel').textContent = n+' / 10';
+  document.getElementById('btnResult').disabled = n < 10;
+}
+
+function goStep(s){
+  if(s===1){
+    const cn = document.getElementById('companyName').value.trim();
+    const pn = document.getElementById('personName').value.trim();
+    const em = document.getElementById('email').value.trim();
+    if(!cn||!pn||!em){alert('必須項目を入力してください。');return;}
+  }
+  currentStep = s;
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  document.getElementById('panel'+s).classList.add('active');
+
+  document.querySelectorAll('.step-dot').forEach((d,i)=>{
+    d.classList.remove('active','done');
+    if(i<s) d.classList.add('done');
+    if(i===s) d.classList.add('active');
+  });
+  document.querySelectorAll('.step-line').forEach((l,i)=>{
+    l.classList.toggle('done',i<s);
+  });
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function showResults(){
+  if(Object.keys(answers).length<10) return;
+  goStep(2);
+  const total = Object.values(answers).reduce((a,b)=>a+b,0);
+  const grade = total>=25?'A':total>=18?'B':total>=10?'C':'D';
+  const g = GRADES[grade];
+
+  // Print meta
+  document.getElementById('printCompany').textContent = document.getElementById('companyName').value;
+  document.getElementById('printDate').textContent = '診断日: '+new Date().toLocaleDateString('ja-JP');
+
+  // Score animation
+  animateScore(total);
+
+  // Grade
+  document.getElementById('gradeDisplay').innerHTML = `<div class="grade-badge ${g.cls}">${grade}</div>`;
+  document.getElementById('gradeText').textContent = g.label;
+  document.getElementById('gradeSummary').textContent = g.summary;
+
+  // Category scores
+  const catScores = CATEGORIES.map(cat=>{
+    const s = cat.ids.reduce((a,id)=>a+(answers[id]||0),0);
+    return {name:cat.name,score:s,max:cat.ids.length*3,color:cat.color};
+  });
+
+  // Radar chart
+  drawRadar(catScores);
+
+  // Radar legend
+  const legend = document.getElementById('radarLegend');
+  legend.innerHTML = catScores.map(c=>{
+    const pct = Math.round(c.score/c.max*100);
+    return `<div class="radar-item">
+      <span class="radar-label">${c.name}</span>
+      <div class="radar-bar-wrap"><div class="radar-bar" style="width:${pct}%;background:${c.color}"></div></div>
+      <span class="radar-score">${c.score}/${c.max}</span>
+    </div>`;
+  }).join('');
+
+  // Detail
+  const grid = document.getElementById('detailGrid');
+  grid.innerHTML = QUESTIONS.map(q=>{
+    const v = answers[q.id];
+    const st = v===3?'good':v===1?'partial':'bad';
+    const stText = v===3?'対応済み':v===1?'一部対応':'未対応';
+    return `<div class="detail-card">
+      <div class="detail-status status-${st}">${stText}</div>
+      <h4>Q${q.id}. ${q.text}</h4>
+      <div class="detail-text">${v===3?'適切に対策されています。引き続き現状を維持してください。':v===1?q.recoPartial:q.recoNo}</div>
+    </div>`;
+  }).join('');
+
+  // Recommendations
+  const reco = document.getElementById('recoContainer');
+  const noItems = QUESTIONS.filter(q=>answers[q.id]===0);
+  const partialItems = QUESTIONS.filter(q=>answers[q.id]===1);
+  let recoHtml = '';
+  noItems.forEach(q=>{
+    recoHtml += `<div class="reco-card">
+      <div class="reco-priority high">優先度: 高</div>
+      <div class="reco-text"><strong>Q${q.id}. ${q.text.replace('ますか？','')}</strong><br>${q.recoNo}</div>
+    </div>`;
+  });
+  partialItems.forEach(q=>{
+    recoHtml += `<div class="reco-card">
+      <div class="reco-priority medium">優先度: 中</div>
+      <div class="reco-text"><strong>Q${q.id}. ${q.text.replace('ますか？','')}</strong><br>${q.recoPartial}</div>
+    </div>`;
+  });
+  if(!noItems.length && !partialItems.length){
+    recoHtml = `<div class="reco-card"><div class="reco-priority low">全項目対応済み</div>
+      <div class="reco-text">全てのチェック項目に対応済みです。ADCSの技術スキャンで、設定上の脆弱性やダークウェブ上の情報漏洩がないか確認することを推奨します。</div></div>`;
+  }
+  reco.innerHTML = recoHtml;
+}
+
+function animateScore(target){
+  const arc = document.getElementById('scoreArc');
+  const num = document.getElementById('scoreNum');
+  const circ = 2*Math.PI*78;
+  let cur=0;
+  const step=()=>{
+    cur += .6;
+    if(cur>target) cur=target;
+    const pct = cur/30;
+    arc.setAttribute('stroke-dasharray',`${pct*circ} ${circ}`);
+    num.textContent = Math.round(cur);
+    if(cur<target) requestAnimationFrame(step);
+  };
+  requestAnimationFrame(step);
+}
+
+function drawRadar(cats){
+  const canvas = document.getElementById('radarCanvas');
+  const ctx = canvas.getContext('2d');
+  const cx=140,cy=140,r=110;
+  const n = cats.length;
+
+  ctx.clearRect(0,0,280,280);
+
+  // Grid
+  for(let lv=1;lv<=3;lv++){
+    ctx.beginPath();
+    const lr = r*lv/3;
+    for(let i=0;i<=n;i++){
+      const a = (Math.PI*2/n)*i - Math.PI/2;
+      const x = cx+lr*Math.cos(a);
+      const y = cy+lr*Math.sin(a);
+      i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);
+    }
+    ctx.closePath();
+    ctx.strokeStyle='rgba(255,255,255,.08)';
+    ctx.lineWidth=1;
+    ctx.stroke();
+  }
+
+  // Axes + labels
+  for(let i=0;i<n;i++){
+    const a = (Math.PI*2/n)*i - Math.PI/2;
+    ctx.beginPath();
+    ctx.moveTo(cx,cy);
+    ctx.lineTo(cx+r*Math.cos(a),cy+r*Math.sin(a));
+    ctx.strokeStyle='rgba(255,255,255,.06)';
+    ctx.stroke();
+
+    const lx = cx+(r+22)*Math.cos(a);
+    const ly = cy+(r+22)*Math.sin(a);
+    ctx.fillStyle='#b8c5d6';
+    ctx.font='600 11px Inter,Noto Sans JP,sans-serif';
+    ctx.textAlign='center';
+    ctx.textBaseline='middle';
+    ctx.fillText(cats[i].name,lx,ly);
+  }
+
+  // Data polygon
+  ctx.beginPath();
+  for(let i=0;i<=n;i++){
+    const idx = i%n;
+    const a = (Math.PI*2/n)*idx - Math.PI/2;
+    const val = cats[idx].score/cats[idx].max;
+    const x = cx+r*val*Math.cos(a);
+    const y = cy+r*val*Math.sin(a);
+    i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);
+  }
+  ctx.closePath();
+  ctx.fillStyle='rgba(126,240,212,.12)';
+  ctx.fill();
+  ctx.strokeStyle='#7ef0d4';
+  ctx.lineWidth=2;
+  ctx.stroke();
+
+  // Data points
+  for(let i=0;i<n;i++){
+    const a = (Math.PI*2/n)*i - Math.PI/2;
+    const val = cats[i].score/cats[i].max;
+    const x = cx+r*val*Math.cos(a);
+    const y = cy+r*val*Math.sin(a);
+    ctx.beginPath();
+    ctx.arc(x,y,4,0,Math.PI*2);
+    ctx.fillStyle=cats[i].color;
+    ctx.fill();
+  }
+}
+
+renderQuestions();
+</script>
+</body>
+</html>
