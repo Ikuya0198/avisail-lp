@@ -42,6 +42,7 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 html {
+  scroll-snap-type: y proximity;
   scroll-behavior: smooth;
   font-size: 16px;
 }
@@ -77,6 +78,7 @@ a { color: inherit; text-decoration: none; }
 
 .fullpage-section {
   min-height: 100vh;
+  scroll-snap-align: start;
   display: flex;
   align-items: flex-start;
   padding-top: 80px;

@@ -32,7 +32,7 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 html {
-  
+  scroll-snap-type: y proximity;
   scroll-behavior: smooth;
   font-size: 16px;
 }
@@ -49,8 +49,7 @@ body {
 
 .fullpage-section {
   min-height: 100vh;
-  
-  
+  scroll-snap-align: start;
   display: flex;
   align-items: flex-start;
   padding-top: 80px;
@@ -738,12 +737,12 @@ section {
         <div class="stat-label">システム稼働</div>
       </div>
       <div class="stat-item animate-on-scroll">
-        <div class="stat-number">99%</div>
-        <div class="stat-label">脅威検出率</div>
+        <div class="stat-number">10,000+</div>
+        <div class="stat-label">スキャン実施数</div>
       </div>
       <div class="stat-item animate-on-scroll">
-        <div class="stat-number">3</div>
-        <div class="stat-label">グローバル展開地域</div>
+        <div class="stat-number">Worldwide</div>
+        <div class="stat-label">グローバル対応</div>
       </div>
       <div class="stat-item animate-on-scroll">
         <div class="stat-number">&lt;24h</div>
