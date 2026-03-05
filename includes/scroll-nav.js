@@ -99,20 +99,20 @@
     var kickerText = kicker ? kicker.textContent.trim() : '';
 
     if (isJa) {
-      // Japanese page: use h2 (Japanese), split on <br> to get shortest phrase
+      // Japanese page: prefer kicker/label (concise), then h2
+      if (kickerText && kickerText.length <= 16) return kickerText;
       if (h2) {
         var t = extractShortText(h2).replace(/[。、]\s*$/, '').trim();
-        return trimLabel(t, 9);
+        return trimLabel(t, 12);
       }
-      // Fall back to kicker if no h2
-      if (kickerText) return trimLabel(kickerText, 10);
-      if (h1) return trimLabel(extractShortText(h1), 9);
+      if (kickerText) return trimLabel(kickerText, 12);
+      if (h1) return trimLabel(extractShortText(h1), 12);
     } else {
       // English page: prefer kicker (concise), then h2
       if (kickerText && kickerText.length <= 16) return kickerText;
-      if (h2) return trimLabel(extractShortText(h2), 12);
-      if (kickerText) return trimLabel(kickerText, 12);
-      if (h1) return trimLabel(extractShortText(h1), 12);
+      if (h2) return trimLabel(extractShortText(h2), 16);
+      if (kickerText) return trimLabel(kickerText, 16);
+      if (h1) return trimLabel(extractShortText(h1), 16);
     }
 
     return sec.id || '●';
