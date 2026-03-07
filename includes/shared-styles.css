@@ -6,13 +6,20 @@
 /* ============================================
    HEADER STYLES
    ============================================ */
-/* Desktop: header floats over hero with transparent background */
+/* Mobile-first: sticky so header never scrolls away */
 #site-header {
-  position: absolute;
+  position: sticky;
   top: 0;
-  left: 0;
-  right: 0;
   z-index: 1000;
+}
+
+/* Desktop: header floats over hero with transparent background */
+@media (min-width: 981px) {
+  #site-header {
+    position: absolute;
+    left: 0;
+    right: 0;
+  }
 }
 
 header {
@@ -346,10 +353,10 @@ footer .footer-bottom a:hover {
    RESPONSIVE - MOBILE
    ============================================ */
 @media (max-width: 980px) {
-  /* Mobile: header in normal document flow (not absolute/fixed) */
+  /* Mobile: sticky so header stays visible when scrolling */
   #site-header {
-    position: relative;
-    top: auto;
+    position: sticky;
+    top: 0;
     left: auto;
     right: auto;
     z-index: 1000;

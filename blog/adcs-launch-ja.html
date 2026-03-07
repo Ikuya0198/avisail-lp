@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>ADCS 正式リリース：中小企業向け自動セキュリティ診断 — 月額¥29,800から | Avisailブログ</title>
+<meta name="description" content="Avisailは本日、ADCSを正式リリースしました。54種のスキャナーが脆弱性を自動検出・修正手順を生成し、11の規制フレームワークに自動マッピング。月額¥29,800から。">
+<link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAADCklEQVRYCe2Uu2tUQRTGv5n73pvsxo1xfSxGCwUhIooggoKFglrpfyBiIaJYKQgiiNpY2omFpVrYKlgYFXzh+w0qRrMmcU12s9nXfc4c52Kd7KPRYg/33OLOzPl+fGfuAXrRc6DnwD92gHWrT4WtDgqPs+BgcDDLNqDRTS3ezSECWP3rj6tkOx+kyd4HPrv5/DKMbmp1daZxN73Xv2vI8NUgRR840RdO4VvtQDfFOnaAHm11iHvnNSdicRSCDFclA3f1M1RAtlOIjgGa0buDKVdsFKYS1VTbKQXBstAyy1aHctWJTgE6uoS1h7klPJ55YfXJ/PQ0RypDcNI2WGYtuGErbVHjQmxhy19+ahekIwcYr55MLZJ5wRluXyc8HdVg6E2QV4NkNrhl9Avhn2tXPNnXNkDwJjdi9kWHydXxc0xDaVzi5T0hZotaE9WCgqhCNKuqLXP7o7H07nYh2gQgRqJy1sgYbkQD+PYMWDEEaLG8oTMclbUQ3riCiCtgNMcRexdoDElPWkZbAP6TgV26Ge+TsDD9mUMPIizOoZxbgdPp7eLq3G888L6X0Jz0IXwfui42RXP8UEt1taElwNjoKjsOmhc0LnlQlah8rSC3DDBtPFmZR75wDTukw+9LU0NtKoSMNEiPlBt0qj6Kpa0g9FYbFjV/H7DceHPY4Cirvhs8QKB8/zFOe0bWY6+h5p81pLzp59DUNCZfIo4VIGF5FOGUqn98IY0Ff8PSrWwa9cpb25XDHnNQ/BKiPyPws2ghCE2sXsPRN8Rhqd/RUIoQEhQKdQVi1QoBvyqDoE6bhg/i43wQCzqQLZS9KRuvLZ0PFyckEAswxrBuJEZqsQR3GJipuqi0pU+IVIu8WUJjRqJWIkxN0YT0MTOfePJ9QQeSDZNXsK7ma3d+jcv+gUFCWg1bNwtmDyibXVVAjeEEgEJCUIMCABolUL0MOT2DIzsv4XpSZ75oCZAcvHUMQ1YEczCvxNNgWQXhJOmoxSST8NSTZBkoTwDFEuS2i5j8u9h79xzoOdBz4D924A90007VB3a2QQAAAABJRU5ErkJggg==">
+<link rel="icon" type="image/x-icon" href="../favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="../favicon.png">
+<link rel="canonical" href="https://avisail.com/blog/adcs-launch-ja.html">
+<link rel="alternate" hreflang="ja" href="https://avisail.com/blog/adcs-launch-ja.html">
+<link rel="alternate" hreflang="en" href="https://avisail.com/blog/adcs-launch-en.html">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "ADCS 正式リリース：中小企業向け自動セキュリティ診断 — 月額¥29,800から",
+  "description": "Avisailは本日、ADCSを正式リリースしました。54種のスキャナーが脆弱性を自動検出・修正手順を生成し、11の規制フレームワークに自動マッピング。月額¥29,800から。",
+  "datePublished": "2026-03-07",
+  "dateModified": "2026-03-07",
+  "inLanguage": "ja",
+  "author": {
+    "@type": "Organization",
+    "name": "Avisail Technology",
+    "url": "https://avisail.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Avisail Technology",
+    "url": "https://avisail.com"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://avisail.com/blog/adcs-launch-ja.html"
+  }
+}
+</script>
+
+<style>
+:root {
+  --bg: #05080f;
+  --bg2: #080d18;
+  --accent: #7ef0d4;
+  --blue: #6aa6ff;
+  --text: #fff;
+  --text2: #b8c5d6;
+  --muted: #6b7a8f;
+  --line: rgba(255,255,255,0.08);
+  --card: rgba(255,255,255,0.025);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px;color:var(--text);font-family:'Inter','Noto Sans JP',-apple-system,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased;background:var(--bg)}
+body{background:var(--bg)}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;height:auto;display:block}
+
+.wrap{max-width:860px;margin:0 auto;padding:0 24px}
+
+.btn{display:inline-block;padding:14px 36px;border-radius:50px;font-weight:700;font-size:.95rem;transition:all .25s ease;cursor:pointer;border:none}
+.btn-primary{background:linear-gradient(135deg,var(--blue),var(--accent));color:#050810}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 36px rgba(106,166,255,.3)}
+.btn-ghost{border:1px solid var(--line);color:var(--text2)}
+.btn-ghost:hover{border-color:rgba(255,255,255,.25);color:var(--text)}
+
+.article-hero{padding:120px 0 64px;background:radial-gradient(ellipse 80% 50% at 50% -10%,rgba(106,166,255,.08),transparent)}
+.article-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(126,240,212,.1);border:1px solid rgba(126,240,212,.2);color:var(--accent);font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:6px 18px;border-radius:24px;margin-bottom:24px}
+.article-eyebrow .dot{width:6px;height:6px;background:var(--accent);border-radius:50%;animation:pulse 1.5s ease infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.article-hero h1{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;letter-spacing:-.02em;line-height:1.25;margin-bottom:20px}
+.article-hero h1 .highlight{background:linear-gradient(135deg,var(--blue),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.article-lead{font-size:1.05rem;color:var(--text2);line-height:1.9;max-width:720px;margin-bottom:32px}
+.article-meta{display:flex;align-items:center;gap:16px;flex-wrap:wrap;color:var(--muted);font-size:.85rem;padding-top:24px;border-top:1px solid var(--line)}
+.article-meta .tag{background:rgba(106,166,255,.1);color:var(--blue);border:1px solid rgba(106,166,255,.2);padding:3px 12px;border-radius:12px;font-size:.78rem;font-weight:600}
+
+.stats-bar{background:rgba(255,255,255,.02);border:1px solid var(--line);border-radius:16px;display:grid;grid-template-columns:repeat(4,1fr);gap:1px;overflow:hidden;margin:48px 0}
+.stat-cell{padding:24px 20px;text-align:center;background:var(--card)}
+.stat-num{font-size:1.6rem;font-weight:800;background:linear-gradient(135deg,var(--blue),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;margin-bottom:6px}
+.stat-label{font-size:.75rem;color:var(--muted);line-height:1.5}
+@media(max-width:600px){.stats-bar{grid-template-columns:repeat(2,1fr)}}
+
+.article-body{padding:64px 0 96px}
+.article-body h2{font-size:clamp(1.3rem,2.5vw,1.8rem);font-weight:800;letter-spacing:-.02em;margin:56px 0 16px;padding-top:16px;border-top:1px solid var(--line);color:var(--text)}
+.article-body h2:first-child{border-top:none;margin-top:0;padding-top:0}
+.article-body h3{font-size:1.1rem;font-weight:700;margin:32px 0 12px;color:var(--text)}
+.article-body p{font-size:1rem;color:var(--text2);line-height:1.9;margin-bottom:18px}
+.article-body ul,.article-body ol{padding-left:24px;margin-bottom:18px}
+.article-body li{color:var(--text2);font-size:1rem;line-height:1.85;margin-bottom:6px}
+.article-body strong{color:var(--text);font-weight:700}
+
+.callout{border-left:3px solid var(--accent);background:rgba(126,240,212,.05);border-radius:0 12px 12px 0;padding:20px 24px;margin:24px 0}
+.callout p{margin:0;color:var(--text2)}
+.callout.blue{border-left-color:var(--blue);background:rgba(106,166,255,.05)}
+
+.scanner-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin:24px 0}
+@media(max-width:640px){.scanner-grid{grid-template-columns:1fr}}
+.scanner-box{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px}
+.scanner-box h4{font-size:.88rem;font-weight:700;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center}
+.scanner-box h4 .count{background:linear-gradient(135deg,var(--blue),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-size:1.1rem;font-weight:800}
+.scanner-box ul{padding-left:16px;list-style:disc}
+.scanner-box li{font-size:.83rem;color:var(--muted);line-height:1.7;margin:0}
+
+.pricing-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:24px 0}
+@media(max-width:800px){.pricing-row{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.pricing-row{grid-template-columns:1fr}}
+.price-card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 20px}
+.price-card.recommended{border-color:var(--accent);background:linear-gradient(160deg,rgba(106,166,255,.06),rgba(126,240,212,.03))}
+.price-card .plan-name{font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.price-card .price{font-size:1.35rem;font-weight:800;color:var(--text);margin-bottom:4px}
+.price-card .price span{font-size:.82rem;font-weight:400;color:var(--muted)}
+.price-card .rec-badge{display:inline-block;font-size:.7rem;font-weight:700;background:linear-gradient(135deg,var(--blue),var(--accent));color:#050810;padding:3px 10px;border-radius:10px;margin-bottom:10px}
+.price-card ul{padding-left:16px;margin-top:12px}
+.price-card li{font-size:.82rem;color:var(--text2);line-height:1.75}
+
+.mini-table{width:100%;border-collapse:collapse;margin:24px 0;font-size:.88rem}
+.mini-table th{text-align:left;padding:10px 14px;background:rgba(255,255,255,.03);color:var(--muted);font-weight:600;border-bottom:1px solid var(--line)}
+.mini-table td{padding:10px 14px;border-bottom:1px solid rgba(255,255,255,.04);color:var(--text2)}
+.mini-table tr:last-child td{border-bottom:none}
+.mini-table .yes{color:var(--accent)}
+.mini-table .no{color:var(--muted)}
+.mini-table .adcs-col{color:var(--text);font-weight:600}
+
+.layers{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin:24px 0;border:1px solid var(--line);border-radius:16px;overflow:hidden}
+@media(max-width:640px){.layers{grid-template-columns:1fr}}
+.layer{padding:28px 24px;border-right:1px solid var(--line)}
+.layer:last-child{border-right:none}
+@media(max-width:640px){.layer{border-right:none;border-bottom:1px solid var(--line)}.layer:last-child{border-bottom:none}}
+.layer-num{font-size:.72rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.layer-title{font-size:1rem;font-weight:700;margin-bottom:8px}
+.layer-title .sub{display:block;font-size:.82rem;color:var(--accent);font-weight:600;margin-top:2px}
+.layer p{font-size:.85rem;color:var(--muted);line-height:1.75;margin:0}
+
+.comp-chips{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0}
+.comp-chip{background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:8px;padding:6px 14px;font-size:.82rem;color:var(--text2)}
+.comp-chip.highlight{background:rgba(126,240,212,.06);border-color:rgba(126,240,212,.2);color:var(--accent)}
+
+.osint-row{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0}
+.osint-pill{background:rgba(106,166,255,.06);border:1px solid rgba(106,166,255,.15);border-radius:20px;padding:5px 14px;font-size:.82rem;color:var(--blue);font-weight:600}
+
+.cta-block{background:linear-gradient(135deg,rgba(106,166,255,.08),rgba(126,240,212,.04));border:1px solid rgba(126,240,212,.15);border-radius:20px;padding:48px 40px;text-align:center;margin:48px 0}
+.cta-block h2{font-size:1.5rem;font-weight:800;letter-spacing:-.02em;margin-bottom:12px;border:none;padding:0}
+.cta-block p{font-size:1rem;color:var(--text2);max-width:520px;margin:0 auto 28px}
+.cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+
+.toc{background:rgba(255,255,255,.02);border:1px solid var(--line);border-radius:14px;padding:24px 28px;margin:0 0 48px}
+.toc h3{font-size:.82rem;font-weight:700;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:16px;margin-top:0}
+.toc ol{padding-left:20px;margin:0}
+.toc li{font-size:.9rem;color:var(--text2);line-height:1.85}
+.toc a{color:var(--blue);text-decoration:underline;text-underline-offset:3px}
+.toc a:hover{color:var(--accent)}
+
+.breadcrumb{display:flex;align-items:center;gap:8px;font-size:.82rem;color:var(--muted);margin-bottom:32px}
+.breadcrumb a{color:var(--muted)}
+.breadcrumb a:hover{color:var(--text)}
+.breadcrumb span{color:var(--muted)}
+
+@media(max-width:768px){
+  .article-hero{padding:100px 0 48px}
+  .cta-block{padding:36px 24px}
+}
+</style>
+</head>
+
+<body>
+<div id="site-header" style="width:100%;"></div>
+
+<article>
+
+<!-- ── HERO ── -->
+<section class="article-hero">
+<div class="wrap">
+  <div class="breadcrumb">
+    <a href="../index.ja.html">ホーム</a>
+    <span>/</span>
+    <span>ブログ</span>
+    <span>/</span>
+    <span>ADCSリリース</span>
+  </div>
+
+  <div class="article-eyebrow">
+    <span class="dot"></span>
+    リリースのお知らせ
+  </div>
+
+  <h1>
+    <span class="highlight">ADCS</span> 正式リリース：<br>
+    中小企業向け自動セキュリティ診断プラットフォーム
+  </h1>
+
+  <p class="article-lead">
+    本日、Avisailは ADCS を正式にリリースしました。54種の専門スキャナーが貴社のデジタル資産を自動診断し、脆弱性の検出から修正手順の生成、11の規制フレームワークへの自動マッピングまでを一貫して行います。セキュリティ専任チームは不要です。
+  </p>
+
+  <div class="article-meta">
+    <span>2026年3月7日</span>
+    <span class="tag">製品リリース</span>
+    <span class="tag">サイバーセキュリティ</span>
+    <span class="tag">中小企業</span>
+    <span style="margin-left:auto">by Avisail Technology</span>
+  </div>
+
+  <div class="stats-bar">
+    <div class="stat-cell">
+      <div class="stat-num">54</div>
+      <div class="stat-label">自動<br>スキャナー数</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-num">11</div>
+      <div class="stat-label">対応規制<br>フレームワーク</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-num">24h</div>
+      <div class="stat-label">レポート<br>納品時間</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-num">¥29,800</div>
+      <div class="stat-label">月額<br>スタート価格</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ── BODY ── -->
+<div class="article-body">
+<div class="wrap">
+
+  <div class="toc">
+    <h3>目次</h3>
+    <ol>
+      <li><a href="#problem">なぜ中小企業が狙われるのか</a></li>
+      <li><a href="#what-is-adcs">ADCSとは何か</a></li>
+      <li><a href="#three-layers">3層セキュリティ成熟度アーキテクチャ</a></li>
+      <li><a href="#scanners">54スキャナーの内訳</a></li>
+      <li><a href="#compliance">11の規制フレームワーク、自動マッピング</a></li>
+      <li><a href="#ctem">CTEM：継続的脅威エクスポージャー管理</a></li>
+      <li><a href="#comparison">競合との比較</a></li>
+      <li><a href="#pricing">料金プラン</a></li>
+      <li><a href="#trust">データセキュリティとインフラ</a></li>
+      <li><a href="#start">はじめ方</a></li>
+    </ol>
+  </div>
+
+  <!-- 1 -->
+  <h2 id="problem">1. なぜ中小企業が狙われるのか</h2>
+
+  <p>
+    中小企業へのサイバー攻撃は過去3年で急増しています。複数の業界調査によると、深刻な侵害を受けた中小企業の60%以上が半年以内に事業停止に追い込まれています。にもかかわらず、これまで存在してきたセキュリティツールは、専任のITチームやセキュリティ部門を持つ大企業向けに設計されたものがほとんどでした。
+  </p>
+
+  <p>
+    その結果、予測可能なギャップが生まれています。中小企業はリスクにさらされていることを認識しながらも、どこから手をつければよいかわからない状態に置かれています。脆弱性スキャナーを実行すると200ページのPDFが出力されますが、次に何をすべきかの道筋がありません。レポートは読まれないまま放置され、リスクは対処されないまま残ります。
+  </p>
+
+  <div class="callout">
+    <p><strong>本質的な問題はスキャンの不足ではありません。</strong>問題は、スキャンツールが「発見」で終わることです。何を優先して修正すべきか、どう修正するか、修正が実際に効いたかどうか — この一連のループを閉じることができていません。ADCSはこのループを閉じるために設計されました。</p>
+  </div>
+
+  <p>
+    ADCSは、専任のセキュリティチームを持たない組織のために設計されています。CEOがITマネージャーを兼任しているような企業、あるいは小規模な開発チームがコアプロダクトの開発と並行してインフラ全体を管理しているような企業を想定しています。
+  </p>
+
+  <!-- 2 -->
+  <h2 id="what-is-adcs">2. ADCSとは何か</h2>
+
+  <p>
+    ADCSは <strong>Autonomous Defensive Cybersecurity System（自律防衛型サイバーセキュリティシステム）</strong> の略称です。54種の専門スキャナーを貴社のデジタル攻撃対象領域——Webアプリケーション、ネットワークサービス、クラウド設定、API、メールセキュリティ、SSL/TLS、データ露出など——に対して展開し、24時間以内に構造化されたアクションベースのレポートとして結果を提供します。
+  </p>
+
+  <p>
+    しかしレポートはあくまでも出発点です。発見内容を渡してそれで終わりの従来型スキャナーとは異なり、ADCSは：
+  </p>
+
+  <ul>
+    <li><strong>CVSSスコアとビジネスへの実影響を組み合わせて</strong>脆弱性の優先順位を自動決定</li>
+    <li><strong>各発見事項に対する具体的な修正手順を自動生成</strong>（ステップバイステップ形式）</li>
+    <li><strong>発見事項をダッシュボード上でタスク化</strong>し、担当者にアサイン</li>
+    <li><strong>修正後に自動で再スキャン</strong>し、対応の有効性を検証</li>
+    <li><strong>スコアが閾値を超えたら共有可能なセキュリティ証明書を発行</strong>——取引先へのアンケート回答、顧客提案、M&amp;Aデューデリジェンスに活用可能</li>
+    <li><strong>スキャン結果を11の主要コンプライアンスフレームワークに自動マッピング</strong>（IPA・GDPR・ISO 27001・NIST CSF等）</li>
+  </ul>
+
+  <p>
+    プラットフォームのタグライン「中小企業のデフォルト・セキュリティ基盤」は、明確な設計思想を反映しています。ADCSは、すでにセキュリティ成熟度を持つ組織のための高度ツールではなく、すべての企業が最初に導入すべきベースラインレイヤーであるべきだという考え方です。
+  </p>
+
+  <!-- 3 -->
+  <h2 id="three-layers">3. 3層セキュリティ成熟度アーキテクチャ</h2>
+
+  <p>
+    ADCSは単発のツールではなく、段階的に成熟度を高めるプラットフォームとして設計されています。3つのレイヤーは相互に積み上がる構造になっています。
+  </p>
+
+  <div class="layers">
+    <div class="layer">
+      <div class="layer-num">Layer 1</div>
+      <div class="layer-title">
+        ADCS
+        <span class="sub">可視化 + 修正対応</span>
+      </div>
+      <p>攻撃者の視点から自組織をスキャン。54の軸で脆弱性を発見し、優先度付きの修正手順を提供。修正後の自動再スキャンで対応を検証。全プランで利用可能。</p>
+    </div>
+    <div class="layer">
+      <div class="layer-num">Layer 2</div>
+      <div class="layer-title">
+        CTEM
+        <span class="sub">継続的脅威管理</span>
+      </div>
+      <p>継続的脅威エクスポージャー管理。月次の攻撃経路シミュレーション、リスクスコアのトレンド分析、新規CVEの即時影響評価、業界ベンチマーク比較。Standard以上で利用可能。</p>
+    </div>
+    <div class="layer">
+      <div class="layer-num">Layer 3</div>
+      <div class="layer-title">
+        コンプライアンス
+        <span class="sub">監査 &amp; 認証</span>
+      </div>
+      <p>スキャン結果を規制要件に自動マッピング。IPA SECURITY ACTION・ISO 27001・GDPR認証取得をAIがガイド。監査提出用PDFを自動生成。</p>
+    </div>
+  </div>
+
+  <p>
+    多くの組織はLayer 1から始まります——現状のリスクを把握し、修正することが最初のステップです。成長とともにLayer 2で継続監視を加え、Layer 3で自社のセキュリティ態勢を規制当局・取引先・金融機関に対して証明可能な形に変換していきます。
+  </p>
+
+  <!-- 4 -->
+  <h2 id="scanners">4. 54スキャナーの内訳</h2>
+
+  <p>
+    54のスキャナーは6つのカテゴリに分類されており、OWASP Top 10・CVSS・MITRE ATT&amp;CKといった国際標準に準拠しています。各スキャナーは独立して動作し、統合されたリスクスコアに集約されます。
+  </p>
+
+  <div class="scanner-grid">
+    <div class="scanner-box">
+      <h4>外部資産 &amp; インフラ <span class="count">8</span></h4>
+      <ul>
+        <li>ポートスキャン（全外部公開サービス検出）</li>
+        <li>サブドメイン深層列挙 + テイクオーバー検出</li>
+        <li>DNS設定（SPF / DKIM / DMARC）</li>
+        <li>DNSゾーン転送テスト</li>
+        <li>WHOIS・ASN・ジオロケーション</li>
+        <li>技術スタック &amp; バージョン特定</li>
+      </ul>
+    </div>
+    <div class="scanner-box">
+      <h4>SSL/TLS &amp; 証明書 <span class="count">4</span></h4>
+      <ul>
+        <li>SSL/TLS設定グレーディング</li>
+        <li>TLSダウングレード攻撃耐性テスト</li>
+        <li>証明書管理 &amp; 有効期限監視</li>
+        <li>HSTS &amp; HSTSプリロード検証</li>
+      </ul>
+    </div>
+    <div class="scanner-box">
+      <h4>Webアプリ脆弱性 <span class="count">15</span></h4>
+      <ul>
+        <li>SQLインジェクション・XSS・SSRF</li>
+        <li>パストラバーサル・オープンリダイレクト・クリックジャッキング</li>
+        <li>CORS設定ミス・CSP分析</li>
+        <li>Cookie・フォームセキュリティ評価</li>
+        <li>ログイン認証・WebSocketセキュリティ</li>
+      </ul>
+    </div>
+    <div class="scanner-box">
+      <h4>情報漏洩 &amp; シークレット検出 <span class="count">8</span></h4>
+      <ul>
+        <li>JSファイル内シークレット検出（APIキー・トークン）</li>
+        <li>ソースマップ露出検出</li>
+        <li>エラーメッセージ・HTMLコメント情報漏洩</li>
+        <li>robots.txt隠しパス探索</li>
+        <li>HTTPメタ・サーバー情報開示</li>
+      </ul>
+    </div>
+    <div class="scanner-box">
+      <h4>クラウド・API・サプライチェーン <span class="count">7</span></h4>
+      <ul>
+        <li>クラウドストレージ設定ミス（S3/GCS公開）</li>
+        <li>APIエンドポイント自動探索 &amp; セキュリティ評価</li>
+        <li>サードパーティ &amp; サプライチェーンリスク</li>
+        <li>CMS脆弱性（WordPressディープスキャン）</li>
+      </ul>
+    </div>
+    <div class="scanner-box">
+      <h4>高度 &amp; 総合診断 <span class="count">12</span></h4>
+      <ul>
+        <li>Nucleiスキャン（1,000以上のテンプレート）</li>
+        <li>フィッシングリスク評価 &amp; シミュレーション</li>
+        <li>SMTPセキュリティ評価</li>
+        <li>インシデントレスポンス準備度スコアリング</li>
+        <li>証明書透明性（CT）ログ監視</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>外部OSINT脅威インテリジェンス（9ソース）</h3>
+
+  <p>
+    能動的スキャンに加えて、ADCSは9つの外部脅威インテリジェンスソースと照合します。既知の悪意あるIPアドレス、漏洩した認証情報、証明書の履歴、公開されたサービス一覧などのデータを取り込みます。
+  </p>
+
+  <div class="osint-row">
+    <span class="osint-pill">Shodan</span>
+    <span class="osint-pill">Censys</span>
+    <span class="osint-pill">VirusTotal</span>
+    <span class="osint-pill">AbuseIPDB</span>
+    <span class="osint-pill">LeakCheck</span>
+    <span class="osint-pill">SecurityTrails</span>
+    <span class="osint-pill">FOFA</span>
+    <span class="osint-pill">crt.sh</span>
+    <span class="osint-pill">AlienVault OTX</span>
+  </div>
+
+  <p>
+    能動的スキャンとパッシブOSINTを組み合わせることで、単発スキャンでは見えない攻撃対象領域を広くカバーできます。Shodanはインターネット接続デバイスをグローバルにインデックス化し、LeakCheckは従来型スキャナーでは検出できない認証情報漏洩を発見し、SecurityTrailsは過去に公開されていたインフラを示すDNS履歴を明らかにします。
+  </p>
+
+  <!-- 5 -->
+  <h2 id="compliance">5. 11の規制フレームワーク、自動マッピング</h2>
+
+  <p>
+    セキュリティコンプライアンスで最も時間のかかる作業の一つが、技術的な発見事項を監査担当者が求める証跡に変換する作業です。認証機能の脆弱性は、ISO 27001附属書A・NIST CSF PR.ACコントロール・GDPR第32条の同時に複数のフレームワークに関係することがありますが、この対応関係を手動で作成するには高度な専門知識が必要です。
+  </p>
+
+  <p>
+    ADCSはすべてのスキャン発見事項を該当するフレームワークに自動マッピングします。結果はコンプライアンスダッシュボードとして可視化され、各規制に対する現状が一目でわかります。また、監査提出用の自動生成PDFも作成されます。
+  </p>
+
+  <div class="comp-chips">
+    <span class="comp-chip highlight">IPA SECURITY ACTION ★/★★</span>
+    <span class="comp-chip">個人情報保護法（APPI）</span>
+    <span class="comp-chip">GDPR（EU）</span>
+    <span class="comp-chip">ISO 27001</span>
+    <span class="comp-chip">PCI DSS</span>
+    <span class="comp-chip">NIST CSF</span>
+    <span class="comp-chip">SOC 2</span>
+    <span class="comp-chip">NIS2（EU）</span>
+    <span class="comp-chip">Cyber Essentials（UK）</span>
+    <span class="comp-chip">CMMC（米国防総省）</span>
+    <span class="comp-chip">CSA STAR</span>
+  </div>
+
+  <div class="callout blue">
+    <p><strong>IPA SECURITY ACTIONについて：</strong>ADCSは、経済産業省が後援するIPA SECURITY ACTION ★・★★の取得を専用にサポートします。このマークは国内の大企業取引先や官公庁の調達において、ベンダーのセキュリティ水準を示す信頼シグナルとして広く認知されています。申請ガイドと事前記入済みの証跡資料もプラットフォームに含まれます。</p>
+  </div>
+
+  <p>
+    コンプライアンスアドオンは、フレームワークごとに買い切り形式で¥29,800から購入できます。Premiumプランのご契約者は全11フレームワークへのアクセスが追加費用なしで含まれます。
+  </p>
+
+  <!-- 6 -->
+  <h2 id="ctem">6. CTEM：継続的脅威エクスポージャー管理</h2>
+
+  <p>
+    従来のセキュリティ診断はスナップショットです。スキャンを実行した当日の状態を示すに過ぎません。しかし攻撃者はスケジュールに従って動くわけではありません。新しいCVEは毎日公開され、攻撃手法は進化し続け、機能追加やサービス更新によってインフラは絶えず変化します。
+  </p>
+
+  <p>
+    CTEM（Continuous Threat Exposure Management：継続的脅威エクスポージャー管理）は、Gartnerが戦略的テクノロジートップ10に選出したフレームワークです。組織のエクスポージャーを継続的に計測し、リスクが悪化する前にアラートを発します。ADCSはStandard以上のプランでCTEMを実装しています：
+  </p>
+
+  <ul>
+    <li><strong>攻撃経路シミュレーション：</strong>現在の設定と既知の脆弱性データを基に、攻撃者が実際に侵入に使用するであろう経路を毎月自動シミュレーション</li>
+    <li><strong>リスクスコアトレンド：</strong>セキュリティスコアの時系列推移を可視化。修正の効果を定量化し、積極的に対応しているにもかかわらず悪化傾向にある領域を特定</li>
+    <li><strong>CVE即時影響評価：</strong>新たな脆弱性が公開された際、貴社のシステムへの影響を自動で評価し即座に通知。次回スキャンを待つ必要なし</li>
+    <li><strong>業界ベンチマーク：</strong>同業種・同規模の企業と自社のセキュリティスコアを比較。経営層への報告書や取引先との会話に使える客観的な外部基準を提供</li>
+  </ul>
+
+  <!-- 7 -->
+  <h2 id="comparison">7. 競合との比較</h2>
+
+  <p>
+    自動セキュリティスキャン市場には複数の有力なサービスが存在します。2026年3月時点の公式ドキュメントおよびフィーチャーセットを調査した結果、ADCSは専任セキュリティチームを持たない中小企業にとって最も重要な3つの点で差別化されています。
+  </p>
+
+  <table class="mini-table">
+    <thead>
+      <tr>
+        <th>機能</th>
+        <th class="adcs-col">ADCS</th>
+        <th>一般的な競合サービス</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>対象ユーザー</td>
+        <td class="adcs-col yes">ITスタッフ不在の中小企業</td>
+        <td class="no">開発チームまたはエンタープライズ</td>
+      </tr>
+      <tr>
+        <td>自動修正手順の生成</td>
+        <td class="yes">✓ 発見事項ごとに自動生成</td>
+        <td class="no">✗ 生の発見事項のみ</td>
+      </tr>
+      <tr>
+        <td>修正後の自動再スキャン</td>
+        <td class="yes">✓ 標準搭載</td>
+        <td class="no">✗ 手動再実行または有料</td>
+      </tr>
+      <tr>
+        <td>共有可能なセキュリティリンク</td>
+        <td class="yes">✓ 標準搭載</td>
+        <td class="no">✗ 非対応</td>
+      </tr>
+      <tr>
+        <td>11フレームワークへのコンプライアンスマッピング</td>
+        <td class="yes">✓ 自動マッピング</td>
+        <td class="no">✗ OWASPのみ（最良の場合）</td>
+      </tr>
+      <tr>
+        <td>IPA SECURITY ACTIONサポート</td>
+        <td class="yes">✓ 申請ガイド付属</td>
+        <td class="no">✗ 非対応</td>
+      </tr>
+      <tr>
+        <td>CTEM（継続的エクスポージャー管理）</td>
+        <td class="yes">✓ Standard以上で標準搭載</td>
+        <td class="no">✗ 部分対応または非対応</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    最も重要な差別化ポイントはエンドツーエンドのループです。競合サービスは「発見」で止まります——脆弱性を見つけてレポートを渡して終わりです。ADCSはループを閉じます：<strong>発見 → 優先順位付け → 修正手順生成 → タスクアサイン → 検証 → 証明書発行</strong>。スキャンを実行する担当者が修正も担当しなければならない中小企業にとって、この違いは「役立つツール」か「使われないツール」かの分岐点になります。
+  </p>
+
+  <!-- 8 -->
+  <h2 id="pricing">8. 料金プラン</h2>
+
+  <p>
+    ADCSは組織のニーズに合わせて4段階のプランをご用意しています。すべてのサブスクリプションプランは年払いで20%割引が適用されます。
+  </p>
+
+  <div class="pricing-row">
+    <div class="price-card">
+      <div class="plan-name">Spot</div>
+      <div class="price">¥50,000 <span>買い切り</span></div>
+      <ul>
+        <li>1回限りの全件診断</li>
+        <li>54スキャナーレポート</li>
+        <li>24時間以内納品</li>
+        <li>PDF形式ダウンロード</li>
+      </ul>
+    </div>
+    <div class="price-card">
+      <div class="plan-name">Starter</div>
+      <div class="price">¥29,800 <span>/月</span></div>
+      <ul>
+        <li>月次スキャン</li>
+        <li>セキュリティバッジ</li>
+        <li>IPA SA1/SA2（無料）</li>
+        <li>コンプライアンスアドオン対応</li>
+      </ul>
+    </div>
+    <div class="price-card recommended">
+      <div class="rec-badge">おすすめ</div>
+      <div class="plan-name">Standard</div>
+      <div class="price">¥59,800 <span>/月</span></div>
+      <ul>
+        <li>Starterの全機能</li>
+        <li>CTEM（継続的監視）</li>
+        <li>脆弱性管理</li>
+        <li>インシデント管理</li>
+        <li>コンプライアンスアドオン対応</li>
+      </ul>
+    </div>
+    <div class="price-card">
+      <div class="plan-name">Premium</div>
+      <div class="price">¥99,800 <span>/月</span></div>
+      <ul>
+        <li>Standardの全機能</li>
+        <li>全11フレームワーク無料</li>
+        <li>AIセキュリティモジュール</li>
+        <li>優先サポート</li>
+      </ul>
+    </div>
+  </div>
+
+  <p>
+    年払いの場合、各プランの月額は次のとおりです：Starter ¥23,840/月、Standard ¥47,840/月、Premium ¥79,840/月（1年分一括払い）。
+  </p>
+
+  <div class="callout">
+    <p><strong>どこから始めればよいかわからない方へ：</strong>無料セルフチェックレポート（10問・即時結果・登録不要）を試してみてください。ブラウザだけで完結するため、まず現状を把握してから最適なプランを選択できます。</p>
+  </div>
+
+  <h3>コンプライアンスアドオン料金</h3>
+
+  <p>
+    StarterおよびStandardプランのご契約者が特定のコンプライアンスフレームワークを必要とする場合、以下の価格で個別購入が可能です（買い切り）：
+  </p>
+
+  <ul>
+    <li>IPA SECURITY ACTION SA1：¥29,800</li>
+    <li>IPA SECURITY ACTION SA2：¥49,800</li>
+    <li>個人情報保護法（APPI）：¥29,800</li>
+    <li>GDPR：¥49,800</li>
+    <li>NIST CSF / SOC 2：各¥49,800</li>
+    <li>ISO 27001：¥79,800</li>
+    <li>PCI DSS / CMMC / NIS2：各¥79,800</li>
+  </ul>
+
+  <p>Premiumプランのご契約者には、全フレームワークへのアクセスがサブスクリプションに含まれます。</p>
+
+  <!-- 9 -->
+  <h2 id="trust">9. データセキュリティとインフラ</h2>
+
+  <p>
+    ADCSが貴社の攻撃対象領域をスキャンする以上、収集したデータがどこへ行き、どのように保護されるかは正当かつ重要な関心事です。
+  </p>
+
+  <ul>
+    <li><strong>スキャン範囲：</strong>お客様が明示的に承認したターゲットドメインのみをスキャンします。許可なく範囲を拡大することはありません。</li>
+    <li><strong>暗号化：</strong>収集したデータはすべてAES-256で保管時に暗号化されます。</li>
+    <li><strong>データ所在地：</strong>国内サーバー（Railway + Supabase）でホスティングされます。</li>
+    <li><strong>第三者への共有：</strong>スキャンデータを第三者と共有することは一切ありません。</li>
+    <li><strong>決済：</strong>Stripe（PCI DSS Level 1認定）を通じて処理されます。カード番号はAvisailのサーバーに保存されません。銀行振込もご利用いただけます。</li>
+    <li><strong>APPI・GDPR準拠：</strong>ADCSは個人情報保護法およびGDPRに準拠するよう設計されています。データのエクスポート・削除・同意管理がプラットフォームに組み込まれています。</li>
+  </ul>
+
+  <p>
+    セキュリティプラットフォームが、自ら測定する他社と同じ水準に自らを置くことは最低限の要件です。ADCSは自分たちが提唱することを自ら実践します。
+  </p>
+
+  <!-- 10 -->
+  <h2 id="start">10. はじめ方</h2>
+
+  <p>
+    多くの組織に推奨するステップは次のとおりです：
+  </p>
+
+  <ol>
+    <li><strong>無料セルフチェック</strong>——現在のセキュリティ態勢に関する10の質問に回答し、即座にスコアレポートを受け取ります。登録不要でブラウザ上で完結します。まず現状を把握し、どのADCSプランが適切かを判断するための出発点になります。</li>
+    <li><strong>Spot診断</strong>——サブスクリプション前に全体像を確認したい場合は、¥50,000の単発診断をご検討ください。24時間以内に納品されます。</li>
+    <li><strong>Starterサブスクリプション</strong>——価値を確認できたら月次スキャンに移行します（月額¥29,800）。必要に応じてコンプライアンスフレームワークを追加購入できます。</li>
+    <li><strong>Standard</strong>——継続監視の準備が整い、自社のセキュリティ態勢を時系列で追跡するCTEM機能を必要とする段階でご移行ください。</li>
+  </ol>
+
+  <p>
+    IPA SECURITY ACTION認証取得・ISO 27001監査・GDPRレビューなど、コンプライアンスの期限が迫っている組織は、<strong>info@avisail.com</strong> まで直接ご連絡ください。必要な証跡資料を揃える最短ルートをご提案します。
+  </p>
+
+  <!-- CTA -->
+  <div class="cta-block">
+    <h2>まず無料セルフチェックから</h2>
+    <p>10問・即時結果・印刷用レポート・登録不要。最初の一歩は完全にリスクフリーです。</p>
+    <div class="cta-btns">
+      <a href="../security/self-check-ja.html" class="btn btn-primary">無料セルフチェックを開始</a>
+      <a href="../security/adcs-ja.html" class="btn btn-ghost">ADCS 詳細ページを見る</a>
+    </div>
+    <p style="font-size:.8rem;color:var(--muted);margin-top:16px;">お問い合わせ：info@avisail.com ・ 1営業日以内にご返信します</p>
+  </div>
+
+</div>
+</div>
+</article>
+
+<div id="site-footer" style="width:100%;"></div>
+<script src="../includes/components.js"></script>
+
+<style>
+body::before{content:'';position:fixed;top:0;left:0;right:0;bottom:0;z-index:-1;background:radial-gradient(ellipse 100% 60% at 50% 0%,rgba(106,166,255,.06),transparent 60%),radial-gradient(ellipse 80% 40% at 80% 100%,rgba(126,240,212,.04),transparent 60%),var(--bg)}
+</style>
+
+</body>
+</html>

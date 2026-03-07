@@ -39,6 +39,9 @@ $RECYCLE.BIN/
 .Trash-*
 .nfs*
 
+# Claude Code local settings (development tool config)
+.claude/
+
 # Editor and IDE
 .vscode/
 .idea/
