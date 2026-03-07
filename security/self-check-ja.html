@@ -141,25 +141,6 @@ a{color:var(--accent);text-decoration:none}
 .sc-footer{text-align:center;padding:32px 24px;border-top:1px solid var(--line);margin-top:48px}
 .sc-footer p{font-size:.72rem;color:var(--muted)}
 
-/* ─── Quick DNS Scan Widget ─── */
-.dns-scan-wrap{margin-top:12px;display:none}
-.dns-scanning{display:flex;align-items:center;gap:12px;padding:14px 18px;background:rgba(106,166,255,.05);border:1px solid rgba(106,166,255,.12);border-radius:12px;color:var(--text2);font-size:.88rem}
-.dns-spinner{width:18px;height:18px;border:2px solid rgba(106,166,255,.2);border-top-color:var(--blue);border-radius:50%;animation:spin .8s linear infinite;flex-shrink:0}
-@keyframes spin{to{transform:rotate(360deg)}}
-.dns-result-box{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.08);border-radius:12px;overflow:hidden}
-.dns-result-head{padding:10px 16px;background:rgba(255,255,255,.03);border-bottom:1px solid rgba(255,255,255,.06);display:flex;align-items:center;justify-content:space-between}
-.dns-result-head-label{font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
-.dns-result-domain{font-size:.78rem;font-weight:600;color:var(--accent)}
-.dns-items{padding:4px 0}
-.dns-item{display:flex;align-items:center;gap:12px;padding:10px 16px;border-bottom:1px solid rgba(255,255,255,.04)}
-.dns-item:last-child{border-bottom:none}
-.dns-badge{width:22px;height:22px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;flex-shrink:0}
-.dns-badge-ok{background:rgba(34,197,94,.12);color:var(--safe)}
-.dns-badge-ng{background:rgba(239,68,68,.1);color:var(--danger)}
-.dns-badge-warn{background:rgba(234,179,8,.1);color:var(--caution)}
-.dns-item-name{font-size:.84rem;font-weight:600;min-width:120px;flex-shrink:0}
-.dns-item-desc{font-size:.78rem;color:var(--muted);flex:1}
-.dns-alert-bar{padding:12px 16px;background:rgba(239,68,68,.05);border-top:1px solid rgba(239,68,68,.1);display:flex;align-items:center;gap:10px;font-size:.82rem}
 
 /* Print */
 @media print{
@@ -251,24 +232,6 @@ a{color:var(--accent);text-decoration:none}
   <div class="form-group">
     <label class="form-label">ウェブサイトドメイン</label>
     <input class="form-input" id="domain" placeholder="例: example.co.jp">
-    <!-- DNS Quick Scan widget -->
-    <div class="dns-scan-wrap" id="dnsScanWrap">
-      <div class="dns-scanning" id="dnsScanning">
-        <div class="dns-spinner"></div>
-        <span id="dnsScanningLabel"></span>
-      </div>
-      <div class="dns-result-box" id="dnsResultBox" style="display:none">
-        <div class="dns-result-head">
-          <span class="dns-result-head-label">DNS自動スキャン結果</span>
-          <span class="dns-result-domain" id="dnsResultDomain"></span>
-        </div>
-        <div class="dns-items" id="dnsItems"></div>
-        <div class="dns-alert-bar" id="dnsAlertBar" style="display:none">
-          <span>⚠️</span>
-          <span id="dnsAlertText"></span>
-        </div>
-      </div>
-    </div>
   </div>
 
   <div class="btn-row">
@@ -694,100 +657,6 @@ function drawRadar(cats){
   }
 }
 
-// ─── Quick DNS Scan (Cloudflare DNS over HTTPS) ───
-async function dohQuery(name, type) {
-  try {
-    const r = await fetch(`https://cloudflare-dns.com/dns-query?name=${encodeURIComponent(name)}&type=${type}`, {
-      headers: { Accept: 'application/dns-json' }
-    });
-    return r.ok ? await r.json() : null;
-  } catch { return null; }
-}
-
-async function runDNSScan(rawInput) {
-  const domain = rawInput.trim().toLowerCase()
-    .replace(/^https?:\/\//, '').replace(/[/:?#].*/, '');
-  if (!domain || !domain.includes('.')) return;
-
-  const wrap     = document.getElementById('dnsScanWrap');
-  const scanning = document.getElementById('dnsScanning');
-  const resultBox = document.getElementById('dnsResultBox');
-  const label    = document.getElementById('dnsScanningLabel');
-  const items    = document.getElementById('dnsItems');
-  const alertBar = document.getElementById('dnsAlertBar');
-  const alertTxt = document.getElementById('dnsAlertText');
-  const domLbl   = document.getElementById('dnsResultDomain');
-
-  wrap.style.display = 'block';
-  scanning.style.display = 'flex';
-  resultBox.style.display = 'none';
-  label.innerHTML = `<strong>${domain}</strong> のDNS設定を確認しています…`;
-
-  try {
-    const [txtRes, dmarcRes, mxRes] = await Promise.all([
-      dohQuery(domain, 'TXT'),
-      dohQuery('_dmarc.' + domain, 'TXT'),
-      dohQuery(domain, 'MX'),
-    ]);
-
-    const txt   = (txtRes?.Answer   || []).map(r => (r.data||'').replace(/"/g,'')).join(' ');
-    const dmarc = (dmarcRes?.Answer || []).map(r => (r.data||'').replace(/"/g,'')).join(' ');
-    const hasSPF   = txt.includes('v=spf1');
-    const hasDMARC = dmarc.includes('v=DMARC1');
-    const hasMX    = (mxRes?.Answer || []).length > 0;
-
-    const checks = [
-      {
-        name: 'SPFレコード',
-        ok: hasSPF,
-        descOk: '設定済み — メールなりすまし対策あり',
-        descNg: '未設定 — 貴社ドメインを使った偽装メールを防げない状態です',
-      },
-      {
-        name: 'DMARCポリシー',
-        ok: hasDMARC,
-        descOk: '設定済み — ブランドなりすまし対策あり',
-        descNg: '未設定 — 詐欺メールに貴社ドメインが悪用される可能性があります',
-      },
-      {
-        name: 'メールサーバー（MX）',
-        ok: hasMX,
-        warn: !hasMX,
-        descOk: 'MXレコード確認済み',
-        descNg: 'MXレコードなし — メール環境が確認できませんでした',
-      },
-    ];
-
-    items.innerHTML = checks.map(c => {
-      const cls  = c.ok ? 'dns-badge-ok' : (c.warn ? 'dns-badge-warn' : 'dns-badge-ng');
-      const icon = c.ok ? '✓' : (c.warn ? '?' : '✗');
-      return `<div class="dns-item">
-        <div class="dns-badge ${cls}">${icon}</div>
-        <div class="dns-item-name">${c.name}</div>
-        <div class="dns-item-desc">${c.ok ? c.descOk : c.descNg}</div>
-      </div>`;
-    }).join('');
-
-    const issues = checks.filter(c => !c.ok).length;
-    if (issues > 0) {
-      alertTxt.innerHTML = `<strong style="color:var(--danger)">${issues}件の問題を検出</strong> — 以下の診断でリスクの詳細と対策をご確認ください。`;
-      alertBar.style.display = 'flex';
-    } else {
-      alertBar.style.display = 'none';
-    }
-
-    domLbl.textContent = domain;
-    scanning.style.display = 'none';
-    resultBox.style.display = 'block';
-
-  } catch {
-    wrap.style.display = 'none';
-  }
-}
-
-document.getElementById('domain').addEventListener('blur', function () {
-  if (this.value.trim()) runDNSScan(this.value);
-});
 
 renderQuestions();
 </script>
