@@ -127,25 +127,45 @@
   <script src="../includes/components.js"></script>
 
   <script>
-    document.getElementById('lead-form')?.addEventListener('submit', function(e) {
+    document.getElementById('lead-form')?.addEventListener('submit', async function(e) {
       e.preventDefault();
+      const btn = this.querySelector('button[type="submit"]');
       const name = document.getElementById('lead-name').value;
       const email = document.getElementById('lead-email').value;
       const company = document.getElementById('lead-company').value;
       const message = document.getElementById('lead-message');
 
-      // TODO: Replace with actual backend integration
-      // For now, just show a success message and trigger download
-      message.textContent = 'Thank you! Your download will start shortly. Check your email for the guide.';
-      message.style.display = 'block';
-      this.reset();
+      btn.disabled = true;
+      btn.textContent = 'Sending...';
 
-      // Send to your backend
-      // fetch('/api/leads/maritime-guide', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify({ name, email, company, resource: 'maritime-security-guide' })
-      // });
+      try {
+        const res = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            access_key: '86aff78e-9c97-44c1-8bfa-93d384257096',
+            subject: 'Maritime Security Guide — Download Request',
+            from_name: name,
+            email: email,
+            company: company || '(not provided)',
+            resource: 'maritime-security-guide-en'
+          })
+        });
+        const data = await res.json();
+        if (data.success) {
+          message.textContent = 'Thank you! Your download will start shortly.';
+          message.style.color = '#7ef0d4';
+          this.reset();
+        } else {
+          throw new Error(data.message);
+        }
+      } catch {
+        message.textContent = 'Something went wrong. Please email us at info@avisail.com.';
+        message.style.color = '#f87171';
+      }
+      message.style.display = 'block';
+      btn.disabled = false;
+      btn.textContent = 'Download Free Guide';
 
       // Simulate download
       setTimeout(() => {

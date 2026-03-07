@@ -127,17 +127,43 @@
   <script src="../includes/components.js"></script>
 
   <script>
-    document.getElementById('lead-form-vessel')?.addEventListener('submit', function(e) {
+    document.getElementById('lead-form-vessel')?.addEventListener('submit', async function(e) {
       e.preventDefault();
+      const btn = this.querySelector('button[type="submit"]');
       const message = document.getElementById('lead-message-vessel');
+      const name = this.querySelector('input[type="text"]')?.value || '';
+      const email = this.querySelector('input[type="email"]')?.value || '';
 
-      message.textContent = 'Success! Check your email for the checklist. Download starting now...';
+      btn.disabled = true;
+      btn.textContent = 'Sending...';
+
+      try {
+        const res = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            access_key: '86aff78e-9c97-44c1-8bfa-93d384257096',
+            subject: 'Vessel Checklist — Download Request',
+            from_name: name,
+            email: email,
+            resource: 'vessel-checklist-en'
+          })
+        });
+        const data = await res.json();
+        if (data.success) {
+          message.textContent = 'Success! Check your email for the checklist.';
+          message.style.color = '#7ef0d4';
+          this.reset();
+        } else {
+          throw new Error(data.message);
+        }
+      } catch {
+        message.textContent = 'Something went wrong. Please email us at info@avisail.com.';
+        message.style.color = '#f87171';
+      }
       message.style.display = 'block';
-      this.reset();
-
-      setTimeout(() => {
-        alert('PDF download will be available after backend integration.');
-      }, 1000);
+      btn.disabled = false;
+      btn.textContent = 'Download Free Checklist';
     });
   </script>
 

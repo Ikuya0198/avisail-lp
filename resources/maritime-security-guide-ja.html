@@ -127,21 +127,45 @@
   <script src="../includes/components.js"></script>
 
   <script>
-    document.getElementById('lead-form-ja')?.addEventListener('submit', function(e) {
+    document.getElementById('lead-form-ja')?.addEventListener('submit', async function(e) {
       e.preventDefault();
+      const btn = this.querySelector('button[type="submit"]');
       const name = document.getElementById('lead-name-ja').value;
       const email = document.getElementById('lead-email-ja').value;
       const company = document.getElementById('lead-company-ja').value;
       const message = document.getElementById('lead-message-ja');
 
-      message.textContent = 'ありがとうございます！ダウンロードが開始されます。ガイドはメールでも送信されます。';
-      message.style.display = 'block';
-      this.reset();
+      btn.disabled = true;
+      btn.textContent = '送信中...';
 
-      // TODO: Backend integration
-      setTimeout(() => {
-        alert('PDFダウンロードはバックエンド統合後に利用可能になります。現在はプレースホルダーです。');
-      }, 1000);
+      try {
+        const res = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            access_key: '86aff78e-9c97-44c1-8bfa-93d384257096',
+            subject: '海事セキュリティガイド — ダウンロードリクエスト',
+            from_name: name,
+            email: email,
+            company: company || '（未入力）',
+            resource: 'maritime-security-guide-ja'
+          })
+        });
+        const data = await res.json();
+        if (data.success) {
+          message.textContent = 'ありがとうございます！ダウンロードが開始されます。';
+          message.style.color = '#7ef0d4';
+          this.reset();
+        } else {
+          throw new Error(data.message);
+        }
+      } catch {
+        message.textContent = '送信に失敗しました。info@avisail.com までご連絡ください。';
+        message.style.color = '#f87171';
+      }
+      message.style.display = 'block';
+      btn.disabled = false;
+      btn.textContent = '無料ガイドをダウンロード';
     });
   </script>
 
