@@ -246,10 +246,23 @@
     document.head.appendChild(link);
   }
 
+  // Load cookie consent on all pages
+  function loadCookieConsent() {
+    if (document.querySelector('script[src*="cookie-consent.js"]')) return;
+    var basePath = getBasePath();
+    var script = document.createElement('script');
+    script.src = basePath + 'includes/cookie-consent.js';
+    script.async = true;
+    document.head.appendChild(script);
+  }
+
   // Main initialization
   async function init() {
     // Load shared CSS first
     loadSharedStyles();
+
+    // Load cookie consent banner on all pages
+    loadCookieConsent();
 
     const lang = detectLanguage();
 

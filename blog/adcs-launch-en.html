@@ -40,6 +40,18 @@
 }
 </script>
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://avisail.com/"},
+    {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://avisail.com/blog/index.html"},
+    {"@type": "ListItem", "position": 3, "name": "ADCS Official Launch"}
+  ]
+}
+</script>
+
 <style>
 :root {
   --bg: #05080f;
@@ -310,10 +322,25 @@ img{max-width:100%;height:auto;display:block}
   .cta-block{padding:36px 24px}
   .print-btn-bar{bottom:20px;right:16px}
 }
+
+/* ── 読了プログレスバー ── */
+#read-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0%;
+  background: linear-gradient(90deg, var(--blue), var(--accent));
+  z-index: 9998;
+  transition: width .08s linear;
+}
+@media print { #read-progress { display: none; } }
+
 </style>
 </head>
 
 <body>
+<div id="read-progress" aria-hidden="true"></div>
 <div class="print-btn-bar">
   <button class="print-btn" onclick="window.print()">📄 Save as PDF</button>
 </div>
@@ -794,6 +821,27 @@ img{max-width:100%;height:auto;display:block}
     For organizations with an immediate compliance deadline — IPA SECURITY ACTION certification, an ISO 27001 audit, or a GDPR review — contact us directly at <strong>info@avisail.com</strong> and we'll identify the fastest path to the documentation you need.
   </p>
 
+
+  <!-- ── Related Content ── -->
+  <div style="margin:48px 0 0;padding-top:40px;border-top:1px solid var(--line)">
+    <p style="font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:20px;">Related Content</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px">
+      <a href="../security/adcs-en.html" style="display:block;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px;transition:border-color .2s" onmouseover="this.style.borderColor='rgba(106,166,255,.4)'" onmouseout="this.style.borderColor='var(--line)'">
+        <span style="font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--blue)">Product Page</span>
+        <p style="font-size:.95rem;font-weight:700;color:var(--text);margin-top:8px;line-height:1.4">ADCS — Features, Pricing & Demo</p>
+      </a>
+      <a href="../security/self-check-en.html" style="display:block;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px;transition:border-color .2s" onmouseover="this.style.borderColor='rgba(126,240,212,.4)'" onmouseout="this.style.borderColor='var(--line)'">
+        <span style="font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)">Free Tool</span>
+        <p style="font-size:.95rem;font-weight:700;color:var(--text);margin-top:8px;line-height:1.4">Free Security Self-Assessment</p>
+      </a>
+      <a href="index.html" style="display:block;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px;transition:border-color .2s" onmouseover="this.style.borderColor='rgba(255,255,255,.2)'" onmouseout="this.style.borderColor='var(--line)'">
+        <span style="font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)">Blog</span>
+        <p style="font-size:.95rem;font-weight:700;color:var(--text);margin-top:8px;line-height:1.4">View All Blog Posts →</p>
+      </a>
+    </div>
+  </div>
+
+
   <!-- CTA -->
   <div class="cta-block">
     <h2>Start with a Free Self-Check</h2>
@@ -809,6 +857,19 @@ img{max-width:100%;height:auto;display:block}
 </div>
 </article>
 
+<script>
+  // 読了プログレスバー
+  (function(){
+    var bar = document.getElementById('read-progress');
+    if (!bar) return;
+    window.addEventListener('scroll', function(){
+      var d = document.documentElement;
+      var top = d.scrollTop || document.body.scrollTop;
+      var h = d.scrollHeight - d.clientHeight;
+      bar.style.width = (h > 0 ? Math.min(100, top / h * 100) : 0) + '%';
+    }, {passive: true});
+  })();
+</script>
 <div id="site-footer" style="width:100%;"></div>
 <script src="../includes/components.js"></script>
 
