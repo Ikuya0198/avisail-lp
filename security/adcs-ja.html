@@ -1137,36 +1137,53 @@ async function runHeroScan() {
   const btn   = document.getElementById('heroScanBtn');
   const body  = document.getElementById('heroScanBody');
   const domain = input.value.trim().toLowerCase()
-    .replace(/^https?:\/\//, '').replace(/[/:?#].*/, '');
+    .replace(/^https?:\/\//, '').replace(/^www\./, '').replace(/[/:?#].*/, '');
 
   if (!domain || !domain.includes('.')) { input.focus(); return; }
 
   btn.disabled = true;
   btn.textContent = '確認中…';
-  body.innerHTML = `<div class="hero-scan-spinning"><div class="hero-scan-spinner"></div><span><strong>${domain}</strong> のDNS設定を確認しています…</span></div>`;
+  body.innerHTML = `<div class="hero-scan-spinning"><div class="hero-scan-spinner"></div><span><strong>${domain}</strong> のセキュリティ設定を確認しています…</span></div>`;
 
   try {
-    const [txtRes, dmarcRes, mxRes] = await Promise.all([
+    const DKIM_SELECTORS = ['google', 'selector1', 'selector2', 'default', 'mail', 'k1', 'smtp'];
+    const [txtRes, dmarcRes, mxRes, caaRes, ...dkimResults] = await Promise.all([
       heroDohQuery(domain, 'TXT'),
       heroDohQuery('_dmarc.' + domain, 'TXT'),
       heroDohQuery(domain, 'MX'),
+      heroDohQuery(domain, 'CAA'),
+      ...DKIM_SELECTORS.map(s => heroDohQuery(s + '._domainkey.' + domain, 'TXT')),
     ]);
 
     const txt   = (txtRes?.Answer   || []).map(r => (r.data||'').replace(/"/g,'')).join(' ');
     const dmarc = (dmarcRes?.Answer || []).map(r => (r.data||'').replace(/"/g,'')).join(' ');
-    const hasSPF   = txt.includes('v=spf1');
-    const hasDMARC = dmarc.includes('v=DMARC1');
-    const hasMX    = (mxRes?.Answer || []).length > 0;
 
+    const hasSPF         = txt.includes('v=spf1');
+    const hasStrictSPF   = hasSPF && txt.includes('-all');
+    const hasDMARC       = dmarc.includes('v=DMARC1');
+    const hasStrictDMARC = hasDMARC && (dmarc.includes('p=reject') || dmarc.includes('p=quarantine'));
+    const hasMX          = (mxRes?.Answer || []).length > 0;
+    const hasCAA         = (caaRes?.Answer || []).length > 0;
+    const hasDKIM        = dkimResults.some(res =>
+      (res?.Answer || []).some(r => (r.data||'').replace(/"/g,'').includes('v=DKIM1'))
+    );
+
+    // show: always visible | conditional: only if parent check passed
     const checks = [
-      { name: 'SPFレコード',   ok: hasSPF,   descOk: '設定済み', descNg: '未設定 — 貴社ドメインを使った偽装メールを防げません' },
-      { name: 'DMARCポリシー', ok: hasDMARC, descOk: '設定済み', descNg: '未設定 — 詐欺メールに貴社ドメインが悪用される可能性があります' },
-      { name: 'メールサーバー', ok: hasMX, warn: !hasMX, descOk: 'MXレコード確認済み', descNg: 'MXレコードなし' },
+      { name: 'SPFレコード',   ok: hasSPF,         warn: false, descOk: '設定済み',                 descNg: '未設定 — 第三者が貴社ドメインでメールを送信できます' },
+      { name: 'SPF強度',       ok: hasStrictSPF,   warn: !hasStrictSPF, skip: !hasSPF, descOk: '厳格設定 (-all)',        descNg: '緩い設定 (~all) — 偽装メールを完全には遮断できていません' },
+      { name: 'DMARCポリシー', ok: hasDMARC,       warn: false, descOk: '設定済み',                 descNg: '未設定 — ドメイン詐称メールを防止できません' },
+      { name: 'DMARC強度',     ok: hasStrictDMARC, warn: !hasStrictDMARC, skip: !hasDMARC, descOk: 'reject/quarantine で有効',  descNg: 'p=none（監視のみ）— 詐欺メールを実際には遮断していません' },
+      { name: 'DKIM署名',      ok: hasDKIM,        warn: false, descOk: '設定済み',                 descNg: '未設定 — メール改ざんを検知できません' },
+      { name: 'CAAレコード',   ok: hasCAA,         warn: false, descOk: '設定済み',                 descNg: '未設定 — 不正なSSL証明書が発行されるリスクがあります' },
     ];
 
-    const itemsHtml = checks.map(c => {
+    const visible = checks.filter(c => !c.skip);
+    const issues  = visible.filter(c => !c.ok).length;
+
+    const itemsHtml = visible.map(c => {
       const cls  = c.ok ? 'hs-ok' : (c.warn ? 'hs-warn' : 'hs-ng');
-      const icon = c.ok ? '✓' : (c.warn ? '?' : '✗');
+      const icon = c.ok ? '✓' : (c.warn ? '△' : '✗');
       return `<div class="hero-scan-item">
         <div class="hero-scan-badge ${cls}">${icon}</div>
         <div class="hero-scan-item-name">${c.name}</div>
@@ -1174,14 +1191,13 @@ async function runHeroScan() {
       </div>`;
     }).join('');
 
-    const issues = checks.filter(c => !c.ok).length;
     const ctaHtml = issues > 0
       ? `<div class="hero-scan-cta">
-          <span class="hero-scan-cta-text">⚠️ <strong style="color:#ef4444">${issues}件の問題を検出</strong> — ADCSが自動で修正します</span>
+          <span class="hero-scan-cta-text">⚠️ <strong style="color:#ef4444">${issues}件のリスクを検出</strong> — ADCSが継続監視・自動修正します</span>
           <a href="https://adcs.avisail.com/subscribe" class="hero-scan-cta-btn">今すぐ修正する — 月額¥29,800 →</a>
          </div>`
       : `<div class="hero-scan-cta" style="background:rgba(34,197,94,.06);border-color:rgba(34,197,94,.15)">
-          <span class="hero-scan-cta-text">✓ <strong style="color:#22c55e">DNS設定は良好です</strong> — 全54項目の完全スキャンで他のリスクも確認できます</span>
+          <span class="hero-scan-cta-text">✓ <strong style="color:#22c55e">基本設定は良好です</strong> — 全54項目の完全スキャンで隠れたリスクも確認できます</span>
           <a href="https://adcs.avisail.com/subscribe" class="hero-scan-cta-btn">完全スキャンを申し込む →</a>
          </div>`;
 
@@ -1191,7 +1207,7 @@ async function runHeroScan() {
     body.innerHTML = '';
   } finally {
     btn.disabled = false;
-    btn.textContent = 'スキャン開始 →';
+    btn.textContent = 'スキャン →';
   }
 }
 
