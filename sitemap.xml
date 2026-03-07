@@ -174,7 +174,25 @@
     <priority>0.7</priority>
   </url>
 
-  <!-- Blog -->
+  <!-- Blog Index -->
+  <url>
+    <loc>https://avisail.com/blog/index.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://avisail.com/blog/index.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://avisail.com/blog/index.ja.html"/>
+    <lastmod>2026-03-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://avisail.com/blog/index.ja.html</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://avisail.com/blog/index.ja.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://avisail.com/blog/index.html"/>
+    <lastmod>2026-03-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Blog Articles -->
   <url>
     <loc>https://avisail.com/blog/adcs-launch-en.html</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://avisail.com/blog/adcs-launch-en.html"/>
