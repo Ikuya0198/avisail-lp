@@ -184,10 +184,109 @@ img{max-width:100%;height:auto;display:block}
 }
 
 @media print {
-  .print-btn-bar { display: none !important; }
-  #site-header, #site-footer { display: none !important; }
-  .article-hero { padding: 40px 0 32px !important; }
-  body::before { display: none !important; }
+  /* ── 非表示 ── */
+  .print-btn-bar, #site-header, #site-footer { display: none !important; }
+
+  /* ── 基本リセット：白背景 × 黒文字 ── */
+  *, *::before, *::after {
+    background: white !important;
+    color: #111 !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    -webkit-text-fill-color: #111 !important;
+  }
+
+  html, body { background: white !important; font-size: 12pt; }
+
+  /* ── ページ余白 ── */
+  @page { margin: 18mm 15mm; }
+
+  /* ── ヒーロー ── */
+  .article-hero { padding: 16pt 0 10pt !important; background: white !important; }
+  .article-eyebrow {
+    background: #f0f0f0 !important;
+    border: 1px solid #ccc !important;
+    color: #333 !important;
+  }
+  .article-hero h1 { font-size: 20pt !important; }
+  .article-lead { color: #333 !important; }
+
+  /* ── メタ・タグ ── */
+  .article-meta { border-top: 1px solid #ddd !important; }
+  .article-meta .tag {
+    background: #f0f0f0 !important;
+    border: 1px solid #ccc !important;
+    color: #333 !important;
+  }
+
+  /* ── KPI バー ── */
+  .stats-bar { border: 1px solid #ddd !important; }
+  .stat-cell { background: #fafafa !important; border-right: 1px solid #eee !important; }
+  .stat-num { color: #1a6aaa !important; -webkit-text-fill-color: #1a6aaa !important; }
+  .stat-label { color: #555 !important; }
+
+  /* ── 本文 ── */
+  .article-body h2 { border-top: 1px solid #ddd !important; color: #111 !important; font-size: 14pt !important; }
+  .article-body h3 { color: #222 !important; font-size: 12pt !important; }
+  .article-body p, .article-body li { color: #333 !important; }
+
+  /* ── callout ── */
+  .callout { border-left: 3px solid #1a6aaa !important; background: #f0f6ff !important; }
+  .callout.blue { border-left-color: #1a6aaa !important; background: #f0f6ff !important; }
+  .callout p { color: #222 !important; }
+
+  /* ── スキャナーグリッド ── */
+  .scanner-box { background: #fafafa !important; border: 1px solid #ddd !important; }
+  .scanner-box h4, .scanner-box li { color: #333 !important; }
+  .scanner-box h4 .count { color: #1a6aaa !important; -webkit-text-fill-color: #1a6aaa !important; }
+
+  /* ── OSINT pills ── */
+  .osint-pill { background: #eef4ff !important; border: 1px solid #c0d4f5 !important; color: #1a4a99 !important; }
+
+  /* ── 3層アーキテクチャ ── */
+  .layers { border: 1px solid #ddd !important; }
+  .layer { background: white !important; border-right: 1px solid #ddd !important; }
+  .layer-num { color: #888 !important; }
+  .layer-title { color: #111 !important; }
+  .layer-title .sub { color: #1a6aaa !important; -webkit-text-fill-color: #1a6aaa !important; }
+  .layer p { color: #555 !important; }
+
+  /* ── 料金カード ── */
+  .price-card { background: #fafafa !important; border: 1px solid #ddd !important; }
+  .price-card.recommended { border-color: #1a6aaa !important; }
+  .price-card .plan-name { color: #666 !important; }
+  .price-card .price { color: #111 !important; }
+  .price-card .rec-badge { background: #1a6aaa !important; color: white !important; -webkit-text-fill-color: white !important; }
+  .price-card li { color: #333 !important; }
+
+  /* ── 比較テーブル ── */
+  .mini-table th { background: #f0f0f0 !important; color: #555 !important; border-bottom: 1px solid #ddd !important; }
+  .mini-table td { border-bottom: 1px solid #eee !important; color: #333 !important; }
+  .mini-table .yes { color: #1a7a5a !important; -webkit-text-fill-color: #1a7a5a !important; }
+  .mini-table .no { color: #999 !important; }
+  .mini-table .adcs-col { color: #111 !important; }
+
+  /* ── comp-chips ── */
+  .comp-chip { background: #f0f0f0 !important; border: 1px solid #ccc !important; color: #333 !important; }
+  .comp-chip.highlight { background: #eef8f4 !important; border-color: #90d4bb !important; color: #1a6a4a !important; }
+
+  /* ── TOC ── */
+  .toc { background: #fafafa !important; border: 1px solid #ddd !important; }
+  .toc h3 { color: #666 !important; }
+  .toc li { color: #333 !important; }
+  .toc a { color: #1a4a99 !important; -webkit-text-fill-color: #1a4a99 !important; }
+
+  /* ── CTA ── */
+  .cta-block { background: #f0f6ff !important; border: 1px solid #c0d4f5 !important; }
+  .cta-block h2, .cta-block p { color: #111 !important; }
+  .cta-btns { display: none !important; }
+
+  /* ── ボタン非表示 ── */
+  .btn { display: none !important; }
+
+  /* ── ページ分割 ── */
+  h2 { page-break-before: auto; page-break-after: avoid; }
+  .scanner-grid, .pricing-row, .layers { page-break-inside: avoid; }
 }
 
 @media(max-width:768px){
