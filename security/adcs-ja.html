@@ -67,17 +67,23 @@ section{padding:96px 0;position:relative}
 .btn-danger{background:linear-gradient(135deg,#ef4444,#dc2626);color:#fff}
 .btn-danger:hover{transform:translateY(-2px);box-shadow:0 16px 36px rgba(239,68,68,.3)}
 
-/* ===== HERO SCAN WIDGET ===== */
-.hero-scan{margin:0 0 48px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:28px 32px;max-width:680px}
-.hero-scan-label{font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
-.hero-scan-row{display:flex;gap:10px}
-.hero-scan-input{flex:1;padding:14px 20px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:12px;color:var(--text);font-family:inherit;font-size:1rem;outline:none;transition:border-color .2s}
-.hero-scan-input:focus{border-color:var(--blue)}
-.hero-scan-input::placeholder{color:var(--muted)}
-.hero-scan-btn{padding:14px 24px;background:linear-gradient(135deg,var(--blue),var(--accent));color:#050810;border:none;border-radius:12px;font-family:inherit;font-size:.9rem;font-weight:700;cursor:pointer;white-space:nowrap;transition:all .2s}
-.hero-scan-btn:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(106,166,255,.3)}
-.hero-scan-btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
-.hero-scan-body{margin-top:16px}
+/* ===== FREE DIAGNOSIS SECTION ===== */
+#free-diagnosis{background:var(--bg2)}
+.fd-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start}
+.fd-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:32px}
+.fd-eyebrow{display:inline-block;font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:4px 12px;border-radius:20px;margin-bottom:12px}
+.fd-eyebrow-blue{background:rgba(106,166,255,.12);border:1px solid rgba(106,166,255,.25);color:var(--blue)}
+.fd-eyebrow-green{background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.25);color:#22c55e}
+.fd-card-title{font-size:1.15rem;font-weight:700;margin-bottom:8px}
+.fd-card-desc{font-size:.88rem;color:var(--text2);line-height:1.7;margin-bottom:24px}
+.fd-input-row{display:flex;gap:10px;margin-bottom:14px}
+.fd-input{flex:1;padding:12px 18px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:10px;color:var(--text);font-family:inherit;font-size:.95rem;outline:none;transition:border-color .2s}
+.fd-input:focus{border-color:var(--blue)}
+.fd-input::placeholder{color:var(--muted)}
+.fd-scan-btn{padding:12px 20px;background:linear-gradient(135deg,var(--blue),var(--accent));color:#050810;border:none;border-radius:10px;font-family:inherit;font-size:.88rem;font-weight:700;cursor:pointer;white-space:nowrap;transition:all .2s}
+.fd-scan-btn:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(106,166,255,.3)}
+.fd-scan-btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
+/* scan result reuse */
 .hero-scan-spinning{display:flex;align-items:center;gap:10px;font-size:.88rem;color:var(--text2);padding:8px 0}
 .hero-scan-spinner{width:16px;height:16px;border:2px solid rgba(106,166,255,.2);border-top-color:var(--blue);border-radius:50%;animation:hs-spin .8s linear infinite;flex-shrink:0}
 @keyframes hs-spin{to{transform:rotate(360deg)}}
@@ -94,7 +100,13 @@ section{padding:96px 0;position:relative}
 .hero-scan-cta-text{font-size:.84rem}
 .hero-scan-cta-btn{display:inline-block;padding:10px 20px;background:linear-gradient(135deg,var(--blue),var(--accent));color:#050810;border-radius:50px;font-weight:700;font-size:.84rem;white-space:nowrap;transition:all .2s}
 .hero-scan-cta-btn:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(106,166,255,.3)}
-@media(max-width:640px){.hero-scan{padding:20px}.hero-scan-row{flex-direction:column}.hero-scan-cta{flex-direction:column;align-items:flex-start}}
+/* self-check card */
+.fd-checklist{list-style:none;padding:0;margin:0 0 24px;display:flex;flex-direction:column;gap:0}
+.fd-checklist li{font-size:.85rem;color:var(--text2);padding:9px 0;border-bottom:1px solid rgba(255,255,255,.05);display:flex;align-items:center;gap:8px}
+.fd-checklist li::before{content:'✓';color:#22c55e;font-weight:700;flex-shrink:0}
+.fd-start-btn{display:block;width:100%;padding:14px;text-align:center;background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.25);color:#22c55e;border-radius:12px;font-weight:700;font-size:.95rem;transition:all .2s}
+.fd-start-btn:hover{background:rgba(34,197,94,.18);transform:translateY(-1px)}
+@media(max-width:768px){.fd-grid{grid-template-columns:1fr}.fd-input-row{flex-direction:column}}
 
 /* ===== HERO ===== */
 .hero{min-height:100vh;display:flex;align-items:center;padding:120px 0 80px;background:radial-gradient(ellipse 80% 60% at 50% -10%,rgba(106,166,255,.1),transparent)}
@@ -304,18 +316,8 @@ section.section-entered::after{animation:sec-flash .7s cubic-bezier(.4,0,.2,1) f
     54種のスキャナーが自動で脆弱性を発見し、<strong style="color:#fff;">「今週やること3つ」</strong>に変換して届けます。
   </p>
   <div class="hero-ctas">
-    <a href="#pricing" class="btn btn-primary btn-lg">料金・プランを見る</a>
-    <a href="self-check-ja.html" class="btn btn-ghost btn-lg">自己診断チェックを試す</a>
-  </div>
-
-  <!-- Domain Scan Widget -->
-  <div class="hero-scan">
-    <div class="hero-scan-label">🔍 貴社ドメインを今すぐ無料スキャン</div>
-    <div class="hero-scan-row">
-      <input type="text" id="heroScanInput" class="hero-scan-input" placeholder="例: example.co.jp" autocomplete="off">
-      <button onclick="runHeroScan()" class="hero-scan-btn" id="heroScanBtn">スキャン開始 →</button>
-    </div>
-    <div class="hero-scan-body" id="heroScanBody"></div>
+    <a href="#free-diagnosis" class="btn btn-primary btn-lg">無料で診断する</a>
+    <a href="#pricing" class="btn btn-ghost btn-lg">料金・プランを見る</a>
   </div>
 
   <div class="hero-kpi">
@@ -340,7 +342,50 @@ section.section-entered::after{animation:sec-flash .7s cubic-bezier(.4,0,.2,1) f
 </section>
 
 <!-- ================================================ -->
-<!-- 2. PRICING                                       -->
+<!-- 2. FREE DIAGNOSIS                                -->
+<!-- ================================================ -->
+<section id="free-diagnosis">
+<div class="wrap">
+  <div class="fade-in" style="text-align:center;margin-bottom:48px;">
+    <p class="section-label">無料診断</p>
+    <h2 class="section-title">まず無料で確認する</h2>
+    <p class="section-lead" style="margin:0 auto;">登録不要。2つの無料ツールで貴社のセキュリティ現状を即座に把握できます。</p>
+  </div>
+
+  <div class="fd-grid fade-in">
+
+    <!-- ドメイン自動スキャン -->
+    <div class="fd-card">
+      <span class="fd-eyebrow fd-eyebrow-blue">自動スキャン</span>
+      <h3 class="fd-card-title">🔍 ドメイン診断</h3>
+      <p class="fd-card-desc">URLを入力するだけ。SPF・DMARC・メールサーバーの設定をリアルタイムで自動チェックします。</p>
+      <div class="fd-input-row">
+        <input type="text" id="heroScanInput" class="fd-input" placeholder="例: example.co.jp" autocomplete="off">
+        <button onclick="runHeroScan()" class="fd-scan-btn" id="heroScanBtn">スキャン →</button>
+      </div>
+      <div id="heroScanBody"></div>
+    </div>
+
+    <!-- セルフチェック -->
+    <div class="fd-card">
+      <span class="fd-eyebrow fd-eyebrow-green">セルフチェック</span>
+      <h3 class="fd-card-title">📋 セキュリティ自己診断</h3>
+      <p class="fd-card-desc">10問のチェックリストに回答するだけ。IPA準拠のスコアと改善提案を即表示します。</p>
+      <ul class="fd-checklist">
+        <li>即時スコア表示（30点満点・グレード評価）</li>
+        <li>カテゴリ別レーダーチャート</li>
+        <li>優先度別の具体的改善提案</li>
+        <li>印刷対応レポート・登録不要</li>
+      </ul>
+      <a href="self-check-ja.html" class="fd-start-btn">無料で診断を開始 →</a>
+    </div>
+
+  </div>
+</div>
+</section>
+
+<!-- ================================================ -->
+<!-- 3. PRICING                                       -->
 <!-- ================================================ -->
 <section class="dark" id="pricing">
 <div class="wrap">
@@ -464,48 +509,6 @@ section.section-entered::after{animation:sec-flash .7s cubic-bezier(.4,0,.2,1) f
     <p style="font-size:.78rem;color:var(--muted);margin-top:12px;">※ 相場：国内コンサルティング会社では同等作業に¥300,000〜¥2,000,000かかります</p>
   </div>
 
-  <!-- 支払い方法 -->
-  <div class="fade-in" style="margin-top:48px;padding:32px;background:var(--card);border:1px solid var(--line);border-radius:16px;">
-    <h3 style="font-size:1rem;font-weight:700;margin-bottom:16px;">申込・支払い方法</h3>
-    <div class="pay-methods">
-      <div class="pay-chip">💳 クレジットカード（Visa/Mastercard/Amex）</div>
-      <div class="pay-chip">🏦 銀行振込</div>
-      <div class="pay-chip">🔒 Stripe決済（PCI DSS準拠）</div>
-    </div>
-    <p style="font-size:.8rem;color:var(--muted);margin-top:16px;">
-      各プランのボタンを押すと Stripe の決済ページへ遷移します。銀行振込をご希望の場合は <strong style="color:var(--text2)">info@avisail.com</strong> までご連絡ください。
-    </p>
-  </div>
-
-  <!-- エンタープライズ・カスタム -->
-  <div class="fade-in" style="margin-top:48px;padding:32px;background:var(--card);border:1px solid var(--line);border-radius:16px;text-align:center;">
-    <h3 style="font-size:1.1rem;font-weight:700;margin-bottom:8px;">大規模組織・カスタム要件</h3>
-    <p style="font-size:.88rem;color:var(--text2);margin-bottom:20px;">100名以上の組織、カスタム連携、専任SLA保証などはお問い合わせください。</p>
-    <a href="https://avisail.com/ja/contact.html" class="btn btn-secondary" style="display:inline-flex;align-items:center;gap:6px;">お問い合わせ ↗</a>
-  </div>
-
-  <!-- FAQ -->
-  <div class="fade-in" style="margin-top:56px;">
-    <h3 style="font-size:1.2rem;font-weight:700;margin-bottom:24px;text-align:center;">よくある質問</h3>
-    <div style="display:flex;flex-direction:column;gap:12px;">
-      <div style="padding:20px 24px;background:var(--card);border:1px solid var(--line);border-radius:12px;">
-        <p style="font-weight:700;margin-bottom:6px;">スポット診断と月額プランの違いは？</p>
-        <p style="font-size:.88rem;color:var(--text2);">スポット診断は会員登録不要の一回限りの診断です。継続的な監視・インシデント管理・コンプライアンス支援が必要な場合は月額プランをお選びください。</p>
-      </div>
-      <div style="padding:20px 24px;background:var(--card);border:1px solid var(--line);border-radius:12px;">
-        <p style="font-weight:700;margin-bottom:6px;">アドオンはどのプランでも購入できますか？</p>
-        <p style="font-size:.88rem;color:var(--text2);">アドオンはStarterまたはStandardプランの会員が設定画面から購入できます。一回限りの購入です。Premiumプランは全て込みです。</p>
-      </div>
-      <div style="padding:20px 24px;background:var(--card);border:1px solid var(--line);border-radius:12px;">
-        <p style="font-weight:700;margin-bottom:6px;">プランはいつでも変更できますか？</p>
-        <p style="font-size:.88rem;color:var(--text2);">はい、ダッシュボードの設定画面からいつでもアップグレード・ダウングレードが可能です。</p>
-      </div>
-      <div style="padding:20px 24px;background:var(--card);border:1px solid var(--line);border-radius:12px;">
-        <p style="font-weight:700;margin-bottom:6px;">年払いの割引はありますか？</p>
-        <p style="font-size:.88rem;color:var(--text2);">はい、年間契約で月額料金が20%OFFになります。申込画面で「年払い」を選択してください。</p>
-      </div>
-    </div>
-  </div>
 </div>
 </section>
 
@@ -911,25 +914,6 @@ section.section-entered::after{animation:sec-flash .7s cubic-bezier(.4,0,.2,1) f
 </section>
 
 <!-- ================================================ -->
-<!-- 8. FREE SELF-CHECK DOWNLOAD                      -->
-<!-- ================================================ -->
-<section class="dark" id="free-check">
-<div class="wrap-sm">
-  <div class="dl-banner fade-in">
-    <div class="dl-badge">無料ダウンロード</div>
-    <h2 class="section-title" style="margin-bottom:16px;">自己チェックレポートを<br>無料でダウンロード</h2>
-    <p style="font-size:1rem;color:var(--text2);max-width:600px;margin:0 auto 32px;line-height:1.9;">
-      10問のセキュリティ質問に回答するだけで、即座にスコアを表示。結果はそのままブラウザから印刷できます。ダウンロード不要、すべてウェブ上で完結します。
-    </p>
-    <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
-      <a href="self-check-ja.html" class="btn btn-primary btn-lg">無料セルフチェックを開始</a>
-    </div>
-    <p style="font-size:.78rem;color:var(--muted);margin-top:16px;">即時結果表示 &bull; 印刷対応レポート &bull; 登録不要</p>
-  </div>
-</div>
-</section>
-
-<!-- ================================================ -->
 <!-- 9. TRUST & COMPLIANCE                            -->
 <!-- ================================================ -->
 <section id="trust">
@@ -1074,15 +1058,15 @@ document.addEventListener('DOMContentLoaded', function(){
 // ── Side Nav (目次型) + Section Flash ────────────────
 document.addEventListener('DOMContentLoaded', function(){
   var SECTIONS = [
-    {id:'hero-section', label:'TOP'},
-    {id:'pricing',      label:'料金'},
-    {id:'overview',     label:'概要'},
-    {id:'system',       label:'仕組み'},
-    {id:'specs',        label:'スキャン'},
-    {id:'ctem',         label:'CTEM'},
-    {id:'comparison',   label:'比較'},
-    {id:'free-check',   label:'診断'},
-    {id:'trust',        label:'信頼'}
+    {id:'hero-section',   label:'TOP'},
+    {id:'free-diagnosis', label:'無料診断'},
+    {id:'pricing',        label:'料金'},
+    {id:'overview',       label:'概要'},
+    {id:'system',         label:'仕組み'},
+    {id:'specs',          label:'スキャン'},
+    {id:'ctem',           label:'CTEM'},
+    {id:'comparison',     label:'比較'},
+    {id:'trust',          label:'信頼'}
   ];
 
   var nav = document.getElementById('side-nav');
