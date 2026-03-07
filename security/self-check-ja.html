@@ -310,21 +310,8 @@ a{color:var(--accent);text-decoration:none}
     <a class="btn btn-primary btn-lg" href="https://adcs.avisail.com/subscribe">本格診断を申し込む</a>
   </div>
 
-  <!-- CTA Banner -->
-  <div class="cta-banner no-print">
-    <h3>ADCSで本格的なセキュリティ診断を</h3>
-    <p>セルフチェックでは測れない技術的な脆弱性を、24種類の自動スキャナーが検出します。</p>
-    <div class="cta-features">
-      <span class="cta-feat">外部攻撃面の自動検出</span>
-      <span class="cta-feat">SSL/TLS・DNS・メール設定評価</span>
-      <span class="cta-feat">ダークウェブ漏洩チェック</span>
-      <span class="cta-feat">11規制フレームワーク対応</span>
-    </div>
-    <a class="btn btn-primary btn-lg" href="https://adcs.avisail.com/subscribe">月額 ¥29,800 から開始</a>
-    <div style="margin-top:12px">
-      <a href="adcs-ja.html" style="font-size:.82rem;color:var(--text2)">ADCSの詳細を見る &rarr;</a>
-    </div>
-  </div>
+  <!-- CTA Banner (dynamically filled by showResults()) -->
+  <div class="cta-banner no-print" id="ctaBanner"></div>
 
   <div class="print-footer">
     <p>本レポートは Avisail ADCS セキュリティ自己診断ツールにより自動生成されました。</p>
@@ -567,6 +554,34 @@ function showResults(){
       <div class="reco-text">全てのチェック項目に対応済みです。ADCSの技術スキャンで、設定上の脆弱性やダークウェブ上の情報漏洩がないか確認することを推奨します。</div></div>`;
   }
   reco.innerHTML = recoHtml;
+
+  // Dynamic CTA based on grade
+  const ctaMap = {
+    D: { badge:'🚨 緊急対応が必要です', h3:'リスクが深刻な状態です', p:'未対応の項目が多数あります。このまま放置すると情報漏洩・ランサムウェア被害が現実的なリスクになります。専門家による技術診断を今すぐ受けてください。', btn:'スポット診断で緊急調査（¥50,000）', href:'https://adcs.avisail.com/subscribe?plan=spot' },
+    C: { badge:'⚠️ 改善が必要です', h3:'対策が不十分な項目が見つかりました', p:'いくつかの重要な対策が未実施です。自己チェックだけでは発見できない技術的な脆弱性も存在する可能性があります。', btn:'ADCSで本格診断を始める', href:'https://adcs.avisail.com/subscribe' },
+    B: { badge:'✓ 基本対策は済んでいます', h3:'さらに強固なセキュリティへ', p:'基本的な対策はできています。しかしセルフチェックでは見えない技術的な脆弱性を、自動スキャンで確認することを推奨します。', btn:'ADCSで継続監視を始める', href:'https://adcs.avisail.com/subscribe' },
+    A: { badge:'✓ 優れたセキュリティ意識です', h3:'次は技術スキャンで確認しましょう', p:'セルフチェックの結果は良好です。しかし技術的な脆弱性・ダークウェブ漏洩・外部攻撃面はツールでしか発見できません。', btn:'完全スキャンで隠れたリスクを発見', href:'https://adcs.avisail.com/subscribe' },
+  };
+  const c = ctaMap[grade];
+  document.getElementById('ctaBanner').innerHTML = `
+    <span style="display:inline-block;font-size:.78rem;font-weight:700;padding:5px 14px;border-radius:20px;margin-bottom:16px;background:rgba(106,166,255,.1);color:var(--blue)">${c.badge}</span>
+    <h3>${c.h3}</h3>
+    <p>${c.p}</p>
+    <div class="cta-features">
+      <span class="cta-feat">外部攻撃面の自動検出</span>
+      <span class="cta-feat">SSL/TLS・DNS・メール設定評価</span>
+      <span class="cta-feat">ダークウェブ漏洩チェック</span>
+      <span class="cta-feat">11規制フレームワーク対応</span>
+    </div>
+    <a class="btn btn-primary btn-lg" href="${c.href}">${c.btn}</a>
+    <div style="margin-top:20px;padding-top:20px;border-top:1px solid rgba(255,255,255,.08)">
+      <p style="font-size:.8rem;color:var(--muted);margin-bottom:10px">診断レポートをメールで受け取る（無料）</p>
+      <div style="display:flex;gap:8px;max-width:400px;margin:0 auto" id="scEmailRow">
+        <input type="email" id="scEmailInput" placeholder="your@company.co.jp" style="flex:1;padding:10px 14px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:8px;color:#fff;font-size:.84rem;font-family:inherit;outline:none">
+        <button onclick="submitScEmail()" style="padding:10px 16px;background:rgba(106,166,255,.15);border:1px solid rgba(106,166,255,.3);color:var(--blue);border-radius:8px;font-size:.82rem;font-weight:600;cursor:pointer;font-family:inherit;white-space:nowrap">送信</button>
+      </div>
+      <p id="scEmailStatus" style="font-size:.82rem;margin-top:8px;min-height:18px"></p>
+    </div>`;
 }
 
 function animateScore(target){
@@ -659,6 +674,35 @@ function drawRadar(cats){
 
 
 renderQuestions();
+
+async function submitScEmail() {
+  const input = document.getElementById('scEmailInput');
+  const status = document.getElementById('scEmailStatus');
+  if (!input || !status) return;
+  const email = input.value.trim();
+  if (!email || !email.includes('@')) { input.focus(); return; }
+  const score = Object.values(answers).reduce((a,b)=>a+b,0);
+  const grade = score>=25?'A':score>=18?'B':score>=10?'C':'D';
+  const fd = new FormData();
+  fd.append('email', email);
+  fd.append('_subject', `[セルフチェック] グレード${grade} ${score}/30点 — レポート依頼`);
+  fd.append('source', 'self-check');
+  fd.append('grade', `グレード${grade} (${score}/30点)`);
+  try {
+    const res = await fetch('https://formspree.io/f/mykzwlze', { method:'POST', body:fd, headers:{Accept:'application/json'} });
+    if (res.ok) {
+      document.getElementById('scEmailRow').style.display = 'none';
+      status.style.color = '#22c55e';
+      status.textContent = '✓ 受け取りました。1営業日以内にご連絡します。';
+    } else {
+      status.style.color = '#ef4444';
+      status.textContent = '送信に失敗しました。';
+    }
+  } catch {
+    status.style.color = '#ef4444';
+    status.textContent = '送信に失敗しました。';
+  }
+}
 </script>
 </body>
 </html>

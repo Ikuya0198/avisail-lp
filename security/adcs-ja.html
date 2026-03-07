@@ -100,6 +100,14 @@ section{padding:96px 0;position:relative}
 .hero-scan-cta-text{font-size:.84rem}
 .hero-scan-cta-btn{display:inline-block;padding:10px 20px;background:linear-gradient(135deg,var(--blue),var(--accent));color:#050810;border-radius:50px;font-weight:700;font-size:.84rem;white-space:nowrap;transition:all .2s}
 .hero-scan-cta-btn:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(106,166,255,.3)}
+.hs-email-form{padding:12px 16px;border-top:1px solid rgba(255,255,255,.06);background:rgba(255,255,255,.02)}
+.hs-email-label{font-size:.76rem;color:var(--muted);margin-bottom:8px}
+.hs-email-row{display:flex;gap:8px}
+.hs-email-input{flex:1;padding:9px 13px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:8px;color:#fff;font-size:.82rem;font-family:inherit;outline:none}
+.hs-email-input:focus{border-color:var(--blue)}
+.hs-email-btn{padding:9px 14px;background:rgba(106,166,255,.15);border:1px solid rgba(106,166,255,.3);color:var(--blue);border-radius:8px;font-size:.8rem;font-weight:600;cursor:pointer;white-space:nowrap;transition:all .2s;font-family:inherit}
+.hs-email-btn:hover{background:rgba(106,166,255,.25)}
+.hs-email-sent{font-size:.82rem;color:#22c55e;padding:6px 0;margin:0}
 /* self-check card */
 .fd-checklist{list-style:none;padding:0;margin:0 0 24px;display:flex;flex-direction:column;gap:0}
 .fd-checklist li{font-size:.85rem;color:var(--text2);padding:9px 0;border-bottom:1px solid rgba(255,255,255,.05);display:flex;align-items:center;gap:8px}
@@ -1170,12 +1178,12 @@ async function runHeroScan() {
 
     // show: always visible | conditional: only if parent check passed
     const checks = [
-      { name: 'SPFレコード',   ok: hasSPF,         warn: false, descOk: '設定済み',                 descNg: '未設定 — 第三者が貴社ドメインでメールを送信できます' },
-      { name: 'SPF強度',       ok: hasStrictSPF,   warn: !hasStrictSPF, skip: !hasSPF, descOk: '厳格設定 (-all)',        descNg: '緩い設定 (~all) — 偽装メールを完全には遮断できていません' },
-      { name: 'DMARCポリシー', ok: hasDMARC,       warn: false, descOk: '設定済み',                 descNg: '未設定 — ドメイン詐称メールを防止できません' },
-      { name: 'DMARC強度',     ok: hasStrictDMARC, warn: !hasStrictDMARC, skip: !hasDMARC, descOk: 'reject/quarantine で有効',  descNg: 'p=none（監視のみ）— 詐欺メールを実際には遮断していません' },
-      { name: 'DKIM署名',      ok: hasDKIM,        warn: false, descOk: '設定済み',                 descNg: '未設定 — メール改ざんを検知できません' },
-      { name: 'CAAレコード',   ok: hasCAA,         warn: false, descOk: '設定済み',                 descNg: '未設定 — 不正なSSL証明書が発行されるリスクがあります' },
+      { name: 'SPFレコード',   ok: hasSPF,         warn: false, descOk: '設定済み',                 descNg: '未設定 — 取引先に貴社を名乗った詐欺メールが今この瞬間も送れる状態です' },
+      { name: 'SPF強度',       ok: hasStrictSPF,   warn: !hasStrictSPF, skip: !hasSPF, descOk: '厳格設定 (-all)',        descNg: '緩い設定 (~all) — 第三者が貴社ドメインで無制限にメールを送れます' },
+      { name: 'DMARCポリシー', ok: hasDMARC,       warn: false, descOk: '設定済み',                 descNg: '未設定 — なりすましメールが届いても貴社は気づけません' },
+      { name: 'DMARC強度',     ok: hasStrictDMARC, warn: !hasStrictDMARC, skip: !hasDMARC, descOk: 'reject/quarantine で有効',  descNg: 'p=none（監視のみ）— 詐欺メールは今も届いている。止める設定になっていません' },
+      { name: 'DKIM署名',      ok: hasDKIM,        warn: false, descOk: '設定済み',                 descNg: '未設定 — 貴社メールの内容が改ざんされても検知できない状態です' },
+      { name: 'CAAレコード',   ok: hasCAA,         warn: false, descOk: '設定済み',                 descNg: '未設定 — 貴社ドメインの偽SSL証明書が第三者に発行されるリスクがあります' },
     ];
 
     const visible = checks.filter(c => !c.skip);
@@ -1201,7 +1209,14 @@ async function runHeroScan() {
           <a href="https://adcs.avisail.com/subscribe" class="hero-scan-cta-btn">完全スキャンを申し込む →</a>
          </div>`;
 
-    body.innerHTML = `<div class="hero-scan-results"><div>${itemsHtml}</div>${ctaHtml}</div>`;
+    const emailFormHtml = `<div class="hs-email-form">
+      <p class="hs-email-label">詳細レポートをメールで受け取る（無料）</p>
+      <div class="hs-email-row">
+        <input type="email" class="hs-email-input" placeholder="your@company.co.jp" autocomplete="email">
+        <button class="hs-email-btn" onclick="submitScanEmail(this,'${domain}')">送信</button>
+      </div>
+    </div>`;
+    body.innerHTML = `<div class="hero-scan-results"><div>${itemsHtml}</div>${ctaHtml}${emailFormHtml}</div>`;
 
   } catch {
     body.innerHTML = '';
@@ -1209,6 +1224,29 @@ async function runHeroScan() {
     btn.disabled = false;
     btn.textContent = 'スキャン →';
   }
+}
+
+async function submitScanEmail(btn, domain) {
+  const row = btn.closest('.hs-email-row');
+  const input = row.querySelector('.hs-email-input');
+  const email = input.value.trim();
+  if (!email || !email.includes('@')) { input.focus(); return; }
+  btn.disabled = true;
+  btn.textContent = '送信中…';
+  const fd = new FormData();
+  fd.append('email', email);
+  fd.append('domain', domain);
+  fd.append('_subject', `[ADCSスキャン] レポート依頼: ${domain}`);
+  fd.append('source', 'lp-domain-scan');
+  try {
+    const res = await fetch('https://formspree.io/f/mykzwlze', { method:'POST', body:fd, headers:{Accept:'application/json'} });
+    const form = btn.closest('.hs-email-form');
+    if (res.ok) {
+      form.innerHTML = '<p class="hs-email-sent">✓ 受け取りました。1営業日以内にご連絡します。</p>';
+    } else {
+      btn.disabled = false; btn.textContent = '送信';
+    }
+  } catch { btn.disabled = false; btn.textContent = '送信'; }
 }
 
 document.getElementById('heroScanInput').addEventListener('keydown', function(e) {
