@@ -104,7 +104,7 @@
         </p>
 
         <div class="hero-cta animate-in delay-4">
-          <a href="#business" class="btn">Explore Our Business</a>
+          <a href="#businesses" class="btn">Explore Our Business</a>
         </div>
       </div>
 
@@ -151,89 +151,135 @@
     
     </section>
 
-    <!-- BUSINESS -->
-    <section class="fullpage-section" id="business" data-nav-label="Business">
+    <!-- BUSINESSES -->
+    <section class="fullpage-section" id="businesses" data-nav-label="Businesses">
       <div class="fullpage-content">
         <div class="glass-block">
-          <span class="section-label animate-on-scroll">Our Business</span>
-          <h2 class="section-title animate-on-scroll">Two core divisions, one unified vision</h2>
-          <p class="section-lead animate-on-scroll">We operate at the intersection of maritime trade and cybersecurity — creating synergies that single-domain companies cannot achieve.</p>
+          <span class="section-label animate-on-scroll">Our Businesses</span>
+          <h2 class="section-title animate-on-scroll">Three divisions. One unified mission.</h2>
+          <p class="section-lead animate-on-scroll">Select a business area to explore what we offer — from global vessel trading to AI-driven cybersecurity and custom system development.</p>
 
-          <div class="business-grid">
-            <!-- Maritime Business -->
-            <div class="business-card animate-on-scroll">
-              <span class="card-label maritime">Maritime Business</span>
-              <h3>Vessel Trading Platform</h3>
-              <p>AI-powered vessel trading platform delivering premium Japanese vessels worldwide with comprehensive broker services.</p>
-              <p>Real-time high-quality inventory from Japan, Korea, and Eastern Europe. Full brokerage ensuring secure and transparent transactions.</p>
-              <div class="card-image">
-                <img src="images/vessel-trading-platform-preview.png" alt="Vessel Trading Platform" loading="lazy" width="1402" height="776">
-              </div>
+          <!-- Selector Cards -->
+          <div class="biz-selector">
+
+            <div class="biz-card maritime active animate-on-scroll" onclick="selectBiz('maritime')">
+              <span class="biz-label maritime">Maritime</span>
+              <div class="biz-name">海事事業</div>
+              <div class="biz-keywords">船舶売買 · 海事セキュリティ<br>トラストインフラ</div>
+              <i class="biz-arrow">›</i>
             </div>
 
-            <!-- Security Business -->
-            <div class="business-card animate-on-scroll">
-              <span class="card-label security">Security Business</span>
-              <h3>Cybersecurity Solutions</h3>
-              <p>Nation-state level offensive security capabilities protecting organizations from advanced digital threats.</p>
-              <p>Predictive threat detection, next-gen OSINT intelligence, and continuous attack surface monitoring at 1/10th the traditional cost.</p>
-              <div class="card-image">
-                <img src="images/security-dashboard-preview.png" alt="Security Dashboard" loading="lazy" width="2238" height="1548">
+            <div class="biz-card security animate-on-scroll" onclick="selectBiz('security')">
+              <span class="biz-label security">Security</span>
+              <div class="biz-name">セキュリティ事業</div>
+              <div class="biz-keywords">中小企業 · 自治体<br>サイバー防衛 · OSINT</div>
+              <i class="biz-arrow">›</i>
+            </div>
+
+            <div class="biz-card develop animate-on-scroll" onclick="selectBiz('develop')">
+              <span class="biz-label develop">Development</span>
+              <div class="biz-name">開発事業</div>
+              <div class="biz-keywords">AI受託開発 · 自動化<br>スクレイピング · 営業自動化</div>
+              <i class="biz-arrow">›</i>
+            </div>
+
+          </div>
+
+          <!-- Detail: Maritime -->
+          <div class="biz-detail open" id="biz-detail-maritime">
+            <div class="biz-detail-inner maritime">
+              <div class="biz-detail-grid">
+                <div class="biz-detail-left">
+                  <h3>Maritime Business</h3>
+                  <p>日本品質の船舶を世界へ届ける売買仲介から、海運業界特化のサイバーセキュリティ・コンプライアンス管理まで。海事業界のデジタル変革を一貫してサポートします。</p>
+                  <a href="maritime/maritime-services-en.html" class="biz-detail-cta maritime">事業詳細を見る ›</a>
+                </div>
+                <div class="biz-products">
+                  <div class="biz-prod-card">
+                    <div class="biz-prod-name">Vessel Trading Platform</div>
+                    <div class="biz-prod-desc">日本・韓国・東欧の高品質船舶をリアルタイム提供。成功報酬型</div>
+                    <a href="maritime/vessel-trading-en.html" class="biz-prod-link maritime">詳細 ›</a>
+                  </div>
+                  <div class="biz-prod-card">
+                    <div class="biz-prod-name">Vessel Security Management</div>
+                    <div class="biz-prod-desc">ISM/SMS監査対応。コンプライアンス証明と業務停止リスク排除</div>
+                    <a href="maritime/cyber-accountability-en.html" class="biz-prod-link maritime">詳細 ›</a>
+                  </div>
+                  <div class="biz-prod-card">
+                    <div class="biz-prod-name">Trust Infrastructure</div>
+                    <div class="biz-prod-desc">書類改ざん防止・制裁/コンプライアンス統合管理</div>
+                    <a href="maritime/trust-infrastructure-en.html" class="biz-prod-link maritime">詳細 ›</a>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    
-    </section>
 
-    <!-- PRODUCTS -->
-    <section class="fullpage-section" id="products" data-nav-label="Products">
-      <div class="fullpage-content">
-        <div class="glass-block">
-          <span class="section-label animate-on-scroll">Products & Services</span>
-          <h2 class="section-title animate-on-scroll">Ready to deploy. Full support included.</h2>
-
-          <div class="products-grid">
-            <!-- Vessel Trading -->
-            <div class="product-card animate-on-scroll">
-              <span class="product-label maritime">Maritime</span>
-              <h4>Vessel Trading Platform</h4>
-              <p class="problem">Overseas buyers struggle to find reliable Japanese quality vessels in real-time and lack trusted transaction support.</p>
-              <div class="pricing"><strong>Pricing:</strong> Success-based fees only</div>
-              <a href="maritime/vessel-trading-en.html" class="cta-link">View Platform</a>
-            </div>
-
-            <!-- Maritime Security -->
-            <div class="product-card animate-on-scroll">
-              <span class="product-label maritime">Maritime</span>
-              <h4>Vessel Security Management</h4>
-              <p class="problem">Unable to prove compliance during ISM/SMS audits. High business suspension risk due to accountability gaps.</p>
-              <div class="pricing"><strong>Pricing:</strong> From $700/month</div>
-              <a href="maritime/cyber-accountability-en.html" class="cta-link">Learn More</a>
-            </div>
-
-            <!-- Trust Infrastructure -->
-            <div class="product-card animate-on-scroll">
-              <span class="product-label maritime">Maritime</span>
-              <h4>Trust Infrastructure</h4>
-              <p class="problem">Document tampering risks and siloed sanctions/compliance handling undermine transaction trust.</p>
-              <div class="pricing"><strong>Pricing:</strong> From $350/month</div>
-              <a href="maritime/trust-infrastructure-en.html" class="cta-link">Learn More</a>
-            </div>
-
-            <!-- ADCS -->
-            <div class="product-card animate-on-scroll">
-              <span class="product-label security">Security</span>
-              <h4>ADCS</h4>
-              <p class="problem">Traditional security services are expensive, leaving SMBs and municipalities defenseless against threats.</p>
-              <div class="pricing"><strong>Pricing:</strong> Contact us</div>
-              <a href="security/adcs-en.html" class="cta-link cta-link--security">Learn More</a>
+          <!-- Detail: Security -->
+          <div class="biz-detail" id="biz-detail-security">
+            <div class="biz-detail-inner security">
+              <div class="biz-detail-grid">
+                <div class="biz-detail-left">
+                  <h3>Security Business</h3>
+                  <p>国家レベルの攻撃手法を逆用した次世代サイバーセキュリティ。予兆検知・OSINT分析・継続的攻撃面監視を従来コストの1/10で中小企業・自治体に提供します。</p>
+                  <a href="products/security-en.html" class="biz-detail-cta security">事業詳細を見る ›</a>
+                </div>
+                <div class="biz-products">
+                  <div class="biz-prod-card">
+                    <div class="biz-prod-name">ADCS</div>
+                    <div class="biz-prod-desc">自律防衛型サイバーセキュリティ。予兆検知・OSINT・攻撃面監視を24/7自動化</div>
+                    <a href="security/adcs-en.html" class="biz-prod-link security">詳細 ›</a>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
+
+          <!-- Detail: Development -->
+          <div class="biz-detail" id="biz-detail-develop">
+            <div class="biz-detail-inner develop">
+              <div class="biz-detail-grid">
+                <div class="biz-detail-left">
+                  <h3>Development Business</h3>
+                  <p>AIを核としたシステム受託開発。スクレイピング・データ収集から自動営業システム、セキュリティ商材の受託開発まで、クライアントの課題をゼロから解決します。</p>
+                  <a href="technology/technology-services-en.html" class="biz-detail-cta develop">事業詳細を見る ›</a>
+                </div>
+                <div class="biz-products">
+                  <div class="biz-prod-card">
+                    <div class="biz-prod-name">AI システム受託開発</div>
+                    <div class="biz-prod-desc">スクレイピング・データ収集・分析システムのフルスクラッチ開発</div>
+                    <a href="technology/technology-services-en.html" class="biz-prod-link develop">詳細 ›</a>
+                  </div>
+                  <div class="biz-prod-card">
+                    <div class="biz-prod-name">自動営業システム</div>
+                    <div class="biz-prod-desc">リード発掘・アプローチ自動化・CRM連携の一気通貫システム</div>
+                    <a href="technology/technology-services-en.html" class="biz-prod-link develop">詳細 ›</a>
+                  </div>
+                  <div class="biz-prod-card">
+                    <div class="biz-prod-name">セキュリティ商材開発</div>
+                    <div class="biz-prod-desc">クライアント要件に合わせたセキュリティプロダクトのOEM・受託開発</div>
+                    <a href="technology/technology-services-en.html" class="biz-prod-link develop">詳細 ›</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- JS: selector logic -->
+          <script>
+            function selectBiz(name) {
+              ['maritime', 'security', 'develop'].forEach(function(n) {
+                document.querySelector('.biz-card.' + n).classList.remove('active');
+                document.getElementById('biz-detail-' + n).classList.remove('open');
+              });
+              document.querySelector('.biz-card.' + name).classList.add('active');
+              document.getElementById('biz-detail-' + name).classList.add('open');
+            }
+          </script>
+
         </div>
       </div>
-    
+
     </section>
 
     <!-- STATS -->
@@ -301,7 +347,7 @@
           <h3 class="section-title animate-on-scroll">Ready to Transform Your Business?</h3>
           <p class="section-lead section-lead--narrow animate-on-scroll">Explore our maritime, security, and technology solutions.</p>
           <div class="cta-buttons cta-buttons--spaced animate-on-scroll">
-            <a href="index.html#products" class="cta-btn-primary">Explore Our Services</a>
+            <a href="index.html#businesses" class="cta-btn-primary">Explore Our Services</a>
             <a href="en/contact.html" class="cta-btn-secondary">Talk to an Expert</a>
           </div>
 
