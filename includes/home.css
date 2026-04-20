@@ -161,54 +161,34 @@ html {
 
 /* ========== BUSINESSES SELECTOR ========== */
 .biz-selector {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
+  display: flex;
+  gap: 0;
   margin-top: 48px;
-  margin-bottom: 4px;
+  margin-bottom: 0;
+  border-bottom: 1px solid var(--line);
 }
 
 .biz-card {
-  padding: 32px 28px;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid var(--line);
-  border-radius: 16px;
+  flex: 1;
+  padding: 24px 28px 22px;
+  background: transparent;
+  border: none;
+  border-bottom: 3px solid transparent;
+  border-radius: 0;
+  margin-bottom: -1px;
   cursor: pointer;
-  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: opacity 0.25s ease, border-color 0.25s ease;
   position: relative;
-  overflow: hidden;
   user-select: none;
-  opacity: 0.45;
+  opacity: 0.4;
 }
 
-.biz-card:hover { opacity: 0.85; }
+.biz-card:hover  { opacity: 0.8; }
 .biz-card.active { opacity: 1; }
 
-.biz-card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 3px;
-  transform: scaleX(0);
-  transition: transform 0.35s ease;
-}
-
-.biz-card.maritime::before { background: linear-gradient(90deg, var(--accent), rgba(126, 240, 212, 0.3)); }
-.biz-card.security::before  { background: linear-gradient(90deg, var(--accent-blue), rgba(106, 166, 255, 0.3)); }
-.biz-card.develop::before   { background: linear-gradient(90deg, var(--accent-violet), rgba(192, 132, 252, 0.3)); }
-
-.biz-card:hover,
-.biz-card.active {
-  transform: translateY(-4px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-}
-
-.biz-card:hover::before,
-.biz-card.active::before { transform: scaleX(1); }
-
-.biz-card.active.maritime { border-color: rgba(126, 240, 212, 0.35); background: rgba(126, 240, 212, 0.05); }
-.biz-card.active.security  { border-color: rgba(106, 166, 255, 0.35); background: rgba(106, 166, 255, 0.05); }
-.biz-card.active.develop   { border-color: rgba(192, 132, 252, 0.35); background: rgba(192, 132, 252, 0.05); }
+.biz-card.active.maritime { border-bottom-color: var(--accent); }
+.biz-card.active.security  { border-bottom-color: var(--accent-blue); }
+.biz-card.active.develop   { border-bottom-color: var(--accent-violet); }
 
 .biz-label {
   font-size: 0.65rem;
@@ -218,7 +198,7 @@ html {
   padding: 4px 10px;
   border-radius: 4px;
   display: inline-block;
-  margin-bottom: 14px;
+  margin-bottom: 12px;
 }
 
 .biz-label.maritime { background: rgba(126, 240, 212, 0.15); color: var(--accent); }
@@ -226,41 +206,32 @@ html {
 .biz-label.develop   { background: rgba(192, 132, 252, 0.15); color: var(--accent-violet); }
 
 .biz-name {
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   font-weight: 700;
   letter-spacing: -0.01em;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
   color: var(--text-primary);
+  transition: color 0.25s ease;
 }
 
+.biz-card.active.maritime .biz-name { color: var(--accent); }
+.biz-card.active.security  .biz-name { color: var(--accent-blue); }
+.biz-card.active.develop   .biz-name { color: var(--accent-violet); }
+
 .biz-keywords {
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   color: var(--text-muted);
   line-height: 1.7;
 }
 
-.biz-arrow {
-  position: absolute;
-  bottom: 22px; right: 22px;
-  font-size: 22px;
-  color: var(--text-muted);
-  transition: all 0.3s ease;
-  font-style: normal;
-}
-
-.biz-card.active.maritime .biz-arrow { color: var(--accent); transform: rotate(90deg); }
-.biz-card.active.security  .biz-arrow { color: var(--accent-blue); transform: rotate(90deg); }
-.biz-card.active.develop   .biz-arrow { color: var(--accent-violet); transform: rotate(90deg); }
+.biz-arrow { display: none; }
 
 .biz-cta-hint {
-  margin-top: 20px;
-  padding-top: 14px;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
-  font-size: 0.7rem;
+  margin-top: 14px;
+  font-size: 0.68rem;
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  transition: color 0.3s ease;
 }
 
 .biz-cta-hint .hint-inactive { color: var(--text-muted); }
@@ -755,8 +726,23 @@ html {
   }
 
   .biz-selector {
-    grid-template-columns: 1fr;
+    flex-direction: column;
+    border-bottom: none;
+    border-left: 1px solid var(--line);
+    gap: 0;
   }
+
+  .biz-card {
+    border-bottom: none;
+    border-left: 3px solid transparent;
+    margin-bottom: 0;
+    margin-left: -1px;
+    padding: 18px 20px;
+  }
+
+  .biz-card.active.maritime { border-left-color: var(--accent);        border-bottom-color: transparent; }
+  .biz-card.active.security  { border-left-color: var(--accent-blue);   border-bottom-color: transparent; }
+  .biz-card.active.develop   { border-left-color: var(--accent-violet); border-bottom-color: transparent; }
 
   .biz-detail-inner {
     padding: 24px 20px;
