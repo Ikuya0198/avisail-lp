@@ -42,6 +42,9 @@ $RECYCLE.BIN/
 # Claude Code local settings (development tool config)
 .claude/
 
+# Superpowers brainstorming sessions (dev tool artifacts)
+.superpowers/
+
 # Editor and IDE
 .vscode/
 .idea/
