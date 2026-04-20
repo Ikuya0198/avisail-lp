@@ -156,21 +156,21 @@
           <!-- Selector Cards -->
           <div class="biz-selector">
 
-            <div class="biz-card maritime active animate-on-scroll" onclick="selectBiz('maritime')">
+            <div class="biz-card maritime active animate-on-scroll" data-biz="maritime">
               <span class="biz-label maritime">Maritime</span>
               <div class="biz-name">海事事業</div>
               <div class="biz-keywords">船舶売買 · 海事セキュリティ<br>トラストインフラ</div>
               <i class="biz-arrow">›</i>
             </div>
 
-            <div class="biz-card security animate-on-scroll" onclick="selectBiz('security')">
+            <div class="biz-card security animate-on-scroll" data-biz="security">
               <span class="biz-label security">Security</span>
               <div class="biz-name">セキュリティ事業</div>
               <div class="biz-keywords">中小企業 · 自治体<br>サイバー防衛 · OSINT</div>
               <i class="biz-arrow">›</i>
             </div>
 
-            <div class="biz-card develop animate-on-scroll" onclick="selectBiz('develop')">
+            <div class="biz-card develop animate-on-scroll" data-biz="develop">
               <span class="biz-label develop">Development</span>
               <div class="biz-name">開発事業</div>
               <div class="biz-keywords">AI受託開発 · 自動化<br>スクレイピング · 営業自動化</div>
@@ -179,96 +179,107 @@
 
           </div>
 
-          <!-- Maritime Detail -->
+          <!-- Detail: Maritime -->
           <div class="biz-detail open" id="biz-detail-maritime">
             <div class="biz-detail-inner maritime">
               <div class="biz-detail-grid">
                 <div class="biz-detail-left">
                   <h3>海事事業</h3>
-                  <p>日本品質の船舶を世界へ届ける売買仲介から、海運業界特化のサイバーセキュリティ・コンプライアンス管理まで。</p>
-                  <a href="maritime/maritime-services-ja.html" class="biz-detail-cta">事業詳細を見る →</a>
+                  <p>日本品質の船舶を世界へ届ける売買仲介から、海運業界特化のサイバーセキュリティ・コンプライアンス管理まで。海事業界のデジタル変革を一貫してサポートします。</p>
+                  <a href="maritime/maritime-services-ja.html" class="biz-detail-cta maritime">事業詳細を見る ›</a>
                 </div>
                 <div class="biz-detail-right">
-                  <div class="biz-prod-card">
-                    <div class="biz-prod-name">船舶売買プラットフォーム</div>
-                    <div class="biz-prod-desc">日本・韓国・東欧の高品質船舶をリアルタイム提供。完全成果報酬型</div>
-                    <a href="maritime/vessel-trading-ja.html" class="biz-prod-link">詳細を見る →</a>
+                  <div class="biz-prod-preview">
+                    <img src="images/vessel-trading-platform-preview.png" alt="船舶売買プラットフォーム" loading="lazy" width="1402" height="776">
                   </div>
-                  <div class="biz-prod-card">
-                    <div class="biz-prod-name">船舶セキュリティ管理</div>
-                    <div class="biz-prod-desc">ISM/SMS監査対応。コンプライアンス証明と業務停止リスク排除</div>
-                    <a href="maritime/cyber-accountability-ja.html" class="biz-prod-link">詳細を見る →</a>
-                  </div>
-                  <div class="biz-prod-card">
-                    <div class="biz-prod-name">信頼インフラ技術</div>
-                    <div class="biz-prod-desc">書類改ざん防止・制裁/コンプライアンス統合管理</div>
-                    <a href="maritime/trust-infrastructure-ja.html" class="biz-prod-link">詳細を見る →</a>
+                  <div class="biz-products">
+                    <div class="biz-prod-card">
+                      <div class="biz-prod-name">船舶売買プラットフォーム</div>
+                      <div class="biz-prod-desc">日本・韓国・東欧の高品質船舶をリアルタイム提供。安全で透明性の高い取引を保証。</div>
+                      <div class="biz-prod-price"><strong>価格：</strong>完全成果報酬型</div>
+                      <a href="maritime/vessel-trading-ja.html" class="biz-prod-link maritime">詳細を見る ›</a>
+                    </div>
+                    <div class="biz-prod-card">
+                      <div class="biz-prod-name">船舶セキュリティ管理</div>
+                      <div class="biz-prod-desc">ISM/SMS監査で「管理していた」と証明できない問題を解決。事業停止リスクを排除。</div>
+                      <div class="biz-prod-price"><strong>価格：</strong>月額10万円〜</div>
+                      <a href="maritime/cyber-accountability-ja.html" class="biz-prod-link maritime">詳細を見る ›</a>
+                    </div>
+                    <div class="biz-prod-card">
+                      <div class="biz-prod-name">信頼インフラ技術</div>
+                      <div class="biz-prod-desc">書類改ざん防止・制裁/コンプライアンス統合管理。取引信頼性を技術で担保。</div>
+                      <div class="biz-prod-price"><strong>価格：</strong>月額5万円〜</div>
+                      <a href="maritime/trust-infrastructure-ja.html" class="biz-prod-link maritime">詳細を見る ›</a>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- Security Detail -->
+          <!-- Detail: Security -->
           <div class="biz-detail" id="biz-detail-security">
             <div class="biz-detail-inner security">
               <div class="biz-detail-grid">
                 <div class="biz-detail-left">
                   <h3>セキュリティ事業</h3>
-                  <p>国家レベルの攻撃手法を逆用した次世代サイバーセキュリティ。予兆検知・OSINT分析・継続的攻撃面監視を従来コストの1/10で提供。</p>
-                  <a href="products/security-ja.html" class="biz-detail-cta">事業詳細を見る →</a>
+                  <p>国家レベルの攻撃手法を逆用した次世代サイバーセキュリティ。予兆検知・OSINT分析・継続的攻撃面監視を従来コストの1/10で中小企業・自治体に提供します。</p>
+                  <a href="products/security-ja.html" class="biz-detail-cta security">事業詳細を見る ›</a>
                 </div>
                 <div class="biz-detail-right">
-                  <div class="biz-prod-card">
-                    <div class="biz-prod-name">ADCS</div>
-                    <div class="biz-prod-desc">自律防衛型サイバーセキュリティ。予兆検知・OSINT・攻撃面監視を24/7自動化</div>
-                    <a href="security/adcs-ja.html" class="biz-prod-link">詳細を見る →</a>
+                  <div class="biz-prod-preview">
+                    <img src="images/security-dashboard-preview.png" alt="セキュリティダッシュボード" loading="lazy" width="2238" height="1548">
+                  </div>
+                  <div class="biz-products">
+                    <div class="biz-prod-card">
+                      <div class="biz-prod-name">ADCS</div>
+                      <div class="biz-prod-desc">通常のセキュリティサービスは高額で、中小企業・自治体は導入できず、脅威に無防備な状態。</div>
+                      <div class="biz-prod-price"><strong>価格：</strong>お問い合わせください</div>
+                      <a href="security/adcs-ja.html" class="biz-prod-link security">詳細を見る ›</a>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- Development Detail -->
+          <!-- Detail: Development -->
           <div class="biz-detail" id="biz-detail-develop">
             <div class="biz-detail-inner develop">
               <div class="biz-detail-grid">
                 <div class="biz-detail-left">
                   <h3>開発事業</h3>
-                  <p>AIを核としたシステム受託開発。スクレイピング・データ収集から自動営業システム、セキュリティ商材の受託開発まで。</p>
-                  <a href="technology/technology-services-ja.html" class="biz-detail-cta">事業詳細を見る →</a>
+                  <p>AIを核としたシステム受託開発。スクレイピング・データ収集から自動営業システム、セキュリティ商材の受託開発まで、クライアントの課題をゼロから解決します。</p>
+                  <a href="technology/technology-services-ja.html" class="biz-detail-cta develop">事業詳細を見る ›</a>
                 </div>
                 <div class="biz-detail-right">
-                  <div class="biz-prod-card">
-                    <div class="biz-prod-name">AIシステム受託開発</div>
-                    <div class="biz-prod-desc">スクレイピング・データ収集・分析システムのフルスクラッチ開発</div>
-                    <a href="technology/technology-services-ja.html" class="biz-prod-link">詳細を見る →</a>
+                  <div class="biz-prod-preview">
+                    <img src="images/ai-development.jpg" alt="AI開発" loading="lazy" width="1200" height="675">
                   </div>
-                  <div class="biz-prod-card">
-                    <div class="biz-prod-name">自動営業システム</div>
-                    <div class="biz-prod-desc">リード発掘・アプローチ自動化・CRM連携の一気通貫システム</div>
-                    <a href="technology/technology-services-ja.html" class="biz-prod-link">詳細を見る →</a>
-                  </div>
-                  <div class="biz-prod-card">
-                    <div class="biz-prod-name">セキュリティ商材開発</div>
-                    <div class="biz-prod-desc">クライアント要件に合わせたセキュリティプロダクトのOEM・受託開発</div>
-                    <a href="technology/technology-services-ja.html" class="biz-prod-link">詳細を見る →</a>
+                  <div class="biz-products">
+                    <div class="biz-prod-card">
+                      <div class="biz-prod-name">AIシステム受託開発</div>
+                      <div class="biz-prod-desc">スクレイピング・データ収集・分析システムのフルスクラッチ開発。AIで業務を自動化。</div>
+                      <div class="biz-prod-price"><strong>価格：</strong>プロジェクト見積</div>
+                      <a href="technology/technology-services-ja.html" class="biz-prod-link develop">詳細を見る ›</a>
+                    </div>
+                    <div class="biz-prod-card">
+                      <div class="biz-prod-name">自動営業システム</div>
+                      <div class="biz-prod-desc">リード発掘・アプローチ自動化・CRM連携の一気通貫システム。営業コストを劇的削減。</div>
+                      <div class="biz-prod-price"><strong>価格：</strong>プロジェクト見積</div>
+                      <a href="technology/technology-services-ja.html" class="biz-prod-link develop">詳細を見る ›</a>
+                    </div>
+                    <div class="biz-prod-card">
+                      <div class="biz-prod-name">セキュリティ商材開発</div>
+                      <div class="biz-prod-desc">クライアント要件に合わせたセキュリティプロダクトのOEM・受託開発。</div>
+                      <div class="biz-prod-price"><strong>価格：</strong>プロジェクト見積</div>
+                      <a href="technology/technology-services-ja.html" class="biz-prod-link develop">詳細を見る ›</a>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-
-          <script>
-            function selectBiz(name) {
-              ['maritime', 'security', 'develop'].forEach(function(n) {
-                document.querySelector('.biz-card.' + n).classList.remove('active');
-                document.getElementById('biz-detail-' + n).classList.remove('open');
-              });
-              document.querySelector('.biz-card.' + name).classList.add('active');
-              document.getElementById('biz-detail-' + name).classList.add('open');
-            }
-          </script>
         </div>
       </div>
     </section>

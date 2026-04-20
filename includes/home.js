@@ -6,45 +6,65 @@
  *   1. スクロールアニメーション (.animate-on-scroll)
  *   2. グローバル背景パーティクルアニメーション (canvas#global-bg)
  */
-'use strict';
+"use strict";
 
-document.addEventListener('DOMContentLoaded', function () {
-
+document.addEventListener("DOMContentLoaded", function () {
   // ── Scroll Animation Observer ──────────────────────────
-  const scrollObserver = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry, index) {
-      if (entry.isIntersecting) {
-        setTimeout(function () {
-          entry.target.classList.add('visible');
-        }, index * 50);
-        scrollObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+  const scrollObserver = new IntersectionObserver(
+    function (entries) {
+      entries.forEach(function (entry, index) {
+        if (entry.isIntersecting) {
+          setTimeout(function () {
+            entry.target.classList.add("visible");
+          }, index * 50);
+          scrollObserver.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.1, rootMargin: "0px 0px -50px 0px" },
+  );
 
-  document.querySelectorAll('.animate-on-scroll').forEach(function (el) {
+  document.querySelectorAll(".animate-on-scroll").forEach(function (el) {
     scrollObserver.observe(el);
+  });
+
+  // ── Business Selector ─────────────────────────────────
+  document.querySelectorAll("[data-biz]").forEach(function (el) {
+    el.addEventListener("click", function () {
+      var name = el.getAttribute("data-biz");
+      ["maritime", "security", "develop"].forEach(function (n) {
+        var card = document.querySelector(".biz-card." + n);
+        var detail = document.getElementById("biz-detail-" + n);
+        if (card) card.classList.remove("active");
+        if (detail) detail.classList.remove("open");
+      });
+      var activeCard = document.querySelector(".biz-card." + name);
+      var activeDetail = document.getElementById("biz-detail-" + name);
+      if (activeCard) activeCard.classList.add("active");
+      if (activeDetail) activeDetail.classList.add("open");
+    });
   });
 
   // ── Global Background Animation ────────────────────────
   (function () {
-    const canvas = document.getElementById('global-bg');
+    const canvas = document.getElementById("global-bg");
     if (!canvas) return;
 
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      canvas.style.display = 'none';
-      document.body.style.background = 'linear-gradient(135deg, #0a0f1a 0%, #05080f 100%)';
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      canvas.style.display = "none";
+      document.body.style.background =
+        "linear-gradient(135deg, #0a0f1a 0%, #05080f 100%)";
       return;
     }
 
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext("2d");
     let width, height;
     let particles = [];
     let zOff = 0;
     let animationId;
     let isVisible = true;
 
-    document.addEventListener('visibilitychange', function () {
+    document.addEventListener("visibilitychange", function () {
       isVisible = !document.hidden;
       if (isVisible && !animationId) {
         animationId = requestAnimationFrame(loop);
@@ -58,22 +78,23 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     let resizeTimeout;
-    window.addEventListener('resize', function () {
+    window.addEventListener("resize", function () {
       clearTimeout(resizeTimeout);
       resizeTimeout = setTimeout(resize, 150);
     });
 
     function initParticles() {
       particles = [];
-      const count = Math.min(Math.floor(width * height / 4000), 300);
+      const count = Math.min(Math.floor((width * height) / 4000), 300);
       for (let i = 0; i < count; i++) {
         particles.push({
           x: Math.random() * width,
           y: Math.random() * height,
-          vx: 0, vy: 0,
+          vx: 0,
+          vy: 0,
           maxSpeed: Math.random() * 0.6 + 0.2,
           size: Math.random() > 0.9 ? 1.5 : 0.8,
-          color: Math.random() > 0.5 ? '#2E64BA' : '#4DB899'
+          color: Math.random() > 0.5 ? "#2E64BA" : "#4DB899",
         });
       }
     }
@@ -82,7 +103,9 @@ document.addEventListener('DOMContentLoaded', function () {
       zOff += 0.0005;
       for (let i = 0; i < particles.length; i++) {
         const p = particles[i];
-        const angle = (Math.cos(p.x * 0.002 + zOff) + Math.sin(p.y * 0.002 + zOff)) * Math.PI;
+        const angle =
+          (Math.cos(p.x * 0.002 + zOff) + Math.sin(p.y * 0.002 + zOff)) *
+          Math.PI;
         p.vx += Math.cos(angle) * 0.02;
         p.vy += Math.sin(angle) * 0.02;
         const speed = Math.sqrt(p.vx * p.vx + p.vy * p.vy);
@@ -90,16 +113,33 @@ document.addEventListener('DOMContentLoaded', function () {
           p.vx = (p.vx / speed) * p.maxSpeed;
           p.vy = (p.vy / speed) * p.maxSpeed;
         }
-        p.x += p.vx; p.y += p.vy;
-        if (p.x < 0) { p.x = width; p.vx = 0; p.vy = 0; }
-        if (p.x > width) { p.x = 0; p.vx = 0; p.vy = 0; }
-        if (p.y < 0) { p.y = height; p.vx = 0; p.vy = 0; }
-        if (p.y > height) { p.y = 0; p.vx = 0; p.vy = 0; }
+        p.x += p.vx;
+        p.y += p.vy;
+        if (p.x < 0) {
+          p.x = width;
+          p.vx = 0;
+          p.vy = 0;
+        }
+        if (p.x > width) {
+          p.x = 0;
+          p.vx = 0;
+          p.vy = 0;
+        }
+        if (p.y < 0) {
+          p.y = height;
+          p.vx = 0;
+          p.vy = 0;
+        }
+        if (p.y > height) {
+          p.y = 0;
+          p.vx = 0;
+          p.vy = 0;
+        }
       }
     }
 
     function draw() {
-      ctx.fillStyle = 'rgba(5, 8, 15, 0.2)';
+      ctx.fillStyle = "rgba(5, 8, 15, 0.2)";
       ctx.fillRect(0, 0, width, height);
       for (let i = 0; i < particles.length; i++) {
         const p = particles[i];
@@ -111,13 +151,16 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function loop() {
-      if (!isVisible) { animationId = null; return; }
-      update(); draw();
+      if (!isVisible) {
+        animationId = null;
+        return;
+      }
+      update();
+      draw();
       animationId = requestAnimationFrame(loop);
     }
 
     resize();
     animationId = requestAnimationFrame(loop);
   })();
-
 });
