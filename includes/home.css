@@ -1,0 +1,701 @@
+/* ==========================================================
+ * home.css — Avisail LP ホームページ固有スタイル
+ * index.html / index.ja.html 共通
+ * ========================================================== */
+
+/* ========== HEADER ========== */
+#site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+#site-header header {
+  background: rgba(5, 8, 15, 0.98);
+}
+@media (min-width: 981px) {
+  #site-header {
+    position: absolute;
+    left: 0;
+    right: 0;
+  }
+  #site-header header {
+    background: transparent;
+  }
+}
+
+/* ========== SCROLL SNAP ========== */
+html {
+  scroll-behavior: smooth;
+  scroll-snap-type: y proximity;
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+    scroll-snap-type: none;
+  }
+}
+
+/* ========== FULLPAGE SECTIONS ========== */
+.fullpage-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  scroll-snap-align: start;
+}
+.fullpage-section > .wrap {
+  width: 100%;
+}
+.fullpage-section.hero {
+  align-items: flex-start;
+  padding-top: 18vh;
+  z-index: 1;
+}
+#site-footer {
+  width: 100%;
+}
+#faq {
+  flex-direction: column;
+}
+#faq > .wrap {
+  flex: 1;
+  width: 100%;
+}
+
+/* ========== CSS VARIABLES (home page) ========== */
+:root {
+  --bg-primary: #0a0f1a;
+  --bg-secondary: #060910;
+  --text-primary: #ffffff;
+  --text-secondary: #b8c5d6;
+  --text-muted: #6b7a8f;
+  --accent: #7ef0d4;
+  --accent-blue: #6aa6ff;
+  --line: rgba(255, 255, 255, 0.08);
+}
+
+/* ========== SECTION TYPOGRAPHY ========== */
+.section-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+  display: block;
+}
+
+.section-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 24px;
+  line-height: 1.2;
+  color: var(--text-primary);
+}
+
+.section-lead {
+  font-size: 1.15rem;
+  color: var(--text-secondary);
+  max-width: 900px;
+  line-height: 1.8;
+}
+
+.home-section {
+  padding: 120px 0;
+  position: relative;
+}
+
+.home-section.alt-bg {
+  background: var(--bg-secondary);
+}
+
+/* ========== PHILOSOPHY ========== */
+.philosophy-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  margin-top: 64px;
+}
+
+.philosophy-item {
+  position: relative;
+}
+
+.philosophy-number {
+  font-size: 8rem;
+  font-weight: 800;
+  line-height: 1;
+  background: linear-gradient(135deg, rgba(106, 166, 255, 0.15), rgba(126, 240, 212, 0.05));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  position: absolute;
+  top: -40px;
+  left: -20px;
+  z-index: 0;
+  user-select: none;
+}
+
+.philosophy-content {
+  position: relative;
+  z-index: 1;
+}
+
+.philosophy-content h3 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 24px;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+}
+
+.philosophy-content p {
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  line-height: 1.9;
+  margin-bottom: 16px;
+}
+
+/* ========== BUSINESS CARDS ========== */
+.business-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 48px;
+  margin-top: 64px;
+}
+
+.business-card {
+  padding: 48px 40px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.business-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-blue), var(--accent));
+  transform: scaleX(0);
+  transition: transform 0.4s ease;
+}
+
+.business-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(126, 240, 212, 0.2);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+}
+
+.business-card:hover::before {
+  transform: scaleX(1);
+}
+
+.business-card .card-label {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 6px 12px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+.business-card .card-label.maritime {
+  background: linear-gradient(135deg, rgba(126, 240, 212, 0.2), rgba(126, 240, 212, 0.05));
+  color: var(--accent);
+}
+
+.business-card .card-label.security {
+  background: linear-gradient(135deg, rgba(106, 166, 255, 0.2), rgba(106, 166, 255, 0.05));
+  color: var(--accent-blue);
+}
+
+.business-card h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+}
+
+.business-card p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.8;
+  margin-bottom: 12px;
+}
+
+.business-card .card-image {
+  margin-top: 24px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+}
+
+.business-card .card-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ========== PRODUCTS GRID ========== */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-top: 64px;
+}
+
+.product-card {
+  padding: 32px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  transition: all 0.4s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-card:hover {
+  border-color: rgba(126, 240, 212, 0.2);
+  background: rgba(255, 255, 255, 0.03);
+  transform: translateY(-4px);
+}
+
+.product-card .product-label {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 4px;
+  margin-bottom: 16px;
+  display: inline-block;
+  width: fit-content;
+}
+
+.product-card .product-label.maritime {
+  background: rgba(126, 240, 212, 0.15);
+  color: var(--accent);
+}
+
+.product-card .product-label.security {
+  background: rgba(106, 166, 255, 0.15);
+  color: var(--accent-blue);
+}
+
+.product-card h4 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--text-primary);
+}
+
+.product-card .problem {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 16px;
+  flex-grow: 1;
+}
+
+.product-card .pricing {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 8px;
+  border-left: 2px solid var(--accent);
+  margin-bottom: 20px;
+}
+
+.product-card .cta-link {
+  display: block;
+  text-align: center;
+  padding: 12px 20px;
+  background: linear-gradient(135deg, var(--accent-blue), var(--accent));
+  color: var(--bg-primary);
+  font-weight: 600;
+  font-size: 0.9rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.product-card .cta-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(106, 166, 255, 0.3);
+}
+
+/* ========== STATS ========== */
+.stats-grid-new {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  margin-top: 64px;
+}
+
+.stat-card {
+  padding: 32px;
+}
+
+.stat-card .number {
+  font-size: clamp(1.8rem, 5vw, 4rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  white-space: nowrap;
+  background: linear-gradient(135deg, #fff, var(--text-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+  margin-bottom: 12px;
+}
+
+.stat-card .label {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 500;
+}
+
+/* ========== WHY AVISAIL ========== */
+.why-grid-new {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  margin-top: 64px;
+}
+
+.why-card-new {
+  padding: 48px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  transition: all 0.4s ease;
+}
+
+.why-card-new:hover {
+  border-color: rgba(106, 166, 255, 0.2);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.why-card-new h3 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+}
+
+.why-card-new p {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+/* ========== CTA BANNER ========== */
+.cta-banner-new {
+  padding: 100px 0;
+  background: linear-gradient(135deg, rgba(106, 166, 255, 0.08), rgba(126, 240, 212, 0.04));
+  border-top: 1px solid rgba(126, 240, 212, 0.15);
+  border-bottom: 1px solid rgba(126, 240, 212, 0.15);
+  text-align: center;
+}
+
+.cta-banner-new h3 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 700;
+  margin-bottom: 16px;
+  letter-spacing: -0.02em;
+}
+
+.cta-banner-new p {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  margin-bottom: 32px;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.cta-btn-primary {
+  display: inline-block;
+  padding: 18px 48px;
+  background: linear-gradient(135deg, var(--accent-blue), var(--accent));
+  color: var(--bg-primary);
+  font-weight: 700;
+  font-size: 1rem;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+}
+
+.cta-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 20px 40px rgba(106, 166, 255, 0.3);
+}
+
+.cta-btn-secondary {
+  display: inline-block;
+  padding: 18px 48px;
+  background: transparent;
+  border: 1px solid var(--line);
+  color: var(--text-primary);
+  font-weight: 600;
+  font-size: 1rem;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+}
+
+.cta-btn-secondary:hover {
+  border-color: var(--accent);
+  background: rgba(126, 240, 212, 0.05);
+}
+
+/* ========== CONTACT ========== */
+.contact-card {
+  max-width: 800px;
+  margin: 64px auto 0;
+  padding: 64px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  text-align: center;
+}
+
+.contact-card h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.contact-card p {
+  color: var(--text-secondary);
+  line-height: 1.8;
+  margin-bottom: 32px;
+}
+
+.contact-info {
+  display: flex;
+  justify-content: center;
+  gap: 48px;
+  flex-wrap: wrap;
+  margin-top: 32px;
+  padding: 24px;
+  background: rgba(126, 240, 212, 0.03);
+  border-radius: 12px;
+  border: 1px solid rgba(126, 240, 212, 0.1);
+}
+
+.contact-info-item {
+  text-align: center;
+}
+
+.contact-info-item span {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 4px;
+}
+
+.contact-info-item p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+/* ========== FAQ ========== */
+.faq-grid {
+  max-width: 900px;
+  margin: 64px auto 0;
+}
+
+.faq-item-new {
+  padding: 32px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  margin-bottom: 16px;
+  transition: all 0.3s ease;
+}
+
+.faq-item-new:hover {
+  border-color: rgba(126, 240, 212, 0.2);
+}
+
+.faq-item-new .question {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+}
+
+.faq-item-new .answer {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.8;
+}
+
+/* ========== UTILITY ========== */
+.text-white {
+  color: #fff;
+}
+
+/* Hero section */
+.hero-lead {
+  max-width: 900px;
+}
+
+.hero-cta {
+  margin-top: 36px;
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.hero-cta .btn {
+  padding: 14px 28px;
+}
+
+/* Glass block variants */
+.glass-block--center {
+  text-align: center;
+}
+
+/* Product card variants */
+.cta-link--security {
+  background: linear-gradient(135deg, var(--accent-blue), #5a8fd6);
+}
+
+/* Contact section */
+.section-lead--narrow {
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 32px;
+}
+
+.cta-buttons--spaced {
+  margin-bottom: 64px;
+}
+
+.contact-divider {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 48px;
+}
+
+.section-title--sub {
+  font-size: 1.5rem;
+}
+
+.contact-text {
+  color: var(--text-secondary);
+  margin-bottom: 32px;
+}
+
+.contact-info--narrow {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* ========== SCROLL INDICATOR ========== */
+.scroll-indicator {
+  cursor: pointer;
+}
+
+.scroll-indicator:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+/* ========== SCROLL ANIMATION ========== */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 1024px) {
+  .philosophy-grid,
+  .business-grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .stats-grid-new {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .why-grid-new {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .fullpage-section {
+    min-height: auto;
+  }
+
+  .home-section {
+    padding: 80px 0;
+  }
+
+  .philosophy-number {
+    font-size: 5rem;
+    top: -20px;
+    left: -10px;
+  }
+
+  .products-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stats-grid-new {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .stat-card .number {
+    font-size: 3rem;
+  }
+
+  .business-card,
+  .why-card-new {
+    padding: 32px 24px;
+  }
+
+  .contact-card {
+    padding: 40px 24px;
+  }
+
+  .contact-info {
+    gap: 24px;
+  }
+}

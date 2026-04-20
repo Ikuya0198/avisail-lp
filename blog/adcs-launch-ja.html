@@ -5,8 +5,6 @@
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>ADCS 正式リリース：中小企業向け自動セキュリティ診断 — 月額¥29,800から | Avisailブログ</title>
 <meta name="description" content="Avisailは本日、ADCSを正式リリースしました。54種のスキャナーが脆弱性を自動検出・修正手順を生成し、11の規制フレームワークに自動マッピング。月額¥29,800から。">
-<link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAADCklEQVRYCe2Uu2tUQRTGv5n73pvsxo1xfSxGCwUhIooggoKFglrpfyBiIaJYKQgiiNpY2omFpVrYKlgYFXzh+w0qRrMmcU12s9nXfc4c52Kd7KPRYg/33OLOzPl+fGfuAXrRc6DnwD92gHWrT4WtDgqPs+BgcDDLNqDRTS3ezSECWP3rj6tkOx+kyd4HPrv5/DKMbmp1daZxN73Xv2vI8NUgRR840RdO4VvtQDfFOnaAHm11iHvnNSdicRSCDFclA3f1M1RAtlOIjgGa0buDKVdsFKYS1VTbKQXBstAyy1aHctWJTgE6uoS1h7klPJ55YfXJ/PQ0RypDcNI2WGYtuGErbVHjQmxhy19+ahekIwcYr55MLZJ5wRluXyc8HdVg6E2QV4NkNrhl9Avhn2tXPNnXNkDwJjdi9kWHydXxc0xDaVzi5T0hZotaE9WCgqhCNKuqLXP7o7H07nYh2gQgRqJy1sgYbkQD+PYMWDEEaLG8oTMclbUQ3riCiCtgNMcRexdoDElPWkZbAP6TgV26Ge+TsDD9mUMPIizOoZxbgdPp7eLq3G888L6X0Jz0IXwfui42RXP8UEt1taElwNjoKjsOmhc0LnlQlah8rSC3DDBtPFmZR75wDTukw+9LU0NtKoSMNEiPlBt0qj6Kpa0g9FYbFjV/H7DceHPY4Cirvhs8QKB8/zFOe0bWY6+h5p81pLzp59DUNCZfIo4VIGF5FOGUqn98IY0Ff8PSrWwa9cpb25XDHnNQ/BKiPyPws2ghCE2sXsPRN8Rhqd/RUIoQEhQKdQVi1QoBvyqDoE6bhg/i43wQCzqQLZS9KRuvLZ0PFyckEAswxrBuJEZqsQR3GJipuqi0pU+IVIu8WUJjRqJWIkxN0YT0MTOfePJ9QQeSDZNXsK7ma3d+jcv+gUFCWg1bNwtmDyibXVVAjeEEgEJCUIMCABolUL0MOT2DIzsv4XpSZ75oCZAcvHUMQ1YEczCvxNNgWQXhJOmoxSST8NSTZBkoTwDFEuS2i5j8u9h79xzoOdBz4D924A90007VB3a2QQAAAABJRU5ErkJggg==">
-<link rel="icon" type="image/x-icon" href="../favicon.ico">
 <link rel="apple-touch-icon" sizes="180x180" href="../favicon.png">
 <link rel="canonical" href="https://avisail.com/blog/adcs-launch-ja.html">
 <link rel="alternate" hreflang="ja" href="https://avisail.com/blog/adcs-launch-ja.html">
@@ -170,7 +168,6 @@ img{max-width:100%;height:auto;display:block}
 .breadcrumb a:hover{color:var(--text)}
 .breadcrumb span{color:var(--muted)}
 
-
 .print-btn-bar {
   position: fixed;
   bottom: 32px;
@@ -319,6 +316,19 @@ img{max-width:100%;height:auto;display:block}
   transition: width .08s linear;
 }
 @media print { #read-progress { display: none; } }
+
+.related-section{margin:48px 0 0;padding-top:40px;border-top:1px solid var(--line)}
+.related-label{font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:20px}
+.related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.related-card{display:block;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px;transition:border-color .2s}
+.related-card--blue:hover{border-color:rgba(106,166,255,.4)}
+.related-card--teal:hover{border-color:rgba(126,240,212,.4)}
+.related-card--white:hover{border-color:rgba(255,255,255,.2)}
+.related-tag{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.related-tag--blue{color:var(--blue)}
+.related-tag--teal{color:var(--accent)}
+.related-tag--muted{color:var(--muted)}
+.related-title{font-size:.95rem;font-weight:700;color:var(--text);margin-top:8px;line-height:1.4}
 
 </style>
 </head>
@@ -803,26 +813,24 @@ img{max-width:100%;height:auto;display:block}
     IPA SECURITY ACTION認証取得・ISO 27001監査・GDPRレビューなど、コンプライアンスの期限が迫っている組織は、<strong>info@avisail.com</strong> まで直接ご連絡ください。必要な証跡資料を揃える最短ルートをご提案します。
   </p>
 
-
   <!-- ── 関連コンテンツ ── -->
-  <div style="margin:48px 0 0;padding-top:40px;border-top:1px solid var(--line)">
-    <p style="font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:20px;">関連コンテンツ</p>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px">
-      <a href="../security/adcs-ja.html" style="display:block;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px;transition:border-color .2s" onmouseover="this.style.borderColor='rgba(106,166,255,.4)'" onmouseout="this.style.borderColor='var(--line)'">
-        <span style="font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--blue)">製品ページ</span>
-        <p style="font-size:.95rem;font-weight:700;color:var(--text);margin-top:8px;line-height:1.4">ADCS 詳細 — 機能・料金・デモ</p>
+  <div class="related-section">
+    <p class="related-label">関連コンテンツ</p>
+    <div class="related-grid">
+      <a href="../security/adcs-ja.html" class="related-card related-card--blue">
+        <span class="related-tag related-tag--blue">製品ページ</span>
+        <p class="related-title">ADCS 詳細 — 機能・料金・デモ</p>
       </a>
-      <a href="../security/self-check-ja.html" style="display:block;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px;transition:border-color .2s" onmouseover="this.style.borderColor='rgba(126,240,212,.4)'" onmouseout="this.style.borderColor='var(--line)'">
-        <span style="font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)">無料ツール</span>
-        <p style="font-size:.95rem;font-weight:700;color:var(--text);margin-top:8px;line-height:1.4">セキュリティ無料セルフチェック</p>
+      <a href="../security/self-check-ja.html" class="related-card related-card--teal">
+        <span class="related-tag related-tag--teal">無料ツール</span>
+        <p class="related-title">セキュリティ無料セルフチェック</p>
       </a>
-      <a href="index.ja.html" style="display:block;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px;transition:border-color .2s" onmouseover="this.style.borderColor='rgba(255,255,255,.2)'" onmouseout="this.style.borderColor='var(--line)'">
-        <span style="font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)">ブログ</span>
-        <p style="font-size:.95rem;font-weight:700;color:var(--text);margin-top:8px;line-height:1.4">ブログ一覧を見る →</p>
+      <a href="index.ja.html" class="related-card related-card--white">
+        <span class="related-tag related-tag--muted">ブログ</span>
+        <p class="related-title">ブログ一覧を見る →</p>
       </a>
     </div>
   </div>
-
 
   <!-- CTA -->
   <div class="cta-block">

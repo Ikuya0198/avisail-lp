@@ -51,6 +51,12 @@ header .brand:hover {
   color: #fff;
 }
 
+header .brand-logo {
+  height: 66px;
+  width: auto;
+  vertical-align: middle;
+}
+
 header .logo {
   width: 32px;
   height: 32px;

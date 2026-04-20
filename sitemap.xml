@@ -192,6 +192,30 @@
     <priority>0.8</priority>
   </url>
 
+  <!-- Resources / Lead Magnets -->
+  <url>
+    <loc>https://avisail.com/resources/maritime-security-guide-en.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://avisail.com/resources/maritime-security-guide-en.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://avisail.com/resources/maritime-security-guide-ja.html"/>
+    <lastmod>2026-03-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://avisail.com/resources/maritime-security-guide-ja.html</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://avisail.com/resources/maritime-security-guide-ja.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://avisail.com/resources/maritime-security-guide-en.html"/>
+    <lastmod>2026-03-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://avisail.com/resources/vessel-checklist-en.html</loc>
+    <lastmod>2026-03-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
   <!-- Blog Articles -->
   <url>
     <loc>https://avisail.com/blog/adcs-launch-en.html</loc>

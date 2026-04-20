@@ -10,7 +10,6 @@ Disallow: /tmp/
 
 # Disallow archived / development files
 Disallow: /archive/
-Disallow: /security/adcs-en-backup-original.html
 
 # Disallow includes directory (header/footer fragments)
 Disallow: /includes/

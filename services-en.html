@@ -3,8 +3,6 @@
 <head>
 <meta charset="utf-8"/>
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAADCklEQVRYCe2Uu2tUQRTGv5n73pvsxo1xfSxGCwUhIooggoKFglrpfyBiIaJYKQgiiNpY2omFpVrYKlgYFXzh+w0qRrMmcU12s9nXfc4c52Kd7KPRYg/33OLOzPl+fGfuAXrRc6DnwD92gHWrT4WtDgqPs+BgcDDLNqDRTS3ezSECWP3rj6tkOx+kyd4HPrv5/DKMbmp1daZxN73Xv2vI8NUgRR840RdO4VvtQDfFOnaAHm11iHvnNSdicRSCDFclA3f1M1RAtlOIjgGa0buDKVdsFKYS1VTbKQXBstAyy1aHctWJTgE6uoS1h7klPJ55YfXJ/PQ0RypDcNI2WGYtuGErbVHjQmxhy19+ahekIwcYr55MLZJ5wRluXyc8HdVg6E2QV4NkNrhl9Avhn2tXPNnXNkDwJjdi9kWHydXxc0xDaVzi5T0hZotaE9WCgqhCNKuqLXP7o7H07nYh2gQgRqJy1sgYbkQD+PYMWDEEaLG8oTMclbUQ3riCiCtgNMcRexdoDElPWkZbAP6TgV26Ge+TsDD9mUMPIizOoZxbgdPp7eLq3G888L6X0Jz0IXwfui42RXP8UEt1taElwNjoKjsOmhc0LnlQlah8rSC3DDBtPFmZR75wDTukw+9LU0NtKoSMNEiPlBt0qj6Kpa0g9FYbFjV/H7DceHPY4Cirvhs8QKB8/zFOe0bWY6+h5p81pLzp59DUNCZfIo4VIGF5FOGUqn98IY0Ff8PSrWwa9cpb25XDHnNQ/BKiPyPws2ghCE2sXsPRN8Rhqd/RUIoQEhQKdQVi1QoBvyqDoE6bhg/i43wQCzqQLZS9KRuvLZ0PFyckEAswxrBuJEZqsQR3GJipuqi0pU+IVIu8WUJjRqJWIkxN0YT0MTOfePJ9QQeSDZNXsK7ma3d+jcv+gUFCWg1bNwtmDyibXVVAjeEEgEJCUIMCABolUL0MOT2DIzsv4XpSZ75oCZAcvHUMQ1YEczCvxNNgWQXhJOmoxSST8NSTZBkoTwDFEuS2i5j8u9h79xzoOdBz4D924A90007VB3a2QQAAAABJRU5ErkJggg==">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
   <link rel="apple-touch-icon" sizes="180x180" href="favicon.png">
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
@@ -70,6 +68,19 @@ header {
   font-weight: 600;
   color: #fff;
 }
+
+.nav-icon { height: 36px; width: auto; vertical-align: middle; }
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.back-link:hover { color: var(--text-primary); }
 
 .logo {
   width: 32px;
@@ -291,10 +302,10 @@ footer a:hover { color: var(--accent); }
 <header>
   <div class="nav">
     <a href="index.html" class="brand">
-      <img src="images/avisail_icon.png" alt="Avisail Technology" style="height:36px; width:auto; vertical-align:middle;">
+      <img src="images/avisail_icon.png" alt="Avisail Technology" class="nav-icon">
       <span>Avisail Technology</span>
     </a>
-    <a href="javascript:history.back()" style="display:inline-flex; align-items:center; gap:6px; color:#b8c5d6; font-size:0.9rem; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#b8c5d6'">
+    <a href="index.html" class="back-link">
       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
       Back
     </a>
@@ -353,7 +364,6 @@ footer a:hover { color: var(--accent); }
     </div>
   </div>
 </main>
-
 
 <footer>
   <p>&copy; 2026 Avisail Technology Inc. All rights reserved.</p>

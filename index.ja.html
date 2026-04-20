@@ -5,14 +5,13 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <!-- Security: CSP / Referrer -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://region1.google-analytics.com; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self';">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-BwdmEhVMbvB9wLEY62kIWjQ6npQc4Irx5jzavsAsi5s=' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://region1.google-analytics.com; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self';">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <title>Avisail Technologies - 海事事業 × セキュリティ事業 × AI開発</title>
   <meta name="description" content="Avisail Technologiesは、AIと技術探究の力で海事事業・セキュリティ事業を再定義する次世代テクノロジー企業です">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="favicon.svg">
-  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
   <link rel="apple-touch-icon" sizes="180x180" href="favicon.png">
 
   <!-- Mobile & PWA -->
@@ -48,12 +47,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <!-- Fonts -->
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+JP:wght@300;400;500;700&display=swap">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+JP:wght@300;400;500;700&display=swap"
-    rel="stylesheet" media="print" onload="this.media='all'">
-  <noscript>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
-  </noscript>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+JP:wght@300;400;500;700&display=swap">
 
   <!-- Preload critical CSS -->
   <link rel="preload" href="style.css?v=20260304" as="style">
@@ -75,661 +69,8 @@
     gtag('config', 'G-CTTYVWRGQD');
   </script>
 
-  <script src="includes/cookie-consent.js"></script>
-
-  <style>
-    /* ========== HEADER (critical - must load before JS) ========== */
-    /* Mobile-first: sticky so header never scrolls off screen */
-    #site-header {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-    #site-header header {
-      background: rgba(5, 8, 15, 0.98);
-    }
-    @media (min-width: 981px) {
-      #site-header {
-        position: absolute;
-        left: 0;
-        right: 0;
-      }
-      #site-header header {
-        background: transparent;
-      }
-    }
-
-    /* ========== SCROLL SNAP ========== */
-    html {
-      scroll-behavior: smooth !important;
-      scroll-snap-type: y proximity;
-    }
-
-    /* ========== FULLPAGE SECTIONS ========== */
-    .fullpage-section {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      position: relative;
-      width: 100%;
-      scroll-snap-align: start;
-    }
-    .fullpage-section > .wrap {
-      width: 100%;
-    }
-    .fullpage-section.hero {
-      padding-top: 0;
-    }
-    #site-footer {
-      width: 100%;
-    }
-    #faq {
-      flex-direction: column;
-    }
-    #faq > .wrap {
-      flex: 1;
-      width: 100%;
-    }
-
-    /* ========== SCROLL NAV DOTS ========== */
-    .scroll-nav {
-      position: fixed;
-      right: 24px;
-      top: 50%;
-      transform: translateY(-50%);
-      z-index: 100;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-    .scroll-nav-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.15);
-      border: 1.5px solid rgba(255,255,255,0.25);
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-    .scroll-nav-dot:hover {
-      background: rgba(126,240,212,0.4);
-      border-color: rgba(126,240,212,0.6);
-    }
-    .scroll-nav-dot.active {
-      background: var(--accent, #7ef0d4);
-      border-color: var(--accent, #7ef0d4);
-      box-shadow: 0 0 10px rgba(126,240,212,0.5);
-    }
-
-    /* Home-specific styles following About page design */
-    :root {
-      --bg-primary: #0a0f1a;
-      --bg-secondary: #060910;
-      --text-primary: #ffffff;
-      --text-secondary: #b8c5d6;
-      --text-muted: #6b7a8f;
-      --accent: #7ef0d4;
-      --accent-blue: #6aa6ff;
-      --line: rgba(255,255,255,0.08);
-    }
-
-    /* Section styling matching About page */
-    .section-label {
-      font-size: 0.7rem;
-      font-weight: 600;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 16px;
-      display: block;
-    }
-
-    .section-title {
-      font-size: clamp(2rem, 4vw, 3rem);
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      margin-bottom: 24px;
-      line-height: 1.2;
-      color: var(--text-primary);
-    }
-
-    .section-lead {
-      font-size: 1.15rem;
-      color: var(--text-secondary);
-      max-width: 900px;
-      line-height: 1.8;
-    }
-
-    /* Clean section padding */
-    .home-section {
-      padding: 120px 0;
-      position: relative;
-    }
-
-    .home-section.alt-bg {
-      background: var(--bg-secondary);
-    }
-
-    /* Philosophy grid matching About page */
-    .philosophy-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      margin-top: 64px;
-    }
-
-    .philosophy-item {
-      position: relative;
-    }
-
-    .philosophy-number {
-      font-size: 8rem;
-      font-weight: 800;
-      line-height: 1;
-      background: linear-gradient(135deg, rgba(106,166,255,0.15), rgba(126,240,212,0.05));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      position: absolute;
-      top: -40px;
-      left: -20px;
-      z-index: 0;
-      user-select: none;
-    }
-
-    .philosophy-content {
-      position: relative;
-      z-index: 1;
-    }
-
-    .philosophy-content h3 {
-      font-size: 1.75rem;
-      font-weight: 700;
-      margin-bottom: 24px;
-      letter-spacing: -0.01em;
-      color: var(--text-primary);
-    }
-
-    .philosophy-content p {
-      color: var(--text-secondary);
-      font-size: 1.05rem;
-      line-height: 1.9;
-      margin-bottom: 16px;
-    }
-
-    /* Business cards matching About page */
-    .business-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 48px;
-      margin-top: 64px;
-    }
-
-    .business-card {
-      padding: 48px 40px;
-      background: rgba(255,255,255,0.02);
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .business-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 2px;
-      background: linear-gradient(90deg, var(--accent-blue), var(--accent));
-      transform: scaleX(0);
-      transition: transform 0.4s ease;
-    }
-
-    .business-card:hover {
-      transform: translateY(-8px);
-      border-color: rgba(126, 240, 212, 0.2);
-      box-shadow: 0 30px 60px rgba(0,0,0,0.3);
-    }
-
-    .business-card:hover::before {
-      transform: scaleX(1);
-    }
-
-    .business-card .card-label {
-      display: inline-block;
-      font-size: 0.7rem;
-      font-weight: 600;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      padding: 6px 12px;
-      border-radius: 4px;
-      margin-bottom: 20px;
-    }
-
-    .business-card .card-label.maritime {
-      background: linear-gradient(135deg, rgba(126,240,212,0.2), rgba(126,240,212,0.05));
-      color: var(--accent);
-    }
-
-    .business-card .card-label.security {
-      background: linear-gradient(135deg, rgba(106,166,255,0.2), rgba(106,166,255,0.05));
-      color: var(--accent-blue);
-    }
-
-    .business-card h3 {
-      font-size: 1.5rem;
-      font-weight: 700;
-      margin-bottom: 16px;
-      letter-spacing: -0.01em;
-      color: var(--text-primary);
-    }
-
-    .business-card p {
-      color: var(--text-secondary);
-      font-size: 0.95rem;
-      line-height: 1.8;
-      margin-bottom: 12px;
-    }
-
-    .business-card .card-image {
-      margin-top: 24px;
-      border-radius: 12px;
-      overflow: hidden;
-      border: 1px solid var(--line);
-    }
-
-    .business-card .card-image img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-
-    /* Products grid */
-    .products-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 24px;
-      margin-top: 64px;
-    }
-
-    .product-card {
-      padding: 32px;
-      background: rgba(255,255,255,0.02);
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      transition: all 0.4s ease;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .product-card:hover {
-      border-color: rgba(126, 240, 212, 0.2);
-      background: rgba(255,255,255,0.03);
-      transform: translateY(-4px);
-    }
-
-    .product-card .product-label {
-      font-size: 0.65rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      padding: 4px 10px;
-      border-radius: 4px;
-      margin-bottom: 16px;
-      display: inline-block;
-      width: fit-content;
-    }
-
-    .product-card .product-label.maritime {
-      background: rgba(126,240,212,0.15);
-      color: var(--accent);
-    }
-
-    .product-card .product-label.security {
-      background: rgba(106,166,255,0.15);
-      color: var(--accent-blue);
-    }
-
-    .product-card h4 {
-      font-size: 1.15rem;
-      font-weight: 700;
-      margin-bottom: 12px;
-      color: var(--text-primary);
-    }
-
-    .product-card .problem {
-      font-size: 0.85rem;
-      color: var(--text-secondary);
-      line-height: 1.7;
-      margin-bottom: 16px;
-      flex-grow: 1;
-    }
-
-    .product-card .pricing {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      padding: 12px;
-      background: rgba(255,255,255,0.02);
-      border-radius: 8px;
-      border-left: 2px solid var(--accent);
-      margin-bottom: 20px;
-    }
-
-    .product-card .cta-link {
-      display: block;
-      text-align: center;
-      padding: 12px 20px;
-      background: linear-gradient(135deg, var(--accent-blue), var(--accent));
-      color: var(--bg-primary);
-      font-weight: 600;
-      font-size: 0.9rem;
-      border-radius: 8px;
-      transition: all 0.3s ease;
-    }
-
-    .product-card .cta-link:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 30px rgba(106, 166, 255, 0.3);
-    }
-
-    /* Stats grid matching About page */
-    .stats-section {
-      background: var(--bg-secondary);
-      text-align: center;
-      padding: 120px 0;
-    }
-
-    .stats-grid-new {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 32px;
-      margin-top: 64px;
-    }
-
-    .stat-card {
-      padding: 32px;
-    }
-
-    .stat-card .number {
-      font-size: clamp(1.8rem, 5vw, 4rem);
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      white-space: nowrap;
-      background: linear-gradient(135deg, #fff, var(--text-secondary));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      line-height: 1;
-      margin-bottom: 12px;
-    }
-
-    .stat-card .label {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      font-weight: 500;
-    }
-
-    /* Why grid matching About page */
-    .why-grid-new {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 32px;
-      margin-top: 64px;
-    }
-
-    .why-card-new {
-      padding: 48px;
-      background: rgba(255,255,255,0.02);
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      transition: all 0.4s ease;
-    }
-
-    .why-card-new:hover {
-      border-color: rgba(106, 166, 255, 0.2);
-      background: rgba(255,255,255,0.03);
-    }
-
-    .why-card-new h3 {
-      font-size: 1.35rem;
-      font-weight: 700;
-      margin-bottom: 16px;
-      letter-spacing: -0.01em;
-      color: var(--text-primary);
-    }
-
-    .why-card-new p {
-      color: var(--text-secondary);
-      font-size: 1rem;
-      line-height: 1.8;
-    }
-
-    /* CTA Banner */
-    .cta-banner-new {
-      padding: 100px 0;
-      background: linear-gradient(135deg, rgba(106,166,255,0.08), rgba(126,240,212,0.04));
-      border-top: 1px solid rgba(126, 240, 212, 0.15);
-      border-bottom: 1px solid rgba(126, 240, 212, 0.15);
-      text-align: center;
-    }
-
-    .cta-banner-new h3 {
-      font-size: clamp(1.5rem, 3vw, 2rem);
-      font-weight: 700;
-      margin-bottom: 16px;
-      letter-spacing: -0.02em;
-    }
-
-    .cta-banner-new p {
-      color: var(--text-secondary);
-      font-size: 1.1rem;
-      margin-bottom: 32px;
-    }
-
-    .cta-buttons {
-      display: flex;
-      gap: 16px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    .cta-btn-primary {
-      display: inline-block;
-      padding: 18px 48px;
-      background: linear-gradient(135deg, var(--accent-blue), var(--accent));
-      color: var(--bg-primary);
-      font-weight: 700;
-      font-size: 1rem;
-      border-radius: 50px;
-      transition: all 0.3s ease;
-    }
-
-    .cta-btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 20px 40px rgba(106, 166, 255, 0.3);
-    }
-
-    .cta-btn-secondary {
-      display: inline-block;
-      padding: 18px 48px;
-      background: transparent;
-      border: 1px solid var(--line);
-      color: var(--text-primary);
-      font-weight: 600;
-      font-size: 1rem;
-      border-radius: 50px;
-      transition: all 0.3s ease;
-    }
-
-    .cta-btn-secondary:hover {
-      border-color: var(--accent);
-      background: rgba(126, 240, 212, 0.05);
-    }
-
-    /* Contact section */
-    .contact-card {
-      max-width: 800px;
-      margin: 64px auto 0;
-      padding: 64px;
-      background: rgba(255,255,255,0.02);
-      border: 1px solid var(--line);
-      border-radius: 24px;
-      text-align: center;
-    }
-
-    .contact-card h3 {
-      font-size: 1.5rem;
-      font-weight: 700;
-      margin-bottom: 16px;
-    }
-
-    .contact-card p {
-      color: var(--text-secondary);
-      line-height: 1.8;
-      margin-bottom: 32px;
-    }
-
-    .contact-info {
-      display: flex;
-      justify-content: center;
-      gap: 48px;
-      flex-wrap: wrap;
-      margin-top: 32px;
-      padding: 24px;
-      background: rgba(126,240,212,0.03);
-      border-radius: 12px;
-      border: 1px solid rgba(126,240,212,0.1);
-    }
-
-    .contact-info-item {
-      text-align: center;
-    }
-
-    .contact-info-item span {
-      display: block;
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--accent);
-      margin-bottom: 4px;
-    }
-
-    .contact-info-item p {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      margin: 0;
-    }
-
-    /* FAQ */
-    .faq-grid {
-      max-width: 900px;
-      margin: 64px auto 0;
-    }
-
-    .faq-item-new {
-      padding: 32px;
-      background: rgba(255,255,255,0.02);
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      margin-bottom: 16px;
-      transition: all 0.3s ease;
-    }
-
-    .faq-item-new:hover {
-      border-color: rgba(126, 240, 212, 0.2);
-    }
-
-    .faq-item-new .question {
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: var(--text-primary);
-      margin-bottom: 12px;
-    }
-
-    .faq-item-new .answer {
-      color: var(--text-secondary);
-      font-size: 0.95rem;
-      line-height: 1.8;
-    }
-
-    /* Animations */
-    .animate-on-scroll {
-      opacity: 0;
-      transform: translateY(40px);
-      transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .animate-on-scroll.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* Responsive */
-    @media (max-width: 1024px) {
-      .philosophy-grid,
-      .business-grid {
-        grid-template-columns: 1fr;
-        gap: 48px;
-      }
-
-      .products-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .stats-grid-new {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .why-grid-new {
-        grid-template-columns: 1fr;
-        gap: 24px;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .fullpage-section { min-height: auto; }
-      .scroll-nav { display: none; }
-
-      .home-section {
-        padding: 80px 0;
-      }
-
-      .philosophy-number {
-        font-size: 5rem;
-        top: -20px;
-        left: -10px;
-      }
-
-      .products-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .stats-grid-new {
-        grid-template-columns: 1fr;
-        gap: 24px;
-      }
-
-      .stat-card .number {
-        font-size: 3rem;
-      }
-
-      .business-card,
-      .why-card-new {
-        padding: 32px 24px;
-      }
-
-      .contact-card {
-        padding: 40px 24px;
-      }
-
-      .contact-info {
-        gap: 24px;
-      }
-    }
-  </style>
+  <!-- Home page styles -->
+  <link rel="stylesheet" href="includes/home.css?v=20260304">
 </head>
 
 <body>
@@ -737,24 +78,14 @@
   <div class="noise-overlay"></div>
 
   <!-- Shared Header -->
-  <div id="site-header" style="z-index:100;"></div>
-
-  <!-- Navigation Dots -->
-  <nav class="scroll-nav" id="scrollNav">
-    <div class="scroll-nav-dot active" data-section="top" title="ホーム"></div>
-    <div class="scroll-nav-dot" data-section="about" title="理念"></div>
-    <div class="scroll-nav-dot" data-section="business" title="事業"></div>
-    <div class="scroll-nav-dot" data-section="products" title="製品"></div>
-    <div class="scroll-nav-dot" data-section="why-avisail" title="選ばれる理由"></div>
-    <div class="scroll-nav-dot" data-section="contact" title="お問い合わせ"></div>
-  </nav>
+  <div id="site-header"></div>
 
     <!-- HERO -->
-    <section class="fullpage-section hero" id="top" data-nav-label="ホーム" style="align-items:flex-start; padding-top:18vh; z-index:1;">
+    <section class="fullpage-section hero" id="top" data-nav-label="ホーム">
       <div class="wrap">
         <h1 class="animate-in delay-2">
           Navigating the Future.<br>
-          <span style="color:#fff;">Driven by Discovery</span>
+          <span class="text-white">Driven by Discovery</span>
           <span class="gradient-text">海事事業 × セキュリティ事業 × AI開発</span>
         </h1>
 
@@ -762,20 +93,22 @@
           船は「進歩の象徴」。私たちは最先端技術を積み、まだ見ぬ地平へと航海します。
         </p>
 
-        <p class="lead animate-in delay-3" style="max-width: 900px;">
+        <p class="lead hero-lead animate-in delay-3">
           Avisail Technologies は、AIと技術探究の力で既存の事業構造やシステムを再定義する次世代のテクノロジー商社です。<br class="pc-only">
           AIによる自動化・分析・意思決定支援が、国際的な船舶取引からサイバーセキュリティまで、あらゆるビジネス領域に貢献します。
         </p>
 
-        <div style="margin-top:36px; display:flex; gap:14px; flex-wrap:wrap; align-items:center;" class="animate-in delay-4">
-          <a href="#business" class="btn" style="padding:14px 28px;">事業内容を見る</a>
+        <div class="hero-cta animate-in delay-4">
+          <a href="#business" class="btn">事業内容を見る</a>
         </div>
       </div>
 
       <!-- Scroll Indicator -->
-      <div class="scroll-indicator" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">
+      <div class="scroll-indicator" role="button" tabindex="0" aria-label="次のセクションへスクロール"
+           onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})"
+           onkeydown="if(event.key==='Enter'||event.key===' '){document.getElementById('about').scrollIntoView({behavior:'smooth'})}">
         <span>Scroll</span>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
           <path d="M12 5v14M5 12l7 7 7-7"/>
         </svg>
       </div>
@@ -888,7 +221,7 @@
               <h4>ADCS</h4>
               <p class="problem">通常のセキュリティサービスは高額で、中小企業・自治体は導入できず、脅威に無防備な状態。</p>
               <div class="pricing"><strong>価格：</strong>お問い合わせください</div>
-              <a href="security/adcs-ja.html" class="cta-link" style="background: linear-gradient(135deg, var(--accent-blue), #5A8FD6);">詳細を見る</a>
+              <a href="security/adcs-ja.html" class="cta-link cta-link--security">詳細を見る</a>
             </div>
           </div>
         </div>
@@ -898,7 +231,7 @@
     <!-- STATS -->
     <section class="fullpage-section" id="stats" data-nav-label="実績">
       <div class="fullpage-content">
-        <div class="glass-block" style="text-align: center;">
+        <div class="glass-block glass-block--center">
           <span class="section-label animate-on-scroll">By The Numbers</span>
           <h2 class="section-title animate-on-scroll">実証された成果、測定可能なインパクト</h2>
 
@@ -954,23 +287,23 @@
     <!-- CONTACT (with CTA) -->
     <section class="fullpage-section" id="contact" data-nav-label="お問い合わせ">
       <div class="fullpage-content">
-        <div class="glass-block" style="text-align: center;">
+        <div class="glass-block glass-block--center">
           <h3 class="section-title animate-on-scroll">ビジネスの未来を、一緒に。</h3>
-          <p class="section-lead animate-on-scroll" style="max-width: 600px; margin: 0 auto 32px;">まずはお気軽にご相談ください。</p>
-          <div class="cta-buttons animate-on-scroll" style="margin-bottom: 64px;">
+          <p class="section-lead section-lead--narrow animate-on-scroll">まずはお気軽にご相談ください。</p>
+          <div class="cta-buttons cta-buttons--spaced animate-on-scroll">
             <a href="index.ja.html#products" class="cta-btn-primary">サービス一覧を見る</a>
             <a href="ja/contact.html" class="cta-btn-secondary">専門家に相談</a>
           </div>
 
-          <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 48px;">
+          <div class="contact-divider">
             <span class="section-label animate-on-scroll">Contact</span>
-            <h2 class="section-title animate-on-scroll" style="font-size: 1.5rem;">お問い合わせ</h2>
+            <h2 class="section-title section-title--sub animate-on-scroll">お問い合わせ</h2>
 
-            <p class="animate-on-scroll" style="color: var(--text-secondary); margin-bottom: 32px;">
+            <p class="contact-text animate-on-scroll">
               ご質問、サービスのご相談、パートナーシップのご提案など、お気軽にご連絡ください。<br>担当者が1営業日以内に返信いたします。
             </p>
 
-            <div class="contact-info animate-on-scroll" style="max-width: 600px; margin: 0 auto;">
+            <div class="contact-info contact-info--narrow animate-on-scroll">
               <div class="contact-info-item">
                 <span>メール</span>
                 <p>info@avisail.com</p>
@@ -1028,7 +361,6 @@
       <div id="site-footer"></div>
     </section>
 
-
   <!-- Shared Components Loader -->
   <script src="includes/components.js"></script>
   <script src="includes/scroll-nav.js"></script>
@@ -1068,157 +400,7 @@
   }
   </script>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const scrollNav = document.getElementById('scrollNav');
-      const dots = scrollNav ? scrollNav.querySelectorAll('.scroll-nav-dot') : [];
-      const sections = document.querySelectorAll('.fullpage-section');
-
-      // Scroll Navigation - Click to navigate
-      dots.forEach(dot => {
-        dot.addEventListener('click', () => {
-          const sectionId = dot.getAttribute('data-section');
-          const section = document.getElementById(sectionId);
-          if (section) {
-            section.scrollIntoView({ behavior: 'smooth' });
-          }
-        });
-      });
-
-      // Update active dot on scroll using IntersectionObserver
-      if (dots.length > 0) {
-        const navObserver = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              const sectionId = entry.target.id;
-              dots.forEach(dot => {
-                dot.classList.toggle('active', dot.getAttribute('data-section') === sectionId);
-              });
-            }
-          });
-        }, { threshold: 0.3 });
-
-        sections.forEach(section => navObserver.observe(section));
-      }
-
-      // Scroll Animation Observer
-      const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-      };
-
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry, index) => {
-          if (entry.isIntersecting) {
-            setTimeout(() => {
-              entry.target.classList.add('visible');
-            }, index * 50);
-            observer.unobserve(entry.target);
-          }
-        });
-      }, observerOptions);
-
-      document.querySelectorAll('.animate-on-scroll').forEach(el => {
-        observer.observe(el);
-      });
-
-      // Global Background Animation
-      (function () {
-        const canvas = document.getElementById('global-bg');
-        if (!canvas) return;
-
-        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        if (prefersReducedMotion) {
-          canvas.style.display = 'none';
-          document.body.style.background = 'linear-gradient(135deg, #0a0f1a 0%, #05080f 100%)';
-          return;
-        }
-
-        const ctx = canvas.getContext('2d');
-        let width, height;
-        let particles = [];
-        let zOff = 0;
-        let animationId;
-        let isVisible = true;
-
-        document.addEventListener('visibilitychange', () => {
-          isVisible = !document.hidden;
-          if (isVisible && !animationId) {
-            animationId = requestAnimationFrame(loop);
-          }
-        });
-
-        function resize() {
-          width = canvas.width = window.innerWidth;
-          height = canvas.height = window.innerHeight;
-          initParticles();
-        }
-
-        let resizeTimeout;
-        window.addEventListener('resize', () => {
-          clearTimeout(resizeTimeout);
-          resizeTimeout = setTimeout(resize, 150);
-        });
-
-        function initParticles() {
-          particles = [];
-          const count = Math.min(Math.floor(width * height / 4000), 300);
-          for (let i = 0; i < count; i++) {
-            particles.push({
-              x: Math.random() * width,
-              y: Math.random() * height,
-              vx: 0, vy: 0,
-              maxSpeed: Math.random() * 0.6 + 0.2,
-              size: Math.random() > 0.9 ? 1.5 : 0.8,
-              color: Math.random() > 0.5 ? '#2E64BA' : '#4DB899'
-            });
-          }
-        }
-
-        function update() {
-          zOff += 0.0005;
-          for (let i = 0; i < particles.length; i++) {
-            const p = particles[i];
-            const angle = (Math.cos(p.x * 0.002 + zOff) + Math.sin(p.y * 0.002 + zOff)) * Math.PI;
-            p.vx += Math.cos(angle) * 0.02;
-            p.vy += Math.sin(angle) * 0.02;
-            const speed = Math.sqrt(p.vx * p.vx + p.vy * p.vy);
-            if (speed > p.maxSpeed) {
-              p.vx = (p.vx / speed) * p.maxSpeed;
-              p.vy = (p.vy / speed) * p.maxSpeed;
-            }
-            p.x += p.vx; p.y += p.vy;
-            if (p.x < 0) { p.x = width; p.vx = 0; p.vy = 0; }
-            if (p.x > width) { p.x = 0; p.vx = 0; p.vy = 0; }
-            if (p.y < 0) { p.y = height; p.vx = 0; p.vy = 0; }
-            if (p.y > height) { p.y = 0; p.vx = 0; p.vy = 0; }
-          }
-        }
-
-        function draw() {
-          ctx.fillStyle = 'rgba(5, 8, 15, 0.2)';
-          ctx.fillRect(0, 0, width, height);
-          for (let i = 0; i < particles.length; i++) {
-            const p = particles[i];
-            ctx.fillStyle = p.color;
-            ctx.beginPath();
-            ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-            ctx.fill();
-          }
-        }
-
-        function loop() {
-          if (!isVisible) { animationId = null; return; }
-          update(); draw();
-          animationId = requestAnimationFrame(loop);
-        }
-
-        resize();
-        animationId = requestAnimationFrame(loop);
-      })();
-
-    });
-  </script>
+  <script src="includes/home.js"></script>
 </body>
 
 </html>

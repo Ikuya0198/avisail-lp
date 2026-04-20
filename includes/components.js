@@ -21,23 +21,15 @@
   // Calculate base path based on current page depth
   function getBasePath() {
     const path = window.location.pathname;
-    const depth = (path.match(/\//g) || []).length - 1;
 
-    // Handle root level
-    if (depth <= 0 || path.endsWith('/') || path.split('/').filter(p => p && !p.includes('.')).length === 0) {
+    // Root or directory index
+    if (path === '/' || path.endsWith('/') ||
+        path.split('/').filter(p => p && !p.includes('.')).length === 0) {
       return './';
     }
 
-    // Count directory depth
-    const parts = path.split('/').filter(p => p);
-    const dirDepth = parts.length - 1; // Subtract filename
-
-    if (dirDepth <= 0) return './';
-    if (dirDepth === 1) return '../';
-    if (dirDepth === 2) return '../../';
-    if (dirDepth === 3) return '../../../';
-
-    return '../'.repeat(dirDepth);
+    const dirDepth = path.split('/').filter(p => p).length - 1;
+    return dirDepth <= 0 ? './' : '../'.repeat(dirDepth);
   }
 
   // Get language switcher URLs

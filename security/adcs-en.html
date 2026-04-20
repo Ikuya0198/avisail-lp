@@ -13,8 +13,6 @@
 <meta property="og:url" content="https://avisail.com/security/adcs-en.html">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAADCklEQVRYCe2Uu2tUQRTGv5n73pvsxo1xfSxGCwUhIooggoKFglrpfyBiIaJYKQgiiNpY2omFpVrYKlgYFXzh+w0qRrMmcU12s9nXfc4c52Kd7KPRYg/33OLOzPl+fGfuAXrRc6DnwD92gHWrT4WtDgqPs+BgcDDLNqDRTS3ezSECWP3rj6tkOx+kyd4HPrv5/DKMbmp1daZxN73Xv2vI8NUgRR840RdO4VvtQDfFOnaAHm11iHvnNSdicRSCDFclA3f1M1RAtlOIjgGa0buDKVdsFKYS1VTbKQXBstAyy1aHctWJTgE6uoS1h7klPJ55YfXJ/PQ0RypDcNI2WGYtuGErbVHjQmxhy19+ahekIwcYr55MLZJ5wRluXyc8HdVg6E2QV4NkNrhl9Avhn2tXPNnXNkDwJjdi9kWHydXxc0xDaVzi5T0hZotaE9WCgqhCNKuqLXP7o7H07nYh2gQgRqJy1sgYbkQD+PYMWDEEaLG8oTMclbUQ3riCiCtgNMcRexdoDElPWkZbAP6TgV26Ge+TsDD9mUMPIizOoZxbgdPp7eLq3G888L6X0Jz0IXwfui42RXP8UEt1taElwNjoKjsOmhc0LnlQlah8rSC3DDBtPFmZR75wDTukw+9LU0NtKoSMNEiPlBt0qj6Kpa0g9FYbFjV/H7DceHPY4Cirvhs8QKB8/zFOe0bWY6+h5p81pLzp59DUNCZfIo4VIGF5FOGUqn98IY0Ff8PSrWwa9cpb25XDHnNQ/BKiPyPws2ghCE2sXsPRN8Rhqd/RUIoQEhQKdQVi1QoBvyqDoE6bhg/i43wQCzqQLZS9KRuvLZ0PFyckEAswxrBuJEZqsQR3GJipuqi0pU+IVIu8WUJjRqJWIkxN0YT0MTOfePJ9QQeSDZNXsK7ma3d+jcv+gUFCWg1bNwtmDyibXVVAjeEEgEJCUIMCABolUL0MOT2DIzsv4XpSZ75oCZAcvHUMQ1YEczCvxNNgWQXhJOmoxSST8NSTZBkoTwDFEuS2i5j8u9h79xzoOdBz4D924A90007VB3a2QQAAAABJRU5ErkJggg==">
-<link rel="icon" type="image/x-icon" href="../favicon.ico">
 <link rel="apple-touch-icon" sizes="180x180" href="../favicon.png">
 <link rel="canonical" href="https://avisail.com/security/adcs-en.html">
 <link rel="alternate" hreflang="en" href="https://avisail.com/security/adcs-en.html">
@@ -245,6 +243,53 @@ section.section-entered::after{animation:sec-flash .7s cubic-bezier(.4,0,.2,1) f
   .hero-kpi{grid-template-columns:repeat(2,1fr)}
   .dl-banner{padding:36px 24px}
 }
+
+/* ===== FREE DIAGNOSIS SECTION ===== */
+#free-diagnosis{background:var(--bg2)}
+.fd-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start}
+.fd-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:32px}
+.fd-eyebrow{display:inline-block;font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:4px 12px;border-radius:20px;margin-bottom:12px}
+.fd-eyebrow-blue{background:rgba(106,166,255,.12);border:1px solid rgba(106,166,255,.25);color:var(--blue)}
+.fd-eyebrow-green{background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.25);color:#22c55e}
+.fd-card-title{font-size:1.15rem;font-weight:700;margin-bottom:8px}
+.fd-card-desc{font-size:.88rem;color:var(--text2);line-height:1.7;margin-bottom:24px}
+.fd-input-row{display:flex;gap:10px;margin-bottom:14px}
+.fd-input{flex:1;padding:12px 18px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:10px;color:var(--text);font-family:inherit;font-size:.95rem;outline:none;transition:border-color .2s}
+.fd-input:focus{border-color:var(--blue)}
+.fd-input::placeholder{color:var(--muted)}
+.fd-scan-btn{padding:12px 20px;background:linear-gradient(135deg,var(--blue),var(--accent));color:#050810;border:none;border-radius:10px;font-family:inherit;font-size:.88rem;font-weight:700;cursor:pointer;white-space:nowrap;transition:all .2s}
+.fd-scan-btn:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(106,166,255,.3)}
+.fd-scan-btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
+.fd-checklist{list-style:none;padding:0;margin:0 0 24px;display:flex;flex-direction:column;gap:0}
+.fd-checklist li{font-size:.85rem;color:var(--text2);padding:9px 0;border-bottom:1px solid rgba(255,255,255,.05);display:flex;align-items:center;gap:8px}
+.fd-checklist li::before{content:'✓';color:#22c55e;font-weight:700;flex-shrink:0}
+.fd-start-btn{display:block;width:100%;padding:14px;text-align:center;background:linear-gradient(135deg,var(--blue),var(--accent));color:#050810;border-radius:12px;font-weight:700;font-size:.95rem;transition:all .2s}
+.fd-start-btn:hover{opacity:.9;transform:translateY(-1px)}
+@keyframes hs-spin{to{transform:rotate(360deg)}}
+.hero-scan-spinning{display:flex;align-items:center;gap:10px;font-size:.88rem;color:var(--text2);padding:8px 0}
+.hero-scan-spinner{width:16px;height:16px;border:2px solid rgba(106,166,255,.2);border-top-color:var(--blue);border-radius:50%;animation:hs-spin .8s linear infinite;flex-shrink:0}
+.hero-scan-results{border:1px solid rgba(255,255,255,.08);border-radius:12px;overflow:hidden}
+.hero-scan-item{display:flex;align-items:center;gap:10px;padding:10px 16px;border-bottom:1px solid rgba(255,255,255,.04)}
+.hero-scan-item:last-child{border-bottom:none}
+.hero-scan-badge{width:20px;height:20px;border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700;flex-shrink:0}
+.hs-ok{background:rgba(34,197,94,.15);color:#22c55e}
+.hs-ng{background:rgba(239,68,68,.15);color:#ef4444}
+.hs-warn{background:rgba(250,204,21,.15);color:#facc15}
+.hero-scan-item-name{font-size:.84rem;font-weight:600;min-width:120px;flex-shrink:0}
+.hero-scan-item-desc{font-size:.78rem;color:var(--muted);flex:1}
+.hero-scan-cta{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 16px;background:rgba(239,68,68,.06);border-top:1px solid rgba(239,68,68,.12);flex-wrap:wrap}
+.hero-scan-cta-text{font-size:.84rem}
+.hero-scan-cta-btn{display:inline-block;padding:10px 20px;background:linear-gradient(135deg,var(--blue),var(--accent));color:#050810;border-radius:50px;font-weight:700;font-size:.84rem;white-space:nowrap;transition:all .2s}
+.hero-scan-cta-btn:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(106,166,255,.3)}
+.hs-email-form{padding:12px 16px;border-top:1px solid rgba(255,255,255,.06);background:rgba(255,255,255,.02)}
+.hs-email-label{font-size:.76rem;color:var(--muted);margin-bottom:8px}
+.hs-email-row{display:flex;gap:8px}
+.hs-email-input{flex:1;padding:9px 13px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:8px;color:#fff;font-size:.82rem;font-family:inherit;outline:none}
+.hs-email-input:focus{border-color:var(--blue)}
+.hs-email-btn{padding:9px 14px;background:rgba(106,166,255,.15);border:1px solid rgba(106,166,255,.3);color:var(--blue);border-radius:8px;font-size:.8rem;font-weight:600;cursor:pointer;white-space:nowrap;transition:all .2s;font-family:inherit}
+.hs-email-btn:hover{background:rgba(106,166,255,.25)}
+.hs-email-sent{font-size:.82rem;color:#22c55e;padding:6px 0;margin:0}
+@media(max-width:768px){.fd-grid{grid-template-columns:1fr}.fd-input-row{flex-direction:column}}
 </style>
 </head>
 <body>
@@ -277,7 +322,7 @@ section.section-entered::after{animation:sec-flash .7s cubic-bezier(.4,0,.2,1) f
   </p>
   <div class="hero-ctas">
     <a href="#pricing" class="btn btn-primary btn-lg">View Plans &amp; Pricing</a>
-    <a href="self-check-en.html" class="btn btn-ghost btn-lg">Try Free Self-Check</a>
+    <a href="#free-diagnosis" class="btn btn-ghost btn-lg">Try Free Check</a>
   </div>
   <div class="hero-kpi">
     <div class="hero-kpi-item">
@@ -296,6 +341,49 @@ section.section-entered::after{animation:sec-flash .7s cubic-bezier(.4,0,.2,1) f
       <div class="hero-kpi-num">24h</div>
       <div class="hero-kpi-label">Report Delivery<br>Fully Automated</div>
     </div>
+  </div>
+</div>
+</section>
+
+<!-- ================================================ -->
+<!-- 1.5. FREE DIAGNOSIS                             -->
+<!-- ================================================ -->
+<section id="free-diagnosis">
+<div class="wrap">
+  <div class="fade-in" style="text-align:center;margin-bottom:48px;">
+    <p class="section-label">Free Assessment</p>
+    <h2 class="section-title">Check Your Security — For Free</h2>
+    <p class="section-lead" style="margin:0 auto;">No registration required. Two free tools to instantly understand your current security posture.</p>
+  </div>
+
+  <div class="fd-grid fade-in">
+
+    <!-- Domain Auto-Scan -->
+    <div class="fd-card">
+      <span class="fd-eyebrow fd-eyebrow-blue">Auto Scan</span>
+      <h3 class="fd-card-title">🔍 Domain Scan</h3>
+      <p class="fd-card-desc">Just enter your domain. Automatically checks SPF, DMARC, DKIM, and CAA configuration in real time — no signup needed.</p>
+      <div class="fd-input-row">
+        <input type="text" id="heroScanInput" class="fd-input" placeholder="e.g. example.com" autocomplete="off">
+        <button onclick="runHeroScan()" class="fd-scan-btn" id="heroScanBtn">Scan →</button>
+      </div>
+      <div id="heroScanBody"></div>
+    </div>
+
+    <!-- Self-Check -->
+    <div class="fd-card">
+      <span class="fd-eyebrow fd-eyebrow-green">Self-Check</span>
+      <h3 class="fd-card-title">📋 Security Self-Assessment</h3>
+      <p class="fd-card-desc">Answer 10 checklist questions and get your score instantly. IPA-aligned scoring with grade and improvement suggestions.</p>
+      <ul class="fd-checklist">
+        <li>Instant score (30-point scale with letter grade)</li>
+        <li>Category-based radar chart</li>
+        <li>Prioritized, actionable improvement suggestions</li>
+        <li>Print-ready report — no signup required</li>
+      </ul>
+      <a href="self-check-en.html" class="fd-start-btn">Start Free Self-Check →</a>
+    </div>
+
   </div>
 </div>
 </section>
@@ -979,7 +1067,7 @@ section.section-entered::after{animation:sec-flash .7s cubic-bezier(.4,0,.2,1) f
   </div>
 
   <!-- Final CTA -->
-  <div class="fade-in" style="margin-top:72px;text-align:center;padding:64px 48px;background:linear-gradient(135deg,rgba(106,166,255,.08),rgba(126,240,212,.04));border:1px solid rgba(126,240,212,.15);border-radius:24px;" id="free-diagnosis">
+  <div class="fade-in" style="margin-top:72px;text-align:center;padding:64px 48px;background:linear-gradient(135deg,rgba(106,166,255,.08),rgba(126,240,212,.04));border:1px solid rgba(126,240,212,.15);border-radius:24px;" id="free-cta">
     <span style="display:inline-block;background:linear-gradient(135deg,var(--blue),var(--accent));color:#050810;font-size:.78rem;font-weight:700;padding:6px 18px;border-radius:20px;margin-bottom:20px;letter-spacing:.1em;text-transform:uppercase;">Get Started Now</span>
     <h2 style="font-size:clamp(1.6rem,3vw,2.4rem);font-weight:800;letter-spacing:-.02em;margin-bottom:16px;">Start by Checking Your Current Posture — Free</h2>
     <p style="font-size:1rem;color:var(--text2);max-width:600px;margin:0 auto 32px;line-height:1.9;">
@@ -1035,8 +1123,9 @@ document.addEventListener('DOMContentLoaded', function(){
 // ── Side Nav + Section Flash ─────────────────────────
 document.addEventListener('DOMContentLoaded', function(){
   var SECTIONS = [
-    {id:'hero-section', label:'TOP'},
-    {id:'pricing',      label:'Pricing'},
+    {id:'hero-section',    label:'TOP'},
+    {id:'free-diagnosis',  label:'Free Check'},
+    {id:'pricing',         label:'Pricing'},
     {id:'overview',     label:'Overview'},
     {id:'system',       label:'System'},
     {id:'specs',        label:'Scanners'},
@@ -1086,6 +1175,127 @@ document.addEventListener('DOMContentLoaded', function(){
     var el = document.getElementById(s.id);
     if(el) secObs.observe(el);
   });
+});
+
+async function heroDohQuery(name, type) {
+  try {
+    const r = await fetch(`https://cloudflare-dns.com/dns-query?name=${encodeURIComponent(name)}&type=${type}`, {
+      headers: { Accept: 'application/dns-json' }
+    });
+    return r.ok ? await r.json() : null;
+  } catch { return null; }
+}
+
+async function runHeroScan() {
+  const input = document.getElementById('heroScanInput');
+  const btn   = document.getElementById('heroScanBtn');
+  const body  = document.getElementById('heroScanBody');
+  const domain = input.value.trim().toLowerCase()
+    .replace(/^https?:\/\//, '').replace(/^www\./, '').replace(/[/:?#].*/, '');
+
+  if (!domain || !domain.includes('.')) { input.focus(); return; }
+
+  btn.disabled = true;
+  btn.textContent = 'Checking…';
+  body.innerHTML = `<div class="hero-scan-spinning"><div class="hero-scan-spinner"></div><span>Checking security settings for <strong>${domain}</strong>…</span></div>`;
+
+  try {
+    const DKIM_SELECTORS = ['google', 'selector1', 'selector2', 'default', 'mail', 'k1', 'smtp'];
+    const [txtRes, dmarcRes, mxRes, caaRes, ...dkimResults] = await Promise.all([
+      heroDohQuery(domain, 'TXT'),
+      heroDohQuery('_dmarc.' + domain, 'TXT'),
+      heroDohQuery(domain, 'MX'),
+      heroDohQuery(domain, 'CAA'),
+      ...DKIM_SELECTORS.map(s => heroDohQuery(s + '._domainkey.' + domain, 'TXT')),
+    ]);
+
+    const txt   = (txtRes?.Answer   || []).map(r => (r.data||'').replace(/"/g,'')).join(' ');
+    const dmarc = (dmarcRes?.Answer || []).map(r => (r.data||'').replace(/"/g,'')).join(' ');
+
+    const hasSPF         = txt.includes('v=spf1');
+    const hasStrictSPF   = hasSPF && txt.includes('-all');
+    const hasDMARC       = dmarc.includes('v=DMARC1');
+    const hasStrictDMARC = hasDMARC && (dmarc.includes('p=reject') || dmarc.includes('p=quarantine'));
+    const hasMX          = (mxRes?.Answer || []).length > 0;
+    const hasCAA         = (caaRes?.Answer || []).length > 0;
+    const hasDKIM        = dkimResults.some(res =>
+      (res?.Answer || []).some(r => (r.data||'').replace(/"/g,'').includes('v=DKIM1'))
+    );
+
+    const checks = [
+      { name: 'SPF Record',     ok: hasSPF,         warn: false,           skip: false,   descOk: 'Configured',                       descNg: 'Not set — Attackers can send emails impersonating your domain right now' },
+      { name: 'SPF Strength',   ok: hasStrictSPF,   warn: !hasStrictSPF,   skip: !hasSPF, descOk: 'Strict (-all)',                     descNg: 'Soft (~all) — Third parties can send unlimited emails from your domain' },
+      { name: 'DMARC Policy',   ok: hasDMARC,       warn: false,           skip: false,   descOk: 'Configured',                       descNg: 'Not set — You won\'t be alerted when spoofed emails are sent' },
+      { name: 'DMARC Strength', ok: hasStrictDMARC, warn: !hasStrictDMARC, skip: !hasDMARC, descOk: 'reject/quarantine active',       descNg: 'p=none (monitor only) — Spoofed emails are still being delivered' },
+      { name: 'DKIM Signature', ok: hasDKIM,        warn: false,           skip: false,   descOk: 'Configured',                       descNg: 'Not set — Email tampering cannot be detected' },
+      { name: 'CAA Record',     ok: hasCAA,         warn: false,           skip: false,   descOk: 'Configured',                       descNg: 'Not set — Unauthorized SSL certificates could be issued for your domain' },
+    ];
+
+    const visible = checks.filter(c => !c.skip);
+    const issues  = visible.filter(c => !c.ok).length;
+
+    const itemsHtml = visible.map(c => {
+      const cls  = c.ok ? 'hs-ok' : (c.warn ? 'hs-warn' : 'hs-ng');
+      const icon = c.ok ? '✓' : (c.warn ? '△' : '✗');
+      return `<div class="hero-scan-item">
+        <div class="hero-scan-badge ${cls}">${icon}</div>
+        <div class="hero-scan-item-name">${c.name}</div>
+        <div class="hero-scan-item-desc">${c.ok ? c.descOk : c.descNg}</div>
+      </div>`;
+    }).join('');
+
+    const ctaHtml = issues > 0
+      ? `<div class="hero-scan-cta">
+          <span class="hero-scan-cta-text">⚠️ <strong style="color:#ef4444">${issues} risk(s) detected</strong> — ADCS monitors and auto-remediates these issues</span>
+          <a href="https://adcs.avisail.com/subscribe" class="hero-scan-cta-btn">Fix Now — from ¥29,800/mo →</a>
+         </div>`
+      : `<div class="hero-scan-cta" style="background:rgba(34,197,94,.06);border-color:rgba(34,197,94,.15)">
+          <span class="hero-scan-cta-text">✓ <strong style="color:#22c55e">Basic settings look good</strong> — Run a full 54-scanner scan to uncover hidden risks</span>
+          <a href="https://adcs.avisail.com/subscribe" class="hero-scan-cta-btn">Start Full Scan →</a>
+         </div>`;
+
+    const emailFormHtml = `<div class="hs-email-form">
+      <p class="hs-email-label">Receive a detailed report by email (free)</p>
+      <div class="hs-email-row">
+        <input type="email" class="hs-email-input" placeholder="your@company.com" autocomplete="email">
+        <button class="hs-email-btn" onclick="submitScanEmail(this,'${domain}')">Send</button>
+      </div>
+    </div>`;
+    body.innerHTML = `<div class="hero-scan-results"><div>${itemsHtml}</div>${ctaHtml}${emailFormHtml}</div>`;
+
+  } catch {
+    body.innerHTML = '';
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'Scan →';
+  }
+}
+
+async function submitScanEmail(btn, domain) {
+  const row = btn.closest('.hs-email-row');
+  const input = row.querySelector('.hs-email-input');
+  const email = input.value.trim();
+  if (!email || !email.includes('@')) { input.focus(); return; }
+  btn.disabled = true;
+  btn.textContent = 'Sending…';
+  const fd = new FormData();
+  fd.append('email', email);
+  fd.append('domain', domain);
+  fd.append('_subject', `[ADCS Scan] Report request: ${domain}`);
+  fd.append('source', 'lp-domain-scan-en');
+  try {
+    const res = await fetch('https://formspree.io/f/mykzwlze', { method:'POST', body:fd, headers:{Accept:'application/json'} });
+    const form = btn.closest('.hs-email-form');
+    if (res.ok) {
+      form.innerHTML = '<p class="hs-email-sent">✓ Received. We\'ll follow up within 1 business day.</p>';
+    } else {
+      btn.disabled = false; btn.textContent = 'Send';
+    }
+  } catch { btn.disabled = false; btn.textContent = 'Send'; }
+}
+
+document.getElementById('heroScanInput').addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') runHeroScan();
 });
 </script>
 
