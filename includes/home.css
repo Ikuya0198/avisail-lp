@@ -334,11 +334,22 @@ html {
 
 .biz-detail-cta:hover { gap: 10px; }
 
+/* ---- right column: image + numbered list ---- */
 .biz-detail-right {
   display: grid;
   grid-template-columns: 1fr 2fr;
   gap: 24px;
   align-items: start;
+}
+
+/* no image: list spans full width */
+.biz-detail-right.list-only {
+  display: block;
+}
+
+/* overlay variant: image fills full width */
+.biz-detail-right.overlay {
+  display: block;
 }
 
 .biz-prod-preview {
@@ -352,49 +363,62 @@ html {
   width: 100%;
   height: auto;
   display: block;
-  border-radius: 12px;
-  opacity: 0.85;
+  opacity: 0.9;
   transition: opacity 0.3s ease;
 }
 
 .biz-prod-preview img:hover { opacity: 1; }
 
+/* ---- numbered vertical list ---- */
 .biz-products {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .biz-prod-card {
-  padding: 18px;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  padding: 16px 18px;
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid var(--line);
   border-radius: 12px;
-  transition: all 0.3s ease;
+  transition: border-color 0.25s ease, background 0.25s ease;
 }
 
 .biz-prod-card:hover {
-  transform: translateY(-3px);
-  border-color: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.12);
   background: rgba(255, 255, 255, 0.05);
 }
 
+.biz-prod-num {
+  font-size: 1.4rem;
+  font-weight: 800;
+  line-height: 1.1;
+  min-width: 30px;
+  flex-shrink: 0;
+  color: rgba(255, 255, 255, 0.1);
+}
+
+.biz-prod-body { flex: 1; }
+
 .biz-prod-name {
-  font-size: 0.88rem;
+  font-size: 0.9rem;
   font-weight: 700;
   color: var(--text-primary);
-  margin-bottom: 6px;
+  margin-bottom: 5px;
 }
 
 .biz-prod-desc {
-  font-size: 0.77rem;
+  font-size: 0.78rem;
   color: var(--text-muted);
-  line-height: 1.5;
+  line-height: 1.6;
   margin-bottom: 8px;
 }
 
 .biz-prod-price {
-  font-size: 0.75rem;
+  font-size: 0.74rem;
   color: var(--text-muted);
   margin-bottom: 10px;
 }
@@ -415,6 +439,51 @@ html {
 .biz-prod-link.maritime { color: var(--accent); }
 .biz-prod-link.security  { color: var(--accent-blue); }
 .biz-prod-link.develop   { color: var(--accent-violet); }
+
+/* ---- security: image with text overlay ---- */
+.biz-prod-img-card {
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.biz-prod-img-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.biz-prod-img-overlay {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 32px 36px;
+  background: linear-gradient(to top,
+    rgba(5, 8, 15, 0.97) 0%,
+    rgba(5, 8, 15, 0.75) 50%,
+    transparent 100%);
+}
+
+.biz-prod-img-overlay .biz-prod-name {
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+}
+
+.biz-prod-img-overlay .biz-prod-desc {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 10px;
+}
+
+.biz-prod-img-overlay .biz-prod-price {
+  font-size: 0.8rem;
+  margin-bottom: 14px;
+}
+
+.biz-prod-img-overlay .biz-prod-link {
+  font-size: 0.82rem;
+}
 
 /* ========== STATS ========== */
 .stats-grid-new {
