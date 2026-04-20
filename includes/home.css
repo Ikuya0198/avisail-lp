@@ -72,6 +72,7 @@ html {
   --text-muted: #6b7a8f;
   --accent: #7ef0d4;
   --accent-blue: #6aa6ff;
+  --accent-violet: #c084fc;
   --line: rgba(255, 255, 255, 0.08);
 }
 
@@ -158,182 +159,210 @@ html {
   margin-bottom: 16px;
 }
 
-/* ========== BUSINESS CARDS ========== */
-.business-grid {
+/* ========== BUSINESSES SELECTOR ========== */
+.biz-selector {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 48px;
-  margin-top: 64px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 48px;
+  margin-bottom: 4px;
 }
 
-.business-card {
-  padding: 48px 40px;
+.biz-card {
+  padding: 32px 28px;
   background: rgba(255, 255, 255, 0.02);
   border: 1px solid var(--line);
   border-radius: 16px;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
+  user-select: none;
 }
 
-.business-card::before {
+.biz-card::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
+  top: 0; left: 0; right: 0;
   height: 2px;
-  background: linear-gradient(90deg, var(--accent-blue), var(--accent));
   transform: scaleX(0);
-  transition: transform 0.4s ease;
+  transition: transform 0.35s ease;
 }
 
-.business-card:hover {
-  transform: translateY(-8px);
-  border-color: rgba(126, 240, 212, 0.2);
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+.biz-card.maritime::before { background: linear-gradient(90deg, var(--accent), rgba(126, 240, 212, 0.3)); }
+.biz-card.security::before  { background: linear-gradient(90deg, var(--accent-blue), rgba(106, 166, 255, 0.3)); }
+.biz-card.develop::before   { background: linear-gradient(90deg, var(--accent-violet), rgba(192, 132, 252, 0.3)); }
+
+.biz-card:hover,
+.biz-card.active {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
 
-.business-card:hover::before {
-  transform: scaleX(1);
-}
+.biz-card:hover::before,
+.biz-card.active::before { transform: scaleX(1); }
 
-.business-card .card-label {
-  display: inline-block;
-  font-size: 0.7rem;
+.biz-card.active.maritime { border-color: rgba(126, 240, 212, 0.35); background: rgba(126, 240, 212, 0.05); }
+.biz-card.active.security  { border-color: rgba(106, 166, 255, 0.35); background: rgba(106, 166, 255, 0.05); }
+.biz-card.active.develop   { border-color: rgba(192, 132, 252, 0.35); background: rgba(192, 132, 252, 0.05); }
+
+.biz-label {
+  font-size: 0.65rem;
   font-weight: 600;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  padding: 6px 12px;
-  border-radius: 4px;
-  margin-bottom: 20px;
-}
-
-.business-card .card-label.maritime {
-  background: linear-gradient(135deg, rgba(126, 240, 212, 0.2), rgba(126, 240, 212, 0.05));
-  color: var(--accent);
-}
-
-.business-card .card-label.security {
-  background: linear-gradient(135deg, rgba(106, 166, 255, 0.2), rgba(106, 166, 255, 0.05));
-  color: var(--accent-blue);
-}
-
-.business-card h3 {
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin-bottom: 16px;
-  letter-spacing: -0.01em;
-  color: var(--text-primary);
-}
-
-.business-card p {
-  color: var(--text-secondary);
-  font-size: 0.95rem;
-  line-height: 1.8;
-  margin-bottom: 12px;
-}
-
-.business-card .card-image {
-  margin-top: 24px;
-  border-radius: 12px;
-  overflow: hidden;
-  border: 1px solid var(--line);
-}
-
-.business-card .card-image img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-/* ========== PRODUCTS GRID ========== */
-.products-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
-  margin-top: 64px;
-}
-
-.product-card {
-  padding: 32px;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid var(--line);
-  border-radius: 16px;
-  transition: all 0.4s ease;
-  display: flex;
-  flex-direction: column;
-}
-
-.product-card:hover {
-  border-color: rgba(126, 240, 212, 0.2);
-  background: rgba(255, 255, 255, 0.03);
-  transform: translateY(-4px);
-}
-
-.product-card .product-label {
-  font-size: 0.65rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
   padding: 4px 10px;
   border-radius: 4px;
-  margin-bottom: 16px;
   display: inline-block;
-  width: fit-content;
+  margin-bottom: 14px;
 }
 
-.product-card .product-label.maritime {
-  background: rgba(126, 240, 212, 0.15);
-  color: var(--accent);
-}
+.biz-label.maritime { background: rgba(126, 240, 212, 0.15); color: var(--accent); }
+.biz-label.security  { background: rgba(106, 166, 255, 0.15); color: var(--accent-blue); }
+.biz-label.develop   { background: rgba(192, 132, 252, 0.15); color: var(--accent-violet); }
 
-.product-card .product-label.security {
-  background: rgba(106, 166, 255, 0.15);
-  color: var(--accent-blue);
-}
-
-.product-card h4 {
-  font-size: 1.15rem;
+.biz-name {
+  font-size: 1.25rem;
   font-weight: 700;
+  letter-spacing: -0.01em;
+  margin-bottom: 10px;
+  color: var(--text-primary);
+}
+
+.biz-keywords {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+.biz-arrow {
+  position: absolute;
+  bottom: 22px; right: 22px;
+  font-size: 18px;
+  color: var(--text-muted);
+  transition: all 0.3s ease;
+  font-style: normal;
+}
+
+.biz-card.active.maritime .biz-arrow { color: var(--accent); transform: rotate(90deg); }
+.biz-card.active.security  .biz-arrow { color: var(--accent-blue); transform: rotate(90deg); }
+.biz-card.active.develop   .biz-arrow { color: var(--accent-violet); transform: rotate(90deg); }
+
+/* ===== Detail panel ===== */
+.biz-detail {
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 0.4s ease,
+              margin 0.4s ease;
+  margin-top: 0;
+}
+
+.biz-detail.open {
+  max-height: 600px;
+  opacity: 1;
+  margin-top: 4px;
+  margin-bottom: 16px;
+}
+
+.biz-detail-inner {
+  padding: 36px 40px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.biz-detail-inner.maritime { border-color: rgba(126, 240, 212, 0.2); }
+.biz-detail-inner.security  { border-color: rgba(106, 166, 255, 0.2); }
+.biz-detail-inner.develop   { border-color: rgba(192, 132, 252, 0.2); }
+
+.biz-detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.biz-detail-left h3 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
   margin-bottom: 12px;
   color: var(--text-primary);
 }
 
-.product-card .problem {
-  font-size: 0.85rem;
+.biz-detail-left p {
+  font-size: 0.9rem;
   color: var(--text-secondary);
-  line-height: 1.7;
-  margin-bottom: 16px;
-  flex-grow: 1;
-}
-
-.product-card .pricing {
-  font-size: 0.8rem;
-  color: var(--text-muted);
-  padding: 12px;
-  background: rgba(255, 255, 255, 0.02);
-  border-radius: 8px;
-  border-left: 2px solid var(--accent);
+  line-height: 1.8;
   margin-bottom: 20px;
 }
 
-.product-card .cta-link {
-  display: block;
-  text-align: center;
-  padding: 12px 20px;
-  background: linear-gradient(135deg, var(--accent-blue), var(--accent));
-  color: var(--bg-primary);
+.biz-detail-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
   font-weight: 600;
-  font-size: 0.9rem;
-  border-radius: 8px;
+  text-decoration: none;
+  transition: gap 0.2s ease;
+}
+
+.biz-detail-cta.maritime { color: var(--accent); }
+.biz-detail-cta.security  { color: var(--accent-blue); }
+.biz-detail-cta.develop   { color: var(--accent-violet); }
+
+.biz-detail-cta:hover { gap: 10px; }
+
+.biz-products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px;
+}
+
+.biz-prod-card {
+  padding: 18px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--line);
+  border-radius: 12px;
   transition: all 0.3s ease;
 }
 
-.product-card .cta-link:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(106, 166, 255, 0.3);
+.biz-prod-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.05);
 }
+
+.biz-prod-name {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+}
+
+.biz-prod-desc {
+  font-size: 0.77rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+.biz-prod-link {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: gap 0.2s ease;
+}
+
+.biz-prod-link:hover { gap: 7px; }
+.biz-prod-link.maritime { color: var(--accent); }
+.biz-prod-link.security  { color: var(--accent-blue); }
+.biz-prod-link.develop   { color: var(--accent-violet); }
 
 /* ========== STATS ========== */
 .stats-grid-new {
@@ -577,11 +606,6 @@ html {
   text-align: center;
 }
 
-/* Product card variants */
-.cta-link--security {
-  background: linear-gradient(135deg, var(--accent-blue), #5a8fd6);
-}
-
 /* Contact section */
 .section-lead--narrow {
   max-width: 600px;
@@ -638,14 +662,14 @@ html {
 
 /* ========== RESPONSIVE ========== */
 @media (max-width: 1024px) {
-  .philosophy-grid,
-  .business-grid {
+  .philosophy-grid {
     grid-template-columns: 1fr;
     gap: 48px;
   }
 
-  .products-grid {
-    grid-template-columns: repeat(2, 1fr);
+  .biz-detail-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
   }
 
   .stats-grid-new {
@@ -673,8 +697,12 @@ html {
     left: -10px;
   }
 
-  .products-grid {
+  .biz-selector {
     grid-template-columns: 1fr;
+  }
+
+  .biz-detail-inner {
+    padding: 24px 20px;
   }
 
   .stats-grid-new {
@@ -686,7 +714,6 @@ html {
     font-size: 3rem;
   }
 
-  .business-card,
   .why-card-new {
     padding: 32px 24px;
   }
