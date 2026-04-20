@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>ADCS 営業資料 | Avisail Technology</title>
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://avisail.com/brochures/adcs-proposal-ja.html">
+  <meta property="og:title" content="ADCS 営業資料 | Avisail Technology">
+  <meta property="og:description" content="ADCS（自律型防御サイバーセキュリティ）— AIによるセキュリティスキャン・脆弱性レポート・自動修正対応。">
+  <meta property="og:image" content="https://avisail.com/images/hero-bg.jpg">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:site_name" content="Avisail Technology">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ADCS 営業資料 | Avisail Technology">
+  <meta name="twitter:description" content="ADCS（自律型防御サイバーセキュリティ）— AIによるセキュリティスキャン・脆弱性レポート・自動修正対応。">
+  <meta name="twitter:image" content="https://avisail.com/images/hero-bg.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700;900&family=Inter:wght@300;400;700;800&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   PRINT / PDF 基本設定
+   ============================================================ */
+@page {
+  size: A4 portrait;
+  margin: 0;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+:root {
+  --bg:     #05080f;
+  --bg2:    #0b1120;
+  --accent: #7ef0d4;
+  --blue:   #6aa6ff;
+  --text:   #ffffff;
+  --text2:  #b8c5d6;
+  --muted:  #6b7a8f;
+  --line:   rgba(255,255,255,0.10);
+}
+
+body {
+  font-family: 'Inter', 'Noto Sans JP', -apple-system, sans-serif;
+  background: #1a1a2e;
+  color: var(--text);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ============================================================
+   PRINT BUTTON (画面表示のみ)
+   ============================================================ */
+.print-btn-bar {
+  position: fixed;
+  top: 20px;
+  right: 24px;
+  z-index: 9999;
+  display: flex;
+  gap: 10px;
+}
+.print-btn {
+  background: linear-gradient(135deg, #6aa6ff, #7ef0d4);
+  color: #050810;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  box-shadow: 0 4px 20px rgba(106,166,255,.4);
+  transition: transform .2s, box-shadow .2s;
+}
+.print-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(106,166,255,.5);
+}
+.print-hint {
+  font-size: 12px;
+  color: #6b7a8f;
+  align-self: center;
+}
+
+@media print {
+  .print-btn-bar { display: none; }
+}
+
+/* ============================================================
+   A4 PAGE
+   ============================================================ */
+.page {
+  width: 210mm;
+  height: 297mm;
+  margin: 0 auto 12px;
+  background: var(--bg);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+@media print {
+  .page {
+    margin: 0;
+    page-break-after: always;
+  }
+  .page:last-child {
+    page-break-after: avoid;
+  }
+}
+
+/* 背景グラデーション */
+.page::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 120% 50% at 60% -10%, rgba(106,166,255,.09), transparent 60%),
+    radial-gradient(ellipse 80% 60% at 100% 100%, rgba(126,240,212,.05), transparent 60%);
+  pointer-events: none;
+}
+
+/* ============================================================
+   PAGE 1 — OVERVIEW
+   ============================================================ */
+
+/* ── ヘッダーバー ── */
+.page-header {
+  padding: 7mm 12mm 5mm;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--line);
+  flex-shrink: 0;
+}
+.brand-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.brand-mark {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, var(--blue), var(--accent));
+  flex-shrink: 0;
+}
+.brand-name {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: .05em;
+}
+.doc-meta {
+  font-size: 9px;
+  color: var(--muted);
+  text-align: right;
+  line-height: 1.7;
+}
+
+/* ── ヒーロー ── */
+.hero-block {
+  padding: 7mm 12mm 6mm;
+  flex-shrink: 0;
+}
+.hero-eyebrow {
+  display: inline-block;
+  background: rgba(126,240,212,.1);
+  border: 1px solid rgba(126,240,212,.25);
+  color: var(--accent);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  padding: 3px 12px;
+  border-radius: 20px;
+  margin-bottom: 8px;
+}
+.hero-title {
+  font-size: 28px;
+  font-weight: 900;
+  letter-spacing: -.03em;
+  line-height: 1.15;
+  margin-bottom: 6px;
+}
+.hero-title .grad {
+  background: linear-gradient(135deg, var(--blue), var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero-sub {
+  font-size: 11px;
+  color: var(--text2);
+  line-height: 1.7;
+  max-width: 140mm;
+  margin-bottom: 10px;
+}
+
+/* KPI バー */
+.kpi-bar {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.kpi-cell {
+  background: rgba(255,255,255,.025);
+  padding: 8px 0;
+  text-align: center;
+}
+.kpi-num {
+  font-size: 20px;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--blue), var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+  margin-bottom: 3px;
+}
+.kpi-label {
+  font-size: 8px;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+/* ── メインコンテンツ（3カラム） ── */
+.main-cols {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr 0.9fr;
+  gap: 0;
+  padding: 0 12mm;
+  overflow: hidden;
+}
+.col {
+  padding: 4mm 4mm 4mm 0;
+  border-right: 1px solid var(--line);
+}
+.col:last-child {
+  border-right: none;
+  padding-right: 0;
+}
+.col:not(:first-child) {
+  padding-left: 4mm;
+}
+
+.col-label {
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+.col-title {
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  letter-spacing: -.01em;
+}
+
+/* 課題ブロック */
+.problem-box {
+  background: rgba(239,68,68,.06);
+  border: 1px solid rgba(239,68,68,.2);
+  border-radius: 8px;
+  padding: 6px 8px;
+  margin-bottom: 8px;
+}
+.problem-box p {
+  font-size: 9px;
+  color: #fca5a5;
+  line-height: 1.65;
+}
+
+.feature-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.feature-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 5px;
+  font-size: 9.5px;
+  color: var(--text2);
+  line-height: 1.5;
+}
+.feature-list li::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+
+/* スキャナーグリッド */
+.scanner-mini-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+  margin-top: 4px;
+}
+.scanner-chip {
+  background: rgba(255,255,255,.03);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 4px 6px;
+  font-size: 8px;
+  color: var(--text2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.scanner-chip .cnt {
+  font-weight: 700;
+  color: var(--blue);
+  font-size: 10px;
+}
+
+/* OSINT chips */
+.osint-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+  margin-top: 6px;
+}
+.osint-chip {
+  background: rgba(106,166,255,.08);
+  border: 1px solid rgba(106,166,255,.18);
+  border-radius: 10px;
+  padding: 2px 7px;
+  font-size: 7.5px;
+  color: var(--blue);
+  font-weight: 600;
+}
+
+/* 3層アーキテクチャ */
+.layers {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: 4px;
+}
+.layer-row {
+  background: rgba(255,255,255,.025);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 5px 8px;
+  position: relative;
+}
+.layer-row.l1 { border-left: 3px solid var(--accent); }
+.layer-row.l2 { border-left: 3px solid var(--blue); }
+.layer-row.l3 { border-left: 3px solid var(--muted); }
+.layer-row-title {
+  font-size: 9.5px;
+  font-weight: 700;
+  margin-bottom: 2px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.layer-badge {
+  font-size: 7px;
+  font-weight: 700;
+  padding: 1px 6px;
+  border-radius: 8px;
+  background: rgba(126,240,212,.12);
+  color: var(--accent);
+}
+.layer-badge.blue { background: rgba(106,166,255,.12); color: var(--blue); }
+.layer-badge.gray { background: rgba(107,122,143,.15); color: var(--muted); }
+.layer-row p {
+  font-size: 8px;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+/* ── フッター ── */
+.page-footer {
+  padding: 4mm 12mm;
+  border-top: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+}
+.footer-contact {
+  font-size: 8.5px;
+  color: var(--text2);
+}
+.footer-contact strong { color: var(--accent); }
+.page-num {
+  font-size: 8px;
+  color: var(--muted);
+}
+
+/* ============================================================
+   PAGE 2 — PRICING & COMPLIANCE
+   ============================================================ */
+
+/* ── 料金プラン ── */
+.section {
+  padding: 6mm 12mm 5mm;
+  flex-shrink: 0;
+}
+.section-label {
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+.section-title {
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: -.02em;
+  margin-bottom: 10px;
+}
+
+.plan-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 5px;
+}
+.plan-card {
+  background: rgba(255,255,255,.025);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.plan-card.rec {
+  border-color: var(--accent);
+  background: linear-gradient(160deg, rgba(106,166,255,.06), rgba(126,240,212,.03));
+}
+.plan-name {
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.plan-price {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--text);
+  line-height: 1;
+}
+.plan-price span {
+  font-size: 9px;
+  font-weight: 400;
+  color: var(--muted);
+}
+.rec-badge {
+  display: inline-block;
+  font-size: 7px;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--blue), var(--accent));
+  color: #050810;
+  padding: 2px 7px;
+  border-radius: 8px;
+  width: fit-content;
+}
+.plan-features {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.plan-features li {
+  font-size: 8px;
+  color: var(--text2);
+  display: flex;
+  align-items: flex-start;
+  gap: 4px;
+  line-height: 1.45;
+}
+.plan-features li::before {
+  content: '✓';
+  color: var(--accent);
+  font-size: 8px;
+  flex-shrink: 0;
+}
+.annual-note {
+  font-size: 8px;
+  color: var(--muted);
+  text-align: center;
+  margin-top: 5px;
+  padding: 4px 8px;
+  background: rgba(126,240,212,.05);
+  border: 1px solid rgba(126,240,212,.12);
+  border-radius: 6px;
+}
+
+/* ── 2カラム（比較 ＋ フレームワーク） ── */
+.bottom-cols {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  padding: 0 12mm;
+  overflow: hidden;
+}
+.bottom-col {
+  padding: 4mm 4mm 4mm 0;
+  border-right: 1px solid var(--line);
+}
+.bottom-col:last-child {
+  border-right: none;
+  padding-left: 4mm;
+  padding-right: 0;
+}
+
+/* 比較テーブル */
+.comp-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 8.5px;
+}
+.comp-table th {
+  text-align: left;
+  padding: 5px 6px;
+  background: rgba(255,255,255,.03);
+  color: var(--muted);
+  font-weight: 600;
+  border-bottom: 1px solid var(--line);
+}
+.comp-table th.adcs-th { color: var(--accent); }
+.comp-table td {
+  padding: 5px 6px;
+  border-bottom: 1px solid rgba(255,255,255,.04);
+  color: var(--text2);
+  vertical-align: top;
+  line-height: 1.4;
+}
+.comp-table td.yes { color: var(--accent); font-weight: 600; }
+.comp-table td.no { color: var(--muted); }
+.comp-table td.adcs-val { color: var(--text); font-weight: 600; }
+.comp-table tr:last-child td { border-bottom: none; }
+
+/* コンプライアンスフレームワーク */
+.fw-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 6px;
+}
+.fw-chip {
+  background: rgba(255,255,255,.04);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 3px 8px;
+  font-size: 8px;
+  color: var(--text2);
+}
+.fw-chip.hl {
+  background: rgba(126,240,212,.07);
+  border-color: rgba(126,240,212,.2);
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.trust-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: 8px;
+}
+.trust-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 5px;
+  font-size: 8.5px;
+  color: var(--text2);
+  line-height: 1.5;
+}
+.trust-list li strong { color: var(--text); }
+.trust-icon {
+  font-size: 10px;
+  flex-shrink: 0;
+}
+
+/* ── CTA ── */
+.cta-block {
+  margin: 0 12mm;
+  padding: 6px 14px;
+  background: linear-gradient(135deg, rgba(106,166,255,.08), rgba(126,240,212,.04));
+  border: 1px solid rgba(126,240,212,.18);
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+}
+.cta-text h3 {
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+.cta-text p {
+  font-size: 8.5px;
+  color: var(--text2);
+}
+.cta-contact {
+  text-align: right;
+  font-size: 9px;
+  color: var(--text2);
+  line-height: 1.7;
+}
+.cta-contact strong { color: var(--accent); font-size: 11px; }
+.cta-url {
+  font-size: 8px;
+  color: var(--blue);
+}
+
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     印刷ボタン（画面表示のみ）
+     ============================================================ -->
+<div class="print-btn-bar">
+  <span class="print-hint">ブラウザの「PDFに保存」を選択してください</span>
+  <button class="print-btn" onclick="window.print()">PDFに保存</button>
+</div>
+
+<!-- ============================================================
+     PAGE 1 — 概要
+     ============================================================ -->
+<div class="page">
+
+  <!-- ヘッダーバー -->
+  <div class="page-header">
+    <div class="brand-row">
+      <div class="brand-mark"></div>
+      <span class="brand-name">Avisail Technology</span>
+    </div>
+    <div class="doc-meta">
+      ADCS 製品資料<br>
+      2026年3月
+    </div>
+  </div>
+
+  <!-- ヒーロー -->
+  <div class="hero-block">
+    <div class="hero-eyebrow">Security Maturity Automation Platform</div>
+    <div class="hero-title">
+      <span class="grad">ADCS</span> — 中小企業の<br>デフォルト・セキュリティ基盤
+    </div>
+    <p class="hero-sub">
+      脆弱性の発見から修復まで自動化。修復手順の生成・担当者アサイン・再スキャンによる検証まで一貫して管理。ISO 27001・金融庁ガイドライン等の監査・保険申請・各種認証に対応したレポートを自動出力。セキュリティ専任チームは不要です。
+    </p>
+    <div class="kpi-bar">
+      <div class="kpi-cell"><div class="kpi-num">54</div><div class="kpi-label">スキャナー数</div></div>
+      <div class="kpi-cell"><div class="kpi-num">11</div><div class="kpi-label">規制フレームワーク</div></div>
+      <div class="kpi-cell"><div class="kpi-num">24h</div><div class="kpi-label">レポート納品</div></div>
+      <div class="kpi-cell"><div class="kpi-num">¥29,800</div><div class="kpi-label">月額スタート</div></div>
+    </div>
+  </div>
+
+  <!-- メイン3カラム -->
+  <div class="main-cols">
+
+    <!-- 左：課題と特徴 -->
+    <div class="col">
+      <div class="col-label">Background</div>
+      <div class="col-title">中小企業が抱えるセキュリティの課題</div>
+      <div class="problem-box">
+        <p>既存のスキャナーは「発見」で止まります。200ページのPDFが届いても、何を直せばよいか、どう直すか、直ったかどうかを確認する手段がありません。その結果、レポートは放置されリスクは残ります。</p>
+      </div>
+      <div class="col-label" style="margin-top:8px;">ADCSの解決策</div>
+      <ul class="feature-list">
+        <li>CVSSスコア×ビジネス影響で優先順位を自動決定</li>
+        <li>発見事項ごとに具体的な修正手順を自動生成</li>
+        <li>ダッシュボードでタスクを担当者にアサイン</li>
+        <li>修正後に自動再スキャンで対応を検証</li>
+        <li>スコア達成で共有可能なセキュリティ証明書を発行</li>
+        <li>11フレームワークに自動マッピング（監査PDF出力）</li>
+      </ul>
+    </div>
+
+    <!-- 中：54スキャナー -->
+    <div class="col">
+      <div class="col-label">Scan Engine</div>
+      <div class="col-title">54スキャナー — 6カテゴリ</div>
+      <div class="scanner-mini-grid">
+        <div class="scanner-chip">外部資産 &amp; インフラ <span class="cnt">8</span></div>
+        <div class="scanner-chip">SSL/TLS &amp; 証明書 <span class="cnt">4</span></div>
+        <div class="scanner-chip">Webアプリ脆弱性 <span class="cnt">15</span></div>
+        <div class="scanner-chip">情報漏洩 &amp; 秘密鍵 <span class="cnt">8</span></div>
+        <div class="scanner-chip">Cloud · API · SC <span class="cnt">7</span></div>
+        <div class="scanner-chip">高度 &amp; 総合診断 <span class="cnt">12</span></div>
+      </div>
+      <div class="col-label" style="margin-top:10px;">外部OSINT（9ソース）</div>
+      <div class="osint-chips">
+        <span class="osint-chip">Shodan</span>
+        <span class="osint-chip">Censys</span>
+        <span class="osint-chip">VirusTotal</span>
+        <span class="osint-chip">AbuseIPDB</span>
+        <span class="osint-chip">LeakCheck</span>
+        <span class="osint-chip">SecurityTrails</span>
+        <span class="osint-chip">FOFA</span>
+        <span class="osint-chip">crt.sh</span>
+        <span class="osint-chip">OTX</span>
+      </div>
+      <p style="font-size:8px;color:var(--muted);margin-top:8px;line-height:1.6;">
+        OWASP Top 10 · CVSS · MITRE ATT&amp;CK に準拠。能動スキャン＋パッシブOSINTで単発スキャンでは見えない攻撃対象領域を広くカバー。
+      </p>
+    </div>
+
+    <!-- 右：3層アーキテクチャ -->
+    <div class="col">
+      <div class="col-label">Architecture</div>
+      <div class="col-title">3層セキュリティ成熟度</div>
+      <div class="layers">
+        <div class="layer-row l1">
+          <div class="layer-row-title">
+            Layer 1 — ADCS
+            <span class="layer-badge">全プラン</span>
+          </div>
+          <p>54スキャナー診断・優先順位付き修正手順・再スキャン検証・セキュリティ証明書</p>
+        </div>
+        <div class="layer-row l2">
+          <div class="layer-row-title">
+            Layer 2 — CTEM
+            <span class="layer-badge blue">Standard以上</span>
+          </div>
+          <p>継続的脅威エクスポージャー管理。月次攻撃経路シミュレーション・リスクトレンド・即時CVE評価・業界ベンチマーク</p>
+        </div>
+        <div class="layer-row l3">
+          <div class="layer-row-title">
+            Layer 3 — Compliance
+            <span class="layer-badge gray">全プラン</span>
+          </div>
+          <p>11フレームワーク自動マッピング・IPA申請ガイド・監査PDF自動生成</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- フッター -->
+  <div class="page-footer">
+    <div class="footer-contact">
+      お問い合わせ：<strong>info@avisail.com</strong> &nbsp;|&nbsp; 1営業日以内返信 &nbsp;|&nbsp; <span style="color:var(--blue)">adcs.avisail.com</span>
+    </div>
+    <div class="page-num">1 / 2</div>
+  </div>
+
+</div><!-- /page 1 -->
+
+<!-- ============================================================
+     PAGE 2 — 料金 · 比較 · 信頼
+     ============================================================ -->
+<div class="page">
+
+  <!-- ヘッダーバー -->
+  <div class="page-header">
+    <div class="brand-row">
+      <div class="brand-mark"></div>
+      <span class="brand-name">Avisail Technology</span>
+    </div>
+    <div class="doc-meta">
+      ADCS 製品資料 — 料金プラン &amp; 詳細<br>
+      2026年3月
+    </div>
+  </div>
+
+  <!-- 料金プラン -->
+  <div class="section">
+    <div class="section-label">Pricing</div>
+    <div class="section-title">料金プラン</div>
+    <div class="plan-grid">
+
+      <div class="plan-card">
+        <div class="plan-name">Spot</div>
+        <div class="plan-price">¥50,000 <span>買い切り</span></div>
+        <ul class="plan-features">
+          <li>1回限りの全件診断</li>
+          <li>54スキャナーレポート</li>
+          <li>24時間以内納品</li>
+          <li>PDF形式ダウンロード</li>
+        </ul>
+      </div>
+
+      <div class="plan-card">
+        <div class="plan-name">Starter</div>
+        <div class="plan-price">¥29,800 <span>/月</span></div>
+        <ul class="plan-features">
+          <li>月次スキャン</li>
+          <li>セキュリティバッジ</li>
+          <li>IPA SA1/SA2（無料）</li>
+          <li>コンプライアンスADD-ON対応</li>
+        </ul>
+      </div>
+
+      <div class="plan-card rec">
+        <div class="rec-badge">おすすめ</div>
+        <div class="plan-name">Standard</div>
+        <div class="plan-price">¥59,800 <span>/月</span></div>
+        <ul class="plan-features">
+          <li>Starterの全機能</li>
+          <li>CTEM（継続的監視）</li>
+          <li>脆弱性管理</li>
+          <li>インシデント管理</li>
+          <li>コンプライアンスADD-ON対応</li>
+        </ul>
+      </div>
+
+      <div class="plan-card">
+        <div class="plan-name">Premium</div>
+        <div class="plan-price">¥99,800 <span>/月</span></div>
+        <ul class="plan-features">
+          <li>Standardの全機能</li>
+          <li>全11フレームワーク無料</li>
+          <li>AIセキュリティモジュール</li>
+          <li>優先サポート</li>
+        </ul>
+      </div>
+
+    </div>
+    <div class="annual-note">年払いで全プラン <strong style="color:var(--accent)">20%オフ</strong>　|　コンプライアンスアドオン（買い切り）：IPA SA1 ¥29,800 / GDPR ¥49,800 / ISO27001 ¥79,800 ほか</div>
+  </div>
+
+  <!-- 比較 ＋ フレームワーク -->
+  <div class="bottom-cols">
+
+    <!-- 左：競合比較 -->
+    <div class="bottom-col">
+      <div class="col-label">Comparison</div>
+      <div class="col-title" style="font-size:13px;margin-bottom:6px;">競合サービスとの比較</div>
+      <table class="comp-table">
+        <thead>
+          <tr>
+            <th>機能</th>
+            <th class="adcs-th">ADCS</th>
+            <th>競合他社</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>対象ユーザー</td>
+            <td class="adcs-val">IT担当不在の中小企業</td>
+            <td class="no">開発チーム / 大企業</td>
+          </tr>
+          <tr>
+            <td>修正手順の自動生成</td>
+            <td class="yes">✓ 自動生成</td>
+            <td class="no">✗ なし</td>
+          </tr>
+          <tr>
+            <td>修正後の自動再スキャン</td>
+            <td class="yes">✓ 標準搭載</td>
+            <td class="no">✗ 手動 / 有料</td>
+          </tr>
+          <tr>
+            <td>共有可能なセキュリティリンク</td>
+            <td class="yes">✓ 標準搭載</td>
+            <td class="no">✗ 非対応</td>
+          </tr>
+          <tr>
+            <td>11フレームワーク自動マッピング</td>
+            <td class="yes">✓ 自動</td>
+            <td class="no">✗ OWASP のみ</td>
+          </tr>
+          <tr>
+            <td>IPA SECURITY ACTIONサポート</td>
+            <td class="yes">✓ 申請ガイド付属</td>
+            <td class="no">✗ 非対応</td>
+          </tr>
+          <tr>
+            <td>CTEM（継続的脅威管理）</td>
+            <td class="yes">✓ Standard以上</td>
+            <td class="no">✗ 部分 / 非対応</td>
+          </tr>
+        </tbody>
+      </table>
+      <p style="font-size:7.5px;color:var(--muted);margin-top:5px;line-height:1.55;">
+        ※ 主要自動スキャンSaaSの公式サイト・公開資料を基に2026年3月調査。修正手順自動生成・規制コンプライアンス対応・IPA申請ガイドは調査対象競合に存在しないことを確認。
+      </p>
+    </div>
+
+    <!-- 右：フレームワーク＋信頼 -->
+    <div class="bottom-col">
+      <div class="col-label">Compliance</div>
+      <div class="col-title" style="font-size:13px;margin-bottom:4px;">対応規制フレームワーク（11）</div>
+      <div class="fw-chips">
+        <span class="fw-chip hl">IPA SECURITY ACTION ★/★★</span>
+        <span class="fw-chip">個人情報保護法（APPI）</span>
+        <span class="fw-chip">GDPR（EU）</span>
+        <span class="fw-chip">ISO 27001</span>
+        <span class="fw-chip">PCI DSS</span>
+        <span class="fw-chip">NIST CSF</span>
+        <span class="fw-chip">SOC 2</span>
+        <span class="fw-chip">NIS2（EU）</span>
+        <span class="fw-chip">Cyber Essentials（UK）</span>
+        <span class="fw-chip">CMMC（米国防）</span>
+        <span class="fw-chip">CSA STAR</span>
+      </div>
+
+      <div class="col-label" style="margin-top:10px;">Security &amp; Trust</div>
+      <ul class="trust-list">
+        <li><span class="trust-icon">🔒</span><span><strong>AES-256暗号化</strong>　収集データはすべて保管時に暗号化</span></li>
+        <li><span class="trust-icon">🇯🇵</span><span><strong>国内サーバー</strong>　Railway + Supabase（Japan）ホスティング</span></li>
+        <li><span class="trust-icon">💳</span><span><strong>Stripe決済</strong>（PCI DSS Level 1）　カード番号は非保存</span></li>
+        <li><span class="trust-icon">📋</span><span><strong>APPI・GDPR準拠</strong>　データ削除・エクスポート・同意管理を内蔵</span></li>
+        <li><span class="trust-icon">🎯</span><span><strong>スキャン対象</strong>　許可ドメインのみ。無断拡張なし</span></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-block">
+    <div class="cta-text">
+      <h3>まず無料セルフチェックから、またはいつでもご相談ください</h3>
+      <p>10問・即時結果・登録不要の無料診断でリスクを把握。Spot診断（¥50,000 / 24時間）から試すことも可能です。</p>
+    </div>
+    <div class="cta-contact">
+      <strong>info@avisail.com</strong><br>
+      1営業日以内にご返信<br>
+      <span class="cta-url">https://avisail.com/security/adcs-ja.html</span>
+    </div>
+  </div>
+
+  <!-- フッター -->
+  <div class="page-footer">
+    <div class="footer-contact">
+      © 2026 Avisail Technology &nbsp;|&nbsp; 本資料の内容は2026年3月時点のものです
+    </div>
+    <div class="page-num">2 / 2</div>
+  </div>
+
+</div><!-- /page 2 -->
+
+<script>
+// 印刷前にフォントが読み込まれていることを確認
+window.onbeforeprint = function() {
+  document.fonts.ready;
+};
+</script>
+
+</body>
+</html>
