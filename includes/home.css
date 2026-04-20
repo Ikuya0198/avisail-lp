@@ -276,8 +276,12 @@ html {
 .biz-detail-grid {
   display: flex;
   flex-direction: column;
-  gap: 28px;
+  gap: 0;
 }
+
+.biz-detail-left  { margin-bottom: 36px; }
+.biz-products-label { margin-bottom: 24px; }
+.biz-detail-right { margin-bottom: 8px; }
 
 .biz-detail-left h3 {
   font-size: 1.3rem;
