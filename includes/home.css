@@ -178,13 +178,17 @@ html {
   position: relative;
   overflow: hidden;
   user-select: none;
+  opacity: 0.45;
 }
+
+.biz-card:hover { opacity: 0.85; }
+.biz-card.active { opacity: 1; }
 
 .biz-card::before {
   content: '';
   position: absolute;
   top: 0; left: 0; right: 0;
-  height: 2px;
+  height: 3px;
   transform: scaleX(0);
   transition: transform 0.35s ease;
 }
@@ -238,7 +242,7 @@ html {
 .biz-arrow {
   position: absolute;
   bottom: 22px; right: 22px;
-  font-size: 18px;
+  font-size: 22px;
   color: var(--text-muted);
   transition: all 0.3s ease;
   font-style: normal;
@@ -247,6 +251,27 @@ html {
 .biz-card.active.maritime .biz-arrow { color: var(--accent); transform: rotate(90deg); }
 .biz-card.active.security  .biz-arrow { color: var(--accent-blue); transform: rotate(90deg); }
 .biz-card.active.develop   .biz-arrow { color: var(--accent-violet); transform: rotate(90deg); }
+
+.biz-cta-hint {
+  margin-top: 20px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: color 0.3s ease;
+}
+
+.biz-cta-hint .hint-inactive { color: var(--text-muted); }
+.biz-cta-hint .hint-active   { display: none; }
+
+.biz-card.active .biz-cta-hint .hint-inactive { display: none; }
+.biz-card.active .biz-cta-hint .hint-active   { display: block; }
+
+.biz-card.active.maritime .biz-cta-hint .hint-active { color: var(--accent); }
+.biz-card.active.security  .biz-cta-hint .hint-active { color: var(--accent-blue); }
+.biz-card.active.develop   .biz-cta-hint .hint-active { color: var(--accent-violet); }
 
 /* ===== Detail panel ===== */
 .biz-detail {
